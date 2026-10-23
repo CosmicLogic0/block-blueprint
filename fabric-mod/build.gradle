@@ -33,7 +33,7 @@ def mcdep = project.findProperty('mc_dep') ?: "~${project.minecraft_version}"
 processResources {
     inputs.property 'version', project.version
     inputs.property 'mcdep', mcdep
-    filesMatching('fabric.mod.json') { expand 'version': project.version, 'mcdep': mcdep }
+    filesMatching('fabric.mod.json') { expand 'version': project.version, 'mcdep': mcdep, 'java': 25 }
 }
 
 tasks.withType(JavaCompile).configureEach { options.release = 25 }

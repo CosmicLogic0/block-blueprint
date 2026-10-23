@@ -46,7 +46,10 @@ processResources.dependsOn copySharedRes
 tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn copyShared, copySharedRes }
 
 def javaVer = (project.findProperty('java_version') ?: '21') as int
-def mcdep = project.findProperty('mc_dep') ?: "~${project.minecraft_version}"
+// which Minecraft versions each jar may load on (the ones that share its code)
+def ranges = ['1.20.1': '>=1.20 <=1.20.1', '1.20.4': '>=1.20.3 <=1.20.4', '1.20.6': '>=1.20.5 <=1.20.6', '1.21.1': '>=1.21 <=1.21.1',
+              '1.21.4': '1.21.4', '1.21.5': '1.21.5', '1.21.8': '>=1.21.6 <=1.21.8']
+def mcdep = project.findProperty('mc_dep') ?: (ranges[compat] ?: project.minecraft_version)
 processResources {
     inputs.property 'version', project.version
     inputs.property 'mcdep', mcdep

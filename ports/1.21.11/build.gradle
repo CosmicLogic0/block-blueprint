@@ -1,0 +1,36 @@
+// Build Blueprint for Minecraft 1.21.11: the same code as the 26.x mod (../../fabric-mod), built against the
+// last obfuscated Minecraft with Mojang's names, so Loom remaps it.
+plugins {
+    id 'fabric-loom' version "${loom_version}"
+}
+
+version = "${project.mod_version}+${project.minecraft_version}"
+group = project.maven_group
+base { archivesName = project.archives_base_name }
+
+repositories { mavenCentral() }
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+def mod = '../../fabric-mod/src'
+sourceSets.main {
+    java {
+        srcDir "${mod}/main/java"; srcDir "${mod}/menu/java"; srcDir "${mod}/preview/java"; srcDir "${mod}/keys/java"
+        srcDir "src/compat/java"
+    }
+    resources { srcDir "${mod}/main/resources" }
+}
+
+def mcdep = project.findProperty('mc_dep') ?: '1.21.11'
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcdep', mcdep
+    filesMatching('fabric.mod.json') { expand 'version': project.version, 'mcdep': mcdep, 'java': 21 }
+}
+tasks.withType(JavaCompile).configureEach { options.release = 21 }
+tasks.named("test") { enabled = false }
