@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { OrbitControls } from './vendor/OrbitControls.js';
 import { buildAtlas } from './atlas.js';
 import { Baker, buildWorldGeometry, buildBlockGeometry, buildMultiGeometry, encode, decode, inRange, DIR_VEC } from './bake.js';
 import { encodeBlueprint } from './export.js';
@@ -8,6 +8,20 @@ import { simulate, useBlock } from './redstone.js';
 THREE.ColorManagement.enabled = false; // vanilla-style: textures * shade, no color-space conversion
 
 const api = window.api;
+window.__bbStarted = true;
+// Loading screen: show which step we're on, so it's clear the app is working.
+const LSTEPS = ['start', 'tex', 'pics', 'list', 'view'];
+function loadStep(step, msg, sub) {
+  window.__bbLast = Date.now();
+  const i = LSTEPS.indexOf(step);
+  document.querySelectorAll('#loadSteps li').forEach((li, j) => { li.className = j < i ? 'done' : j === i ? 'now' : ''; });
+  if (msg) document.getElementById('loadMsg').textContent = msg;
+  if (i <= 1) loadPct(i === 0 ? 0.02 : 0.05);
+  document.getElementById('loadSub').innerHTML = sub || '&nbsp;';
+  const slow = document.getElementById('loadSlow'); if (slow && !slow.classList.contains('bad')) slow.className = 'hidden';
+}
+function loadPct(p) { const b = document.getElementById('loadBar'); if (!b) return; window.__bbLast = Date.now(); b.style.width = Math.round(p * 100) + '%'; }
+loadStep('start', 'Starting up…');
 const $ = (s) => document.querySelector(s);
 const store = {
   get(k, d) { try { const v = localStorage.getItem('bb.' + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
@@ -21,6 +35,7 @@ const pretty = (n) => n.split('_').map((w) => w[0].toUpperCase() + w.slice(1)).j
 
 // ---------------------------------------------------------------- setup flow
 async function ensureAssets() {
+  loadStep('tex', 'Checking your Minecraft textures…', 'Only slow the first time after an update.');
   let st = await api.status();
   if (st.ready) return st;
   const el = $('#setup'); el.classList.remove('hidden');
@@ -58,8 +73,16 @@ async function ensureAssets() {
 async function main() {
   const status = await ensureAssets();
   const base = api.assetBase;
+  loadStep('tex', 'Reading the block list…', status.version ? 'Minecraft ' + status.version + ' textures' : '');
   const catalog = api.getCatalog ? await api.getCatalog() : await (await fetch(base + 'catalog.json')).json();
-  const atlas = await buildAtlas(base, catalog.textures, (p) => { $('#loadBar').style.width = Math.round(p * 100) + '%'; }, api.loadTexture);
+  const nTex = catalog.textures.length;
+  loadStep('pics', 'Loading block pictures…', '0 / ' + nTex);
+  const atlas = await buildAtlas(base, catalog.textures, (p) => {
+    loadPct(0.05 + p * 0.75);
+    $('#loadSub').textContent = p < 0.5 ? Math.round(p * 2 * nTex) + ' / ' + nTex + ' pictures' : 'Packing them together…';
+  }, api.loadTexture);
+  loadStep('list', 'Building the block list…', 'Working out every block and its shapes'); loadPct(0.82);
+  await new Promise((r) => setTimeout(r, 30));   // let the screen update before the heavy step
 
   const settings = Object.assign({ grid: true, shade: true, blue: true, zoom: 1.2, redstone: true }, store.get('settings', {}));
   if (api.setZoom) api.setZoom(settings.zoom);
@@ -70,6 +93,7 @@ async function main() {
   const allBlocks = Object.keys(catalog.blocks).filter((n) => !HIDDEN.has(n) && baker.bake(n, 0, 0).faces.length).sort();
   $('#verInfo').textContent = `Textures: ${status.version || 'custom'} (${status.source || ''}) · ${allBlocks.length} blocks`;
 
+  loadStep('view', 'Setting up the 3D view…', allBlocks.length + ' blocks ready'); loadPct(0.92);
   // ---- three.js scene
   const canvas = $('#view');
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
@@ -1054,7 +1078,8 @@ async function main() {
   applySettings(); renderPalette(); renderHotbar(); setTool('build');
   if (innerWidth <= 820) togglePalette(); // phone: start with the block sheet closed
   const saved = store.get('autosave', null);
-  if (saved) { try { load(saved); } catch { /* ignore bad autosave */ } }
+  if (saved) { loadStep('view', 'Opening your last build…'); try { load(saved); } catch { /* ignore bad autosave */ } }
+  loadPct(1);
   recomputeBounds(); if (!world.size) fitView();
   $('#loading').classList.add('hidden');
   window.__bb = { world, catalog, allBlocks, baker, scene, camera, controls, fitView, load, serialize, renderer, openTemplates, openTplDetail, useTemplate, refresh: () => { dirty = true; } }; // debug handle
@@ -1063,5 +1088,8 @@ async function main() {
 
 main().catch((e) => {
   console.error(e);
-  const l = $('#loading'); l.classList.remove('hidden'); l.firstElementChild.textContent = 'Something went wrong: ' + (e && e.message || e);
+  const l = $('#loading'); l.classList.remove('hidden');
+  $('#loadMsg').textContent = 'Something went wrong while loading';
+  const slow = $('#loadSlow'); slow.className = 'bad';
+  slow.innerHTML = 'Error: ' + String(e && e.message || e).replace(/</g, '&lt;') + '<br>Try closing and reopening the app. If it keeps happening, try Settings → Change textures, or reinstall from GitHub.';
 });

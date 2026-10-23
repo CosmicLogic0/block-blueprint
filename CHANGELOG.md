@@ -1,6 +1,10 @@
 ## 1.1.5
 - New project address: github.com/CosmicLogic0/block-blueprint (updates and links point there now).
 
+## 1.1.6
+- Fixed: the installed app could get stuck on "Loading blocks..." forever (a file the 3D view needs was left out of the installer).
+- New loading screen: shows each step, how many block pictures are loaded, and a clear message if something goes wrong or takes too long.
+
 ## 1.1.4
 - Fixed: the game crashed when opening the Page Up menus ("Can only blur once per frame").
 - Safety net: if any part of the mod runs into a problem it now shows a message in chat instead of crashing the game.

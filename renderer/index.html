@@ -12,8 +12,7 @@
 <link rel="stylesheet" href="style.css">
 <script type="importmap">
 { "imports": {
-  "three": "../node_modules/three/build/three.module.js",
-  "three/addons/": "../node_modules/three/examples/jsm/"
+  "three": "../node_modules/three/build/three.module.js"
 } }
 </script>
 </head>
@@ -242,7 +241,46 @@
   </div>
 </div>
 
-<div id="loading"><div>Loading blocks…<div class="bar"><div id="loadBar"></div></div></div></div>
+<div id="loading">
+  <div class="lcard">
+    <svg class="lcube" viewBox="0 0 60 64" aria-hidden="true"><path d="M30 4 56 18 30 32 4 18Z" fill="#ffd23f"/><path d="M4 18 30 32V60L4 46Z" fill="#e0a820"/><path d="M56 18 30 32V60L56 46Z" fill="#b88410"/></svg>
+    <div class="ltitle">Block Blueprint</div>
+    <div id="loadMsg">Starting up…</div>
+    <div class="bar"><div id="loadBar"></div></div>
+    <div id="loadSub">&nbsp;</div>
+    <ol id="loadSteps">
+      <li data-s="start">Start the app</li>
+      <li data-s="tex">Find your Minecraft textures</li>
+      <li data-s="pics">Load the block pictures</li>
+      <li data-s="list">Build the block list</li>
+      <li data-s="view">Set up the 3D view</li>
+    </ol>
+    <div id="loadSlow" class="hidden"></div>
+  </div>
+</div>
+<script>
+// Runs even if the main code fails to load, so the loading screen can never sit there silently.
+(function () {
+  var errs = [];
+  addEventListener('error', function (e) { errs.push((e.message || 'A file failed to load') + (e.filename ? ' (' + e.filename.split('/').pop() + ')' : '')); }, true);
+  addEventListener('unhandledrejection', function (e) { errs.push(String(e.reason && e.reason.message || e.reason)); });
+  var t0 = Date.now();
+  var iv = setInterval(function () {
+    var l = document.getElementById('loading');
+    if (!l || l.classList.contains('hidden')) { clearInterval(iv); return; }
+    var secs = Math.round((Date.now() - t0) / 1000), slow = document.getElementById('loadSlow');
+    var started = window.__bbStarted, last = window.__bbLast || t0;
+    if (!started && secs >= 6) {
+      slow.className = 'bad';
+      slow.innerHTML = '<b>The app didn\'t start properly.</b><br>' + (errs.length ? 'Error: ' + errs[0].replace(/</g, '&lt;') + '<br>' : '') +
+        'Try closing and reopening it. If it keeps happening, download the latest installer from GitHub and run it again.';
+    } else if (started && Date.now() - last > 20000) {
+      slow.className = '';
+      slow.innerHTML = 'Still working… big texture packs and slow PCs can take a minute. If nothing changes for a few minutes, close and reopen the app.';
+    }
+  }, 1000);
+})();
+</script>
 
 <script type="module" src="app.js"></script>
 </body>

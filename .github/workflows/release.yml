@@ -44,6 +44,20 @@ jobs:
         run: |
           set -o pipefail
           npx electron-builder --win --publish never 2>&1 | tee build.log
+      - name: Check the installer has every file the app needs
+        shell: bash
+        run: |
+          set -o pipefail
+          npx --yes @electron/asar list dist/win-unpacked/resources/app.asar | tr '\\' '/' > asar.txt
+          # every file the app page loads (its own scripts + three.js) must be inside the app
+          missing=0
+          for f in /renderer/app.js /renderer/vendor/OrbitControls.js /node_modules/three/build/three.module.js /node_modules/three/build/three.core.js /preload.js /main.js; do
+            grep -qx "$f" asar.txt || { echo "::error title=Missing from installer::$f"; missing=1; }
+          done
+          for f in $(grep -ho "from '\./[^']*'" renderer/*.js | sed "s/from '\.\///;s/'//" | sort -u); do
+            grep -qx "/renderer/$f" asar.txt || { echo "::error title=Missing from installer::renderer/$f"; missing=1; }
+          done
+          exit $missing
       - name: Show the build error
         if: failure()
         shell: bash
