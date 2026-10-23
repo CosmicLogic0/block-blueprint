@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Blueprint">
+<meta name="theme-color" content="#0f5cb5">
+<title>Block Blueprint</title>
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "../node_modules/three/build/three.module.js",
+  "three/addons/": "../node_modules/three/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="stage"><canvas id="view"></canvas></div>
+
+<!-- top bar -->
+<div id="topbar">
+  <div class="group" id="tools">
+    <button class="pill mcbtn" id="btnTemplates" title="Browse ready-made builds">📚 Templates</button>
+    <button class="pill tool active" data-tool="build" title="Build (B)">🧱 Build</button>
+    <button class="pill tool" data-tool="erase" title="Erase (X)">🧹 Erase</button>
+    <button class="pill tool" data-tool="pick" title="Pick block (P / middle-click)">🎯 Pick</button>
+    <button class="pill tool" data-tool="turn" title="Rotate a placed block">↻ Turn</button>
+    <button class="pill tool" data-tool="tilt" title="Tilt a placed block">⤴ Tilt</button>
+    <button class="pill tool" data-tool="use" title="Use levers, buttons, doors (U)">🔴 Use</button>
+    <button class="pill tool" data-tool="measure" title="Measure mode (M)">📏 Measure mode</button>
+  </div>
+</div>
+<div id="actions" class="group">
+  <button class="icon" id="btnUndo" title="Undo (Ctrl+Z)">↶</button>
+  <button class="icon" id="btnRedo" title="Redo (Ctrl+Y)">↷</button>
+  <button class="icon" id="btnOpen" title="Open blueprint">📂</button>
+  <button class="icon" id="btnSave" title="Save blueprint">💾</button>
+  <button class="icon" id="btnMaterials" title="Materials list">📋</button>
+  <button class="icon" id="btnExport" title="Export to Minecraft (Fabric mod commands)">🧩</button>
+  <button class="icon" id="btnShot" title="Save screenshot">📷</button>
+  <button class="icon" id="btnFit" title="Fit view (F)">⌖</button>
+  <button class="icon" id="btnFull" title="Fullscreen (F11)">⛶</button>
+  <button class="icon" id="btnGear" title="Settings">⚙</button>
+</div>
+
+<!-- palette -->
+<aside id="palette">
+  <div id="palHead">
+    <input id="search" type="search" placeholder="Search all blocks…" autocomplete="off">
+    <div id="cats"></div>
+    <div id="palCount"></div>
+  </div>
+  <div id="grid"></div>
+</aside>
+<button id="palToggle" title="Toggle block menu (Tab)">❮</button>
+
+<!-- bottom -->
+<div id="bottom">
+  <div id="current"><b id="curName">—</b><span id="curSub"></span></div>
+  <div id="hotbar"></div>
+  <div id="hint"></div>
+  <button class="pill" id="firstLayer">» Start with first layer</button>
+  <div id="layerRow">
+    <button class="icon sq" id="layerPrev">←</button>
+    <div id="layerWrap"><div id="layerLabel">All layers</div><input type="range" id="layer" min="0" max="1" value="1"></div>
+    <button class="icon sq" id="layerNext">→</button>
+  </div>
+</div>
+
+<div id="touchbar">
+  <button class="pill" id="tbBlocks">🧱 Blocks</button>
+  <button class="pill" id="tbRot" title="Rotate held block">↻</button>
+  <button class="pill" id="tbTilt" title="Tilt held block">⤴</button>
+  <button class="pill" id="tbState" title="Next block state">⋮</button>
+  <button class="pill" id="tbLine" title="Line mode">▮ Line</button>
+</div>
+
+<div id="levelPill" class="pill static">Level 0</div>
+<div id="coords" class="pill static"></div>
+<div id="measureLabel"></div>
+<div id="toast"></div>
+
+<!-- settings -->
+<div id="settings" class="panel hidden">
+  <h3>Settings</h3>
+  <label><input type="checkbox" id="setGrid" checked> Show build grid</label>
+  <label><input type="checkbox" id="setShade" checked> Minecraft-style face shading</label>
+  <label><input type="checkbox" id="setBlue" checked> Blueprint background</label>
+  <label><input type="checkbox" id="setRed" checked> Live redstone (power, lamps, pistons)</label>
+  <label class="col">Interface size <span id="zoomVal"></span>
+    <input type="range" id="setZoom" min="0.8" max="1.8" step="0.05" value="1.2"></label>
+  <div id="verInfo"></div>
+  <button class="pill" id="btnClear">Clear whole build</button>
+  <button class="pill" id="btnReassets">Re-download / change textures…</button>
+</div>
+
+<!-- materials -->
+<div id="materials" class="panel hidden">
+  <div class="panelHead"><h3>Materials</h3><button class="icon" id="matClose">✕</button></div>
+  <div id="matTotal"></div>
+  <div id="matList"></div>
+</div>
+
+<!-- export to Minecraft -->
+<div id="exporter" class="panel hidden">
+  <div class="panelHead"><h3>Export to Minecraft</h3><button class="icon" id="expClose">✕</button></div>
+  <p class="expHelp"><b>Send to Minecraft</b> puts the build straight into the <b>Build Blueprint</b> mod on this PC: in-game press <b>Page Up</b> &rarr; Saved builds. Playing somewhere else? <b>Copy build code</b>, then in-game Page Up &rarr; <b>+ Paste build</b>.</p>
+  <label class="col">Blueprint name <input type="text" id="expName" maxlength="40" value="My Build"></label>
+  <div id="expStats"></div>
+  <div class="expBtns">
+    <button class="pill" id="expSend">Send to Minecraft</button>
+    <button class="pill alt" id="expCode">Copy build code</button>
+  </div>
+  <details class="expOld"><summary>Old way: chat commands</summary>
+  <div class="expBtns">
+    <button class="pill" id="expNext">Copy next line ▶</button>
+    <button class="pill alt" id="expAll">Copy all</button>
+    <button class="pill alt" id="expSave">Save .txt</button>
+    <button class="pill alt" id="expReset">Restart</button>
+  </div>
+  <div id="expLines"></div>
+  </details>
+</div>
+
+<!-- template gallery -->
+<div id="tpl" class="hidden">
+  <div class="mcpanel" id="tplPanel">
+    <div class="tplHead">
+      <h2 class="mctitle">Templates</h2>
+      <input id="tplSearch" type="search" placeholder="Search builds…" autocomplete="off">
+      <button class="mcbtn" id="tplSaveMine" title="Save what you have built as a template">＋ Save my build</button>
+      <button class="mcbtn" id="tplImport" title="Paste a build code">⇩ Import code</button>
+      <button class="mcbtn" id="tplClose" title="Close (Esc)">✕</button>
+    </div>
+    <div id="tplTabs"></div>
+    <div id="tplGrid"></div>
+    <div id="tplDetail" class="hidden">
+      <div class="tdLeft">
+        <canvas id="tplView"></canvas>
+        <div class="tdHint">Drag to turn · wheel to zoom</div>
+      </div>
+      <div class="tdRight">
+        <div class="tdCat" id="tdCat"></div>
+        <h2 class="mctitle" id="tdName"></h2>
+        <p id="tdDesc"></p>
+        <div id="tdStats"></div>
+        <div class="mcsub">Materials</div>
+        <div id="tdMats"></div>
+        <div class="tdBtns">
+          <button class="mcbtn big" id="tdUse">Use this build</button>
+          <button class="mcbtn" id="tdAdd">Add next to my build</button>
+          <button class="mcbtn" id="tdCode" title="Copy a code you can share or send to Claude">⧉ Copy build code</button>
+          <button class="mcbtn" id="tdDel">🗑 Delete</button>
+          <button class="mcbtn" id="tdBack">◀ Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="tplDlg" class="hidden"><div class="mcpanel dlg">
+  <h2 class="mctitle" id="dlgTitle"></h2>
+  <p id="dlgMsg"></p>
+  <input id="dlgName" type="text" maxlength="40" placeholder="Name">
+  <textarea id="dlgText" spellcheck="false"></textarea>
+  <div class="tdBtns"><button class="mcbtn big" id="dlgOk">OK</button><button class="mcbtn" id="dlgCancel">Cancel</button></div>
+</div></div>
+
+<!-- setup overlay -->
+<div id="setup" class="hidden">
+  <div class="card">
+    <h1>Block Blueprint</h1>
+    <p id="setupMsg">First-time setup: get the Minecraft block textures onto this PC.</p>
+    <button class="big" id="sDownload">⬇ Download from Mojang (official)</button>
+    <button class="big alt" id="sInstalled">🎮 Use my installed Minecraft</button>
+    <button class="big alt" id="sFile">📦 Choose a .jar / .zip…</button>
+    <button class="big alt" id="sFolder">📁 Choose a folder…</button>
+    <div id="setupBarWrap" class="hidden"><div id="setupStage"></div><div class="bar"><div id="setupBar"></div></div></div>
+    <div id="setupErr"></div>
+    <p class="small">Textures are read from your own Minecraft files and stay on this computer.</p>
+  </div>
+</div>
+
+<div id="loading"><div>Loading blocks…<div class="bar"><div id="loadBar"></div></div></div></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

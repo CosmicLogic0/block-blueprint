@@ -1,0 +1,82 @@
+[
+ {
+  "id": "robot",
+  "name": "Robot",
+  "cat": "Statues & Decor",
+  "desc": "A 58-block-tall mech robot in blue and black terracotta: horned helmet, glass-pane armour panels, wall-block joints, stair details and hidden light blocks inside.",
+  "size": [
+   20,
+   58,
+   17
+  ],
+  "blocks": 2451,
+  "types": 64,
+  "tags": [
+   "community"
+  ]
+ },
+ {
+  "id": "boat1",
+  "name": "Boat1",
+  "cat": "Ships",
+  "desc": "Small sailing ship in dark oak and birch: curved stair hull, three spruce masts with yards, a cabin with doors and tinted windows, lanterns, chests and banners.",
+  "size": [
+   11,
+   19,
+   28
+  ],
+  "blocks": 745,
+  "types": 21,
+  "tags": [
+   "community"
+  ]
+ },
+ {
+  "id": "house1",
+  "name": "House 1",
+  "cat": "Houses",
+  "desc": "Cosy oak and spruce cottage with a curved stone roof, timber framing, cross gables, a stone chimney and red-curtained windows.",
+  "size": [
+   31,
+   16,
+   18
+  ],
+  "blocks": 2440,
+  "types": 28,
+  "tags": [
+   "community"
+  ]
+ },
+ {
+  "id": "boat2",
+  "name": "Boat 2",
+  "cat": "Ships",
+  "desc": "Black-sailed pirate galleon in deepslate and blackstone: three masts with rope ladders, flags, cannons along both sides and a lantern-lit stern.",
+  "size": [
+   61,
+   49,
+   21
+  ],
+  "blocks": 5115,
+  "types": 31,
+  "tags": [
+   "community"
+  ]
+ },
+ {
+  "id": "boat3",
+  "name": "Boat 3",
+  "cat": "Ships",
+  "desc": "Huge four-masted sailing ship, over 100 blocks long: billowing brown sails, rigging lines, flags, a stone-trimmed deck and rows of gun ports.",
+  "size": [
+   29,
+   91,
+   104
+  ],
+  "blocks": 14195,
+  "types": 25,
+  "tags": [
+   "community"
+  ]
+ }
+]

@@ -1,0 +1,14 @@
+{
+  "key.category.buildblueprint.main": "Build Blueprint",
+  "key.buildblueprint.a_forward": "Move forward",
+  "key.buildblueprint.b_back": "Move back",
+  "key.buildblueprint.c_left": "Move left",
+  "key.buildblueprint.d_right": "Move right",
+  "key.buildblueprint.e_vertical": "Hold to move up/down",
+  "key.buildblueprint.f_rotate": "Rotate",
+  "key.buildblueprint.g_menu": "Menu (saved builds / materials)",
+  "key.buildblueprint.h_layer_up": "Layer up",
+  "key.buildblueprint.i_layer_down": "Layer down",
+  "key.buildblueprint.j_copy": "Copy a build: mark corner",
+  "key.buildblueprint.k_place": "Place / unlock the blueprint"
+}

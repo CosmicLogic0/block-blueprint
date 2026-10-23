@@ -1,0 +1,8 @@
+node_modules/
+dist/
+data/
+blueprints/
+fabric-mod/build/
+fabric-mod/.gradle/
+fabric-mod/run/
+*.log

@@ -1,0 +1,61 @@
+{
+  "name": "block-blueprint",
+  "productName": "Block Blueprint",
+  "version": "1.1.0",
+  "description": "3D Minecraft-style blueprint builder with every block texture",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --publish never",
+    "release": "electron-builder --win --publish always"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "three": "^0.186.1",
+    "electron-updater": "^6.6.2"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "author": "dylanemason0330-code",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dylanemason0330-code/block-blueprint.git"
+  },
+  "build": {
+    "appId": "dev.buildblueprint.app",
+    "productName": "Block Blueprint",
+    "artifactName": "Block-Blueprint-Setup-${version}.${ext}",
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json",
+      "lib/**",
+      "renderer/**",
+      "assets/**",
+      "!renderer/templates/_old/**"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Block Blueprint"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "dylanemason0330-code",
+        "repo": "block-blueprint"
+      }
+    ]
+  }
+}
