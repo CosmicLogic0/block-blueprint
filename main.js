@@ -65,7 +65,7 @@ function createWindow() {
 // ---- Updates -------------------------------------------------------------------------------------------------
 // Installed app (from the Setup .exe): checks GitHub Releases, downloads a newer version quietly, offers a restart.
 // Run from the folder (start.bat): can't replace itself, so it just tells you a new version is out and links to it.
-const RELEASES = 'https://github.com/dylanemason0330-code/block-blueprint/releases/latest';
+const RELEASES = 'https://github.com/CosmicLogic0/block-blueprint/releases/latest';
 const upd = { state: 'idle', version: null, error: null };
 let au = null;
 function sendUpd() { for (const w of BrowserWindow.getAllWindows()) w.webContents.send('upd:state', { ...upd, current: app.getVersion(), installed: app.isPackaged }); }
@@ -93,7 +93,7 @@ async function checkForUpdates(manual) {
     return;
   }
   try {
-    const r = await net.fetch('https://api.github.com/repos/dylanemason0330-code/block-blueprint/releases/latest', { headers: { 'User-Agent': 'block-blueprint' } });
+    const r = await net.fetch('https://api.github.com/repos/CosmicLogic0/block-blueprint/releases/latest', { headers: { 'User-Agent': 'block-blueprint' } });
     const j = await r.json();
     upd.version = String(j.tag_name || '').replace(/^v/, '');
     upd.state = upd.version && newer(upd.version, app.getVersion()) ? 'available' : 'latest';

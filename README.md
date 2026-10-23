@@ -5,7 +5,7 @@ see-through ghost blocks, a materials list, layer-by-layer building, block swapp
 Made for **Minecraft Java 26.3** with Fabric.
 
 ## Download
-- **Windows app:** go to [Releases](https://github.com/dylanemason0330-code/block-blueprint/releases/latest) and download
+- **Windows app:** go to [Releases](https://github.com/CosmicLogic0/block-blueprint/releases/latest) and download
   `Block-Blueprint-Setup-x.y.z.exe`. The app updates itself when a new version comes out.
   Windows may say "Windows protected your PC" the first time - click **More info -> Run anyway** (the app isn't code-signed).
 - **Minecraft mod:** on CurseForge (search "Build Blueprint"), or the `buildblueprint-x.y.z.jar` on the Releases page.

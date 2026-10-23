@@ -1,3 +1,6 @@
+## 1.1.5
+- New project address: github.com/CosmicLogic0/block-blueprint (updates and links point there now).
+
 ## 1.1.4
 - Fixed: the game crashed when opening the Page Up menus ("Can only blur once per frame").
 - Safety net: if any part of the mod runs into a problem it now shows a message in chat instead of crashing the game.

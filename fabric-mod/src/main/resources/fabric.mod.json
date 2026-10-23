@@ -5,7 +5,7 @@
   "name": "Build Blueprint",
   "description": "See any build as see-through ghost blocks in your world: a materials list with what you still need, layer-by-layer building, block swapping, copying builds from your world and auto-building in Creative. Works with the free Block Blueprint app. Client-side only.",
   "authors": [
-    "dylanemason0330-code"
+    "CosmicLogic"
   ],
   "license": "All-Rights-Reserved",
   "environment": "client",
@@ -21,9 +21,9 @@
     "fabric-api": "*"
   },
   "contact": {
-    "homepage": "https://github.com/dylanemason0330-code/block-blueprint",
-    "sources": "https://github.com/dylanemason0330-code/block-blueprint",
-    "issues": "https://github.com/dylanemason0330-code/block-blueprint/issues"
+    "homepage": "https://github.com/CosmicLogic0/block-blueprint",
+    "sources": "https://github.com/CosmicLogic0/block-blueprint",
+    "issues": "https://github.com/CosmicLogic0/block-blueprint/issues"
   },
   "icon": "assets/buildblueprint/icon.png"
 }
