@@ -1,4 +1,4 @@
-## 1.1.0
+## 1.1.1
 - Smart copy: look at a build and press Insert - the whole build is boxed. Arrows resize the box, ground and trees are left out.
 - Swap blocks in-game: change a whole wood / stone / colour set (oak -> spruce, black sails -> red) or one block.
 - Builds start fully built; press Delete to place, then build layer by layer.
