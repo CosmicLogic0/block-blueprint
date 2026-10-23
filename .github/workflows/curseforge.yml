@@ -1,0 +1,37 @@
+# Uploads the mod from the newest GitHub release to CurseForge.
+# Runs when this file changes or when started by hand from the Actions tab (use it if a CurseForge upload failed).
+name: Upload mod to CurseForge
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/curseforge.yml']
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get the mod from the newest release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p out
+          gh release download --repo "$GITHUB_REPOSITORY" --pattern 'buildblueprint-*.jar' --dir out
+          V=$(node -p "require('./package.json').version")
+          echo "VERSION=$V" >> "$GITHUB_ENV"
+          ls out
+      - uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          curseforge-id: 1762212
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          files: out/buildblueprint-*.jar
+          name: Build Blueprint ${{ env.VERSION }}
+          version: ${{ env.VERSION }}
+          version-type: release
+          loaders: fabric
+          game-versions: "26.3"
+          java: 25
+          dependencies: fabric-api(required)
+          changelog-file: CHANGELOG.md

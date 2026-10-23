@@ -83,10 +83,9 @@ jobs:
           files: fabric-mod/build/libs/buildblueprint-*.jar
           make_latest: true
       - name: Upload to CurseForge
-        if: ${{ vars.CURSEFORGE_ID != '' }}
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          curseforge-id: ${{ vars.CURSEFORGE_ID }}
+          curseforge-id: 1762212
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           files: fabric-mod/build/libs/buildblueprint-!(*-@(dev|sources|javadoc)).jar
           name: Build Blueprint ${{ needs.check.outputs.version }}
