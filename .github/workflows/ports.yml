@@ -1,0 +1,48 @@
+# Test-builds the mod for every supported Minecraft version (branch "ports" or by hand). No release is made.
+name: Build all Minecraft versions
+
+on:
+  push:
+    branches: [ports]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { mc: "26.3", dir: fabric-mod, java: 25 }
+          - { mc: "26.2", dir: fabric-mod, java: 25 }
+          - { mc: "26.1", dir: fabric-mod, java: 25 }
+    name: mc ${{ matrix.mc }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "${{ matrix.java }}" }
+      - name: Find the Fabric API for this version
+        id: fapi
+        run: |
+          V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.mc }}</version>" | sed 's/<[^>]*>//g' | tail -1)
+          echo "Fabric API: $V"
+          if [ -z "$V" ]; then echo "::error title=mc ${{ matrix.mc }}::No Fabric API found for this Minecraft version"; exit 1; fi
+          echo "v=$V" >> "$GITHUB_OUTPUT"
+      - name: Build
+        working-directory: ${{ matrix.dir }}
+        run: |
+          chmod +x gradlew
+          set -o pipefail
+          ./gradlew build -x test --no-daemon -Pminecraft_version=${{ matrix.mc }} -Pfabric_api_version=${{ steps.fapi.outputs.v }} 2>&1 | tee build.log
+      - name: Report errors
+        if: failure()
+        working-directory: ${{ matrix.dir }}
+        run: |
+          [ -f build.log ] || exit 0
+          E=$(grep -E "error:|\.java:[0-9]+|FAILURE|What went wrong|Could not" -A2 build.log | head -n 120 | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')
+          echo "::error title=mc ${{ matrix.mc }} build failed::$E"
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: buildblueprint-mc${{ matrix.mc }}
+          path: ${{ matrix.dir }}/build/libs/*.jar
