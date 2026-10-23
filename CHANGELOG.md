@@ -1,3 +1,7 @@
+## 1.1.4
+- Fixed: the game crashed when opening the Page Up menus ("Can only blur once per frame").
+- Safety net: if any part of the mod runs into a problem it now shows a message in chat instead of crashing the game.
+
 ## 1.1.3
 - App: cleaner Settings with on/off switches and sections, grouped toolbar with hover names and shortcuts,
   a Keyboard shortcuts screen (press ?), Esc closes panels, toolbar fits smaller windows.

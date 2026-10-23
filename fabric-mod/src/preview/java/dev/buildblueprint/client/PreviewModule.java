@@ -56,7 +56,7 @@ public final class PreviewModule {
     private static final java.util.Set<Long> ghostAt = new java.util.HashSet<>();
 
     public static void init() {
-        LevelRenderEvents.COLLECT_SUBMITS.register(ctx -> {
+        LevelRenderEvents.COLLECT_SUBMITS.register(ctx -> Safe.run("the ghost preview", () -> {
             if (needScan()) { scan(); pickHint(Minecraft.getInstance()); sorted = false; }
             if (ghosts.isEmpty()) return;
             Vec3 cam = ctx.levelState().cameraRenderState.pos;
@@ -69,10 +69,10 @@ public final class PreviewModule {
             PoseStack pose = ctx.poseStack();
             pose.pushPose();
             pose.translate(-cam.x, -cam.y, -cam.z);
-            ctx.submitNodeCollector().submitCustomGeometry(pose, RenderTypes.translucentMovingBlock(), PreviewModule::drawGhosts);
+            ctx.submitNodeCollector().submitCustomGeometry(pose, RenderTypes.translucentMovingBlock(), (pp, vc) -> Safe.run("drawing ghost blocks", () -> drawGhosts(pp, vc)));
             pose.popPose();
-        });
-        LevelRenderEvents.BEFORE_GIZMOS.register(ctx -> {
+        }));
+        LevelRenderEvents.BEFORE_GIZMOS.register(ctx -> Safe.run("the outlines", () -> {
             if (Settings.redOutline) for (Red r : reds) Gizmos.cuboid(new BlockPos(r.x, r.y, r.z), RED);
             // next block to place: pulsing yellow box, and a guide line when it's far away
             if (Settings.nextHint && Hint.pos != null) {
@@ -96,7 +96,7 @@ public final class PreviewModule {
                         Math.max(a.getX(), b.getX()) + 1.01, Math.max(a.getY(), b.getY()) + 1.01, Math.max(a.getZ(), b.getZ()) + 1.01), COPY);
                 Gizmos.cuboid(a, COPY1); Gizmos.cuboid(b, COPY1);   // yellow corners
             }
-        });
+        }));
     }
 
     // Big builds: checking every cell against the world each frame is slow, so it's done every few frames,

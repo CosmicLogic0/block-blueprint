@@ -39,7 +39,7 @@ public final class KeysModule {
         copy = reg("j_copy", InputConstants.KEY_INSERT);
         place = reg("k_place", InputConstants.KEY_DELETE);
         Modules.menuKey = menu;
-        ClientTickEvents.END_CLIENT_TICK.register(KeysModule::tick);
+        ClientTickEvents.END_CLIENT_TICK.register(mc -> Safe.run("keys", () -> tick(mc)));
     }
 
     /** True on the tick the key is pressed, then repeatedly while it stays held. */

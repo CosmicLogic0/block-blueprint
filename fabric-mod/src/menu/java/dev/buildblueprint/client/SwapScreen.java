@@ -103,7 +103,8 @@ public class SwapScreen extends Screen {
         return m;
     }
 
-    private void doApply() {
+    private void doApply() { Safe.run("swapping blocks", this::doApply0); }
+    private void doApply0() {
         Map<String, String> m = plan();
         if (m.isEmpty()) { msg = pick == null ? "Pick what to change it to first." : "Nothing to change."; return; }
         int n = Swapper.apply(m);
@@ -138,8 +139,9 @@ public class SwapScreen extends Screen {
     @Override public void onClose() { Materials.refresh(); Minecraft.getInstance().gui.setScreen(parent); }
 
     @Override
-    public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
-        extractBackground(g, mouseX, mouseY, delta);
+    public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) { Safe.run("the swap screen", () -> draw(g, mouseX, mouseY, delta)); }
+
+    private void draw(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
         int x = px(), w = pw();
         g.fill(x - 6, 8, x + w + 6, height - 4, 0xE0101018);
         g.fill(x - 6, 8, x + w + 6, 9, 0xFFFFB040);

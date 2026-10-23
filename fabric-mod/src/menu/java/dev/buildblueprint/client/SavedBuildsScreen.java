@@ -253,8 +253,9 @@ public class SavedBuildsScreen extends Screen {
     }
 
     @Override
-    public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
-        extractBackground(g, mouseX, mouseY, delta);
+    public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) { Safe.run("the saved builds menu", () -> draw(g, mouseX, mouseY, delta)); }
+
+    private void draw(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
         int lx = M(), lw = listW(), t = T();
         g.text(font, "Saved builds", lx, 10, 0xFFFFFF55, true);
         String hint = "Paste a build code, or copy one from your world (Insert key)";

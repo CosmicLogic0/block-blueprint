@@ -43,7 +43,7 @@ public final class AutoBuild {
     static void init() {
         if (ticking) return;
         ticking = true;
-        ClientTickEvents.END_CLIENT_TICK.register(AutoBuild::tick);
+        ClientTickEvents.END_CLIENT_TICK.register(mc -> Safe.run("auto-build", () -> tick(mc)));
     }
 
     private static boolean creative() {

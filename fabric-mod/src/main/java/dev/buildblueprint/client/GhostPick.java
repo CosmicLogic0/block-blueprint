@@ -25,7 +25,7 @@ public final class GhostPick {
 
     static void init() {
         // START of the tick: before vanilla handles the pick-block key, so a ghost hit takes priority.
-        ClientTickEvents.START_CLIENT_TICK.register(mc -> {
+        ClientTickEvents.START_CLIENT_TICK.register(mc -> Safe.run("pick from ghost", () -> {
             if (!Settings.ghostPick || mc.player == null || mc.gui.screen() != null) return;
             if (!BuildBlueprintClient.SESSION.loaded() || !BuildBlueprintClient.SESSION.visible) return;
             if (!mc.options.keyPickItem.isDown()) return;
@@ -34,7 +34,7 @@ public final class GhostPick {
             boolean clicked = false;
             while (mc.options.keyPickItem.consumeClick()) clicked = true;   // vanilla won't see this click
             if (clicked) pick(mc, t);
-        });
+        }));
     }
 
     /** The first ghost cell along your view, if it is closer than the real block you're looking at. */

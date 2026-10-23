@@ -49,7 +49,7 @@ public final class Materials {
     }
 
     static void init() {
-        ClientTickEvents.END_CLIENT_TICK.register(mc -> { if (++tick % 20 == 0) refresh(); });
+        ClientTickEvents.END_CLIENT_TICK.register(mc -> { if (++tick % 20 == 0) Safe.run("materials list", Materials::refresh); });
     }
 
     public static ItemStack stackFor(String id) {

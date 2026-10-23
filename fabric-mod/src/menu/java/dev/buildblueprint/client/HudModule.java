@@ -19,7 +19,7 @@ public final class HudModule {
 
     public static void init() {
         HudElementRegistry.attachElementBefore(VanillaHudElements.CHAT,
-                Identifier.fromNamespaceAndPath("buildblueprint", "materials"), (g, delta) -> {
+                Identifier.fromNamespaceAndPath("buildblueprint", "materials"), (g, delta) -> Safe.run("the corner list", () -> {
             Minecraft mc = Minecraft.getInstance();
             var s = BuildBlueprintClient.SESSION;
             if (mc.player != null && Copier.active && mc.gui.screen() == null) { copyPanel(g, mc); return; }
@@ -31,7 +31,7 @@ public final class HudModule {
             g.pose().scale(sc, sc);
             draw(g, mc, Settings.hudRight ? sw - W - 4 : 4, 4);
             g.pose().popMatrix();
-        });
+        }));
     }
 
     /** While copying a build: box size, block count and the keys. */
