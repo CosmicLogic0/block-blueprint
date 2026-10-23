@@ -151,7 +151,7 @@ public class SavedBuildsScreen extends BBScreen {
     // ---- input
     @Override public boolean keyPressed(KeyEvent e) {
         if (renaming) { if (e.key() == 257 || e.key() == 335) { finishRename(); return true; } if (e.key() == 256) { renaming = false; nameBox.visible = false; saveName.visible = false; return true; } return super.keyPressed(e); }
-        if (Modules.menuKey != null && Modules.menuKey.matches(e)) { onClose(); return true; }
+        if (Modules.menuKey != null && Modules.menuKey.matches(e.key(), e.scancode())) { onClose(); return true; }
         if (e.hasControlDown() && e.key() == 86) { paste(); return true; }   // Ctrl+V
         if (e.key() == 265) { sel = Math.max(0, sel - 1); resetView(); return true; }   // up
         if (e.key() == 264) { sel = Math.min(builds.size() - 1, sel + 1); resetView(); return true; } // down
