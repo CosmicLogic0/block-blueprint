@@ -54,7 +54,8 @@
       {
         "provider": "github",
         "owner": "dylanemason0330-code",
-        "repo": "block-blueprint"
+        "repo": "block-blueprint",
+        "releaseType": "release"
       }
     ]
   }
