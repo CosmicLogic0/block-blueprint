@@ -31,7 +31,9 @@ tasks.register('copySharedRes', Sync) {
 // version-specific helpers: src/compat/<group>, picked from the Minecraft version
 def mcv = project.minecraft_version
 def compat = project.findProperty('compat') ?: (
-    mcv.startsWith('1.20') ? '1.20.6' :
+    mcv in ['1.20.5', '1.20.6'] ? '1.20.6' :
+    mcv in ['1.20.2', '1.20.3', '1.20.4'] ? '1.20.4' :
+    mcv.startsWith('1.20') ? '1.20.1' :
     mcv in ['1.21', '1.21.1'] ? '1.21.1' :
     mcv in ['1.21.2', '1.21.3', '1.21.4'] ? '1.21.4' :
     mcv == '1.21.5' ? '1.21.5' : '1.21.8')

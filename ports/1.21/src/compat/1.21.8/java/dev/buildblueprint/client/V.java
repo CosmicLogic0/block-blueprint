@@ -35,4 +35,6 @@ public final class V {
     public static void hudPush(GuiGraphics g, float sc) { g.pose().pushMatrix(); g.pose().scale(sc, sc); }
     public static void hudPop(GuiGraphics g) { g.pose().popMatrix(); }
     public static Screen keyBinds(Screen parent) { return new net.minecraft.client.gui.screens.options.controls.KeyBindsScreen(parent, Minecraft.getInstance().options); }
+    public static double reach(Minecraft mc) { return mc.player.blockInteractionRange(); }
+    public static boolean glass(Block b) { return b instanceof net.minecraft.world.level.block.TransparentBlock; }
 }

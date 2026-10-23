@@ -164,13 +164,13 @@ public final class Swapper {
             if (n.endsWith(f)) { suffix = f; break; }
         List<String> out = new ArrayList<>();
         BlockState self = V.block(blockId).defaultBlockState();
-        boolean cube = V.solid(self) || self.getBlock() instanceof net.minecraft.world.level.block.TransparentBlock;
+        boolean cube = V.solid(self) || V.glass(self.getBlock());
         for (Block blk : BuiltInRegistries.BLOCK) {
             String id = BuiltInRegistries.BLOCK.getKey(blk).toString();
             if (id.equals(blockId) || blk.asItem() == net.minecraft.world.item.Items.AIR) continue;
             String p = path(id);
             if (suffix != null) { if (p.endsWith(suffix) && !(suffix.equals("_slab") && false)) out.add(id); }
-            else if (cube) { BlockState d = blk.defaultBlockState(); if ((V.solid(d) || blk instanceof net.minecraft.world.level.block.TransparentBlock) && !d.hasBlockEntity()) out.add(id); }
+            else if (cube) { BlockState d = blk.defaultBlockState(); if ((V.solid(d) || V.glass(blk)) && !d.hasBlockEntity()) out.add(id); }
             else if (blk.getClass() == self.getBlock().getClass()) out.add(id);
         }
         return out;

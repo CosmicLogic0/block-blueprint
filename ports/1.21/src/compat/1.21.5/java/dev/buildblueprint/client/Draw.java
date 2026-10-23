@@ -31,4 +31,7 @@ public final class Draw {
     public static void lineVertex(VertexConsumer vc, PoseStack.Pose p, Vec3 at, Vec3 n, int argb) {
         vc.addVertex(p, (float) at.x, (float) at.y, (float) at.z).setColor(argb).setNormal(p, (float) n.x, (float) n.y, (float) n.z);
     }
+    public static void quad(VertexConsumer vc, PoseStack.Pose p, BakedQuad q, float r, float g, float b, float a, int light, int overlay) {
+        vc.putBulkData(p, q, r, g, b, a, light, overlay);
+    }
 }
