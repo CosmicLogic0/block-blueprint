@@ -1,0 +1,47 @@
+// Build Blueprint for the older Minecraft versions that still use obfuscated names (1.21.x and before).
+// The pure-Java core (blueprint format, layers, rotation...) is shared with the main mod in ../../fabric-mod.
+plugins {
+    id 'fabric-loom' version "${loom_version}"
+}
+
+version = "${project.mod_version}+${project.minecraft_version}"
+group = project.maven_group
+base { archivesName = project.archives_base_name }
+
+repositories { mavenCentral() }
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+// shared core + shared assets (language file, icon) from the main mod
+def shared = layout.buildDirectory.dir('shared-src')
+def sharedRes = layout.buildDirectory.dir('shared-res')
+tasks.register('copyShared', Sync) {
+    from('../../fabric-mod/src/main/java') { include 'dev/buildblueprint/core/**' }
+    into shared
+}
+tasks.register('copySharedRes', Sync) {
+    from('../../fabric-mod/src/main/resources') { include 'assets/**' }
+    into sharedRes
+}
+sourceSets.main.java.srcDir(shared)
+sourceSets.main.resources.srcDir(sharedRes)
+compileJava.dependsOn copyShared
+processResources.dependsOn copySharedRes
+tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn copyShared, copySharedRes }
+
+def mcdep = project.findProperty('mc_dep') ?: "~${project.minecraft_version}"
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcdep', mcdep
+    filesMatching('fabric.mod.json') { expand 'version': project.mod_version, 'mcdep': mcdep }
+}
+
+def javaVer = (project.findProperty('java_version') ?: '21') as int
+tasks.withType(JavaCompile).configureEach { options.release = javaVer }
+java { toolchain { } }
+tasks.named("test") { enabled = false }

@@ -16,6 +16,7 @@ jobs:
           - { mc: "26.3", dir: fabric-mod, java: 25 }
           - { mc: "26.2", dir: fabric-mod, java: 25 }
           - { mc: "26.1", dir: fabric-mod, java: 25 }
+          - { mc: "1.21.1", dir: ports/1.21, java: 21 }
     name: mc ${{ matrix.mc }}
     steps:
       - uses: actions/checkout@v4
@@ -56,10 +57,39 @@ jobs:
           if not out: out=[l for l in L if 'What went wrong' in l or 'Could not' in l or '> ' in l][:30]
           print('\n'.join(out[:150]))
           PY
-          E=$(sed 's/%/%25/g' errs.txt | sed ':a;N;$!ba;s/\n/%0A/g')
+          cp errs.txt errs.keep 2>/dev/null; E=$(sed 's/%/%25/g' errs.txt | sed ':a;N;$!ba;s/\n/%0A/g')
           echo "::error title=mc ${{ matrix.mc }} build failed::$E"
+      - name: Write the result
+        if: always()
+        run: |
+          mkdir -p result
+          if [ -f ${{ matrix.dir }}/errs.txt ]; then cp ${{ matrix.dir }}/errs.txt result/${{ matrix.mc }}.txt; \
+          elif ls ${{ matrix.dir }}/build/libs/*.jar >/dev/null 2>&1; then echo "OK $(ls ${{ matrix.dir }}/build/libs/)" > result/${{ matrix.mc }}.txt; \
+          else tail -n 60 ${{ matrix.dir }}/build.log > result/${{ matrix.mc }}.txt 2>/dev/null || echo "FAILED before building" > result/${{ matrix.mc }}.txt; fi
       - uses: actions/upload-artifact@v4
-        if: success()
+        if: always()
         with:
-          name: buildblueprint-mc${{ matrix.mc }}
-          path: ${{ matrix.dir }}/build/libs/*.jar
+          name: result-${{ matrix.mc }}
+          path: result/
+
+  # Puts every version's result in the "ci-results" branch so it can be read with plain git.
+  collect:
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: result-*
+          merge-multiple: true
+          path: out
+      - name: Push results
+        run: |
+          cd out
+          git init -q -b ci-results
+          git config user.name ci; git config user.email ci@example.com
+          echo "${GITHUB_SHA}" > COMMIT
+          git add -A; git commit -qm "results for ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" ci-results
