@@ -74,7 +74,7 @@ public final class KeysModule {
             boolean modV = vertical.isDown();
             String d = l ? KeyLogic.direction(KeyLogic.Key.LEFT, modV) : r ? KeyLogic.direction(KeyLogic.Key.RIGHT, modV)
                     : f ? KeyLogic.direction(KeyLogic.Key.FORWARD, modV) : b ? KeyLogic.direction(KeyLogic.Key.BACK, modV) : null;
-            if (d != null) Copier.nudge(d, net.minecraft.client.gui.screens.Screen.hasShiftDown() ? 5 : 1, net.minecraft.client.gui.screens.Screen.hasAltDown(), PlayerInfo.yaw());
+            if (d != null) Copier.nudge(d, V.shift() ? 5 : 1, V.alt(), PlayerInfo.yaw());
             return;
         }
         if (!BuildBlueprintClient.SESSION.loaded()) return;
@@ -86,7 +86,7 @@ public final class KeysModule {
                 : f ? KeyLogic.direction(KeyLogic.Key.FORWARD, mod) : b ? KeyLogic.direction(KeyLogic.Key.BACK, mod) : null;
         var s = BuildBlueprintClient.SESSION;
         if ((dir != null || rot) && s.locked) { Chat.bar("Blueprint is placed (locked). Unlock it in the Page Up menu to move it."); return; }
-        int step = net.minecraft.client.gui.screens.Screen.hasShiftDown() ? 5 : 1;   // hold Shift to move 5 blocks at a time
+        int step = V.shift() ? 5 : 1;   // hold Shift to move 5 blocks at a time
         if (dir != null) { s.move(dir, step, PlayerInfo.yaw()); Chat.bar("Moved " + dir + (step > 1 ? " 5" : "") + "  ·  Shift = 5 blocks  ·  Delete = place it"); }
         if (rot) { s.rotate(1); Chat.bar("Rotated to " + s.turns() * 90 + " degrees"); }
     }

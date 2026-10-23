@@ -12,21 +12,15 @@ import java.util.Map;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.commands.arguments.blocks.BlockStateParser;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.EmptyBlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -73,11 +67,11 @@ public final class PreviewModule {
                 ghosts.sort((a, b2) -> Double.compare(d2(b2, cx, cy, cz), d2(a, cx, cy, cz)));
                 sorted = true; sortX = cx; sortY = cy; sortZ = cz;
             }
-            RenderType ghostType = Sheets.translucentCullBlockSheet();
+            RenderType ghostType = Draw.ghostType();
             Safe.run("drawing ghost blocks", () -> drawGhosts(pose, buf.getBuffer(ghostType)));
             buf.endBatch(ghostType);
         }
-        VertexConsumer lines = buf.getBuffer(RenderType.lines());
+        VertexConsumer lines = buf.getBuffer(Draw.lineType());
         if (Settings.redOutline) for (Red r : reds) box(pose, lines, new AABB(new BlockPos(r.x, r.y, r.z)).inflate(0.004), 0xFFFF2020);
         // next block to place: pulsing yellow box, and a guide line when it's far away
         if (Settings.nextHint && Hint.pos != null) {
@@ -102,19 +96,23 @@ public final class PreviewModule {
                     Math.max(a.getX(), b.getX()) + 1.01, Math.max(a.getY(), b.getY()) + 1.01, Math.max(a.getZ(), b.getZ()) + 1.01), 0xFF20E0FF);
             box(pose, lines, new AABB(a).inflate(0.02), 0xFFFFFF40); box(pose, lines, new AABB(b).inflate(0.02), 0xFFFFFF40);   // yellow corners
         }
-        buf.endBatch(RenderType.lines());
+        buf.endBatch(Draw.lineType());
         pose.popPose();
     }
 
     private static void box(PoseStack pose, VertexConsumer vc, AABB bb, int argb) {
-        LevelRenderer.renderLineBox(pose, vc, bb, ((argb >> 16) & 255) / 255f, ((argb >> 8) & 255) / 255f, (argb & 255) / 255f, ((argb >>> 24) & 255) / 255f);
+        double[] xs = {bb.minX, bb.maxX}, ys = {bb.minY, bb.maxY}, zs = {bb.minZ, bb.maxZ};
+        for (int a = 0; a < 2; a++) for (int b = 0; b < 2; b++) {   // the 12 edges
+            line(pose, vc, new Vec3(xs[0], ys[a], zs[b]), new Vec3(xs[1], ys[a], zs[b]), argb);
+            line(pose, vc, new Vec3(xs[a], ys[0], zs[b]), new Vec3(xs[a], ys[1], zs[b]), argb);
+            line(pose, vc, new Vec3(xs[a], ys[b], zs[0]), new Vec3(xs[a], ys[b], zs[1]), argb);
+        }
     }
 
     private static void line(PoseStack pose, VertexConsumer vc, Vec3 a, Vec3 b, int argb) {
-        PoseStack.Pose p = pose.last();
         Vec3 n = b.subtract(a).normalize();
-        vc.addVertex(p, (float) a.x, (float) a.y, (float) a.z).setColor(argb).setNormal(p, (float) n.x, (float) n.y, (float) n.z);
-        vc.addVertex(p, (float) b.x, (float) b.y, (float) b.z).setColor(argb).setNormal(p, (float) n.x, (float) n.y, (float) n.z);
+        Draw.lineVertex(vc, pose.last(), a, n, argb);
+        Draw.lineVertex(vc, pose.last(), b, n, argb);
     }
 
     // Big builds: checking every cell against the world each frame is slow, so it's done every few frames,
@@ -199,10 +197,10 @@ public final class PreviewModule {
         if (STATES.containsKey(st)) return STATES.get(st);
         BlockState out = null;
         try {
-            out = BlockStateParser.parseForBlock(BuiltInRegistries.BLOCK.asLookup(), st, false).blockState();
+            out = BlockStateParser.parseForBlock(V.blocks(), st, false).blockState();
         } catch (Exception e) {
             try {   // unknown property: fall back to the plain block
-                out = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(MaterialMap.blockId(st))).defaultBlockState();
+                out = V.block(MaterialMap.blockId(st)).defaultBlockState();
             } catch (Exception ignored) {}
         }
         if (out != null && out.isAir()) out = null;
@@ -216,9 +214,7 @@ public final class PreviewModule {
         return QUADS.computeIfAbsent(state, st -> {
             List<BakedQuad>[] out = new List[7];
             for (int i = 0; i < 7; i++) out[i] = new ArrayList<>();
-            BakedModel model = Minecraft.getInstance().getBlockRenderer().getBlockModel(st);
-            for (Direction d : DIRS) out[d.ordinal()].addAll(model.getQuads(st, d, RandomSource.create(42L)));
-            out[6].addAll(model.getQuads(st, null, RandomSource.create(42L)));
+            Draw.quads(st, out);
             return out;
         });
     }
@@ -237,8 +233,9 @@ public final class PreviewModule {
                 if (i < 6 && hidden(bp, g, DIRS[i])) continue;   // skip faces pressed against another ghost
                 for (BakedQuad quad : q[i]) {
                     int rgb = 0xFFFFFF;
-                    if (quad.isTinted()) {
-                        try { rgb = mc.getBlockColors().getColor(g.state, mc.level, new BlockPos(g.x, g.y, g.z), quad.getTintIndex()) & 0xFFFFFF; }
+                    int tint = Draw.tintIndex(quad);
+                    if (tint >= 0) {
+                        try { rgb = mc.getBlockColors().getColor(g.state, mc.level, new BlockPos(g.x, g.y, g.z), tint) & 0xFFFFFF; }
                         catch (Exception ignored) {}
                     }
                     vc.putBulkData(p, quad, ((rgb >> 16) & 255) / 255f, ((rgb >> 8) & 255) / 255f, (rgb & 255) / 255f, alpha, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
@@ -250,7 +247,7 @@ public final class PreviewModule {
 
     private static final Map<BlockState, Boolean> FULL = new HashMap<>();
     /** a full, solid, non-see-through cube (stairs, slabs, glass, leaves... are not) */
-    private static boolean full(BlockState st) { return FULL.computeIfAbsent(st, b -> b.isSolidRender(EmptyBlockGetter.INSTANCE, BlockPos.ZERO) && b.canOcclude()); }
+    private static boolean full(BlockState st) { return FULL.computeIfAbsent(st, b -> V.solid(b) && b.canOcclude()); }
 
     /** True when the neighbouring cell is another solid ghost block, so this face can't be seen anyway. */
     private static boolean hidden(Blueprint bp, Ghost g, Direction d) {

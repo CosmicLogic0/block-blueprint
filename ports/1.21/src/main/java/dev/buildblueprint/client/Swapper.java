@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -53,7 +52,7 @@ public final class Swapper {
             "_stained_glass", "_wall_banner", "_banner", "_bed", "_candle", "_shulker_box"};
 
     public static boolean exists(String id) {
-        try { return BuiltInRegistries.BLOCK.containsKey(ResourceLocation.parse(id)); } catch (Exception e) { return false; }
+        try { return V.blockExists(id); } catch (Exception e) { return false; }
     }
     private static String path(String id) { return id.startsWith("minecraft:") ? id.substring(10) : id; }
 
@@ -96,7 +95,7 @@ public final class Swapper {
     /** Swap the block in a state string, keeping every property the new block also has. */
     public static String reState(String state, String newId) {
         int b = state.indexOf('[');
-        Block nb = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(newId));
+        Block nb = V.block(newId);
         if (b < 0) return newId;
         Map<String, String> kv = new LinkedHashMap<>();
         for (String p : state.substring(b + 1, state.length() - 1).split(",")) { int i = p.indexOf('='); if (i > 0) kv.put(p.substring(0, i), p.substring(i + 1)); }
@@ -164,14 +163,14 @@ public final class Swapper {
         for (String f : new String[]{"_stairs", "_slab", "_wall", "_fence_gate", "_fence", "_door", "_trapdoor", "_button", "_pressure_plate", "_carpet", "_stained_glass_pane", "_pane", "_wall_sign", "_sign", "_banner", "_candle", "_lantern"})
             if (n.endsWith(f)) { suffix = f; break; }
         List<String> out = new ArrayList<>();
-        BlockState self = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockId)).defaultBlockState();
-        boolean cube = self.isSolidRender(net.minecraft.world.level.EmptyBlockGetter.INSTANCE, net.minecraft.core.BlockPos.ZERO) || self.getBlock() instanceof net.minecraft.world.level.block.TransparentBlock;
+        BlockState self = V.block(blockId).defaultBlockState();
+        boolean cube = V.solid(self) || self.getBlock() instanceof net.minecraft.world.level.block.TransparentBlock;
         for (Block blk : BuiltInRegistries.BLOCK) {
             String id = BuiltInRegistries.BLOCK.getKey(blk).toString();
             if (id.equals(blockId) || blk.asItem() == net.minecraft.world.item.Items.AIR) continue;
             String p = path(id);
             if (suffix != null) { if (p.endsWith(suffix) && !(suffix.equals("_slab") && false)) out.add(id); }
-            else if (cube) { BlockState d = blk.defaultBlockState(); if ((d.isSolidRender(net.minecraft.world.level.EmptyBlockGetter.INSTANCE, net.minecraft.core.BlockPos.ZERO) || blk instanceof net.minecraft.world.level.block.TransparentBlock) && !d.hasBlockEntity()) out.add(id); }
+            else if (cube) { BlockState d = blk.defaultBlockState(); if ((V.solid(d) || blk instanceof net.minecraft.world.level.block.TransparentBlock) && !d.hasBlockEntity()) out.add(id); }
             else if (blk.getClass() == self.getBlock().getClass()) out.add(id);
         }
         return out;

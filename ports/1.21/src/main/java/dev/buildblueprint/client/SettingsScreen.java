@@ -6,7 +6,6 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.controls.KeyBindsScreen;
 import net.minecraft.network.chat.Component;
 
 /** Build Blueprint settings in three panels: the corner list, the preview & layers, and the building helpers. */
@@ -56,7 +55,7 @@ public class SettingsScreen extends BBScreen {
         opt(2, 2, () -> "Chest finder: " + onOff(Settings.chestFinder), () -> Settings.chestFinder = !Settings.chestFinder, "Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.");
         opt(2, 3, () -> "Sounds: " + onOff(Settings.sounds), () -> Settings.sounds = !Settings.sounds, "A little ding when you finish a layer, and a level-up sound when the build is done.");
         Minecraft mc = Minecraft.getInstance();
-        addRenderableWidget(Button.builder(Component.literal("Key binds..."), b -> Mc.setScreen(new KeyBindsScreen(this, mc.options)))
+        addRenderableWidget(Button.builder(Component.literal("Key binds..."), b -> Mc.setScreen(V.keyBinds(this)))
                 .bounds(colX(2), rowY(5), colW(), 20).tooltip(Tooltip.create(Component.literal("Change the keys (Options > Controls > Key Binds > Build Blueprint)."))).build());
         addRenderableWidget(Button.builder(Component.literal("Done"), b -> onClose()).bounds(width / 2 - 75, rowY(8) + 14, 150, 20).build());
     }

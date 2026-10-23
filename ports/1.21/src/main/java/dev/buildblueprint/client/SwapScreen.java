@@ -13,7 +13,6 @@ import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 /**
@@ -83,7 +82,7 @@ public class SwapScreen extends BBScreen {
     private Swapper.Mat mat(String key) { for (Swapper.Mat m : Swapper.setsLike(set)) if (m.key().equals(key)) return m; return null; }
     private ItemStack icon(String opt) {
         String id = setMode ? "minecraft:" + mat(opt).full() : opt;
-        try { return new ItemStack(BuiltInRegistries.BLOCK.get(ResourceLocation.parse(id)).asItem()); } catch (Exception e) { return ItemStack.EMPTY; }
+        try { return new ItemStack(V.block(id).asItem()); } catch (Exception e) { return ItemStack.EMPTY; }
     }
     private String name(String opt) { if (setMode) return mat(opt).label(); ItemStack s = icon(opt); return s.isEmpty() ? PlayerInfo.pretty(opt) : s.getHoverName().getString(); }
 
@@ -195,6 +194,6 @@ public class SwapScreen extends BBScreen {
         undo.active = BuildBlueprintClient.SESSION.canUndoSwap();
         super.extractRenderState(g, mouseX, mouseY, delta);
         if (!msg.isEmpty()) g.drawString(font, msg, width / 2 - font.width(msg) / 2, height - 38, 0xFF55FF55, true);
-        if (hover != null) g.renderComponentTooltip(font, List.of(Component.literal(hover)), mouseX, mouseY);
+        if (hover != null) V.tooltip(g, font, List.of(Component.literal(hover)), mouseX, mouseY);
     }
 }

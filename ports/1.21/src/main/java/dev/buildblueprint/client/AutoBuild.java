@@ -104,7 +104,7 @@ public final class AutoBuild {
     }
 
     private static BlockState parse(String st) {
-        try { BlockState b = BlockStateParser.parseForBlock(BuiltInRegistries.BLOCK.asLookup(), st, false).blockState(); return b.isAir() ? null : b; }
+        try { BlockState b = BlockStateParser.parseForBlock(V.blocks(), st, false).blockState(); return b.isAir() ? null : b; }
         catch (Exception e) { return null; }
     }
 

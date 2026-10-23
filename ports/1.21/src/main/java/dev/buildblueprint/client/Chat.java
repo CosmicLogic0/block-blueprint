@@ -10,7 +10,7 @@ public final class Chat {
 
     public static void say(ChatFormatting color, String text) {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player != null) mc.player.sendSystemMessage(Component.literal(text).withStyle(color));
+        if (mc.player != null) V.chat(mc.player, Component.literal(text).withStyle(color));
     }
 
     /** A short message above the hotbar (used by the keybinds so chat isn't spammed). */

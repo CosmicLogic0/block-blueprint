@@ -162,7 +162,7 @@ public class MaterialsScreen extends BBScreen {
             if (ch[0] > 0) tip.add(Component.literal("In chests nearby: " + ch[0] + " (" + ch[1] + " chest" + (ch[1] == 1 ? "" : "s") + ", green boxes)").withStyle(ChatFormatting.AQUA));
             if (hovered.missing() > 0) tip.add(Component.literal("Get " + hovered.missing() + " more" + (hovered.missing() >= 64 ? " (" + (hovered.missing() + 63) / 64 + " stacks)" : "")).withStyle(ChatFormatting.RED));
             tip.add(Component.literal("Click to swap it for another block").withStyle(ChatFormatting.YELLOW));
-            g.renderComponentTooltip(font, tip, mouseX, mouseY);
+            V.tooltip(g, font, tip, mouseX, mouseY);
         }
     }
 }

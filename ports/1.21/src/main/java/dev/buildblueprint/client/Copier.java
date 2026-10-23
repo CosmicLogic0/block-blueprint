@@ -154,7 +154,7 @@ public final class Copier {
         BlockPos.MutableBlockPos g = new BlockPos.MutableBlockPos(start.getX(), start.getY(), start.getZ());
         // first soil (dirt, grass, sand...) below; or, failing that, natural stone below an air/water gap
         boolean gap = false; int stoneY = Integer.MIN_VALUE;
-        for (int y = start.getY() - 1; y > start.getY() - 200 && y >= mc.level.getMinBuildHeight(); y--) {
+        for (int y = start.getY() - 1; y > start.getY() - 200 && y >= V.minY(mc.level); y--) {
             BlockState st = mc.level.getBlockState(g.setY(y));
             if (st.isAir() || st.getBlock() instanceof LiquidBlock) { gap = true; continue; }
             if (isSoil(st)) { groundY = y; break; }
@@ -308,7 +308,7 @@ public final class Copier {
                     if (n == null) continue;
                     if (isLog(n)) { if (!seen[j]) { seen[j] = true; q.add(j); } }
                     else if (n.is(BlockTags.LEAVES)) leaves = true;
-                    else if (!isGround(n) && !isPlant(n) && n.isSolidRender(net.minecraft.world.level.EmptyBlockGetter.INSTANCE, BlockPos.ZERO)) building = true;   // planks, glass, stone... (fences don't count)
+                    else if (!isGround(n) && !isPlant(n) && V.solid(n)) building = true;   // planks, glass, stone... (fences don't count)
                 }
             }
             if (leaves && !building) for (int c : comp) gone[c] = true;

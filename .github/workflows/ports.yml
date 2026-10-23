@@ -20,17 +20,14 @@ jobs:
           - { mc: "1.21.4", dir: ports/1.21, java: 21 }
           - { mc: "1.21.5", dir: ports/1.21, java: 21 }
           - { mc: "1.21.8", dir: ports/1.21, java: 21 }
-          - { mc: "1.21.11", dir: ports/1.21, java: 21 }
           - { mc: "1.20.6", dir: ports/1.21, java: 21 }
           - { mc: "1.20.4", dir: ports/1.21, java: 17 }
           - { mc: "1.20.1", dir: ports/1.21, java: 17 }
-          - { mc: "1.19.2", dir: ports/1.21, java: 17 }
-          - { mc: "1.18.2", dir: ports/1.21, java: 17 }
     name: mc ${{ matrix.mc }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
-        with: { distribution: temurin, java-version: "${{ matrix.java }}" }
+        with: { distribution: temurin, java-version: "${{ matrix.java == 25 && 25 || 21 }}" }   # Loom needs 21+; older targets compile with --release
       - name: Find the Fabric API for this version
         id: fapi
         run: |

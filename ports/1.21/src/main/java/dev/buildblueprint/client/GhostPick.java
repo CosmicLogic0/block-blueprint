@@ -73,20 +73,20 @@ public final class GhostPick {
         String name = want.getHoverName().getString();
         int slot = -1;
         for (int i = 0; i < inv.getContainerSize(); i++) if (inv.getItem(i).getItem() == want.getItem()) { slot = i; break; }
-        if (slot >= 0 && Inventory.isHotbarSlot(slot)) { inv.selected = slot; Chat.bar("Holding " + name); return; }
+        if (slot >= 0 && Inventory.isHotbarSlot(slot)) { V.select(inv, slot); Chat.bar("Holding " + name); return; }
         if (slot >= 9 && slot < 36) {
             // swap it into the hotbar slot you have selected (works in Survival too)
-            mc.gameMode.handleInventoryMouseClick(player.inventoryMenu.containerId, slot, inv.selected, ClickType.SWAP, player);
+            mc.gameMode.handleInventoryMouseClick(player.inventoryMenu.containerId, slot, V.selected(inv), ClickType.SWAP, player);
             Chat.bar("Holding " + name + " (from your inventory)");
             return;
         }
         if (player.isCreative()) {
-            int target = inv.selected;
+            int target = V.selected(inv);
             for (int i = 0; i < 9; i++) if (inv.getItem(i).isEmpty()) { target = i; break; }
             ItemStack give = want.copyWithCount(want.getMaxStackSize());
             inv.setItem(target, give);
             mc.gameMode.handleCreativeModeItemAdd(give, 36 + target);
-            inv.selected = target;
+            V.select(inv, target);
             Chat.bar("Holding " + name);
             return;
         }

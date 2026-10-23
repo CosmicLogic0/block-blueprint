@@ -28,20 +28,30 @@ tasks.register('copySharedRes', Sync) {
     from('../../fabric-mod/src/main/resources') { include 'assets/**' }
     into sharedRes
 }
+// version-specific helpers: src/compat/<group>, picked from the Minecraft version
+def mcv = project.minecraft_version
+def compat = project.findProperty('compat') ?: (
+    mcv.startsWith('1.20') ? '1.20.6' :
+    mcv in ['1.21', '1.21.1'] ? '1.21.1' :
+    mcv in ['1.21.2', '1.21.3', '1.21.4'] ? '1.21.4' :
+    mcv == '1.21.5' ? '1.21.5' : '1.21.8')
+println "Build Blueprint: Minecraft ${mcv}, helpers from src/compat/${compat}"
+sourceSets.main.java.srcDir("src/compat/${compat}/java")
 sourceSets.main.java.srcDir(shared)
 sourceSets.main.resources.srcDir(sharedRes)
 compileJava.dependsOn copyShared
 processResources.dependsOn copySharedRes
 tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn copyShared, copySharedRes }
 
+def javaVer = (project.findProperty('java_version') ?: '21') as int
 def mcdep = project.findProperty('mc_dep') ?: "~${project.minecraft_version}"
 processResources {
     inputs.property 'version', project.version
     inputs.property 'mcdep', mcdep
-    filesMatching('fabric.mod.json') { expand 'version': project.mod_version, 'mcdep': mcdep }
+    inputs.property 'java', javaVer
+    filesMatching('fabric.mod.json') { expand 'version': project.mod_version, 'mcdep': mcdep, 'java': javaVer }
 }
 
-def javaVer = (project.findProperty('java_version') ?: '21') as int
 tasks.withType(JavaCompile).configureEach { options.release = javaVer }
 java { toolchain { } }
 tasks.named("test") { enabled = false }

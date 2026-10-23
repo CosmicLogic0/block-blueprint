@@ -24,10 +24,9 @@ public final class HudModule {
             if (Mc.screen() instanceof MaterialsScreen || Mc.screen() instanceof SavedBuildsScreen || Mc.screen() instanceof SettingsScreen) return;
             float sc = Settings.hudScale / 100f;
             int sw = (int) (g.guiWidth() / sc);
-            g.pose().pushPose();
-            g.pose().scale(sc, sc, 1f);
+            V.hudPush(g, sc);
             draw(g, mc, Settings.hudRight ? sw - W - 4 : 4, 4);
-            g.pose().popPose();
+            V.hudPop(g);
         }));
     }
 

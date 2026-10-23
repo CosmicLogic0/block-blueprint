@@ -182,7 +182,7 @@ public class SavedBuildsScreen extends BBScreen {
     private static int colorOf(String state) {
         return COLOR.computeIfAbsent(state, st -> {
             try {
-                BlockState bs = BlockStateParser.parseForBlock(BuiltInRegistries.BLOCK.asLookup(), st, false).blockState();
+                BlockState bs = BlockStateParser.parseForBlock(V.blocks(), st, false).blockState();
                 if (bs.isAir()) return 0;
                 MapColor mc = bs.getMapColor(EmptyBlockGetter.INSTANCE, BlockPos.ZERO);
                 if (mc == MapColor.NONE) return st.contains("glass") ? 0xFFA8D8F0 : 0xFF9A9A9A; // glass, panes, small decor
