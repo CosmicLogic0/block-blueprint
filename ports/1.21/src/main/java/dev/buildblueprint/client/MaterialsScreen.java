@@ -62,7 +62,7 @@ public class MaterialsScreen extends BBScreen {
     @Override public void tick() { if (++tick % 10 == 0) Materials.refresh(); }
 
     @Override public boolean keyPressed(KeyEvent e) {
-        if (Modules.menuKey != null && Modules.menuKey.matches(e)) { onClose(); return true; }
+        if (Modules.menuKey != null && Modules.menuKey.matches(e.key(), e.scancode())) { onClose(); return true; }
         if (e.key() == 268) { Layers.step(1); Materials.refresh(); return true; }   // Home
         if (e.key() == 269) { Layers.step(-1); Materials.refresh(); return true; }  // End
         return super.keyPressed(e);
