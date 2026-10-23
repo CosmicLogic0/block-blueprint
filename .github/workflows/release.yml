@@ -39,10 +39,28 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
-      - name: Build installer and publish it
-        run: npx electron-builder --win --publish always
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build the installer
+        shell: bash
+        run: |
+          set -o pipefail
+          npx electron-builder --win --publish never 2>&1 | tee build.log
+      - name: Show the build error
+        if: failure()
+        shell: bash
+        run: |
+          msg=$(tail -n 40 build.log | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')
+          echo "::error title=Installer build failed::$msg"
+      - name: Put the installer on the release page
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.check.outputs.version }}
+          name: Block Blueprint ${{ needs.check.outputs.version }}
+          body_path: CHANGELOG.md
+          make_latest: true
+          files: |
+            dist/*.exe
+            dist/*.exe.blockmap
+            dist/latest.yml
 
   mod:
     runs-on: ubuntu-latest
