@@ -27,7 +27,7 @@ public final class UpdateCheck {
                 String mine = FabricLoader.getInstance().getModContainer("buildblueprint").map(c -> c.getMetadata().getVersion().getFriendlyString()).orElse("0");
                 if (newer(latest, mine)) {
                     Chat.ok("Build Blueprint " + latest + " is out (you have " + mine + ").");
-                    Chat.say("Update it in the CurseForge app, or download it from github.com/dylanemason0330-code/block-blueprint/releases");
+                    Chat.say("Update it in the CurseForge app, or download it from github.com/CosmicLogic0/block-blueprint/releases");
                 }
             }
         }));
@@ -36,7 +36,7 @@ public final class UpdateCheck {
     private static void fetch() {
         try {
             HttpClient c = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(8)).build();
-            HttpRequest r = HttpRequest.newBuilder(URI.create("https://api.github.com/repos/dylanemason0330-code/block-blueprint/releases/latest"))
+            HttpRequest r = HttpRequest.newBuilder(URI.create("https://api.github.com/repos/CosmicLogic0/block-blueprint/releases/latest"))
                     .header("User-Agent", "build-blueprint-mod").timeout(Duration.ofSeconds(10)).build();
             c.sendAsync(r, HttpResponse.BodyHandlers.ofString()).thenAccept(resp -> {
                 Matcher m = Pattern.compile("\"tag_name\"\\s*:\\s*\"v?([0-9.]+)\"").matcher(resp.body());

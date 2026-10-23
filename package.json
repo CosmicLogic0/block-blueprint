@@ -1,7 +1,7 @@
 {
   "name": "block-blueprint",
   "productName": "Block Blueprint",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Design Minecraft builds in 3D, then build them in your world with the Build Blueprint mod",
   "main": "main.js",
   "scripts": {
@@ -19,10 +19,10 @@
     "electron": "^45.0.0",
     "electron-builder": "^26.0.12"
   },
-  "author": "dylanemason0330-code",
+  "author": "CosmicLogic",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dylanemason0330-code/block-blueprint.git"
+    "url": "https://github.com/CosmicLogic0/block-blueprint.git"
   },
   "build": {
     "appId": "dev.buildblueprint.app",
@@ -53,7 +53,7 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "dylanemason0330-code",
+        "owner": "CosmicLogic0",
         "repo": "block-blueprint",
         "releaseType": "release"
       }
