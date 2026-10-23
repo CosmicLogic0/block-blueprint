@@ -9,7 +9,7 @@
     "dist": "electron-builder --win --publish never",
     "release": "electron-builder --win --publish always"
   },
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "adm-zip": "^0.6.1",
     "three": "^0.186.1",

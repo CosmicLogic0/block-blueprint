@@ -26,6 +26,9 @@ Made for **Minecraft Java 26.3** with Fabric.
 Push a tag like `v1.2.0`. GitHub Actions builds the installer and the mod, puts both on the Releases page and uploads
 the mod to CurseForge (needs the `CURSEFORGE_TOKEN` secret and the `CURSEFORGE_ID` variable in the repo settings).
 
+## License
+All Rights Reserved - see LICENSE. You can use the official downloads; please do not re-upload or copy the code.
+
 ## Run from source
 Install Node.js, then `npm install` and `npm start` (or double-click `start.bat`).
 The mod is in `fabric-mod/` (`build-mod.bat`, or `gradlew build`).
