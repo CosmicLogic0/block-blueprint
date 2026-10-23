@@ -23,7 +23,7 @@ Made for **Minecraft Java 26.3** with Fabric.
 | Middle-click a ghost | Hold that block |
 
 ## Making a release (for the maintainer)
-Push a tag like `v1.2.0`. GitHub Actions builds the installer and the mod, puts both on the Releases page and uploads
+Raise the version in `package.json` (for example to 1.2.0) and push. GitHub Actions builds the installer and the mod, puts both on the Releases page and uploads
 the mod to CurseForge (needs the `CURSEFORGE_TOKEN` secret and the `CURSEFORGE_ID` variable in the repo settings).
 
 ## License
