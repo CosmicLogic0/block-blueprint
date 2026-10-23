@@ -23,6 +23,8 @@ sourceSets {
             if (project.findProperty('enableMenu') == 'true') srcDir 'src/menu/java'
             if (project.findProperty('enablePreview') == 'true') srcDir 'src/preview/java'
             if (project.findProperty('enableKeys') == 'true') srcDir 'src/keys/java'
+            // version-specific bits: src/compat/<group>/java (the newest group that is not newer than this Minecraft)
+            srcDir "src/compat/${project.findProperty('compat') ?: project.minecraft_version}/java"
         }
     }
 }

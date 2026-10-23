@@ -56,12 +56,12 @@ public class SettingsScreen extends Screen {
         opt(2, 2, () -> "Chest finder: " + onOff(Settings.chestFinder), () -> Settings.chestFinder = !Settings.chestFinder, "Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.");
         opt(2, 3, () -> "Sounds: " + onOff(Settings.sounds), () -> Settings.sounds = !Settings.sounds, "A little ding when you finish a layer, and a level-up sound when the build is done.");
         Minecraft mc = Minecraft.getInstance();
-        addRenderableWidget(Button.builder(Component.literal("Key binds..."), b -> mc.gui.setScreen(new KeyBindsScreen(this, mc.options)))
+        addRenderableWidget(Button.builder(Component.literal("Key binds..."), b -> Mc.setScreen(new KeyBindsScreen(this, mc.options)))
                 .bounds(colX(2), rowY(5), colW(), 20).tooltip(Tooltip.create(Component.literal("Change the keys (Options > Controls > Key Binds > Build Blueprint)."))).build());
         addRenderableWidget(Button.builder(Component.literal("Done"), b -> onClose()).bounds(width / 2 - 75, rowY(8) + 14, 150, 20).build());
     }
 
-    @Override public void onClose() { Settings.save(); Minecraft.getInstance().gui.setScreen(parent); }
+    @Override public void onClose() { Settings.save(); Mc.setScreen(parent); }
 
     @Override
     public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) { Safe.run("the settings menu", () -> draw(g, mouseX, mouseY, delta)); }

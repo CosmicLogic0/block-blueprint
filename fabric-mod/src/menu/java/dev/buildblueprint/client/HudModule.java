@@ -22,9 +22,9 @@ public final class HudModule {
                 Identifier.fromNamespaceAndPath("buildblueprint", "materials"), (g, delta) -> Safe.run("the corner list", () -> {
             Minecraft mc = Minecraft.getInstance();
             var s = BuildBlueprintClient.SESSION;
-            if (mc.player != null && Copier.active && mc.gui.screen() == null) { copyPanel(g, mc); return; }
+            if (mc.player != null && Copier.active && Mc.screen() == null) { copyPanel(g, mc); return; }
             if (!Settings.hudShow || !s.loaded() || !s.visible || mc.player == null) return;
-            if (mc.gui.screen() instanceof MaterialsScreen || mc.gui.screen() instanceof SavedBuildsScreen || mc.gui.screen() instanceof SettingsScreen) return;
+            if (Mc.screen() instanceof MaterialsScreen || Mc.screen() instanceof SavedBuildsScreen || Mc.screen() instanceof SettingsScreen) return;
             float sc = Settings.hudScale / 100f;
             int sw = (int) (g.guiWidth() / sc);
             g.pose().pushMatrix();

@@ -48,7 +48,7 @@ public class CopyScreen extends Screen {
 
     private void save() {
         SavedBuilds.Entry e = Copier.save(name.getValue());
-        if (e != null) Minecraft.getInstance().gui.setScreen(new SavedBuildsScreen().select(e.file()));
+        if (e != null) Mc.setScreen(new SavedBuildsScreen().select(e.file()));
     }
 
     @Override public boolean keyPressed(KeyEvent e) {

@@ -33,7 +33,7 @@ public final class Chests {
 
     private static void tick(Minecraft mc) {
         if (mc.level != level) { SEEN.clear(); level = mc.level; }   // new world / server
-        var sc = mc.gui.screen();
+        var sc = Mc.screen();
         if (sc != lastScreen) {
             lastScreen = sc;
             opening = null;
