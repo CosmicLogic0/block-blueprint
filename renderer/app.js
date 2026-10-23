@@ -594,7 +594,24 @@ async function main() {
   };
   $('#btnFit').onclick = fitView;
   $('#btnFull').onclick = () => { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); };
-  $('#btnGear').onclick = () => { $('#materials').classList.add('hidden'); $('#exporter').classList.add('hidden'); $('#settings').classList.toggle('hidden'); };
+  // only one side panel at a time; Esc closes whatever is open
+  const PANELS = ['#settings', '#materials', '#exporter'];
+  function togglePanel(id) { const open = $(id).classList.contains('hidden'); for (const p of PANELS) $(p).classList.add('hidden'); if (open) $(id).classList.remove('hidden'); return open; }
+  $('#btnGear').onclick = () => togglePanel('#settings');
+  $('#setClose').onclick = () => $('#settings').classList.add('hidden');
+  const help = (on) => $('#help').classList.toggle('hidden', !on);
+  $('#btnHelp').onclick = () => help(true);
+  $('#btnHelp2').onclick = () => { $('#settings').classList.add('hidden'); help(true); };
+  $('#helpClose').onclick = () => help(false);
+  $('#help').addEventListener('pointerdown', (e) => { if (e.target.id === 'help') help(false); });
+  addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === '?') { help($('#help').classList.contains('hidden')); e.preventDefault(); return; }
+    if (e.key === 'Escape') {
+      if (!$('#help').classList.contains('hidden')) { help(false); return; }
+      for (const p of PANELS) $(p).classList.add('hidden');
+    }
+  });
   $('#btnMaterials').onclick = () => { $('#settings').classList.add('hidden'); $('#exporter').classList.add('hidden'); renderMaterials(); $('#materials').classList.toggle('hidden'); };
   $('#matClose').onclick = () => $('#materials').classList.add('hidden');
   $('#btnClear').onclick = () => { if (!world.size) return; if (confirm('Remove every block from the build?')) { applyChanges([...world].map(([k, b]) => ({ k, prev: b, next: null }))); toast('Cleared (Ctrl+Z to undo)'); } };

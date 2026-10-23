@@ -23,27 +23,38 @@
 <!-- top bar -->
 <div id="topbar">
   <div class="group" id="tools">
-    <button class="pill mcbtn" id="btnTemplates" title="Browse ready-made builds">📚 Templates</button>
-    <button class="pill tool active" data-tool="build" title="Build (B)">🧱 Build</button>
-    <button class="pill tool" data-tool="erase" title="Erase (X)">🧹 Erase</button>
-    <button class="pill tool" data-tool="pick" title="Pick block (P / middle-click)">🎯 Pick</button>
-    <button class="pill tool" data-tool="turn" title="Rotate a placed block">↻ Turn</button>
-    <button class="pill tool" data-tool="tilt" title="Tilt a placed block">⤴ Tilt</button>
-    <button class="pill tool" data-tool="use" title="Use levers, buttons, doors (U)">🔴 Use</button>
-    <button class="pill tool" data-tool="measure" title="Measure mode (M)">📏 Measure mode</button>
+    <button class="pill mcbtn" id="btnTemplates" data-tip="Browse ready-made builds">📚 <span class="lbl">Templates</span></button>
+    <button class="pill tool active" data-tool="build" data-tip="Build (B)">🧱 <span class="lbl">Build</span></button>
+    <button class="pill tool" data-tool="erase" data-tip="Erase (X)">🧹 <span class="lbl">Erase</span></button>
+    <button class="pill tool" data-tool="pick" data-tip="Pick block (P / middle-click)">🎯 <span class="lbl">Pick</span></button>
+    <button class="pill tool" data-tool="turn" data-tip="Rotate a placed block">↻ <span class="lbl">Turn</span></button>
+    <button class="pill tool" data-tool="tilt" data-tip="Tilt a placed block">⤴ <span class="lbl">Tilt</span></button>
+    <button class="pill tool" data-tool="use" data-tip="Use levers, buttons, doors (U)">🔴 <span class="lbl">Use</span></button>
+    <button class="pill tool" data-tool="measure" data-tip="Measure distances (M)">📏 <span class="lbl">Measure</span></button>
   </div>
 </div>
 <div id="actions" class="group">
-  <button class="icon" id="btnUndo" title="Undo (Ctrl+Z)">↶</button>
-  <button class="icon" id="btnRedo" title="Redo (Ctrl+Y)">↷</button>
-  <button class="icon" id="btnOpen" title="Open blueprint">📂</button>
-  <button class="icon" id="btnSave" title="Save blueprint">💾</button>
-  <button class="icon" id="btnMaterials" title="Materials list">📋</button>
-  <button class="icon" id="btnExport" title="Export to Minecraft (Fabric mod commands)">🧩</button>
-  <button class="icon" id="btnShot" title="Save screenshot">📷</button>
-  <button class="icon" id="btnFit" title="Fit view (F)">⌖</button>
-  <button class="icon" id="btnFull" title="Fullscreen (F11)">⛶</button>
-  <button class="icon" id="btnGear" title="Settings">⚙</button>
+  <div class="agroup">
+    <button class="icon" id="btnUndo" data-tip="Undo  ·  Ctrl+Z">↶</button>
+    <button class="icon" id="btnRedo" data-tip="Redo  ·  Ctrl+Y">↷</button>
+  </div>
+  <div class="agroup">
+    <button class="icon" id="btnOpen" data-tip="Open a saved build">📂</button>
+    <button class="icon" id="btnSave" data-tip="Save build to a file">💾</button>
+  </div>
+  <div class="agroup">
+    <button class="icon" id="btnMaterials" data-tip="Materials list">📋</button>
+    <button class="icon accent" id="btnExport" data-tip="Send to Minecraft">🧩</button>
+  </div>
+  <div class="agroup">
+    <button class="icon" id="btnShot" data-tip="Save a picture">📷</button>
+    <button class="icon" id="btnFit" data-tip="Fit build in view  ·  F">⌖</button>
+    <button class="icon" id="btnFull" data-tip="Fullscreen  ·  F11">⛶</button>
+  </div>
+  <div class="agroup">
+    <button class="icon" id="btnHelp" data-tip="Keyboard shortcuts  ·  ?">?</button>
+    <button class="icon" id="btnGear" data-tip="Settings">⚙</button>
+  </div>
 </div>
 
 <!-- palette -->
@@ -86,18 +97,63 @@
 
 <!-- settings -->
 <div id="settings" class="panel hidden">
-  <h3>Settings</h3>
-  <label><input type="checkbox" id="setGrid" checked> Show build grid</label>
-  <label><input type="checkbox" id="setShade" checked> Minecraft-style face shading</label>
-  <label><input type="checkbox" id="setBlue" checked> Blueprint background</label>
-  <label><input type="checkbox" id="setRed" checked> Live redstone (power, lamps, pistons)</label>
-  <label class="col">Interface size <span id="zoomVal"></span>
-    <input type="range" id="setZoom" min="0.8" max="1.8" step="0.05" value="1.2"></label>
-  <div id="verInfo"></div>
-  <div id="updBox"><span id="updText">App version</span> <button class="pill alt" id="btnUpd">Check for updates</button></div>
-  <button class="pill" id="btnClear">Clear whole build</button>
-  <button class="pill" id="btnReassets">Re-download / change textures…</button>
+  <div class="panelHead"><h3>Settings</h3><button class="icon" id="setClose" data-tip="Close  ·  Esc">✕</button></div>
+  <div class="sbody">
+    <div class="sgroup">
+      <div class="shead">View</div>
+      <label class="sw"><span class="st"><b>Build grid</b><small>The lines on the floor under your build</small></span><input type="checkbox" id="setGrid" checked><i></i></label>
+      <label class="sw"><span class="st"><b>Blueprint background</b><small>Blue grid background (off = dark)</small></span><input type="checkbox" id="setBlue" checked><i></i></label>
+      <label class="sw"><span class="st"><b>Minecraft shading</b><small>Darker sides like in the game</small></span><input type="checkbox" id="setShade" checked><i></i></label>
+      <div class="srow"><span class="st"><b>Interface size</b><small>Make buttons and text bigger or smaller</small></span><span id="zoomVal" class="sval"></span></div>
+      <input type="range" id="setZoom" min="0.8" max="1.8" step="0.05" value="1.2">
+    </div>
+    <div class="sgroup">
+      <div class="shead">Building</div>
+      <label class="sw"><span class="st"><b>Live redstone</b><small>Power, lamps and pistons work while you build</small></span><input type="checkbox" id="setRed" checked><i></i></label>
+      <button class="srowbtn" id="btnHelp2"><span class="st"><b>Keyboard shortcuts</b><small>All the keys, mouse buttons and tricks</small></span><span class="sarrow">›</span></button>
+    </div>
+    <div class="sgroup">
+      <div class="shead">App</div>
+      <div class="scard"><div id="updBox"><span id="updText">App version</span><button class="pill" id="btnUpd">Check for updates</button></div><div id="verInfo"></div></div>
+      <button class="srowbtn" id="btnReassets"><span class="st"><b>Change textures</b><small>Pick a different Minecraft version or resource pack</small></span><span class="sarrow">›</span></button>
+      <button class="srowbtn danger" id="btnClear"><span class="st"><b>Clear whole build</b><small>Removes every block (Ctrl+Z brings it back)</small></span><span class="sarrow">›</span></button>
+    </div>
+  </div>
 </div>
+
+<!-- keyboard shortcuts -->
+<div id="help" class="hidden"><div class="helpCard">
+  <div class="panelHead"><h3>Keyboard shortcuts</h3><button class="icon" id="helpClose" data-tip="Close  ·  Esc">✕</button></div>
+  <div class="helpCols">
+    <div><div class="shead">Building</div>
+      <div class="hk"><kbd>Left-click</kbd><span>Place a block (hold and drag for a line)</span></div>
+      <div class="hk"><kbd>Right-click</kbd><span>Remove a block</span></div>
+      <div class="hk"><kbd>Middle-click</kbd><span>Pick the block you point at</span></div>
+      <div class="hk"><kbd>1</kbd>–<kbd>9</kbd><span>Hotbar slots</span></div>
+      <div class="hk"><kbd>R</kbd><span>Rotate the held block</span></div>
+      <div class="hk"><kbd>T</kbd><span>Tilt it (logs, stairs, slabs...)</span></div>
+      <div class="hk"><kbd>V</kbd><span>Next block state</span></div>
+      <div class="hk"><kbd>Shift</kbd>+<kbd>R</kbd>/<kbd>T</kbd><span>Turn the block under the cursor</span></div>
+      <div class="hk"><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Y</kbd><span>Undo / redo</span></div>
+    </div>
+    <div><div class="shead">Tools</div>
+      <div class="hk"><kbd>B</kbd><span>Build</span></div>
+      <div class="hk"><kbd>X</kbd><span>Erase</span></div>
+      <div class="hk"><kbd>P</kbd><span>Pick</span></div>
+      <div class="hk"><kbd>U</kbd><span>Use levers, buttons, doors</span></div>
+      <div class="hk"><kbd>M</kbd><span>Measure</span></div>
+      <div class="hk"><kbd>Tab</kbd><span>Show / hide the block menu</span></div>
+      <div class="shead">Camera</div>
+      <div class="hk"><kbd>Middle-drag</kbd><span>Orbit</span></div>
+      <div class="hk"><kbd>Right-drag</kbd><span>Pan</span></div>
+      <div class="hk"><kbd>Wheel</kbd><span>Zoom</span></div>
+      <div class="hk"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <kbd>Q</kbd><kbd>E</kbd><span>Fly (Shift = faster)</span></div>
+      <div class="hk"><kbd>F</kbd><span>Fit the build in view</span></div>
+      <div class="hk"><kbd>[</kbd> <kbd>]</kbd><span>Build level down / up</span></div>
+      <div class="hk"><kbd>?</kbd><span>This screen</span></div>
+    </div>
+  </div>
+</div></div>
 
 <!-- materials -->
 <div id="materials" class="panel hidden">

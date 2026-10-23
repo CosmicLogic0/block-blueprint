@@ -1,3 +1,8 @@
+## 1.1.3
+- App: cleaner Settings with on/off switches and sections, grouped toolbar with hover names and shortcuts,
+  a Keyboard shortcuts screen (press ?), Esc closes panels, toolbar fits smaller windows.
+- Updated Boat 3 template.
+
 ## 1.1.2
 - App: version number and "Check for updates" in Settings, plus a banner when a new version is out.
   The installed app downloads updates by itself and asks to restart.
