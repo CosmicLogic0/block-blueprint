@@ -39,7 +39,24 @@ jobs:
         working-directory: ${{ matrix.dir }}
         run: |
           [ -f build.log ] || exit 0
-          E=$(grep -E "error:|\.java:[0-9]+|FAILURE|What went wrong|Could not" -A2 build.log | head -n 120 | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')
+          # one line per distinct problem: file:line, the message and the missing symbol
+          python3 - <<'PY' > errs.txt
+          import re
+          L=open('build.log',errors='replace').read().split('\n'); out=[]; seen=set()
+          for i,l in enumerate(L):
+              m=re.search(r'/src/(\S+?\.java):(\d+): error: (.*)',l)
+              if not m: continue
+              sym=''
+              for k in range(i+1,min(i+6,len(L))):
+                  if 'symbol:' in L[k]: sym=L[k].strip(); break
+              code=L[i+1].strip() if i+1<len(L) else ''
+              key=(m.group(3),sym)
+              if key in seen: continue
+              seen.add(key); out.append(f"{m.group(1).split('/')[-1]}:{m.group(2)} {m.group(3)} | {sym} | {code[:140]}")
+          if not out: out=[l for l in L if 'What went wrong' in l or 'Could not' in l or '> ' in l][:30]
+          print('\n'.join(out[:150]))
+          PY
+          E=$(sed 's/%/%25/g' errs.txt | sed ':a;N;$!ba;s/\n/%0A/g')
           echo "::error title=mc ${{ matrix.mc }} build failed::$E"
       - uses: actions/upload-artifact@v4
         if: success()
