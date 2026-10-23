@@ -84,8 +84,9 @@ public class MaterialsScreen extends Screen {
     }
 
     @Override
-    public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
-        extractBackground(g, mouseX, mouseY, delta);
+    public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) { Safe.run("the materials menu", () -> draw(g, mouseX, mouseY, delta)); }
+
+    private void draw(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
         var s = BuildBlueprintClient.SESSION;
         int x = px(), w = pw(), t = top();
         tabAll.active = layerTab; tabLayer.active = !layerTab;

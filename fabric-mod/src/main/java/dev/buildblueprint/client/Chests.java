@@ -29,7 +29,7 @@ public final class Chests {
     private static Object lastScreen;
     private static Object level;
 
-    static void init() { ClientTickEvents.END_CLIENT_TICK.register(Chests::tick); }
+    static void init() { ClientTickEvents.END_CLIENT_TICK.register(mc -> Safe.run("chest finder", () -> tick(mc))); }
 
     private static void tick(Minecraft mc) {
         if (mc.level != level) { SEEN.clear(); level = mc.level; }   // new world / server

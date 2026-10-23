@@ -57,8 +57,9 @@ public class CopyScreen extends Screen {
     }
 
     @Override
-    public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
-        extractBackground(g, mouseX, mouseY, delta);
+    public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) { Safe.run("the copy screen", () -> draw(g, mouseX, mouseY, delta)); }
+
+    private void draw(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
         int cx = width / 2, y = height / 2 - 40;
         g.fill(cx - 124, y - 52, cx + 124, y + 106, 0xE0101018);
         g.fill(cx - 124, y - 52, cx + 124, y - 51, 0xFF20E0FF);

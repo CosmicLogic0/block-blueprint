@@ -19,7 +19,7 @@ public final class UpdateCheck {
     private static boolean asked, told;
 
     static void init() {
-        ClientTickEvents.END_CLIENT_TICK.register(mc -> {
+        ClientTickEvents.END_CLIENT_TICK.register(mc -> Safe.run("update check", () -> {
             if (mc.player == null) return;
             if (!asked) { asked = true; fetch(); }
             if (!told && latest != null) {
@@ -30,7 +30,7 @@ public final class UpdateCheck {
                     Chat.say("Update it in the CurseForge app, or download it from github.com/dylanemason0330-code/block-blueprint/releases");
                 }
             }
-        });
+        }));
     }
 
     private static void fetch() {

@@ -26,7 +26,7 @@ public final class SessionStore {
 
     public static void dirty() { dirty = true; }
 
-    static void init() { ClientTickEvents.END_CLIENT_TICK.register(SessionStore::tick); }
+    static void init() { ClientTickEvents.END_CLIENT_TICK.register(mc -> Safe.run("saving your blueprint", () -> tick(mc))); }
 
     /** A name for the current world: the save name in singleplayer, the server address in multiplayer. */
     private static String key(Minecraft mc) {

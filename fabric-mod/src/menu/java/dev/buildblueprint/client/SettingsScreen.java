@@ -64,8 +64,9 @@ public class SettingsScreen extends Screen {
     @Override public void onClose() { Settings.save(); Minecraft.getInstance().gui.setScreen(parent); }
 
     @Override
-    public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
-        extractBackground(g, mouseX, mouseY, delta);
+    public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) { Safe.run("the settings menu", () -> draw(g, mouseX, mouseY, delta)); }
+
+    private void draw(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
         String t = "Build Blueprint settings";
         g.text(font, t, width / 2 - font.width(t) / 2, 14, 0xFFFFFFFF, true);
         int[] rows = {8, 6, 6};
