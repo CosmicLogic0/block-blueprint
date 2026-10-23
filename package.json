@@ -58,5 +58,10 @@
         "releaseType": "release"
       }
     ]
-  }
+  },
+  "keywords": [
+    "minecraft",
+    "blueprint",
+    "builder"
+  ]
 }
