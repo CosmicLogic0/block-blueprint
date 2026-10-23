@@ -1,3 +1,8 @@
+## 1.1.2
+- App: version number and "Check for updates" in Settings, plus a banner when a new version is out.
+  The installed app downloads updates by itself and asks to restart.
+- Mod: tells you in chat when a newer Build Blueprint is available.
+
 ## 1.1.1
 - Smart copy: look at a build and press Insert - the whole build is boxed. Arrows resize the box, ground and trees are left out.
 - Swap blocks in-game: change a whole wood / stone / colour set (oak -> spruce, black sails -> red) or one block.

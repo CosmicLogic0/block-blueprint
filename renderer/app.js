@@ -598,6 +598,29 @@ async function main() {
   $('#btnMaterials').onclick = () => { $('#settings').classList.add('hidden'); $('#exporter').classList.add('hidden'); renderMaterials(); $('#materials').classList.toggle('hidden'); };
   $('#matClose').onclick = () => $('#materials').classList.add('hidden');
   $('#btnClear').onclick = () => { if (!world.size) return; if (confirm('Remove every block from the build?')) { applyChanges([...world].map(([k, b]) => ({ k, prev: b, next: null }))); toast('Cleared (Ctrl+Z to undo)'); } };
+  // ---- updates (desktop app only)
+  if (api.updates) {
+    let shown = false;
+    const show = (s) => {
+      const t = { idle: `Version ${s.current}`, checking: 'Checking for updates...', latest: `Version ${s.current} - up to date`,
+        downloading: `Downloading ${s.version || 'update'}${s.percent ? ' ' + s.percent + '%' : ''}...`, ready: `Version ${s.version} ready - restart to update`,
+        available: `Version ${s.version} is out (you have ${s.current})`, error: `Couldn't check for updates${s.error ? ': ' + s.error : ''}` }[s.state] || `Version ${s.current}`;
+      $('#updText').textContent = t;
+      $('#btnUpd').textContent = s.state === 'ready' ? 'Restart & update' : s.state === 'available' ? 'Download' : 'Check for updates';
+      if ((s.state === 'ready' || s.state === 'available') && !shown) {
+        shown = true;
+        $('#updBannerText').textContent = s.state === 'ready' ? `Block Blueprint ${s.version} is ready.` : `Block Blueprint ${s.version} is out!`;
+        $('#updBannerBtn').textContent = s.state === 'ready' ? 'Restart & update' : 'Download';
+        $('#updBanner').classList.remove('hidden');
+      }
+    };
+    api.updates.onState(show);
+    api.updates.get().then(show);
+    $('#btnUpd').onclick = async () => { const s = await api.updates.get(); if (s.state === 'ready' || s.state === 'available') api.updates.install(); else api.updates.check(); };
+    $('#updBannerBtn').onclick = () => api.updates.install();
+    $('#updBannerClose').onclick = () => $('#updBanner').classList.add('hidden');
+  } else { $('#updBox').style.display = 'none'; }
+
   $('#btnReassets').onclick = async () => {
     if (!confirm('Remove the current texture data and choose a texture source again?')) return;
     await api.resetAssets(); location.reload();

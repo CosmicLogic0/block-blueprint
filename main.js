@@ -1,5 +1,5 @@
 'use strict';
-const { app, BrowserWindow, ipcMain, dialog, protocol, Menu } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, protocol, Menu, shell, net } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const assets = require('./lib/assets');
@@ -62,23 +62,50 @@ function createWindow() {
   win.loadFile(path.join(__dirname, 'renderer', 'index.html'));
 }
 
-// Updates: the installed app checks GitHub Releases for a newer version, downloads it quietly and offers a restart.
-function checkForUpdates() {
-  if (!app.isPackaged) return;
-  let au;
-  try { au = require('electron-updater').autoUpdater; } catch { return; }
-  au.autoDownload = true;
-  au.on('update-downloaded', async (info) => {
-    const r = await dialog.showMessageBox({ type: 'info', buttons: ['Restart now', 'Later'], defaultId: 0, title: 'Update ready',
-      message: `Block Blueprint ${info.version} is ready.`, detail: 'Restart to use the new version (your builds are kept). If you pick Later it installs next time you close the app.' });
-    if (r.response === 0) au.quitAndInstall();
-  });
-  au.on('error', () => { /* offline or no release yet - try again next launch */ });
-  au.checkForUpdates().catch(() => {});
+// ---- Updates -------------------------------------------------------------------------------------------------
+// Installed app (from the Setup .exe): checks GitHub Releases, downloads a newer version quietly, offers a restart.
+// Run from the folder (start.bat): can't replace itself, so it just tells you a new version is out and links to it.
+const RELEASES = 'https://github.com/dylanemason0330-code/block-blueprint/releases/latest';
+const upd = { state: 'idle', version: null, error: null };
+let au = null;
+function sendUpd() { for (const w of BrowserWindow.getAllWindows()) w.webContents.send('upd:state', { ...upd, current: app.getVersion(), installed: app.isPackaged }); }
+function newer(a, b) { const p = (v) => String(v).replace(/^v/, '').split('.').map((n) => parseInt(n, 10) || 0); const x = p(a), y = p(b); for (let i = 0; i < 3; i++) { if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0); } return false; }
+async function checkForUpdates(manual) {
+  upd.state = 'checking'; upd.error = null; sendUpd();
+  if (app.isPackaged) {
+    try {
+      if (!au) {
+        au = require('electron-updater').autoUpdater;
+        au.autoDownload = true;
+        au.on('update-available', (i) => { upd.state = 'downloading'; upd.version = i.version; sendUpd(); });
+        au.on('update-not-available', () => { upd.state = 'latest'; sendUpd(); });
+        au.on('download-progress', (p) => { upd.state = 'downloading'; upd.percent = Math.round(p.percent); sendUpd(); });
+        au.on('error', (e) => { upd.state = 'error'; upd.error = String(e && e.message || e).slice(0, 200); sendUpd(); });
+        au.on('update-downloaded', async (info) => {
+          upd.state = 'ready'; upd.version = info.version; sendUpd();
+          const r = await dialog.showMessageBox({ type: 'info', buttons: ['Restart now', 'Later'], defaultId: 0, title: 'Update ready',
+            message: `Block Blueprint ${info.version} is ready.`, detail: 'Restart to use the new version (your builds are kept). If you pick Later it installs next time you close the app.' });
+          if (r.response === 0) au.quitAndInstall();
+        });
+      }
+      await au.checkForUpdates();
+    } catch (e) { upd.state = 'error'; upd.error = String(e && e.message || e).slice(0, 200); sendUpd(); }
+    return;
+  }
+  try {
+    const r = await net.fetch('https://api.github.com/repos/dylanemason0330-code/block-blueprint/releases/latest', { headers: { 'User-Agent': 'block-blueprint' } });
+    const j = await r.json();
+    upd.version = String(j.tag_name || '').replace(/^v/, '');
+    upd.state = upd.version && newer(upd.version, app.getVersion()) ? 'available' : 'latest';
+  } catch (e) { upd.state = manual ? 'error' : 'idle'; upd.error = 'Could not reach GitHub'; }
+  sendUpd();
 }
+ipcMain.handle('upd:check', () => checkForUpdates(true));
+ipcMain.handle('upd:get', () => ({ ...upd, current: app.getVersion(), installed: app.isPackaged }));
+ipcMain.handle('upd:install', () => { if (au && upd.state === 'ready') au.quitAndInstall(); else shell.openExternal(RELEASES); });
 
 app.whenReady().then(() => {
-  setTimeout(checkForUpdates, 4000);
+  setTimeout(() => checkForUpdates(false), 4000);
   protocol.handle('mcassets', async (req) => {
     const rel = decodeURIComponent(new URL(req.url).pathname).replace(/^\/+/, '');
     const root = path.resolve(DATA_DIR) + path.sep;

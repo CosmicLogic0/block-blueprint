@@ -33,6 +33,7 @@ final class Modules {
         GhostPick.init();
         Chests.init();
         SessionStore.init();
+        UpdateCheck.init();
         run("PreviewModule");
         run("HudModule");
         keysActive = run("KeysModule");
