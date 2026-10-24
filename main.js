@@ -5,6 +5,10 @@ const fs = require('fs');
 const assets = require('./lib/assets');
 const { buildCatalog } = require('./lib/catalog');
 
+// Only one copy of the app at a time: a second copy left running would block updates from installing.
+if (!app.requestSingleInstanceLock()) { app.exit(0); }
+app.on('second-instance', () => { if (win && !win.isDestroyed()) { if (win.isMinimized()) win.restore(); win.show(); win.focus(); } });
+
 protocol.registerSchemesAsPrivileged([
   { scheme: 'mcassets', privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true } },
 ]);
@@ -77,6 +81,9 @@ async function checkForUpdates(manual) {
       if (!au) {
         au = require('electron-updater').autoUpdater;
         au.autoDownload = true;
+        // Install only when the person says so (Restart now). Installing quietly on close broke updates when the
+        // app was opened again while the installer was still running.
+        au.autoInstallOnAppQuit = false;
         au.on('update-available', (i) => { upd.state = 'downloading'; upd.version = i.version; sendUpd(); });
         au.on('update-not-available', () => { upd.state = 'latest'; sendUpd(); });
         au.on('download-progress', (p) => { upd.state = 'downloading'; upd.percent = Math.round(p.percent); sendUpd(); });
@@ -84,8 +91,8 @@ async function checkForUpdates(manual) {
         au.on('update-downloaded', async (info) => {
           upd.state = 'ready'; upd.version = info.version; sendUpd();
           const r = await dialog.showMessageBox({ type: 'info', buttons: ['Restart now', 'Later'], defaultId: 0, title: 'Update ready',
-            message: `Block Blueprint ${info.version} is ready.`, detail: 'Restart to use the new version (your builds are kept). If you pick Later it installs next time you close the app.' });
-          if (r.response === 0) au.quitAndInstall();
+            message: `Block Blueprint ${info.version} is ready.`, detail: 'The app closes for a few seconds, updates, and opens again by itself. Your builds are kept. If you pick Later, you can update any time from Settings.' });
+          if (r.response === 0) installUpdate();
         });
       }
       await au.checkForUpdates();
@@ -102,7 +109,16 @@ async function checkForUpdates(manual) {
 }
 ipcMain.handle('upd:check', () => checkForUpdates(true));
 ipcMain.handle('upd:get', () => ({ ...upd, current: app.getVersion(), installed: app.isPackaged }));
-ipcMain.handle('upd:install', () => { if (au && upd.state === 'ready') au.quitAndInstall(); else shell.openExternal(RELEASES); });
+ipcMain.handle('upd:install', () => { if (au && upd.state === 'ready') installUpdate(); else shell.openExternal(RELEASES); });
+
+// Close every window for real (nothing may keep the app alive), then run the installer silently and reopen the app.
+function installUpdate() {
+  if (!au) return;
+  upd.state = 'installing'; sendUpd();
+  app.removeAllListeners('window-all-closed');
+  for (const w of BrowserWindow.getAllWindows()) { w.removeAllListeners('close'); w.destroy(); }
+  setImmediate(() => { try { au.quitAndInstall(true, true); } catch (e) { app.exit(0); } });
+}
 
 app.whenReady().then(() => {
   setTimeout(() => checkForUpdates(false), 4000);

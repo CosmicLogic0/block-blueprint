@@ -48,7 +48,9 @@
       "perMachine": false,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Block Blueprint"
+      "shortcutName": "Block Blueprint",
+      "include": "build/installer.nsh",
+      "runAfterFinish": true
     },
     "publish": [
       {

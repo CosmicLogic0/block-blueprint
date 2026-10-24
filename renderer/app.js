@@ -644,7 +644,7 @@ async function main() {
     let shown = false;
     const show = (s) => {
       const t = { idle: `Version ${s.current}`, checking: 'Checking for updates...', latest: `Version ${s.current} - up to date`,
-        downloading: `Downloading ${s.version || 'update'}${s.percent ? ' ' + s.percent + '%' : ''}...`, ready: `Version ${s.version} ready - restart to update`,
+        downloading: `Downloading ${s.version || 'update'}${s.percent ? ' ' + s.percent + '%' : ''}...`, ready: `Version ${s.version} ready - restart to update`, installing: `Installing ${s.version || "the update"}... the app will reopen by itself`,
         available: `Version ${s.version} is out (you have ${s.current})`, error: `Couldn't check for updates${s.error ? ': ' + s.error : ''}` }[s.state] || `Version ${s.current}`;
       $('#updText').textContent = t;
       $('#btnUpd').textContent = s.state === 'ready' ? 'Restart & update' : s.state === 'available' ? 'Download' : 'Check for updates';
