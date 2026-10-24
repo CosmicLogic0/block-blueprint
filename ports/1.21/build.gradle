@@ -71,3 +71,8 @@ tasks.withType(JavaCompile).configureEach {
 if (java8) dependencies { annotationProcessor 'com.pkware.jabel:jabel-javac-plugin:1.0.1-1'; compileOnly 'com.pkware.jabel:jabel-javac-plugin:1.0.1-1' }
 java { toolchain { } }
 tasks.named("test") { enabled = false }
+
+// Launch tests: start the game on the Java that Minecraft version really uses (old Forge can't start on new Java)
+if (project.findProperty('run_java')) tasks.withType(JavaExec).configureEach {
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(project.findProperty('run_java') as int) }
+}
