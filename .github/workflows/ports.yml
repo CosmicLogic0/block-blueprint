@@ -29,7 +29,7 @@ jobs:
           - { mc: "1.19.3",  dir: ports/1.21, java: 17 }
           - { mc: "1.19.2",  dir: ports/1.21, java: 17 }
           - { mc: "1.18.2",  dir: ports/1.21, java: 17 }
-          - { mc: "1.17.1",  dir: ports/1.21, java: 16 }
+          - { mc: "1.17.1",  dir: ports/1.21, java: 16, fapi: "1.17" }
           - { mc: "1.20.6", dir: ports/1.21, java: 21 }
           - { mc: "1.20.4", dir: ports/1.21, java: 17 }
           - { mc: "1.20.1", dir: ports/1.21, java: 17 }
@@ -41,7 +41,7 @@ jobs:
       - name: Find the Fabric API for this version
         id: fapi
         run: |
-          V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.mc }}</version>" | sed 's/<[^>]*>//g' | tail -1)
+          V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.fapi || matrix.mc }}</version>" | sed 's/<[^>]*>//g' | tail -1)
           echo "Fabric API: $V"
           if [ -z "$V" ]; then echo "::error title=mc ${{ matrix.mc }}::No Fabric API found for this Minecraft version"; exit 1; fi
           echo "v=$V" >> "$GITHUB_OUTPUT"
@@ -61,7 +61,7 @@ jobs:
           import re
           L=open('build.log',errors='replace').read().split('\n'); out=[]; seen=set()
           for i,l in enumerate(L):
-              m=re.search(r'/src/(\S+?\.java):(\d+): error: (.*)',l)
+              m=re.search(r'/(\S+?\.java):(\d+): error: (.*)',l)
               if not m: continue
               sym=''
               for k in range(i+1,min(i+6,len(L))):
