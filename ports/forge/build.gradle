@@ -1,0 +1,49 @@
+// Build Blueprint for Forge. Uses the same shared code as the Fabric ports (../1.21), plus small stand-ins
+// (src/shim) for the few Fabric API classes that code uses, backed by Forge's own events.
+plugins {
+    id 'dev.architectury.loom' version "${arch_loom_version}"
+}
+
+version = "${project.mod_version}+forge-${project.minecraft_version}"
+group = project.maven_group
+base { archivesName = project.archives_base_name }
+
+loom { silentMojangMappingsLicense() }
+repositories { mavenCentral() }
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    forge "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+}
+
+def mcv = project.minecraft_version
+def compat = project.findProperty('compat') ?: (mcv.startsWith('1.20') ? '1.20.1' : mcv)
+def javaVer = (project.findProperty('java_version') ?: '17') as int
+println "Build Blueprint (Forge): Minecraft ${mcv}, helpers from ../1.21/src/compat/${compat}"
+
+def gen = layout.buildDirectory.dir('gen-src'), core = layout.buildDirectory.dir('core-src'), res = layout.buildDirectory.dir('shared-res')
+tasks.register('bbCore', Sync) { from('../../fabric-mod/src/main/java') { include 'dev/buildblueprint/core/**' }; into core }
+tasks.register('bbRes', Sync) { from('../../fabric-mod/src/main/resources') { include 'assets/**' }; into res }
+tasks.register('bbMakeSources', Sync) {
+    from '../1.21/src/main/java'
+    from "../1.21/src/compat/${compat}/java"
+    into gen
+    inputs.property 'compat', compat
+    filter { String l -> l.replace('net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource', 'net.minecraft.commands.CommandSourceStack')
+                          .replace('FabricClientCommandSource', 'CommandSourceStack') }
+}
+sourceSets.main.java.srcDirs = [gen, core, 'src/shim/java', 'src/main/java']
+sourceSets.main.resources.srcDirs = ['src/main/resources', res]
+compileJava.dependsOn bbMakeSources, bbCore
+processResources.dependsOn bbRes
+tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn bbMakeSources, bbCore, bbRes }
+
+def mcRange = project.findProperty('mc_range') ?: (mcv == '1.20.1' ? '[1.20,1.20.1]' : "[${mcv}]")
+processResources {
+    inputs.property 'version', project.mod_version
+    inputs.property 'mcRange', mcRange
+    filesMatching('META-INF/mods.toml') { expand 'version': project.mod_version, 'mcRange': mcRange }
+}
+tasks.withType(JavaCompile).configureEach { options.release = javaVer; options.encoding = 'UTF-8' }
+tasks.named("test") { enabled = false }
