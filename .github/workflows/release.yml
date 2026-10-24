@@ -21,6 +21,7 @@ jobs:
       new: ${{ steps.v.outputs.new }}
       retry: ${{ steps.v.outputs.retry }}
       only: ${{ steps.v.outputs.only }}
+      cf: ${{ steps.v.outputs.cf }}
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 2 }
@@ -30,6 +31,11 @@ jobs:
         run: |
           V=$(node -p "require('./package.json').version")
           echo "version=$V" >> "$GITHUB_OUTPUT"
+          # CurseForge does not allow re-uploading unchanged files, so a version only goes to CurseForge when it is
+          # listed in .github/curseforge-upload.txt AND that list was changed in this push (new or really changed versions).
+          CF=""
+          if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qx .github/curseforge-upload.txt; then CF=" $(grep -v '^#' .github/curseforge-upload.txt | tr '\n' ' ') "; fi
+          echo "cf=$CF" >> "$GITHUB_OUTPUT"; echo "CurseForge uploads this time: [$CF]"
           if [ "$GITHUB_REF_NAME" = "retry-mod" ]; then
             echo "new=false" >> "$GITHUB_OUTPUT"; echo "retry=true" >> "$GITHUB_OUTPUT"
             echo "only= $(tr '\n' ' ' < .github/retry.txt) " >> "$GITHUB_OUTPUT"; exit 0
@@ -173,7 +179,7 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
       - name: Upload to CurseForge
-        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
+        if: (needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))) && contains(needs.check.outputs.cf, format(' {0} ', matrix.id || matrix.mc))
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           curseforge-id: 1762212
