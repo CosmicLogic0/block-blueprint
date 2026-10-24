@@ -36,5 +36,5 @@ public final class V {
     public static void hudPop(GuiGraphics g) { g.pose().popPose(); }
     public static Screen keyBinds(Screen parent) { return new net.minecraft.client.gui.screens.controls.KeyBindsScreen(parent, Minecraft.getInstance().options); }
     public static double reach(Minecraft mc) { return mc.gameMode.getPickRange(); }
-    public static boolean glass(Block b) { return b instanceof net.minecraft.world.level.block.TransparentBlock; }
+    public static boolean glass(Block b) { return b instanceof net.minecraft.world.level.block.HalfTransparentBlock; }
 }
