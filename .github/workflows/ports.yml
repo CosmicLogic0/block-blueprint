@@ -81,7 +81,10 @@ jobs:
               key=(m.group(1),m.group(3),sym)
               if key in seen: continue
               seen.add(key); out.append(f"{m.group(1).split('/')[-1]}:{m.group(2)} {m.group(3)} | {sym} | {code[:140]}")
-          if not out: out=[l for l in L if 'What went wrong' in l or 'Could not' in l or '> ' in l][:30]
+          if not out:
+              for i,l in enumerate(L):
+                  if 'What went wrong' in l: out += [x for x in L[i:i+14] if x.strip()]
+              out += [l for l in L if 'Could not' in l or 'error:' in l.lower()][:20]
           print('\n'.join(out[:150]))
           PY
           cp errs.txt errs.keep 2>/dev/null; E=$(sed 's/%/%25/g' errs.txt | sed ':a;N;$!ba;s/\n/%0A/g')
