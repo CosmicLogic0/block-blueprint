@@ -1,3 +1,6 @@
+## 1.2.0
+- App updates fixed: only one copy of the app can run, the update installs when you press Restart (not in the background when you close the app), the app closes completely first and opens again by itself, and the installer closes any leftover copy before replacing files.
+
 ## 1.1.9
 - **Forge and NeoForge!** Build Blueprint now also runs on Forge 1.20.1 and NeoForge 1.21.1 (beta).
 - New Fabric version: 1.16.5 (beta).
