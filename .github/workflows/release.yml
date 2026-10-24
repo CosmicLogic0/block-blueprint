@@ -6,8 +6,8 @@ name: Release
 
 on:
   push:
-    branches: [main]
-    paths: ['package.json']
+    branches: [main, retry-mod]
+  # Re-run some mod versions for the current release: list them in .github/retry.txt and push to branch "retry-mod".
   workflow_dispatch:
 
 permissions:
@@ -19,14 +19,23 @@ jobs:
     outputs:
       version: ${{ steps.v.outputs.version }}
       new: ${{ steps.v.outputs.new }}
+      retry: ${{ steps.v.outputs.retry }}
+      only: ${{ steps.v.outputs.only }}
     steps:
       - uses: actions/checkout@v4
+        with: { fetch-depth: 2 }
       - id: v
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           V=$(node -p "require('./package.json').version")
           echo "version=$V" >> "$GITHUB_OUTPUT"
+          if [ "$GITHUB_REF_NAME" = "retry-mod" ]; then
+            echo "new=false" >> "$GITHUB_OUTPUT"; echo "retry=true" >> "$GITHUB_OUTPUT"
+            echo "only= $(tr '\n' ' ' < .github/retry.txt) " >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          # on main, only build when package.json changed in this push and the release doesn't exist yet
+          if ! git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qx package.json && [ "$GITHUB_EVENT_NAME" = push ]; then echo "new=false" >> "$GITHUB_OUTPUT"; exit 0; fi
           if gh release view "v$V" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then echo "new=false" >> "$GITHUB_OUTPUT"; else echo "new=true" >> "$GITHUB_OUTPUT"; fi
 
   app:
@@ -80,6 +89,7 @@ jobs:
   mod:
     runs-on: ubuntu-latest
     needs: [check, app]
+    if: always() && (needs.check.outputs.new == 'true' && needs.app.result == 'success' || needs.check.outputs.retry == 'true')
     strategy:
       fail-fast: false
       max-parallel: 4
@@ -99,11 +109,14 @@ jobs:
     name: mod ${{ matrix.mc }}
     steps:
       - uses: actions/checkout@v4
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
       - uses: actions/setup-java@v4
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
         with:
           distribution: temurin
           java-version: ${{ matrix.run }}
       - name: Find the Fabric API for this version
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
         id: fapi
         run: |
           if [ "${{ matrix.mc }}" = "26.3" ]; then echo "args=" >> "$GITHUB_OUTPUT"; exit 0; fi   # 26.3 uses the version in gradle.properties
@@ -111,6 +124,7 @@ jobs:
           if [ -z "$V" ]; then echo "::error title=mc ${{ matrix.mc }}::No Fabric API found"; exit 1; fi
           echo "args=-Pminecraft_version=${{ matrix.mc }} -Pfabric_api_version=$V -Pjava_version=${{ matrix.target }}" >> "$GITHUB_OUTPUT"
       - name: Build the mod
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
         working-directory: ${{ matrix.dir }}
         run: |
           chmod +x gradlew
@@ -118,12 +132,14 @@ jobs:
           ./gradlew build -x test -Pmod_version="${{ needs.check.outputs.version }}" ${{ steps.fapi.outputs.args }} --no-daemon
           ls build/libs
       - name: Attach the mod to the GitHub release
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ needs.check.outputs.version }}
           files: ${{ matrix.dir }}/build/libs/buildblueprint-*.jar
           make_latest: true
       - name: Game versions for CurseForge
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
         id: gv
         run: |
           {
@@ -132,6 +148,7 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
       - name: Upload to CurseForge
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           curseforge-id: 1762212
