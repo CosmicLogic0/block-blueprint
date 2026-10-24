@@ -9,9 +9,7 @@ import java.util.List;
 import java.util.Map;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;
-import net.minecraft.commands.arguments.blocks.BlockStateParser;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -75,11 +73,11 @@ public final class AutoBuild {
                 if (want == null) continue;
                 p.set(s.ox + x, s.oy + y, s.oz + z);
                 BlockState here = mc.level.getBlockState(p);
-                if (BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString().equals(MaterialMap.blockId(st))) continue; // already right
+                if (V.blockId(here.getBlock()).equals(MaterialMap.blockId(st))) continue; // already right
                 if (here.hasBlockEntity()) { kept++; continue; }   // don't wipe out chests, furnaces...
                 BlockPos at = p.immutable();
-                jobs.add(new Job(at, want, BlockStateParser.serialize(want)));
-                before.add(new Job(at, here, BlockStateParser.serialize(here)));
+                jobs.add(new Job(at, want, V.stateString(want)));
+                before.add(new Job(at, here, V.stateString(here)));
             }
         }
         if (jobs.isEmpty()) { Chat.ok(kept > 0 ? "Nothing to place (" + kept + " spots have chests or similar in the way)." : "Nothing to place - it's all built already!"); return; }
@@ -104,7 +102,7 @@ public final class AutoBuild {
     }
 
     private static BlockState parse(String st) {
-        try { BlockState b = BlockStateParser.parseForBlock(V.blocks(), st, false).blockState(); return b.isAir() ? null : b; }
+        try { BlockState b = V.parseState(st); return b.isAir() ? null : b; }
         catch (Exception e) { return null; }
     }
 
@@ -126,7 +124,7 @@ public final class AutoBuild {
             int end = Math.min(queue.size(), next + PER_TICK_SERVER);
             for (int i = next; i < end; i++) {
                 Job j = queue.get(i);
-                mc.player.connection.sendCommand("setblock " + j.pos.getX() + " " + j.pos.getY() + " " + j.pos.getZ() + " " + j.text + " replace");
+                V.command(mc.player, "setblock " + j.pos.getX() + " " + j.pos.getY() + " " + j.pos.getZ() + " " + j.text + " replace");
             }
             next = end;
         }

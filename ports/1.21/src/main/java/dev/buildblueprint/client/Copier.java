@@ -15,9 +15,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.zip.Deflater;
 import net.minecraft.client.Minecraft;
-import net.minecraft.commands.arguments.blocks.BlockStateParser;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -130,7 +128,7 @@ public final class Copier {
             "sugar_cane", "bamboo", "cactus", "glow_lichen", "hanging_roots", "moss_carpet", "pink_petals", "leaf_litter", "bush", "firefly_bush",
             "short_dry_grass", "tall_dry_grass", "pointed_dripstone", "big_dripleaf", "big_dripleaf_stem", "small_dripleaf", "spore_blossom", "cave_vines", "cave_vines_plant"));
 
-    private static String path(BlockState st) { return BuiltInRegistries.BLOCK.getKey(st.getBlock()).getPath(); }
+    private static String path(BlockState st) { return V.blockId(st.getBlock()).replaceFirst("^[^:]*:", ""); }
     static boolean isGround(BlockState st) { String p = path(st); return GROUND.contains(p) || p.endsWith("_ore") || st.getBlock() instanceof LiquidBlock; }
     private static final Set<String> SOIL = new HashSet<>(Arrays.asList("dirt", "grass_block", "coarse_dirt", "rooted_dirt", "podzol", "mycelium",
             "dirt_path", "farmland", "mud", "clay", "gravel", "sand", "red_sand", "snow", "snow_block", "powder_snow", "moss_block", "suspicious_sand", "suspicious_gravel", "soul_soil"));
@@ -213,7 +211,7 @@ public final class Copier {
         for (int y = 0; y < sy; y++) for (int z = 0; z < sz; z++) for (int x = 0; x < sx; x++) {
             BlockState st = grid[(y * sz + z) * sx + x];
             if (st == null) continue;
-            String s = BlockStateParser.serialize(st);
+            String s = V.stateString(st);
             Integer i = pidx.get(s);
             if (i == null) { pal.add(s); i = pal.size(); pidx.put(s, i); }
             cells[(y * sz + z) * sx + x] = i;

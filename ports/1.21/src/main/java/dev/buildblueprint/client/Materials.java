@@ -11,7 +11,6 @@ import java.util.Map;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -55,7 +54,7 @@ public final class Materials {
     public static ItemStack stackFor(String id) {
         if (itemIndex == null) {
             itemIndex = new HashMap<>();
-            for (Item it : BuiltInRegistries.ITEM) itemIndex.put(BuiltInRegistries.ITEM.getKey(it).toString(), it);
+            for (Item it : V.allItems()) itemIndex.put(V.itemId(it), it);
         }
         Item it = itemIndex.get(id);
         return it == null ? ItemStack.EMPTY : new ItemStack(it);
@@ -101,7 +100,7 @@ public final class Materials {
                     int[] cl = perItemLayer.get(y).computeIfAbsent(r.itemId(), k -> new int[2]);
                     cl[1] += r.count(); totLayer[y]++;
                     pos.set(s.ox + x, s.oy + y, s.oz + z);
-                    String have = BuiltInRegistries.BLOCK.getKey(mc.level.getBlockState(pos).getBlock()).toString();
+                    String have = V.blockId(mc.level.getBlockState(pos).getBlock());
                     if (have.equals(MaterialMap.blockId(st))) done++;
                     else { c[0] += r.count(); cl[0] += r.count(); perLayer[y]++; }
                 }

@@ -8,7 +8,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -165,8 +164,8 @@ public final class Swapper {
         List<String> out = new ArrayList<>();
         BlockState self = V.block(blockId).defaultBlockState();
         boolean cube = V.solid(self) || V.glass(self.getBlock());
-        for (Block blk : BuiltInRegistries.BLOCK) {
-            String id = BuiltInRegistries.BLOCK.getKey(blk).toString();
+        for (Block blk : V.allBlocks()) {
+            String id = V.blockId(blk);
             if (id.equals(blockId) || blk.asItem() == net.minecraft.world.item.Items.AIR) continue;
             String p = path(id);
             if (suffix != null) { if (p.endsWith(suffix) && !(suffix.equals("_slab") && false)) out.add(id); }

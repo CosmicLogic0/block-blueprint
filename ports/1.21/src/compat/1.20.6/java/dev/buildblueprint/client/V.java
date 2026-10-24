@@ -37,4 +37,15 @@ public final class V {
     public static Screen keyBinds(Screen parent) { return new net.minecraft.client.gui.screens.controls.KeyBindsScreen(parent, Minecraft.getInstance().options); }
     public static double reach(Minecraft mc) { return mc.player.blockInteractionRange(); }
     public static boolean glass(Block b) { return b instanceof net.minecraft.world.level.block.TransparentBlock; }
+    public static String blockId(Block b) { return BuiltInRegistries.BLOCK.getKey(b).toString(); }
+    public static String itemId(net.minecraft.world.item.Item i) { return BuiltInRegistries.ITEM.getKey(i).toString(); }
+    public static Iterable<Block> allBlocks() { return BuiltInRegistries.BLOCK; }
+    public static Iterable<net.minecraft.world.item.Item> allItems() { return BuiltInRegistries.ITEM; }
+    public static BlockState parseState(String s) throws Exception { return net.minecraft.commands.arguments.blocks.BlockStateParser.parseForBlock(blocks(), s, false).blockState(); }
+    public static String stateString(BlockState s) { return net.minecraft.commands.arguments.blocks.BlockStateParser.serialize(s); }
+    public static net.minecraft.world.item.ItemStack copyN(net.minecraft.world.item.ItemStack s, int n) { return s.copyWithCount(n); }
+    public static void command(LocalPlayer p, String cmd) { p.connection.sendCommand(cmd); }
+    public static void onHud(java.util.function.Consumer<GuiGraphics> body) {
+        net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback.EVENT.register((g, delta) -> body.accept(g));
+    }
 }

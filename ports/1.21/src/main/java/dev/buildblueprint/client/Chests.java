@@ -9,7 +9,6 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -47,7 +46,7 @@ public final class Chests {
             if (s.container instanceof Inventory) continue;     // your own inventory rows
             ItemStack st = s.getItem();
             if (st.isEmpty()) continue;
-            c.merge(BuiltInRegistries.ITEM.getKey(st.getItem()).toString(), st.getCount(), Integer::sum);
+            c.merge(V.itemId(st.getItem()), st.getCount(), Integer::sum);
         }
         SEEN.put(opening.immutable(), c);
     }

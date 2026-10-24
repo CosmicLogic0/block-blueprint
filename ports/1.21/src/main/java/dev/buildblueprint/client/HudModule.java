@@ -1,7 +1,6 @@
 package dev.buildblueprint.client;
 
 import java.util.List;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 
@@ -16,7 +15,7 @@ public final class HudModule {
     private static final int W = 168;
 
     public static void init() {
-        HudRenderCallback.EVENT.register((g, delta) -> Safe.run("the corner list", () -> {
+        V.onHud(g -> Safe.run("the corner list", () -> {
             Minecraft mc = Minecraft.getInstance();
             var s = BuildBlueprintClient.SESSION;
             if (mc.player != null && Copier.active && Mc.screen() == null) { copyPanel(g, mc); return; }

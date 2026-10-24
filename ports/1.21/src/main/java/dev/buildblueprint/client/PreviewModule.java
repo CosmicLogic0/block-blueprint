@@ -17,10 +17,8 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.commands.arguments.blocks.BlockStateParser;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -153,7 +151,7 @@ public final class PreviewModule {
                     if (dx * dx + dy * dy + dz * dz > (double) Settings.range * Settings.range) continue;
                     pos.set(wx, wy, wz);
                     BlockState here = mc.level.getBlockState(pos);
-                    String have = BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString();
+                    String have = V.blockId(here.getBlock());
                     if (have.equals(MaterialMap.blockId(st))) continue;     // already built
                     if (here.isAir() || !here.getFluidState().isEmpty() || here.canBeReplaced()) {
                         BlockState want = parse(st);
@@ -170,7 +168,7 @@ public final class PreviewModule {
         if (!Settings.nextHint || ghosts.isEmpty() || mc.player == null) { Hint.clear(); return; }
         int low = Integer.MAX_VALUE;
         for (Ghost g : ghosts) low = Math.min(low, g.ly);
-        String held = BuiltInRegistries.ITEM.getKey(mc.player.getMainHandItem().getItem()).toString();
+        String held = V.itemId(mc.player.getMainHandItem().getItem());
         double px = mc.player.getX(), py = mc.player.getEyeY() - 1, pz = mc.player.getZ();
         Ghost best = null; double bd = 0; boolean bestHeld = false;
         for (Ghost g : ghosts) {
@@ -197,7 +195,7 @@ public final class PreviewModule {
         if (STATES.containsKey(st)) return STATES.get(st);
         BlockState out = null;
         try {
-            out = BlockStateParser.parseForBlock(V.blocks(), st, false).blockState();
+            out = V.parseState(st);
         } catch (Exception e) {
             try {   // unknown property: fall back to the plain block
                 out = V.block(MaterialMap.blockId(st)).defaultBlockState();
