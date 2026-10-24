@@ -24,35 +24,54 @@ dependencies {
 }
 
 def mcv = project.minecraft_version
-def compat = project.findProperty('compat') ?: (mcv.startsWith('1.20') ? '1.20.1' : mcv in ['1.21', '1.21.1'] ? '1.21.1' : mcv)
-def javaVer = (project.findProperty('java_version') ?: (neo ? '21' : '17')) as int
+apply from: '../shared.gradle'
+def compat = project.findProperty('compat') ?: bbCompatFor(mcv)
+def flags = bbFlags(compat)
+def javaVer = (project.findProperty('java_version') ?: (neo ? '21' : flags.java8 ? '8' : '17')) as int
+// Forge's events changed over time: newer stand-ins in src/<loader>/shim, older ones layered on top
+def era = neo ? null : mcv.startsWith('1.19') ? 'forge-1.19' : mcv.startsWith('1.18') ? 'forge-1.18' : mcv.startsWith('1.16') ? 'forge-1.16' : null
 println "Build Blueprint (Forge): Minecraft ${mcv}, helpers from ../1.21/src/compat/${compat}"
 
 def gen = layout.buildDirectory.dir('gen-src'), core = layout.buildDirectory.dir('core-src'), res = layout.buildDirectory.dir('shared-res')
-tasks.register('bbCore', Sync) { from('../../fabric-mod/src/main/java') { include 'dev/buildblueprint/core/**' }; into core }
+tasks.register('bbCore', Sync) { from('../../fabric-mod/src/main/java') { include 'dev/buildblueprint/core/**' }; into core; filter { String l -> flags.java8 ? bbRecordToClass(l) : l } }
+def shims = layout.buildDirectory.dir('shim-src')
+tasks.register('bbShims', Sync) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE      // the first copy of a file wins: era overrides go first
+    if (era) from("src/${era}/shim")
+    from("src/${loaderName}/shim") { if (flags.oldText) exclude 'net/fabricmc/fabric/api/client/command/v2/**' }
+    into shims
+    inputs.property 'era', era ?: 'none'
+}
 tasks.register('bbRes', Sync) { from('../../fabric-mod/src/main/resources') { include 'assets/**' }; into res }
 tasks.register('bbMakeSources', Sync) {
     from '../1.21/src/main/java'
     from "../1.21/src/compat/${compat}/java"
     into gen
     inputs.property 'compat', compat
-    filter { String l -> l.replace('net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource', 'net.minecraft.commands.CommandSourceStack')
+    filter { String l -> bbFilter(l, flags)
+                          .replace('net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource', 'net.minecraft.commands.CommandSourceStack')
+                          .replace('net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource', 'net.minecraft.commands.CommandSourceStack')
                           .replace('FabricClientCommandSource', 'CommandSourceStack') }
 }
-sourceSets.main.java.srcDirs = [gen, core, "src/${loaderName}/shim", "src/${loaderName}/entry"]
+sourceSets.main.java.srcDirs = [gen, core, shims, "src/${loaderName}/entry"]
 sourceSets.main.resources.srcDirs = ['src/main/resources', "src/${loaderName}/res", res]
-compileJava.dependsOn bbMakeSources, bbCore
+compileJava.dependsOn bbMakeSources, bbCore, bbShims
 processResources.dependsOn bbRes
-tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn bbMakeSources, bbCore, bbRes }
+tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn bbMakeSources, bbCore, bbRes, bbShims }
 
 def mcRange = project.findProperty('mc_range') ?: (mcv == '1.20.1' ? '[1.20,1.20.1]' : mcv == '1.21.1' ? '[1.21,1.21.1]' : "[${mcv}]")
+def forgeMajor = (project.forge_version.split('\\.')[0]) as int
 processResources {
     inputs.property 'version', project.mod_version
     inputs.property 'mcRange', mcRange
-    filesMatching(['META-INF/mods.toml', 'META-INF/neoforge.mods.toml']) { expand 'version': project.mod_version, 'mcRange': mcRange }
-    def pack = ['1.20.1': 15, '1.21.1': 34][mcv] ?: 15
+    filesMatching(['META-INF/mods.toml', 'META-INF/neoforge.mods.toml']) { expand 'version': project.mod_version, 'mcRange': mcRange, 'forgeMajor': forgeMajor }
+    def pack = ['1.20.1': 15, '1.21.1': 34, '1.19.2': 9, '1.18.2': 8, '1.16.5': 6][mcv] ?: 15
     inputs.property 'pack', pack
     filesMatching('pack.mcmeta') { expand 'pack': pack }
 }
-tasks.withType(JavaCompile).configureEach { options.release = javaVer; options.encoding = 'UTF-8' }
+tasks.withType(JavaCompile).configureEach {
+    options.release = javaVer; options.encoding = 'UTF-8'
+    if (javaVer < 16) { sourceCompatibility = '17'; options.compilerArgs += ['-Xlint:-options'] }   // Jabel: modern syntax, Java 8 classes
+}
+if (flags.java8) dependencies { annotationProcessor 'com.pkware.jabel:jabel-javac-plugin:1.0.1-1'; compileOnly 'com.pkware.jabel:jabel-javac-plugin:1.0.1-1' }
 tasks.named("test") { enabled = false }

@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
+loaderVersion = "[${forgeMajor},)"
 license = "All Rights Reserved"
 issueTrackerURL = "https://github.com/CosmicLogic0/block-blueprint/issues"
 
@@ -19,7 +19,7 @@ See any build as see-through ghost blocks in your world: a materials list with w
 [[dependencies.buildblueprint]]
 modId = "forge"
 mandatory = true
-versionRange = "[47,)"
+versionRange = "[${forgeMajor},)"
 ordering = "NONE"
 side = "CLIENT"
 

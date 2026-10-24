@@ -1,0 +1,56 @@
+// Shared by the Fabric (ports/1.21) and Forge (ports/forge) builds: which helper group a Minecraft version uses,
+// and the name swaps that make the shared screen/client code compile on older Minecraft versions.
+
+ext.bbCompatFor = { String mcv ->
+    mcv in ['1.20.5', '1.20.6'] ? '1.20.6' :
+    mcv in ['1.20.2', '1.20.3', '1.20.4'] ? '1.20.4' :
+    mcv.startsWith('1.20') ? '1.20.1' :
+    mcv == '1.19.4' ? '1.19.4' : mcv == '1.19.3' ? '1.19.3' : mcv == '1.19' ? '1.19' : mcv.startsWith('1.19') ? '1.19.2' :
+    mcv.startsWith('1.18') ? '1.18.2' : mcv.startsWith('1.17') ? '1.17.1' : mcv.startsWith('1.16') ? '1.16.5' :
+    mcv in ['1.21', '1.21.1'] ? '1.21.1' :
+    mcv in ['1.21.2', '1.21.3', '1.21.4'] ? '1.21.4' :
+    mcv == '1.21.5' ? '1.21.5' : '1.21.8'
+}
+
+ext.bbFlags = { String compat -> [
+    legacyGui: compat.startsWith('1.19') || compat.startsWith('1.18') || compat.startsWith('1.17') || compat.startsWith('1.16'),  // no GuiGraphics yet
+    noBuilder: compat in ['1.19', '1.19.2', '1.18.2', '1.17.1', '1.16.5'],                                                        // no Button.builder / Tooltip
+    oldText:   compat in ['1.18.2', '1.17.1', '1.16.5'],                                                                          // no Component.literal, commands v1
+    java8:     compat in ['1.16.5'],                                                                                              // Java 8: no records, no addRenderableWidget
+] }
+
+// Java 8: turn each one-line `record Name(A a, B b) {` into an ordinary class (Jabel handles var / switch -> / instanceof patterns)
+ext.bbRecordToClass = { String l ->
+    def m = (l =~ /^(\s*)((?:public |private |protected )?)(?:static )?record (\w+)\((.*?)\)\s*\{(.*)$/)
+    if (!m.find()) return l
+    String ind = m.group(1), vis = m.group(2), name = m.group(3), rest = m.group(5)
+    def comps = m.group(4).split(',').collect { it.trim() }.findAll { it }
+    def sb = new StringBuilder()
+    sb << ind << vis << (ind.length() > 0 ? 'static ' : '') << "final class ${name} {"
+    comps.each { sb << " public final ${it};" }
+    sb << " public ${name}(" << comps.join(', ') << ") {"
+    comps.each { c -> def n = c.split(/\s+/)[-1]; sb << " this.${n} = ${n};" }
+    sb << " }"
+    comps.each { c -> def ps = c.split(/\s+/); def n = ps[-1]; sb << " public ${ps[0..-2].join(' ')} ${n}() { return ${n}; }" }
+    sb << ' ' << rest
+    sb.toString()
+}
+
+ext.bbFilter = { String l, Map f ->
+    if (f.legacyGui && l.trim() == 'import net.minecraft.client.gui.GuiGraphics;') return ''
+    if (f.noBuilder) {
+        l = l.replace('Button.builder(', 'Btn.builder(').replace('net.minecraft.client.gui.components.Tooltip.create(', 'Btn.tip(')
+             .replace('Tooltip.create(', 'Btn.tip(').replace('net.minecraft.client.gui.components.Tooltip', 'Btn.Tip')
+             .replaceAll(/(\w+)\.setHint\(/, 'V.hint($1, ')
+        if (l.trim() == 'import Btn.Tip;') return ''
+    }
+    if (f.java8) {
+        l = bbRecordToClass(l).replace('addRenderableWidget(', 'addButton(').replaceAll(/\.getInventory\(\)/, '.inventory').replaceAll(/\.getYRot\(\)/, '.yRot')
+    }
+    if (f.oldText) {
+        l = l.replace('Component.literal(', 'new net.minecraft.network.chat.TextComponent(').replace('client.command.v2.', 'client.command.v1.')
+        if (l.contains('ClientCommandRegistrationCallback.EVENT.register')) return '        body.accept(ClientCommandManager.DISPATCHER);'
+        if (l.contains('import net.fabricmc.fabric.api.client.command.v1.ClientCommandRegistrationCallback')) return ''
+    }
+    return l
+}
