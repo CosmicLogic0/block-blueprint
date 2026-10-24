@@ -18,13 +18,33 @@ dependencies {
 }
 
 def mod = '../../fabric-mod/src'
-sourceSets.main {
-    java {
-        srcDir "${mod}/main/java"; srcDir "${mod}/menu/java"; srcDir "${mod}/preview/java"; srcDir "${mod}/keys/java"
-        srcDir "src/compat/java"
+// The 26.x code with the few names that are different in 1.21.11 swapped; files in src/override replace whole files.
+def gen = layout.buildDirectory.dir('gen-src')
+def overrides = file('src/override/java/dev/buildblueprint/client').list() as List
+tasks.register('genSources', Sync) {
+    ['main', 'menu', 'preview', 'keys'].each { from("${mod}/${it}/java") { exclude overrides.collect { "**/client/" + it } } }
+    into gen
+    inputs.file('build.gradle')
+    filter { String l -> l
+        .replace('net.fabricmc.fabric.api.client.command.v2.ClientCommands', 'net.fabricmc.fabric.api.client.command.v2.ClientCommandManager')
+        .replace('ClientCommands.', 'ClientCommandManager.')
+        .replace('client.keymapping.v1.KeyMappingHelper', 'client.keybinding.v1.KeyBindingHelper')
+        .replace('KeyMappingHelper.registerKeyMapping', 'KeyBindingHelper.registerKeyBinding')
+        .replace('net.minecraft.world.inventory.ContainerInput', 'net.minecraft.world.inventory.ClickType')
+        .replace('ContainerInput.', 'ClickType.').replace('handleContainerInput(', 'handleInventoryMouseClick(')
+        .replace('mc.player.sendSystemMessage(Component.literal(text).withStyle(color))', 'mc.player.displayClientMessage(Component.literal(text).withStyle(color), false)')
+        .replace('mc.player.sendOverlayMessage(Component.literal(text))', 'mc.player.displayClientMessage(Component.literal(text), true)')
+        .replace('GuiGraphicsExtractor', 'GuiGraphics')
+        .replace('extractRenderState(', 'render(')
+        .replace('g.text(', 'g.drawString(').replace('g.item(', 'g.renderItem(')
     }
+}
+sourceSets.main {
+    java { srcDir gen; srcDir 'src/override/java'; srcDir 'src/compat/java' }
     resources { srcDir "${mod}/main/resources" }
 }
+compileJava.dependsOn genSources
+tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn genSources }
 
 def mcdep = project.findProperty('mc_dep') ?: '1.21.11'
 processResources {
