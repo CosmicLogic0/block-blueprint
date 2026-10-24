@@ -29,7 +29,12 @@ def compat = project.findProperty('compat') ?: bbCompatFor(mcv)
 def flags = bbFlags(compat)
 def javaVer = (project.findProperty('java_version') ?: (neo ? '21' : flags.java8 ? '8' : '17')) as int
 // Forge's events changed over time: newer stand-ins in src/<loader>/shim, older ones layered on top
-def era = neo ? null : mcv.startsWith('1.19') ? 'forge-1.19' : mcv.startsWith('1.18') ? 'forge-1.18' : mcv.startsWith('1.16') ? 'forge-1.16' : null
+def eras = neo ? (mcv in ['1.20.2', '1.20.3', '1.20.4'] ? ['neoforge-1.20'] : mcv in ['1.20.5', '1.20.6'] ? ['neoforge-1.20.6'] :
+                  mcv in ['1.21.6', '1.21.7', '1.21.8'] ? ['neoforge-1.21.8'] : [])
+         : mcv in ['1.20.5', '1.20.6'] || mcv.startsWith('1.21') ? ['forge-1.21'] :
+           mcv == '1.19' ? ['forge-1.19.0', 'forge-1.19'] : mcv.startsWith('1.19') ? ['forge-1.19'] :
+           mcv == '1.18.2' ? ['forge-1.18'] : mcv.startsWith('1.18') ? ['forge-1.18.1', 'forge-1.18'] :
+           mcv.startsWith('1.17') ? ['forge-1.17', 'forge-1.18'] : mcv.startsWith('1.16') ? ['forge-1.16'] : []
 println "Build Blueprint (Forge): Minecraft ${mcv}, helpers from ../1.21/src/compat/${compat}"
 
 def gen = layout.buildDirectory.dir('gen-src'), core = layout.buildDirectory.dir('core-src'), res = layout.buildDirectory.dir('shared-res')
@@ -37,10 +42,10 @@ tasks.register('bbCore', Sync) { from('../../fabric-mod/src/main/java') { includ
 def shims = layout.buildDirectory.dir('shim-src')
 tasks.register('bbShims', Sync) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE      // the first copy of a file wins: era overrides go first
-    if (era) from("src/${era}/shim")
+    eras.each { from("src/${it}/shim") }
     from("src/${loaderName}/shim") { if (flags.oldText) exclude 'net/fabricmc/fabric/api/client/command/v2/**' }
     into shims
-    inputs.property 'era', era ?: 'none'
+    inputs.property 'eras', eras.join(',')
 }
 tasks.register('bbRes', Sync) { from('../../fabric-mod/src/main/resources') { include 'assets/**' }; into res }
 tasks.register('bbMakeSources', Sync) {
@@ -53,11 +58,22 @@ tasks.register('bbMakeSources', Sync) {
                           .replace('net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource', 'net.minecraft.commands.CommandSourceStack')
                           .replace('FabricClientCommandSource', 'CommandSourceStack') }
 }
-sourceSets.main.java.srcDirs = [gen, core, shims, "src/${loaderName}/entry"]
-sourceSets.main.resources.srcDirs = ['src/main/resources', "src/${loaderName}/res", res]
+def entries = layout.buildDirectory.dir('entry-src'), eraRes = layout.buildDirectory.dir('era-res')
+tasks.register('bbEntry', Sync) { duplicatesStrategy = DuplicatesStrategy.EXCLUDE; eras.each { from("src/${it}/entry") }; from("src/${loaderName}/entry"); into entries }
+tasks.register('bbEraRes', Sync) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    eras.each { from("src/${it}/res") }
+    // NeoForge before 1.20.5 reads META-INF/mods.toml, newer ones neoforge.mods.toml
+    from("src/${loaderName}/res") { if (eras.contains('neoforge-1.20')) exclude 'META-INF/neoforge.mods.toml' }
+    into eraRes
+}
+compileJava.dependsOn bbEntry
+processResources.dependsOn bbEraRes
+sourceSets.main.java.srcDirs = [gen, core, shims, entries]
+sourceSets.main.resources.srcDirs = ['src/main/resources', eraRes, res]
 compileJava.dependsOn bbMakeSources, bbCore, bbShims
 processResources.dependsOn bbRes
-tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn bbMakeSources, bbCore, bbRes, bbShims }
+tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn bbMakeSources, bbCore, bbRes, bbShims, bbEntry, bbEraRes }
 
 def mcRange = project.findProperty('mc_range') ?: (mcv == '1.20.1' ? '[1.20,1.20.1]' : mcv == '1.21.1' ? '[1.21,1.21.1]' : "[${mcv}]")
 def forgeMajor = (project.forge_version.split('\\.')[0]) as int
