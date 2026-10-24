@@ -34,7 +34,7 @@ def compat = project.findProperty('compat') ?: (
     mcv in ['1.20.5', '1.20.6'] ? '1.20.6' :
     mcv in ['1.20.2', '1.20.3', '1.20.4'] ? '1.20.4' :
     mcv.startsWith('1.20') ? '1.20.1' :
-    mcv == '1.19.4' ? '1.19.4' : mcv == '1.19.3' ? '1.19.3' : mcv.startsWith('1.19') ? '1.19.2' :
+    mcv == '1.19.4' ? '1.19.4' : mcv == '1.19.3' ? '1.19.3' : mcv == '1.19' ? '1.19' : mcv.startsWith('1.19') ? '1.19.2' :
     mcv.startsWith('1.18') ? '1.18.2' : mcv.startsWith('1.17') ? '1.17.1' :
     mcv in ['1.21', '1.21.1'] ? '1.21.1' :
     mcv in ['1.21.2', '1.21.3', '1.21.4'] ? '1.21.4' :
@@ -44,7 +44,7 @@ sourceSets.main.java.srcDir("src/compat/${compat}/java")
 
 // The shared code (src/main/java) is copied with a few names swapped for older Minecraft versions.
 def legacyGui = compat.startsWith('1.19') || compat.startsWith('1.18') || compat.startsWith('1.17')   // no GuiGraphics yet
-def noBuilder = compat in ['1.19.2', '1.18.2', '1.17.1']                                               // no Button.builder / Tooltip
+def noBuilder = compat in ['1.19', '1.19.2', '1.18.2', '1.17.1']                                               // no Button.builder / Tooltip
 def oldText = compat in ['1.18.2', '1.17.1']                                                          // no Component.literal, commands v1
 def genMain = layout.buildDirectory.dir('gen-main')
 tasks.register('bbMakeSources', Sync) {
