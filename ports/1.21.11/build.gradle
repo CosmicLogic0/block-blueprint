@@ -46,7 +46,7 @@ sourceSets.main {
 compileJava.dependsOn bbMakeSources
 tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn bbMakeSources }
 
-def mcdep = project.findProperty('mc_dep') ?: '1.21.11'
+def mcdep = project.findProperty('mc_dep') ?: project.minecraft_version
 processResources {
     inputs.property 'version', project.version
     inputs.property 'mcdep', mcdep
