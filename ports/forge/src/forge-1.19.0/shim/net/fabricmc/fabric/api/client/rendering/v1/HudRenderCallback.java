@@ -6,7 +6,7 @@ import java.util.List;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 
-/** Stand-in for Fabric's HUD callback (1.18 Forge). */
+/** Stand-in for Fabric's HUD callback (1.19.0 Forge). */
 public interface HudRenderCallback {
     void onHudRender(PoseStack pose, float delta);
     Holder EVENT = new Holder();
@@ -16,7 +16,7 @@ public interface HudRenderCallback {
         public void register(HudRenderCallback cb) {
             if (!hooked) { hooked = true; MinecraftForge.EVENT_BUS.addListener((RenderGameOverlayEvent.Post e) -> {
                 if (e.getType() != RenderGameOverlayEvent.ElementType.ALL) return;
-                for (HudRenderCallback c : list) c.onHudRender(e.getMatrixStack(), e.getPartialTicks()); }); }
+                for (HudRenderCallback c : list) c.onHudRender(e.getPoseStack(), e.getPartialTick()); }); }
             list.add(cb);
         }
     }
