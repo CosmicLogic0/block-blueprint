@@ -23,6 +23,7 @@ jobs:
           - { mc: "1.21.8", dir: ports/1.21, java: 21 }
           - { mc: "1.21.11", dir: ports/1.21.11, java: 21 }
           - { mc: "1.21.10", dir: ports/1.21.11, java: 21 }
+          - { mc: "1.21.9",  dir: ports/1.21.11, java: 21 }
           - { mc: "1.21.3",  dir: ports/1.21, java: 21 }
           - { mc: "1.21.2",  dir: ports/1.21, java: 21 }
           - { mc: "1.20.2",  dir: ports/1.21, java: 17 }

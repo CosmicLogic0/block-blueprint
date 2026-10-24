@@ -21,7 +21,7 @@ def mod = '../../fabric-mod/src'
 // The 26.x code with the few names that are different in 1.21.11 swapped; files in src/override replace whole files.
 def gen = layout.buildDirectory.dir('gen-src')
 def mcv = project.minecraft_version
-def ov = mcv == '1.21.11' ? 'src/override' : 'src/override-1.21.10'     // whole files that differ
+def ov = mcv == '1.21.11' ? 'src/override' : mcv == '1.21.9' ? 'src/override-1.21.9' : 'src/override-1.21.10'     // whole files that differ
 def oldIds = mcv != '1.21.11'                                          // Identifier was called ResourceLocation before 1.21.11
 def overrides = file("${ov}/java/dev/buildblueprint/client").list() as List
 tasks.register('bbMakeSources', Sync) {
@@ -45,7 +45,7 @@ tasks.register('bbMakeSources', Sync) {
 }
 sourceSets.main {
     java { srcDir gen; srcDir "${ov}/java"; srcDir 'src/compat/java' }
-    resources { srcDir "${mod}/main/resources" }
+    resources { srcDir "${mod}/main/resources"; if (file("${ov}/res").exists()) srcDir "${ov}/res" }
 }
 compileJava.dependsOn bbMakeSources
 tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn bbMakeSources }
@@ -54,7 +54,11 @@ def mcdep = project.findProperty('mc_dep') ?: project.minecraft_version
 processResources {
     inputs.property 'version', project.version
     inputs.property 'mcdep', mcdep
-    filesMatching('fabric.mod.json') { expand 'version': project.version, 'mcdep': mcdep, 'java': 21 }
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version, 'mcdep': mcdep, 'java': 21
+        // versions with a mixin (1.21.9): add it to fabric.mod.json
+        if (file("${ov}/res/buildblueprint.mixins.json").exists()) filter { String l -> l.contains('"environment"') ? l + '\n  "mixins": ["buildblueprint.mixins.json"],' : l }
+    }
 }
 tasks.withType(JavaCompile).configureEach { options.release = 21 }
 tasks.named("test") { enabled = false }
