@@ -11,7 +11,10 @@ group = project.maven_group
 base { archivesName = project.archives_base_name }
 
 loom { silentMojangMappingsLicense() }
-repositories { mavenCentral() }
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.neoforged.net/releases/' }
+}
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
