@@ -1,0 +1,96 @@
+# Starts Minecraft (with a virtual screen) with the mod for a few versions and checks it loads without errors.
+# Runs when branch "smoke" is pushed; versions are listed in .github/smoke.txt ("<dir> <mc> <loader>" per line).
+name: Smoke test (launch Minecraft)
+
+on:
+  push:
+    branches: [smoke]
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: m
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          rows=[]
+          for l in open('.github/smoke.txt'):
+              l=l.split('#')[0].split()
+              if len(l)>=3: rows.append({'dir':l[0],'mc':l[1],'loader':l[2],'java':l[3] if len(l)>3 else '21'})
+          print('matrix='+json.dumps({'include':rows}))
+          PY
+
+  run:
+    needs: plan
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    name: ${{ matrix.loader }} ${{ matrix.mc }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "${{ matrix.java }}" }
+      - name: Virtual screen and software OpenGL
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb mesa-utils libgl1-mesa-dri > /dev/null
+      - name: Versions
+        id: v
+        run: |
+          LOOM=$(curl -s https://maven.architectury.dev/dev/architectury/loom/dev.architectury.loom.gradle.plugin/maven-metadata.xml | grep -o "<latest>[^<]*</latest>" | sed 's/<[^>]*>//g')
+          case "${{ matrix.loader }}" in
+            forge) F=$(curl -s https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml | grep -o "<version>${{ matrix.mc }}-[^<]*</version>" | sed 's/<[^>]*>//g; s/^${{ matrix.mc }}-//' | tail -1)
+                   echo "args=-Pforge_version=$F -Parch_loom_version=$LOOM" >> "$GITHUB_OUTPUT" ;;
+            neoforge) P=$(echo "${{ matrix.mc }}" | sed 's/^1\.//')
+                   F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -o "<version>$P\.[0-9]*</version>" | sed 's/<[^>]*>//g' | sort -t. -k3 -n | tail -1)
+                   echo "args=-Ploom.platform=neoforge -Pforge_version=$F -Parch_loom_version=$LOOM" >> "$GITHUB_OUTPUT" ;;
+            *) V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.mc }}</version>" | sed 's/<[^>]*>//g' | tail -1)
+                   echo "args=-Pfabric_api_version=$V" >> "$GITHUB_OUTPUT" ;;
+          esac
+      - name: Launch the game for 4 minutes
+        working-directory: ${{ matrix.dir }}
+        run: |
+          chmod +x gradlew
+          export LIBGL_ALWAYS_SOFTWARE=1
+          (timeout 900 xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew runClient --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} > game.log 2>&1 &) 
+          # wait until the game has started (title screen / sound engine) or crashed, at most ~13 minutes
+          for i in $(seq 1 160); do
+            sleep 5
+            if grep -qE "Sound engine started|OpenAL initialized|Created: .*textures/atlas|Narrator library" game.log; then echo "game started"; sleep 60; break; fi
+            if grep -qE "Crash report saved|---- Minecraft Crash Report ----|BUILD FAILED" game.log; then echo "crashed or failed"; break; fi
+          done
+          pkill -f "java" || true; sleep 3
+      - name: Result
+        if: always()
+        working-directory: ${{ matrix.dir }}
+        run: |
+          mkdir -p ../../result
+          F=../../result/${{ matrix.loader }}-${{ matrix.mc }}.txt
+          if grep -qE "Crash report saved|---- Minecraft Crash Report ----" game.log; then
+            { echo "CRASH"; grep -A40 -- "---- Minecraft Crash Report ----" game.log | head -60; grep -h -A60 "Description:" run/crash-reports/*.txt 2>/dev/null | head -80; } > $F
+          elif grep -qE "Sound engine started|OpenAL initialized|Created: .*textures/atlas|Narrator library" game.log; then
+            { echo "STARTED"; grep -iE "buildblueprint|build blueprint|mixin.*(error|fail)|Exception" game.log | grep -viE "realms|telemetry|narrator" | head -40; } > $F
+          else
+            { echo "DID NOT START"; tail -n 80 game.log; } > $F
+          fi
+          cat $F | head -30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: "smoke-${{ matrix.loader }}-${{ matrix.mc }}", path: result/ }
+
+  collect:
+    needs: run
+    if: always()
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { pattern: smoke-*, merge-multiple: true, path: out }
+      - run: |
+          cd out && git init -q -b smoke-results && git config user.name ci && git config user.email ci@example.com
+          echo "${GITHUB_SHA}" > COMMIT && git add -A && git commit -qm "smoke results ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" smoke-results
