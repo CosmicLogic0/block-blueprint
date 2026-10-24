@@ -2,14 +2,14 @@
 
 Design Minecraft builds in 3D on your PC (or phone), then build them in your world with the **Build Blueprint** mod:
 see-through ghost blocks, a materials list, layer-by-layer building, block swapping and copying builds from your world.
-Made for **Minecraft Java 26.3** with Fabric.
+Works on **Minecraft Java 1.17 to 26.3** with Fabric, plus Forge and NeoForge.
 
 ## Download
 - **Windows app:** go to [Releases](https://github.com/CosmicLogic0/block-blueprint/releases/latest) and download
   `Block-Blueprint-Setup-x.y.z.exe`. The app updates itself when a new version comes out.
   Windows may say "Windows protected your PC" the first time - click **More info -> Run anyway** (the app isn't code-signed).
-- **Minecraft mod:** on CurseForge (search "Build Blueprint"), or the `buildblueprint-x.y.z.jar` on the Releases page.
-  Needs Fabric Loader and Fabric API.
+- **Minecraft mod:** on CurseForge: https://www.curseforge.com/minecraft/mc-mods/build-blueprint
+  (Fabric needs Fabric API; Forge and NeoForge need nothing else).
 
 ## In Minecraft (default keys, change them in Options > Controls > Key Binds)
 | Key | What it does |
@@ -23,8 +23,9 @@ Made for **Minecraft Java 26.3** with Fabric.
 | Middle-click a ghost | Hold that block |
 
 ## Making a release (for the maintainer)
-Raise the version in `package.json` (for example to 1.2.0) and push. GitHub Actions builds the installer and the mod, puts both on the Releases page and uploads
-the mod to CurseForge (needs the `CURSEFORGE_TOKEN` secret and the `CURSEFORGE_ID` variable in the repo settings).
+Raise the version in `package.json` and push: GitHub Actions builds the app installer and puts it on the Releases page.
+To also publish the mod, list the versions in `.github/curseforge-upload.txt` in the same push (only new versions or real changes -
+CurseForge rejects unchanged re-uploads) and set `mod-version.txt` to the new mod version (the mod uses it for its update notice).
 
 ## License
 All Rights Reserved - see LICENSE. You can use the official downloads; please do not re-upload or copy the code.

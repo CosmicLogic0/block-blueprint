@@ -22,7 +22,7 @@ public final class UpdateCheck {
                 String mine = FabricLoader.getInstance().getModContainer("buildblueprint").map(c -> c.getMetadata().getVersion().getFriendlyString()).orElse("0");
                 if (newer(latest, mine)) {
                     Chat.ok("Build Blueprint " + latest + " is out (you have " + mine + ").");
-                    Chat.say("Update it in the CurseForge app, or download it from github.com/CosmicLogic0/block-blueprint/releases");
+                    Chat.say("Update it in the CurseForge app, or get it from curseforge.com/minecraft/mc-mods/build-blueprint");
                 }
             }
         }));
@@ -32,13 +32,13 @@ public final class UpdateCheck {
         try {
             Thread t = new Thread(() -> {
                 try {
-                    java.net.HttpURLConnection c = (java.net.HttpURLConnection) new java.net.URL("https://api.github.com/repos/CosmicLogic0/block-blueprint/releases/latest").openConnection();
+                    java.net.HttpURLConnection c = (java.net.HttpURLConnection) new java.net.URL("https://raw.githubusercontent.com/CosmicLogic0/block-blueprint/main/mod-version.txt").openConnection();
                     c.setConnectTimeout(8000); c.setReadTimeout(10000); c.setRequestProperty("User-Agent", "build-blueprint-mod");
                     StringBuilder body = new StringBuilder();
                     try (java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(c.getInputStream(), java.nio.charset.StandardCharsets.UTF_8))) {
                         String line; while ((line = in.readLine()) != null) body.append(line);
                     }
-                    Matcher m = Pattern.compile("\"tag_name\"\\s*:\\s*\"v?([0-9.]+)\"").matcher(body);
+                    Matcher m = Pattern.compile("([0-9]+\\.[0-9]+\\.[0-9]+)").matcher(body);
                     if (m.find()) latest = m.group(1);
                 } catch (Exception ignored) {}
             }, "Build Blueprint update check");
