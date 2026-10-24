@@ -118,25 +118,38 @@ jobs:
           - { mc: "1.18.2",  dir: ports/1.21,    run: 21, target: 17, type: beta,    gv: "1.18.2" }
           - { mc: "1.18.1",  dir: ports/1.21,    run: 21, target: 17, type: beta,    gv: "1.18 1.18.1", fapi: "1.18" }
           - { mc: "1.17.1",  dir: ports/1.21,    run: 21, target: 16, type: beta,    gv: "1.17 1.17.1", fapi: "1.17" }
-    name: mod ${{ matrix.mc }}
+          - { mc: "1.16.5",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.5", fapi: "1.16" }
+          - { mc: "1.20.1",  id: forge-1.20.1,    loader: forge,    dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20 1.20.1" }
+          - { mc: "1.21.1",  id: neoforge-1.21.1, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21 1.21.1" }
+    name: mod ${{ matrix.id || matrix.mc }}
     steps:
       - uses: actions/checkout@v4
-        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
       - uses: actions/setup-java@v4
-        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
         with:
           distribution: temurin
           java-version: ${{ matrix.run }}
       - name: Find the Fabric API for this version
-        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
         id: fapi
         run: |
           if [ "${{ matrix.mc }}" = "26.3" ]; then echo "args=" >> "$GITHUB_OUTPUT"; exit 0; fi   # 26.3 uses the version in gradle.properties
+          LOOM=$(curl -s https://maven.architectury.dev/dev/architectury/loom/dev.architectury.loom.gradle.plugin/maven-metadata.xml | grep -o "<latest>[^<]*</latest>" | sed 's/<[^>]*>//g')
+          if [ "${{ matrix.loader }}" = "forge" ]; then
+            F=$(curl -s https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml | grep -o "<version>${{ matrix.mc }}-[^<]*</version>" | sed 's/<[^>]*>//g; s/^${{ matrix.mc }}-//' | tail -1)
+            echo "args=-Pminecraft_version=${{ matrix.mc }} -Pforge_version=$F -Parch_loom_version=$LOOM -Pjava_version=${{ matrix.target }}" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if [ "${{ matrix.loader }}" = "neoforge" ]; then
+            P=$(echo "${{ matrix.mc }}" | sed 's/^1\.//')
+            F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -o "<version>$P\.[0-9]*</version>" | sed 's/<[^>]*>//g' | sort -t. -k3 -n | tail -1)
+            echo "args=-Ploom.platform=neoforge -Pminecraft_version=${{ matrix.mc }} -Pforge_version=$F -Parch_loom_version=$LOOM -Pjava_version=${{ matrix.target }}" >> "$GITHUB_OUTPUT"; exit 0
+          fi
           V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.fapi || matrix.mc }}</version>" | sed 's/<[^>]*>//g' | tail -1)
           if [ -z "$V" ]; then echo "::error title=mc ${{ matrix.mc }}::No Fabric API found"; exit 1; fi
           echo "args=-Pminecraft_version=${{ matrix.mc }} -Pfabric_api_version=$V -Pjava_version=${{ matrix.target }}" >> "$GITHUB_OUTPUT"
       - name: Build the mod
-        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
         working-directory: ${{ matrix.dir }}
         run: |
           chmod +x gradlew
@@ -144,14 +157,14 @@ jobs:
           ./gradlew build -x test -Pmod_version="${{ needs.check.outputs.version }}" ${{ steps.fapi.outputs.args }} --no-daemon
           ls build/libs
       - name: Attach the mod to the GitHub release
-        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ needs.check.outputs.version }}
           files: ${{ matrix.dir }}/build/libs/buildblueprint-*.jar
           make_latest: true
       - name: Game versions for CurseForge
-        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
         id: gv
         run: |
           {
@@ -160,17 +173,17 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
       - name: Upload to CurseForge
-        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.mc))
+        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           curseforge-id: 1762212
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           files: ${{ matrix.dir }}/build/libs/buildblueprint-!(*-@(dev|sources|javadoc)).jar
-          name: Build Blueprint ${{ needs.check.outputs.version }} for Minecraft ${{ matrix.mc }}${{ matrix.type == 'beta' && ' (beta)' || '' }}
-          version: ${{ needs.check.outputs.version }}+${{ matrix.mc }}
+          name: Build Blueprint ${{ needs.check.outputs.version }} for ${{ matrix.loader == 'forge' && 'Forge ' || matrix.loader == 'neoforge' && 'NeoForge ' || '' }}Minecraft ${{ matrix.mc }}${{ matrix.type == 'beta' && ' (beta)' || '' }}
+          version: ${{ needs.check.outputs.version }}+${{ matrix.id || matrix.mc }}
           version-type: ${{ matrix.type }}
-          loaders: fabric
+          loaders: ${{ matrix.loader || 'fabric' }}
           game-versions: ${{ steps.gv.outputs.list }}
           java: ${{ matrix.target }}
-          dependencies: fabric-api(required)
+          dependencies: ${{ (matrix.loader || 'fabric') == 'fabric' && 'fabric-api(required)' || '' }}
           changelog-file: CHANGELOG.md

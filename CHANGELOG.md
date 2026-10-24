@@ -1,3 +1,8 @@
+## 1.1.9
+- **Forge and NeoForge!** Build Blueprint now also runs on Forge 1.20.1 and NeoForge 1.21.1 (beta).
+- New Fabric version: 1.16.5 (beta).
+- Update checks in the mod no longer need newer Java, so they work on older Minecraft too.
+
 ## 1.1.8
 - 12 more Minecraft versions for the mod (beta): 1.21.10, 1.21.3, 1.21.2, 1.20.2, 1.19.4, 1.19.3, 1.19.2, 1.19.1, 1.19, 1.18.2, 1.18-1.18.1 and 1.17-1.17.1. That's 23 builds covering 1.17 to 26.3.
 
