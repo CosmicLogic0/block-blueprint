@@ -1,3 +1,7 @@
+## 1.1.7
+- The mod now comes for 11 Minecraft versions: 26.3, 26.2, 26.1, 1.21.11, 1.21.6-1.21.8, 1.21.5, 1.21.4, 1.21-1.21.1, 1.20.5-1.20.6, 1.20.3-1.20.4 and 1.20-1.20.1.
+- Everything except 26.3 is a beta: please report anything that looks wrong on the GitHub issues page.
+
 ## 1.1.6
 - Fixed: the installed app could get stuck on "Loading blocks..." forever (a file the 3D view needs was left out of the installer).
 - New loading screen: shows each step, how many block pictures are loaded, and a clear message if something goes wrong or takes too long.
