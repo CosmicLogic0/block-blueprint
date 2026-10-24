@@ -20,7 +20,10 @@ dependencies {
 def mod = '../../fabric-mod/src'
 // The 26.x code with the few names that are different in 1.21.11 swapped; files in src/override replace whole files.
 def gen = layout.buildDirectory.dir('gen-src')
-def overrides = file('src/override/java/dev/buildblueprint/client').list() as List
+def mcv = project.minecraft_version
+def ov = mcv == '1.21.11' ? 'src/override' : 'src/override-1.21.10'     // whole files that differ
+def oldIds = mcv != '1.21.11'                                          // Identifier was called ResourceLocation before 1.21.11
+def overrides = file("${ov}/java/dev/buildblueprint/client").list() as List
 tasks.register('bbMakeSources', Sync) {
     ['main', 'menu', 'preview', 'keys'].each { from("${mod}/${it}/java") { exclude overrides.collect { "**/client/" + it } } }
     into gen
@@ -38,15 +41,16 @@ tasks.register('bbMakeSources', Sync) {
         .replace('extractRenderState(', 'render(')
         .replace('g.text(', 'g.drawString(').replace('g.item(', 'g.renderItem(')
     }
+    if (oldIds) filter { String l -> l.replace('net.minecraft.resources.Identifier', 'net.minecraft.resources.ResourceLocation').replaceAll(/\bIdentifier\b/, 'ResourceLocation') }
 }
 sourceSets.main {
-    java { srcDir gen; srcDir 'src/override/java'; srcDir 'src/compat/java' }
+    java { srcDir gen; srcDir "${ov}/java"; srcDir 'src/compat/java' }
     resources { srcDir "${mod}/main/resources" }
 }
 compileJava.dependsOn bbMakeSources
 tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn bbMakeSources }
 
-def mcdep = project.findProperty('mc_dep') ?: '1.21.11'
+def mcdep = project.findProperty('mc_dep') ?: project.minecraft_version
 processResources {
     inputs.property 'version', project.version
     inputs.property 'mcdep', mcdep

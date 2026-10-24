@@ -119,10 +119,10 @@ public final class SavedBuilds {
             json = o.toString(StandardCharsets.UTF_8);
         } catch (BlueprintException e) { throw e; } catch (Exception e) { throw new BlueprintException("That build code is broken - copy it again."); }
         try {
-            com.google.gson.JsonObject root = com.google.gson.JsonParser.parseString(json).getAsJsonObject();
+            com.google.gson.JsonObject root = new com.google.gson.JsonParser().parse(json).getAsJsonObject();
             com.google.gson.JsonArray blocks = root.getAsJsonArray("blocks");
             String name = root.has("name") ? root.get("name").getAsString() : "Imported build";
-            if (blocks == null || blocks.isEmpty()) throw new BlueprintException("That build code has no blocks in it.");
+            if (blocks == null || blocks.size() == 0) throw new BlueprintException("That build code has no blocks in it.");
             int[] mn = {Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE}, mx = {Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE};
             List<int[]> pos = new ArrayList<>(); List<String> st = new ArrayList<>();
             for (var el : blocks) {

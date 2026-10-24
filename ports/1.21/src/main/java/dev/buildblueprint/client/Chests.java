@@ -9,7 +9,6 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -47,7 +46,7 @@ public final class Chests {
             if (s.container instanceof Inventory) continue;     // your own inventory rows
             ItemStack st = s.getItem();
             if (st.isEmpty()) continue;
-            c.merge(BuiltInRegistries.ITEM.getKey(st.getItem()).toString(), st.getCount(), Integer::sum);
+            c.merge(V.itemId(st.getItem()), st.getCount(), Integer::sum);
         }
         SEEN.put(opening.immutable(), c);
     }
@@ -60,7 +59,7 @@ public final class Chests {
         for (Map.Entry<BlockPos, Map<String, Integer>> e : SEEN.entrySet()) {
             Integer k = e.getValue().get(itemId);
             if (k == null || k <= 0) continue;
-            if (e.getKey().distToCenterSqr(mc.player.position()) > range * range) continue;
+            if (d2(e.getKey(), mc.player.position()) > range * range) continue;
             n += k; chests++;
         }
         return new int[]{n, chests};
@@ -75,7 +74,7 @@ public final class Chests {
         for (Materials.Row r : Materials.rows()) if (r.missing() > 0) missing.add(r.id());
         if (missing.isEmpty()) return out;
         for (Map.Entry<BlockPos, Map<String, Integer>> e : SEEN.entrySet()) {
-            if (e.getKey().distToCenterSqr(mc.player.position()) > range * range) continue;
+            if (d2(e.getKey(), mc.player.position()) > range * range) continue;
             if (mc.level.getBlockEntity(e.getKey()) == null) continue;   // chest was broken
             for (String id : e.getValue().keySet()) if (missing.contains(id)) { out.add(e.getKey()); break; }
         }
@@ -83,4 +82,6 @@ public final class Chests {
     }
 
     public static int remembered() { return SEEN.size(); }
+
+    private static double d2(BlockPos p, net.minecraft.world.phys.Vec3 v) { double x = p.getX() + 0.5 - v.x, y = p.getY() + 0.5 - v.y, z = p.getZ() + 0.5 - v.z; return x * x + y * y + z * z; }
 }

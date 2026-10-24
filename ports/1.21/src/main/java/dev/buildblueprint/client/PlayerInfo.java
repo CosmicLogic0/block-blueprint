@@ -3,7 +3,6 @@ package dev.buildblueprint.client;
 import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 
 /** Reads the player's position, facing and inventory. */
@@ -25,7 +24,7 @@ public final class PlayerInfo {
         for (int i = 0; i < inv.getContainerSize(); i++) {
             ItemStack st = inv.getItem(i);
             if (st.isEmpty()) continue;
-            out.merge(BuiltInRegistries.ITEM.getKey(st.getItem()).toString(), st.getCount(), Integer::sum);
+            out.merge(V.itemId(st.getItem()), st.getCount(), Integer::sum);
         }
         return out;
     }

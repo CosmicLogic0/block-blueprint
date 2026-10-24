@@ -6,7 +6,6 @@ import dev.buildblueprint.core.Session;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.item.ItemStack;
@@ -56,8 +55,8 @@ public final class GhostPick {
             String st = bp.stateAt(bx, by, bz);
             if (st == null) continue;
             BlockState here = mc.level.getBlockState(p.set(x, y, z));
-            if (BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString().equals(MaterialMap.blockId(st))) continue; // built already
-            if (!(here.isAir() || here.canBeReplaced())) continue;
+            if (V.blockId(here.getBlock()).equals(MaterialMap.blockId(st))) continue; // built already
+            if (!(here.isAir() || V.replaceable(here))) continue;
             return new Target(p.immutable(), st);
         }
         return null;
@@ -83,7 +82,7 @@ public final class GhostPick {
         if (player.isCreative()) {
             int target = V.selected(inv);
             for (int i = 0; i < 9; i++) if (inv.getItem(i).isEmpty()) { target = i; break; }
-            ItemStack give = want.copyWithCount(want.getMaxStackSize());
+            ItemStack give = V.copyN(want, want.getMaxStackSize());
             inv.setItem(target, give);
             mc.gameMode.handleCreativeModeItemAdd(give, 36 + target);
             V.select(inv, target);
