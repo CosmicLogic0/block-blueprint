@@ -79,12 +79,19 @@ jobs:
         run: |
           msg=$(tail -n 40 build.log | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')
           echo "::error title=Installer build failed::$msg"
+      - name: Release notes
+        shell: bash
+        run: |
+          { echo "**Block Blueprint app for Windows:** download \`Block-Blueprint-Setup-${{ needs.check.outputs.version }}.exe\` below (installed apps update themselves)."
+            echo ""
+            echo "**Build Blueprint Minecraft mod (Fabric, Forge, NeoForge):** download it on CurseForge: https://www.curseforge.com/minecraft/mc-mods/build-blueprint"
+            echo ""; cat CHANGELOG.md; } > release-notes.md
       - name: Put the installer on the release page
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ needs.check.outputs.version }}
           name: Block Blueprint ${{ needs.check.outputs.version }}
-          body_path: CHANGELOG.md
+          body_path: release-notes.md
           make_latest: true
           files: |
             dist/*.exe
@@ -95,7 +102,8 @@ jobs:
   mod:
     runs-on: ubuntu-latest
     needs: [check, app]
-    if: always() && (needs.check.outputs.new == 'true' && needs.app.result == 'success' || needs.check.outputs.retry == 'true')
+    # the mod is only built when something goes to CurseForge (mod files are not put on GitHub)
+    if: always() && needs.check.outputs.cf != '' && (needs.check.outputs.new == 'true' && needs.app.result == 'success' || needs.check.outputs.retry == 'true')
     strategy:
       fail-fast: false
       max-parallel: 8
@@ -162,13 +170,6 @@ jobs:
           rm -rf build/libs
           ./gradlew build -x test -Pmod_version="${{ needs.check.outputs.version }}" ${{ steps.fapi.outputs.args }} --no-daemon
           ls build/libs
-      - name: Attach the mod to the GitHub release
-        if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ needs.check.outputs.version }}
-          files: ${{ matrix.dir }}/build/libs/buildblueprint-*.jar
-          make_latest: true
       - name: Game versions for CurseForge
         if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
         id: gv
