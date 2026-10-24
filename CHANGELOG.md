@@ -1,3 +1,6 @@
+## 1.1.8
+- 12 more Minecraft versions for the mod (beta): 1.21.10, 1.21.3, 1.21.2, 1.20.2, 1.19.4, 1.19.3, 1.19.2, 1.19.1, 1.19, 1.18.2, 1.18-1.18.1 and 1.17-1.17.1. That's 23 builds covering 1.17 to 26.3.
+
 ## 1.1.7
 - The mod now comes for 11 Minecraft versions: 26.3, 26.2, 26.1, 1.21.11, 1.21.6-1.21.8, 1.21.5, 1.21.4, 1.21-1.21.1, 1.20.5-1.20.6, 1.20.3-1.20.4 and 1.20-1.20.1.
 - Everything except 26.3 is a beta: please report anything that looks wrong on the GitHub issues page.
