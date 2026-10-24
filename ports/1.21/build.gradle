@@ -20,10 +20,6 @@ dependencies {
 // shared core + shared assets (language file, icon) from the main mod
 def shared = layout.buildDirectory.dir('shared-src')
 def sharedRes = layout.buildDirectory.dir('shared-res')
-tasks.register('copyShared', Sync) {
-    from('../../fabric-mod/src/main/java') { include 'dev/buildblueprint/core/**' }
-    into shared
-}
 tasks.register('copySharedRes', Sync) {
     from('../../fabric-mod/src/main/resources') { include 'assets/**' }
     into sharedRes
@@ -35,7 +31,7 @@ def compat = project.findProperty('compat') ?: (
     mcv in ['1.20.2', '1.20.3', '1.20.4'] ? '1.20.4' :
     mcv.startsWith('1.20') ? '1.20.1' :
     mcv == '1.19.4' ? '1.19.4' : mcv == '1.19.3' ? '1.19.3' : mcv == '1.19' ? '1.19' : mcv.startsWith('1.19') ? '1.19.2' :
-    mcv.startsWith('1.18') ? '1.18.2' : mcv.startsWith('1.17') ? '1.17.1' :
+    mcv.startsWith('1.18') ? '1.18.2' : mcv.startsWith('1.17') ? '1.17.1' : mcv.startsWith('1.16') ? '1.16.5' :
     mcv in ['1.21', '1.21.1'] ? '1.21.1' :
     mcv in ['1.21.2', '1.21.3', '1.21.4'] ? '1.21.4' :
     mcv == '1.21.5' ? '1.21.5' : '1.21.8')
@@ -43,9 +39,31 @@ println "Build Blueprint: Minecraft ${mcv}, helpers from src/compat/${compat}"
 sourceSets.main.java.srcDir("src/compat/${compat}/java")
 
 // The shared code (src/main/java) is copied with a few names swapped for older Minecraft versions.
-def legacyGui = compat.startsWith('1.19') || compat.startsWith('1.18') || compat.startsWith('1.17')   // no GuiGraphics yet
-def noBuilder = compat in ['1.19', '1.19.2', '1.18.2', '1.17.1']                                               // no Button.builder / Tooltip
-def oldText = compat in ['1.18.2', '1.17.1']                                                          // no Component.literal, commands v1
+def legacyGui = compat.startsWith('1.19') || compat.startsWith('1.18') || compat.startsWith('1.17') || compat.startsWith('1.16')   // no GuiGraphics yet
+def noBuilder = compat in ['1.19', '1.19.2', '1.18.2', '1.17.1', '1.16.5']                                               // no Button.builder / Tooltip
+def oldText = compat in ['1.18.2', '1.17.1', '1.16.5']
+def java8 = compat in ['1.16.5']                                                                     // Minecraft runs on Java 8: no records, no addRenderableWidget
+// Java 8: turn each one-line `record Name(A a, B b) {` into an ordinary class (Jabel handles var / switch -> / instanceof patterns)
+def recordToClass = { String l ->
+    def m = (l =~ /^(\s*)((?:public |private |protected )?)(?:static )?record (\w+)\((.*?)\)\s*\{(.*)$/)
+    if (!m.find()) return l
+    String ind = m.group(1), vis = m.group(2), name = m.group(3), rest = m.group(5)
+    def comps = m.group(4).split(',').collect { it.trim() }.findAll { it }
+    def sb = new StringBuilder()
+    sb << ind << vis << (ind.length() > 0 ? 'static ' : '') << "final class ${name} {"
+    comps.each { sb << " public final ${it};" }
+    sb << " public ${name}(" << comps.join(', ') << ") {"
+    comps.each { c -> def n = c.split(/\s+/)[-1]; sb << " this.${n} = ${n};" }
+    sb << " }"
+    comps.each { c -> def ps = c.split(/\s+/); def n = ps[-1]; sb << " public ${ps[0..-2].join(' ')} ${n}() { return ${n}; }" }
+    sb << ' ' << rest
+    sb.toString()
+}                                                          // no Component.literal, commands v1
+tasks.register('copyShared', Sync) {
+    from('../../fabric-mod/src/main/java') { include 'dev/buildblueprint/core/**' }
+    into shared
+    filter { String l -> java8 ? recordToClass(l) : l }
+}
 def genMain = layout.buildDirectory.dir('gen-main')
 tasks.register('bbMakeSources', Sync) {
     from 'src/main/java'
@@ -58,6 +76,9 @@ tasks.register('bbMakeSources', Sync) {
                  .replace('Tooltip.create(', 'Btn.tip(').replace('net.minecraft.client.gui.components.Tooltip', 'Btn.Tip')
                  .replaceAll(/(\w+)\.setHint\(/, 'V.hint($1, ')
             if (l.trim() == 'import Btn.Tip;') return ''
+        }
+        if (java8) {
+            l = recordToClass(l).replace('addRenderableWidget(', 'addButton(').replaceAll(/\.getInventory\(\)/, '.inventory').replaceAll(/\.getYRot\(\)/, '.yRot')
         }
         if (oldText) {
             l = l.replace('Component.literal(', 'new net.minecraft.network.chat.TextComponent(').replace('client.command.v2.', 'client.command.v1.')
@@ -74,7 +95,7 @@ compileJava.dependsOn copyShared
 processResources.dependsOn copySharedRes
 tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn copyShared, copySharedRes, bbMakeSources }
 
-def javaVer = (project.findProperty('java_version') ?: '21') as int
+def javaVer = (project.findProperty('java_version') ?: (java8 ? '8' : '21')) as int
 // which Minecraft versions each jar may load on (the ones that share its code)
 def ranges = ['1.19.2': '1.19.2', '1.19.1': '1.19.1', '1.19': '1.19', '1.18.2': '1.18.2', '1.18.1': '>=1.18 <=1.18.1', '1.17.1': '>=1.17 <=1.17.1', '1.20.1': '>=1.20 <=1.20.1', '1.20.4': '>=1.20.3 <=1.20.4', '1.20.6': '>=1.20.5 <=1.20.6', '1.21.1': '>=1.21 <=1.21.1',
               '1.21.4': '1.21.4', '1.21.5': '1.21.5', '1.21.8': '>=1.21.6 <=1.21.8']
@@ -86,6 +107,10 @@ processResources {
     filesMatching('fabric.mod.json') { expand 'version': project.mod_version, 'mcdep': mcdep, 'java': javaVer }
 }
 
-tasks.withType(JavaCompile).configureEach { options.release = javaVer }
+tasks.withType(JavaCompile).configureEach {
+    options.release = javaVer
+    if (javaVer < 16) { sourceCompatibility = '17'; options.compilerArgs += ['-Xlint:-options'] }   // Jabel: modern syntax, Java 8 classes
+}
+if (java8) dependencies { annotationProcessor 'com.pkware.jabel:jabel-javac-plugin:1.0.1-1'; compileOnly 'com.pkware.jabel:jabel-javac-plugin:1.0.1-1' }
 java { toolchain { } }
 tasks.named("test") { enabled = false }

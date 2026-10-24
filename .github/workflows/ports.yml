@@ -33,17 +33,33 @@ jobs:
           - { mc: "1.19.1",  dir: ports/1.21, java: 17 }
           - { mc: "1.19",    dir: ports/1.21, java: 17 }
           - { mc: "1.17.1",  dir: ports/1.21, java: 16, fapi: "1.17" }
+          - { mc: "1.16.5",  dir: ports/1.21, java: 8, fapi: "1.16" }
+          - { mc: "1.20.1",  id: "forge-1.20.1", dir: ports/forge, java: 17, loader: forge }
+          - { mc: "1.21.1",  id: "neoforge-1.21.1", dir: ports/forge, java: 21, loader: neoforge }
           - { mc: "1.20.6", dir: ports/1.21, java: 21 }
           - { mc: "1.20.4", dir: ports/1.21, java: 17 }
           - { mc: "1.20.1", dir: ports/1.21, java: 17 }
-    name: mc ${{ matrix.mc }}
+    name: ${{ matrix.id || matrix.mc }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: "${{ matrix.java == 25 && 25 || 21 }}" }   # Loom needs 21+; older targets compile with --release
-      - name: Find the Fabric API for this version
+      - name: Find the Fabric API (or Forge) for this version
         id: fapi
         run: |
+          if [ "${{ matrix.loader }}" = "forge" ]; then
+            F=$(curl -s https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml | grep -o "<version>${{ matrix.mc }}-[^<]*</version>" | sed 's/<[^>]*>//g; s/^${{ matrix.mc }}-//' | tail -1)
+            L=$(curl -s https://maven.architectury.dev/dev/architectury/loom/dev.architectury.loom.gradle.plugin/maven-metadata.xml | grep -o "<latest>[^<]*</latest>" | sed 's/<[^>]*>//g')
+            echo "Forge: $F  Architectury Loom: $L"
+            echo "args=-Pforge_version=$F -Parch_loom_version=$L" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if [ "${{ matrix.loader }}" = "neoforge" ]; then
+            P=$(echo "${{ matrix.mc }}" | sed 's/^1\.//')                      # 1.21.1 -> 21.1
+            F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -o "<version>$P\.[0-9]*</version>" | sed 's/<[^>]*>//g' | sort -t. -k3 -n | tail -1)
+            L=$(curl -s https://maven.architectury.dev/dev/architectury/loom/dev.architectury.loom.gradle.plugin/maven-metadata.xml | grep -o "<latest>[^<]*</latest>" | sed 's/<[^>]*>//g')
+            echo "NeoForge: $F  Architectury Loom: $L"
+            echo "args=-Ploom.platform=neoforge -Pforge_version=$F -Parch_loom_version=$L" >> "$GITHUB_OUTPUT"; exit 0
+          fi
           V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.fapi || matrix.mc }}</version>" | sed 's/<[^>]*>//g' | tail -1)
           echo "Fabric API: $V"
           if [ -z "$V" ]; then echo "::error title=mc ${{ matrix.mc }}::No Fabric API found for this Minecraft version"; exit 1; fi
@@ -53,7 +69,7 @@ jobs:
         run: |
           chmod +x gradlew
           set -o pipefail
-          ./gradlew build -x test --no-daemon -Pminecraft_version=${{ matrix.mc }} -Pfabric_api_version=${{ steps.fapi.outputs.v }} -Pjava_version=${{ matrix.java }} 2>&1 | tee build.log
+          ./gradlew build -x test --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.fapi.outputs.args || format('-Pfabric_api_version={0}', steps.fapi.outputs.v) }} -Pjava_version=${{ matrix.java }} 2>&1 | tee build.log
       - name: Report errors
         if: failure()
         working-directory: ${{ matrix.dir }}
@@ -73,7 +89,10 @@ jobs:
               key=(m.group(1),m.group(3),sym)
               if key in seen: continue
               seen.add(key); out.append(f"{m.group(1).split('/')[-1]}:{m.group(2)} {m.group(3)} | {sym} | {code[:140]}")
-          if not out: out=[l for l in L if 'What went wrong' in l or 'Could not' in l or '> ' in l][:30]
+          if not out:
+              for i,l in enumerate(L):
+                  if 'What went wrong' in l: out += [x for x in L[i:i+14] if x.strip()]
+              out += [l for l in L if 'Could not' in l or 'error:' in l.lower()][:20]
           print('\n'.join(out[:150]))
           PY
           cp errs.txt errs.keep 2>/dev/null; E=$(sed 's/%/%25/g' errs.txt | sed ':a;N;$!ba;s/\n/%0A/g')
@@ -82,14 +101,14 @@ jobs:
         if: always()
         run: |
           mkdir -p result
-          if [ -f ${{ matrix.dir }}/errs.txt ]; then cp ${{ matrix.dir }}/errs.txt result/${{ matrix.mc }}.txt; \
-          elif ls ${{ matrix.dir }}/build/libs/*.jar >/dev/null 2>&1; then echo "OK $(ls ${{ matrix.dir }}/build/libs/)" > result/${{ matrix.mc }}.txt; \
+          if [ -f ${{ matrix.dir }}/errs.txt ]; then cp ${{ matrix.dir }}/errs.txt result/${{ matrix.id || matrix.mc }}.txt; \
+          elif ls ${{ matrix.dir }}/build/libs/*.jar >/dev/null 2>&1; then echo "OK $(ls ${{ matrix.dir }}/build/libs/)" > result/${{ matrix.id || matrix.mc }}.txt; \
             mkdir -p result/jars; for j in ${{ matrix.dir }}/build/libs/*.jar; do case "$j" in *-sources.jar) ;; *) cp "$j" result/jars/;; esac; done; \
-          else tail -n 60 ${{ matrix.dir }}/build.log > result/${{ matrix.mc }}.txt 2>/dev/null || echo "FAILED before building" > result/${{ matrix.mc }}.txt; fi
+          else tail -n 60 ${{ matrix.dir }}/build.log > result/${{ matrix.id || matrix.mc }}.txt 2>/dev/null || echo "FAILED before building" > result/${{ matrix.id || matrix.mc }}.txt; fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: result-${{ matrix.mc }}
+          name: result-${{ matrix.id || matrix.mc }}
           path: result/
 
   # Puts every version's result in the "ci-results" branch so it can be read with plain git.

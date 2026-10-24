@@ -27,17 +27,17 @@ public final class KeysModule {
     }
 
     public static void init() {
-        forward = reg("a_forward", InputConstants.KEY_UP);
-        back = reg("b_back", InputConstants.KEY_DOWN);
-        left = reg("c_left", InputConstants.KEY_LEFT);
-        right = reg("d_right", InputConstants.KEY_RIGHT);
-        vertical = reg("e_vertical", InputConstants.KEY_LCONTROL);
-        rotate = reg("f_rotate", InputConstants.KEY_PAGEDOWN);
-        menu = reg("g_menu", InputConstants.KEY_PAGEUP);
-        layerUp = reg("h_layer_up", InputConstants.KEY_HOME);
-        layerDown = reg("i_layer_down", InputConstants.KEY_END);
-        copy = reg("j_copy", InputConstants.KEY_INSERT);
-        place = reg("k_place", InputConstants.KEY_DELETE);
+        forward = reg("a_forward", org.lwjgl.glfw.GLFW.GLFW_KEY_UP);
+        back = reg("b_back", org.lwjgl.glfw.GLFW.GLFW_KEY_DOWN);
+        left = reg("c_left", org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT);
+        right = reg("d_right", org.lwjgl.glfw.GLFW.GLFW_KEY_RIGHT);
+        vertical = reg("e_vertical", org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_CONTROL);
+        rotate = reg("f_rotate", org.lwjgl.glfw.GLFW.GLFW_KEY_PAGE_DOWN);
+        menu = reg("g_menu", org.lwjgl.glfw.GLFW.GLFW_KEY_PAGE_UP);
+        layerUp = reg("h_layer_up", org.lwjgl.glfw.GLFW.GLFW_KEY_HOME);
+        layerDown = reg("i_layer_down", org.lwjgl.glfw.GLFW.GLFW_KEY_END);
+        copy = reg("j_copy", org.lwjgl.glfw.GLFW.GLFW_KEY_INSERT);
+        place = reg("k_place", org.lwjgl.glfw.GLFW.GLFW_KEY_DELETE);
         Modules.menuKey = menu;
         ClientTickEvents.END_CLIENT_TICK.register(mc -> Safe.run("keys", () -> tick(mc)));
     }

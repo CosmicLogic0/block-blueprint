@@ -1,0 +1,29 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "All Rights Reserved"
+issueTrackerURL = "https://github.com/CosmicLogic0/block-blueprint/issues"
+
+[[mods]]
+modId = "buildblueprint"
+version = "${version}"
+displayName = "Build Blueprint"
+authors = "CosmicLogic"
+displayURL = "https://github.com/CosmicLogic0/block-blueprint"
+logoFile = "assets/buildblueprint/icon.png"
+description = """
+See any build as see-through ghost blocks in your world: a materials list with what you still need, layer-by-layer building, block swapping, copying builds from any world or server and auto-building in Creative. Works with the free Block Blueprint app.
+"""
+
+[[dependencies.buildblueprint]]
+modId = "neoforge"
+type = "required"
+versionRange = "[20.5,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.buildblueprint]]
+modId = "minecraft"
+type = "required"
+versionRange = "${mcRange}"
+ordering = "NONE"
+side = "CLIENT"

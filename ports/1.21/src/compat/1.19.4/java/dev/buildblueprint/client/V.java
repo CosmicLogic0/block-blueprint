@@ -75,4 +75,5 @@ public final class V {
     }
     public static int mapColor(BlockState s) { var c = s.getMapColor(EmptyBlockGetter.INSTANCE, BlockPos.ZERO); return c == net.minecraft.world.level.material.MaterialColor.NONE ? 0 : c.col; }
     public static boolean replaceable(BlockState s) { return s.canBeReplaced(); }
+    public static boolean hasBE(BlockState s) { return s.hasBlockEntity(); }
 }

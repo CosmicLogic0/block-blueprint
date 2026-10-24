@@ -1,10 +1,5 @@
 package dev.buildblueprint.client;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.time.Duration;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -35,13 +30,19 @@ public final class UpdateCheck {
 
     private static void fetch() {
         try {
-            HttpClient c = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(8)).build();
-            HttpRequest r = HttpRequest.newBuilder(URI.create("https://api.github.com/repos/CosmicLogic0/block-blueprint/releases/latest"))
-                    .header("User-Agent", "build-blueprint-mod").timeout(Duration.ofSeconds(10)).build();
-            c.sendAsync(r, HttpResponse.BodyHandlers.ofString()).thenAccept(resp -> {
-                Matcher m = Pattern.compile("\"tag_name\"\\s*:\\s*\"v?([0-9.]+)\"").matcher(resp.body());
-                if (m.find()) latest = m.group(1);
-            }).exceptionally(e -> null);
+            Thread t = new Thread(() -> {
+                try {
+                    java.net.HttpURLConnection c = (java.net.HttpURLConnection) new java.net.URL("https://api.github.com/repos/CosmicLogic0/block-blueprint/releases/latest").openConnection();
+                    c.setConnectTimeout(8000); c.setReadTimeout(10000); c.setRequestProperty("User-Agent", "build-blueprint-mod");
+                    StringBuilder body = new StringBuilder();
+                    try (java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(c.getInputStream(), java.nio.charset.StandardCharsets.UTF_8))) {
+                        String line; while ((line = in.readLine()) != null) body.append(line);
+                    }
+                    Matcher m = Pattern.compile("\"tag_name\"\\s*:\\s*\"v?([0-9.]+)\"").matcher(body);
+                    if (m.find()) latest = m.group(1);
+                } catch (Exception ignored) {}
+            }, "Build Blueprint update check");
+            t.setDaemon(true); t.start();
         } catch (Exception ignored) {}
     }
 

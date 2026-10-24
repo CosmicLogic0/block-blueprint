@@ -28,7 +28,7 @@ public final class Materials {
         public boolean enough() { return have >= left; }
     }
 
-    private static List<Row> rows = List.of(), layerRows = List.of();
+    private static List<Row> rows = java.util.Collections.emptyList(), layerRows = java.util.Collections.emptyList();
     private static int placed, totalBlocks, layer = 0, layerPlaced, layerTotal;
     private static int tick;
     private static Map<String, Item> itemIndex;
@@ -78,7 +78,7 @@ public final class Materials {
     public static void refresh() {
         Session s = BuildBlueprintClient.SESSION;
         Minecraft mc = Minecraft.getInstance();
-        if (!s.loaded() || mc.level == null || mc.player == null) { rows = layerRows = List.of(); placed = totalBlocks = layerPlaced = layerTotal = 0; return; }
+        if (!s.loaded() || mc.level == null || mc.player == null) { rows = layerRows = java.util.Collections.emptyList(); placed = totalBlocks = layerPlaced = layerTotal = 0; return; }
         Blueprint bp = s.blueprint();
         Map<String, int[]> per = new LinkedHashMap<>();          // item -> {left, total}
         Map<String, MaterialMap.Req> reqCache = new HashMap<>();

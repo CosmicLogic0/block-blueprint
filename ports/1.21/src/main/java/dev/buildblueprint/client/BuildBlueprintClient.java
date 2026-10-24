@@ -95,7 +95,7 @@ public class BuildBlueprintClient implements ClientModInitializer {
             Blueprint bp = p.done();
             try { // keep every pasted build on this computer (Page Up > Saved builds)
                 String joined = p.data();
-                if (joined != null && SavedBuilds.list().stream().noneMatch(e -> e.data().equals(joined))) SavedBuilds.save(bp.name == null || bp.name.isBlank() ? "My build" : bp.name, joined);
+                if (joined != null && SavedBuilds.list().stream().noneMatch(e -> e.data().equals(joined))) SavedBuilds.save(bp.name == null || bp.name.trim().isEmpty() ? "My build" : bp.name, joined);
             } catch (Exception ignored) {}
             SESSION.load(bp, PlayerInfo.x(), PlayerInfo.y(), PlayerInfo.z(), PlayerInfo.yaw());
             Chat.ok("Loaded \"" + bp.name + "\": " + bp.blockCount() + " blocks, " + bp.sx + " x " + bp.sy + " x " + bp.sz + ".");

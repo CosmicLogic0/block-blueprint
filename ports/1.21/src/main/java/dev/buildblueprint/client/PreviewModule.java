@@ -236,7 +236,7 @@ public final class PreviewModule {
                         try { rgb = mc.getBlockColors().getColor(g.state, mc.level, new BlockPos(g.x, g.y, g.z), tint) & 0xFFFFFF; }
                         catch (Exception ignored) {}
                     }
-                    Draw.quad(vc, p, quad, ((rgb >> 16) & 255) / 255f, ((rgb >> 8) & 255) / 255f, (rgb & 255) / 255f, alpha, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
+                    Draw.quad(vc, p, quad, ((rgb >> 16) & 255) / 255f, ((rgb >> 8) & 255) / 255f, (rgb & 255) / 255f, alpha, 0xF000F0, OverlayTexture.NO_OVERLAY);
                 }
             }
             ps.popPose();

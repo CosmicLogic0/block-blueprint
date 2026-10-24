@@ -193,6 +193,6 @@ public class SwapScreen extends BBScreen {
         undo.active = BuildBlueprintClient.SESSION.canUndoSwap();
         super.extractRenderState(g, mouseX, mouseY, delta);
         if (!msg.isEmpty()) g.drawString(font, msg, width / 2 - font.width(msg) / 2, height - 38, 0xFF55FF55, true);
-        if (hover != null) V.tooltip(g, font, List.of(Component.literal(hover)), mouseX, mouseY);
+        if (hover != null) V.tooltip(g, font, java.util.Collections.singletonList(Component.literal(hover)), mouseX, mouseY);
     }
 }

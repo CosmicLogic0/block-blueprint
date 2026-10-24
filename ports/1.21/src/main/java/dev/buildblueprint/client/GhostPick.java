@@ -41,7 +41,7 @@ public final class GhostPick {
         Session s = BuildBlueprintClient.SESSION;
         if (!s.loaded() || mc.player == null || mc.level == null) return null;
         Blueprint bp = s.blueprint();
-        Vec3 eye = mc.player.getEyePosition(), dir = mc.player.getViewVector(1f);
+        Vec3 eye = mc.player.getEyePosition(1f), dir = mc.player.getViewVector(1f);
         double reach = Math.max(5, V.reach(mc) + 1);
         double real = mc.hitResult != null && mc.hitResult.getType() == HitResult.Type.BLOCK ? mc.hitResult.getLocation().distanceTo(eye) : reach;
         BlockPos.MutableBlockPos p = new BlockPos.MutableBlockPos();

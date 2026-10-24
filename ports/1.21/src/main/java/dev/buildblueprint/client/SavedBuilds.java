@@ -34,7 +34,7 @@ public final class SavedBuilds {
      * and the desktop app's "Send to Minecraft" writes here, so it never has to find where the modpack is installed.
      */
     public static Path dir() {
-        Path d = Path.of(System.getProperty("user.home"), "BlockBlueprint", "builds");
+        Path d = java.nio.file.Paths.get(System.getProperty("user.home"), "BlockBlueprint", "builds");
         try { Files.createDirectories(d); } catch (IOException e) { return legacyDir(); }
         return d;
     }
@@ -46,13 +46,13 @@ public final class SavedBuilds {
         return d;
     }
 
-    private static Path pathOf(Entry e) { return Path.of(e.file()); }
+    private static Path pathOf(Entry e) { return java.nio.file.Paths.get(e.file()); }
 
     public static List<Entry> list() {
         List<Entry> out = new ArrayList<>();
         java.util.Set<String> seen = new java.util.HashSet<>();
         Path shared = dir(), old = legacyDir();
-        for (Path folder : shared.equals(old) ? List.of(shared) : List.of(shared, old)) {
+        for (Path folder : shared.equals(old) ? java.util.Collections.singletonList(shared) : java.util.Arrays.asList(shared, old)) {
             try (var s = Files.list(folder)) {
                 for (Path p : (Iterable<Path>) s::iterator) {
                     if (!p.getFileName().toString().endsWith(".bbp")) continue;
@@ -116,7 +116,7 @@ public final class SavedBuilds {
             byte[] buf = new byte[8192];
             while (!inf.finished()) { int n = inf.inflate(buf); if (n == 0 && inf.needsInput()) break; o.write(buf, 0, n); if (o.size() > 60_000_000) throw new BlueprintException("That build is too big."); }
             inf.end();
-            json = o.toString(StandardCharsets.UTF_8);
+            json = new String(o.toByteArray(), StandardCharsets.UTF_8);
         } catch (BlueprintException e) { throw e; } catch (Exception e) { throw new BlueprintException("That build code is broken - copy it again."); }
         try {
             com.google.gson.JsonObject root = new com.google.gson.JsonParser().parse(json).getAsJsonObject();
@@ -154,12 +154,12 @@ public final class SavedBuilds {
         if (slug.isEmpty()) slug = "build";
         Path p = dir().resolve(slug + ".bbp");
         for (int i = 2; Files.exists(p); i++) p = dir().resolve(slug + "_" + i + ".bbp");
-        Files.writeString(p, name + "\n" + data + "\n", StandardCharsets.UTF_8);
+        Files.write(p, (name + "\n" + data + "\n").getBytes(StandardCharsets.UTF_8));
         return new Entry(p.toString(), name, data, System.currentTimeMillis());
     }
 
     public static void rename(Entry e, String name) throws IOException {
-        Files.writeString(pathOf(e), name + "\n" + e.data() + "\n", StandardCharsets.UTF_8);
+        Files.write(pathOf(e), (name + "\n" + e.data() + "\n").getBytes(StandardCharsets.UTF_8));
     }
 
     public static void delete(Entry e) throws IOException { Files.deleteIfExists(pathOf(e)); }
