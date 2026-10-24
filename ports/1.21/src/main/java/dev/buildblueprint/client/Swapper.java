@@ -102,7 +102,7 @@ public final class Swapper {
         StringBuilder sb = new StringBuilder();
         for (Property<?> pr : def.getProperties()) {
             String v = kv.get(pr.getName());
-            if (v == null || pr.getValue(v).isEmpty()) continue;
+            if (v == null || !pr.getValue(v).isPresent()) continue;
             if (sb.length() > 0) sb.append(',');
             sb.append(pr.getName()).append('=').append(v);
         }
@@ -169,7 +169,7 @@ public final class Swapper {
             if (id.equals(blockId) || blk.asItem() == net.minecraft.world.item.Items.AIR) continue;
             String p = path(id);
             if (suffix != null) { if (p.endsWith(suffix) && !(suffix.equals("_slab") && false)) out.add(id); }
-            else if (cube) { BlockState d = blk.defaultBlockState(); if ((V.solid(d) || V.glass(blk)) && !d.hasBlockEntity()) out.add(id); }
+            else if (cube) { BlockState d = blk.defaultBlockState(); if ((V.solid(d) || V.glass(blk)) && !V.hasBE(d)) out.add(id); }
             else if (blk.getClass() == self.getBlock().getClass()) out.add(id);
         }
         return out;

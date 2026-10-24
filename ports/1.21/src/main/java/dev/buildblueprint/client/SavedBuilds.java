@@ -116,7 +116,7 @@ public final class SavedBuilds {
             byte[] buf = new byte[8192];
             while (!inf.finished()) { int n = inf.inflate(buf); if (n == 0 && inf.needsInput()) break; o.write(buf, 0, n); if (o.size() > 60_000_000) throw new BlueprintException("That build is too big."); }
             inf.end();
-            json = o.toString(StandardCharsets.UTF_8);
+            json = new String(o.toByteArray(), StandardCharsets.UTF_8);
         } catch (BlueprintException e) { throw e; } catch (Exception e) { throw new BlueprintException("That build code is broken - copy it again."); }
         try {
             com.google.gson.JsonObject root = new com.google.gson.JsonParser().parse(json).getAsJsonObject();

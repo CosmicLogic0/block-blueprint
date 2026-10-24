@@ -153,7 +153,7 @@ public final class Copier {
         // first soil (dirt, grass, sand...) below; or, failing that, natural stone below an air/water gap
         boolean gap = false; int stoneY = Integer.MIN_VALUE;
         for (int y = start.getY() - 1; y > start.getY() - 200 && y >= V.minY(mc.level); y--) {
-            BlockState st = mc.level.getBlockState(g.setY(y));
+            g.setY(y); BlockState st = mc.level.getBlockState(g);
             if (st.isAir() || st.getBlock() instanceof LiquidBlock) { gap = true; continue; }
             if (isSoil(st)) { groundY = y; break; }
             if (gap && isGround(st) && stoneY == Integer.MIN_VALUE) stoneY = y;

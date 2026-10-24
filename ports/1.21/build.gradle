@@ -78,7 +78,7 @@ tasks.register('bbMakeSources', Sync) {
             if (l.trim() == 'import Btn.Tip;') return ''
         }
         if (java8) {
-            l = recordToClass(l).replace('addRenderableWidget(', 'addButton(').replaceAll(/\.getInventory\(\)/, '.inventory')
+            l = recordToClass(l).replace('addRenderableWidget(', 'addButton(').replaceAll(/\.getInventory\(\)/, '.inventory').replaceAll(/\.getYRot\(\)/, '.yRot')
         }
         if (oldText) {
             l = l.replace('Component.literal(', 'new net.minecraft.network.chat.TextComponent(').replace('client.command.v2.', 'client.command.v1.')

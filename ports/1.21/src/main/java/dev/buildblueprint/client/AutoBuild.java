@@ -25,7 +25,7 @@ public final class AutoBuild {
     private record Job(BlockPos pos, BlockState state, String text) {}
 
     private static final int PER_TICK_LOCAL = 400, PER_TICK_SERVER = 20;
-    private static final int FLAGS = Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE | Block.UPDATE_SUPPRESS_DROPS;
+    private static final int FLAGS = 2 | 16 | 32;   // update clients | known shape | no drops
 
     private static List<Job> queue = new ArrayList<>();
     private static int next = 0, total = 0;
@@ -74,7 +74,7 @@ public final class AutoBuild {
                 p.set(s.ox + x, s.oy + y, s.oz + z);
                 BlockState here = mc.level.getBlockState(p);
                 if (V.blockId(here.getBlock()).equals(MaterialMap.blockId(st))) continue; // already right
-                if (here.hasBlockEntity()) { kept++; continue; }   // don't wipe out chests, furnaces...
+                if (V.hasBE(here)) { kept++; continue; }   // don't wipe out chests, furnaces...
                 BlockPos at = p.immutable();
                 jobs.add(new Job(at, want, V.stateString(want)));
                 before.add(new Job(at, here, V.stateString(here)));
