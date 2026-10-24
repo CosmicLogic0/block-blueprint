@@ -35,6 +35,7 @@ jobs:
           - { mc: "1.17.1",  dir: ports/1.21, java: 16, fapi: "1.17" }
           - { mc: "1.16.5",  dir: ports/1.21, java: 8, fapi: "1.16" }
           - { mc: "1.20.1",  id: "forge-1.20.1", dir: ports/forge, java: 17, loader: forge }
+          - { mc: "1.21.1",  id: "neoforge-1.21.1", dir: ports/forge, java: 21, loader: neoforge }
           - { mc: "1.20.6", dir: ports/1.21, java: 21 }
           - { mc: "1.20.4", dir: ports/1.21, java: 17 }
           - { mc: "1.20.1", dir: ports/1.21, java: 17 }
@@ -51,6 +52,13 @@ jobs:
             L=$(curl -s https://maven.architectury.dev/dev/architectury/loom/dev.architectury.loom.gradle.plugin/maven-metadata.xml | grep -o "<latest>[^<]*</latest>" | sed 's/<[^>]*>//g')
             echo "Forge: $F  Architectury Loom: $L"
             echo "args=-Pforge_version=$F -Parch_loom_version=$L" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if [ "${{ matrix.loader }}" = "neoforge" ]; then
+            P=$(echo "${{ matrix.mc }}" | sed 's/^1\.//')                      # 1.21.1 -> 21.1
+            F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -o "<version>$P\.[0-9]*</version>" | sed 's/<[^>]*>//g' | sort -t. -k3 -n | tail -1)
+            L=$(curl -s https://maven.architectury.dev/dev/architectury/loom/dev.architectury.loom.gradle.plugin/maven-metadata.xml | grep -o "<latest>[^<]*</latest>" | sed 's/<[^>]*>//g')
+            echo "NeoForge: $F  Architectury Loom: $L"
+            echo "args=-Ploom.platform=neoforge -Pforge_version=$F -Parch_loom_version=$L" >> "$GITHUB_OUTPUT"; exit 0
           fi
           V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.fapi || matrix.mc }}</version>" | sed 's/<[^>]*>//g' | tail -1)
           echo "Fabric API: $V"

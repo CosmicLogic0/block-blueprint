@@ -1,1 +1,1 @@
-{ "pack": { "description": "Build Blueprint resources", "pack_format": 15 } }
+{ "pack": { "description": "Build Blueprint resources", "pack_format": ${pack} } }
