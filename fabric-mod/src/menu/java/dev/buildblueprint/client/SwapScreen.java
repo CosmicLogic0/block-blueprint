@@ -136,7 +136,7 @@ public class SwapScreen extends Screen {
         if (e.key() == 256) { onClose(); return true; }
         return super.keyPressed(e);
     }
-    @Override public void onClose() { Materials.refresh(); Minecraft.getInstance().gui.setScreen(parent); }
+    @Override public void onClose() { Materials.refresh(); Mc.setScreen(parent); }
 
     @Override
     public void extractRenderState(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) { Safe.run("the swap screen", () -> draw(g, mouseX, mouseY, delta)); }

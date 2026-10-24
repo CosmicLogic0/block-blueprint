@@ -11,18 +11,18 @@ public final class MenuModule {
     }
     public static void openMaterials() {
         Minecraft mc = Minecraft.getInstance();
-        mc.execute(() -> mc.gui.setScreen(new MaterialsScreen()));
+        mc.execute(() -> Mc.setScreen(new MaterialsScreen()));
     }
     public static void openSettings(net.minecraft.client.gui.screens.Screen parent) {
         Minecraft mc = Minecraft.getInstance();
-        mc.execute(() -> mc.gui.setScreen(new SettingsScreen(parent)));
+        mc.execute(() -> Mc.setScreen(new SettingsScreen(parent)));
     }
     public static void openCopy() {
         Minecraft mc = Minecraft.getInstance();
-        mc.execute(() -> mc.gui.setScreen(new CopyScreen()));
+        mc.execute(() -> Mc.setScreen(new CopyScreen()));
     }
     public static void openSaved() {
         Minecraft mc = Minecraft.getInstance();
-        mc.execute(() -> mc.gui.setScreen(new SavedBuildsScreen()));
+        mc.execute(() -> Mc.setScreen(new SavedBuildsScreen()));
     }
 }

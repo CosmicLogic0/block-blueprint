@@ -1,0 +1,56 @@
+// Build Blueprint for Minecraft 1.21.11: the same code as the 26.x mod (../../fabric-mod), built against the
+// last obfuscated Minecraft with Mojang's names, so Loom remaps it.
+plugins {
+    id 'fabric-loom' version "${loom_version}"
+}
+
+version = "${project.mod_version}+${project.minecraft_version}"
+group = project.maven_group
+base { archivesName = project.archives_base_name }
+
+repositories { mavenCentral() }
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+def mod = '../../fabric-mod/src'
+// The 26.x code with the few names that are different in 1.21.11 swapped; files in src/override replace whole files.
+def gen = layout.buildDirectory.dir('gen-src')
+def overrides = file('src/override/java/dev/buildblueprint/client').list() as List
+tasks.register('bbMakeSources', Sync) {
+    ['main', 'menu', 'preview', 'keys'].each { from("${mod}/${it}/java") { exclude overrides.collect { "**/client/" + it } } }
+    into gen
+    inputs.file('build.gradle')
+    filter { String l -> l
+        .replace('net.fabricmc.fabric.api.client.command.v2.ClientCommands', 'net.fabricmc.fabric.api.client.command.v2.ClientCommandManager')
+        .replace('ClientCommands.', 'ClientCommandManager.')
+        .replace('client.keymapping.v1.KeyMappingHelper', 'client.keybinding.v1.KeyBindingHelper')
+        .replace('KeyMappingHelper.registerKeyMapping', 'KeyBindingHelper.registerKeyBinding')
+        .replace('net.minecraft.world.inventory.ContainerInput', 'net.minecraft.world.inventory.ClickType')
+        .replace('ContainerInput.', 'ClickType.').replace('handleContainerInput(', 'handleInventoryMouseClick(')
+        .replace('mc.player.sendSystemMessage(Component.literal(text).withStyle(color))', 'mc.player.displayClientMessage(Component.literal(text).withStyle(color), false)')
+        .replace('mc.player.sendOverlayMessage(Component.literal(text))', 'mc.player.displayClientMessage(Component.literal(text), true)')
+        .replace('GuiGraphicsExtractor', 'GuiGraphics')
+        .replace('extractRenderState(', 'render(')
+        .replace('g.text(', 'g.drawString(').replace('g.item(', 'g.renderItem(')
+    }
+}
+sourceSets.main {
+    java { srcDir gen; srcDir 'src/override/java'; srcDir 'src/compat/java' }
+    resources { srcDir "${mod}/main/resources" }
+}
+compileJava.dependsOn bbMakeSources
+tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn bbMakeSources }
+
+def mcdep = project.findProperty('mc_dep') ?: '1.21.11'
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcdep', mcdep
+    filesMatching('fabric.mod.json') { expand 'version': project.version, 'mcdep': mcdep, 'java': 21 }
+}
+tasks.withType(JavaCompile).configureEach { options.release = 21 }
+tasks.named("test") { enabled = false }

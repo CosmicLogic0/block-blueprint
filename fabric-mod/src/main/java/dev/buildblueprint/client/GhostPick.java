@@ -26,7 +26,7 @@ public final class GhostPick {
     static void init() {
         // START of the tick: before vanilla handles the pick-block key, so a ghost hit takes priority.
         ClientTickEvents.START_CLIENT_TICK.register(mc -> Safe.run("pick from ghost", () -> {
-            if (!Settings.ghostPick || mc.player == null || mc.gui.screen() != null) return;
+            if (!Settings.ghostPick || mc.player == null || Mc.screen() != null) return;
             if (!BuildBlueprintClient.SESSION.loaded() || !BuildBlueprintClient.SESSION.visible) return;
             if (!mc.options.keyPickItem.isDown()) return;
             Target t = look(mc);

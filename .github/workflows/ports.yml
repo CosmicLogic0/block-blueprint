@@ -1,0 +1,103 @@
+# Test-builds the mod for every supported Minecraft version (branch "ports" or by hand). No release is made.
+name: Build all Minecraft versions
+
+on:
+  push:
+    branches: [ports]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { mc: "26.3", dir: fabric-mod, java: 25 }
+          - { mc: "26.2", dir: fabric-mod, java: 25 }
+          - { mc: "26.1", dir: fabric-mod, java: 25 }
+          - { mc: "1.21.1", dir: ports/1.21, java: 21 }
+          - { mc: "1.21.4", dir: ports/1.21, java: 21 }
+          - { mc: "1.21.5", dir: ports/1.21, java: 21 }
+          - { mc: "1.21.8", dir: ports/1.21, java: 21 }
+          - { mc: "1.21.11", dir: ports/1.21.11, java: 21 }
+          - { mc: "1.20.6", dir: ports/1.21, java: 21 }
+          - { mc: "1.20.4", dir: ports/1.21, java: 17 }
+          - { mc: "1.20.1", dir: ports/1.21, java: 17 }
+    name: mc ${{ matrix.mc }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "${{ matrix.java == 25 && 25 || 21 }}" }   # Loom needs 21+; older targets compile with --release
+      - name: Find the Fabric API for this version
+        id: fapi
+        run: |
+          V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.mc }}</version>" | sed 's/<[^>]*>//g' | tail -1)
+          echo "Fabric API: $V"
+          if [ -z "$V" ]; then echo "::error title=mc ${{ matrix.mc }}::No Fabric API found for this Minecraft version"; exit 1; fi
+          echo "v=$V" >> "$GITHUB_OUTPUT"
+      - name: Build
+        working-directory: ${{ matrix.dir }}
+        run: |
+          chmod +x gradlew
+          set -o pipefail
+          ./gradlew build -x test --no-daemon -Pminecraft_version=${{ matrix.mc }} -Pfabric_api_version=${{ steps.fapi.outputs.v }} -Pjava_version=${{ matrix.java }} 2>&1 | tee build.log
+      - name: Report errors
+        if: failure()
+        working-directory: ${{ matrix.dir }}
+        run: |
+          [ -f build.log ] || exit 0
+          # one line per distinct problem: file:line, the message and the missing symbol
+          python3 - <<'PY' > errs.txt
+          import re
+          L=open('build.log',errors='replace').read().split('\n'); out=[]; seen=set()
+          for i,l in enumerate(L):
+              m=re.search(r'/src/(\S+?\.java):(\d+): error: (.*)',l)
+              if not m: continue
+              sym=''
+              for k in range(i+1,min(i+6,len(L))):
+                  if 'symbol:' in L[k]: sym=L[k].strip(); break
+              code=L[i+1].strip() if i+1<len(L) else ''
+              key=(m.group(1),m.group(3),sym)
+              if key in seen: continue
+              seen.add(key); out.append(f"{m.group(1).split('/')[-1]}:{m.group(2)} {m.group(3)} | {sym} | {code[:140]}")
+          if not out: out=[l for l in L if 'What went wrong' in l or 'Could not' in l or '> ' in l][:30]
+          print('\n'.join(out[:150]))
+          PY
+          cp errs.txt errs.keep 2>/dev/null; E=$(sed 's/%/%25/g' errs.txt | sed ':a;N;$!ba;s/\n/%0A/g')
+          echo "::error title=mc ${{ matrix.mc }} build failed::$E"
+      - name: Write the result
+        if: always()
+        run: |
+          mkdir -p result
+          if [ -f ${{ matrix.dir }}/errs.txt ]; then cp ${{ matrix.dir }}/errs.txt result/${{ matrix.mc }}.txt; \
+          elif ls ${{ matrix.dir }}/build/libs/*.jar >/dev/null 2>&1; then echo "OK $(ls ${{ matrix.dir }}/build/libs/)" > result/${{ matrix.mc }}.txt; \
+            mkdir -p result/jars; for j in ${{ matrix.dir }}/build/libs/*.jar; do case "$j" in *-sources.jar) ;; *) cp "$j" result/jars/;; esac; done; \
+          else tail -n 60 ${{ matrix.dir }}/build.log > result/${{ matrix.mc }}.txt 2>/dev/null || echo "FAILED before building" > result/${{ matrix.mc }}.txt; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: result-${{ matrix.mc }}
+          path: result/
+
+  # Puts every version's result in the "ci-results" branch so it can be read with plain git.
+  collect:
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: result-*
+          merge-multiple: true
+          path: out
+      - name: Push results
+        run: |
+          cd out
+          git init -q -b ci-results
+          git config user.name ci; git config user.email ci@example.com
+          echo "${GITHUB_SHA}" > COMMIT
+          git add -A; git commit -qm "results for ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" ci-results

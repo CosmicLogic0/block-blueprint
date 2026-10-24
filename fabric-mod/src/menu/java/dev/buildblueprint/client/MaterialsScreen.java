@@ -72,7 +72,7 @@ public class MaterialsScreen extends Screen {
     private Materials.Row hoveredRow;
     @Override public boolean mouseClicked(net.minecraft.client.input.MouseButtonEvent e, boolean dbl) {
         if (super.mouseClicked(e, dbl)) return true;
-        if (hoveredRow != null && BuildBlueprintClient.SESSION.loaded()) { minecraft.gui.setScreen(new SwapScreen(this, hoveredRow.id())); return true; }
+        if (hoveredRow != null && BuildBlueprintClient.SESSION.loaded()) { Mc.setScreen(new SwapScreen(this, hoveredRow.id())); return true; }
         return false;
     }
 

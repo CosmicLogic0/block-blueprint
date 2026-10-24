@@ -23,7 +23,7 @@ public final class KeysModule {
     private static final int[] held = new int[7];
 
     private static KeyMapping reg(String id, int key) {
-        return KeyMappingHelper.registerKeyMapping(new KeyMapping("key.buildblueprint." + id, InputConstants.Type.KEYBOARD, key, CATEGORY));
+        return KeyMappingHelper.registerKeyMapping(new KeyMapping("key.buildblueprint." + id, Mc.keyboard(), key, CATEGORY));
     }
 
     public static void init() {
@@ -53,7 +53,7 @@ public final class KeysModule {
 
     private static void tick(Minecraft mc) {
         if (mc.player == null) return;
-        boolean noScreen = mc.gui.screen() == null;
+        boolean noScreen = Mc.screen() == null;
         boolean l = pulse(0, left), r = pulse(1, right), f = pulse(2, forward), b = pulse(3, back);
         boolean rot = pulse(4, rotate);
         boolean lu = false, ld = false;

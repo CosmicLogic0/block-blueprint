@@ -23,13 +23,17 @@ sourceSets {
             if (project.findProperty('enableMenu') == 'true') srcDir 'src/menu/java'
             if (project.findProperty('enablePreview') == 'true') srcDir 'src/preview/java'
             if (project.findProperty('enableKeys') == 'true') srcDir 'src/keys/java'
+            // version-specific bits: src/compat/<group>/java (the newest group that is not newer than this Minecraft)
+            srcDir "src/compat/${project.findProperty('compat') ?: project.minecraft_version}/java"
         }
     }
 }
 
+def mcdep = project.findProperty('mc_dep') ?: "~${project.minecraft_version}"
 processResources {
     inputs.property 'version', project.version
-    filesMatching('fabric.mod.json') { expand 'version': project.version }
+    inputs.property 'mcdep', mcdep
+    filesMatching('fabric.mod.json') { expand 'version': project.version, 'mcdep': mcdep, 'java': 25 }
 }
 
 tasks.withType(JavaCompile).configureEach { options.release = 25 }
@@ -38,6 +42,9 @@ java {
     sourceCompatibility = JavaVersion.VERSION_25
     targetCompatibility = JavaVersion.VERSION_25
 }
+
+// jar name includes the Minecraft version, e.g. buildblueprint-1.1.4+26.2.jar
+version = "${project.mod_version}+${project.minecraft_version}"
 
 jar {
     from('LICENSE') { rename { "${it}_${project.base.archivesName.get()}" } }
