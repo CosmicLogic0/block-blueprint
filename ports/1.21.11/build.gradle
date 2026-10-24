@@ -21,7 +21,7 @@ def mod = '../../fabric-mod/src'
 // The 26.x code with the few names that are different in 1.21.11 swapped; files in src/override replace whole files.
 def gen = layout.buildDirectory.dir('gen-src')
 def overrides = file('src/override/java/dev/buildblueprint/client').list() as List
-tasks.register('genSources', Sync) {
+tasks.register('bbMakeSources', Sync) {
     ['main', 'menu', 'preview', 'keys'].each { from("${mod}/${it}/java") { exclude overrides.collect { "**/client/" + it } } }
     into gen
     inputs.file('build.gradle')
@@ -43,8 +43,8 @@ sourceSets.main {
     java { srcDir gen; srcDir 'src/override/java'; srcDir 'src/compat/java' }
     resources { srcDir "${mod}/main/resources" }
 }
-compileJava.dependsOn genSources
-tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn genSources }
+compileJava.dependsOn bbMakeSources
+tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn bbMakeSources }
 
 def mcdep = project.findProperty('mc_dep') ?: '1.21.11'
 processResources {
