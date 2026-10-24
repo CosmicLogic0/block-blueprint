@@ -45,7 +45,7 @@ public final class Copier {
     public static BlockPos target() {
         Minecraft mc = Minecraft.getInstance();
         if (mc.hitResult instanceof BlockHitResult bh && mc.hitResult.getType() == HitResult.Type.BLOCK) return bh.getBlockPos();
-        return BlockPos.containing(mc.player.getX(), mc.player.getY(), mc.player.getZ());
+        return new BlockPos((int) Math.floor(mc.player.getX()), (int) Math.floor(mc.player.getY()), (int) Math.floor(mc.player.getZ()));
     }
 
     public static void start() {

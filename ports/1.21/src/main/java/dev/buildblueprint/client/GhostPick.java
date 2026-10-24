@@ -56,7 +56,7 @@ public final class GhostPick {
             if (st == null) continue;
             BlockState here = mc.level.getBlockState(p.set(x, y, z));
             if (V.blockId(here.getBlock()).equals(MaterialMap.blockId(st))) continue; // built already
-            if (!(here.isAir() || here.canBeReplaced())) continue;
+            if (!(here.isAir() || V.replaceable(here))) continue;
             return new Target(p.immutable(), st);
         }
         return null;

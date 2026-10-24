@@ -14,7 +14,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.EmptyBlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
 
 /**
  * Saved builds (Page Up when nothing is loaded): paste builds from the app, keep them on this computer,
@@ -182,9 +181,9 @@ public class SavedBuildsScreen extends BBScreen {
             try {
                 BlockState bs = V.parseState(st);
                 if (bs.isAir()) return 0;
-                MapColor mc = bs.getMapColor(EmptyBlockGetter.INSTANCE, BlockPos.ZERO);
-                if (mc == MapColor.NONE) return st.contains("glass") ? 0xFFA8D8F0 : 0xFF9A9A9A; // glass, panes, small decor
-                return mc.col | 0xFF000000;
+                int col = V.mapColor(bs);
+                if (col == 0) return st.contains("glass") ? 0xFFA8D8F0 : 0xFF9A9A9A; // glass, panes, small decor
+                return col | 0xFF000000;
             } catch (Exception e) { return 0xFF808080; }
         });
     }

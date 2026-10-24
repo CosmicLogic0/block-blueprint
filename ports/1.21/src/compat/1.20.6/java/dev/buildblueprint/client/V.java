@@ -48,4 +48,6 @@ public final class V {
     public static void onHud(java.util.function.Consumer<GuiGraphics> body) {
         net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback.EVENT.register((g, delta) -> body.accept(g));
     }
+    public static int mapColor(BlockState s) { var c = s.getMapColor(EmptyBlockGetter.INSTANCE, BlockPos.ZERO); return c == net.minecraft.world.level.material.MapColor.NONE ? 0 : c.col; }
+    public static boolean replaceable(BlockState s) { return s.canBeReplaced(); }
 }

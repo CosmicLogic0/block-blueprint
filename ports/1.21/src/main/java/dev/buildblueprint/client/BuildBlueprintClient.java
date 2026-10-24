@@ -140,7 +140,7 @@ public class BuildBlueprintClient implements ClientModInitializer {
             int wx = SESSION.ox + x, wz = SESSION.oz + z;
             for (int y = SESSION.oy + 8; y > SESSION.oy - 64; y--) {
                 var st = mc.level.getBlockState(p.set(wx, y, wz));
-                if (!st.isAir() && !st.canBeReplaced() && st.getFluidState().isEmpty()) { votes.merge(y + 1, 1, Integer::sum); break; }
+                if (!st.isAir() && !V.replaceable(st) && st.getFluidState().isEmpty()) { votes.merge(y + 1, 1, Integer::sum); break; }
             }
         }
         if (votes.isEmpty()) { Chat.bar("No ground found under the blueprint"); return; }

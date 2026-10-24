@@ -153,7 +153,7 @@ public final class PreviewModule {
                     BlockState here = mc.level.getBlockState(pos);
                     String have = V.blockId(here.getBlock());
                     if (have.equals(MaterialMap.blockId(st))) continue;     // already built
-                    if (here.isAir() || !here.getFluidState().isEmpty() || here.canBeReplaced()) {
+                    if (here.isAir() || !here.getFluidState().isEmpty() || V.replaceable(here)) {
                         BlockState want = parse(st);
                         if (want != null && ghosts.size() < MAX_GHOSTS) { ghosts.add(new Ghost(wx, wy, wz, want, x, y, z)); ghostAt.add(((long) x << 40) | ((long) y << 20) | z); }
                     } else if (reds.size() < MAX_RED) {
