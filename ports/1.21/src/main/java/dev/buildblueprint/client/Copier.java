@@ -316,7 +316,7 @@ public final class Copier {
 
     /** Captures, saves to Saved builds, copies the app code. Returns the saved entry or null. */
     public static SavedBuilds.Entry save(String name) {
-        if (name == null || name.isBlank()) name = "Copied build";
+        if (name == null || name.trim().isEmpty()) name = "Copied build";
         name = name.trim();
         if (name.length() > 40) name = name.substring(0, 40);
         Blueprint bp = capture(name);

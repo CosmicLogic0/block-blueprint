@@ -102,7 +102,7 @@ public class SavedBuildsScreen extends BBScreen {
             String data = SavedBuilds.parsePasted(Minecraft.getInstance().keyboardHandler.getClipboard());
             for (int i = 0; i < builds.size(); i++) if (builds.get(i).data().equals(data)) { sel = i; msg = "You already saved this build."; return; }
             Blueprint bp = BlueprintCodec.decode(data);
-            SavedBuilds.save(bp.name == null || bp.name.isBlank() ? "My build" : bp.name, data);
+            SavedBuilds.save(bp.name == null || bp.name.trim().isEmpty() ? "My build" : bp.name, data);
             builds = SavedBuilds.list(); sel = 0; scroll = 0; resetView();
             msg = "Saved \"" + builds.get(0).name() + "\" on this computer.";
         } catch (Exception e) { err = e.getMessage() == null ? "Could not read the clipboard." : e.getMessage(); }
