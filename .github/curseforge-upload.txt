@@ -1,25 +1,5 @@
 # Versions to upload to CurseForge with the next release (ids from release.yml: "1.20.1", "forge-1.20.1", ...).
 # Only list NEW versions or versions with real changes: CurseForge rejects re-uploads without changes.
 # This list is only used when this file is changed in the same push as the version bump.
-neoforge-26.3
-neoforge-26.2
-neoforge-26.1.2
-neoforge-26.1.1
-neoforge-26.1
 forge-26.3
-forge-26.2
-forge-26.1.2
-forge-26.1.1
-forge-26.1
-forge-1.18
-forge-1.19.1
-forge-1.20
-forge-1.21.6
-forge-1.21.7
-forge-1.21.9
-neoforge-1.21
-neoforge-1.21.2
-neoforge-1.21.6
-neoforge-1.21.7
-neoforge-1.21.9
-# 1.2.3 release: 21 new versions
+# 1.2.3 retry: Forge 26.3 (download failed the first time)
