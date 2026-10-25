@@ -52,6 +52,7 @@ SUBS = [
     (r'BuiltInRegistries\.ITEM\.getKey\((\w+)\)\.toString\(\)', r'V.itemId(\1)'),
     (r'\b(\w+) instanceof net\.minecraft\.world\.level\.block\.TransparentBlock', r'V.glass(\1)'),
     (r'pr\.getValue\(v\)\.isEmpty\(\)', '!pr.getValue(v).isPresent()'),
+    (r'blk\.defaultBlockState\(\)\.hasBlockEntity\(\)', 'V.hasBE(blk.defaultBlockState())'),
     (r'new HashSet<>\(List\.of\(', 'new HashSet<>(java.util.Arrays.asList('),
     (r'return (\w+)\.getMapColor\(net\.minecraft\.world\.level\.EmptyBlockGetter\.INSTANCE, net\.minecraft\.core\.BlockPos\.ZERO\)\.col;', r'return V.mapColor(\1);'),
 ]

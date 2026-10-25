@@ -28,7 +28,7 @@ public final class Swapper {
     private Swapper() {}
 
     /** One block you can swap to: its id, the name players see, the mod it comes from ("" = Minecraft) and its shape. */
-    public record Option(String id, String name, String mod, ItemStack icon, String shape, int color) {}
+    public record Option(String id, String name, String mod, ItemStack icon, String shape, int color, boolean machine) {}
 
     public static boolean exists(String id) {
         try { return BuiltInRegistries.BLOCK.containsKey(Identifier.parse(id)); } catch (Exception e) { return false; }
@@ -91,7 +91,7 @@ public final class Swapper {
                 if (!BuiltInRegistries.ITEM.getKey(it).toString().equals(id)) continue;   // wall torch, wall sign... share the item of the normal one
                 ItemStack st = new ItemStack(it);
                 String mod = ns(id).equals("minecraft") ? "" : PlayerInfo.pretty(ns(id));
-                out.add(new Option(id, st.getHoverName().getString(), mod, st, shape(blk, id), mapCol(blk.defaultBlockState())));
+                out.add(new Option(id, st.getHoverName().getString(), mod, st, shape(blk, id), mapCol(blk.defaultBlockState()), blk.defaultBlockState().hasBlockEntity()));
             } catch (Throwable ignored) {}
         }
         out.sort((a, b) -> a.name().compareToIgnoreCase(b.name()));
@@ -130,6 +130,7 @@ public final class Swapper {
         out.sort((a, b) -> {
             int sa = shared(mine, a.id()), sb = shared(mine, b.id());
             if (sa != sb) return Integer.compare(sb, sa);
+            if (a.machine() != b.machine()) return a.machine() ? 1 : -1;   // furnaces, chests... after plain blocks
             if (myCol != 0 && a.color() != b.color()) {
                 int da = a.color() == 0 ? Integer.MAX_VALUE : colorDist(myCol, a.color()), dbb = b.color() == 0 ? Integer.MAX_VALUE : colorDist(myCol, b.color());
                 if (da != dbb) return Integer.compare(da, dbb);
