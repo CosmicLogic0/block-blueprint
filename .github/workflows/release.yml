@@ -167,6 +167,9 @@ jobs:
           - { mc: "1.20.6",  id: neoforge-1.20.6, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.20.6" }
           - { mc: "1.20.4",  id: neoforge-1.20.4, loader: neoforge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.4" }
           - { mc: "1.20.2",  id: neoforge-1.20.2, loader: neoforge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.2" }
+          - { mc: "1.20.3",  id: neoforge-1.20.3, loader: neoforge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.3" }
+          - { mc: "1.16.4",  id: forge-1.16.4, loader: forge, dir: ports/forge, run: 21, target: 8, type: beta, gv: "1.16.4" }
+          - { mc: "1.16.3",  id: forge-1.16.3, loader: forge, dir: ports/forge, run: 21, target: 8, type: beta, gv: "1.16.3" }
           - { mc: "1.21.9",  dir: ports/1.21.11, run: 21, target: 21, type: beta, gv: "1.21.9" }
           - { mc: "1.21.8",  id: forge-1.21.8, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.8" }
           - { mc: "1.21.10", id: forge-1.21.10, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.10" }
