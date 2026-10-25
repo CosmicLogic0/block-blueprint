@@ -31,7 +31,7 @@ Look at a corner of a build and press **Insert**. A box starts on that block: ma
 <img src="https://media.forgecdn.net/attachments/2105/533/copy-a-build-png.png" alt="Copying a build with the copy box" width="738">
 
 **⚡ Creative mode extras**<br>
-Place a whole build, or just one layer, instantly, with undo.
+In Creative mode the mod can build it for you. **Auto-build** places the whole build at once, **Build layer** places just the layer you're on, and **Undo build** takes it all back if you change your mind. On servers this needs operator rights.
 
 **💾 It remembers**<br>
 Leave the world and come back, and your blueprint is still there, right where you left it.
