@@ -58,7 +58,6 @@ public final class Swapper {
         if (b instanceof net.minecraft.world.level.block.AbstractBannerBlock) return "banner";
         if (b instanceof net.minecraft.world.level.block.BedBlock) return "bed";
         if (b instanceof net.minecraft.world.level.block.TorchBlock) return "torch";
-        if (b instanceof net.minecraft.world.level.block.LanternBlock) return "lantern";
         if (b instanceof net.minecraft.world.level.block.LeavesBlock) return "leaves";
         if (p.endsWith("carpet")) return "carpet";
         return shapeByName(p, b);
