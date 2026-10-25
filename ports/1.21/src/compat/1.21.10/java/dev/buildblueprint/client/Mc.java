@@ -9,5 +9,5 @@ public final class Mc {
     private Mc() {}
     public static Screen screen() { return Minecraft.getInstance().screen; }
     public static void setScreen(Screen s) { Minecraft.getInstance().setScreen(s); }
-    public static InputConstants.Type keyboard() { return InputConstants.Type.values()[0];   // KEYSYM }
+    public static InputConstants.Type keyboard() { return InputConstants.Type.values()[0]; /* KEYSYM */ }
 }
