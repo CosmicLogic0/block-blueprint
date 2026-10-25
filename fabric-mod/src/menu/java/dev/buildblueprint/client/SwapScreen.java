@@ -55,7 +55,7 @@ public class SwapScreen extends Screen {
     private int visRows() { return Math.max(1, (listBottom() - listTop() - 4) / rowH()); }
     private int totalRows() { return (shown.size() + cols() - 1) / cols(); }
     private int maxScroll() { return Math.max(0, totalRows() - visRows()); }
-    private static Tooltip tip(String t) { return Tooltip.create(Component.literal(t)); }
+    private static net.minecraft.client.gui.components.Tooltip tip(String t) { return Tooltip.create(Component.literal(t)); }
 
     @Override protected void init() {
         if (similar == null) { similar = Swapper.similar(blockId); mods = Swapper.modded(); }
