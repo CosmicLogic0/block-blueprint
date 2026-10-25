@@ -76,4 +76,4 @@ neoforge-1.21.7
 neoforge-1.21.6
 neoforge-1.21.2
 neoforge-1.21
-# 1.2.7 release: new in-game UI + copy box in every version, NeoForge 26.x startup fix, Fabric 1.16.2-1.16.4 (75 files)
+# 1.2.7 release: new in-game UI + copy box in every version, NeoForge 26.x startup fix, Fabric 1.16.2-1.16.4 (75 files) 
