@@ -23,7 +23,7 @@ A live list shows every block the build needs, how many you have, and how many a
 A pulsing box shows the next block to place. Middle-click any ghost block to put that block in your hand.
 
 **🎨 Make it yours**<br>
-Click any block in the list to swap it. Change every oak piece to spruce, stone bricks to deepslate, or black sails to red, in one click. Stairs and slabs keep their direction.
+Click any block in the list and pick another one to use instead: any block in the game, even blocks from other mods you have. Search by name, or start with similar blocks (stairs stay stairs, closest colours first). Every block of that kind in the build changes, and **Undo swap** puts it back.
 
 **📸 Copy any build in your world/Other servers**<br>
 Look at a corner of a build and press **Insert**. A box starts on that block: make it as big as the build with the arrow keys, or look at the far corner and press **Page Down** to stretch it there. Save it, share it as a code, or build it again somewhere else.
