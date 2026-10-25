@@ -1,0 +1,5 @@
+Structures Addition by Syhix
+https://modrinth.com/datapack/structures-addition
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

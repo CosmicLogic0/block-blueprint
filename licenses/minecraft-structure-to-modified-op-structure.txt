@@ -1,0 +1,5 @@
+Minecraft Structure to Modified op Structure by AkhiAlby
+https://modrinth.com/datapack/minecraft-structure-to-modified-op-structure
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

@@ -1,0 +1,5 @@
+Cobblemon: Explore Legendary Dungeons! by ProffPorker
+https://modrinth.com/mod/cobblemon-explore-legendary-dungeons
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

@@ -1,0 +1,5 @@
+RPG Stash by maevius
+https://modrinth.com/mod/rpg-stash
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

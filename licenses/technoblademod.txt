@@ -1,0 +1,5 @@
+The Technoblade Mod by _loaff
+https://modrinth.com/mod/technoblademod
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

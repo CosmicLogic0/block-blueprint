@@ -1,0 +1,5 @@
+Fractum - biome mod by Gloxinia_04
+https://modrinth.com/mod/fractum-mod
+License: Apache-2.0
+
+(no license file in the download; license as listed on Modrinth)

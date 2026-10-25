@@ -1,0 +1,5 @@
+Piersprawl by TheSaltySand
+https://modrinth.com/datapack/piersprawl
+License: Apache-2.0
+
+(no license file in the download; license as listed on Modrinth)

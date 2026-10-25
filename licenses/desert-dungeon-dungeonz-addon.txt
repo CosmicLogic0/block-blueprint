@@ -1,0 +1,5 @@
+Desert Dungeon - DungeonZ addon by D1scoball
+https://modrinth.com/mod/desert-dungeon-dungeonz-addon
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

@@ -1,0 +1,5 @@
+Custom End Ship / Custom End Ship Loot by AntDev
+https://modrinth.com/datapack/endship-replacement
+License: Apache-2.0
+
+(no license file in the download; license as listed on Modrinth)

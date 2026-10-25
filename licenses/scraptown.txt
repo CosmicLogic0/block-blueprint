@@ -1,0 +1,5 @@
+ScrapTown! by PeaGravel
+https://modrinth.com/datapack/scraptown
+License: Apache-2.0
+
+(no license file in the download; license as listed on Modrinth)

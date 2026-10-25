@@ -1,0 +1,5 @@
+Warhammer Fantasy Mod by antio789
+https://modrinth.com/mod/warhammer-universe-mod
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

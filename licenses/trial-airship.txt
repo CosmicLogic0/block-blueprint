@@ -1,0 +1,5 @@
+Trial Airship by Lithalisk
+https://modrinth.com/mod/trial-airship
+License: Apache-2.0
+
+(no license file in the download; license as listed on Modrinth)

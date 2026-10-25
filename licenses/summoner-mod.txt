@@ -1,0 +1,5 @@
+Summoner Mod by whitnlan000
+https://modrinth.com/mod/summoner-mod
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

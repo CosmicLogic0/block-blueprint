@@ -1,0 +1,5 @@
+Rousing's Dungeon by RousingShip
+https://modrinth.com/datapack/rousings-dungeon
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

@@ -1,0 +1,5 @@
+Veggies Delight (A Farmer's Delight Add-on) by Eggmain
+https://modrinth.com/mod/veggies-delight
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

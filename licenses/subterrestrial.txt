@@ -1,0 +1,5 @@
+Subterrestrial by AlexNijjar
+https://modrinth.com/mod/subterrestrial
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

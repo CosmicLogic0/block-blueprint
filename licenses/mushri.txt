@@ -1,0 +1,5 @@
+Mushri by SpogBOT
+https://modrinth.com/mod/mushri
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

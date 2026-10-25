@@ -1,0 +1,5 @@
+Create the Server Datapack by ShiroJR
+https://modrinth.com/datapack/create-the-server-datapack
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

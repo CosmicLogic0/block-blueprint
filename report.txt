@@ -1,0 +1,1287 @@
+templates: 4541
+downloaded: 1029 MB
+Modrinth projects with an open license in worldgen: 3931
+skip (remakes/changes existing structures): trek
+none: lets-do-addon-structures (MIT, 90 structure files)
+skip (remakes/changes existing structures): repurposed-structures-farmers-delight-compat
+skip (remakes/changes existing structures): repurposed-structures-better-witch-huts-compat
+skip (remakes/changes existing structures): lost-cities-modern-tweaks
+skip (remakes/changes existing structures): repurposed-structures-friends-and-foes-compat
+skip (remakes/changes existing structures): repurposed-structures-better-strongholds-compat
+skip (remakes/changes existing structures): repurposed-structures-villagerplus-compat
+skip (remakes/changes existing structures): repurposed-structures-better-dungeons-compat
+skip (remakes/changes existing structures): repurposed-structures-bygone-nether-compat
+skip (remakes/changes existing structures): repurposed-structures-bountiful-compat
+skip (remakes/changes existing structures): repurposed-structures-better-ocean-monuments-compat
+skip (remakes/changes existing structures): repurposed-structures-chefs-delight-compat
+skip (remakes/changes existing structures): improved-pillager-outpost
+KEPT 20: ships (Apache-2.0, 35 structure files)
+skip (remakes/changes existing structures): better-end-cities-betterend
+KEPT 4: cobblemon-legendary (MIT, 27 structure files)
+KEPT 1: cobblemon-legendary-structures (CC0-1.0, 5 structure files)
+KEPT 2: standard-skyblock (MIT, 1118 structure files)
+skip (remakes/changes existing structures): repurposed-structures-better-desert-temples-compat
+skip (remakes/changes existing structures): repurposed-structures-better-jungle-temples
+skip (remakes/changes existing structures): epicterrain
+skip (remakes/changes existing structures): better-trees
+skip (remakes/changes existing structures): repurposed-structures-sawmill-compat
+KEPT 60: cobbletowns (MIT, 213 structure files)
+skip (remakes/changes existing structures): better-end-cities-vanilla
+skip (remakes/changes existing structures): vb-compat
+KEPT 60: kogtyv-tav (MIT, 3346 structure files)
+skip (remakes/changes existing structures): repurposed-structures-illager-invasion-compat
+skip (remakes/changes existing structures): vb-mob-variants-compat
+skip (remakes/changes existing structures): arboria
+skip (remakes/changes existing structures): unwrecked-ships
+skip (remakes/changes existing structures): better-lush-caves
+KEPT 45: svm-powers (MIT, 93 structure files)
+none: radical-gyms-cobblemon (MIT, 9 structure files)
+skip (remakes/changes existing structures): legacy-nether-extended
+skip (remakes/changes existing structures): vanilla-one-block
+skip (remakes/changes existing structures): better-loot
+KEPT 14: towers-of-the-wild-reworked (MIT, 28 structure files)
+none: no-void-structures (MIT, 0 structure files)
+skip (remakes/changes existing structures): legacy-mechanics
+none: superflat-dimensions (MIT, 2 structure files)
+none: rct-structures (MIT, 8 structure files)
+KEPT 5: legendarystructures (MIT, 6 structure files)
+skip (remakes/changes existing structures): trims-overhaul
+none: no-more-ruined-portals (MIT, 0 structure files)
+skip (remakes/changes existing structures): better-cave-worlds
+none: no-more-villages (MIT, 0 structure files)
+none: no-more-pillager-outposts (MIT, 0 structure files)
+skip (remakes/changes existing structures): backported-wolves-terralith-compat
+none: no-more-ocean-monuments (MIT, 0 structure files)
+none: revamped-floating-islands (MIT, 0 structure files)
+skip (remakes/changes existing structures): the-backrooms-legacy
+skip (remakes/changes existing structures): lost-cities-modern-tweaks-nolighting
+skip (remakes/changes existing structures): repurposed-structures-better-nether-fortress-compat
+skip (remakes/changes existing structures): wilderness_
+none: no-more-woodland-mansions (MIT, 0 structure files)
+none: big-globe-when-dungeons-arise-compatibility (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): vanilla-stoneblock
+none: no-more-ocean-ruins (MIT, 0 structure files)
+KEPT 60: expanded-world (CC0-1.0, 350 structure files)
+none: big-globe-towns-and-towers-compatibility (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): better-oil-deposits
+none: aios-extra-structures (CC-BY-4.0, 34 structure files)
+none: no-more-shipwrecks (MIT, 0 structure files)
+KEPT 5: eternal-battletowers (CC-BY-4.0, 54 structure files)
+none: dungeons-and-villages-deeper-and-darker (MIT, 89 structure files)
+skip (remakes/changes existing structures): moss-ruins
+none: towers-of-the-wild-modded-extra-towers (MIT, 136 structure files)
+none: twilight-forest-forms-cobblemon (MIT, 0 structure files)
+none: skyblock-void-worldgen (MIT, 1116 structure files)
+KEPT 12: professor-porkers-legendary-dungeons (MIT, 146 structure files)
+skip (remakes/changes existing structures): simple-structures-caves
+none: no-more-trail-ruins (MIT, 0 structure files)
+none: terralith-no-structures (MIT, 0 structure files)
+skip (remakes/changes existing structures): seasons
+KEPT 28: simple-structures-desert (MIT, 37 structure files)
+skip (remakes/changes existing structures): repurposed-structures-wizards-compat-datapack
+skip (remakes/changes existing structures): thuns-structures
+none: cobblemon-no-waystones (MIT, 0 structure files)
+skip (remakes/changes existing structures): big-globe-unwrecked-ships-compatibility
+none: nether-floating-islands (MIT, 0 structure files)
+none: big-globe-remove-abandoned-city (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): gd-betterloot
+KEPT 49: timo (BSD-3-Clause, 220 structure files)
+none: no-villages (MIT, 0 structure files)
+skip (remakes/changes existing structures): legacy-nether-modrinth
+none: big-globe-antique-trading-ship (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): repurposed-structures-ice-and-fire-compat
+KEPT 1: trial-towers (Apache-2.0, 6 structure files)
+none: dnt-enchant-disabler (MIT, 0 structure files)
+skip (remakes/changes existing structures): backported-wolves-regions-unexplored-compat
+none: big-globe-dungeon-now-loading-compatibility (CC0-1.0, 0 structure files)
+KEPT 9: dungeon-and-village-ad-astra (MIT, 72 structure files)
+none: big-globe-remove-portal-temple (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): mining-dimension-create
+skip (remakes/changes existing structures): repurposed-structures-oh-the-biomes-youll-go-compat
+skip (remakes/changes existing structures): more-ancient-debris-20x
+skip (remakes/changes existing structures): repurposed-structures-savage--ravage-compat
+skip (remakes/changes existing structures): more-ancient-debris-5x
+none: tvf-infinite-village-datapack (MIT, 0 structure files)
+KEPT 60: mvs-moogs-voyager-structure-config-pack (MIT, 402 structure files)
+KEPT 19: simple-structure-pale-garden (MIT, 27 structure files)
+none: big-globe-stalwart-dungeons-compatibility (CC0-1.0, 0 structure files)
+KEPT 7: simple-structure-ad-astra (MIT, 101 structure files)
+none: no-more-jungle-temples (MIT, 0 structure files)
+skip (remakes/changes existing structures): repurposed-structures-irons-spells-n-spellbooks-compat
+skip (remakes/changes existing structures): one-block-game
+none: big-globe-call-of-yucatn-compatibility (CC0-1.0, 0 structure files)
+KEPT 60: minecraft-structure-to-modified-op-structure (MIT, 655 structure files)
+skip (remakes/changes existing structures): repurposed-structures-gazebo
+skip (remakes/changes existing structures): repurposed-structures-paladins
+skip (remakes/changes existing structures): more-ancient-debris-10x
+skip (remakes/changes existing structures): repurposed-structures-hexerei-compat
+KEPT 26: cobblemon-cities-structures (MIT, 142 structure files)
+skip (remakes/changes existing structures): lankasters-nether
+KEPT 4: need-more-structures (MIT, 11 structure files)
+skip (remakes/changes existing structures): cobblemon-regions-unexplored-compat
+none: superflat-plus (CC0-1.0, 0 structure files)
+none: cobblemon-aether-expansion (MIT, 11 structure files)
+KEPT 1: goodwill-structures (MIT, 3 structure files)
+skip (remakes/changes existing structures): draconic-ascension
+KEPT 28: snowy-ruins (MIT, 39 structure files)
+KEPT 33: forest-villages (MIT, 110 structure files)
+skip (remakes/changes existing structures): repurposed-structures-more-villagers-compat
+KEPT 19: simplestructure-mushroom-fields (CC-BY-4.0, 30 structure files)
+skip (remakes/changes existing structures): cobblemon-snomfix
+KEPT 9: cottages (Apache-2.0, 10 structure files)
+skip (remakes/changes existing structures): muffins-structures
+KEPT 10: simple-structure-nostalgia (MIT, 20 structure files)
+skip (remakes/changes existing structures): floravive
+skip (remakes/changes existing structures): repurposed-structures-pneumaticcraft-repressurized-compat
+KEPT 60: jungle-and-swamp-villages (MIT, 244 structure files)
+skip (remakes/changes existing structures): big-globe-biome-tags
+skip (remakes/changes existing structures): orefix
+KEPT 60: trial-airship (Apache-2.0, 111 structure files)
+KEPT 23: tales-of-silta (Apache-2.0, 25 structure files)
+none: sans-cobblemon-structures (MIT, 19 structure files)
+KEPT 60: deadworld (MIT, 216 structure files)
+KEPT 1: cursed-blade-muramasa (MIT, 1 structure files)
+skip (remakes/changes existing structures): tbirds-structures
+none: legendary-monuments-x-aether (MIT, 0 structure files)
+skip (remakes/changes existing structures): sky-void-amplified-nether
+skip (remakes/changes existing structures): ocean-revamp
+skip (remakes/changes existing structures): rexles-better-overworld
+KEPT 10: undermagic-ii (MIT, 14 structure files)
+none: cobblemon-trials-edition-default-datapack (MIT, 0 structure files)
+skip (remakes/changes existing structures): structures-rebalanced
+skip (remakes/changes existing structures): lushier
+KEPT 60: tates-structure-reworks (MIT, 534 structure files)
+none: matcha-flavoured-re-villages (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): more-ancient-debris-3x
+skip (remakes/changes existing structures): sky-void-terralith
+KEPT 60: tav (MIT, 2716 structure files)
+KEPT 34: endless-desert (MIT, 35 structure files)
+skip (remakes/changes existing structures): repurposed-structures-biome-makeover-compat
+skip (remakes/changes existing structures): trial-chamber-fix
+none: endless-villages (MIT, 0 structure files)
+KEPT 8: structure_plus (MIT, 14 structure files)
+skip (remakes/changes existing structures): big-globe-compat-dungeons-and-taverns
+skip (remakes/changes existing structures): betterworldgen
+skip (remakes/changes existing structures): gye-structures
+skip (remakes/changes existing structures): sky-void-nullscape
+none: no-spore-structures (Apache-2.0, 0 structure files)
+skip (remakes/changes existing structures): repurposed-structures-buzzier-bees-compat
+none: villager-knights (MIT, 0 structure files)
+skip (remakes/changes existing structures): better-x-bop
+skip (remakes/changes existing structures): better-dappled-forest
+skip (remakes/changes existing structures): landahoy
+skip (remakes/changes existing structures): repurposed-structures-immersive-engineering-compat
+none: limited-cotv-buildings (MIT, 0 structure files)
+skip (remakes/changes existing structures): big-globe-remove-vanilla-structures
+none: infinite-stronghold (MIT, 0 structure files)
+skip (remakes/changes existing structures): repurposed-structures-incubation-compat
+skip (remakes/changes existing structures): cascades-cool-biomes
+KEPT 1: tiltkin-origin (MIT, 1 structure files)
+KEPT 4: ashsailships (MIT, 4 structure files)
+none: simplestructure-bewitchment (CC-BY-4.0, 10 structure files)
+skip (remakes/changes existing structures): evergreen-trees
+KEPT 38: enter-the-bungeon (Apache-2.0, 75 structure files)
+skip (remakes/changes existing structures): pixelburen
+skip (remakes/changes existing structures): village-ruins-80-abandoned-villages
+skip (remakes/changes existing structures): big-globe-compat-yungs-better-mineshafts
+skip (remakes/changes existing structures): repurposed-structures-caves-and-cliffs-backport-compat
+skip (remakes/changes existing structures): cactus-flower-compat
+KEPT 35: more-villages-datapack (MIT, 62 structure files)
+skip (remakes/changes existing structures): repurposed-structures-apocalyptic-fortress-compat
+skip (remakes/changes existing structures): a-better-pale-garden
+none: village-for-bewitchment (CC-BY-4.0, 38 structure files)
+skip (remakes/changes existing structures): trial-chamber-generation-adjustment-eternal_starlight
+none: infinitevillage (MIT, 0 structure files)
+KEPT 4: ashships (MIT, 4 structure files)
+none: no-more-trail-chambers (MIT, 0 structure files)
+skip (remakes/changes existing structures): zombie-towns
+skip (remakes/changes existing structures): better-end-cities-villagestyle
+none: dungeon-and-village-botania (MIT, 31 structure files)
+skip (remakes/changes existing structures): big-globe-compat-choicetheorems-overhauled-village
+skip (remakes/changes existing structures): repurposed-structures-advanced-peripherals-compat
+skip (remakes/changes existing structures): repurposed-structures-environmental-compat
+skip (remakes/changes existing structures): repurposed-structures-floralis-compat
+skip (remakes/changes existing structures): repurposed-structures-domestication-innovation-compat
+KEPT 43: too-many-trials (Apache-2.0, 105 structure files)
+skip (remakes/changes existing structures): austins-biomes-expansion
+skip (remakes/changes existing structures): calcite-crafting
+skip (remakes/changes existing structures): dnt-stellarity-compat
+skip (remakes/changes existing structures): little-world-tweaks
+KEPT 6: ancient-city-landmarks (MIT, 10 structure files)
+skip (remakes/changes existing structures): better-cave-worlds-updated
+skip (remakes/changes existing structures): create-striated-stones-fix
+KEPT 60: trail-villages (Apache-2.0, 84 structure files)
+none: disable-structures-choice (MIT, 0 structure files)
+none: eeeabs-mobs-nameless-guardian-returns (MIT, 1 structure files)
+skip (remakes/changes existing structures): wonderous-sky-world
+skip (remakes/changes existing structures): repurposed-structures-create-dynamic-village-compat
+skip (remakes/changes existing structures): big-globe-compat-yungs-better-ocean-monument
+none: evaporated-waterfalls (CC-BY-4.0, 0 structure files)
+KEPT 29: luwus-wayfarers-capsule (MIT, 30 structure files)
+none: trail-ruins-maps (MIT, 0 structure files)
+none: ancient-structures-edo-japan-dp (MIT, 11 structure files)
+skip (remakes/changes existing structures): pillager-outpost-fix
+skip (remakes/changes existing structures): improved-desert
+skip (remakes/changes existing structures): big-globe-compat-incendium
+skip (remakes/changes existing structures): new-big-trees
+skip (remakes/changes existing structures): big-globe-compat-moogs-voyager-structures
+KEPT 60: more-chinese-structures (MIT, 280 structure files)
+skip (remakes/changes existing structures): better-tricky-trials
+KEPT 14: supplementary-villages (MIT, 264 structure files)
+skip (remakes/changes existing structures): wasteland-refabricated
+skip (remakes/changes existing structures): ninjago-spinjitzu-legacy
+KEPT 60: deserters-camps (MIT, 82 structure files)
+skip (remakes/changes existing structures): explorers-blend
+skip (remakes/changes existing structures): re-structured
+skip (remakes/changes existing structures): trial-chamber-generation-adjustment-the-end
+KEPT 1: elytra-trials (MIT, 2 structure files)
+KEPT 9: no-wither-skulls-for-cwsm (MIT, 10 structure files)
+none: drought-waterless-worldgen (MIT, 0 structure files)
+skip (remakes/changes existing structures): repurposed-structures-simply-cats-compat
+skip (remakes/changes existing structures): vanilla-caves
+skip (remakes/changes existing structures): spelunked-yungs-better-jungle-temples-compat-datapack
+skip (remakes/changes existing structures): ethereal-structures
+none: infinitely-dense-village-world (MIT, 0 structure files)
+skip (remakes/changes existing structures): big-globe-compat-moogs-nether-structures
+none: no-terralith-fortified-villages (MIT, 0 structure files)
+skip (remakes/changes existing structures): vanilla-veins
+skip (remakes/changes existing structures): big-globe-compat-yungs-better-nether-fortresses
+KEPT 8: ashusnavyships (MIT, 8 structure files)
+skip (remakes/changes existing structures): repurposed-structures-rats-compat
+none: stripify (MIT, 0 structure files)
+skip (remakes/changes existing structures): spacefrogs-datapack-tweaks
+KEPT 15: christmas-dimension (MIT, 24 structure files)
+skip (remakes/changes existing structures): big-globe-compat-betternether
+skip (remakes/changes existing structures): minecraft_remade
+skip (remakes/changes existing structures): regon
+none: no-shipwrecks (MIT, 0 structure files)
+skip (remakes/changes existing structures): moose-gen
+skip (remakes/changes existing structures): miencrap-2-minerat
+skip (remakes/changes existing structures): better-end-cities-byg
+skip (remakes/changes existing structures): l18-loot
+skip (remakes/changes existing structures): big-globe-compat-galosphere
+KEPT 4: musiccollection_jsab (MIT, 4 structure files)
+skip (remakes/changes existing structures): better-chorus-trees
+skip (remakes/changes existing structures): repurposed-structures-cobblemon-compat
+skip (remakes/changes existing structures): repurposed-structures-etched-compat
+none: progressive-no-structures (Apache-2.0, 0 structure files)
+none: spawn-in-seperate-villages (MIT, 0 structure files)
+KEPT 26: new-desert-dungeon (MIT, 46 structure files)
+skip (remakes/changes existing structures): big-globe-compat-moogs-soaring-structures
+KEPT 1: new-mesa-palace-structure (MIT, 14 structure files)
+skip (remakes/changes existing structures): snowy-shepherd-house-fix
+skip (remakes/changes existing structures): repurposed-structures-wares
+skip (remakes/changes existing structures): kinda-winter-mode-vanilla-foliage
+none: wither-fortress (MIT, 12 structure files)
+none: terrainless-superflat (MIT, 0 structure files)
+skip (remakes/changes existing structures): big-globe-compat-ribbits
+skip (remakes/changes existing structures): big-globe-compat-ars-nouveau
+skip (remakes/changes existing structures): amethyst-skyblock
+skip (remakes/changes existing structures): repurposed-structures-monobank-compat
+KEPT 30: swords-and-axes-dungeon (Apache-2.0, 42 structure files)
+KEPT 43: various-structures (CC-BY-4.0, 55 structure files)
+skip (remakes/changes existing structures): cf-structures
+skip (remakes/changes existing structures): big-globe-compat-hopo-better-underwater-ruins
+KEPT 3: immersive-skyblock (MIT, 152 structure files)
+KEPT 6: gem-upgrades (MIT, 6 structure files)
+KEPT 60: townfall (MIT, 111 structure files)
+skip (remakes/changes existing structures): kinda-winter-mode
+KEPT 3: structures-addition (MIT, 5 structure files)
+KEPT 60: villagehere (MIT, 202 structure files)
+skip (remakes/changes existing structures): enhanced-temples
+KEPT 54: captured-serenity (CC0-1.0, 104 structure files)
+skip (remakes/changes existing structures): less-predictable-cave-biomes
+KEPT 44: bieluuus-hard-dungeons (MIT, 79 structure files)
+skip (remakes/changes existing structures): better-backrooms-datapack
+skip (remakes/changes existing structures): metals-a-progression-overhaul
+skip (remakes/changes existing structures): big-globe-compat-philips-ruins
+skip (remakes/changes existing structures): otherside-remake
+skip (remakes/changes existing structures): repurposed-structures-all-bark-all-bite
+skip (remakes/changes existing structures): biome-rebalance
+none: break-block-spawn-random-structure (MIT, 0 structure files)
+skip (remakes/changes existing structures): dark-forest
+KEPT 6: abyssalisk (MIT, 6 structure files)
+skip (remakes/changes existing structures): big-globe-x-cold-sweat
+skip (remakes/changes existing structures): steve-must-die-difficulty
+skip (remakes/changes existing structures): endergetic-expansion-x-yungs-better-end-island
+skip (remakes/changes existing structures): taiga-biome-water-fix
+skip (remakes/changes existing structures): diamond-rework
+skip (remakes/changes existing structures): superdead
+skip (remakes/changes existing structures): wxvbmvc
+skip (remakes/changes existing structures): still-life-mangrove-fix
+skip (remakes/changes existing structures): better-end-cities-enderscape
+skip (remakes/changes existing structures): backrooms-kelp
+none: no-ocean-monument (MIT, 20 structure files)
+skip (remakes/changes existing structures): advanced-ore-generation
+KEPT 38: descent-dimension (MIT, 47 structure files)
+skip (remakes/changes existing structures): flower-plains
+skip (remakes/changes existing structures): big-globe-compat-sky-villages
+none: disable-zombie-sieges (MIT, 0 structure files)
+none: no-end-cities (CC0-1.0, 0 structure files)
+KEPT 1: no-more-elytra (CC-BY-SA-4.0, 1 structure files)
+KEPT 3: carpet-stairs-mansion (CC0-1.0, 3 structure files)
+KEPT 47: restored-ancient-city (Apache-2.0, 47 structure files)
+skip (remakes/changes existing structures): big-globe-compat-oritech
+skip (remakes/changes existing structures): big-globe-compat-pale-garden-backport
+none: i-call-them-cities (MIT, 0 structure files)
+skip (remakes/changes existing structures): repurposed-structures-jellyfishing-compat
+skip (remakes/changes existing structures): structures-everywhere
+none: illager-only-mansions (CC0-1.0, 0 structure files)
+KEPT 8: pale-garden-village (MIT, 12 structure files)
+KEPT 16: newstructures (MIT, 16 structure files)
+none: flower-rings (MIT, 4 structure files)
+KEPT 23: unruined-trail-ruins (MIT, 56 structure files)
+skip (remakes/changes existing structures): ardwick
+skip (remakes/changes existing structures): big-globe-compat-pyrellium
+KEPT 7: mysterious-structures (CC0-1.0, 12 structure files)
+skip (remakes/changes existing structures): drop-grow
+KEPT 13: elytra-vaults (CC-BY-4.0, 20 structure files)
+none: cloud-storage-structures-moved-to-aether (MIT, 0 structure files)
+skip (remakes/changes existing structures): repurposed-structures-new-tardis-mod-compat
+skip (remakes/changes existing structures): gems-metals_expansion
+skip (remakes/changes existing structures): big-globe-compat-burnt
+skip (remakes/changes existing structures): big-globe-compat-immersive-engineering
+skip (remakes/changes existing structures): vanilla-plus_structures
+KEPT 31: create-the-server-datapack (MIT, 31 structure files)
+skip (remakes/changes existing structures): anlidan-vanilla-structures
+none: super-cartographers (CC0-1.0, 0 structure files)
+KEPT 25: piersprawl (Apache-2.0, 38 structure files)
+skip (remakes/changes existing structures): v-mod-villages
+skip (remakes/changes existing structures): create-tfmg-deep-oil-fix
+none: n_s-bigger-villages (MIT, 0 structure files)
+KEPT 3: ancient-totems (MIT, 3 structure files)
+skip (remakes/changes existing structures): structureoverhaul
+skip (remakes/changes existing structures): foxys-wgw-meadow-standalone
+skip (remakes/changes existing structures): enhanced-wilderness
+skip (remakes/changes existing structures): repurposed-structures-tidbits-compat
+KEPT 1: serpentine-legendary-origin (MIT, 1 structure files)
+skip (remakes/changes existing structures): loot-novum
+skip (remakes/changes existing structures): vanilla_revamped
+KEPT 12: overworld-biome-additions (MIT, 12 structure files)
+skip (remakes/changes existing structures): desert-well-but-better
+skip (remakes/changes existing structures): discs-redistributed
+skip (remakes/changes existing structures): improved-pillager-outpost-26.3
+skip (remakes/changes existing structures): adamraichu-structures
+skip (remakes/changes existing structures): big-globe-compat-geore
+skip (remakes/changes existing structures): better-ancient-city-loot
+skip (remakes/changes existing structures): repurposed-structures-drunken-mug-compat
+skip (remakes/changes existing structures): big-globe-vanilla-backport
+none: wwg-wierd-world-generation (MIT, 0 structure files)
+KEPT 1: endship-replacement (Apache-2.0, 1 structure files)
+KEPT 4: summoner-datapack (MIT, 4 structure files)
+skip (remakes/changes existing structures): vanilla-expanded-structures
+skip (remakes/changes existing structures): big-globe-compat-ars-additions
+skip (remakes/changes existing structures): big-globe-compat-mine-cells
+skip (remakes/changes existing structures): big-globe-compat-cinderscapes
+none: skyleaf-biomes (MIT, 0 structure files)
+none: spawncamp (MIT, 0 structure files)
+skip (remakes/changes existing structures): uhc-world-generation
+skip (remakes/changes existing structures): no-netherite-revamp
+none: scarce-world (MIT, 0 structure files)
+KEPT 7: dappled-dens (MIT, 11 structure files)
+skip (remakes/changes existing structures): big-globe-compat-floralis
+none: numify (Apache-2.0, 0 structure files)
+skip (remakes/changes existing structures): masky-minecraft-earth-pigs
+skip (remakes/changes existing structures): cobblemonyungscompatibility
+none: no-dungeons (MIT, 0 structure files)
+none: no-more-end-ships (CC-BY-4.0, 0 structure files)
+none: expanded-cooking (MIT, 1 structure files)
+skip (remakes/changes existing structures): cheks-mint-structures
+skip (remakes/changes existing structures): ruins-plus
+skip (remakes/changes existing structures): 16x-vanilla-world-gen
+none: bigglobe-companions-compat (MIT, 0 structure files)
+KEPT 54: stmetro (CC-BY-4.0, 58 structure files)
+skip (remakes/changes existing structures): survival-overhaul
+skip (remakes/changes existing structures): 2x-vanilla-world-gen
+none: randomized-structures (MIT, 0 structure files)
+KEPT 28: ctw-datapack (MIT, 37 structure files)
+skip (remakes/changes existing structures): restless-remnants
+KEPT 6: rus-for-mods-structure-translator (MIT, 35 structure files)
+skip (remakes/changes existing structures): 4x-vanilla-world-gen
+KEPT 23: skysprawl (Apache-2.0, 41 structure files)
+skip (remakes/changes existing structures): 64x-vanilla-world-gen
+KEPT 17: scraptown (Apache-2.0, 18 structure files)
+none: too-many-villages (MIT, 0 structure files)
+KEPT 4: savanna-farms-no-more-flooding (MIT, 5 structure files)
+KEPT 6: pride-banner-structure-expansion (MIT, 12 structure files)
+skip (remakes/changes existing structures): 8x-vanilla-world-gen
+skip (remakes/changes existing structures): infinite-sky-dimension
+KEPT 3: likely-structures (MIT, 4 structure files)
+none: villagerunknown-villagercoin-underground-coin-cache-structure (CC-BY-4.0, 5 structure files)
+skip (remakes/changes existing structures): structurefix
+none: flashing-nexus-towers (CC0-1.0, 2 structure files)
+none: zero-diamonds (MIT, 0 structure files)
+none: big-globe-x-swampier-swamps (MIT, 0 structure files)
+skip (remakes/changes existing structures): vesperquartz-reliquaries
+KEPT 23: rousings-dungeon (MIT, 59 structure files)
+skip (remakes/changes existing structures): cataclysm-x-betterend-new-dawn-fix
+none: no-music-discs-from-creepers (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): villagerunknown-villagercoin-loot-betterarcheology
+none: safevillages (MIT, 0 structure files)
+skip (remakes/changes existing structures): better-birch-biome
+KEPT 7: obhs-stem-club-structure-pack (CC-BY-SA-4.0, 10 structure files)
+none: canvas-dimensions (MIT, 0 structure files)
+skip (remakes/changes existing structures): 32x-vanilla-world-gen
+skip (remakes/changes existing structures): arcane-aeronautics-tweaks
+skip (remakes/changes existing structures): legacy-islands-datapack
+skip (remakes/changes existing structures): farmers-delight-refabricated-still-life-compat
+skip (remakes/changes existing structures): big-globe-compat-nautec
+none: widespreadstructures (MIT, 0 structure files)
+KEPT 37: timeworn-datapack (MIT, 39 structure files)
+KEPT 3: toms-structures-dpe (MIT, 4 structure files)
+none: starter-fort (MIT, 1 structure files)
+skip (remakes/changes existing structures): lets-do-bloomingnature-x-treeplacer
+skip (remakes/changes existing structures): aquamirae-spawn-generation-fix
+KEPT 1: birch-house-structure (MIT, 1 structure files)
+skip (remakes/changes existing structures): bleak-and-grim
+skip (remakes/changes existing structures): vivs-vanilla-villagers
+none: betrayal-smp-addon (MIT, 1 structure files)
+KEPT 15: home-of-creativity (MIT, 19 structure files)
+skip (remakes/changes existing structures): v-mod-villages-farmers-delight
+none: toms-loot-dpe (MIT, 0 structure files)
+none: boats-void (MIT, 0 structure files)
+skip (remakes/changes existing structures): 2x2-big-oak-trees
+skip (remakes/changes existing structures): no-vanila-data
+none: radical-gyms-into-villages-cobblemon (MIT, 39 structure files)
+skip (remakes/changes existing structures): aoa-but-chunks-are-random
+skip (remakes/changes existing structures): equator-nostalgica
+skip (remakes/changes existing structures): ntmm
+skip (remakes/changes existing structures): nmlut
+none: aether-no-dungeons (MIT, 0 structure files)
+skip (remakes/changes existing structures): infinity-deep-ocean
+skip (remakes/changes existing structures): trek
+none: the-lost-cities (MIT, 0 structure files)
+none: chefs-delight (MIT, 10 structure files)
+skip (remakes/changes existing structures): moogs-voyager-structures
+none: sparsestructures (MIT, 0 structure files)
+none: structure-layout-optimizer (MIT, 0 structure files)
+skip (remakes/changes existing structures): snow-real-magic
+skip (remakes/changes existing structures): better-archeology
+none: bygone-nether (MIT, 30 structure files)
+none: guard-villagers-fabricquilt (MIT, 0 structure files)
+skip (remakes/changes existing structures): fwaystones
+none: structure-pool-api (MIT, 0 structure files)
+skip (remakes/changes existing structures): betterend-crashed-ships-tweaks
+none: prefab (MIT, 0 structure files)
+none: lets-do-addon-structures (MIT, 90 structure files)
+skip (remakes/changes existing structures): repurposed-structures-farmers-delight-compat
+skip (remakes/changes existing structures): delightful
+skip (remakes/changes existing structures): lost-cities-modern-tweaks
+KEPT 19: abridged (MIT, 21 structure files)
+skip (remakes/changes existing structures): repurposed-structures-friends-and-foes-compat
+skip (remakes/changes existing structures): improved-village-placement
+none: stalwart-dungeons (MIT, 7 structure files)
+none: wits (MIT, 0 structure files)
+skip (remakes/changes existing structures): improved-pillager-outpost
+KEPT 54: dungeonz (MIT, 62 structure files)
+skip (remakes/changes existing structures): beautify
+KEPT 4: dungeon-now-loading (MIT, 187 structure files)
+skip (remakes/changes existing structures): cosmopolitan
+skip (remakes/changes existing structures): reintegrated-chipped
+none: create-structures-arise (MIT, 90 structure files)
+skip (remakes/changes existing structures): better-end-cities-base
+none: ships (Apache-2.0, 35 structure files)
+skip (remakes/changes existing structures): immersive-snow
+skip (remakes/changes existing structures): mystical-agriculture
+none: cobblemon-legendary-structures (CC0-1.0, 5 structure files)
+none: standard-skyblock (MIT, 1118 structure files)
+KEPT 44: it-takes-a-pillage-continuation (MIT, 46 structure files)
+KEPT 14: desert-dungeon-dungeonz-addon (MIT, 15 structure files)
+skip (remakes/changes existing structures): chunk-save-fix
+skip (remakes/changes existing structures): celestisynth
+none: eternal-nether (MIT, 30 structure files)
+skip (remakes/changes existing structures): epicterrain
+skip (remakes/changes existing structures): better-trees
+skip (remakes/changes existing structures): terrablenderfix
+skip (remakes/changes existing structures): alekiships
+KEPT 11: roadweaver (MIT, 39 structure files)
+KEPT 1: veggies-delight (MIT, 22 structure files)
+skip (remakes/changes existing structures): better-end-cities-for-betterend
+skip (remakes/changes existing structures): earlygame
+skip (remakes/changes existing structures): moss-fix
+skip (remakes/changes existing structures): tofucraftreload
+skip (remakes/changes existing structures): vb-compat
+skip (remakes/changes existing structures): cell
+KEPT 60: kogtyv-tav (MIT, 3346 structure files)
+skip (remakes/changes existing structures): betterend-neoforge
+KEPT 60: underground-villages (MIT, 128 structure files)
+KEPT 60: bloxys-structures (MIT, 207 structure files)
+KEPT 60: underground-village-stoneholm (MIT, 169 structure files)
+none: valkyrien-pirates (MIT, 32 structure files)
+skip (remakes/changes existing structures): vb-mob-variants-compat
+skip (remakes/changes existing structures): better-snow-coverage
+skip (remakes/changes existing structures): disable-structures
+skip (remakes/changes existing structures): netherite_tweaks
+skip (remakes/changes existing structures): worldgenfeaturefix
+skip (remakes/changes existing structures): galacticraft-legacy
+skip (remakes/changes existing structures): twilight-forest-cave-fix
+skip (remakes/changes existing structures): betternether-neoforge
+none: countereds-settlement-roads (MIT, 0 structure files)
+KEPT 60: subterrestrial (MIT, 67 structure files)
+skip (remakes/changes existing structures): pale-garden-backport
+skip (remakes/changes existing structures): sporeunderground-bunker-spawner-compat
+skip (remakes/changes existing structures): unwrecked-ships
+skip (remakes/changes existing structures): better-lush-caves
+skip (remakes/changes existing structures): betterend-forge
+none: svm-powers (MIT, 93 structure files)
+KEPT 1: more_ships (MIT, 32 structure files)
+none: radical-gyms-cobblemon (MIT, 9 structure files)
+skip (remakes/changes existing structures): larion-worldgen
+skip (remakes/changes existing structures): legacy-nether-extended
+skip (remakes/changes existing structures): vanilla-one-block
+none: structure-expansion (MIT, 0 structure files)
+skip (remakes/changes existing structures): bren
+skip (remakes/changes existing structures): better-loot
+KEPT 2: cult-of-azazel (MIT, 41 structure files)
+none: towers-of-the-wild-reworked (MIT, 28 structure files)
+none: no-void-structures (MIT, 0 structure files)
+none: self-sustainable (CC-BY-4.0, 16 structure files)
+skip (remakes/changes existing structures): regions-unexplored-expansion
+none: silents-gems (MIT, 0 structure files)
+skip (remakes/changes existing structures): legacy-mechanics
+skip (remakes/changes existing structures): bwt-hc-tweaks
+none: the-aurorian (MIT, 0 structure files)
+skip (remakes/changes existing structures): feature-nbt-deadlock-be-gone
+none: superflat-dimensions (MIT, 2 structure files)
+skip (remakes/changes existing structures): fog-looks-good-now
+none: first-step-mod (MIT, 0 structure files)
+none: warden-tools (MIT, 0 structure files)
+none: create-pillager-arise (MIT, 32 structure files)
+none: prefabricated (MIT, 0 structure files)
+none: whaleborne (MIT, 0 structure files)
+none: lost-souls (MIT, 0 structure files)
+none: roadarchitect (Apache-2.0, 0 structure files)
+none: backrooms (MIT, 26 structure files)
+KEPT 4: dungeons-plus-towers (MIT, 24 structure files)
+skip (remakes/changes existing structures): tfc-improved-badlands
+KEPT 4: taxoceanvillager (MIT, 9 structure files)
+skip (remakes/changes existing structures): trims-overhaul
+skip (remakes/changes existing structures): create-new-beginnings
+KEPT 36: flying_castles (MIT, 108 structure files)
+skip (remakes/changes existing structures): reintegrated-arts-and-crafts
+skip (remakes/changes existing structures): even-better-archeology
+KEPT 4: betternether-forge (MIT, 108 structure files)
+skip (remakes/changes existing structures): enderite-cj-edition
+none: no-more-ruined-portals (MIT, 0 structure files)
+skip (remakes/changes existing structures): skniros-nether-end-ores
+none: regrowth (MIT, 0 structure files)
+skip (remakes/changes existing structures): traverse-legacy
+skip (remakes/changes existing structures): mp-moogs-paths
+none: sructurized-reborn (MIT, 0 structure files)
+skip (remakes/changes existing structures): compat-structure
+none: unlit-campfire (MIT, 0 structure files)
+skip (remakes/changes existing structures): infernal-expansion
+skip (remakes/changes existing structures): better-cave-worlds
+skip (remakes/changes existing structures): resource-nether-ores
+none: no-more-villages (MIT, 0 structure files)
+none: no-more-pillager-outposts (MIT, 0 structure files)
+skip (remakes/changes existing structures): fullers-pokecenters
+skip (remakes/changes existing structures): backported-wolves-terralith-compat
+none: no-more-ocean-monuments (MIT, 0 structure files)
+skip (remakes/changes existing structures): create-structures-overhaul
+skip (remakes/changes existing structures): ore-tweaker
+none: commandstructures (MIT, 0 structure files)
+none: revamped-floating-islands (MIT, 0 structure files)
+skip (remakes/changes existing structures): soft-glow-ores
+skip (remakes/changes existing structures): the-backrooms-legacy
+skip (remakes/changes existing structures): morefoodmod
+skip (remakes/changes existing structures): lost-cities-modern-tweaks-nolighting
+skip (remakes/changes existing structures): wilderness_
+KEPT 4: lone-houses (MIT, 5 structure files)
+skip (remakes/changes existing structures): maple
+none: doomlike-dungeons (MIT, 0 structure files)
+none: no-more-woodland-mansions (MIT, 0 structure files)
+none: big-globe-when-dungeons-arise-compatibility (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): i-want-it-earlier
+skip (remakes/changes existing structures): basicskyblock
+skip (remakes/changes existing structures): carpetskyadditionsreborn
+skip (remakes/changes existing structures): worldgen-patches
+skip (remakes/changes existing structures): vanilla-stoneblock
+skip (remakes/changes existing structures): fossils-and-archaeology-legacy
+none: no-more-ocean-ruins (MIT, 0 structure files)
+KEPT 60: stoneholm (MIT, 105 structure files)
+KEPT 60: expanded-world (CC0-1.0, 350 structure files)
+skip (remakes/changes existing structures): foodables
+none: big-globe-towns-and-towers-compatibility (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): emendatusenigmatica
+KEPT 5: treasures-of-the-dead (MIT, 168 structure files)
+skip (remakes/changes existing structures): better-oil-deposits
+none: aios-extra-structures (CC-BY-4.0, 34 structure files)
+none: no-more-shipwrecks (MIT, 0 structure files)
+none: eternal-battletowers (CC-BY-4.0, 54 structure files)
+none: creat-aeronautics-structures (MIT, 12 structure files)
+none: dungeons-and-villages-deeper-and-darker (MIT, 89 structure files)
+skip (remakes/changes existing structures): basic-nether-ores
+none: reconstructed-wands (Apache-2.0, 0 structure files)
+skip (remakes/changes existing structures): chocolate-quest-repoured
+KEPT 14: rpg-stash (MIT, 14 structure files)
+KEPT 17: millager (MIT, 28 structure files)
+skip (remakes/changes existing structures): better-enchanting
+skip (remakes/changes existing structures): ore-veines-plus
+skip (remakes/changes existing structures): deeper-oceans-refabricated
+skip (remakes/changes existing structures): dynamic-trees-soils-compat
+skip (remakes/changes existing structures): moss-ruins
+none: seedguard (MIT, 0 structure files)
+none: towers-of-the-wild-modded-extra-towers (MIT, 136 structure files)
+KEPT 34: cozy-cabins-and-cottages (MIT, 36 structure files)
+none: chronopyre (ISC, 24 structure files)
+skip (remakes/changes existing structures): falldropbackport
+KEPT 43: emerald-craft (MIT, 115 structure files)
+none: enchantsmith (MIT, 1 structure files)
+none: twilight-forest-forms-cobblemon (MIT, 0 structure files)
+skip (remakes/changes existing structures): project-red-exploration
+skip (remakes/changes existing structures): enhanced-farming
+KEPT 14: slayersbeasts (MIT, 32 structure files)
+KEPT 12: cinchs-abandoned-houses (MIT, 31 structure files)
+skip (remakes/changes existing structures): foragers-insight
+KEPT 22: more_underground_structures (MIT, 120 structure files)
+none: professor-porkers-legendary-dungeons (MIT, 146 structure files)
+none: dynamictreestfc (MIT, 0 structure files)
+KEPT 2: vaulted-end (Apache-2.0, 2 structure files)
+skip (remakes/changes existing structures): spontaneous-replace
+skip (remakes/changes existing structures): simple-structures-caves
+skip (remakes/changes existing structures): illagers-plus
+none: no-more-trail-ruins (MIT, 0 structure files)
+KEPT 60: much-more-dungeons (Apache-2.0, 94 structure files)
+none: terralith-no-structures (MIT, 0 structure files)
+skip (remakes/changes existing structures): perfect-parity-pale-garden-awakens
+skip (remakes/changes existing structures): starryskies
+none: simple-structures-desert (MIT, 37 structure files)
+skip (remakes/changes existing structures): superchargedchunkloading
+skip (remakes/changes existing structures): lazy-chunk-load
+none: 7-days-to-mine (MIT, 0 structure files)
+skip (remakes/changes existing structures): repurposed-structures-wizards-compat-datapack
+skip (remakes/changes existing structures): thuns-structures
+skip (remakes/changes existing structures): better-biomes
+skip (remakes/changes existing structures): big-globe-unwrecked-ships-compatibility
+none: nether-floating-islands (MIT, 0 structure files)
+none: hollowmarch (MIT, 17 structure files)
+skip (remakes/changes existing structures): the-ultimate-compat-mod
+skip (remakes/changes existing structures): rethinking-ores
+none: big-globe-remove-abandoned-city (CC0-1.0, 0 structure files)
+KEPT 13: cobblemon-explore-legendary-dungeons (MIT, 162 structure files)
+skip (remakes/changes existing structures): gd-betterloot
+none: timo (BSD-3-Clause, 220 structure files)
+skip (remakes/changes existing structures): mc-stargate
+skip (remakes/changes existing structures): perfect-parity-1-21-5
+none: no-villages (MIT, 0 structure files)
+none: ferrite (MIT, 0 structure files)
+skip (remakes/changes existing structures): legacy-nether-modrinth
+none: big-globe-antique-trading-ship (CC0-1.0, 0 structure files)
+none: buildgpt (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): melius-worldmanager
+skip (remakes/changes existing structures): i-hate-flesh-reborn-ihfr
+skip (remakes/changes existing structures): impillagers
+KEPT 20: buried-wrecks (MIT, 20 structure files)
+skip (remakes/changes existing structures): immersive-snow-reloaded
+none: trial-towers (Apache-2.0, 6 structure files)
+skip (remakes/changes existing structures): backported-wolves-regions-unexplored-compat
+skip (remakes/changes existing structures): pyrellium
+KEPT 1: dungeon-conquest-stormborn-tomb (MIT, 20 structure files)
+none: biome-tag-villagers (MIT, 0 structure files)
+skip (remakes/changes existing structures): perfect-parity-the-garden-awakens-edition
+KEPT 16: cherry-blossom-grotto (CC0-1.0, 82 structure files)
+none: big-globe-dungeon-now-loading-compatibility (CC0-1.0, 0 structure files)
+none: dungeon-and-village-ad-astra (MIT, 72 structure files)
+none: big-globe-remove-portal-temple (CC0-1.0, 0 structure files)
+none: advancedlocate (MIT, 0 structure files)
+skip (remakes/changes existing structures): more-ancient-debris-20x
+skip (remakes/changes existing structures): jitl
+skip (remakes/changes existing structures): more-ancient-debris-5x
+skip (remakes/changes existing structures): endium-enhanced
+skip (remakes/changes existing structures): loot-geodes
+KEPT 60: mvs-moogs-voyager-structure-config-pack (MIT, 402 structure files)
+none: sohatuys-medieval-structures (Apache-2.0, 15 structure files)
+skip (remakes/changes existing structures): jabs-fixed-minecraft
+skip (remakes/changes existing structures): earthbounds
+skip (remakes/changes existing structures): the-silver-age
+skip (remakes/changes existing structures): more-gear
+none: simple-structure-pale-garden (MIT, 27 structure files)
+none: create-northstar-structures (MIT, 0 structure files)
+none: big-globe-stalwart-dungeons-compatibility (CC0-1.0, 0 structure files)
+KEPT 33: abandoned-world (MIT, 49 structure files)
+none: simple-structure-ad-astra (MIT, 101 structure files)
+none: no-more-jungle-temples (MIT, 0 structure files)
+none: all-roads (MIT, 0 structure files)
+KEPT 7: expanded-caves (CC0-1.0, 22 structure files)
+none: ars-structurize (MIT, 25 structure files)
+skip (remakes/changes existing structures): one-block-game
+skip (remakes/changes existing structures): burnt-dynamic-trees
+none: eureka-unofficial-port (Apache-2.0, 0 structure files)
+skip (remakes/changes existing structures): scorched-guns-caverns-chasms-compat
+skip (remakes/changes existing structures): mazeworld
+skip (remakes/changes existing structures): cavern-root
+skip (remakes/changes existing structures): betterendcities
+KEPT 1: capybara-fabric (MIT, 1 structure files)
+none: villagercoin (MIT, 0 structure files)
+skip (remakes/changes existing structures): ruins-of-growsseth
+none: seed-atlas (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): skys-netherite-ore-remined
+skip (remakes/changes existing structures): superior-ores
+skip (remakes/changes existing structures): yeleefffs-enderite
+skip (remakes/changes existing structures): hendrixs-better-spring-to-life
+skip (remakes/changes existing structures): enriched
+KEPT 13: sakes-structures-dungeons (MIT, 17 structure files)
+skip (remakes/changes existing structures): fish-fix
+skip (remakes/changes existing structures): mar-mars-enhanced-ore-variety
+skip (remakes/changes existing structures): 8187
+skip (remakes/changes existing structures): terraplusplus
+skip (remakes/changes existing structures): better-world-options
+skip (remakes/changes existing structures): eternal-starlight-vo
+skip (remakes/changes existing structures): repurposed-structures-gazebo
+skip (remakes/changes existing structures): repairsmith
+skip (remakes/changes existing structures): lithium-raycast-fix
+none: fluid-tick-structure-processor (Apache-2.0, 0 structure files)
+skip (remakes/changes existing structures): terrainapi
+skip (remakes/changes existing structures): repurposed-structures-paladins
+skip (remakes/changes existing structures): ancient-debris-tweak
+skip (remakes/changes existing structures): more-ancient-debris-10x
+skip (remakes/changes existing structures): better-birch-forest
+skip (remakes/changes existing structures): enhancer-mod
+none: no-more-structures-full (CC0-1.0, 0 structure files)
+none: cobblemon-cities-structures (MIT, 142 structure files)
+skip (remakes/changes existing structures): lankasters-nether
+none: need-more-structures (MIT, 11 structure files)
+none: zhengelss_techguns_addon (MIT, 0 structure files)
+none: outer-end-wilds (MIT, 5 structure files)
+KEPT 60: above-and-below (MIT, 105 structure files)
+none: goodwill-structures (MIT, 3 structure files)
+none: snowy-ruins (MIT, 39 structure files)
+skip (remakes/changes existing structures): cataclysm-x-yungs-better-nether-fortress
+skip (remakes/changes existing structures): bonus-blocks-bta
+skip (remakes/changes existing structures): repurposed-structures-better-ocean-monuments-compat-port
+skip (remakes/changes existing structures): betterendfix
+skip (remakes/changes existing structures): dense-ores-refabricated
+none: forest-villages (MIT, 110 structure files)
+none: brick-pyramid-infdev-upport (MIT, 1 structure files)
+KEPT 19: cinchs-villager-statues (MIT, 32 structure files)
+none: simplestructure-mushroom-fields (CC-BY-4.0, 30 structure files)
+skip (remakes/changes existing structures): natural-philosophy
+KEPT 2: under-the-stars (MIT, 2 structure files)
+none: cottages (Apache-2.0, 10 structure files)
+skip (remakes/changes existing structures): ritro-the-end-update
+skip (remakes/changes existing structures): 1.21.4-backport
+skip (remakes/changes existing structures): crabs-backport
+KEPT 5: magical-relics (MIT, 24 structure files)
+skip (remakes/changes existing structures): createstructures
+skip (remakes/changes existing structures): simple-silver
+skip (remakes/changes existing structures): dark-fantasy-church-of-sin-vanilla
+KEPT 60: complementary-structures (MIT, 64 structure files)
+none: nirslands-minecraft-dlc-mod (MIT, 5 structure files)
+skip (remakes/changes existing structures): the-1.21.5-backport
+skip (remakes/changes existing structures): muffins-structures
+skip (remakes/changes existing structures): wandering-wildlife
+none: endship-elytra-nuker (MIT, 0 structure files)
+skip (remakes/changes existing structures): ores-ores-ores
+skip (remakes/changes existing structures): better-than-battle-towers
+none: simple-structure-nostalgia (MIT, 20 structure files)
+none: asoteria (MIT, 16 structure files)
+skip (remakes/changes existing structures): floravive
+skip (remakes/changes existing structures): arboreal-nature
+skip (remakes/changes existing structures): caves-and-cliffs-bta
+skip (remakes/changes existing structures): primal-winter-reimagined
+skip (remakes/changes existing structures): repurposed-structures-pneumaticcraft-repressurized-compat
+skip (remakes/changes existing structures): enhanced-world-creation
+KEPT 10: neopasterdream (MIT, 189 structure files)
+none: the-radio-towers-horror-element (MIT, 2 structure files)
+KEPT 43: archaeology-ruins (MIT, 51 structure files)
+none: no-more-structures-essential (CC0-1.0, 0 structure files)
+none: oceanopolis (MIT, 10 structure files)
+none: multi-village-selector (MIT, 0 structure files)
+skip (remakes/changes existing structures): big-globe-biome-tags
+skip (remakes/changes existing structures): d3v_cs-terrain-overhaul
+skip (remakes/changes existing structures): wmap
+skip (remakes/changes existing structures): marshlawsbetterend
+skip (remakes/changes existing structures): orefix
+KEPT 20: trial-airship (Apache-2.0, 111 structure files)
+skip (remakes/changes existing structures): lake-crash-fix
+none: javadungeons (MIT, 1 structure files)
+none: quarry-mining-dimension (MIT, 0 structure files)
+skip (remakes/changes existing structures): ores-to-the-nether
+skip (remakes/changes existing structures): dungeons-arise-seven-seas-sparse-structures-compat
+skip (remakes/changes existing structures): desolate
+skip (remakes/changes existing structures): ultimate-compression
+skip (remakes/changes existing structures): vibranium
+skip (remakes/changes existing structures): the-lead-age
+KEPT 25: bygone-fortress (MIT, 25 structure files)
+none: ruined-dappled-forest (MIT, 32 structure files)
+none: world-of-wonders-reforged (MIT, 7 structure files)
+KEPT 2: technoblademod (MIT, 2 structure files)
+skip (remakes/changes existing structures): custom-clear-lag
+skip (remakes/changes existing structures): rocks-done-right
+none: cursed-blade-muramasa (MIT, 1 structure files)
+none: depths-of-madness (MIT, 0 structure files)
+skip (remakes/changes existing structures): middgard-foxed
+skip (remakes/changes existing structures): assorted-discoveries
+skip (remakes/changes existing structures): tbirds-structures
+none: robotica (Apache-2.0, 0 structure files)
+none: intelligent-villagers (MIT, 0 structure files)
+KEPT 21: workshops-of-doom (MIT, 86 structure files)
+skip (remakes/changes existing structures): better-caravans
+skip (remakes/changes existing structures): nuclearcraft-neohaul
+KEPT 1: the-fisherman-house (Apache-2.0, 1 structure files)
+skip (remakes/changes existing structures): sky-void-amplified-nether
+skip (remakes/changes existing structures): ocean-revamp
+none: starflight-innovation (MIT, 17 structure files)
+skip (remakes/changes existing structures): rexles-better-overworld
+skip (remakes/changes existing structures): missing-trees
+none: villagerunknown-headhunters (MIT, 2 structure files)
+skip (remakes/changes existing structures): traveled-tracks
+skip (remakes/changes existing structures): what-is-stone-colorful-caves
+none: artemis-thin-logs (MIT, 0 structure files)
+skip (remakes/changes existing structures): flatsavanna
+none: undermagic-ii (MIT, 14 structure files)
+skip (remakes/changes existing structures): create-switzerland
+skip (remakes/changes existing structures): experience-ore
+skip (remakes/changes existing structures): instant-feedback-backport
+skip (remakes/changes existing structures): lushier
+skip (remakes/changes existing structures): realitymod
+skip (remakes/changes existing structures): the-only-isle
+skip (remakes/changes existing structures): biome-houses
+skip (remakes/changes existing structures): floral-tonics-and-tinctures
+skip (remakes/changes existing structures): unnofficial-port-apocalyptic-fortress
+none: dungeon-finder (BSD-3-Clause, 0 structure files)
+skip (remakes/changes existing structures): rebetterend
+skip (remakes/changes existing structures): strange
+skip (remakes/changes existing structures): more-ancient-debris-3x
+KEPT 30: my_village_pack (MIT, 56 structure files)
+skip (remakes/changes existing structures): riverinjungle
+skip (remakes/changes existing structures): hbs-ore-clusters-and-regen
+skip (remakes/changes existing structures): oraclium
+skip (remakes/changes existing structures): sky-void-terralith
+skip (remakes/changes existing structures): theelementguys-more-metals
+KEPT 1: villagerunknown-innsandinnkeepers (MIT, 7 structure files)
+none: box3-blocks (Apache-2.0, 0 structure files)
+skip (remakes/changes existing structures): more-ancient-debris-mod
+KEPT 4: halloween-biome (MIT, 14 structure files)
+none: structure_plus (MIT, 14 structure files)
+skip (remakes/changes existing structures): randomite
+KEPT 3: droids-create-sturcture (MIT, 17 structure files)
+skip (remakes/changes existing structures): ae2-dynamic-trees-fix
+skip (remakes/changes existing structures): fancy-weather
+KEPT 20: premier-pain-mod (MIT, 91 structure files)
+none: tfc-structures (MIT, 0 structure files)
+none: appletree (MIT, 0 structure files)
+none: falcraft (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): sky-void-nullscape
+skip (remakes/changes existing structures): create-structures-overhaul-bop-integration
+skip (remakes/changes existing structures): faes-gardencraft
+skip (remakes/changes existing structures): mc-237017-fix
+skip (remakes/changes existing structures): world-height-limit
+KEPT 1: technoblade-memorial (MIT, 1 structure files)
+KEPT 1: battle-castles (Apache-2.0, 1 structure files)
+KEPT 5: berezkas-castle (MIT, 5 structure files)
+skip (remakes/changes existing structures): the-biomes-weve-gone-waystones-compat
+none: sec-of-uni (MIT, 3 structure files)
+none: water-world-atolls (Apache-2.0, 0 structure files)
+none: still-water (MIT, 2 structure files)
+none: aliens-and-ufos (MIT, 1 structure files)
+skip (remakes/changes existing structures): better-x-bop
+skip (remakes/changes existing structures): better-dappled-forest
+KEPT 24: dungeons-and-dragons (MIT, 70 structure files)
+none: hbs-satellites (MIT, 0 structure files)
+skip (remakes/changes existing structures): landahoy
+KEPT 9: lairs-structures (MIT, 20 structure files)
+none: villagernames (MIT, 0 structure files)
+skip (remakes/changes existing structures): big-globe-remove-vanilla-structures
+KEPT 11: pillager-apocalypse-structures (MIT, 15 structure files)
+KEPT 6: immersive-aircraft-structures (MIT, 7 structure files)
+skip (remakes/changes existing structures): cyan-rose-upport
+none: cubicstruct (MIT, 0 structure files)
+none: infinite-stronghold (MIT, 0 structure files)
+skip (remakes/changes existing structures): villager-coin
+none: umines (MIT, 2 structure files)
+KEPT 23: better-mini-structures (MIT, 24 structure files)
+skip (remakes/changes existing structures): cascades-cool-biomes
+skip (remakes/changes existing structures): yazzs-redstone-golem
+none: disabler (MIT, 0 structure files)
+skip (remakes/changes existing structures): flat-world
+skip (remakes/changes existing structures): mcbig-legacy
+KEPT 60: combat-structures (MIT, 198 structure files)
+none: simplestructure-bewitchment (CC-BY-4.0, 10 structure files)
+skip (remakes/changes existing structures): beta-recobbled
+none: gyaras-plants (MIT, 0 structure files)
+KEPT 16: just-a-structure-mod (MIT, 64 structure files)
+skip (remakes/changes existing structures): free-farming
+skip (remakes/changes existing structures): simple-bushes
+skip (remakes/changes existing structures): nether-structure-tweaks
+none: twigonometry (MIT, 0 structure files)
+skip (remakes/changes existing structures): hollows-tweaks
+skip (remakes/changes existing structures): better-firefliesbff
+KEPT 8: fields (MIT, 8 structure files)
+skip (remakes/changes existing structures): flys-adrenaline
+skip (remakes/changes existing structures): caves-revamp
+skip (remakes/changes existing structures): a-better-foods
+KEPT 1: villager-tower-mod (CC-BY-4.0, 2 structure files)
+none: dragon-shouts (MIT, 1 structure files)
+skip (remakes/changes existing structures): advanced-valuables
+skip (remakes/changes existing structures): dungeons-arise-sparse-structures-compat
+none: oresbia (MIT, 0 structure files)
+none: dimensional-structure-restrict (MIT, 0 structure files)
+skip (remakes/changes existing structures): cactus-flower-compat
+skip (remakes/changes existing structures): g1axfixer
+skip (remakes/changes existing structures): another-pale-garden-backport
+skip (remakes/changes existing structures): a-better-pale-garden
+none: village-for-bewitchment (CC-BY-4.0, 38 structure files)
+KEPT 1: houseki-no-kuni-rebuild-and-shatter (Apache-2.0, 54 structure files)
+skip (remakes/changes existing structures): terracraft
+skip (remakes/changes existing structures): copper-plus-plus
+skip (remakes/changes existing structures): trial-chamber-generation-adjustment-eternal_starlight
+none: fractal-forests (MIT, 0 structure files)
+skip (remakes/changes existing structures): skygrid-challenge
+skip (remakes/changes existing structures): oozy-codex
+none: villagerunknown-customvillagernames (MIT, 0 structure files)
+skip (remakes/changes existing structures): tweaked-adventure
+none: no-more-trail-chambers (MIT, 0 structure files)
+skip (remakes/changes existing structures): tfcreate-compat
+KEPT 3: sigma-gigachad-mod (MIT, 7 structure files)
+none: physical_structures (MIT, 2 structure files)
+skip (remakes/changes existing structures): ather-remade
+none: mcp-server-mod (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): astruct
+none: dungeon-and-village-botania (MIT, 31 structure files)
+skip (remakes/changes existing structures): noborder
+KEPT 28: more-mob-tower-variants (MIT, 28 structure files)
+none: structure-finder (MIT, 0 structure files)
+KEPT 14: natural-structures (MIT, 14 structure files)
+none: script-blocks (MIT, 0 structure files)
+skip (remakes/changes existing structures): zhengelss-additions
+KEPT 1: battle-dungeons (Apache-2.0, 1 structure files)
+skip (remakes/changes existing structures): shattered-world-limits
+KEPT 37: rzgyms (MIT, 92 structure files)
+skip (remakes/changes existing structures): repurposed-structures-floralis-compat
+none: too-many-trials (Apache-2.0, 105 structure files)
+KEPT 5: enchanted-villagers (MIT, 5 structure files)
+skip (remakes/changes existing structures): calcite-crafting
+skip (remakes/changes existing structures): better-villages-lukis-grand-capitals-compatibility
+KEPT 1: jewish-mod (Apache-2.0, 1 structure files)
+none: stronghold-finder-one-eye (MIT, 0 structure files)
+skip (remakes/changes existing structures): apocalyptic-fortress
+skip (remakes/changes existing structures): little-world-tweaks
+none: dungeon-conquest-api (MIT, 1 structure files)
+skip (remakes/changes existing structures): ethicalmeatfields
+none: astral (MIT, 0 structure files)
+skip (remakes/changes existing structures): better-cave-worlds-updated
+skip (remakes/changes existing structures): gravel-placers
+KEPT 60: stonevault-dungeons-towers (MIT, 104 structure files)
+none: genshin-domains (MIT, 2 structure files)
+skip (remakes/changes existing structures): create-striated-stones-fix
+none: lost-city-svanger (MIT, 0 structure files)
+none: oddyseycraft (MIT, 0 structure files)
+skip (remakes/changes existing structures): tallstickmans-better-pies
+skip (remakes/changes existing structures): spicy-coal
+KEPT 36: connected-caves (MIT, 53 structure files)
+skip (remakes/changes existing structures): canadian-content
+none: eeeabs-mobs-nameless-guardian-returns (MIT, 1 structure files)
+none: em4es (MIT, 0 structure files)
+KEPT 4: summoner-mod (MIT, 4 structure files)
+none: evaporated-waterfalls (CC-BY-4.0, 0 structure files)
+none: luwus-wayfarers-capsule (MIT, 30 structure files)
+none: exc-jackpot (MIT, 0 structure files)
+skip (remakes/changes existing structures): lsoresandmore
+skip (remakes/changes existing structures): aeroworld
+skip (remakes/changes existing structures): dynamic-trees-enhanced-mushrooms
+skip (remakes/changes existing structures): pokecube-legacy
+skip (remakes/changes existing structures): cavemushroomfix
+none: superflat-features-and-structures (MIT, 0 structure files)
+none: btdm (MIT, 0 structure files)
+skip (remakes/changes existing structures): exitian-tweaks
+KEPT 22: the-pit (MIT, 22 structure files)
+skip (remakes/changes existing structures): improved-desert
+skip (remakes/changes existing structures): sparrows-better-mc
+KEPT 11: warhammer-universe-mod (MIT, 37 structure files)
+skip (remakes/changes existing structures): new-big-trees
+KEPT 3: bladebound (MIT, 4 structure files)
+skip (remakes/changes existing structures): enhanced-playthrough
+skip (remakes/changes existing structures): riverreeds
+skip (remakes/changes existing structures): leafier-litter
+skip (remakes/changes existing structures): tfc-structure
+none: computer-scientists-begone (MIT, 5 structure files)
+skip (remakes/changes existing structures): zygzags-mod
+skip (remakes/changes existing structures): lakeside
+none: magnetization (CC0-1.0, 51 structure files)
+skip (remakes/changes existing structures): reef
+skip (remakes/changes existing structures): autumn-drop-backport
+skip (remakes/changes existing structures): ninjago-spinjitzu-legacy
+skip (remakes/changes existing structures): charta-compat
+KEPT 22: natreoms-ambient-structures (MIT, 24 structure files)
+KEPT 1: the-gingerbread-house (Apache-2.0, 1 structure files)
+skip (remakes/changes existing structures): better-pillager
+none: superflat-progression (MIT, 0 structure files)
+none: reemergent-villages (MIT, 0 structure files)
+KEPT 6: deserters-camps (MIT, 82 structure files)
+skip (remakes/changes existing structures): star-miner-reborn
+none: hbs-structures-over-time (MIT, 1 structure files)
+skip (remakes/changes existing structures): rough-beginnings
+KEPT 1: planetarydiaries (BSD-2-Clause, 1 structure files)
+skip (remakes/changes existing structures): jammy-furniture
+KEPT 17: jewel-craft (MIT, 36 structure files)
+none: camping (MIT, 0 structure files)
+KEPT 11: toms-structures (MIT, 13 structure files)
+skip (remakes/changes existing structures): weird-wonderful-wildlife
+KEPT 1: project-flattened-utilities (MIT, 1 structure files)
+skip (remakes/changes existing structures): trial-chamber-generation-adjustment-the-end
+KEPT 6: soggy_swamps (MIT, 94 structure files)
+skip (remakes/changes existing structures): arcanum-of-wisdom
+skip (remakes/changes existing structures): jmgs-better-than-ever
+none: elytra-trials (MIT, 2 structure files)
+KEPT 6: mushri (MIT, 10 structure files)
+none: mega-world-height (MIT, 0 structure files)
+KEPT 10: secret-of-the-ancient-city-echo-dimension (MIT, 54 structure files)
+skip (remakes/changes existing structures): alpha-qol
+KEPT 3: fronduris (MIT, 51 structure files)
+skip (remakes/changes existing structures): mirage_deserts
+none: terrasect (MIT, 0 structure files)
+KEPT 3: basalt-arena (MIT, 3 structure files)
+skip (remakes/changes existing structures): create-nuclear-ore-gen-tweaks
+none: towering-heights (MIT, 0 structure files)
+skip (remakes/changes existing structures): superior-trees
+skip (remakes/changes existing structures): vermilion
+skip (remakes/changes existing structures): fabulous-ores
+skip (remakes/changes existing structures): neatly-better
+skip (remakes/changes existing structures): border-overhaul
+KEPT 32: survivalmod (MIT, 45 structure files)
+none: the-flatworld (MIT, 0 structure files)
+skip (remakes/changes existing structures): structure_lib
+none: sky-spheres (MIT, 0 structure files)
+none: superflat-structures (MIT, 0 structure files)
+skip (remakes/changes existing structures): garunixpansion
+KEPT 9: endless-highways (MIT, 9 structure files)
+none: finns-dragonite (CC-BY-4.0, 0 structure files)
+none: create-structures-nikrecs (MIT, 10 structure files)
+skip (remakes/changes existing structures): ore-tuner
+none: blueprint-strings (MIT, 0 structure files)
+skip (remakes/changes existing structures): legacy-boat-ruins
+none: stripify (MIT, 0 structure files)
+none: no-shipwrecks (MIT, 0 structure files)
+skip (remakes/changes existing structures): moose-gen
+skip (remakes/changes existing structures): miencrap-2-minerat
+none: reforested (MIT, 0 structure files)
+none: alloy-innovations (MIT, 11 structure files)
+KEPT 60: stonevaults (MIT, 208 structure files)
+none: diabolical-islands-x-incendium (MIT, 0 structure files)
+KEPT 12: ancient-ruins (MIT, 12 structure files)
+skip (remakes/changes existing structures): better-chorus-trees
+skip (remakes/changes existing structures): rustys-sylvan
+none: project-niflheim (Apache-2.0, 40 structure files)
+none: no-more-villagers (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): we-like-those-ores
+skip (remakes/changes existing structures): industrial-recrafted
+none: coconutpalm (MIT, 0 structure files)
+none: extra_professions (CC0-1.0, 24 structure files)
+skip (remakes/changes existing structures): surface-ore-pebbles
+none: progressive-no-structures (Apache-2.0, 0 structure files)
+skip (remakes/changes existing structures): tensura-byg
+skip (remakes/changes existing structures): end-expanse
+KEPT 10: ldshadowladys-chicken-dungeons-rebrushed (MIT, 10 structure files)
+none: no-zombie-villagers (MIT, 0 structure files)
+none: sable-encounters (CC0-1.0, 12 structure files)
+skip (remakes/changes existing structures): vanillaplus-ultimate
+KEPT 3: snowsextendedstructuresandbiomes (MIT, 6 structure files)
+skip (remakes/changes existing structures): extra-ruby
+skip (remakes/changes existing structures): weather-overhaul
+skip (remakes/changes existing structures): visceral-heap-fix
+KEPT 24: genshin-impact-lunar-expansion (MIT, 46 structure files)
+KEPT 30: classic-battle-towers (MIT, 30 structure files)
+skip (remakes/changes existing structures): water-enhanced
+KEPT 7: murcs-zombie-additions (MIT, 23 structure files)
+skip (remakes/changes existing structures): better-emerald-generation
+none: oploot (MIT, 0 structure files)
+skip (remakes/changes existing structures): shulkersfaithfulfactories
+none: mansioneer (Apache-2.0, 0 structure files)
+none: instant-world-mirror (Apache-2.0, 0 structure files)
+skip (remakes/changes existing structures): kinda-winter-mode-vanilla-foliage
+skip (remakes/changes existing structures): fredos-vanilla-items
+KEPT 4: nakronastructure (MIT, 16 structure files)
+none: its-not-copper-tools (MIT, 0 structure files)
+none: wither-fortress (MIT, 12 structure files)
+skip (remakes/changes existing structures): legacy-end-rings
+skip (remakes/changes existing structures): structureless
+skip (remakes/changes existing structures): dynamic-trees-project-mmo-compat
+none: megaroidandmegasitelocator (MIT, 0 structure files)
+skip (remakes/changes existing structures): bta-skygrid
+none: adaptiveruinedportals (MIT, 0 structure files)
+none: battle-towers-stationapi (MIT, 0 structure files)
+skip (remakes/changes existing structures): vanilla_enhanced
+skip (remakes/changes existing structures): improved-crystals
+skip (remakes/changes existing structures): better-end-portal
+none: arcreactorlocator (MIT, 0 structure files)
+skip (remakes/changes existing structures): better-ore-progression
+none: aetherial-structure-compatibility (MIT, 0 structure files)
+skip (remakes/changes existing structures): orpiment
+none: straw-hat-structures-east-blue (Apache-2.0, 1 structure files)
+skip (remakes/changes existing structures): true-oremistry
+skip (remakes/changes existing structures): astralite
+skip (remakes/changes existing structures): structure-saver
+none: hxwi1structures (MIT, 0 structure files)
+skip (remakes/changes existing structures): skillbound-rpg
+none: forgermod (MIT, 0 structure files)
+skip (remakes/changes existing structures): telsterrain-stationapi
+skip (remakes/changes existing structures): cf-structures
+KEPT 11: the-golden-vault (CC-BY-4.0, 16 structure files)
+KEPT 30: townfall (MIT, 111 structure files)
+none: maple-tree (MIT, 0 structure files)
+none: no-distractions (MIT, 0 structure files)
+skip (remakes/changes existing structures): kinda-winter-mode
+KEPT 3: john (MIT, 53 structure files)
+skip (remakes/changes existing structures): buried-barrels
+none: auto-maticrailway-generation (MIT, 2 structure files)
+KEPT 3: snowys-christmas-mod (MIT, 3 structure files)
+skip (remakes/changes existing structures): mcluckpotionmod
+KEPT 6: roman-structures (MIT, 6 structure files)
+skip (remakes/changes existing structures): unoredinary
+skip (remakes/changes existing structures): fallingblocktweaks
+skip (remakes/changes existing structures): structures-loot-tweak
+none: captured-serenity (CC0-1.0, 104 structure files)
+skip (remakes/changes existing structures): less-predictable-cave-biomes
+skip (remakes/changes existing structures): create-x-cobblemon-compat
+KEPT 1: wanderers-campsite (MIT, 1 structure files)
+none: infinigen (MIT, 23 structure files)
+skip (remakes/changes existing structures): better-lava-lakes
+skip (remakes/changes existing structures): crystal-infused
+KEPT 1: little-home (MIT, 1 structure files)
+skip (remakes/changes existing structures): pale-pumpkins
+KEPT 40: 2525 (MIT, 115 structure files)
+none: bieluuus-hard-dungeons (MIT, 79 structure files)
+skip (remakes/changes existing structures): charons-echo
+KEPT 3: winter-enchantments (Apache-2.0, 3 structure files)
+skip (remakes/changes existing structures): metals-a-progression-overhaul
+skip (remakes/changes existing structures): villematica
+skip (remakes/changes existing structures): wylls-armory
+none: rotwire (MIT, 0 structure files)
+skip (remakes/changes existing structures): better-underground
+skip (remakes/changes existing structures): mineshaft-babric
+none: ore-renewal (MIT, 0 structure files)
+none: gnomeland (MIT, 3 structure files)
+KEPT 1: tiktok-farlands (MIT, 1 structure files)
+skip (remakes/changes existing structures): voidweaver
+skip (remakes/changes existing structures): biome-rebalance
+skip (remakes/changes existing structures): better_village_mod
+skip (remakes/changes existing structures): dark-forest
+skip (remakes/changes existing structures): simple-electrum
+skip (remakes/changes existing structures): worldshaper-new-vanilla
+skip (remakes/changes existing structures): wits-prettified-what-is-this-structure-prettified
+skip (remakes/changes existing structures): peanutbutter
+none: ancient (MIT, 3 structure files)
+KEPT 2: weidestcraft (MIT, 2 structure files)
+KEPT 41: fractum-mod (Apache-2.0, 47 structure files)
+KEPT 30: pig-villages (MIT, 30 structure files)
+skip (remakes/changes existing structures): configurable-mc-237017-fix
+none: village-terrain-filter (MIT, 0 structure files)
+skip (remakes/changes existing structures): portals-dimensions
+skip (remakes/changes existing structures): simply-natural-biomes
+none: dungeonlootconfigurator (MIT, 0 structure files)
+none: teleport-circles-henge-structure (CC0-1.0, 1 structure files)
+skip (remakes/changes existing structures): aegis-gear
+skip (remakes/changes existing structures): better-with-bigshrooms
+none: rural-routes (MIT, 15 structure files)
+skip (remakes/changes existing structures): more-armors-and-srtuctures
+KEPT 60: villagekeeper (CC0-1.0, 484 structure files)
+skip (remakes/changes existing structures): hoav
+KEPT 7: easter-egg-hunt (MIT, 9 structure files)
+skip (remakes/changes existing structures): more-big-trees
+skip (remakes/changes existing structures): new-nature-overhaul
+skip (remakes/changes existing structures): scythes-erick00
+none: villagecraft-3-essentials (MIT, 0 structure files)
+skip (remakes/changes existing structures): bat-blooms
+none: cydun (MIT, 61 structure files)
+none: solar-mythos (MIT, 25 structure files)
+none: old_villages (MIT, 0 structure files)
+skip (remakes/changes existing structures): apples
+skip (remakes/changes existing structures): twindling-tweaks
+KEPT 3: piglin-outposts (MIT, 3 structure files)
+skip (remakes/changes existing structures): spireds-pale-revamp
+none: mossy-structures (MIT, 0 structure files)
+skip (remakes/changes existing structures): wxvbmvc
+none: structurepile (Apache-2.0, 0 structure files)
+none: structurecodex (MIT, 0 structure files)
+skip (remakes/changes existing structures): corner-log
+none: no-glow-lichen (CC-BY-4.0, 0 structure files)
+none: dungeon_quest (MIT, 1 structure files)
+skip (remakes/changes existing structures): backrooms-kelp
+KEPT 10: villages-reimagined (MIT, 22 structure files)
+skip (remakes/changes existing structures): captercraft
+skip (remakes/changes existing structures): the-dungeon-experience
+skip (remakes/changes existing structures): calcite-veins
+skip (remakes/changes existing structures): regions-unexplored-biome-book-compat
+skip (remakes/changes existing structures): wixterus
+KEPT 6: celestial_adventure (Apache-2.0, 17 structure files)
+none: descent-dimension (MIT, 47 structure files)
+skip (remakes/changes existing structures): imovinc_the_minecraft_extension
+KEPT 2: eqlans (MIT, 3 structure files)
+skip (remakes/changes existing structures): spaces-better-stuff
+skip (remakes/changes existing structures): end-platform-fix
+KEPT 2: railcity (MIT, 60 structure files)
+skip (remakes/changes existing structures): the-end-void-rings-generation-fix
+skip (remakes/changes existing structures): lava-gen-tweaks
+none: capybaras-elequacitys-take (MIT, 0 structure files)
+KEPT 15: ruined-worlds (MIT, 20 structure files)
+skip (remakes/changes existing structures): mitchells-sunflowers
+skip (remakes/changes existing structures): pjs-enhanced-gold
+none: rot-villager (MIT, 0 structure files)
+skip (remakes/changes existing structures): more_tree_sizes
+none: power-artifacts-plus-underground-boxes (MIT, 8 structure files)
+KEPT 1: brawl-town (MIT, 1 structure files)
+none: carpet-stairs-mansion (CC0-1.0, 3 structure files)
+KEPT 20: more-more-and-even-more (Apache-2.0, 20 structure files)
+none: yangs-electricity (MIT, 0 structure files)
+skip (remakes/changes existing structures): better-coal
+skip (remakes/changes existing structures): enlivened-end
+none: minestruct-recrafted (MIT, 8 structure files)
+none: raijins-wrath (MIT, 0 structure files)
+none: lvn (MIT, 0 structure files)
+skip (remakes/changes existing structures): nostructures
+none: ultra-daynight-switcher (Apache-2.0, 0 structure files)
+none: plastic-craft (MIT, 0 structure files)
+KEPT 1: vllr-cursed-villager (MIT, 3 structure files)
+skip (remakes/changes existing structures): huge-end-flowers
+none: singleplayer-anticheat (MIT, 0 structure files)
+none: more-structure-control (MIT, 0 structure files)
+none: same-place-structures (MIT, 0 structure files)
+skip (remakes/changes existing structures): mycoscape
+skip (remakes/changes existing structures): kts-jungle-worldgen
+none: killer-bees (MIT, 0 structure files)
+skip (remakes/changes existing structures): cinnabar-sulfur-backport
+KEPT 2: castles-and-outposts (MIT, 2 structure files)
+skip (remakes/changes existing structures): collapsing-skies
+skip (remakes/changes existing structures): ardwick
+skip (remakes/changes existing structures): emerald-and-things
+skip (remakes/changes existing structures): dimensional-additions
+none: novillage (MIT, 0 structure files)
+skip (remakes/changes existing structures): configured-feature-saplings-forgified
+none: project-tiger (MIT, 2 structure files)
+none: entity_block (MIT, 0 structure files)
+skip (remakes/changes existing structures): biome-ore-richness
+skip (remakes/changes existing structures): largeorenodesremove
+none: largestructlib (MIT, 0 structure files)
+none: camps-and-colors (MIT, 0 structure files)
+none: op-ruby-addon (MIT, 0 structure files)
+skip (remakes/changes existing structures): bloat-cozy-cooks
+skip (remakes/changes existing structures): bonus_tent
+KEPT 1: creations-of-tygrys (MIT, 2 structure files)
+none: bricks-n-blocks (MIT, 7 structure files)
+KEPT 1: no-world (MIT, 21 structure files)
+skip (remakes/changes existing structures): world-scanners
+skip (remakes/changes existing structures): pale-oak-backport
+skip (remakes/changes existing structures): legacy-console-world-sizer
+none: ancient-city-underground (CC0-1.0, 0 structure files)
+skip (remakes/changes existing structures): vancer-ores
+skip (remakes/changes existing structures): unoredinary-legacy
+KEPT 10: divinetowers (CC0-1.0, 17 structure files)
+none: subaru_stairs (MIT, 0 structure files)
+none: echo-relics (MIT, 0 structure files)
+none: mercury-madness (MIT, 0 structure files)
+KEPT 2: the-voidlands-of-entody (MIT, 2 structure files)
+KEPT 1: echoes-of-past (Apache-2.0, 1 structure files)
+skip (remakes/changes existing structures): glowcaves
+skip (remakes/changes existing structures): neutral-structures
+none: instanced-dungeons (MIT, 123 structure files)
+skip (remakes/changes existing structures): fruit-madness
+skip (remakes/changes existing structures): structure-spread-tweaks
+skip (remakes/changes existing structures): skyblock-portals
+skip (remakes/changes existing structures): gleamcraft
+skip (remakes/changes existing structures): v-mod-villages
+skip (remakes/changes existing structures): corrected-shipwrecks
+skip (remakes/changes existing structures): progression-reshuffled
+skip (remakes/changes existing structures): cursed-end-update
+skip (remakes/changes existing structures): oxaze

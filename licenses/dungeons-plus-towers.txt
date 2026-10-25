@@ -1,0 +1,5 @@
+Dungeons+: Towers by nikvyrn
+https://modrinth.com/mod/dungeons-plus-towers
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

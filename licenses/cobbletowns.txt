@@ -1,0 +1,5 @@
+CobbleTowns by lastgreenseer
+https://modrinth.com/datapack/cobbletowns
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

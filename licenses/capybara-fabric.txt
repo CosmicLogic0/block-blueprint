@@ -1,0 +1,5 @@
+[FABRIC] Capybara by TemmieChan
+https://modrinth.com/mod/capybara-fabric
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

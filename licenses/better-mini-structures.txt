@@ -1,0 +1,5 @@
+BetterMiniStructures by Jakomi1
+https://modrinth.com/mod/better-mini-structures
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)
