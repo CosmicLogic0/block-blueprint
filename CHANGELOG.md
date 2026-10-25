@@ -1,3 +1,9 @@
+## 1.2.4
+- **Schematic files in every version (Fabric, Forge, NeoForge):** .schem (WorldEdit / Sponge v1-v3), .litematic (Litematica) and .nbt (structure blocks) files show up in Saved builds. Put them in the BlockBlueprint/builds folder in your user folder; your WorldEdit and Litematica schematics folders are read too.
+- New command **/buildblueprint export** saves the loaded build as a .schem file for WorldEdit, Litematica, Axiom and other tools.
+- App: **Open .schem file** (or drag one onto the window) and **Save as .schem**.
+- App: **1,300+ new templates** - Minecraft's own village houses, outposts, shipwrecks, ruins, trial chambers and more, read from your own game files - plus 64 circle shape guides (CC0, by Greaby).
+
 ## 1.2.3
 - **Forge and NeoForge for Minecraft 26.x** (beta): Forge 26.1, 26.1.1, 26.1.2, 26.2 and 26.3; NeoForge 26.1, 26.1.1, 26.1.2, 26.2 and 26.3.
 - More in-between versions (beta): Forge 1.18, 1.19.1, 1.20, 1.21.6, 1.21.7 and 1.21.9; NeoForge 1.21, 1.21.2, 1.21.6, 1.21.7 and 1.21.9.

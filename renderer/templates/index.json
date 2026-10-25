@@ -78,5 +78,1157 @@
   "tags": [
    "community"
   ]
+ },
+ {
+  "id": "circle_1",
+  "name": "Circle 1×1",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 1 by 1 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   1,
+   1,
+   1
+  ],
+  "blocks": 1,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_2",
+  "name": "Circle 2×2",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 2 by 2 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   2,
+   1,
+   2
+  ],
+  "blocks": 4,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_3",
+  "name": "Circle 3×3",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 3 by 3 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   3,
+   1,
+   3
+  ],
+  "blocks": 4,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_4",
+  "name": "Circle 4×4",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 4 by 4 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   4,
+   1,
+   4
+  ],
+  "blocks": 8,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_5",
+  "name": "Circle 5×5",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 5 by 5 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   5,
+   1,
+   5
+  ],
+  "blocks": 12,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_6",
+  "name": "Circle 6×6",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 6 by 6 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   6,
+   1,
+   6
+  ],
+  "blocks": 12,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_7",
+  "name": "Circle 7×7",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 7 by 7 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   7,
+   1,
+   7
+  ],
+  "blocks": 16,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_8",
+  "name": "Circle 8×8",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 8 by 8 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   8,
+   1,
+   8
+  ],
+  "blocks": 20,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_9",
+  "name": "Circle 9×9",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 9 by 9 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   9,
+   1,
+   9
+  ],
+  "blocks": 24,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_10",
+  "name": "Circle 10×10",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 10 by 10 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   10,
+   1,
+   10
+  ],
+  "blocks": 24,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_11",
+  "name": "Circle 11×11",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 11 by 11 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   11,
+   1,
+   11
+  ],
+  "blocks": 28,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_12",
+  "name": "Circle 12×12",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 12 by 12 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   12,
+   1,
+   12
+  ],
+  "blocks": 32,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_13",
+  "name": "Circle 13×13",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 13 by 13 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   13,
+   1,
+   13
+  ],
+  "blocks": 32,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_14",
+  "name": "Circle 14×14",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 14 by 14 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   14,
+   1,
+   14
+  ],
+  "blocks": 36,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_15",
+  "name": "Circle 15×15",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 15 by 15 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   15,
+   1,
+   15
+  ],
+  "blocks": 40,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_16",
+  "name": "Circle 16×16",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 16 by 16 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   16,
+   1,
+   16
+  ],
+  "blocks": 44,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_17",
+  "name": "Circle 17×17",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 17 by 17 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   17,
+   1,
+   17
+  ],
+  "blocks": 44,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_18",
+  "name": "Circle 18×18",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 18 by 18 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   18,
+   1,
+   18
+  ],
+  "blocks": 48,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_19",
+  "name": "Circle 19×19",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 19 by 19 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   19,
+   1,
+   19
+  ],
+  "blocks": 52,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_20",
+  "name": "Circle 20×20",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 20 by 20 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   20,
+   1,
+   20
+  ],
+  "blocks": 52,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_21",
+  "name": "Circle 21×21",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 21 by 21 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   21,
+   1,
+   21
+  ],
+  "blocks": 56,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_22",
+  "name": "Circle 22×22",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 22 by 22 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   22,
+   1,
+   22
+  ],
+  "blocks": 60,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_23",
+  "name": "Circle 23×23",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 23 by 23 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   23,
+   1,
+   23
+  ],
+  "blocks": 64,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_24",
+  "name": "Circle 24×24",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 24 by 24 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   24,
+   1,
+   24
+  ],
+  "blocks": 64,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_25",
+  "name": "Circle 25×25",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 25 by 25 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   25,
+   1,
+   25
+  ],
+  "blocks": 68,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_26",
+  "name": "Circle 26×26",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 26 by 26 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   26,
+   1,
+   26
+  ],
+  "blocks": 72,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_27",
+  "name": "Circle 27×27",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 27 by 27 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   27,
+   1,
+   27
+  ],
+  "blocks": 72,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_28",
+  "name": "Circle 28×28",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 28 by 28 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   28,
+   1,
+   28
+  ],
+  "blocks": 76,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_29",
+  "name": "Circle 29×29",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 29 by 29 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   29,
+   1,
+   29
+  ],
+  "blocks": 80,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_30",
+  "name": "Circle 30×30",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 30 by 30 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   30,
+   1,
+   30
+  ],
+  "blocks": 80,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_31",
+  "name": "Circle 31×31",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 31 by 31 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   31,
+   1,
+   31
+  ],
+  "blocks": 84,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_32",
+  "name": "Circle 32×32",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 32 by 32 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   32,
+   1,
+   32
+  ],
+  "blocks": 88,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_33",
+  "name": "Circle 33×33",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 33 by 33 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   33,
+   1,
+   33
+  ],
+  "blocks": 92,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_34",
+  "name": "Circle 34×34",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 34 by 34 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   34,
+   1,
+   34
+  ],
+  "blocks": 92,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_35",
+  "name": "Circle 35×35",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 35 by 35 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   35,
+   1,
+   35
+  ],
+  "blocks": 96,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_36",
+  "name": "Circle 36×36",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 36 by 36 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   36,
+   1,
+   36
+  ],
+  "blocks": 100,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_37",
+  "name": "Circle 37×37",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 37 by 37 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   37,
+   1,
+   37
+  ],
+  "blocks": 100,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_38",
+  "name": "Circle 38×38",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 38 by 38 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   38,
+   1,
+   38
+  ],
+  "blocks": 104,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_39",
+  "name": "Circle 39×39",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 39 by 39 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   39,
+   1,
+   39
+  ],
+  "blocks": 108,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_40",
+  "name": "Circle 40×40",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 40 by 40 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   40,
+   1,
+   40
+  ],
+  "blocks": 112,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_41",
+  "name": "Circle 41×41",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 41 by 41 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   41,
+   1,
+   41
+  ],
+  "blocks": 112,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_42",
+  "name": "Circle 42×42",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 42 by 42 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   42,
+   1,
+   42
+  ],
+  "blocks": 116,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_43",
+  "name": "Circle 43×43",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 43 by 43 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   43,
+   1,
+   43
+  ],
+  "blocks": 120,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_44",
+  "name": "Circle 44×44",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 44 by 44 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   44,
+   1,
+   44
+  ],
+  "blocks": 120,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_45",
+  "name": "Circle 45×45",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 45 by 45 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   45,
+   1,
+   45
+  ],
+  "blocks": 124,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_46",
+  "name": "Circle 46×46",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 46 by 46 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   46,
+   1,
+   46
+  ],
+  "blocks": 128,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_47",
+  "name": "Circle 47×47",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 47 by 47 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   47,
+   1,
+   47
+  ],
+  "blocks": 132,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_48",
+  "name": "Circle 48×48",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 48 by 48 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   48,
+   1,
+   48
+  ],
+  "blocks": 132,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_49",
+  "name": "Circle 49×49",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 49 by 49 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   49,
+   1,
+   49
+  ],
+  "blocks": 136,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_50",
+  "name": "Circle 50×50",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 50 by 50 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   50,
+   1,
+   50
+  ],
+  "blocks": 140,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_51",
+  "name": "Circle 51×51",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 51 by 51 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   51,
+   1,
+   51
+  ],
+  "blocks": 140,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_52",
+  "name": "Circle 52×52",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 52 by 52 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   52,
+   1,
+   52
+  ],
+  "blocks": 144,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_53",
+  "name": "Circle 53×53",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 53 by 53 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   53,
+   1,
+   53
+  ],
+  "blocks": 148,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_54",
+  "name": "Circle 54×54",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 54 by 54 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   54,
+   1,
+   54
+  ],
+  "blocks": 148,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_55",
+  "name": "Circle 55×55",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 55 by 55 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   55,
+   1,
+   55
+  ],
+  "blocks": 152,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_56",
+  "name": "Circle 56×56",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 56 by 56 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   56,
+   1,
+   56
+  ],
+  "blocks": 156,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_57",
+  "name": "Circle 57×57",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 57 by 57 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   57,
+   1,
+   57
+  ],
+  "blocks": 160,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_58",
+  "name": "Circle 58×58",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 58 by 58 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   58,
+   1,
+   58
+  ],
+  "blocks": 160,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_59",
+  "name": "Circle 59×59",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 59 by 59 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   59,
+   1,
+   59
+  ],
+  "blocks": 164,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_60",
+  "name": "Circle 60×60",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 60 by 60 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   60,
+   1,
+   60
+  ],
+  "blocks": 168,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_61",
+  "name": "Circle 61×61",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 61 by 61 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   61,
+   1,
+   61
+  ],
+  "blocks": 168,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_62",
+  "name": "Circle 62×62",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 62 by 62 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   62,
+   1,
+   62
+  ],
+  "blocks": 172,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_63",
+  "name": "Circle 63×63",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 63 by 63 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   63,
+   1,
+   63
+  ],
+  "blocks": 176,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
+ },
+ {
+  "id": "circle_64",
+  "name": "Circle 64×64",
+  "cat": "Shape Guides",
+  "schem": true,
+  "desc": "A 64 by 64 circle outline to guide round builds (towers, domes, fountains). By Greaby, CC0 public domain (github.com/Greaby/minecraft-circles-schematics).",
+  "size": [
+   64,
+   1,
+   64
+  ],
+  "blocks": 180,
+  "types": 1,
+  "tags": [
+   "cc0"
+  ],
+  "credit": "Greaby (CC0)"
  }
 ]

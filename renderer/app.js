@@ -4,6 +4,7 @@ import { buildAtlas } from './atlas.js';
 import { Baker, buildWorldGeometry, buildBlockGeometry, buildMultiGeometry, encode, decode, inRange, DIR_VEC } from './bake.js';
 import { encodeBlueprint } from './export.js';
 import { simulate, useBlock } from './redstone.js';
+import { schematicToBuild, buildToSchem, isGzip, isSchematicName, dataVersionFor } from './schem.js';
 
 THREE.ColorManagement.enabled = false; // vanilla-style: textures * shade, no color-space conversion
 
@@ -822,7 +823,14 @@ async function main() {
   // ---------------------------------------------------------------- template gallery
   const TPLSRC = api.templates || {
     index: async () => (await fetch('templates/index.json')).json(),
-    get: async (id) => (await fetch(`templates/${id}.json`)).text(),
+    get: async (id) => {
+      const r = await fetch(`templates/${id}.json`); if (r.ok) return r.text();
+      for (const ext of ['schem', 'litematic', 'nbt']) {   // templates kept as schematic files
+        const q = await fetch(`templates/schem/${id}.${ext}`).catch(() => null);
+        if (q && q.ok) { let u8 = new Uint8Array(await q.arrayBuffer()); if (isGzip(u8)) u8 = await pipe(u8, new DecompressionStream('gzip')); return JSON.stringify(schematicToBuild(u8, id)); }
+      }
+      return 'null';
+    },
     thumb: (id) => `templates/thumbs/${id}.jpg`,
   };
   let tplIndex = null, tplCat = 'All', tplQuery = '', tplCur = null, tplCells = null;
@@ -843,7 +851,8 @@ async function main() {
     if (!tplIndex) {
       const mine = await UB.list();
       const fromMc = api.mcBuilds ? await api.mcBuilds.list().catch(() => []) : [];
-      tplIndex = [...fromMc, ...mine, ...(await TPLSRC.index())]; renderTplTabs();
+      const fromGame = api.mcStructures ? await api.mcStructures.list().catch(() => []) : [];
+      tplIndex = [...fromMc, ...mine, ...(await TPLSRC.index()), ...fromGame]; renderTplTabs();
     }
     showTplGrid();
   }
@@ -867,7 +876,7 @@ async function main() {
       const d = document.createElement('div'); d.className = 'tcard';
       d.innerHTML = `<img loading="lazy" alt=""><b></b><span></span>`;
       const img = d.querySelector('img');
-      if (t.cat === 'From Minecraft') { d.classList.add('fromMc'); thumbFor(t).then((u) => { if (u) img.src = u; }); }
+      if (t.cat === 'From Minecraft' || t.src === 'game' || t.schem) { d.classList.add('fromMc'); thumbFor(t).then((u) => { if (u) img.src = u; }); }
       else img.src = t.cat === 'My Builds' ? (t.thumb || '') : TPLSRC.thumb(t.id);
       d.querySelector('b').textContent = t.name;
       d.querySelector('span').textContent = `${t.size.join(' × ')} · ${t.blocks.toLocaleString()} blocks`;
@@ -879,10 +888,17 @@ async function main() {
       : q ? '<div class="mcsub">No builds match.</div>'
       : '<div class="mcsub">No templates yet. Save your builds with "＋ Save my build" or import a build code - they show up under My Builds.</div>';
   }
+  // the build's JSON, wherever it comes from (built-in, My Builds, From Minecraft, Minecraft's own structures)
+  async function rawFor(t) {
+    if (t.src === 'game') return api.mcStructures.get(t.file);
+    if (t.cat === 'From Minecraft') return api.mcBuilds.get(t.file);
+    if (t.cat === 'My Builds') return UB.get(t.id);
+    return TPLSRC.get(t.id);
+  }
   async function loadTplCells(id) {
     if (tplCache.has(id)) return tplCache.get(id);
     const e = tplIndex && tplIndex.find((t) => t.id === id);
-    const data = JSON.parse(e && e.cat === 'From Minecraft' ? await api.mcBuilds.get(e.file) : e && e.cat === 'My Builds' ? await UB.get(id) : await TPLSRC.get(id));
+    const data = JSON.parse(await rawFor(e || { id }));
     const cells = [];
     for (let [x, y, z, name, label, r] of data.blocks) {
       if (!catalog.blocks[name]) continue;
@@ -894,7 +910,7 @@ async function main() {
   // Pictures for builds that come from Minecraft (they have no saved thumbnail): rendered once, kept for this session.
   const mcThumbs = new Map(); let mcThumbR = null, thumbQ = Promise.resolve();
   function thumbFor(t) {
-    const key = t.file + ':' + t.created;
+    const key = (t.file || t.id) + ':' + (t.created || 0);
     if (mcThumbs.has(key)) return Promise.resolve(mcThumbs.get(key));
     thumbQ = thumbQ.then(async () => {
       if (mcThumbs.has(key)) return mcThumbs.get(key);
@@ -1061,8 +1077,39 @@ async function main() {
       toast('Imported into My Builds');
     } catch (err) { toast(err.message || 'Could not read that code', 4000); }
   };
+  // ---- schematic files (.schem / .litematic / .nbt): open, drag in, save
+  async function importSchematic(file) {
+    try {
+      if (file.size > 50_000_000) throw new Error('That file is too big');
+      let u8 = new Uint8Array(await file.arrayBuffer());
+      if (isGzip(u8)) u8 = await pipe(u8, new DecompressionStream('gzip'));
+      const data = schematicToBuild(u8, file.name.replace(/\.[^.]+$/, ''), 'Imported from ' + file.name + '.');
+      if (!data.blocks.length) throw new Error('That schematic has no blocks in it');
+      data.name = String(data.name).slice(0, 40);
+      const id = await saveUserBuild(data);
+      await openTemplates(); const e = tplIndex.find((t) => t.id === id); if (e) openTplDetail(e);
+      toast(`Imported "${data.name}" into My Builds (${data.blocks.length} blocks)`);
+    } catch (err) { toast(err.message || 'Could not read that file', 4500); }
+  }
+  $('#tplOpenFile').onclick = () => $('#schemFile').click();
+  $('#schemFile').onchange = (e) => { const f = e.target.files[0]; e.target.value = ''; if (f) importSchematic(f); };
+  addEventListener('dragover', (e) => { if ([...(e.dataTransfer?.items || [])].some((i) => i.kind === 'file')) e.preventDefault(); });
+  addEventListener('drop', (e) => {
+    const f = [...(e.dataTransfer?.files || [])].find((x) => isSchematicName(x.name));
+    if (!f) return; e.preventDefault(); importSchematic(f);
+  });
+  $('#tdSchem').onclick = async () => {
+    try {
+      const raw = await rawFor(tplCur);
+      const data = JSON.parse(raw); data.name = tplCur.name;
+      const gz = await pipe(buildToSchem(data, dataVersionFor(status.version)), new CompressionStream('gzip'));
+      const name = (String(tplCur.name).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') || 'build') + '.schem';
+      if (api.saveSchem) { const r = await api.saveSchem(name, b64u(gz).replace(/-/g, '+').replace(/_/g, '/')); if (r.ok) toast('Saved ' + r.path, 4000); return; }
+      const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([gz])); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    } catch (err) { toast(err.message || 'Could not save the .schem file', 4000); }
+  };
   $('#tdCode').onclick = async () => {
-    const raw = tplCur.cat === 'My Builds' ? await UB.get(tplCur.id) : await TPLSRC.get(tplCur.id);
+    const raw = await rawFor(tplCur);
     const data = JSON.parse(raw); data.name = tplCur.name;
     const code = await toCode(data);
     const copied = await copyText(code);

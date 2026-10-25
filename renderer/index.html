@@ -190,6 +190,8 @@
       <input id="tplSearch" type="search" placeholder="Search builds…" autocomplete="off">
       <button class="mcbtn" id="tplSaveMine" title="Save what you have built as a template">＋ Save my build</button>
       <button class="mcbtn" id="tplImport" title="Paste a build code">⇩ Import code</button>
+      <button class="mcbtn" id="tplOpenFile" title="Open a .schem, .litematic or .nbt file (WorldEdit, Litematica, Axiom, structure blocks). You can also drag one onto the window.">📂 Open .schem file</button>
+      <input type="file" id="schemFile" accept=".schem,.litematic,.nbt,.schematic" hidden>
       <button class="mcbtn" id="tplClose" title="Close (Esc)">✕</button>
     </div>
     <div id="tplTabs"></div>
@@ -210,6 +212,7 @@
           <button class="mcbtn big" id="tdUse">Use this build</button>
           <button class="mcbtn" id="tdAdd">Add next to my build</button>
           <button class="mcbtn" id="tdCode" title="Copy a code you can share or send to Claude">⧉ Copy build code</button>
+          <button class="mcbtn" id="tdSchem" title="Save this build as a .schem file for WorldEdit, Litematica, Axiom and other tools">⇩ Save as .schem</button>
           <button class="mcbtn" id="tdDel">🗑 Delete</button>
           <button class="mcbtn" id="tdBack">◀ Back</button>
         </div>

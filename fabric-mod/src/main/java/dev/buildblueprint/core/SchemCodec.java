@@ -251,9 +251,10 @@ public final class SchemCodec {
 
     @SuppressWarnings("unchecked")
     private static String stateOf(Map<String, Object> entry) {
-        Object n = entry.get("Name");
+        Object n = entry.get("Name");                      // older files: Name / Properties
+        if (!(n instanceof String)) n = entry.get("id");   // Minecraft 26.x structure files: id / properties
         if (!(n instanceof String)) return null;
-        Object p = entry.get("Properties");
+        Object p = entry.containsKey("Properties") ? entry.get("Properties") : entry.get("properties");
         if (!(p instanceof Map) || ((Map<String, Object>) p).isEmpty()) return (String) n;
         StringBuilder sb = new StringBuilder((String) n).append('[');
         boolean first = true;

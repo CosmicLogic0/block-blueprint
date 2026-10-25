@@ -15,6 +15,7 @@ contextBridge.exposeInMainWorld('api', {
   saveTextFile: (name, text) => ipcRenderer.invoke('file:saveTxt', name, text),
   openText: () => ipcRenderer.invoke('file:open'),
   savePng: (name, dataUrl) => ipcRenderer.invoke('file:savePng', name, dataUrl),
+  saveSchem: (name, b64) => ipcRenderer.invoke('file:saveSchem', name, b64),
   updates: {
     check: () => ipcRenderer.invoke('upd:check'),
     get: () => ipcRenderer.invoke('upd:get'),
@@ -22,6 +23,10 @@ contextBridge.exposeInMainWorld('api', {
     onState: (cb) => ipcRenderer.on('upd:state', (_e, s) => cb(s)),
   },
   sendToMinecraft: (name, text, file) => ipcRenderer.invoke('mc:send', name, text, file),
+  mcStructures: {
+    list: () => ipcRenderer.invoke('mcs:list'),
+    get: (file) => ipcRenderer.invoke('mcs:get', file),
+  },
   mcBuilds: {
     list: () => ipcRenderer.invoke('mcb:list'),
     get: (file) => ipcRenderer.invoke('mcb:get', file),

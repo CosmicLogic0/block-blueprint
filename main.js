@@ -44,14 +44,17 @@ async function maybeUpgradeAssets() {
     try { const s = buildCatalog(DATA_DIR); fs.writeFileSync(path.join(DATA_DIR, 'meta.json'), JSON.stringify({ ...readMeta(), ...s, catalogVer: CATALOG_VER })); }
     catch (e) { console.warn('catalog rebuild skipped:', e.message); }
   }
-  if (!meta || meta.entityTried || fs.existsSync(path.join(DATA_DIR, 'assets', 'minecraft', 'textures', 'entity', 'chest'))) return;
-  fs.writeFileSync(path.join(DATA_DIR, 'meta.json'), JSON.stringify({ ...meta, entityTried: true }));
+  const hasEntity = fs.existsSync(path.join(DATA_DIR, 'assets', 'minecraft', 'textures', 'entity', 'chest'));
+  const hasStructures = ['structure', 'structures'].some((d) => fs.existsSync(path.join(DATA_DIR, 'data', 'minecraft', d)));
+  // re-read the game files once when something new is wanted from them: entity textures, or Minecraft's structures (templates)
+  if (!meta || ((meta.entityTried || hasEntity) && (meta.structuresTried || hasStructures))) return;
+  fs.writeFileSync(path.join(DATA_DIR, 'meta.json'), JSON.stringify({ ...meta, entityTried: true, structuresTried: true }));
   try {
     let info = null;
     const jar = assets.findInstalledJars().find((j) => j.id === meta.version);
     if (jar) info = await assets.useFile(DATA_DIR, jar.jar);
     else if (meta.source === 'Mojang download') info = await assets.downloadVersion(DATA_DIR, null, meta.version);
-    if (info) assets.finish(DATA_DIR, { ...info, entityTried: true });
+    if (info) assets.finish(DATA_DIR, { ...info, entityTried: true, structuresTried: true });
   } catch (e) { console.warn('texture refresh skipped:', e.message); }
 }
 function readMeta() { try { return JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'meta.json'), 'utf8')); } catch { return null; } }
@@ -179,6 +182,12 @@ app.whenReady().then(() => {
     if (r.canceled || !r.filePaths[0]) return { ok: false };
     return { ok: true, path: r.filePaths[0], text: fs.readFileSync(r.filePaths[0], 'utf8') };
   });
+  ipcMain.handle('file:saveSchem', async (_e, name, b64) => {
+    const r = await dialog.showSaveDialog(win, { title: 'Save as .schem', defaultPath: path.join(DEFAULT_SAVE_DIR, name), filters: [{ name: 'Schematic (WorldEdit, Litematica, Axiom)', extensions: ['schem'] }] });
+    if (r.canceled || !r.filePath) return { ok: false };
+    fs.writeFileSync(r.filePath, Buffer.from(String(b64), 'base64'));
+    return { ok: true, path: r.filePath };
+  });
   ipcMain.handle('file:savePng', async (_e, name, dataUrl) => {
     const r = await dialog.showSaveDialog(win, { title: 'Save screenshot', defaultPath: path.join(DEFAULT_SAVE_DIR, name), filters: [{ name: 'PNG image', extensions: ['png'] }] });
     if (r.canceled || !r.filePath) return { ok: false };
@@ -190,6 +199,16 @@ app.whenReady().then(() => {
   const TPL = path.join(__dirname, 'renderer', 'templates');
   // Send to Minecraft: one shared folder every Build Blueprint mod reads, wherever the modpack is installed.
   const MCB = () => { const d = path.join(require('os').homedir(), 'BlockBlueprint', 'builds'); fs.mkdirSync(d, { recursive: true }); return d; };
+  // .schem / .litematic / .nbt files: read with the same code the app window uses (renderer/schem.js)
+  let schemMod = null;
+  const SCHEM = async () => schemMod || (schemMod = await import(require('url').pathToFileURL(path.join(__dirname, 'renderer', 'schem.js')).href));
+  async function readSchemFile(file, fallbackName, desc) {
+    const S = await SCHEM(); let b = fs.readFileSync(file);
+    if (b.length > 50_000_000) throw new Error('too big');
+    if (S.isGzip(b)) b = require('zlib').gunzipSync(b, { maxOutputLength: 200_000_000 });
+    return S.schematicToBuild(new Uint8Array(b), fallbackName, desc);
+  }
+  const schemOk = (f) => /^[^\\/:*?"<>|]+\.(schem|litematic|nbt)$/i.test(String(f)) && !String(f).includes('..');
   // decode the mod's blueprint text (same format as renderer/export.js) into the app's block list
   function decodeBbp(text) {
     const packed = Buffer.from(text.replace(/-/g, '+').replace(/_/g, '/'), 'base64');
@@ -209,9 +228,16 @@ app.whenReady().then(() => {
     return { name, size: [sx, sy, sz], blocks };
   }
   const bbpOk = (f) => /^[\w.-]+\.bbp$/.test(String(f));
-  ipcMain.handle('mcb:list', () => {
+  ipcMain.handle('mcb:list', async () => {
     const dir = MCB(); const out = [];
     for (const f of fs.readdirSync(dir)) {
+      if (schemOk(f)) {   // schematic files players dropped in the shared folder
+        try { const d = await readSchemFile(path.join(dir, f), f.replace(/\.[^.]+$/, ''));
+          out.push({ id: 'mc_' + f.replace(/[^\w]/g, '_'), file: f, name: d.name, desc: 'A schematic file (' + f.split('.').pop() + ') from your BlockBlueprint/builds folder.',
+            size: d.size, blocks: d.blocks.length, types: new Set(d.blocks.map((b) => b[3])).size, cat: 'From Minecraft', created: fs.statSync(path.join(dir, f)).mtimeMs });
+        } catch { /* skip unreadable file */ }
+        continue;
+      }
       if (!bbpOk(f)) continue;
       try {
         const [name, text] = fs.readFileSync(path.join(dir, f), 'utf8').split('\n');
@@ -222,7 +248,8 @@ app.whenReady().then(() => {
     }
     return out.sort((a, b) => b.created - a.created);
   });
-  ipcMain.handle('mcb:get', (_e, f) => {
+  ipcMain.handle('mcb:get', async (_e, f) => {
+    if (schemOk(f)) { try { return JSON.stringify(await readSchemFile(path.join(MCB(), f), f.replace(/\.[^.]+$/, ''))); } catch { return null; } }
     if (!bbpOk(f)) return null;
     try { const [name, text] = fs.readFileSync(path.join(MCB(), f), 'utf8').split('\n'); const d = decodeBbp(text.trim());
       return JSON.stringify({ format: 'block-blueprint', version: 1, name: (name || d.name).trim(), blocks: d.blocks, size: d.size }); } catch { return null; }
@@ -244,7 +271,58 @@ app.whenReady().then(() => {
     return { ok: true, dir };
   });
   ipcMain.handle('tpl:index', () => { try { return JSON.parse(fs.readFileSync(path.join(TPL, 'index.json'), 'utf8')); } catch { return []; } });
-  ipcMain.handle('tpl:get', (_e, id) => { if (!/^[a-z0-9_]+$/.test(String(id))) return null; try { return fs.readFileSync(path.join(TPL, id + '.json'), 'utf8'); } catch { return null; } });
+  ipcMain.handle('tpl:get', async (_e, id) => {
+    if (!/^[a-z0-9_]+$/.test(String(id))) return null;
+    try { return fs.readFileSync(path.join(TPL, id + '.json'), 'utf8'); } catch { /* not a json template */ }
+    for (const ext of ['schem', 'litematic', 'nbt']) {   // templates kept as schematic files (much smaller)
+      const f = path.join(TPL, 'schem', id + '.' + ext);
+      if (fs.existsSync(f)) { try { return JSON.stringify(await readSchemFile(f, id)); } catch { return null; } }
+    }
+    return null;
+  });
+
+  // Minecraft's own structures (village houses, igloos, shipwrecks, ruins...), read from the player's own game files
+  // like the textures, so nothing of Mojang's is shipped with the app. Listed once, then cached.
+  const STRUCT_GROUPS = { village: 'Village', bastion: 'Bastion', end_city: 'End City', ancient_city: 'Ancient City', trial_chambers: 'Trial Chambers',
+    shipwreck: 'Shipwreck', underwater_ruin: 'Ocean Ruin', trail_ruins: 'Trail Ruins', pillager_outpost: 'Pillager Outpost', woodland_mansion: 'Woodland Mansion',
+    igloo: 'Igloo', fossil: 'Fossil', nether_fossils: 'Nether Fossil', ruined_portal: 'Ruined Portal', desert_pyramid: 'Desert Pyramid', jungle_pyramid: 'Jungle Temple',
+    swamp_hut: 'Swamp Hut', ocean_monument: 'Ocean Monument', stronghold: 'Stronghold', mineshaft: 'Mineshaft', nether_fortress: 'Nether Fortress' };
+  const STRUCT_SKIP = new Set(['jigsaw', 'structure_block', 'structure_void', 'air', 'cave_air', 'void_air']);
+  const structDirs = () => ['structure', 'structures'].map((d) => path.join(DATA_DIR, 'data', 'minecraft', d)).filter((d) => fs.existsSync(d));
+  const titleCase = (s) => s.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+  async function readStructure(rel) {
+    for (const d of structDirs()) {
+      const f = path.resolve(d, rel);
+      if (!f.startsWith(path.resolve(d) + path.sep) || !f.endsWith('.nbt') || !fs.existsSync(f)) continue;
+      const b = await readSchemFile(f, titleCase(path.basename(rel, '.nbt')));
+      b.blocks = b.blocks.filter((x) => !STRUCT_SKIP.has(x[3]));
+      return b;
+    }
+    return null;
+  }
+  ipcMain.handle('mcs:list', async () => {
+    const files = [];
+    for (const d of structDirs()) { const walk = (sub) => { for (const n of fs.readdirSync(path.join(d, sub), { withFileTypes: true })) { const r = sub ? sub + '/' + n.name : n.name; n.isDirectory() ? walk(r) : r.endsWith('.nbt') && files.push(r); } }; walk(''); }
+    const cacheFile = path.join(DATA_DIR, 'structures-index.json');
+    try { const c = JSON.parse(fs.readFileSync(cacheFile, 'utf8')); if (c.ver === 1 && c.count === files.length) return c.list; } catch { /* rebuild */ }
+    const list = [];
+    for (const rel of files) {
+      try {
+        const b = await readStructure(rel); if (!b || b.blocks.length < 20) continue;   // skip tiny connector pieces
+        const parts = rel.replace(/\.nbt$/, '').split('/'), group = STRUCT_GROUPS[parts[0]] || titleCase(parts[0]);
+        let mn = [1e9, 1e9, 1e9], mx = [-1e9, -1e9, -1e9];
+        for (const [x, y, z] of b.blocks) { mn = [Math.min(mn[0], x), Math.min(mn[1], y), Math.min(mn[2], z)]; mx = [Math.max(mx[0], x), Math.max(mx[1], y), Math.max(mx[2], z)]; }
+        list.push({ id: 'gs_' + rel.replace(/[^\w]/g, '_'), file: rel, src: 'game', cat: 'Minecraft Structures', created: 0,
+          name: titleCase(parts[parts.length - 1]).slice(0, 40),
+          desc: `Minecraft's own ${group} piece (${parts.slice(0, -1).map(titleCase).join(' › ') || group}), read from your game files.`,
+          size: [mx[0] - mn[0] + 1, mx[1] - mn[1] + 1, mx[2] - mn[2] + 1], blocks: b.blocks.length, types: new Set(b.blocks.map((x) => x[3])).size, group });
+      } catch { /* skip */ }
+    }
+    list.sort((a, b) => a.group.localeCompare(b.group) || a.name.localeCompare(b.name, undefined, { numeric: true }));
+    try { fs.writeFileSync(cacheFile, JSON.stringify({ ver: 1, count: files.length, list })); } catch { /* fine */ }
+    return list;
+  });
+  ipcMain.handle('mcs:get', async (_e, rel) => { try { const b = await readStructure(String(rel)); return b ? JSON.stringify(b) : null; } catch { return null; } });
 
   // user-saved builds: one json file each in <data>/user-builds
   const UB = path.join(DATA_DIR, 'user-builds'); fs.mkdirSync(UB, { recursive: true });
