@@ -1,3 +1,14 @@
+## 1.2.9 (beta)
+- **New block swap screen:** click a block in the build menu and pick ANY block in the game to use instead - including blocks from other mods you have installed (with the mod's name next to them).
+  - Search box at the top: type a name or a mod.
+  - **Similar** first (stairs for stairs, slabs for slabs, the closest colour first), or browse **All blocks** / **From mods**.
+  - Names are shown, and the bottom shows exactly what changes ("Cobblestone -> Mossy Cobblestone, 81 blocks"). Double-click or Enter swaps.
+  - The old "whole set" swap is gone - you swap just the block you clicked.
+  - **Undo swap** is now right under the list in the build menu.
+- The yellow warning under the list only shows when a build has blocks that don't exist in your Minecraft version (for example a build made in a newer version). Those blocks are marked "not in game" - click one to swap it.
+- New **How it works** guide: the **i** button in the build menu (and Settings > How it works) explains everything in 7 short pages.
+- New: NeoForge 1.20.3.
+
 ## 1.2.8
 - **Fixed: Fabric 1.16.x, 1.17.x, 1.18.x and 1.19-1.19.2 refused to start** with "requires fabric-api, which is missing" when you had an older Fabric API. Any Fabric API for your version works now.
 - The block list in the top-left corner now starts at **50% size** (it was too big). Change it in Settings > List size. If you never changed it, it switches to 50% by itself.

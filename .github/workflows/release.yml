@@ -116,7 +116,7 @@ jobs:
       max-parallel: 8
       matrix:
         include:
-          - { mc: "26.3",    dir: fabric-mod,    run: 25, target: 25, type: release, gv: "26.3" }
+          - { mc: "26.3",    dir: fabric-mod,    run: 25, target: 25, type: beta, gv: "26.3" }
           - { mc: "26.2",    dir: fabric-mod,    run: 25, target: 25, type: beta,    gv: "26.2" }
           - { mc: "26.1",    dir: fabric-mod,    run: 25, target: 25, type: beta,    gv: "26.1 26.1.1 26.1.2" }
           - { mc: "1.21.11", dir: ports/1.21.11, run: 21, target: 21, type: beta,    gv: "1.21.11" }

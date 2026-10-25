@@ -53,6 +53,7 @@ neoforge-1.21.3
 neoforge-1.20.6
 neoforge-1.20.4
 neoforge-1.20.2
+neoforge-1.20.3
 1.21.9
 forge-1.21.8
 forge-1.21.10
