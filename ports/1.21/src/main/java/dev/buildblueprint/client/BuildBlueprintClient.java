@@ -23,7 +23,19 @@ public class BuildBlueprintClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        Cmd.register(BuildBlueprintClient::registerCommands);
+        try {
+            Cmd.register(BuildBlueprintClient::registerCommands);
+        } catch (LinkageError e) {
+            // Fabric API before 0.31 (the newest one listed for Minecraft 1.16.2-1.16.4) has no client commands:
+            // keep the mod working (keys + menus) and tell the player once how to get the /buildblueprint commands too.
+            System.err.println("[Build Blueprint] client commands unavailable (Fabric API too old): " + e);
+            final boolean[] told = {false};
+            net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.END_CLIENT_TICK.register(mc -> {
+                if (told[0] || !PlayerInfo.inWorld()) return;
+                told[0] = true;
+                Safe.run("old fabric api note", () -> Chat.warn("Build Blueprint: your Fabric API is too old for the /buildblueprint commands (pasting codes from the app). Install Fabric API 0.42.0+1.16 - it works on 1.16.2 to 1.16.5. Keys and menus work already."));
+            });
+        }
         Modules.init();
     }
 
