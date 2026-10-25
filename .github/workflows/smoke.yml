@@ -52,6 +52,11 @@ jobs:
             neoforge) P=$(echo "${{ matrix.mc }}" | sed 's/^1\.//')
                    F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -o "<version>$P\.[0-9]*</version>" | sed 's/<[^>]*>//g' | sort -t. -k3 -n | tail -1)
                    echo "args=-Ploom.platform=neoforge -Pforge_version=$F -Parch_loom_version=$LOOM" >> "$GITHUB_OUTPUT" ;;
+            neoforge26) P="${{ matrix.mc }}"; case "$P" in *.*.*) ;; *) P="$P.0" ;; esac
+                   F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -oE "<version>$P\.[0-9]+(-beta)?</version>" | sed 's/<[^>]*>//g' | sort -V | tail -1)
+                   echo "args=-Pneo_version=$F" >> "$GITHUB_OUTPUT" ;;
+            forge26) F=$(curl -s https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml | grep -o "<version>${{ matrix.mc }}-[^<]*</version>" | sed 's/<[^>]*>//g; s/^${{ matrix.mc }}-//' | tail -1)
+                   echo "args=-Pforge_version=$F" >> "$GITHUB_OUTPUT" ;;
             *) V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.mc }}</version>" | sed 's/<[^>]*>//g' | tail -1)
                    echo "args=-Pfabric_api_version=$V" >> "$GITHUB_OUTPUT" ;;
           esac

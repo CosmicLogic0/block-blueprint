@@ -70,6 +70,11 @@ jobs:
           - { mc: "26.1.2", id: "neoforge-26.1.2", dir: ports/neoforge-26, java: 25, loader: neoforge26 }
           - { mc: "26.1.1", id: "neoforge-26.1.1", dir: ports/neoforge-26, java: 25, loader: neoforge26 }
           - { mc: "26.1", id: "neoforge-26.1", dir: ports/neoforge-26, java: 25, loader: neoforge26 }
+          - { mc: "26.3", id: "forge-26.3", dir: ports/forge-26, java: 25, loader: forge26 }
+          - { mc: "26.2", id: "forge-26.2", dir: ports/forge-26, java: 25, loader: forge26 }
+          - { mc: "26.1.2", id: "forge-26.1.2", dir: ports/forge-26, java: 25, loader: forge26 }
+          - { mc: "26.1.1", id: "forge-26.1.1", dir: ports/forge-26, java: 25, loader: forge26 }
+          - { mc: "26.1", id: "forge-26.1", dir: ports/forge-26, java: 25, loader: forge26 }
           - { mc: "1.20.6", dir: ports/1.21, java: 21 }
           - { mc: "1.20.4", dir: ports/1.21, java: 17 }
           - { mc: "1.20.1", dir: ports/1.21, java: 17 }
@@ -86,6 +91,11 @@ jobs:
             L=$(curl -s https://maven.architectury.dev/dev/architectury/loom/dev.architectury.loom.gradle.plugin/maven-metadata.xml | grep -o "<latest>[^<]*</latest>" | sed 's/<[^>]*>//g')
             echo "Forge: $F  Architectury Loom: $L"
             echo "args=-Pforge_version=$F -Parch_loom_version=$L" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if [ "${{ matrix.loader }}" = "forge26" ]; then
+            F=$(curl -s https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml | grep -o "<version>${{ matrix.mc }}-[^<]*</version>" | sed 's/<[^>]*>//g; s/^${{ matrix.mc }}-//' | tail -1)
+            echo "Forge: $F"
+            echo "args=-Pforge_version=$F" >> "$GITHUB_OUTPUT"; exit 0
           fi
           if [ "${{ matrix.loader }}" = "neoforge26" ]; then
             P="${{ matrix.mc }}"; case "$P" in *.*.*) ;; *) P="$P.0" ;; esac      # 26.3 -> 26.3.0, 26.1.2 stays

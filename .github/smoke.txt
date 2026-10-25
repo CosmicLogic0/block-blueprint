@@ -1,6 +1,11 @@
-# dir           mc       loader    java-the-game-uses
-ports/forge     1.21.8   forge     21
-ports/forge     1.21.10  forge     21
-ports/forge     1.21.11  forge     21
-ports/forge     1.21.10  neoforge  21
-ports/forge     1.21.11  neoforge  21
+# dir                 mc       loader      java-the-game-uses
+ports/neoforge-26     26.3   neoforge26  25
+ports/forge-26        26.3   forge26     25
+ports/neoforge-26     26.2   neoforge26  25
+ports/forge-26        26.2   forge26     25
+ports/neoforge-26     26.1.2   neoforge26  25
+ports/forge-26        26.1.2   forge26     25
+ports/neoforge-26     26.1.1   neoforge26  25
+ports/forge-26        26.1.1   forge26     25
+ports/neoforge-26     26.1   neoforge26  25
+ports/forge-26        26.1   forge26     25
