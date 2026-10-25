@@ -49,8 +49,8 @@ jobs:
           case "${{ matrix.loader }}" in
             forge) F=$(curl -s https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml | grep -o "<version>${{ matrix.mc }}-[^<]*</version>" | sed 's/<[^>]*>//g; s/^${{ matrix.mc }}-//' | tail -1)
                    echo "args=-Pforge_version=$F -Parch_loom_version=$LOOM" >> "$GITHUB_OUTPUT" ;;
-            neoforge) P=$(echo "${{ matrix.mc }}" | sed 's/^1\.//')
-                   F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -o "<version>$P\.[0-9]*</version>" | sed 's/<[^>]*>//g' | sort -t. -k3 -n | tail -1)
+            neoforge) P=$(echo "${{ matrix.mc }}" | sed 's/^1\.//'); case "$P" in *.*) ;; *) P="$P.0" ;; esac
+                   F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -oE "<version>$P\.[0-9]+(-beta)?</version>" | sed 's/<[^>]*>//g' | sort -V | tail -1)
                    echo "args=-Ploom.platform=neoforge -Pforge_version=$F -Parch_loom_version=$LOOM" >> "$GITHUB_OUTPUT" ;;
             neoforge26) P="${{ matrix.mc }}"; case "$P" in *.*.*) ;; *) P="$P.0" ;; esac
                    F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -oE "<version>$P\.[0-9]+(-beta)?</version>" | sed 's/<[^>]*>//g' | sort -V | tail -1)
@@ -83,7 +83,7 @@ jobs:
           if grep -qE "Crash report saved|---- Minecraft Crash Report ----" game.log; then
             { echo "CRASH"; grep -A40 -- "---- Minecraft Crash Report ----" game.log | head -60; grep -h -A60 "Description:" run/crash-reports/*.txt 2>/dev/null | head -80; } > $F
           elif grep -qE "Sound engine started|OpenAL initialized|Created: .*textures/atlas|Narrator library" game.log; then
-            { echo "STARTED"; grep -iE "buildblueprint|build blueprint|mixin.*(error|fail)|Exception" game.log | grep -viE "realms|telemetry|narrator" | head -40; } > $F
+            { echo "STARTED"; grep -iE "buildblueprint|build blueprint|mixin.*(error|fail)|Exception|Reloading ResourceManager|ModLoadingException|Missing or unsupported|LoadingFailed" game.log | grep -viE "realms|telemetry|narrator" | head -40; } > $F
           else
             { echo "DID NOT START"; tail -n 80 game.log; } > $F
           fi
