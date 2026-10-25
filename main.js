@@ -312,7 +312,7 @@ app.whenReady().then(() => {
         const parts = rel.replace(/\.nbt$/, '').split('/'), group = STRUCT_GROUPS[parts[0]] || titleCase(parts[0]);
         let mn = [1e9, 1e9, 1e9], mx = [-1e9, -1e9, -1e9];
         for (const [x, y, z] of b.blocks) { mn = [Math.min(mn[0], x), Math.min(mn[1], y), Math.min(mn[2], z)]; mx = [Math.max(mx[0], x), Math.max(mx[1], y), Math.max(mx[2], z)]; }
-        list.push({ id: 'gs_' + rel.replace(/[^\w]/g, '_'), file: rel, src: 'game', cat: 'Minecraft Structures', created: 0,
+        list.push({ id: 'gs_' + rel.replace(/[^\w]/g, '_'), file: rel, src: 'game', cat: 'Minecraft Buildings', created: 0,
           name: titleCase(parts[parts.length - 1]).slice(0, 40),
           desc: `Minecraft's own ${group} piece (${parts.slice(0, -1).map(titleCase).join(' › ') || group}), read from your game files.`,
           size: [mx[0] - mn[0] + 1, mx[1] - mn[1] + 1, mx[2] - mn[2] + 1], blocks: b.blocks.length, types: new Set(b.blocks.map((x) => x[3])).size, group });

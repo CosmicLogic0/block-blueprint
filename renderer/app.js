@@ -833,7 +833,7 @@ async function main() {
     },
     thumb: (id) => `templates/thumbs/${id}.jpg`,
   };
-  let tplIndex = null, tplCat = 'All', tplQuery = '', tplCur = null, tplCells = null;
+  let tplIndex = null, tplCat = 'All', tplQuery = '', tplCur = null, tplCells = null, tplGroup = '';
   const tplCache = new Map();
   // Minecraft-style panel background: a real block texture from the user's own game files
   function tileURL(name) {
@@ -858,19 +858,32 @@ async function main() {
   }
   function closeTemplates() { $('#tpl').classList.add('hidden'); tplViewOn = false; }
   function renderTplTabs() {
-    const cats = ['All', 'My Builds', ...(api.mcBuilds ? ['From Minecraft'] : []), ...new Set(tplIndex.map((t) => t.cat).filter((c) => c !== 'My Builds' && c !== 'From Minecraft'))];
+    // "Minecraft Buildings" (Minecraft's own villages, trial chambers...) is its own section, never mixed into All / the other tabs
+    const MCB = 'Minecraft Buildings', hasMcb = tplIndex.some((t) => t.cat === MCB);
+    const cats = ['All', 'My Builds', ...(api.mcBuilds ? ['From Minecraft'] : []), ...new Set(tplIndex.map((t) => t.cat).filter((c) => c !== 'My Builds' && c !== 'From Minecraft' && c !== MCB)), ...(hasMcb ? [MCB] : [])];
     const el = $('#tplTabs'); el.textContent = '';
     for (const c of cats) {
-      const n = c === 'All' ? tplIndex.length : tplIndex.filter((t) => t.cat === c).length;
+      const n = c === 'All' ? tplIndex.filter((t) => t.cat !== MCB).length : tplIndex.filter((t) => t.cat === c).length;
       const b = document.createElement('button'); b.className = 'mcbtn' + (c === tplCat ? ' on' : ''); b.textContent = `${c} (${n})`;
       b.onclick = () => { tplCat = c; el.querySelectorAll('.mcbtn').forEach((x) => x.classList.toggle('on', x === b)); showTplGrid(); };
+      if (c === MCB) { b.classList.add('mcbTab'); b.title = "Minecraft's own buildings (villages, trial chambers, shipwrecks...), read from your game files"; }
       el.appendChild(b);
+    }
+    if (hasMcb) {   // dropdown: which kind of Minecraft building (only shown on that tab)
+      const sel = document.createElement('select'); sel.id = 'mcbGroup'; sel.className = 'mcbtn';
+      const groups = [...new Set(tplIndex.filter((t) => t.cat === MCB).map((t) => t.group))].sort();
+      sel.innerHTML = '<option value="">All Minecraft buildings</option>' + groups.map((g) => `<option>${g}</option>`).join('');
+      sel.value = tplGroup; sel.style.display = tplCat === MCB ? '' : 'none';
+      sel.onchange = () => { tplGroup = sel.value; showTplGrid(); };
+      el.appendChild(sel);
     }
   }
   function showTplGrid() {
     $('#tplDetail').classList.add('hidden'); $('#tplGrid').classList.remove('hidden'); $('#tplTabs').classList.remove('hidden'); tplViewOn = false;
     const q = tplQuery.trim().toLowerCase();
-    const list = tplIndex.filter((t) => (tplCat === 'All' || t.cat === tplCat) && (!q || (t.name + ' ' + t.desc + ' ' + t.cat).toLowerCase().includes(q)));
+    const MCB = 'Minecraft Buildings', sel = $('#mcbGroup'); if (sel) sel.style.display = tplCat === MCB ? '' : 'none';
+    const list = tplIndex.filter((t) => (tplCat === 'All' ? t.cat !== MCB : t.cat === tplCat) && (tplCat !== MCB || !tplGroup || t.group === tplGroup)
+      && (!q || (t.name + ' ' + t.desc + ' ' + t.cat).toLowerCase().includes(q)));
     const g = $('#tplGrid'); g.textContent = '';
     for (const t of list) {
       const d = document.createElement('div'); d.className = 'tcard';

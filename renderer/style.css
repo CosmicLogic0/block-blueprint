@@ -297,3 +297,7 @@ kbd { font: 600 12px Consolas, monospace; background: #2e333c; border: 1px solid
 @media (min-width: 821px) { #topbar { right: 560px; } }
 @media (max-width: 1750px) and (min-width: 821px) { #tools .pill.tool .lbl { display: none; } #tools .pill.tool { padding: 8px 11px; } }
 @media (max-width: 1250px) and (min-width: 821px) { #btnTemplates { padding: 8px 10px; } }
+
+/* Minecraft's own buildings: a separate section at the end of the template tabs */
+#tplTabs .mcbTab { margin-left: 14px; border-left: 3px solid #5fd35f; }
+#mcbGroup { margin-left: 6px; max-width: 220px; }
