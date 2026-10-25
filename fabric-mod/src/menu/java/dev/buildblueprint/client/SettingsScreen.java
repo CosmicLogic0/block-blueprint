@@ -17,7 +17,7 @@ import net.minecraft.network.chat.Component;
  */
 public class SettingsScreen extends Screen {
     private final Screen parent;
-    private static boolean more = false;   // which page, remembered while the game runs
+    static boolean more = false;   // which page, remembered while the game runs
 
     public SettingsScreen(Screen parent) { super(Component.literal("Build Blueprint settings")); this.parent = parent; }
 

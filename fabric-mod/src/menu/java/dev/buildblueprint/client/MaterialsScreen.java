@@ -36,7 +36,7 @@ public class MaterialsScreen extends Screen {
     private int rowsFit() { return Math.max(3, (height - top() - 18 - (toolsShown() ? 54 : 30)) / rowH()); }
 
     private static boolean creative() { var mc = net.minecraft.client.Minecraft.getInstance(); return mc.player != null && mc.player.isCreative(); }
-    private static Tooltip tip(String t) { return Tooltip.create(Component.literal(t)); }
+    private static net.minecraft.client.gui.components.Tooltip tip(String t) { return Tooltip.create(Component.literal(t)); }
 
     /** The tool buttons that make sense right now, as {label, tooltip, action id}. */
     private static List<String[]> tools() {

@@ -37,6 +37,7 @@ final class Modules {
         run("PreviewModule");
         run("HudModule");
         keysActive = run("KeysModule");
+        run("UiTest");   // screenshot tour, only in the automatic launch test
     }
 
     /** Opens the materials screen. Returns false when the screen module isn't compiled in. */

@@ -41,7 +41,7 @@ jobs:
             ${{ matrix.java }}
             21
       - name: Virtual screen and software OpenGL
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb mesa-utils libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers libvulkan1 > /dev/null
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb mesa-utils libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers libvulkan1 imagemagick > /dev/null
       - name: Versions
         id: v
         run: |
@@ -65,12 +65,26 @@ jobs:
         run: |
           chmod +x gradlew
           export LIBGL_ALWAYS_SOFTWARE=1
+          mkdir -p "$HOME/BlockBlueprint/builds" "$GITHUB_WORKSPACE/result" && cp "$GITHUB_WORKSPACE"/.github/uitest/* "$HOME/BlockBlueprint/builds/"
           ./gradlew downloadAssets --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -q || ./gradlew downloadAssets --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -q || true
-          (timeout 900 xvfb-run -a -s "-screen 0 1280x720x24 +extension GLX +extension Composite +render -noreset" ./gradlew runClient --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -Prun_java=${{ matrix.java }} -Porg.gradle.java.installations.fromEnv=JAVA_HOME_${{ matrix.java }}_X64 -Porg.gradle.java.installations.auto-download=false > game.log 2>&1 &) 
+          (JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -Dbuildblueprint.uitest=1" timeout 900 xvfb-run -n 99 -s "-screen 0 1280x720x24 +extension GLX +extension Composite +render -noreset" ./gradlew runClient --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -Prun_java=${{ matrix.java }} -Porg.gradle.java.installations.fromEnv=JAVA_HOME_${{ matrix.java }}_X64 -Porg.gradle.java.installations.auto-download=false > game.log 2>&1 &) 
           # wait until the game has started (title screen / sound engine) or crashed, at most ~13 minutes
           for i in $(seq 1 160); do
             sleep 5
-            if grep -qE "Sound engine started|OpenAL initialized|Created: .*textures/atlas|Narrator library" game.log; then echo "game started"; sleep 60; break; fi
+            if grep -qE "Sound engine started|OpenAL initialized|Created: .*textures/atlas|Narrator library" game.log; then
+              echo "game started"
+              # screenshot tour: the mod opens each screen and prints "BBUITEST shot <name>"; take a picture of each
+              for j in $(seq 1 90); do
+                sleep 2
+                for n in $(grep -o "BBUITEST shot [a-z-]*" game.log | awk '{print $3}'); do
+                  f="$GITHUB_WORKSPACE/result/${{ matrix.loader }}-${{ matrix.mc }}-$n.png"
+                  [ -f "$f" ] || DISPLAY=:99 import -window root "$f" 2>/dev/null || true
+                done
+                grep -q "BBUITEST done" game.log && break
+                grep -qE "Crash report saved|---- Minecraft Crash Report ----" game.log && break
+              done
+              break
+            fi
             if grep -qE "Crash report saved|---- Minecraft Crash Report ----|BUILD FAILED" game.log; then echo "crashed or failed"; break; fi
           done
           pkill -f "java" || true; sleep 3
@@ -78,8 +92,8 @@ jobs:
         if: always()
         working-directory: ${{ matrix.dir }}
         run: |
-          mkdir -p ../../result
-          F=../../result/${{ matrix.loader }}-${{ matrix.mc }}.txt
+          mkdir -p "$GITHUB_WORKSPACE/result"
+          F="$GITHUB_WORKSPACE/result/${{ matrix.loader }}-${{ matrix.mc }}.txt"
           if grep -qE "Crash report saved|---- Minecraft Crash Report ----" game.log; then
             { echo "CRASH"; grep -A40 -- "---- Minecraft Crash Report ----" game.log | head -60; grep -h -A60 "Description:" run/crash-reports/*.txt 2>/dev/null | head -80; } > $F
           elif grep -qE "Sound engine started|OpenAL initialized|Created: .*textures/atlas|Narrator library" game.log; then
@@ -90,7 +104,7 @@ jobs:
           cat $F | head -30
       - uses: actions/upload-artifact@v4
         if: always()
-        with: { name: "smoke-${{ matrix.loader }}-${{ matrix.mc }}", path: result/ }
+        with: { name: "smoke-${{ matrix.loader }}-${{ matrix.mc }}", path: "${{ github.workspace }}/result/" }
 
   collect:
     needs: run
