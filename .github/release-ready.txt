@@ -1,0 +1,3 @@
+# Release ids (from release.yml) that passed the player-style launch test (realtest.yml) on every game version they cover.
+# These upload to CurseForge as Release instead of Beta. Only add an id after its test passed.
+26.3
