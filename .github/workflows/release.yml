@@ -177,7 +177,6 @@ jobs:
           - { mc: "1.21.7", id: forge-1.21.7, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.7" }
           - { mc: "1.21.6", id: forge-1.21.6, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.6" }
           - { mc: "1.21", id: forge-1.21, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21" }
-          - { mc: "1.20.3", id: forge-1.20.3, loader: forge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.3" }
           - { mc: "1.20", id: forge-1.20, loader: forge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20" }
           - { mc: "1.19.1", id: forge-1.19.1, loader: forge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.19.1" }
           - { mc: "1.18", id: forge-1.18, loader: forge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.18" }
@@ -186,7 +185,6 @@ jobs:
           - { mc: "1.21.6", id: neoforge-1.21.6, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.6" }
           - { mc: "1.21.2", id: neoforge-1.21.2, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.2" }
           - { mc: "1.21", id: neoforge-1.21, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21" }
-          - { mc: "1.20.5", id: neoforge-1.20.5, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.20.5" }
     name: mod ${{ matrix.id || matrix.mc }}
     steps:
       - uses: actions/checkout@v4

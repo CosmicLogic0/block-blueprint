@@ -1,3 +1,8 @@
+## 1.2.3
+- **Forge and NeoForge for Minecraft 26.x** (beta): Forge 26.1, 26.1.1, 26.1.2, 26.2 and 26.3; NeoForge 26.1, 26.1.1, 26.1.2, 26.2 and 26.3.
+- More in-between versions (beta): Forge 1.18, 1.19.1, 1.20, 1.21.6, 1.21.7 and 1.21.9; NeoForge 1.21, 1.21.2, 1.21.6, 1.21.7 and 1.21.9.
+- Every new version was started in Minecraft by an automatic test before upload.
+
 ## 1.2.2
 - New (beta): Forge 1.21.8 and 1.21.10, NeoForge 1.21.10 and 1.21.11 - launch-tested before upload.
 

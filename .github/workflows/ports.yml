@@ -79,7 +79,6 @@ jobs:
           - { mc: "1.21.7", id: "forge-1.21.7", dir: ports/forge, java: 21, loader: forge }
           - { mc: "1.21.6", id: "forge-1.21.6", dir: ports/forge, java: 21, loader: forge }
           - { mc: "1.21", id: "forge-1.21", dir: ports/forge, java: 21, loader: forge }
-          - { mc: "1.20.3", id: "forge-1.20.3", dir: ports/forge, java: 17, loader: forge }
           - { mc: "1.20", id: "forge-1.20", dir: ports/forge, java: 17, loader: forge }
           - { mc: "1.19.1", id: "forge-1.19.1", dir: ports/forge, java: 17, loader: forge }
           - { mc: "1.18", id: "forge-1.18", dir: ports/forge, java: 17, loader: forge }
@@ -88,7 +87,6 @@ jobs:
           - { mc: "1.21.6", id: "neoforge-1.21.6", dir: ports/forge, java: 21, loader: neoforge }
           - { mc: "1.21.2", id: "neoforge-1.21.2", dir: ports/forge, java: 21, loader: neoforge }
           - { mc: "1.21", id: "neoforge-1.21", dir: ports/forge, java: 21, loader: neoforge }
-          - { mc: "1.20.5", id: "neoforge-1.20.5", dir: ports/forge, java: 21, loader: neoforge }
           - { mc: "1.20.6", dir: ports/1.21, java: 21 }
           - { mc: "1.20.4", dir: ports/1.21, java: 17 }
           - { mc: "1.20.1", dir: ports/1.21, java: 17 }
