@@ -6,7 +6,8 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
  * Screenshot tour for the automatic launch tests only. Does nothing in normal play (the property is never set).
  * <ul>
  *   <li>{@code -Dbuildblueprint.uitest=1}: waits for the first menu, then opens each Build Blueprint screen.</li>
- *   <li>{@code -Dbuildblueprint.uitest=world}: waits until the player is in a world (the test joins a local server),
+ *   <li>{@code -Dbuildblueprint.uitest=world}: waits for the title screen, joins the test's local server
+ *       ({@code -Dbuildblueprint.uitest.server=host:port}) once the game has finished loading, waits until the player is in the world,
  *       loads a build in front of the player, places it (ghost blocks + corner list), opens every screen and starts a
  *       copy box - so the parts that only run in a world (drawing ghosts, the corner list, copy mode) are tested too.</li>
  * </ul>
@@ -16,7 +17,7 @@ public final class UiTest {
     private UiTest() {}
 
     private static int tick = 0, step = -1;
-    private static boolean world;
+    private static boolean world, joined;
     private static String[] steps;
     private static final String[] MENU = {"settings", "settings-more", "saved", "build", "done"};
     private static final String[] WORLD = {"world-ghost", "world-placed", "build", "settings", "settings-more", "saved", "world-copy", "done"};
@@ -31,8 +32,14 @@ public final class UiTest {
 
     private static void tick() {
         if (step < 0) {
-            if (world) {   // wait until we're in the world with nothing on screen, then let the chunks load
-                if (!PlayerInfo.inWorld()) { tick = 0; return; }
+            if (world) {   // join the server from the title screen, wait until we're in the world, then let the chunks load
+                if (!PlayerInfo.inWorld()) {
+                    if (joined) return;
+                    if (Mc.screen() == null) { tick = 0; return; }
+                    if (++tick == 1) System.out.println("BBUITEST waiting on " + Mc.screen().getClass().getSimpleName());
+                    if (tick >= 200) { joined = true; tick = 0; connect(System.getProperty("buildblueprint.uitest.server", "127.0.0.1:25565")); }
+                    return;
+                }
                 if (Mc.screen() != null) Mc.setScreen(null);
                 if (++tick == 1) System.out.println("BBUITEST in world");
                 if (tick < 300) return;
@@ -74,6 +81,59 @@ public final class UiTest {
                 }
             }
         } catch (Throwable ignored) {}   // the test script takes the picture itself instead
+    }
+
+
+    /**
+     * Joins a server like the Multiplayer screen does. Found by parameter types, not names, so the same code works on
+     * every version (1.16 opens the connect screen directly; 1.17+ has a static method that takes the address).
+     */
+    private static void connect(String address) {
+        String host = address.contains(":") ? address.substring(0, address.indexOf(':')) : address;
+        int port = address.contains(":") ? Integer.parseInt(address.substring(address.indexOf(':') + 1)) : 25565;
+        System.out.println("BBUITEST joining " + host + ":" + port);
+        try {
+            Object mc = net.minecraft.client.Minecraft.getInstance();
+            Object parent = Mc.screen();
+            Class<?> cs = net.minecraft.client.gui.screens.ConnectScreen.class;
+            Class<?> scr = net.minecraft.client.gui.screens.Screen.class, mcc = net.minecraft.client.Minecraft.class;
+            Class<?> sd = net.minecraft.client.multiplayer.ServerData.class;
+            for (java.lang.reflect.Method m : cs.getDeclaredMethods()) {
+                Class<?>[] p = m.getParameterTypes();
+                if (!java.lang.reflect.Modifier.isStatic(m.getModifiers()) || m.getReturnType() != void.class || p.length < 4 || p[0] != scr || p[1] != mcc) continue;
+                Object[] a = new Object[p.length];
+                a[0] = parent; a[1] = mc;
+                for (int i = 2; i < p.length; i++) {
+                    if (p[i] == sd) a[i] = serverData(sd, host + ":" + port);
+                    else if (p[i] == boolean.class) a[i] = false;
+                    else {
+                        try { a[i] = p[i].getConstructor(String.class, int.class).newInstance(host, port); } catch (NoSuchMethodException e) { a[i] = null; }
+                    }
+                }
+                m.setAccessible(true);
+                m.invoke(null, a);
+                return;
+            }
+            for (java.lang.reflect.Constructor<?> c : cs.getDeclaredConstructors()) {   // 1.16: new ConnectScreen(parent, minecraft, host, port)
+                Class<?>[] p = c.getParameterTypes();
+                if (p.length == 4 && p[0] == scr && p[1] == mcc && p[2] == String.class && p[3] == int.class) {
+                    c.setAccessible(true);
+                    Mc.setScreen((net.minecraft.client.gui.screens.Screen) c.newInstance(parent, mc, host, port));
+                    return;
+                }
+            }
+            System.out.println("BBUITEST connect failed: no way to join found");
+        } catch (Throwable t) { System.out.println("BBUITEST connect failed: " + t); }
+    }
+
+    private static Object serverData(Class<?> sd, String ip) throws ReflectiveOperationException {
+        for (java.lang.reflect.Constructor<?> c : sd.getConstructors()) {
+            Class<?>[] p = c.getParameterTypes();
+            if (p.length != 3 || p[0] != String.class || p[1] != String.class) continue;
+            if (p[2] == boolean.class) return c.newInstance("Test", ip, false);
+            if (p[2].isEnum()) { Object[] k = p[2].getEnumConstants(); return c.newInstance("Test", ip, k[k.length - 1]); }   // Type.OTHER
+        }
+        throw new NoSuchMethodException("ServerData constructor");
     }
 
     private static void loadTestBuild() {

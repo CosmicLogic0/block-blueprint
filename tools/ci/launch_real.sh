@@ -48,7 +48,7 @@ elif [ "$minor" -le 18 ]; then SJ="${JAVA_HOME_17_X64:-}"; lt=flat
 elif [ "$minor" -lt 20 ] || { [ "$minor" = 20 ] && [ "$patch" -le 4 ]; }; then SJ="${JAVA_HOME_17_X64:-}"; lt="minecraft\\:flat"
 else SJ="${JAVA_HOME_21_X64:-}"; lt="minecraft\\:flat"; fi
 echo "eula=true" > "$S/eula.txt"
-printf 'online-mode=false\nenforce-secure-profile=false\ngamemode=creative\nlevel-type=%s\ngenerate-structures=false\ndifficulty=peaceful\nspawn-monsters=false\nspawn-animals=false\nspawn-protection=0\nview-distance=6\nmax-tick-time=-1\nmotd=Build Blueprint test\n' "$lt" > "$S/server.properties"
+printf 'online-mode=false\nwhite-list=false\nenforce-whitelist=false\nenforce-secure-profile=false\ngamemode=creative\nlevel-type=%s\ngenerate-structures=false\ndifficulty=peaceful\nspawn-monsters=false\nspawn-animals=false\nspawn-protection=0\nview-distance=6\nmax-tick-time=-1\nmotd=Build Blueprint test\n' "$lt" > "$S/server.properties"
 (cd "$S" && timeout 1200 "$SJ/bin/java" -Xmx2G -jar server.jar nogui > server.log 2>&1 &)
 for i in $(seq 1 90); do sleep 4; grep -q 'Done (' "$S/server.log" && break; done
 grep -q 'Done (' "$S/server.log" || { cp "$S/server.log" game.log; fail "the test server for $gv did not start"; }
@@ -57,7 +57,7 @@ echo "server up"
 # game options: no first-launch screens, keep running without focus
 printf 'onboardAccessibility:false\nskipMultiplayerWarning:true\njoinedFirstServer:true\npauseOnLostFocus:false\ntutorialStep:none\nrenderDistance:6\nguiScale:2\nnarrator:0\nsoundCategory_master:0.0\n' > "$G/options.txt"
 (timeout 900 xvfb-run -n 99 -s "-screen 0 1280x720x24 +extension GLX +render -noreset -ac" \
-   portablemc --main-dir "$G" start "$spec" --join-server 127.0.0.1 --jvm-arg=-Xmx3G,-Dbuildblueprint.uitest=world --resolution 1280x720 > game.log 2>&1 &)
+   portablemc --main-dir "$G" start "$spec" --jvm-arg=-Xmx3G,-Dbuildblueprint.uitest=world,-Dbuildblueprint.uitest.server=127.0.0.1:25565 --resolution 1280x720 > game.log 2>&1 &)
 
 started=0
 for i in $(seq 1 170); do
@@ -86,6 +86,9 @@ cp "$S/server.log" "$out/$name-server.log" 2>/dev/null || true
 if grep -qE "Crash report saved|---- Minecraft Crash Report ----" game.log; then
   cat "$G"/crash-reports/*.txt >> game.log 2>/dev/null; fail "the game crashed"
 fi
+L=$(grep -m1 -oE "(ModLoadingException|Missing or unsupported mandatory dependencies|Incompatible mods found|requires .* which is missing|needs language provider)[^\r]*" game.log)
+[ -n "$L" ] && [ "$started" != 1 ] && fail "the loader refused the mod: $L"
+grep -m1 -q "BBUITEST connect failed" game.log && fail "$(grep -m1 -o 'BBUITEST connect failed.*' game.log)"
 if [ "$started" != 1 ]; then
   grep -qiE "buildblueprint" game.log && fail "the game started but did not get into the test world"
   fail "the game did not start with Build Blueprint loaded"
