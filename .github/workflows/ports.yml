@@ -69,8 +69,6 @@ jobs:
           - { mc: "1.20.4",  id: "neoforge-1.20.4", dir: ports/forge, java: 17, loader: neoforge }
           - { mc: "1.20.2",  id: "neoforge-1.20.2", dir: ports/forge, java: 17, loader: neoforge }
           - { mc: "1.20.3",  id: "neoforge-1.20.3", dir: ports/forge, java: 17, loader: neoforge }
-          - { mc: "1.16.4",  id: "forge-1.16.4", dir: ports/forge, java: 8, loader: forge }
-          - { mc: "1.16.3",  id: "forge-1.16.3", dir: ports/forge, java: 8, loader: forge }
           - { mc: "26.3", id: "neoforge-26.3", dir: ports/neoforge-26, java: 25, loader: neoforge26 }
           - { mc: "26.2", id: "neoforge-26.2", dir: ports/neoforge-26, java: 25, loader: neoforge26 }
           - { mc: "26.1.2", id: "neoforge-26.1.2", dir: ports/neoforge-26, java: 25, loader: neoforge26 }

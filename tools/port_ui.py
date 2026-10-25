@@ -53,6 +53,7 @@ SUBS = [
     (r'\b(\w+) instanceof net\.minecraft\.world\.level\.block\.TransparentBlock', r'V.glass(\1)'),
     (r'pr\.getValue\(v\)\.isEmpty\(\)', '!pr.getValue(v).isPresent()'),
     (r'new HashSet<>\(List\.of\(', 'new HashSet<>(java.util.Arrays.asList('),
+    (r'return (\w+)\.getMapColor\(net\.minecraft\.world\.level\.EmptyBlockGetter\.INSTANCE, net\.minecraft\.core\.BlockPos\.ZERO\)\.col;', r'return V.mapColor(\1);'),
 ]
 # MapColor lookup in the saved-builds preview
 MAPCOLOR_NEW = '''                MapColor mc = bs.getMapColor(EmptyBlockGetter.INSTANCE, BlockPos.ZERO);

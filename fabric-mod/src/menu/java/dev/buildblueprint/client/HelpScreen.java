@@ -19,7 +19,7 @@ public class HelpScreen extends Screen {
     private Button prev, next;
     private final List<Button> tabs = new ArrayList<>();
 
-    private static final String[] TITLES = {"Get a build", "Move and turn it", "Place it", "Build layer by layer", "Blocks and swapping", "Copy a build", "Good to know"};
+    private static final String[] TITLES = {"Get a build", "Move and turn", "Place it", "Build layers", "Blocks and swaps", "Copy a build", "Good to know"};
     private static final String[][] ICONS = {
         {"minecraft:writable_book", "minecraft:chest", "minecraft:paper"}, {"minecraft:compass"}, {"minecraft:lodestone"},
         {"minecraft:oak_planks", "minecraft:cobblestone", "minecraft:stone_bricks"}, {"minecraft:blue_terracotta", "minecraft:cyan_terracotta"},
@@ -70,7 +70,7 @@ public class HelpScreen extends Screen {
     private boolean wide() { return width >= 400; }
     private int pw() { return Math.min(480, width - 16); }
     private int px() { return (width - pw()) / 2; }
-    private int navW() { return wide() ? 118 : 0; }
+    private int navW() { return wide() ? 128 : 0; }
 
     @Override protected void init() {
         tabs.clear();

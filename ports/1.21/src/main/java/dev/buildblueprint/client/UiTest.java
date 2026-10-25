@@ -181,6 +181,7 @@ public final class UiTest {
                     Materials.refresh();
                     System.out.println("BBUITEST not in game " + Swapper.notInGame());
                 }
+                BuildBlueprintClient.setLocked(false);   // unplaced: the list shows the whole build, with the missing block in it
                 Mc.setScreen(new MaterialsScreen(true));
             }
             case "help" -> Mc.setScreen(new HelpScreen(null, 3));

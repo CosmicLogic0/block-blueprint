@@ -28,7 +28,7 @@ public final class Swapper {
     private Swapper() {}
 
     /** One block you can swap to: its id, the name players see, the mod it comes from ("" = Minecraft) and its shape. */
-    public record Option(String id, String name, String mod, ItemStack icon, String shape) {}
+    public record Option(String id, String name, String mod, ItemStack icon, String shape, int color) {}
 
     public static boolean exists(String id) {
         try { return BuiltInRegistries.BLOCK.containsKey(Identifier.parse(id)); } catch (Exception e) { return false; }
@@ -91,12 +91,21 @@ public final class Swapper {
                 if (!BuiltInRegistries.ITEM.getKey(it).toString().equals(id)) continue;   // wall torch, wall sign... share the item of the normal one
                 ItemStack st = new ItemStack(it);
                 String mod = ns(id).equals("minecraft") ? "" : PlayerInfo.pretty(ns(id));
-                out.add(new Option(id, st.getHoverName().getString(), mod, st, shape(blk, id)));
+                out.add(new Option(id, st.getHoverName().getString(), mod, st, shape(blk, id), mapCol(blk.defaultBlockState())));
             } catch (Throwable ignored) {}
         }
         out.sort((a, b) -> a.name().compareToIgnoreCase(b.name()));
         all = out;
         return out;
+    }
+
+    /** The block's colour on maps (a rough "what colour is it"), 0 if none. */
+    private static int mapCol(BlockState s) {
+        try { return s.getMapColor(net.minecraft.world.level.EmptyBlockGetter.INSTANCE, net.minecraft.core.BlockPos.ZERO).col; } catch (Throwable t) { return 0; }
+    }
+    private static int colorDist(int a, int b) {
+        int dr = ((a >> 16) & 255) - ((b >> 16) & 255), dg = ((a >> 8) & 255) - ((b >> 8) & 255), db = (a & 255) - (b & 255);
+        return dr * dr * 3 + dg * dg * 4 + db * db * 2;
     }
 
     /** The shape of a block id, even if this Minecraft version doesn't have it. */
@@ -111,15 +120,20 @@ public final class Swapper {
         return w;
     }
 
-    /** Blocks of the same kind of piece, the most alike first (sharing a word in the name: "terracotta", "oak"...). */
+    /** Blocks of the same kind of piece, the most alike first: sharing a word in the name ("terracotta", "oak"...), then the closest colour. */
     public static List<Option> similar(String blockId) {
         String shape = shapeOf(blockId);
         Set<String> mine = words(blockId);
+        int myCol = exists(blockId) ? mapCol(BuiltInRegistries.BLOCK.getValue(Identifier.parse(blockId)).defaultBlockState()) : 0;
         List<Option> out = new ArrayList<>();
         for (Option o : allOptions()) if (!o.id().equals(blockId) && o.shape().equals(shape)) out.add(o);
         out.sort((a, b) -> {
             int sa = shared(mine, a.id()), sb = shared(mine, b.id());
             if (sa != sb) return Integer.compare(sb, sa);
+            if (myCol != 0 && a.color() != b.color()) {
+                int da = a.color() == 0 ? Integer.MAX_VALUE : colorDist(myCol, a.color()), dbb = b.color() == 0 ? Integer.MAX_VALUE : colorDist(myCol, b.color());
+                if (da != dbb) return Integer.compare(da, dbb);
+            }
             if (a.mod().isEmpty() != b.mod().isEmpty()) return a.mod().isEmpty() ? -1 : 1;
             return a.name().compareToIgnoreCase(b.name());
         });
