@@ -139,13 +139,12 @@ public class SwapScreen extends BBScreen {
 
     private void draw(GuiGraphics g, int mouseX, int mouseY, float delta) {
         int x = px(), w = pw();
-        g.fill(x - 6, 8, x + w + 6, height - 4, 0xE0101018);
-        g.fill(x - 6, 8, x + w + 6, 9, 0xFFFFB040);
+        UiKit.panel(g, x - 6, 8, w + 12, height - 12, 0xFFFFB040);
         // what is being swapped
         ItemStack self = Materials.stackFor(itemId);
         if (!self.isEmpty()) g.renderItem(self, x, 14);
         String title = "Swap " + (self.isEmpty() ? PlayerInfo.pretty(itemId) : self.getHoverName().getString());
-        g.drawString(font, title, x + 22, 14, 0xFFFFFF55, true);
+        g.drawString(font, title, x + 22, 14, UiKit.GOLD, true);
         int count = 0; var cs = Swapper.counts(); for (String b : Swapper.blocksForItem(itemId)) count += cs.getOrDefault(b, 0);
         String sub = count + " in this build" + (set != null ? "  ·  part of the " + set.label() + " set" : "");
         g.drawString(font, sub, x + 22, 26, 0xFFAAAAAA, false);
