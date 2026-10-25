@@ -1,0 +1,25 @@
+# Collects openly licensed structure builds from Modrinth as app templates (see tools/harvest_modrinth.mjs).
+# Runs when branch "harvest" is pushed; results go to branch "templates-harvest" for review before anything is added.
+name: Harvest open-license templates
+
+on:
+  push:
+    branches: [harvest]
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci --ignore-scripts
+      - run: node tools/harvest_modrinth.mjs out
+      - name: Push results
+        if: always()
+        run: |
+          cd out && git init -q -b templates-harvest && git config user.name ci && git config user.email ci@example.com
+          echo "${GITHUB_SHA}" > COMMIT && git add -A && git commit -qm "harvest ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" templates-harvest
