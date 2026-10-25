@@ -14,7 +14,7 @@ The full build appears as ghost blocks in your world. Move it, turn it, mirror i
 **🧱 Build layer by layer**<br>
 Start at the bottom. The mod shows one layer at a time and moves you up when you finish it. If you break a block in a layer you already finished, it takes you back to fix it.
 
-<img src="https://media.forgecdn.net/attachments/description/1762212/description_51bfc793-b635-455e-8a22-dc85600ab918.png" alt="" width="836">
+<img src="https://media.forgecdn.net/attachments/description/1762212/description_51bfc793-b635-455e-8a22-dc85600ab918.png" alt="Building layer by layer with the materials list" width="836">
 
 **📋 Know exactly what you need**<br>
 A live list shows every block the build needs, how many you have, and how many are left. Hover any block to see how many stacks you still need. Opened chests nearby that hold blocks you still need get a green glow.
@@ -64,7 +64,7 @@ Change any key in **Options → Controls**.
 
 ---
 
-<img src="https://media.forgecdn.net/attachments/description/1762212/description_97512a5f-995a-48d2-9401-dfdedf2d9e21.png" alt="" width="836">
+<img src="https://media.forgecdn.net/attachments/description/1762212/description_97512a5f-995a-48d2-9401-dfdedf2d9e21.png" alt="The free Block Blueprint app with building templates" width="836">
 
 **Companion app - free building templates**<br>
 Get the free **Block Blueprint** app for Windows and start from a **ready-made template**: a giant sailing ship, smaller boats, a cozy house, a robot and more. Pick one, tweak it if you want, and press **Send to Minecraft**. It shows up in the mod's **Saved builds**, ready to place as a blueprint in your world.
