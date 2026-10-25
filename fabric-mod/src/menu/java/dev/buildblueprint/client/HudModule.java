@@ -37,21 +37,19 @@ public final class HudModule {
     /** While copying a build: box size, block count and the keys. */
     private static void copyPanel(GuiGraphicsExtractor g, Minecraft mc) {
         var font = mc.font;
-        int x = 6, y = 6, w = 190;
-        String[] keys = {"Arrows: grow the box that way", "Alt + arrows: shrink it", "Ctrl + Up / Down: top / bottom", "Shift: 5 blocks at a time",
-                "Insert: save it  ·  Delete: cancel"};
-        int h = 36 + keys.length * 10;
-        g.fill(x - 3, y - 3, x + w + 3, y + h, 0xD0081820);
-        g.fill(x - 3, y - 3, x + w + 3, y - 2, 0xFF20E0FF);
-        g.text(font, "Copying a build", x, y, 0xFF20E0FF, true);
+        int x = 6, y = 6, w = 200;
+        String[][] keys = {{"Arrows", "grow the box that way"}, {"Alt + arrows", "shrink it"}, {"Ctrl + Up/Down", "top / bottom"},
+                {"Page Down", "stretch to where you look"}, {"Shift", "5 blocks at a time"}, {"Insert", "save it"}, {"Delete", "cancel"}};
+        int h = 34 + keys.length * 12;
+        UiKit.panel(g, x - 3, y - 3, w + 6, h + 3, UiKit.CYAN);
+        g.text(font, "Copying a build", x, y, UiKit.CYAN, true);
         int[] s = Copier.size();
-        g.text(font, s[0] + " x " + s[1] + " x " + s[2] + " box", x, y + 12, 0xFFFFFFFF, true);
+        g.text(font, s[0] + " x " + s[1] + " x " + s[2] + " box", x, y + 12, UiKit.WHITE, true);
         int c = Copier.count();
         String cnt = c == -1 ? "counting..." : c == -2 ? "big box" : c + " blocks";
         g.text(font, cnt, x + w - font.width(cnt), y + 12, 0xFFAAFFAA, true);
-        String opts = (Copier.skipGround ? "no ground" : "with ground") + " · " + (Copier.skipTrees ? "no trees" : "with trees");
-        g.text(font, opts, x, y + 22, 0xFF888888, false);
-        for (int i = 0; i < keys.length; i++) g.text(font, keys[i], x, y + 34 + i * 10, 0xFFCCCCCC, false);
+        g.text(font, "Make the box as big as your build", x, y + 22, UiKit.MUTED, false);
+        for (int i = 0; i < keys.length; i++) UiKit.key(g, font, x, y + 36 + i * 12, keys[i][0], keys[i][1]);
     }
 
     private static void bar(GuiGraphicsExtractor g, Minecraft mc, int x, int y, int w, int done, int total, int col, String label) {

@@ -16,11 +16,15 @@ import net.minecraft.world.level.EmptyBlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 
 /**
- * Saved builds (Page Up when nothing is loaded): paste builds from the app, keep them on this computer,
- * look at them in a turnable 3D preview (or top / front view), rename, delete and load them into the world.
+ * Saved builds (Page Up when nothing is loaded): every build on this computer - pasted from the app, copied from a world,
+ * or schematic files (.schem, .litematic, .nbt). Search the list, look at a build in a turnable 3D preview (or top /
+ * front view), then load it into the world. Rename, delete (asks twice), copy its code or save it as a .schem file.
  */
 public class SavedBuildsScreen extends BBScreen {
-    private List<SavedBuilds.Entry> builds;
+    private List<SavedBuilds.Entry> all, builds;   // everything / what the search shows
+    private EditBox search;
+    private boolean confirmDelete = false;
+    private Button delBtn;
     private int sel = 0, scroll = 0;
     private int view = 0;          // 0 = 3D, 1 = top, 2 = front
     private int turn = 0;          // quarter turns of the 3D view
@@ -43,7 +47,8 @@ public class SavedBuildsScreen extends BBScreen {
     private int T() { return 30; }
     private int B() { return height - 30; }                    // bottom of panels
     private int rowH() { return 18; }
-    private int rows() { return Math.max(1, (B() - T() - 52) / rowH()); }
+    private int rows() { return Math.max(1, (B() - T() - 72) / rowH()); }
+    private int listTop() { return T() + 20; }
     private int pvX() { return M() + listW() + 8; }
     private int pvY() { return T() + 22; }
     private int pvW() { return width - pvX() - M(); }
@@ -51,30 +56,43 @@ public class SavedBuildsScreen extends BBScreen {
 
     @Override
     protected void init() {
-        builds = SavedBuilds.list();
+        all = SavedBuilds.list();
+        String q = search == null ? "" : search.getValue();
+        search = new EditBox(font, M(), T(), listW(), 16, Component.literal("Search"));
+        search.setHint(Component.literal("Search..."));
+        search.setValue(q);
+        search.setResponder(t -> { filter(); sel = 0; scroll = 0; resetView(); });
+        addRenderableWidget(search);
+        filter();
         if (pick != null) { for (int i = 0; i < builds.size(); i++) if (builds.get(i).file().equals(pick)) sel = i; pick = null; }
         int lx = M(), lw = listW();
         addRenderableWidget(Button.builder(Component.literal("+ Paste build"), b -> paste()).bounds(lx, B() - 44, lw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too."))).build());
         addRenderableWidget(Button.builder(Component.literal("Copy from world"), b -> { onClose(); Copier.start(); }).bounds(lx, B() - 22, lw, 20)
-                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Save a build that's already in your world: look at one corner, press Insert, look at the opposite corner, press Insert."))).build());
-        addRenderableWidget(Button.builder(Component.literal("Materials"), b -> MenuModule.openMaterials()).bounds(lx, B() + 4, lw / 2 - 2, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Settings"), b -> MenuModule.openSettings(this)).bounds(lx + lw / 2 + 2, B() + 4, lw / 2 - 2, 20).build());
+                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert."))).build());
+        boolean loaded = BuildBlueprintClient.SESSION.loaded();
+        if (loaded) addRenderableWidget(Button.builder(Component.literal("Current build"), b -> MenuModule.openMaterials()).bounds(lx, B() + 4, lw / 2 - 2, 20)
+                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Back to the build you have loaded (materials list)."))).build());
+        addRenderableWidget(Button.builder(Component.literal("Settings"), b -> MenuModule.openSettings(this)).bounds(loaded ? lx + lw / 2 + 2 : lx, B() + 4, loaded ? lw / 2 - 2 : lw, 20).build());
         // preview toolbar
         int x = pvX(), y = T();
         viewBtn = addRenderableWidget(Button.builder(Component.literal(viewName()), b -> { view = (view + 1) % 3; panX = panY = 0; b.setMessage(Component.literal(viewName())); }).bounds(x, y, 70, 20).build());
         addRenderableWidget(Button.builder(Component.literal("⟲"), b -> turn = (turn + 3) % 4).bounds(x + 74, y, 20, 20).build());
         addRenderableWidget(Button.builder(Component.literal("⟳"), b -> turn = (turn + 1) % 4).bounds(x + 96, y, 20, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("-"), b -> zoom = Math.max(0.25f, zoom / 1.25f)).bounds(x + 122, y, 20, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("+"), b -> zoom = Math.min(8f, zoom * 1.25f)).bounds(x + 144, y, 20, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Fit"), b -> { zoom = 1f; panX = panY = 0; }).bounds(x + 166, y, 30, 20).build());
+        addRenderableWidget(Button.builder(Component.literal("Fit"), b -> { zoom = 1f; panX = panY = 0; }).bounds(x + 122, y, 30, 20)
+                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Show the whole build again (scroll to zoom, drag to move)."))).build());
         // actions under the preview
         int ay = B() + 4;
-        addRenderableWidget(Button.builder(Component.literal("Load into world"), b -> loadSel()).bounds(x, ay, 110, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Rename"), b -> startRename()).bounds(x + 114, ay, 70, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Delete"), b -> deleteSel()).bounds(x + 188, ay, 60, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Copy code"), b -> copyCode()).bounds(x + 252, ay, 70, 20)
+        int aw = Math.max(50, Math.min(76, (pvW() - 110 - 16) / 4));
+        addRenderableWidget(Button.builder(Component.literal("Load into world"), b -> loadSel()).bounds(x, ay, 106, 20)
+                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Show this build in front of you as ghost blocks (double-click a build does the same)."))).build());
+        addRenderableWidget(Button.builder(Component.literal("Rename"), b -> startRename()).bounds(x + 110, ay, aw, 20).build());
+        delBtn = addRenderableWidget(Button.builder(Component.literal("Delete"), b -> deleteSel()).bounds(x + 110 + (aw + 4), ay, aw, 20)
+                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Delete this build from this computer. Click twice to be sure."))).build());
+        addRenderableWidget(Button.builder(Component.literal("Copy code"), b -> copyCode()).bounds(x + 110 + 2 * (aw + 4), ay, aw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Puts this build's BB1: code on your clipboard, to import in the Block Blueprint app or send to a friend."))).build());
+        addRenderableWidget(Button.builder(Component.literal("Save .schem"), b -> exportSchem()).bounds(x + 110 + 3 * (aw + 4), ay, aw, 20)
+                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Save this build as a .schem file (BlockBlueprint/schematics in your user folder) for WorldEdit, Litematica, Axiom..."))).build());
         nameBox = new EditBox(font, x + 2, B() - 20, Math.min(220, pvW() - 80), 16, Component.literal("Name"));
         nameBox.setMaxLength(40); nameBox.visible = false;
         addRenderableWidget(nameBox);
@@ -86,12 +104,23 @@ public class SavedBuildsScreen extends BBScreen {
     @Override public void tick() {
         if (++ticks % 40 != 0 || renaming) return;
         List<SavedBuilds.Entry> now = SavedBuilds.list();
-        if (now.size() != builds.size() || (!now.isEmpty() && !now.get(0).file().equals(builds.get(0).file()))) {
-            boolean added = now.size() > builds.size();
-            builds = now;
-            if (added) { sel = 0; scroll = 0; resetView(); msg = "New build arrived: \"" + builds.get(0).name() + "\""; err = ""; }
+        if (now.size() != all.size() || (!now.isEmpty() && !now.get(0).file().equals(all.get(0).file()))) {
+            boolean added = now.size() > all.size();
+            all = now; filter();
+            if (added && !builds.isEmpty()) { sel = 0; scroll = 0; resetView(); msg = "New build arrived: \"" + builds.get(0).name() + "\""; err = ""; }
             else sel = Math.min(sel, Math.max(0, builds.size() - 1));
         }
+    }
+    /** The list shows builds whose name contains what's typed in the search box. */
+    private void filter() {
+        String q = search == null ? "" : search.getValue().trim().toLowerCase(java.util.Locale.ROOT);
+        builds = new java.util.ArrayList<>();
+        for (SavedBuilds.Entry e : all) if (q.isEmpty() || e.name().toLowerCase(java.util.Locale.ROOT).contains(q)) builds.add(e);
+        confirmDelete = false;
+    }
+    private static String kind(SavedBuilds.Entry e) {
+        if (!SavedBuilds.isFile(e)) return "";
+        String f = e.file(); return f.substring(f.lastIndexOf('.') + 1).toLowerCase(java.util.Locale.ROOT);
     }
     private String viewName() { return view == 0 ? "View: 3D" : view == 1 ? "View: Top" : "View: Front"; }
 
@@ -103,7 +132,8 @@ public class SavedBuildsScreen extends BBScreen {
             for (int i = 0; i < builds.size(); i++) if (builds.get(i).data().equals(data)) { sel = i; msg = "You already saved this build."; return; }
             Blueprint bp = BlueprintCodec.decode(data);
             SavedBuilds.save(bp.name == null || bp.name.trim().isEmpty() ? "My build" : bp.name, data);
-            builds = SavedBuilds.list(); sel = 0; scroll = 0; resetView();
+            if (search != null) search.setValue("");
+            all = SavedBuilds.list(); filter(); sel = 0; scroll = 0; resetView();
             msg = "Saved \"" + builds.get(0).name() + "\" on this computer.";
         } catch (Exception e) { err = e.getMessage() == null ? "Could not read the clipboard." : e.getMessage(); }
     }
@@ -116,10 +146,24 @@ public class SavedBuildsScreen extends BBScreen {
             msg = "Code for \"" + e.name() + "\" copied - paste it in the app (Templates > Import code)."; err = "";
         } catch (Exception ex) { err = ex.getMessage(); }
     }
+    private void exportSchem() {
+        SavedBuilds.Entry e = cur(); if (e == null) return;
+        try {
+            Blueprint bp = SavedBuilds.blueprint(e);
+            java.nio.file.Path p = SavedBuilds.exportSchem(new Blueprint(e.name(), bp.sx, bp.sy, bp.sz, bp.palette, bp.cells));
+            msg = "Saved " + p.getFileName() + " in BlockBlueprint/schematics (your user folder)."; err = "";
+        } catch (Exception ex) { err = "Couldn't save the .schem file: " + ex.getMessage(); }
+    }
     /** Select a build by file name (used after copying one from the world). */
     public SavedBuildsScreen select(String file) { this.pick = file; return this; }
     private String pick;
-    private void resetView() { zoom = 1f; panX = panY = 0; }
+    private void resetView() { zoom = 1f; panX = panY = 0; confirmDelete = false; if (delBtn != null) delBtn.setMessage(Component.literal("Delete")); }
+    /** Move the selection (arrow keys), keeping it visible in the list. */
+    private void select(int i) {
+        if (builds.isEmpty()) return;
+        sel = Math.max(0, Math.min(builds.size() - 1, i)); resetView();
+        if (sel < scroll) scroll = sel; else if (sel >= scroll + rows()) scroll = sel - rows() + 1;
+    }
     private void loadSel() {
         SavedBuilds.Entry e = cur(); if (e == null || !PlayerInfo.inWorld()) return;
         try {
@@ -137,28 +181,32 @@ public class SavedBuildsScreen extends BBScreen {
     private void finishRename() {
         SavedBuilds.Entry e = cur(); if (e == null || !renaming) return;
         String n = nameBox.getValue().trim(); if (n.isEmpty()) return;
-        try { SavedBuilds.rename(e, n); builds = SavedBuilds.list(); msg = "Renamed to \"" + n + "\"."; err = ""; } catch (Exception ex) { err = ex.getMessage(); }
+        try { SavedBuilds.rename(e, n); all = SavedBuilds.list(); filter(); msg = "Renamed to \"" + n + "\"."; err = ""; } catch (Exception ex) { err = ex.getMessage(); }
         renaming = false; nameBox.visible = false; saveName.visible = false;
     }
     private void deleteSel() {
         SavedBuilds.Entry e = cur(); if (e == null) return;
-        try { SavedBuilds.delete(e); builds = SavedBuilds.list(); sel = Math.max(0, sel - 1); resetView(); msg = "Deleted \"" + e.name() + "\"."; err = ""; } catch (Exception ex) { err = ex.getMessage(); }
+        if (!confirmDelete) { confirmDelete = true; delBtn.setMessage(Component.literal("Sure?")); msg = "Click Delete again to delete \"" + e.name() + "\"."; err = ""; return; }
+        try { SavedBuilds.delete(e); all = SavedBuilds.list(); filter(); sel = Math.max(0, sel - 1); resetView(); msg = "Deleted \"" + e.name() + "\"."; err = ""; } catch (Exception ex) { err = ex.getMessage(); }
+        confirmDelete = false; delBtn.setMessage(Component.literal("Delete"));
     }
 
     // ---- input
     @Override public boolean keyPressed(KeyEvent e) {
         if (renaming) { if (e.key() == 257 || e.key() == 335) { finishRename(); return true; } if (e.key() == 256) { renaming = false; nameBox.visible = false; saveName.visible = false; return true; } return super.keyPressed(e); }
+        if (search != null && search.isFocused()) return super.keyPressed(e);   // typing in the search box
         if (Modules.menuKey != null && V.keyMatches(Modules.menuKey, e.key(), e.scancode())) { onClose(); return true; }
         if (e.hasControlDown() && e.key() == 86) { paste(); return true; }   // Ctrl+V
-        if (e.key() == 265) { sel = Math.max(0, sel - 1); resetView(); return true; }   // up
-        if (e.key() == 264) { sel = Math.min(builds.size() - 1, sel + 1); resetView(); return true; } // down
+        if (e.key() == 265) { select(sel - 1); return true; }   // up
+        if (e.key() == 264) { select(sel + 1); return true; }   // down
+        if ((e.key() == 257 || e.key() == 335) && cur() != null) { loadSel(); return true; }   // Enter loads it
         return super.keyPressed(e);
     }
     @Override public boolean mouseClicked(MouseButtonEvent e, boolean dbl) {
         if (super.mouseClicked(e, dbl)) return true;
         double mx = e.x(), my = e.y();
-        if (mx >= M() && mx < M() + listW() && my >= T() + 14 && my < T() + 14 + rows() * rowH()) {
-            int i = scroll + (int) ((my - T() - 14) / rowH());
+        if (mx >= M() && mx < M() + listW() && my >= listTop() && my < listTop() + rows() * rowH()) {
+            int i = scroll + (int) ((my - listTop()) / rowH());
             if (i < builds.size()) { if (i != sel) resetView(); sel = i; if (dbl) loadSel(); }
             return true;
         }
@@ -252,25 +300,29 @@ public class SavedBuildsScreen extends BBScreen {
 
     private void draw(GuiGraphics g, int mouseX, int mouseY, float delta) {
         int lx = M(), lw = listW(), t = T();
-        g.drawString(font, "Saved builds", lx, 10, 0xFFFFFF55, true);
-        String hint = "Paste a build code, or copy one from your world (Insert key)";
-        g.drawString(font, hint, pvX() + 204 > width - font.width(hint) - M() ? width - font.width(hint) - M() : pvX() + 204, 10, 0xFF999999, false);
+        g.drawString(font, "Saved builds", lx, 10, UiKit.GOLD, true);
+        String count = builds.size() == all.size() ? all.size() + " saved" : builds.size() + " of " + all.size();
+        g.drawString(font, count, lx + lw - font.width(count), 10, UiKit.MUTED, false);
+        String hint = "Double-click or Enter loads a build";
+        if (pvX() + 160 < width - font.width(hint) - M()) g.drawString(font, hint, width - font.width(hint) - M(), 10, UiKit.DIM, false);
         // list panel
-        g.fill(lx - 2, t - 2, lx + lw + 2, B() - 48, 0xE0101018);
-        g.drawString(font, builds.size() + " saved", lx + 2, t + 2, 0xFF888888, false);
+        UiKit.panel(g, lx - 2, listTop() - 2, lw + 4, B() - 48 - listTop() + 2, UiKit.GOLD);
         for (int i = 0; i < rows(); i++) {
-            int idx = scroll + i, y = t + 14 + i * rowH();
+            int idx = scroll + i, y = listTop() + i * rowH();
             if (idx >= builds.size()) break;
             boolean hov = mouseX >= lx && mouseX < lx + lw && mouseY >= y && mouseY < y + rowH();
             if (idx == sel) g.fill(lx, y, lx + lw, y + rowH() - 1, 0xFF3A4A8A);
             else if (hov) g.fill(lx, y, lx + lw, y + rowH() - 1, 0x40FFFFFF);
-            String n = builds.get(idx).name();
-            if (font.width(n) > lw - 10) n = font.plainSubstrByWidth(n, lw - 16) + "..";
+            String k = kind(builds.get(idx));
+            int kw = k.isEmpty() ? 0 : font.width(k) + 6;
+            String n = UiKit.fit(font, builds.get(idx).name(), lw - 10 - kw);
             g.drawString(font, n, lx + 5, y + 5, idx == sel ? 0xFFFFFFFF : 0xFFCCCCCC, true);
+            if (!k.isEmpty()) g.drawString(font, k, lx + lw - font.width(k) - 3, y + 5, 0xFF7FC8FF, false);
         }
         if (builds.isEmpty()) {
-            String[] help = { "No saved builds yet.", "", "From the app: copy a", "build code, then press", "+ Paste build.", "", "From your world: press", "Copy from world.", "", "Schematics: put .schem,", ".litematic or .nbt files", "in BlockBlueprint/builds", "in your user folder." };
-            for (int i = 0; i < help.length; i++) g.drawString(font, help[i], lx + 5, t + 18 + i * 11, 0xFFAAAAAA, false);
+            String[] help = !all.isEmpty() ? new String[]{"No build matches", "your search."}
+                    : new String[]{"No saved builds yet.", "", "From the app: copy a", "build code, then press", "+ Paste build.", "", "From your world: press", "Copy from world.", "", "Schematics: put .schem,", ".litematic or .nbt files", "in BlockBlueprint/builds", "in your user folder."};
+            for (int i = 0; i < help.length; i++) g.drawString(font, help[i], lx + 5, listTop() + 4 + i * 11, 0xFFAAAAAA, false);
         }
         // preview panel
         g.fill(pvX() - 2, pvY() - 2, pvX() + pvW() + 2, pvY() + pvH() + 2, 0xFF000000);

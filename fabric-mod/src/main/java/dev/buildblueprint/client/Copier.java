@@ -25,11 +25,12 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 
 /**
- * Copy a build that already exists in your world.
- *   Insert (looking at your build) -> the mod finds the whole build and puts a box around it.
+ * Copy a build that already exists in your world. You set the box yourself:
+ *   Insert (looking at a block) -> a 1 x 1 x 1 box starts on that block.
  *   Arrow keys push a side of the box out, Alt + arrows pull it in, Ctrl + Up/Down for the top/bottom, Shift = 5.
+ *   Page Down stretches the box to the block you're looking at (quick way to reach a far corner).
  *   Insert again -> name it and save.  Delete -> cancel.
- * Ground (dirt, grass, natural stone under the build) and trees can be left out automatically.
+ * Ground (dirt, grass, natural stone under the build) and trees can be left out when saving.
  */
 public final class Copier {
     private Copier() {}
@@ -52,15 +53,24 @@ public final class Copier {
 
     public static void start() {
         if (!PlayerInfo.inWorld()) return;
-        Minecraft mc = Minecraft.getInstance();
         BlockPos t = target();
-        int[] box = smartBox(mc, t);
-        if (box == null) { box = new int[]{t.getX(), t.getY(), t.getZ(), t.getX(), t.getY(), t.getZ()}; }
-        c1 = new BlockPos(box[0], box[1], box[2]); c2 = new BlockPos(box[3], box[4], box[5]);
+        c1 = t; c2 = t;
         active = true; lastCount = -1; countTick = 0;
-        int[] s = size();
-        Chat.ok("Copying: found a " + s[0] + " x " + s[1] + " x " + s[2] + " build. Arrows grow the box, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom.");
+        Chat.ok("Copy box started on the block you're looking at. Make it as big as your build:");
+        Chat.say("Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.");
         Chat.say("Press Insert again to save it, Delete to cancel.");
+    }
+
+    /** Page Down while copying: grow the box so it reaches the block you're looking at. */
+    public static void stretchTo() {
+        if (!active || c1 == null) return;
+        BlockPos t = target();
+        int x0 = Math.min(c1.getX(), t.getX()), y0 = Math.min(c1.getY(), t.getY()), z0 = Math.min(c1.getZ(), t.getZ());
+        int x1 = Math.max(c2.getX(), t.getX()), y1 = Math.max(c2.getY(), t.getY()), z1 = Math.max(c2.getZ(), t.getZ());
+        if (x1 - x0 >= MAX_SIDE || y1 - y0 >= MAX_SIDE || z1 - z0 >= MAX_SIDE) { Chat.bar("Too far - a copy can be up to " + MAX_SIDE + " blocks per side"); return; }
+        c1 = new BlockPos(x0, y0, z0); c2 = new BlockPos(x1, y1, z1); lastCount = -1; countTick = 0;
+        int[] s = size();
+        Chat.bar("Stretched to that block  ·  box " + s[0] + " x " + s[1] + " x " + s[2] + "  ·  Insert = save, Delete = cancel");
     }
 
     public static void cancel() { active = false; c1 = null; c2 = null; Chat.bar("Copy cancelled"); }
@@ -140,52 +150,6 @@ public final class Copier {
         return PLANTS.contains(p) || p.endsWith("_sapling") || st.is(BlockTags.LEAVES) || st.is(BlockTags.FLOWERS) || p.endsWith("_mushroom");
     }
     static boolean isLog(BlockState st) { return st.is(BlockTags.LOGS) && !path(st).startsWith("stripped_"); }
-
-    /**
-     * Smart select: starting from the block you look at, follow every connected block that isn't ground, plants or
-     * air (diagonals count, so roofs and hulls stay together) and return the box around it.
-     */
-    static int[] smartBox(Minecraft mc, BlockPos start) {
-        if (mc.level == null) return null;
-        BlockState s0 = mc.level.getBlockState(start);
-        if (s0.isAir() || isPlant(s0) || s0.getBlock() instanceof LiquidBlock) return null;
-        // ground level under the build: go down through the build (and any water) until natural ground
-        int groundY = start.getY() - 200;
-        BlockPos.MutableBlockPos g = new BlockPos.MutableBlockPos(start.getX(), start.getY(), start.getZ());
-        // first soil (dirt, grass, sand...) below; or, failing that, natural stone below an air/water gap
-        boolean gap = false; int stoneY = Integer.MIN_VALUE;
-        for (int y = start.getY() - 1; y > start.getY() - 200 && y >= mc.level.getMinY(); y--) {
-            BlockState st = mc.level.getBlockState(g.setY(y));
-            if (st.isAir() || st.getBlock() instanceof LiquidBlock) { gap = true; continue; }
-            if (isSoil(st)) { groundY = y; break; }
-            if (gap && isGround(st) && stoneY == Integer.MIN_VALUE) stoneY = y;
-        }
-        if (groundY == start.getY() - 200 && stoneY != Integer.MIN_VALUE) groundY = stoneY;
-        if (start.getY() <= groundY) return null;
-        ArrayDeque<BlockPos> q = new ArrayDeque<>();
-        Set<Long> seen = new HashSet<>();
-        q.add(start); seen.add(start.asLong());
-        int x0 = start.getX(), y0 = start.getY(), z0 = start.getZ(), x1 = x0, y1 = y0, z1 = z0;
-        BlockPos.MutableBlockPos p = new BlockPos.MutableBlockPos();
-        while (!q.isEmpty() && seen.size() < 400_000) {
-            BlockPos c = q.poll();
-            x0 = Math.min(x0, c.getX()); y0 = Math.min(y0, c.getY()); z0 = Math.min(z0, c.getZ());
-            x1 = Math.max(x1, c.getX()); y1 = Math.max(y1, c.getY()); z1 = Math.max(z1, c.getZ());
-            for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++) for (int dz = -1; dz <= 1; dz++) {
-                if (dx == 0 && dy == 0 && dz == 0) continue;
-                p.set(c.getX() + dx, c.getY() + dy, c.getZ() + dz);
-                if (Math.abs(p.getX() - start.getX()) > MAX_SIDE / 2 || Math.abs(p.getZ() - start.getZ()) > MAX_SIDE / 2 || Math.abs(p.getY() - start.getY()) > MAX_SIDE / 2) continue;
-                long k = p.asLong();
-                if (seen.contains(k) || !mc.level.isLoaded(p)) continue;
-                BlockState st = mc.level.getBlockState(p);
-                if (st.isAir() || isPlant(st) || st.getBlock() instanceof LiquidBlock || p.getY() <= groundY) continue;
-                if (isSoil(st)) continue;   // dirt, grass, sand... never part of the build's outline
-                seen.add(k);
-                q.add(p.immutable());
-            }
-        }
-        return new int[]{x0, y0, z0, x1, y1, z1};
-    }
 
     // ---- reading the box ---------------------------------------------------------------------------
 

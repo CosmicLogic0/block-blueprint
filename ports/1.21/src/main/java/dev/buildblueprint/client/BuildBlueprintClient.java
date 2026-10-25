@@ -163,6 +163,22 @@ public class BuildBlueprintClient implements ClientModInitializer {
         Chat.bar(d == 0 ? "Already sitting on the ground" : "Moved " + (d > 0 ? "up " : "down ") + Math.abs(d) + " to sit on the ground");
     }
 
+    /** Turn button in the build menu: a quarter turn, like Page Down. */
+    static void turn() {
+        if (!SESSION.loaded() || !unlocked()) return;
+        SESSION.rotate(1);
+        SessionStore.dirty();
+        Chat.bar("Turned to " + SESSION.turns() * 90 + " degrees");
+    }
+
+    /** Remove button in the build menu: take the build out of view (it stays in Saved builds). */
+    static void removeBuild() {
+        if (!SESSION.loaded()) return;
+        String name = SESSION.blueprint().name;
+        SESSION.clear(); ASSEMBLER.reset(); SessionStore.dirty(); Materials.refresh();
+        Chat.ok("Removed \"" + name + "\" from view. It's still in Saved builds.");
+    }
+
     static void mirror() {
         if (!SESSION.loaded() || !unlocked()) return;
         SESSION.mirror();

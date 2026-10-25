@@ -11,7 +11,7 @@ public final class MenuModule {
     }
     public static void openMaterials() {
         Minecraft mc = Minecraft.getInstance();
-        mc.execute(() -> Mc.setScreen(new MaterialsScreen()));
+        mc.execute(() -> Mc.setScreen(new MaterialsScreen(true)));
     }
     public static void openSettings(net.minecraft.client.gui.screens.Screen parent) {
         Minecraft mc = Minecraft.getInstance();

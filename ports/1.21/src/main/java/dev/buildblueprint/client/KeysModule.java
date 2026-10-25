@@ -12,6 +12,7 @@ import net.minecraft.client.Minecraft;
  * Defaults: Up = forward, Down = back, Left/Right = sideways, Ctrl+Up = up, Ctrl+Down = down,
  *           Page Down = rotate 90 degrees, Page Up = menus, Home / End = layer up / down, Insert = copy corner,
  *           Delete = place / unlock, Shift + arrows = move 5 blocks.
+ * While copying a build (Insert), the arrows shape the copy box instead and Page Down stretches it to the block you look at.
  * The ids start with a_, b_, ... so Minecraft lists them in this order.
  */
 public final class KeysModule {
@@ -71,6 +72,7 @@ public final class KeysModule {
         Copier.tick();
         if (Copier.active) {   // copy mode: the arrow keys shape the selection box instead of moving the blueprint
             if (pl) { Copier.cancel(); return; }
+            if (rot) { Copier.stretchTo(); return; }   // Page Down: reach the block you're looking at
             boolean modV = vertical.isDown();
             String d = l ? KeyLogic.direction(KeyLogic.Key.LEFT, modV) : r ? KeyLogic.direction(KeyLogic.Key.RIGHT, modV)
                     : f ? KeyLogic.direction(KeyLogic.Key.FORWARD, modV) : b ? KeyLogic.direction(KeyLogic.Key.BACK, modV) : null;

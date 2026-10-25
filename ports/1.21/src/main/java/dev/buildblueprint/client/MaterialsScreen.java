@@ -5,66 +5,121 @@ import java.util.List;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 /**
- * Materials menu (Page Up while a build is loaded). Two tabs: what the whole build still needs, and what the
- * current layer needs (so you know exactly what to bring for the layer you're on). Each row shows the block,
- * how many you carry, how many are still to place and a small bar. Scroll for more.
+ * The build menu (Page Up while a build is loaded). Top: the build's name and overall progress. Then two tabs - the whole
+ * build, or one layer (with arrows to change layer) - and the list of blocks: how many you have and how many are still
+ * to place. Click a block to swap it. Bottom: the few things you do most (place, turn, saved builds, settings) and a
+ * row of tools that only shows what makes sense right now (moving tools while it isn't placed, auto-build in Creative).
  */
 public class MaterialsScreen extends BBScreen {
     private static boolean layerTab = false;   // remembered while the game runs
-    private int scroll = 0, tick = 0;
-    private Button tabAll, tabLayer;
+    private static int scroll = 0;
+    private int tick = 0;
+    private String state = "";                 // what the tool row was built for; the screen rebuilds when it changes
+    private Button tabAll, tabLayer, layerDown, layerUp;
 
-    public MaterialsScreen() { super(Component.literal("Blueprint materials")); layerTab = Materials.showLayer(); }
+    public MaterialsScreen() { super(Component.literal("Build")); }
+    public MaterialsScreen(boolean firstOpen) { this(); if (firstOpen) { layerTab = Materials.showLayer(); scroll = 0; } }
 
     @Override public boolean isPauseScreen() { return false; }
 
-    private int pw() { return Math.min(380, width - 20); }
+    private int pw() { return Math.min(400, width - 20); }
     private int px() { return (width - pw()) / 2; }
-    private int top() { return 46; }
+    private int top() { return 60; }
     private int rowH() { return 20; }
-    private int rowsFit() { return Math.max(3, (height - top() - 88) / rowH()); }
+    private boolean toolsShown() { return !tools().isEmpty(); }
+    private int rowsFit() { return Math.max(3, (height - top() - 18 - (toolsShown() ? 54 : 30)) / rowH()); }
+
+    private static boolean creative() { var mc = net.minecraft.client.Minecraft.getInstance(); return mc.player != null && mc.player.isCreative(); }
+    private static Tooltip tip(String t) { return Tooltip.create(Component.literal(t)); }
+
+    /** The tool buttons that make sense right now, as {label, tooltip, action id}. */
+    private static List<String[]> tools() {
+        var s = BuildBlueprintClient.SESSION;
+        List<String[]> t = new ArrayList<>();
+        if (!s.loaded()) return t;
+        if (!s.locked) {
+            t.add(new String[]{"Mirror", "Flip the build left <-> right, like in a mirror. Handy for matching houses on both sides of a street.", "mirror"});
+            t.add(new String[]{"To ground", "Move the build up or down so it sits right on the ground under it.", "ground"});
+        }
+        if (creative()) {
+            t.add(new String[]{"Auto-build", "Creative only: places the whole build for you, bottom layer first. Blocks in the way are replaced (chests are left alone).", "auto"});
+            t.add(new String[]{"Build layer", "Creative only: places just the layer you're on.", "autoLayer"});
+            if (AutoBuild.canUndo()) t.add(new String[]{"Undo build", "Puts back what was there before the last auto-build.", "undo"});
+        }
+        t.add(new String[]{"Remove", "Take this build out of your world view. It stays in Saved builds, so you can load it again.", "remove"});
+        return t;
+    }
+    private static String stateKey() {
+        var s = BuildBlueprintClient.SESSION;
+        return s.loaded() + "|" + s.locked + "|" + creative() + "|" + AutoBuild.canUndo() + "|" + AutoBuild.running();
+    }
 
     @Override protected void init() {
         Materials.refresh();
-        int x = px(), w = pw();
-        tabAll = addRenderableWidget(Button.builder(Component.literal("Whole build"), b -> { layerTab = false; scroll = 0; }).bounds(x, top() - 22, w / 2 - 2, 20).build());
-        tabLayer = addRenderableWidget(Button.builder(Component.literal("This layer"), b -> { layerTab = true; scroll = 0; }).bounds(x + w / 2 + 2, top() - 22, w / 2 - 2, 20).build());
-        int by = height - 24, n = 5, bw = Math.min(84, (Math.max(w, 400) - 4 * (n - 1)) / n);
-        int bx = width / 2 - (bw * n + 4 * (n - 1)) / 2;
-        var tip = (java.util.function.Function<String, net.minecraft.client.gui.components.Tooltip>) t -> net.minecraft.client.gui.components.Tooltip.create(Component.literal(t));
-        lockBtn = addRenderableWidget(Button.builder(Component.literal(lockLabel()), b -> { BuildBlueprintClient.setLocked(!BuildBlueprintClient.SESSION.locked); b.setMessage(Component.literal(lockLabel())); })
-                .bounds(bx, by, bw, 20).tooltip(tip.apply("Place: locks the blueprint where it is so the arrow keys and Page Down can't move or turn it by accident. Press again to unlock.")).build());
-        addRenderableWidget(Button.builder(Component.literal("< Layer"), b -> { Layers.step(-1); Materials.refresh(); }).bounds(bx + (bw + 4), by, bw, 20).tooltip(tip.apply("Layer down (End key)")).build());
-        addRenderableWidget(Button.builder(Component.literal("Layer >"), b -> { Layers.step(1); Materials.refresh(); }).bounds(bx + 2 * (bw + 4), by, bw, 20).tooltip(tip.apply("Layer up (Home key). Past the top shows all layers.")).build());
-        addRenderableWidget(Button.builder(Component.literal("Saved builds"), b -> MenuModule.openSaved()).bounds(bx + 3 * (bw + 4), by, bw, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Settings"), b -> MenuModule.openSettings(this)).bounds(bx + 4 * (bw + 4), by, bw, 20).build());
-        // second row: helpers (auto-build is Creative only)
-        int aw = (bw * n + 4 * (n - 1) - 16) / 5, ax = bx, ay = by - 24;
-        abAll = addRenderableWidget(Button.builder(Component.literal("Auto-build"), b -> { AutoBuild.start(-1); onClose(); }).bounds(ax, ay, aw, 20)
-                .tooltip(tip.apply("Creative only: places the whole blueprint for you, bottom layer first. Blocks in the way are replaced (chests are left alone).")).build());
-        abLayer = addRenderableWidget(Button.builder(Component.literal("Build layer"), b -> { AutoBuild.start(Materials.layer()); onClose(); }).bounds(ax + aw + 4, ay, aw, 20)
-                .tooltip(tip.apply("Creative only: places just the layer shown in the 'Layer' tab.")).build());
-        abUndo = addRenderableWidget(Button.builder(Component.literal("Undo build"), b -> { AutoBuild.undoLast(); onClose(); }).bounds(ax + 2 * (aw + 4), ay, aw, 20)
-                .tooltip(tip.apply("Puts back what was there before the last auto-build.")).build());
-        mirrorBtn = addRenderableWidget(Button.builder(Component.literal("Mirror"), b -> { BuildBlueprintClient.mirror(); Materials.refresh(); }).bounds(ax + 3 * (aw + 4), ay, aw, 20)
-                .tooltip(tip.apply("Flip the blueprint left <-> right, like looking in a mirror. Great for matching houses on both sides of a street.")).build());
-        groundBtn = addRenderableWidget(Button.builder(Component.literal("To ground"), b -> { BuildBlueprintClient.snapToGround(); Materials.refresh(); }).bounds(ax + 4 * (aw + 4), ay, aw, 20)
-                .tooltip(tip.apply("Move the blueprint up or down so it sits right on the ground under it.")).build());
+        state = stateKey();
+        var s = BuildBlueprintClient.SESSION;
+        int x = px(), w = pw(), ty = 36;
+        // tabs: whole build | < layer N of M >
+        int half = w / 2 - 2;
+        tabAll = addRenderableWidget(Button.builder(Component.literal("Whole build"), b -> { layerTab = false; scroll = 0; }).bounds(x, ty, half, 20)
+                .tooltip(tip("Every block the build still needs.")).build());
+        layerDown = addRenderableWidget(Button.builder(Component.literal("<"), b -> { Layers.step(-1); layerTab = true; Materials.refresh(); }).bounds(x + half + 4, ty, 20, 20)
+                .tooltip(tip("Layer down (End key)")).build());
+        tabLayer = addRenderableWidget(Button.builder(Component.literal("Layer"), b -> { layerTab = true; scroll = 0; }).bounds(x + half + 26, ty, half - 44, 20)
+                .tooltip(tip("Just the layer you're building now.")).build());
+        layerUp = addRenderableWidget(Button.builder(Component.literal(">"), b -> { Layers.step(1); layerTab = true; Materials.refresh(); }).bounds(x + w - 20, ty, 20, 20)
+                .tooltip(tip("Layer up (Home key). Past the top shows all layers.")).build());
+        // main row
+        int by = height - 24, bw = Math.min(96, (w - 12) / 4);
+        int[] bx = UiKit.row(width / 2, 4, bw, 4);
+        addRenderableWidget(Button.builder(Component.literal(s.locked ? "Unlock" : "Place it"), b -> { BuildBlueprintClient.setLocked(!BuildBlueprintClient.SESSION.locked); rebuild(); })
+                .bounds(bx[0], by, bw, 20).tooltip(tip(s.locked ? "Unlock it so you can move or turn it again." : "Lock the build where it is and start building, layer by layer (Delete key).")).build()).active = s.loaded();
+        addRenderableWidget(Button.builder(Component.literal("Turn"), b -> { BuildBlueprintClient.turn(); Materials.refresh(); })
+                .bounds(bx[1], by, bw, 20).tooltip(tip("Turn the build 90 degrees (Page Down).")).build()).active = s.loaded() && !s.locked;
+        addRenderableWidget(Button.builder(Component.literal("Saved builds"), b -> MenuModule.openSaved()).bounds(bx[2], by, bw, 20)
+                .tooltip(tip("Your saved builds and schematics: load another one, paste a code, copy one from your world.")).build());
+        addRenderableWidget(Button.builder(Component.literal("Settings"), b -> MenuModule.openSettings(this)).bounds(bx[3], by, bw, 20).build());
+        // tools row: only what makes sense now
+        List<String[]> t = tools();
+        if (!t.isEmpty()) {
+            int tw = Math.min(84, (w - 4 * (t.size() - 1)) / t.size());
+            int[] tx = UiKit.row(width / 2, t.size(), tw, 4);
+            for (int i = 0; i < t.size(); i++) {
+                String[] d = t.get(i);
+                Button btn = addRenderableWidget(Button.builder(Component.literal(d[0]), b -> tool(d[2])).bounds(tx[i], by - 24, tw, 20).tooltip(tip(d[1])).build());
+                if ((d[2].equals("auto") || d[2].equals("autoLayer")) && AutoBuild.running()) btn.active = false;
+            }
+        }
     }
 
-    private Button lockBtn, abAll, abLayer, abUndo, mirrorBtn, groundBtn;
-    private static String lockLabel() { return BuildBlueprintClient.SESSION.locked ? "Unlock" : "Place it"; }
+    private void tool(String id) {
+        switch (id) {
+            case "mirror" -> { BuildBlueprintClient.mirror(); Materials.refresh(); }
+            case "ground" -> { BuildBlueprintClient.snapToGround(); Materials.refresh(); }
+            case "auto" -> { AutoBuild.start(-1); onClose(); }
+            case "autoLayer" -> { AutoBuild.start(Materials.layer()); onClose(); }
+            case "undo" -> { AutoBuild.undoLast(); onClose(); }
+            case "remove" -> { BuildBlueprintClient.removeBuild(); MenuModule.openSaved(); }
+            default -> { }
+        }
+    }
 
-    @Override public void tick() { if (++tick % 10 == 0) Materials.refresh(); }
+    private void rebuild() { Mc.setScreen(new MaterialsScreen()); }
+
+    @Override public void tick() {
+        if (++tick % 10 == 0) Materials.refresh();
+        if (!stateKey().equals(state)) rebuild();
+    }
 
     @Override public boolean keyPressed(KeyEvent e) {
         if (Modules.menuKey != null && V.keyMatches(Modules.menuKey, e.key(), e.scancode())) { onClose(); return true; }
-        if (e.key() == 268) { Layers.step(1); Materials.refresh(); return true; }   // Home
-        if (e.key() == 269) { Layers.step(-1); Materials.refresh(); return true; }  // End
+        if (e.key() == 268) { Layers.step(1); layerTab = true; Materials.refresh(); return true; }   // Home
+        if (e.key() == 269) { Layers.step(-1); layerTab = true; Materials.refresh(); return true; }  // End
         return super.keyPressed(e);
     }
 
@@ -83,32 +138,29 @@ public class MaterialsScreen extends BBScreen {
     }
 
     @Override
-    public void extractRenderState(GuiGraphics g, int mouseX, int mouseY, float delta) { Safe.run("the materials menu", () -> draw(g, mouseX, mouseY, delta)); }
+    public void extractRenderState(GuiGraphics g, int mouseX, int mouseY, float delta) { Safe.run("the build menu", () -> draw(g, mouseX, mouseY, delta)); }
 
     private void draw(GuiGraphics g, int mouseX, int mouseY, float delta) {
         var s = BuildBlueprintClient.SESSION;
         int x = px(), w = pw(), t = top();
         tabAll.active = layerTab; tabLayer.active = !layerTab;
-        boolean cr = minecraft != null && minecraft.player != null && minecraft.player.isCreative();
-        abAll.active = cr && s.loaded() && !AutoBuild.running(); abLayer.active = abAll.active; abUndo.active = cr && AutoBuild.canUndo();
-        lockBtn.setMessage(Component.literal(lockLabel()));
-        mirrorBtn.active = s.loaded() && !s.locked; groundBtn.active = mirrorBtn.active;
-        tabLayer.setMessage(Component.literal("Layer " + (Materials.layer() + 1) + (s.loaded() ? " of " + s.blueprint().sy : "")));
-        String title = s.loaded() ? s.blueprint().name + (s.locked ? "  [placed]" : "") : "No blueprint loaded";
-        g.drawString(font, title, width / 2 - font.width(title) / 2, 6, 0xFFFFFF55, true);
-        // progress line
-        int done = layerTab ? Materials.layerPlaced() : Materials.placed(), total = Math.max(1, layerTab ? Materials.layerTotal() : Materials.totalBlocks());
-        g.fill(x, 16, x + w, 24, 0xFF000000); g.fill(x + 1, 17, x + w - 1, 23, 0xFF2B2B2B);
-        g.fill(x + 1, 17, x + 1 + (int) ((w - 2) * done / (double) total), 23, layerTab ? 0xFF3F7FCF : 0xFF3FAF3F);
-        String pl = done + " / " + total + " placed (" + (int) (100.0 * done / total) + "%)";
-        g.drawString(font, pl, width / 2 - font.width(pl) / 2, 16, 0xFFFFFFFF, true);
-
-        // list panel
+        int top = s.loaded() ? s.blueprint().sy : 0;
+        tabLayer.setMessage(Component.literal(s.loaded() ? "Layer " + (Materials.layer() + 1) + " of " + top : "Layer"));
+        layerDown.active = s.loaded(); layerUp.active = s.loaded();
+        // header: name + status, then overall progress
+        String name = s.loaded() ? UiKit.fit(font, s.blueprint().name, w - 90) : "No build loaded";
+        g.drawString(font, name, x, 8, UiKit.GOLD, true);
+        if (s.loaded()) {
+            String st = s.locked ? "placed" : "not placed yet";
+            g.drawString(font, st, x + w - font.width(st), 8, s.locked ? UiKit.GREEN : UiKit.ORANGE, true);
+            UiKit.bar(g, font, x, 20, w, Materials.placed(), Materials.totalBlocks(), UiKit.BAR_BUILD, Materials.placed() + " / " + Materials.totalBlocks() + " placed");
+        }
+        // the list
         int rows = rowsFit(), h = rows * rowH() + 16;
-        g.fill(x - 2, t - 2, x + w + 2, t + h, 0xE0101018);
-        g.drawString(font, "Block", x + 24, t + 2, 0xFF888888, false);
-        g.drawString(font, "Have", x + w - 120, t + 2, 0xFF888888, false);
-        g.drawString(font, "Still to place", x + w - 74, t + 2, 0xFF888888, false);
+        UiKit.panel(g, x - 2, t - 2, w + 4, h + 2, layerTab ? UiKit.BAR_LAYER : UiKit.BAR_BUILD);
+        g.drawString(font, layerTab ? "Blocks for this layer" : "Blocks for the whole build", x + 4, t + 2, UiKit.MUTED, false);
+        g.drawString(font, "have", x + w - 120, t + 2, UiKit.MUTED, false);
+        g.drawString(font, "to place", x + w - 62, t + 2, UiKit.MUTED, false);
         List<Materials.Row> list = list();
         Materials.Row hovered = null;
         int y = t + 14;
@@ -117,37 +169,33 @@ public class MaterialsScreen extends BBScreen {
             boolean hov = mouseX >= x && mouseX < x + w && mouseY >= y && mouseY < y + rowH();
             if (hov) hovered = r;
             g.fill(x, y, x + w, y + rowH() - 1, hov ? 0x40FFFFFF : (i % 2 == 0 ? 0x14FFFFFF : 0x00000000));
-            int col = r.done() ? 0xFF55FF55 : r.enough() ? 0xFF7FD7FF : 0xFFFF6060;
+            int col = r.done() ? UiKit.GREEN : r.enough() ? UiKit.BLUE : UiKit.RED;
             g.fill(x, y, x + 2, y + rowH() - 1, col);
             if (!r.icon().isEmpty()) g.renderItem(r.icon(), x + 4, y + 1);
-            String n = r.name();
             int room = w - 24 - 130;
-            if (font.width(n) > room) n = font.plainSubstrByWidth(n, room - 6) + "..";
-            g.drawString(font, n, x + 24, y + 6, r.done() ? 0xFF888888 : 0xFFFFFFFF, true);
+            String n = UiKit.fit(font, r.name(), room);
+            g.drawString(font, n, x + 24, y + 6, r.done() ? UiKit.DIM : UiKit.WHITE, true);
             if (!r.enough() && font.width(n) + 40 < room && Chests.nearby(r.id(), 48)[0] > 0) {   // some of it is in a chest near you
                 int cx = x + 24 + font.width(n) + 5;
                 g.fill(cx, y + 5, cx + 30, y + 15, 0xFF1C5A6A);
                 g.drawString(font, "chest", cx + 3, y + 6, 0xFF9FF0FF, false);
             }
             String hv = String.valueOf(r.have());
-            g.drawString(font, hv, x + w - 108 - font.width(hv) / 2, y + 6, r.enough() ? 0xFF55FF55 : 0xFFFF6060, true);
+            g.drawString(font, hv, x + w - 108 - font.width(hv) / 2, y + 6, r.enough() ? UiKit.GREEN : UiKit.RED, true);
             String left = r.done() ? "done" : String.valueOf(r.left());
-            // little bar: share of this block already placed
-            int bx = x + w - 74, bw = 66;
+            int bx = x + w - 66, bw = 60;   // little bar: share of this block already placed
             g.fill(bx, y + 14, bx + bw, y + 17, 0xFF2B2B2B);
-            int placed = r.total() - r.left();
-            g.fill(bx, y + 14, bx + (int) (bw * placed / (double) Math.max(1, r.total())), y + 17, col);
-            g.drawString(font, left, bx + bw / 2 - font.width(left) / 2, y + 4, 0xFFFFFFFF, true);
+            g.fill(bx, y + 14, bx + (int) (bw * (r.total() - r.left()) / (double) Math.max(1, r.total())), y + 17, col);
+            g.drawString(font, left, bx + bw / 2 - font.width(left) / 2, y + 4, UiKit.WHITE, true);
         }
-        if (list.isEmpty()) g.drawString(font, s.loaded() ? "Nothing needed here." : "Load a build first (Saved builds).", x + 8, t + 20, 0xFFAAAAAA, true);
+        if (list.isEmpty()) g.drawString(font, !s.loaded() ? "Load a build first (Saved builds)." : layerTab ? "This layer is done!" : "Nothing left to place - the build is done!", x + 8, t + 22, UiKit.MUTED, true);
         if (list.size() > rows) {
             int sh = Math.max(12, (h - 16) * rows / list.size()), sy = t + 14 + (h - 16 - sh) * scroll / Math.max(1, list.size() - rows);
             g.fill(x + w - 1, sy, x + w + 1, sy + sh, 0xFFAAAAAA);
         }
         int missing = 0; for (Materials.Row r : list) if (!r.enough()) missing++;
-        String foot = list.isEmpty() ? "" : missing == 0 ? "You have everything for " + (layerTab ? "this layer!" : "the whole build!") : missing + " block type" + (missing == 1 ? "" : "s") + " missing" + (layerTab ? " for this layer" : "");
-        if (!foot.isEmpty()) foot += "  ·  click a block to swap it";
-        g.drawString(font, foot, width / 2 - font.width(foot) / 2, t + h + 3, missing == 0 ? 0xFF55FF55 : 0xFFFFAA00, true);
+        String foot = list.isEmpty() ? "" : (missing == 0 ? "You have everything" + (layerTab ? " for this layer" : "") + "!" : missing + " block type" + (missing == 1 ? "" : "s") + " missing") + "  ·  click a block to swap it";
+        if (!foot.isEmpty()) UiKit.center(g, font, foot, width / 2, t + h + 3, missing == 0 ? UiKit.GREEN : UiKit.ORANGE);
 
         super.extractRenderState(g, mouseX, mouseY, delta);
 
@@ -155,8 +203,7 @@ public class MaterialsScreen extends BBScreen {
         if (hovered != null) {
             List<Component> tip = new ArrayList<>();
             tip.add(Component.literal(hovered.name()).withStyle(ChatFormatting.WHITE));
-            tip.add(Component.literal("Still to place: " + hovered.left()).withStyle(ChatFormatting.GRAY));
-            tip.add(Component.literal((layerTab ? "This layer uses: " : "Whole build uses: ") + hovered.total()).withStyle(ChatFormatting.GRAY));
+            tip.add(Component.literal("Still to place: " + hovered.left() + "  (of " + hovered.total() + ")").withStyle(ChatFormatting.GRAY));
             tip.add(Component.literal("You have: " + hovered.have()).withStyle(hovered.enough() ? ChatFormatting.GREEN : ChatFormatting.RED));
             int[] ch = Chests.nearby(hovered.id(), 48);
             if (ch[0] > 0) tip.add(Component.literal("In chests nearby: " + ch[0] + " (" + ch[1] + " chest" + (ch[1] == 1 ? "" : "s") + ", green boxes)").withStyle(ChatFormatting.AQUA));
