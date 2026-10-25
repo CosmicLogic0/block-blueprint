@@ -14,7 +14,7 @@ public final class Settings {
 
     public static boolean hudShow = true;      // the list in the corner
     public static boolean hudRight = false;    // which corner
-    public static int hudScale = 100;          // percent
+    public static int hudScale = 50;           // percent
     public static int hudLines = 8;            // item rows in the list
     public static boolean hudBar = true;       // progress bar
     public static boolean hudHints = true;     // key hints under the list
@@ -36,6 +36,7 @@ public final class Settings {
         Properties p = new Properties();
         try (Reader r = Files.newBufferedReader(file())) { p.load(r); } catch (IOException e) { return; }
         hudShow = b(p, "hudShow", hudShow); hudRight = b(p, "hudRight", hudRight); hudScale = i(p, "hudScale", hudScale);
+        if (p.getProperty("settingsVersion") == null && hudScale == 100) hudScale = 50;   // 1.2.8: the old default of 100% was too big
         hudLines = i(p, "hudLines", hudLines); hudBar = b(p, "hudBar", hudBar); hudHints = b(p, "hudHints", hudHints);
         matMode = p.getProperty("matMode", matMode); ghostAlpha = i(p, "ghostAlpha", ghostAlpha); range = i(p, "range", range);
         redOutline = b(p, "redOutline", redOutline); autoLayer = b(p, "autoLayer", autoLayer); startLayer1 = b(p, "startLayer1", startLayer1);
@@ -44,6 +45,7 @@ public final class Settings {
 
     public static void save() {
         Properties p = new Properties();
+        p.setProperty("settingsVersion", "2");
         p.setProperty("hudShow", "" + hudShow); p.setProperty("hudRight", "" + hudRight); p.setProperty("hudScale", "" + hudScale);
         p.setProperty("hudLines", "" + hudLines); p.setProperty("hudBar", "" + hudBar); p.setProperty("hudHints", "" + hudHints);
         p.setProperty("matMode", matMode); p.setProperty("ghostAlpha", "" + ghostAlpha); p.setProperty("range", "" + range);

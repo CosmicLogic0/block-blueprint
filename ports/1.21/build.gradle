@@ -57,11 +57,16 @@ def javaVer = (project.findProperty('java_version') ?: (java8 ? '8' : '21')) as 
 def ranges = ['1.19.2': '1.19.2', '1.19.1': '1.19.1', '1.19': '1.19', '1.18.2': '1.18.2', '1.18.1': '>=1.18 <=1.18.1', '1.17.1': '>=1.17 <=1.17.1', '1.20.1': '>=1.20 <=1.20.1', '1.20.4': '>=1.20.3 <=1.20.4', '1.20.6': '>=1.20.5 <=1.20.6', '1.21.1': '>=1.21 <=1.21.1',
               '1.21.4': '1.21.4', '1.21.5': '1.21.5', '1.21.8': '>=1.21.6 <=1.21.8']
 def mcdep = project.findProperty('mc_dep') ?: (ranges[mcv] ?: mcv)
+// Fabric API's mod id was "fabric" until 1.19.2 (newer builds for those versions still "provide" it), "fabric-api" after.
+// Depending on "fabric-api" on the old versions made the game refuse to start with older Fabric API jars.
+def mcParts = mcv.tokenize('.').collect { it as int } + [0, 0]
+def fapi = (mcParts[1] < 19 || (mcParts[1] == 19 && mcParts[2] <= 2)) ? 'fabric' : 'fabric-api'
 processResources {
     inputs.property 'version', project.version
     inputs.property 'mcdep', mcdep
     inputs.property 'java', javaVer
-    filesMatching('fabric.mod.json') { expand 'version': project.mod_version, 'mcdep': mcdep, 'java': javaVer }
+    inputs.property 'fapi', fapi
+    filesMatching('fabric.mod.json') { expand 'version': project.mod_version, 'mcdep': mcdep, 'java': javaVer, 'fapi': fapi }
 }
 
 tasks.withType(JavaCompile).configureEach {

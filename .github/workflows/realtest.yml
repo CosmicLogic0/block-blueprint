@@ -1,0 +1,109 @@
+# Player-style launch test for EVERY mod file and EVERY game version it is listed for on CurseForge:
+# builds each jar exactly like release.yml, then starts the real game with the real loader (and the Fabric API a player
+# would download from Modrinth) using the portablemc launcher, runs the mod's screenshot tour and records PASS / FAIL.
+# Runs when branch "realtest" is pushed (or by hand). Results + screenshots go to branch "realtest-results".
+# Optional: list release ids (e.g. "1.16.5 forge-1.20.1") in .github/realtest-only.txt to test only those.
+name: Real launch test (every version)
+
+on:
+  push:
+    branches: [realtest]
+  workflow_dispatch:
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      builds: ${{ steps.m.outputs.builds }}
+      launches: ${{ steps.m.outputs.launches }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: m
+        run: |
+          pip install -q pyyaml 2>/dev/null || true
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os, yaml
+          rows = yaml.safe_load(open('.github/workflows/release.yml'))['jobs']['mod']['strategy']['matrix']['include']
+          only = open('.github/realtest-only.txt').read().split() if os.path.exists('.github/realtest-only.txt') else []
+          builds, launches = [], []
+          for r in rows:
+              rid = r.get('id') or r['mc']
+              if only and rid not in only: continue
+              builds.append({**{k: str(v) for k, v in r.items()}, 'rid': rid})
+              for gv in str(r['gv']).split():
+                  launches.append({'rid': rid, 'gv': gv, 'loader': r.get('loader', 'fabric'), 'name': f"{r.get('loader', 'fabric')}-{gv}" + ('' if gv == str(r['mc']) else f"-from-{rid}")})
+          print('builds=' + json.dumps({'include': builds}))
+          print('launches=' + json.dumps({'include': launches}))
+          PY
+
+  build:
+    needs: plan
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJSON(needs.plan.outputs.builds) }}
+    name: build ${{ matrix.rid }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "${{ matrix.run }}" }
+      - name: Build the mod (same as the release)
+        working-directory: ${{ matrix.dir }}
+        run: |
+          ARGS=$(bash "$GITHUB_WORKSPACE/tools/ci/build_args.sh" "${{ matrix.mc }}" "${{ matrix.loader }}" "${{ matrix.kind }}" "${{ matrix.target }}" "${{ matrix.fapi }}")
+          V=$(node -p "require('$GITHUB_WORKSPACE/package.json').version")
+          chmod +x gradlew && rm -rf build/libs
+          ./gradlew build -x test -Pmod_version="$V" $ARGS --no-daemon -q
+          mkdir -p "$GITHUB_WORKSPACE/jar"
+          for f in build/libs/buildblueprint-*.jar; do case "$f" in *-dev.jar|*-sources.jar|*-javadoc.jar) ;; *) cp "$f" "$GITHUB_WORKSPACE/jar/" ;; esac; done
+          ls -la "$GITHUB_WORKSPACE/jar"
+      - uses: actions/upload-artifact@v4
+        with: { name: "jar-${{ matrix.rid }}", path: jar/ }
+
+  launch:
+    needs: [plan, build]
+    if: always()
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJSON(needs.plan.outputs.launches) }}
+    name: run ${{ matrix.name }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Virtual screen, software OpenGL, launcher
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq xvfb mesa-utils libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers libvulkan1 imagemagick libopenal1 pulseaudio > /dev/null
+          pip install -q portablemc
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with: { name: "jar-${{ matrix.rid }}", path: jar }
+      - name: Start the game like a player would
+        run: |
+          J=$(ls jar/*.jar 2>/dev/null | head -1)
+          mkdir -p result
+          if [ -z "$J" ]; then echo "FAIL ${{ matrix.name }}: the mod did not build" > "result/${{ matrix.name }}.txt"; exit 0; fi
+          bash tools/ci/launch_real.sh "$J" "${{ matrix.gv }}" "${{ matrix.loader }}" result "${{ matrix.name }}"
+          cp game.log "result/${{ matrix.name }}.log" 2>/dev/null || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: "real-${{ matrix.name }}", path: result/ }
+
+  collect:
+    needs: launch
+    if: always()
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { pattern: real-*, merge-multiple: true, path: out }
+      - run: |
+          cd out
+          { echo "# Real launch test ${GITHUB_SHA::7}"; echo
+            echo "PASS: $(grep -l '^PASS' *.txt | wc -l)   FAIL: $(grep -l '^FAIL' *.txt | wc -l)"; echo
+            for f in *.txt; do head -1 "$f"; done | sort; } > SUMMARY.md
+          cat SUMMARY.md
+          git init -q -b realtest-results && git config user.name ci && git config user.email ci@example.com
+          echo "${GITHUB_SHA}" > COMMIT && git add -A && git commit -qm "real launch test ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" realtest-results
