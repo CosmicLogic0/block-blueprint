@@ -13,7 +13,7 @@ base { archivesName = project.archives_base_name }
 loom {
     silentMojangMappingsLicense()
     // versions without a world render event get a tiny mixin instead (see src/<era>/res/buildblueprint.mixins.json)
-    if (!neo && project.minecraft_version in ['1.21.3', '1.21.4', '1.21.5']) forge { mixinConfig 'buildblueprint.mixins.json' }
+    if (!neo && project.minecraft_version in ['1.21.3', '1.21.4', '1.21.5', '1.21.6', '1.21.7', '1.21.8']) forge { mixinConfig 'buildblueprint.mixins.json' }
 }
 repositories {
     mavenCentral()
@@ -35,7 +35,8 @@ def javaVer = (project.findProperty('java_version') ?: (neo && !(mcv in ['1.20.2
 // Forge's events changed over time: newer stand-ins in src/<loader>/shim, older ones layered on top
 def eras = neo ? (mcv in ['1.20.2', '1.20.3', '1.20.4'] ? ['neoforge-1.20'] : mcv in ['1.20.5', '1.20.6'] ? ['neoforge-1.20.6'] :
                   mcv in ['1.21.6', '1.21.7', '1.21.8'] ? ['neoforge-1.21.8'] : [])
-         : mcv in ['1.21.3', '1.21.4', '1.21.5'] ? ['forge-1.21.3', 'forge-1.21'] :
+         : mcv in ['1.21.6', '1.21.7', '1.21.8'] ? ['forge-1.21.8', 'forge-1.21.3', 'forge-1.21'] :
+           mcv in ['1.21.3', '1.21.4', '1.21.5'] ? ['forge-1.21.3', 'forge-1.21'] :
            mcv in ['1.20.5', '1.20.6'] || mcv.startsWith('1.21') ? ['forge-1.21'] :
            mcv == '1.19' ? ['forge-1.19.0', 'forge-1.19'] : mcv.startsWith('1.19') ? ['forge-1.19'] :
            mcv == '1.18.2' ? ['forge-1.18'] : mcv.startsWith('1.18') ? ['forge-1.18.1', 'forge-1.18'] :

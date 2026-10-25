@@ -41,6 +41,7 @@ jobs:
           - { mc: "1.19.2",  id: "forge-1.19.2", dir: ports/forge, java: 17, loader: forge }
           - { mc: "1.18.2",  id: "forge-1.18.2", dir: ports/forge, java: 17, loader: forge }
           - { mc: "1.16.5",  id: "forge-1.16.5", dir: ports/forge, java: 8, loader: forge }
+          - { mc: "1.21.8",  id: "forge-1.21.8", dir: ports/forge, java: 21, loader: forge }
           - { mc: "1.21.5",  id: "forge-1.21.5", dir: ports/forge, java: 21, loader: forge }
           - { mc: "1.21.4",  id: "forge-1.21.4", dir: ports/forge, java: 21, loader: forge }
           - { mc: "1.21.3",  id: "forge-1.21.3", dir: ports/forge, java: 21, loader: forge }
