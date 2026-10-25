@@ -9,7 +9,7 @@ version = "${version}"
 displayName = "Build Blueprint"
 authors = "CosmicLogic"
 displayURL = "https://github.com/CosmicLogic0/block-blueprint"
-logoFile = "assets/buildblueprint/icon.png"
+iconFile = "assets/buildblueprint/icon.png"
 description = """
 See any build as see-through ghost blocks in your world: a materials list with what you still need, layer-by-layer building, block swapping, copying builds from any world or server and auto-building in Creative. Works with the free Block Blueprint app.
 """

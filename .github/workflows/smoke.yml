@@ -68,7 +68,7 @@ jobs:
           if [ "${{ matrix.java }}" = "25" ]; then export JAVA_HOME="$JAVA_HOME_25_X64"; fi   # Minecraft 26.x code needs Java 25 to compile
           mkdir -p "$HOME/BlockBlueprint/builds" "$GITHUB_WORKSPACE/result" && cp "$GITHUB_WORKSPACE"/.github/uitest/* "$HOME/BlockBlueprint/builds/"
           ./gradlew downloadAssets --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -q || ./gradlew downloadAssets --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -q || true
-          (JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -Dbuildblueprint.uitest=1" timeout 900 xvfb-run -n 99 -s "-screen 0 1280x720x24 +extension GLX +extension Composite +render -noreset" ./gradlew runClient --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -Pjava_version=${{ matrix.java }} -Prun_java=${{ matrix.java }} -Porg.gradle.java.installations.fromEnv=JAVA_HOME_${{ matrix.java }}_X64 -Porg.gradle.java.installations.auto-download=false > game.log 2>&1 &) 
+          (JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -Dbuildblueprint.uitest=1" timeout 900 xvfb-run -n 99 -s "-screen 0 1280x720x24 +extension GLX +extension Composite +render -noreset -ac" ./gradlew runClient --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -Pjava_version=${{ matrix.java }} -Prun_java=${{ matrix.java }} -Porg.gradle.java.installations.fromEnv=JAVA_HOME_${{ matrix.java }}_X64 -Porg.gradle.java.installations.auto-download=false > game.log 2>&1 &) 
           # wait until the game has started (title screen / sound engine) or crashed, at most ~13 minutes
           for i in $(seq 1 160); do
             sleep 5
