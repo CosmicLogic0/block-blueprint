@@ -1,3 +1,14 @@
+## 1.2.7
+- **Copy a build (Insert key):** no more automatic selection - a box starts on the block you look at and you make it as big as your build. Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks, and **Page Down stretches it to the block you're looking at**.
+- **Simpler menus in every version (Fabric, Forge, NeoForge):**
+  - Build menu (Page Up): layer arrows right on the layer tab, new **Turn** and **Remove** buttons, and tools only show when they make sense (moving tools until it's placed, auto-build in Creative).
+  - Settings: a short **Basics** page and a **More** page instead of 18 buttons at once.
+  - Saved builds: **search box**, **Save .schem** button, Delete asks twice, Enter loads, nicer names for schematic files, buttons fit small windows.
+  - One consistent look across all screens.
+- NeoForge 26.x: no more warning screen at startup.
+- New (beta): Fabric 1.16.2, 1.16.3 and 1.16.4.
+- App: **1,400+ new templates** from 149 open-license creators on Modrinth (houses, towers, ships, castles, ruins...), each credited with its creator, license and link.
+
 ## 1.2.6
 - App: removed the circle shape guides from the templates.
 

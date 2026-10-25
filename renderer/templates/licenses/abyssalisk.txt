@@ -1,0 +1,5 @@
+Origins: Abyssalisk by FutureFrost
+https://modrinth.com/datapack/abyssalisk
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

@@ -1,0 +1,5 @@
+Dungeons And Villages: Ad Astra by Kononets
+https://modrinth.com/datapack/dungeon-and-village-ad-astra
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

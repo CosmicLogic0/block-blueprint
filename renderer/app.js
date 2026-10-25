@@ -878,7 +878,16 @@ async function main() {
       el.appendChild(sel);
     }
   }
+  // card previews are drawn only for cards on screen (there are thousands of templates)
+  const thumbObs = new IntersectionObserver((ents) => {
+    for (const en of ents) {
+      if (!en.isIntersecting) continue;
+      const d = en.target; thumbObs.unobserve(d);
+      thumbFor(d._tpl).then((u) => { if (u) d.querySelector('img').src = u; }).catch(() => {});
+    }
+  }, { root: null, rootMargin: '200px' });
   function showTplGrid() {
+    thumbObs.disconnect();
     $('#tplDetail').classList.add('hidden'); $('#tplGrid').classList.remove('hidden'); $('#tplTabs').classList.remove('hidden'); tplViewOn = false;
     const q = tplQuery.trim().toLowerCase();
     const MCB = 'Minecraft Buildings', sel = $('#mcbGroup'); if (sel) sel.style.display = tplCat === MCB ? '' : 'none';
@@ -889,7 +898,7 @@ async function main() {
       const d = document.createElement('div'); d.className = 'tcard';
       d.innerHTML = `<img loading="lazy" alt=""><b></b><span></span>`;
       const img = d.querySelector('img');
-      if (t.cat === 'From Minecraft' || t.src === 'game' || t.schem) { d.classList.add('fromMc'); thumbFor(t).then((u) => { if (u) img.src = u; }); }
+      if (t.cat === 'From Minecraft' || t.src === 'game' || t.schem) { d.classList.add('fromMc'); d._tpl = t; thumbObs.observe(d); }   // preview drawn when the card scrolls into view
       else img.src = t.cat === 'My Builds' ? (t.thumb || '') : TPLSRC.thumb(t.id);
       d.querySelector('b').textContent = t.name;
       d.querySelector('span').textContent = `${t.size.join(' × ')} · ${t.blocks.toLocaleString()} blocks`;

@@ -1,0 +1,5 @@
+Immersive Skyblock by SlyAquaGuy
+https://modrinth.com/datapack/immersive-skyblock
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

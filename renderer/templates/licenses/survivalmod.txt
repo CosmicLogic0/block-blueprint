@@ -1,0 +1,5 @@
+Survival Mod by Tomate65
+https://modrinth.com/mod/survivalmod
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

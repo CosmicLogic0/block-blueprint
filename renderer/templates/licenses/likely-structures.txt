@@ -1,0 +1,5 @@
+Likely Structures by tibr
+https://modrinth.com/datapack/likely-structures
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

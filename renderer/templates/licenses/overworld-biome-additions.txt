@@ -1,0 +1,5 @@
+Overworld Biome Additions by NullKot
+https://modrinth.com/datapack/overworld-biome-additions
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

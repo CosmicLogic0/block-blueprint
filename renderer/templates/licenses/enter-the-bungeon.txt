@@ -1,0 +1,5 @@
+Enter the Bungeon by Budged
+https://modrinth.com/datapack/enter-the-bungeon
+License: Apache-2.0
+
+(no license file in the download; license as listed on Modrinth)

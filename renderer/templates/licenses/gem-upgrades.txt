@@ -1,0 +1,5 @@
+Gem Upgrades by DagSP
+https://modrinth.com/datapack/gem-upgrades
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)
