@@ -88,15 +88,19 @@ public class SavedBuildsScreen extends Screen {
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Show the whole build again (scroll to zoom, drag to move)."))).build());
         // actions under the preview
         int ay = B() + 4;
-        int aw = Math.max(50, Math.min(76, (pvW() - 110 - 16) / 4));
-        addRenderableWidget(Button.builder(Component.literal("Load into world"), b -> loadSel()).bounds(x, ay, 106, 20)
-                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Show this build in front of you as ghost blocks (double-click a build does the same)."))).build());
-        addRenderableWidget(Button.builder(Component.literal("Rename"), b -> startRename()).bounds(x + 110, ay, aw, 20).build());
-        delBtn = addRenderableWidget(Button.builder(Component.literal("Delete"), b -> deleteSel()).bounds(x + 110 + (aw + 4), ay, aw, 20)
+        // five actions share the width under the preview; short labels when the window is small
+        int aw = Math.min(100, (pvW() - 16) / 5), lw0 = Math.min(120, aw + 20);
+        aw = Math.min(aw, (pvW() - lw0 - 16) / 4);
+        boolean shortL = aw < 74;
+        addRenderableWidget(Button.builder(Component.literal(shortL ? "Load" : "Load into world"), b -> loadSel()).bounds(x, ay, lw0, 20)
+                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Show this build in front of you as ghost blocks (double-click or Enter does the same)."))).build());
+        int ax = x + lw0 + 4;
+        addRenderableWidget(Button.builder(Component.literal("Rename"), b -> startRename()).bounds(ax, ay, aw, 20).build());
+        delBtn = addRenderableWidget(Button.builder(Component.literal("Delete"), b -> deleteSel()).bounds(ax + (aw + 4), ay, aw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Delete this build from this computer. Click twice to be sure."))).build());
-        addRenderableWidget(Button.builder(Component.literal("Copy code"), b -> copyCode()).bounds(x + 110 + 2 * (aw + 4), ay, aw, 20)
+        addRenderableWidget(Button.builder(Component.literal(shortL ? "Code" : "Copy code"), b -> copyCode()).bounds(ax + 2 * (aw + 4), ay, aw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Puts this build's BB1: code on your clipboard, to import in the Block Blueprint app or send to a friend."))).build());
-        addRenderableWidget(Button.builder(Component.literal("Save .schem"), b -> exportSchem()).bounds(x + 110 + 3 * (aw + 4), ay, aw, 20)
+        addRenderableWidget(Button.builder(Component.literal(shortL ? ".schem" : "Save .schem"), b -> exportSchem()).bounds(ax + 3 * (aw + 4), ay, aw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Save this build as a .schem file (BlockBlueprint/schematics in your user folder) for WorldEdit, Litematica, Axiom..."))).build());
         nameBox = new EditBox(font, x + 2, B() - 20, Math.min(220, pvW() - 80), 16, Component.literal("Name"));
         nameBox.setMaxLength(40); nameBox.visible = false;

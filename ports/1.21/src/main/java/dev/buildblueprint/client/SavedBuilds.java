@@ -98,8 +98,19 @@ public final class SavedBuilds {
             String abs = p.toAbsolutePath().toString();
             if (!Files.isRegularFile(p) || !seen.add(FILE + abs)) return;
             String fn = p.getFileName().toString();
-            out.add(new Entry(p.toString(), fn.substring(0, fn.lastIndexOf('.')), FILE + abs, Files.getLastModifiedTime(p).toMillis()));
+            out.add(new Entry(p.toString(), pretty(fn.substring(0, fn.lastIndexOf('.'))), FILE + abs, Files.getLastModifiedTime(p).toMillis()));
         } catch (IOException ignored) {}
+    }
+
+    /** "my_cool-house" -> "My Cool House" (schematic file names as display names). */
+    static String pretty(String file) {
+        StringBuilder b = new StringBuilder();
+        boolean up = true;
+        for (char c : file.replace('_', ' ').replace('-', ' ').trim().toCharArray()) {
+            b.append(up ? Character.toUpperCase(c) : c);
+            up = c == ' ';
+        }
+        return b.length() == 0 ? "Schematic" : b.toString().replaceAll(" +", " ");
     }
 
     private static Blueprint readSchematic(Entry e) throws BlueprintException {
