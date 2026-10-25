@@ -65,9 +65,10 @@ jobs:
         run: |
           chmod +x gradlew
           export LIBGL_ALWAYS_SOFTWARE=1
+          if [ "${{ matrix.java }}" = "25" ]; then export JAVA_HOME="$JAVA_HOME_25_X64"; fi   # Minecraft 26.x code needs Java 25 to compile
           mkdir -p "$HOME/BlockBlueprint/builds" "$GITHUB_WORKSPACE/result" && cp "$GITHUB_WORKSPACE"/.github/uitest/* "$HOME/BlockBlueprint/builds/"
           ./gradlew downloadAssets --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -q || ./gradlew downloadAssets --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -q || true
-          (JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -Dbuildblueprint.uitest=1" timeout 900 xvfb-run -n 99 -s "-screen 0 1280x720x24 +extension GLX +extension Composite +render -noreset" ./gradlew runClient --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -Prun_java=${{ matrix.java }} -Porg.gradle.java.installations.fromEnv=JAVA_HOME_${{ matrix.java }}_X64 -Porg.gradle.java.installations.auto-download=false > game.log 2>&1 &) 
+          (JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -Dbuildblueprint.uitest=1" timeout 900 xvfb-run -n 99 -s "-screen 0 1280x720x24 +extension GLX +extension Composite +render -noreset" ./gradlew runClient --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -Pjava_version=${{ matrix.java }} -Prun_java=${{ matrix.java }} -Porg.gradle.java.installations.fromEnv=JAVA_HOME_${{ matrix.java }}_X64 -Porg.gradle.java.installations.auto-download=false > game.log 2>&1 &) 
           # wait until the game has started (title screen / sound engine) or crashed, at most ~13 minutes
           for i in $(seq 1 160); do
             sleep 5
@@ -97,7 +98,7 @@ jobs:
           if grep -qE "Crash report saved|---- Minecraft Crash Report ----" game.log; then
             { echo "CRASH"; grep -A40 -- "---- Minecraft Crash Report ----" game.log | head -60; grep -h -A60 "Description:" run/crash-reports/*.txt 2>/dev/null | head -80; } > $F
           elif grep -qE "Sound engine started|OpenAL initialized|Created: .*textures/atlas|Narrator library" game.log; then
-            { echo "STARTED"; grep -iE "buildblueprint|build blueprint|mixin.*(error|fail)|Exception|Reloading ResourceManager|ModLoadingException|Missing or unsupported|LoadingFailed" game.log | grep -viE "realms|telemetry|narrator" | head -40; } > $F
+            { echo "STARTED"; grep -iE "buildblueprint|build blueprint|BBUITEST|mixin.*(error|fail)|Exception|Reloading ResourceManager|ModLoadingException|Missing or unsupported|LoadingFailed" game.log | grep -viE "realms|telemetry|narrator" | head -40; } > $F
           else
             { echo "DID NOT START"; tail -n 80 game.log; } > $F
           fi

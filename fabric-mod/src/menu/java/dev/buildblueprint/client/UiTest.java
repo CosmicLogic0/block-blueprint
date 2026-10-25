@@ -20,9 +20,10 @@ public final class UiTest {
 
     private static void tick() {
         var sc = Mc.screen();
-        if (step < 0) {   // wait until the title screen has been up for a while
-            if (sc == null || !sc.getClass().getSimpleName().contains("Title")) { tick = 0; return; }
-            if (++tick < 200) return;
+        if (step < 0) {   // wait until the game has shown its first menu (title screen, or the first-launch welcome) for a while
+            if (sc == null) { tick = 0; return; }
+            if (++tick == 1) System.out.println("BBUITEST waiting on " + sc.getClass().getSimpleName());
+            if (tick < 200) return;
             step = 0; tick = 0; open(STEPS[0]);
             return;
         }
