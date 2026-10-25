@@ -23,6 +23,7 @@ jobs:
       only: ${{ steps.v.outputs.only }}
       cf: ${{ steps.v.outputs.cf }}
       ready: ${{ steps.v.outputs.ready }}
+      mr: ${{ steps.v.outputs.mr }}
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 2 }
@@ -40,6 +41,8 @@ jobs:
           # versions that passed the player-style launch test (realtest.yml) on every game version they're listed for go up as Release, the rest as Beta
           READY=""; [ -f .github/release-ready.txt ] && READY=" $(grep -v '^#' .github/release-ready.txt | tr '\n' ' ') "
           echo "ready=$READY" >> "$GITHUB_OUTPUT"; echo "Release (not beta): [$READY]"
+          # Modrinth: uploads the same files as CurseForge once the project id is written in .github/modrinth-id.txt
+          MR=$(grep -v '^#' .github/modrinth-id.txt 2>/dev/null | tr -d ' \r\n'); echo "mr=$MR" >> "$GITHUB_OUTPUT"; echo "Modrinth project: [$MR]"
           if [ "$GITHUB_REF_NAME" = "retry-mod" ]; then
             echo "new=false" >> "$GITHUB_OUTPUT"; echo "retry=true" >> "$GITHUB_OUTPUT"
             echo "only= $(tr '\n' ' ' < .github/retry.txt) " >> "$GITHUB_OUTPUT"; exit 0
@@ -253,6 +256,22 @@ jobs:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           files: ${{ matrix.dir }}/build/libs/buildblueprint-!(*-@(dev|sources|javadoc)).jar
           name: Build Blueprint ${{ needs.check.outputs.version }} for ${{ matrix.loader == 'forge' && 'Forge ' || matrix.loader == 'neoforge' && 'NeoForge ' || '' }}Minecraft ${{ matrix.mc }}${{ !contains(needs.check.outputs.ready, format(' {0} ', matrix.id || matrix.mc)) && matrix.type == 'beta' && ' (beta)' || '' }}
+          version: ${{ needs.check.outputs.version }}+${{ matrix.id || matrix.mc }}
+          version-type: ${{ contains(needs.check.outputs.ready, format(' {0} ', matrix.id || matrix.mc)) && 'release' || matrix.type }}
+          loaders: ${{ matrix.loader || 'fabric' }}
+          game-versions: ${{ steps.gv.outputs.list }}
+          java: ${{ matrix.target }}
+          dependencies: ${{ (matrix.loader || 'fabric') == 'fabric' && 'fabric-api(required)' || '' }}
+          changelog-file: CHANGELOG.md
+
+      - name: Upload to Modrinth
+        if: needs.check.outputs.mr != '' && (needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))) && contains(needs.check.outputs.cf, format(' {0} ', matrix.id || matrix.mc))
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: ${{ needs.check.outputs.mr }}
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          files: ${{ matrix.dir }}/build/libs/buildblueprint-!(*-@(dev|sources|javadoc)).jar
+          name: Build Blueprint ${{ needs.check.outputs.version }} for ${{ matrix.loader == 'forge' && 'Forge ' || matrix.loader == 'neoforge' && 'NeoForge ' || 'Fabric ' }}${{ matrix.mc }}
           version: ${{ needs.check.outputs.version }}+${{ matrix.id || matrix.mc }}
           version-type: ${{ contains(needs.check.outputs.ready, format(' {0} ', matrix.id || matrix.mc)) && 'release' || matrix.type }}
           loaders: ${{ matrix.loader || 'fabric' }}
