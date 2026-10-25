@@ -72,6 +72,14 @@ jobs:
     name: run ${{ matrix.name }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: |
+            8
+            17
+            25
+            21
       - name: Virtual screen, software OpenGL, launcher
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq xvfb mesa-utils libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers libvulkan1 imagemagick libopenal1 pulseaudio > /dev/null

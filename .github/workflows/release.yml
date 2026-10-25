@@ -140,7 +140,7 @@ jobs:
           - { mc: "1.16.4",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.4", fapi: "1.16" }
           - { mc: "1.16.3",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.3", fapi: "1.16" }
           - { mc: "1.16.2",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.2", fapi: "1.16" }
-          - { mc: "1.20.1",  id: forge-1.20.1,    loader: forge,    dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20 1.20.1" }
+          - { mc: "1.20.1",  id: forge-1.20.1,    loader: forge,    dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.1" }
           - { mc: "1.21.1",  id: neoforge-1.21.1, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21 1.21.1" }
           - { mc: "1.21.5",  id: forge-1.21.5, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.5" }
           - { mc: "1.21.4",  id: forge-1.21.4, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.4" }
