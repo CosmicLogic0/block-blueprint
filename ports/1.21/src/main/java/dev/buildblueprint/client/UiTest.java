@@ -28,7 +28,7 @@ public final class UiTest {
             return;
         }
         if (++tick == 40) System.out.println("BBUITEST shot " + STEPS[step]);   // screenshot after the screen has settled
-        if (tick < 80) return;
+        if (tick < 160) return;   // time for the test to press F2 and save the picture
         tick = 0;
         if (++step >= STEPS.length) return;
         open(STEPS[step]);

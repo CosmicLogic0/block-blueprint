@@ -41,7 +41,7 @@ jobs:
             ${{ matrix.java }}
             21
       - name: Virtual screen and software OpenGL
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb mesa-utils libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers libvulkan1 imagemagick > /dev/null
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb mesa-utils libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers libvulkan1 imagemagick xdotool > /dev/null
       - name: Versions
         id: v
         run: |
@@ -79,7 +79,14 @@ jobs:
                 sleep 2
                 for n in $(grep -o "BBUITEST shot [a-z-]*" game.log | awk '{print $3}'); do
                   f="$GITHUB_WORKSPACE/result/${{ matrix.loader }}-${{ matrix.mc }}-$n.png"
-                  [ -f "$f" ] || DISPLAY=:99 import -window root "$f" 2>/dev/null || true
+                  if [ ! -f "$f" ]; then
+                    # Minecraft's own screenshot (F2) reads the game's picture directly; save the newest one under this name
+                    W=$(DISPLAY=:99 xdotool search --name "Minecraft" 2>/dev/null | head -1)
+                    [ -n "$W" ] && DISPLAY=:99 xdotool windowfocus "$W" 2>/dev/null; DISPLAY=:99 xdotool mousemove 640 360 key F2 2>/dev/null || true
+                    sleep 2
+                    N=$(ls -t run/screenshots/*.png 2>/dev/null | head -1)
+                    if [ -n "$N" ]; then mv "$N" "$f"; else DISPLAY=:99 import -window root "$f" 2>/dev/null || true; fi
+                  fi
                 done
                 grep -q "BBUITEST done" game.log && break
                 grep -qE "Crash report saved|---- Minecraft Crash Report ----" game.log && break
