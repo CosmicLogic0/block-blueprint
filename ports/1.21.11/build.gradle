@@ -62,3 +62,15 @@ processResources {
 }
 tasks.withType(JavaCompile).configureEach { options.release = 21 }
 tasks.named("test") { enabled = false }
+
+// The Minecraft version this file is built for, read by the mod (SchemCodec) to label exported .schem files.
+def bbMcDir = layout.buildDirectory.dir('bb-mc')
+tasks.register('bbMcVersion') {
+    def v = project.minecraft_version.toString(); def out = bbMcDir
+    inputs.property 'mc', v
+    outputs.dir out
+    doLast { def f = out.get().file('dev/buildblueprint/core/mc.txt').asFile; f.parentFile.mkdirs(); f.text = v }
+}
+sourceSets.main.resources.srcDir(bbMcDir)
+processResources.dependsOn 'bbMcVersion'
+tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn 'bbMcVersion' }

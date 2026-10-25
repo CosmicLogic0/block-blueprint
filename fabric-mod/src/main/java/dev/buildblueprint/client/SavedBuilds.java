@@ -3,6 +3,7 @@ package dev.buildblueprint.client;
 import dev.buildblueprint.core.Blueprint;
 import dev.buildblueprint.core.BlueprintCodec;
 import dev.buildblueprint.core.BlueprintException;
+import dev.buildblueprint.core.SchemCodec;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -20,6 +21,8 @@ import net.fabricmc.loader.api.FabricLoader;
 /**
  * Builds the player has pasted in, copied or sent from the app, saved on this computer in <home>/BlockBlueprint/builds.
  * Each file: line 1 = display name, line 2 = the blueprint data (the joined parts of the app's /buildblueprint load lines).
+ * Schematic files from other tools (.schem, .litematic, .nbt) in that folder, or in this game's WorldEdit / Litematica
+ * schematic folders, are listed too and read straight from the file.
  */
 public final class SavedBuilds {
     private SavedBuilds() {}
@@ -55,6 +58,7 @@ public final class SavedBuilds {
         for (Path folder : shared.equals(old) ? List.of(shared) : List.of(shared, old)) {
             try (var s = Files.list(folder)) {
                 for (Path p : (Iterable<Path>) s::iterator) {
+                    if (SchemCodec.isSchematicFile(p.getFileName().toString())) { addSchematic(out, seen, p); continue; }
                     if (!p.getFileName().toString().endsWith(".bbp")) continue;
                     try {
                         List<String> lines = Files.readAllLines(p, StandardCharsets.UTF_8);
@@ -66,13 +70,64 @@ public final class SavedBuilds {
                 }
             } catch (IOException ignored) {}
         }
+        for (Path folder : schematicFolders()) {
+            try (java.util.stream.Stream<Path> s = Files.list(folder)) {
+                for (Path p : (Iterable<Path>) s::iterator) if (SchemCodec.isSchematicFile(p.getFileName().toString())) addSchematic(out, seen, p);
+            } catch (IOException ignored) {}
+        }
         out.sort((a, b) -> Long.compare(b.modified(), a.modified()));
         return out;
     }
 
+    /** Where other tools keep schematics for this game folder: WorldEdit and Litematica. Their files are listed too. */
+    private static List<Path> schematicFolders() {
+        List<Path> out = new ArrayList<>();
+        Path cfg = FabricLoader.getInstance().getConfigDir(), game = cfg.getParent();
+        Path[] all = {cfg.resolve("worldedit").resolve("schematics"), game == null ? null : game.resolve("schematics")};
+        for (Path p : all) if (p != null && Files.isDirectory(p)) out.add(p);
+        return out;
+    }
+
+    /** Schematic files (.schem, .litematic, .nbt) are read straight from the file; their data is "file:<path>". */
+    private static final String FILE = "file:";
+
+    public static boolean isFile(Entry e) { return e.data().startsWith(FILE); }
+
+    private static void addSchematic(List<Entry> out, java.util.Set<String> seen, Path p) {
+        try {
+            String abs = p.toAbsolutePath().toString();
+            if (!Files.isRegularFile(p) || !seen.add(FILE + abs)) return;
+            String fn = p.getFileName().toString();
+            out.add(new Entry(p.toString(), fn.substring(0, fn.lastIndexOf('.')), FILE + abs, Files.getLastModifiedTime(p).toMillis()));
+        } catch (IOException ignored) {}
+    }
+
+    private static Blueprint readSchematic(Entry e) throws BlueprintException {
+        Path p = pathOf(e);
+        try {
+            if (Files.size(p) > 50_000_000) throw new BlueprintException("That schematic file is too big.");
+            return SchemCodec.read(Files.readAllBytes(p), e.name());
+        } catch (IOException ex) {
+            throw new BlueprintException("Couldn't read " + p.getFileName() + ".");
+        }
+    }
+
+    /** Saves a build as a .schem file in <home>/BlockBlueprint/schematics, for WorldEdit, Litematica, Axiom and other tools. */
+    public static Path exportSchem(Blueprint bp) throws IOException {
+        Path d = java.nio.file.Paths.get(System.getProperty("user.home"), "BlockBlueprint", "schematics");
+        Files.createDirectories(d);
+        String slug = (bp.name == null ? "" : bp.name).toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]+", "_").replaceAll("^_|_$", "");
+        if (slug.isEmpty()) slug = "build";
+        Path p = d.resolve(slug + ".schem");
+        for (int i = 2; Files.exists(p); i++) p = d.resolve(slug + "_" + i + ".schem");
+        Files.write(p, SchemCodec.writeSchem(bp, SchemCodec.dataVersion()));
+        return p;
+    }
+
     public static Blueprint blueprint(Entry e) throws BlueprintException {
-        Blueprint bp = CACHE.get(e.data());
-        if (bp == null) { bp = BlueprintCodec.decode(e.data()); CACHE.put(e.data(), bp); }
+        String key = isFile(e) ? e.data() + "@" + e.modified() : e.data();
+        Blueprint bp = CACHE.get(key);
+        if (bp == null) { bp = isFile(e) ? readSchematic(e) : BlueprintCodec.decode(e.data()); CACHE.put(key, bp); }
         return bp;
     }
 
@@ -159,8 +214,23 @@ public final class SavedBuilds {
     }
 
     public static void rename(Entry e, String name) throws IOException {
+        if (isFile(e)) {   // schematic files: rename the file itself, keeping its ending
+            Path p = pathOf(e);
+            String fn = p.getFileName().toString(), safe = name.replaceAll("[\\\\/:*?\"<>|]", "_").trim();
+            Path to = p.resolveSibling((safe.isEmpty() ? "build" : safe) + fn.substring(fn.lastIndexOf('.')));
+            if (Files.exists(to)) throw new IOException("There's already a file called " + to.getFileName() + ".");
+            Files.move(p, to);
+            return;
+        }
         Files.writeString(pathOf(e), name + "\n" + e.data() + "\n", StandardCharsets.UTF_8);
     }
 
-    public static void delete(Entry e) throws IOException { Files.deleteIfExists(pathOf(e)); }
+    public static void delete(Entry e) throws IOException {
+        if (isFile(e)) {   // only delete schematics in our own folder, never WorldEdit's or Litematica's
+            Path parent = pathOf(e).toAbsolutePath().getParent();
+            if (parent == null || !(parent.equals(dir().toAbsolutePath()) || parent.equals(legacyDir().toAbsolutePath())))
+                throw new IOException("That file belongs to WorldEdit or Litematica. Delete it from " + parent + " instead.");
+        }
+        Files.deleteIfExists(pathOf(e));
+    }
 }

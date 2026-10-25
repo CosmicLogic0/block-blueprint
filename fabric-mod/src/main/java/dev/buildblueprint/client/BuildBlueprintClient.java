@@ -51,6 +51,7 @@ public class BuildBlueprintClient implements ClientModInitializer {
             .then(Cmd.literal("here").executes(ctx -> here()))
             .then(Cmd.literal("ground").executes(ctx -> { if (ready()) snapToGround(); return 1; }))
             .then(Cmd.literal("mirror").executes(ctx -> { if (ready()) mirror(); return 1; }))
+            .then(Cmd.literal("export").executes(ctx -> { exportSchem(); return 1; }))
             .then(Cmd.literal("stats").executes(ctx -> { if (ready()) Chat.say("Building time " + Stats.time(Stats.activeMs()) + " · " + Stats.placedByYou() + " blocks placed · " + Math.round(Stats.perMinute()) + " a minute"); return 1; }))
             .then(Cmd.literal("place").executes(ctx -> { if (ready()) setLocked(true); return 1; }))
             .then(Cmd.literal("lock").executes(ctx -> { if (ready()) setLocked(true); return 1; }))
@@ -76,6 +77,18 @@ public class BuildBlueprintClient implements ClientModInitializer {
             .then(Cmd.literal("status").executes(ctx -> { status(); return 1; }))
             .then(Cmd.literal("clear").executes(ctx -> { SESSION.clear(); ASSEMBLER.reset(); Chat.ok("Blueprint cleared."); return 1; }))
             .then(Cmd.literal("help").executes(ctx -> { help(); return 1; })));
+    }
+
+    /** Saves the loaded build (as it is now: turned, mirrored, swapped) as a .schem file for WorldEdit, Litematica, Axiom... */
+    private static void exportSchem() {
+        if (!ready()) return;
+        try {
+            java.nio.file.Path p = SavedBuilds.exportSchem(SESSION.blueprint());
+            Chat.say("Saved as a .schem file: " + p);
+            Chat.say("Open it with WorldEdit (copy it to config/worldedit/schematics), Litematica, Axiom or any other schematic tool.");
+        } catch (Exception e) {
+            Chat.err("Couldn't save the .schem file: " + e.getMessage());
+        }
     }
 
     private static boolean ready() {
@@ -201,6 +214,8 @@ public class BuildBlueprintClient implements ClientModInitializer {
         Chat.say("/buildblueprint load <id> <data>  - the lines the app gives you; paste them all");
         Chat.say("/buildblueprint move <up|down|left|right|forward|back> [amount]");
         Chat.say("/buildblueprint rotate <left|right|180>   /buildblueprint here   /buildblueprint layer <n|all>");
+        Chat.say("/buildblueprint export  - save the loaded build as a .schem file (WorldEdit, Litematica...)");
+        Chat.say(".schem, .litematic and .nbt files in <home>/BlockBlueprint/builds (or your WorldEdit / Litematica schematics folder) show up in Saved builds.");
         Chat.say("/buildblueprint materials | status | show | hide | clear");
         Chat.say("/buildblueprint mirror | stats  - flip the blueprint left/right, show your build time");
         Chat.say("/buildblueprint place | unlock  - lock the blueprint where it is so keys can't move it");

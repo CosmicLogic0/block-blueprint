@@ -269,7 +269,7 @@ public class SavedBuildsScreen extends BBScreen {
             g.drawString(font, n, lx + 5, y + 5, idx == sel ? 0xFFFFFFFF : 0xFFCCCCCC, true);
         }
         if (builds.isEmpty()) {
-            String[] help = { "No saved builds yet.", "", "From the app: copy a", "build code, then press", "+ Paste build.", "", "From your world: press", "Copy from world." };
+            String[] help = { "No saved builds yet.", "", "From the app: copy a", "build code, then press", "+ Paste build.", "", "From your world: press", "Copy from world.", "", "Schematics: put .schem,", ".litematic or .nbt files", "in BlockBlueprint/builds", "in your user folder." };
             for (int i = 0; i < help.length; i++) g.drawString(font, help[i], lx + 5, t + 18 + i * 11, 0xFFAAAAAA, false);
         }
         // preview panel
