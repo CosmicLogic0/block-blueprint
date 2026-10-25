@@ -52,6 +52,7 @@ tasks.register('bbShims', Sync) {
     from("src/${loaderName}/shim") { if (flags.oldText) exclude 'net/fabricmc/fabric/api/client/command/v2/**' }
     into shims
     inputs.property 'eras', eras.join(',')
+    filter { String l -> bbFilter(l, flags) }
 }
 tasks.register('bbRes', Sync) { from('../../fabric-mod/src/main/resources') { include 'assets/**' }; into res }
 tasks.register('bbMakeSources', Sync) {

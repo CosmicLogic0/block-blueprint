@@ -40,6 +40,7 @@ ext.bbRecordToClass = { String l ->
 ext.bbFilter = { String l, Map f ->
     if (f.legacyGui && l.trim() == 'import net.minecraft.client.gui.GuiGraphics;') return ''
     if (f.newTypes) l = l.replace('import net.minecraft.client.renderer.RenderType;', 'import net.minecraft.client.renderer.rendertype.RenderType;')
+                         .replace('camera().getPosition()', 'camera().position()').replace('cam.getXRot()', 'cam.xRot()').replace('cam.getYRot()', 'cam.yRot()')
     if (f.noBuilder) {
         l = l.replace('Button.builder(', 'Btn.builder(').replace('net.minecraft.client.gui.components.Tooltip.create(', 'Btn.tip(')
              .replace('Tooltip.create(', 'Btn.tip(').replace('net.minecraft.client.gui.components.Tooltip', 'Btn.Tip')
