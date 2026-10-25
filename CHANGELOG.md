@@ -1,3 +1,8 @@
+## 1.2.8
+- **Fixed: Fabric 1.16.x, 1.17.x, 1.18.x and 1.19-1.19.2 refused to start** with "requires fabric-api, which is missing" when you had an older Fabric API. Any Fabric API for your version works now.
+- The block list in the top-left corner now starts at **50% size** (it was too big). Change it in Settings > List size. If you never changed it, it switches to 50% by itself.
+- Every file is now tested before upload the way a player runs it: the real game, the real loader and the Fabric API from Modrinth, on every Minecraft version it's listed for.
+
 ## 1.2.7
 - **Copy a build (Insert key):** no more automatic selection - a box starts on the block you look at and you make it as big as your build. Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks, and **Page Down stretches it to the block you're looking at**.
 - **Simpler menus in every version (Fabric, Forge, NeoForge):**
