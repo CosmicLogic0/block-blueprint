@@ -1,7 +1,11 @@
 ## 1.2.8
 - **Fixed: Fabric 1.16.x, 1.17.x, 1.18.x and 1.19-1.19.2 refused to start** with "requires fabric-api, which is missing" when you had an older Fabric API. Any Fabric API for your version works now.
 - The block list in the top-left corner now starts at **50% size** (it was too big). Change it in Settings > List size. If you never changed it, it switches to 50% by itself.
-- Every file is now tested before upload the way a player runs it: the real game, the real loader and the Fabric API from Modrinth, on every Minecraft version it's listed for.
+- Fabric 1.16.2 - 1.16.4: no more crash with the older Fabric API those versions get. Keys and menus work; for the /buildblueprint commands install Fabric API 0.42.0+1.16 (works on 1.16.2 - 1.16.5).
+- Forge 1.20.1 and 1.21.1 files are now only listed for their own version (they need that exact Forge). Forge 1.20 and 1.21 have their own files.
+- New: Forge 1.16.5, 1.17.1, 1.21 and 1.21.11.
+- **Most versions are now Release instead of Beta**: every file is tested before upload the way a player runs it (the real game, the real loader and the Fabric API from Modrinth, joining a world and using the mod) on every Minecraft version it's listed for.
+- Build Blueprint is now on **Modrinth** too.
 
 ## 1.2.7
 - **Copy a build (Insert key):** no more automatic selection - a box starts on the block you look at and you make it as big as your build. Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks, and **Page Down stretches it to the block you're looking at**.
