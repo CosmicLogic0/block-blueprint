@@ -20,7 +20,7 @@ jobs:
           rows=[]
           for l in open('.github/smoke.txt'):
               l=l.split('#')[0].split()
-              if len(l)>=3: rows.append({'dir':l[0],'mc':l[1],'loader':l[2],'java':l[3] if len(l)>3 else '21'})
+              if len(l)>=3: rows.append({'dir':l[0],'mc':l[1],'loader':l[2],'java':l[3] if len(l)>3 else '21','fapi':l[4] if len(l)>4 else l[1]})
           print('matrix='+json.dumps({'include':rows}))
           PY
 
@@ -57,7 +57,7 @@ jobs:
                    echo "args=-Pneo_version=$F" >> "$GITHUB_OUTPUT" ;;
             forge26) F=$(curl -s https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml | grep -o "<version>${{ matrix.mc }}-[^<]*</version>" | sed 's/<[^>]*>//g; s/^${{ matrix.mc }}-//' | tail -1)
                    echo "args=-Pforge_version=$F" >> "$GITHUB_OUTPUT" ;;
-            *) V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.mc }}</version>" | sed 's/<[^>]*>//g' | tail -1)
+            *) V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.fapi }}</version>" | sed 's/<[^>]*>//g' | tail -1)
                    echo "args=-Pfabric_api_version=$V" >> "$GITHUB_OUTPUT" ;;
           esac
       - name: Launch the game for 4 minutes
@@ -81,10 +81,7 @@ jobs:
                   f="$GITHUB_WORKSPACE/result/${{ matrix.loader }}-${{ matrix.mc }}-$n.png"
                   if [ ! -f "$f" ]; then
                     # Minecraft's own screenshot (F2) reads the game's picture directly; save the newest one under this name
-                    W=$(DISPLAY=:99 xdotool search --name "Minecraft" 2>/dev/null | head -1)
-                    [ -n "$W" ] && DISPLAY=:99 xdotool windowfocus "$W" 2>/dev/null; DISPLAY=:99 xdotool mousemove 640 360 key F2 2>/dev/null || true
-                    sleep 2
-                    N=$(ls -t run/screenshots/*.png 2>/dev/null | head -1)
+                    N=$(ls -t run/screenshots/*.png 2>/dev/null | head -1)   # the mod pressed F2 just before printing the line
                     if [ -n "$N" ]; then mv "$N" "$f"; else DISPLAY=:99 import -window root "$f" 2>/dev/null || true; fi
                   fi
                 done

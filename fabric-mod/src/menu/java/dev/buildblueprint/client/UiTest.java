@@ -27,11 +27,36 @@ public final class UiTest {
             step = 0; tick = 0; open(STEPS[0]);
             return;
         }
-        if (++tick == 40) System.out.println("BBUITEST shot " + STEPS[step]);   // screenshot after the screen has settled
-        if (tick < 160) return;   // time for the test to press F2 and save the picture
+        if (++tick == 40) pressF2();                                              // Minecraft's own screenshot, once the screen has settled
+        if (tick == 70) System.out.println("BBUITEST shot " + STEPS[step]);     // the test picks up the newest screenshot now
+        if (tick < 110) return;
         tick = 0;
         if (++step >= STEPS.length) return;
         open(STEPS[step]);
+    }
+
+    /** Presses F2 through Minecraft's keyboard handler (works the same on every version, in the test's dev build). */
+    private static void pressF2() {
+        try {
+            Object mc = net.minecraft.client.Minecraft.getInstance();
+            Object kb = mc.getClass().getField("keyboardHandler").get(mc);
+            Object win = mc.getClass().getMethod("getWindow").invoke(mc);
+            long handle = 0;
+            for (String n : new String[]{"getWindow", "handle"}) {
+                try { handle = (Long) win.getClass().getMethod(n).invoke(win); break; } catch (ReflectiveOperationException ignored) {}
+            }
+            for (java.lang.reflect.Method m : kb.getClass().getDeclaredMethods()) {
+                if (!m.getName().equals("keyPress")) continue;
+                m.setAccessible(true);
+                Class<?>[] p = m.getParameterTypes();
+                if (p.length == 5) { m.invoke(kb, handle, 291, 0, 1, 0); m.invoke(kb, handle, 291, 0, 0, 0); return; }   // (window, key, scancode, action, mods)
+                if (p.length == 3) {                                                                                     // (window, action, KeyEvent) on newer versions
+                    Object ev = p[2].getConstructor(int.class, int.class, int.class).newInstance(291, 0, 0);
+                    m.invoke(kb, handle, 1, ev); m.invoke(kb, handle, 0, ev); return;
+                }
+            }
+            System.out.println("BBUITEST no keyPress method found");
+        } catch (Throwable t) { System.out.println("BBUITEST F2 failed: " + t); }
     }
 
     private static void open(String what) {
