@@ -2,4 +2,4 @@
 # Only list NEW versions or versions with real changes: CurseForge rejects re-uploads without changes.
 # This list is only used when this file is changed in the same push as the version bump.
 forge-26.3
-# 1.2.3 retry: Forge 26.3 (download failed the first time)
+# 1.2.3 retry 2: Forge 26.3 (the Fabric 26.3 shortcut skipped the Forge lookup)

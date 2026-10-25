@@ -198,7 +198,7 @@ jobs:
         if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
         id: fapi
         run: |
-          if [ "${{ matrix.mc }}" = "26.3" ]; then echo "args=" >> "$GITHUB_OUTPUT"; exit 0; fi   # 26.3 uses the version in gradle.properties
+          if [ "${{ matrix.mc }}" = "26.3" ] && [ -z "${{ matrix.loader }}" ]; then echo "args=" >> "$GITHUB_OUTPUT"; exit 0; fi   # 26.3 uses the version in gradle.properties
           if [ "${{ matrix.kind }}" = "neo26" ]; then
             P="${{ matrix.mc }}"; case "$P" in *.*.*) ;; *) P="$P.0" ;; esac
             F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -oE "<version>$P\.[0-9]+(-beta)?</version>" | sed 's/<[^>]*>//g' | sort -V | tail -1)
