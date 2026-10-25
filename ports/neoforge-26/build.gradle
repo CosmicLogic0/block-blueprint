@@ -1,0 +1,55 @@
+// Build Blueprint for NeoForge, Minecraft 26.x. Uses the same code as the Fabric 26.x mod (../../fabric-mod)
+// plus small stand-ins (src/shim) for the few Fabric API classes that code uses, backed by NeoForge events.
+plugins {
+    id 'java'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+
+def mcv = project.minecraft_version
+// the Fabric mod keeps one small helper file per Minecraft version (src/compat/<version>): 26.1.x all use 26.1
+def compat = project.findProperty('compat') ?: (mcv.startsWith('26.1') ? '26.1' : mcv)
+version = "${project.mod_version}+neoforge-${mcv}"
+group = 'dev.buildblueprint'
+base { archivesName = 'buildblueprint' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+println "Build Blueprint (NeoForge): Minecraft ${mcv}, NeoForge ${project.neo_version}, helpers from fabric-mod/src/compat/${compat}"
+
+neoForge {
+    version = project.neo_version
+    runs { client { client() } }
+    mods { buildblueprint { sourceSet(sourceSets.main) } }
+}
+
+def fab = '../../fabric-mod/src'
+def gen = layout.buildDirectory.dir('gen-src'), res = layout.buildDirectory.dir('gen-res')
+tasks.register('bbSources', Sync) {
+    from("${fab}/main/java")
+    from("${fab}/menu/java")
+    from("${fab}/preview/java")
+    from("${fab}/keys/java")
+    from("${fab}/compat/${compat}/java")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE   // the first copy of a file wins: 26.1.x stand-ins go before the newer ones
+    if (mcv.startsWith('26.1')) from('src/shim-26.1')
+    from('src/shim')
+    from('src/entry')
+    into gen
+    inputs.property 'compat', compat
+    // NeoForge client commands use Minecraft's own CommandSourceStack
+    filter { String l -> l.replace('import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;', 'import net.minecraft.commands.CommandSourceStack;')
+                          .replace('FabricClientCommandSource', 'CommandSourceStack') }
+}
+def mcRange = project.findProperty('mc_range') ?: "[${mcv}]"
+tasks.register('bbResources', Sync) {
+    from("${fab}/main/resources") { include 'assets/**' }
+    from('src/res')
+    into res
+    inputs.property 'version', project.mod_version
+    inputs.property 'mcRange', mcRange
+    filesMatching('META-INF/neoforge.mods.toml') { expand 'version': project.mod_version, 'mcRange': mcRange }
+}
+sourceSets.main.java.srcDirs = [gen]
+sourceSets.main.resources.srcDirs = [res]
+compileJava.dependsOn bbSources
+processResources.dependsOn bbResources
+tasks.matching { it.name in ['sourcesJar', 'neoForgeIdeSync'] }.configureEach { dependsOn bbSources, bbResources }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 25 }

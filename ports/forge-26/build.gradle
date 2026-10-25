@@ -1,0 +1,64 @@
+// Build Blueprint for Forge, Minecraft 26.x. Uses the same code as the Fabric 26.x mod (../../fabric-mod) plus small
+// stand-ins (src/shim) for the few Fabric API classes it uses, backed by Forge events and one small mixin.
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[7.0.17,8)'
+}
+
+def mcv = project.minecraft_version
+def compat = project.findProperty('compat') ?: (mcv.startsWith('26.1') ? '26.1' : mcv)
+version = "${project.mod_version}+forge-${mcv}"
+group = 'dev.buildblueprint'
+base { archivesName = 'buildblueprint' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+println "Build Blueprint (Forge): Minecraft ${mcv}, Forge ${project.forge_version}, helpers from fabric-mod/src/compat/${compat}"
+
+minecraft {
+    runs {
+        configureEach { workingDir = layout.projectDirectory.dir('run') }
+        register('client')
+    }
+}
+repositories {
+    minecraft.mavenizer(it)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+}
+dependencies {
+    implementation minecraft.dependency("net.minecraftforge:forge:${mcv}-${project.forge_version}")
+}
+
+def fab = '../../fabric-mod/src'
+def gen = layout.buildDirectory.dir('gen-src'), res = layout.buildDirectory.dir('gen-res')
+tasks.register('bbSources', Sync) {
+    from("${fab}/main/java")
+    from("${fab}/menu/java")
+    from("${fab}/preview/java")
+    from("${fab}/keys/java")
+    from("${fab}/compat/${compat}/java")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE   // the first copy of a file wins: 26.1.x versions go before the newer ones
+    if (mcv.startsWith('26.1')) from('src/java-26.1')
+    from('src/java')
+    into gen
+    inputs.property 'compat', compat
+    filter { String l -> l.replace('import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;', 'import net.minecraft.commands.CommandSourceStack;')
+                          .replace('FabricClientCommandSource', 'CommandSourceStack') }
+}
+def mcRange = project.findProperty('mc_range') ?: "[${mcv}]"
+def forgeMajor = (project.forge_version.split('\\.')[0]) as int
+tasks.register('bbResources', Sync) {
+    from("${fab}/main/resources") { include 'assets/**' }
+    from('src/res')
+    into res
+    inputs.property 'version', project.mod_version
+    inputs.property 'mcRange', mcRange
+    filesMatching('META-INF/mods.toml') { expand 'version': project.mod_version, 'mcRange': mcRange, 'forgeMajor': forgeMajor }
+}
+sourceSets.main.java.srcDirs = [gen]
+sourceSets.main.resources.srcDirs = [res]
+compileJava.dependsOn bbSources
+processResources.dependsOn bbResources
+tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn bbSources, bbResources }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 25 }
+jar { manifest { attributes 'MixinConfigs': 'buildblueprint.mixins.json' } }
