@@ -31,7 +31,7 @@ def mcv = project.minecraft_version
 apply from: '../shared.gradle'
 def compat = project.findProperty('compat') ?: bbCompatFor(mcv)
 def flags = bbFlags(compat)
-def javaVer = (project.findProperty('java_version') ?: (neo ? '21' : flags.java8 ? '8' : '17')) as int
+def javaVer = (project.findProperty('java_version') ?: (neo && !(mcv in ['1.20.2', '1.20.3', '1.20.4']) ? '21' : flags.java8 ? '8' : '17')) as int
 // Forge's events changed over time: newer stand-ins in src/<loader>/shim, older ones layered on top
 def eras = neo ? (mcv in ['1.20.2', '1.20.3', '1.20.4'] ? ['neoforge-1.20'] : mcv in ['1.20.5', '1.20.6'] ? ['neoforge-1.20.6'] :
                   mcv in ['1.21.6', '1.21.7', '1.21.8'] ? ['neoforge-1.21.8'] : [])
