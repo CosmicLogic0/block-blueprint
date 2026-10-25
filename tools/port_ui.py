@@ -10,8 +10,9 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / 'fabric-mod/src/menu/java/dev/buildblueprint/client'
 DST = ROOT / 'ports/1.21/src/main/java/dev/buildblueprint/client'
 MOD = ROOT / 'fabric-mod/src'
-FILES = [(SRC, n) for n in ['MaterialsScreen', 'SettingsScreen', 'CopyScreen', 'SwapScreen', 'SavedBuildsScreen', 'MenuModule', 'UiKit', 'HudModule', 'UiTest']] + \
-        [(MOD / 'keys/java/dev/buildblueprint/client', 'KeysModule'), (MOD / 'main/java/dev/buildblueprint/client', 'Copier')]
+FILES = [(SRC, n) for n in ['MaterialsScreen', 'SettingsScreen', 'CopyScreen', 'SwapScreen', 'SavedBuildsScreen', 'MenuModule', 'UiKit', 'HudModule', 'UiTest', 'HelpScreen']] + \
+        [(MOD / 'keys/java/dev/buildblueprint/client', 'KeysModule'), (MOD / 'main/java/dev/buildblueprint/client', 'Copier'),
+         (MOD / 'main/java/dev/buildblueprint/client', 'Swapper')]
 GLFW = {'LCONTROL': 'LEFT_CONTROL', 'RCONTROL': 'RIGHT_CONTROL', 'LSHIFT': 'LEFT_SHIFT', 'PAGEDOWN': 'PAGE_DOWN', 'PAGEUP': 'PAGE_UP', 'LALT': 'LEFT_ALT'}
 
 SUBS = [
@@ -44,6 +45,14 @@ SUBS = [
     (r'BuiltInRegistries\.BLOCK\.getValue\(Identifier\.parse\((\w+)\)\)', r'V.block(\1)'),
     (r'BlockStateParser\.parseForBlock\(BuiltInRegistries\.BLOCK, (\w+), false\)\.blockState\(\)', r'V.parseState(\1)'),
     (r'\.isBlank\(\)', '.trim().isEmpty()'),
+    # registry access (Swapper and friends)
+    (r'BuiltInRegistries\.BLOCK\.containsKey\(Identifier\.parse\((\w+)\)\)', r'V.blockExists(\1)'),
+    (r'for \(Block (\w+) : BuiltInRegistries\.BLOCK\)', r'for (Block \1 : V.allBlocks())'),
+    (r'BuiltInRegistries\.BLOCK\.getKey\((\w+)\)\.toString\(\)', r'V.blockId(\1)'),
+    (r'BuiltInRegistries\.ITEM\.getKey\((\w+)\)\.toString\(\)', r'V.itemId(\1)'),
+    (r'\b(\w+) instanceof net\.minecraft\.world\.level\.block\.TransparentBlock', r'V.glass(\1)'),
+    (r'pr\.getValue\(v\)\.isEmpty\(\)', '!pr.getValue(v).isPresent()'),
+    (r'new HashSet<>\(List\.of\(', 'new HashSet<>(java.util.Arrays.asList('),
 ]
 # MapColor lookup in the saved-builds preview
 MAPCOLOR_NEW = '''                MapColor mc = bs.getMapColor(EmptyBlockGetter.INSTANCE, BlockPos.ZERO);

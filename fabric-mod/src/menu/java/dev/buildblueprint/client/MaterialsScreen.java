@@ -65,6 +65,8 @@ public class MaterialsScreen extends Screen {
         state = stateKey();
         var s = BuildBlueprintClient.SESSION;
         int x = px(), w = pw(), ty = 36;
+        addRenderableWidget(Button.builder(Component.literal("i"), b -> Mc.setScreen(new HelpScreen(this, 0))).bounds(x + w - 16, 3, 16, 14)
+                .tooltip(tip("How Build Blueprint works")).build());
         // tabs: whole build | < layer N of M >
         int half = w / 2 - 2;
         tabAll = addRenderableWidget(Button.builder(Component.literal("Whole build"), b -> { layerTab = false; scroll = 0; }).bounds(x, ty, half, 20)
@@ -125,8 +127,13 @@ public class MaterialsScreen extends Screen {
     }
 
     private Materials.Row hoveredRow;
+    private int[] undoLink;
     @Override public boolean mouseClicked(net.minecraft.client.input.MouseButtonEvent e, boolean dbl) {
         if (super.mouseClicked(e, dbl)) return true;
+        if (undoLink != null && e.x() >= undoLink[0] && e.x() < undoLink[2] && e.y() >= undoLink[1] && e.y() < undoLink[3]) {
+            if (BuildBlueprintClient.SESSION.undoSwap()) { Materials.refresh(); SessionStore.dirty(); Chat.bar("Last swap undone"); }
+            return true;
+        }
         if (hoveredRow != null && BuildBlueprintClient.SESSION.loaded()) { Mc.setScreen(new SwapScreen(this, hoveredRow.id())); return true; }
         return false;
     }
@@ -153,7 +160,7 @@ public class MaterialsScreen extends Screen {
         g.text(font, name, x, 8, UiKit.GOLD, true);
         if (s.loaded()) {
             String st = s.locked ? "placed" : "not placed yet";
-            g.text(font, st, x + w - font.width(st), 8, s.locked ? UiKit.GREEN : UiKit.ORANGE, true);
+            g.text(font, st, x + w - 22 - font.width(st), 8, s.locked ? UiKit.GREEN : UiKit.ORANGE, true);
             UiKit.bar(g, font, x, 20, w, Materials.placed(), Materials.totalBlocks(), UiKit.BAR_BUILD, Materials.placed() + " / " + Materials.totalBlocks() + " placed");
         }
         // the list
@@ -163,6 +170,7 @@ public class MaterialsScreen extends Screen {
         g.text(font, "have", x + w - 120, t + 2, UiKit.MUTED, false);
         g.text(font, "to place", x + w - 62, t + 2, UiKit.MUTED, false);
         List<Materials.Row> list = list();
+        java.util.Set<String> notHere = Swapper.notInGame();
         Materials.Row hovered = null;
         int y = t + 14;
         for (int i = scroll; i < Math.min(list.size(), scroll + rows); i++, y += rowH()) {
@@ -174,9 +182,15 @@ public class MaterialsScreen extends Screen {
             g.fill(x, y, x + 2, y + rowH() - 1, col);
             if (!r.icon().isEmpty()) g.item(r.icon(), x + 4, y + 1);
             int room = w - 24 - 130;
-            String n = UiKit.fit(font, r.name(), room);
-            g.text(font, n, x + 24, y + 6, r.done() ? UiKit.DIM : UiKit.WHITE, true);
-            if (!r.enough() && font.width(n) + 40 < room && Chests.nearby(r.id(), 48)[0] > 0) {   // some of it is in a chest near you
+            boolean missingHere = notHere.contains(r.id());
+            String n = UiKit.fit(font, r.name(), missingHere ? room - 70 : room);
+            g.text(font, n, x + 24, y + 6, missingHere ? UiKit.ORANGE : r.done() ? UiKit.DIM : UiKit.WHITE, true);
+            if (missingHere) {   // this block isn't in this Minecraft version: click it to pick another
+                int cx = x + 24 + font.width(n) + 5;
+                g.fill(cx, y + 5, cx + 62, y + 15, 0xFF5A3A10);
+                g.text(font, "not in game", cx + 3, y + 6, 0xFFFFC060, false);
+            }
+            if (!missingHere && !r.enough() && font.width(n) + 40 < room && Chests.nearby(r.id(), 48)[0] > 0) {   // some of it is in a chest near you
                 int cx = x + 24 + font.width(n) + 5;
                 g.fill(cx, y + 5, cx + 30, y + 15, 0xFF1C5A6A);
                 g.text(font, "chest", cx + 3, y + 6, 0xFF9FF0FF, false);
@@ -194,9 +208,25 @@ public class MaterialsScreen extends Screen {
             int sh = Math.max(12, (h - 16) * rows / list.size()), sy = t + 14 + (h - 16 - sh) * scroll / Math.max(1, list.size() - rows);
             g.fill(x + w - 1, sy, x + w + 1, sy + sh, 0xFFAAAAAA);
         }
-        int missing = 0; for (Materials.Row r : list) if (!r.enough()) missing++;
-        String foot = list.isEmpty() ? "" : (missing == 0 ? "You have everything" + (layerTab ? " for this layer" : "") + "!" : missing + " block type" + (missing == 1 ? "" : "s") + " missing") + "  ·  click a block to swap it";
-        if (!foot.isEmpty()) UiKit.center(g, font, foot, width / 2, t + h + 3, missing == 0 ? UiKit.GREEN : UiKit.ORANGE);
+        // under the list: a warning only when the build has blocks this Minecraft version doesn't have, else a plain hint
+        undoLink = null;
+        if (s.loaded()) {
+            int bad = notHere.size();
+            String foot = bad > 0 ? bad + " block" + (bad == 1 ? "" : "s") + " in this build " + (bad == 1 ? "isn't" : "aren't") + " in Minecraft " + dev.buildblueprint.core.SchemCodec.minecraftVersion() + "  ·  click one to swap it"
+                    : "Click a block to swap it for another";
+            String link = s.canUndoSwap() ? "Undo swap" : "";
+            String sep = link.isEmpty() ? "" : "  ·  ";
+            int fw = font.width(foot) + font.width(sep) + font.width(link), fx = width / 2 - fw / 2, fy = t + h + 3;
+            g.text(font, foot, fx, fy, bad > 0 ? UiKit.ORANGE : UiKit.MUTED, true);
+            if (!link.isEmpty()) {
+                int lx = fx + font.width(foot) + font.width(sep);
+                g.text(font, sep, fx + font.width(foot), fy, UiKit.MUTED, true);
+                boolean lh = mouseX >= lx && mouseX < lx + font.width(link) && mouseY >= fy - 1 && mouseY < fy + 10;
+                g.text(font, link, lx, fy, lh ? UiKit.WHITE : UiKit.BLUE, true);
+                g.fill(lx, fy + 9, lx + font.width(link), fy + 10, lh ? UiKit.WHITE : UiKit.BLUE);
+                undoLink = new int[]{lx, fy - 1, lx + font.width(link), fy + 10};
+            }
+        }
 
         super.extractRenderState(g, mouseX, mouseY, delta);
 
@@ -204,6 +234,7 @@ public class MaterialsScreen extends Screen {
         if (hovered != null) {
             List<Component> tip = new ArrayList<>();
             tip.add(Component.literal(hovered.name()).withStyle(ChatFormatting.WHITE));
+            if (notHere.contains(hovered.id())) tip.add(Component.literal("This block doesn't exist in Minecraft " + dev.buildblueprint.core.SchemCodec.minecraftVersion() + " - click to pick one to use instead").withStyle(ChatFormatting.GOLD));
             tip.add(Component.literal("Still to place: " + hovered.left() + "  (of " + hovered.total() + ")").withStyle(ChatFormatting.GRAY));
             tip.add(Component.literal("You have: " + hovered.have()).withStyle(hovered.enough() ? ChatFormatting.GREEN : ChatFormatting.RED));
             int[] ch = Chests.nearby(hovered.id(), 48);

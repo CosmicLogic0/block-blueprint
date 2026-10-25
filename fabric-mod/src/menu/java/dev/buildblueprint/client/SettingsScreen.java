@@ -74,9 +74,13 @@ public class SettingsScreen extends Screen {
         // bottom
         Minecraft mc = Minecraft.getInstance();
         int by = height - 26;
-        addRenderableWidget(Button.builder(Component.literal("Key binds..."), b -> Mc.setScreen(new KeyBindsScreen(this, mc.options))).bounds(width / 2 - 154, by, 150, 20)
+        int bw = Math.min(110, (width - 24) / 3);
+        int[] bx = UiKit.row(width / 2, 3, bw, 4);
+        addRenderableWidget(Button.builder(Component.literal("Key binds..."), b -> Mc.setScreen(new KeyBindsScreen(this, mc.options))).bounds(bx[0], by, bw, 20)
                 .tooltip(Tooltip.create(Component.literal("Change the keys (Options > Controls > Key Binds > Build Blueprint)."))).build());
-        addRenderableWidget(Button.builder(Component.literal("Done"), b -> onClose()).bounds(width / 2 + 4, by, 150, 20).build());
+        addRenderableWidget(Button.builder(Component.literal("How it works"), b -> Mc.setScreen(new HelpScreen(this, 0))).bounds(bx[1], by, bw, 20)
+                .tooltip(Tooltip.create(Component.literal("A short guide to everything the mod does."))).build());
+        addRenderableWidget(Button.builder(Component.literal("Done"), b -> onClose()).bounds(bx[2], by, bw, 20).build());
     }
 
     @Override public void onClose() { Settings.save(); Mc.setScreen(parent); }

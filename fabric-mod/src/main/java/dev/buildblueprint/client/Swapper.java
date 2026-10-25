@@ -3,94 +3,178 @@ package dev.buildblueprint.client;
 import dev.buildblueprint.core.Blueprint;
 import dev.buildblueprint.core.MaterialMap;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 
 /**
- * Block swapping: change one block for another everywhere in the blueprint, or change a whole "set" at once
- * (every oak piece to spruce, every stone-brick piece to deepslate tiles, every black wool/carpet/glass to red...).
- * Stairs stay stairs, slabs stay slabs, and their facing/shape is kept.
+ * Block swapping: change one block for another everywhere in the blueprint. Any block the game knows can be picked,
+ * including blocks added by other mods. Stairs stay stairs where possible and keep their facing / shape, and wall
+ * versions (wall signs, wall torches, wall banners...) follow along.
  */
 public final class Swapper {
     private Swapper() {}
 
-    /** A material set: what the full block is called and the prefix its shaped pieces use. */
-    public record Mat(String key, String label, String full, String prefix, String kind) {}
-
-    public static final List<Mat> WOODS = new ArrayList<>(), STONES = new ArrayList<>(), COLORS = new ArrayList<>();
-    static {
-        for (String w : new String[]{"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "mangrove", "cherry", "pale_oak", "bamboo", "crimson", "warped"})
-            WOODS.add(new Mat(w, PlayerInfo.pretty(w), w + "_planks", w, "wood"));
-        String[][] st = {
-            {"stone", "stone"}, {"cobblestone", "cobblestone"}, {"mossy_cobblestone", "mossy_cobblestone"}, {"smooth_stone", "smooth_stone"},
-            {"stone_bricks", "stone_brick"}, {"mossy_stone_bricks", "mossy_stone_brick"}, {"granite", "granite"}, {"polished_granite", "polished_granite"},
-            {"diorite", "diorite"}, {"polished_diorite", "polished_diorite"}, {"andesite", "andesite"}, {"polished_andesite", "polished_andesite"},
-            {"cobbled_deepslate", "cobbled_deepslate"}, {"polished_deepslate", "polished_deepslate"}, {"deepslate_bricks", "deepslate_brick"},
-            {"deepslate_tiles", "deepslate_tile"}, {"tuff", "tuff"}, {"polished_tuff", "polished_tuff"}, {"tuff_bricks", "tuff_brick"},
-            {"bricks", "brick"}, {"mud_bricks", "mud_brick"}, {"sandstone", "sandstone"}, {"smooth_sandstone", "smooth_sandstone"},
-            {"red_sandstone", "red_sandstone"}, {"smooth_red_sandstone", "smooth_red_sandstone"}, {"prismarine", "prismarine"},
-            {"prismarine_bricks", "prismarine_brick"}, {"dark_prismarine", "dark_prismarine"}, {"nether_bricks", "nether_brick"},
-            {"red_nether_bricks", "red_nether_brick"}, {"blackstone", "blackstone"}, {"polished_blackstone", "polished_blackstone"},
-            {"polished_blackstone_bricks", "polished_blackstone_brick"}, {"end_stone_bricks", "end_stone_brick"}, {"purpur_block", "purpur"},
-            {"quartz_block", "quartz"}, {"smooth_quartz", "smooth_quartz"}, {"resin_bricks", "resin_brick"}};
-        for (String[] s : st) STONES.add(new Mat(s[0], PlayerInfo.pretty(s[0]), s[0], s[1], "stone"));
-        for (String c : new String[]{"white", "light_gray", "gray", "black", "brown", "red", "orange", "yellow", "lime", "green", "cyan", "light_blue", "blue", "purple", "magenta", "pink"})
-            COLORS.add(new Mat(c, PlayerInfo.pretty(c), c + "_wool", c, "color"));
-    }
-
-    private static final String[] WOOD_FORMS = {"_planks", "_log", "_wood", "_stem", "_hyphae", "_stairs", "_slab", "_fence_gate", "_fence", "_door", "_trapdoor",
-            "_button", "_pressure_plate", "_wall_hanging_sign", "_hanging_sign", "_wall_sign", "_sign", "_leaves", "_shelf", "_block", "_mosaic", "_mosaic_stairs", "_mosaic_slab"};
-    private static final String[] STONE_FORMS = {"_stairs", "_slab", "_wall"};
-    private static final String[] COLOR_FORMS = {"_wool", "_carpet", "_concrete", "_concrete_powder", "_terracotta", "_glazed_terracotta", "_stained_glass_pane",
-            "_stained_glass", "_wall_banner", "_banner", "_bed", "_candle", "_shulker_box"};
+    /** One block you can swap to: its id, the name players see, the mod it comes from ("" = Minecraft) and its shape. */
+    public record Option(String id, String name, String mod, ItemStack icon, String shape) {}
 
     public static boolean exists(String id) {
         try { return BuiltInRegistries.BLOCK.containsKey(Identifier.parse(id)); } catch (Exception e) { return false; }
     }
-    private static String path(String id) { return id.startsWith("minecraft:") ? id.substring(10) : id; }
+    private static String path(String id) { int i = id.indexOf(':'); return i < 0 ? id : id.substring(i + 1); }
+    private static String ns(String id) { int i = id.indexOf(':'); return i < 0 ? "minecraft" : id.substring(0, i); }
 
-    /** Which set a block belongs to (null if none). */
-    public static Mat matOf(String blockId) {
-        String n = path(blockId);
-        if (n.startsWith("stripped_")) n = n.substring(9);
-        for (Mat m : STONES) { if (n.equals(m.full())) return m; for (String f : STONE_FORMS) if (n.equals(m.prefix() + f)) return m; }
-        for (Mat m : COLORS) for (String f : COLOR_FORMS) if (n.equals(m.prefix() + f)) return m;
-        Mat best = null;
-        for (Mat m : WOODS) for (String f : WOOD_FORMS) if (n.equals(m.prefix() + f) && (best == null || m.prefix().length() > best.prefix().length())) best = m;
-        return best;
+    // blocks nobody builds with (or that can't be placed by hand)
+    private static final Set<String> HIDDEN = new HashSet<>(List.of("air", "cave_air", "void_air", "barrier", "light", "structure_void", "structure_block",
+            "jigsaw", "command_block", "chain_command_block", "repeating_command_block", "debug_stick", "test_block", "test_instance_block", "moving_piston",
+            "piston_head", "end_portal", "end_gateway", "nether_portal", "bubble_column", "frosted_ice", "spawner", "trial_spawner", "vault", "budding_amethyst",
+            "reinforced_deepslate", "petrified_oak_slab", "infested_stone", "infested_cobblestone", "infested_stone_bricks", "infested_mossy_stone_bricks",
+            "infested_cracked_stone_bricks", "infested_chiseled_stone_bricks", "infested_deepslate"));
+
+    /** What kind of piece a block is: stairs swap to stairs, slabs to slabs, full blocks to full blocks... */
+    public static String shape(Block b, String id) {
+        String p = path(id);
+        if (b instanceof net.minecraft.world.level.block.StairBlock) return "stairs";
+        if (b instanceof net.minecraft.world.level.block.SlabBlock) return "slab";
+        if (b instanceof net.minecraft.world.level.block.WallBlock) return "wall";
+        if (b instanceof net.minecraft.world.level.block.FenceGateBlock) return "fence gate";
+        if (b instanceof net.minecraft.world.level.block.FenceBlock) return "fence";
+        if (b instanceof net.minecraft.world.level.block.DoorBlock) return "door";
+        if (b instanceof net.minecraft.world.level.block.TrapDoorBlock) return "trapdoor";
+        if (b instanceof net.minecraft.world.level.block.ButtonBlock) return "button";
+        if (b instanceof net.minecraft.world.level.block.BasePressurePlateBlock) return "pressure plate";
+        if (b instanceof net.minecraft.world.level.block.IronBarsBlock) return "pane";
+        if (b instanceof net.minecraft.world.level.block.SignBlock) return p.contains("hanging") ? "hanging sign" : "sign";
+        if (b instanceof net.minecraft.world.level.block.AbstractBannerBlock) return "banner";
+        if (b instanceof net.minecraft.world.level.block.BedBlock) return "bed";
+        if (b instanceof net.minecraft.world.level.block.TorchBlock) return "torch";
+        if (b instanceof net.minecraft.world.level.block.LanternBlock) return "lantern";
+        if (b instanceof net.minecraft.world.level.block.LeavesBlock) return "leaves";
+        if (p.endsWith("carpet")) return "carpet";
+        return shapeByName(p, b);
+    }
+    /** Shape from the name only (for blocks this Minecraft version doesn't have). */
+    private static String shapeByName(String p, Block b) {
+        String[][] ends = {{"_stairs", "stairs"}, {"_slab", "slab"}, {"_wall", "wall"}, {"_fence_gate", "fence gate"}, {"_fence", "fence"},
+                {"_door", "door"}, {"_trapdoor", "trapdoor"}, {"_button", "button"}, {"_pressure_plate", "pressure plate"}, {"_pane", "pane"},
+                {"_bars", "pane"}, {"_hanging_sign", "hanging sign"}, {"_sign", "sign"}, {"_banner", "banner"}, {"_bed", "bed"}, {"torch", "torch"},
+                {"lantern", "lantern"}, {"_leaves", "leaves"}, {"carpet", "carpet"}};
+        for (String[] e : ends) if (p.endsWith(e[0])) return e[1];
+        if (b == null) return "block";
+        BlockState d = b.defaultBlockState();
+        if (d.isSolidRender() || b instanceof net.minecraft.world.level.block.TransparentBlock) return "block";
+        return "other";
     }
 
-    /** blockId in set a -> the same piece in set b (or null when b has no such piece). */
-    public static String mapId(String blockId, Mat a, Mat b) {
-        String n = path(blockId);
-        boolean stripped = n.startsWith("stripped_");
-        if (stripped) n = n.substring(9);
-        String out = null;
-        if (a.kind().equals("stone")) {
-            if (n.equals(a.full())) out = b.full();
-            else for (String f : STONE_FORMS) if (n.equals(a.prefix() + f)) out = b.prefix() + f;
-        } else if (n.startsWith(a.prefix() + "_")) {
-            String form = n.substring(a.prefix().length());
-            out = b.prefix() + form;
-            // logs are called stems / blocks for some woods
-            if (!exists("minecraft:" + (stripped ? "stripped_" : "") + out)) {
-                if (form.equals("_log")) out = b.prefix() + (b.key().equals("bamboo") ? "_block" : "_stem");
-                else if (form.equals("_stem")) out = b.prefix() + "_log";
-                else if (form.equals("_wood")) out = b.prefix() + "_hyphae";
-                else if (form.equals("_hyphae")) out = b.prefix() + "_wood";
-            }
+    private static List<Option> all;
+    /** Every block in the game you could build with (vanilla and modded), sorted by name. Built once. */
+    public static List<Option> allOptions() {
+        if (all != null) return all;
+        List<Option> out = new ArrayList<>();
+        for (Block blk : BuiltInRegistries.BLOCK) {
+            try {
+                String id = BuiltInRegistries.BLOCK.getKey(blk).toString();
+                if (ns(id).equals("minecraft") && HIDDEN.contains(path(id))) continue;
+                Item it = blk.asItem();
+                if (it == null || it == net.minecraft.world.item.Items.AIR) continue;
+                if (!BuiltInRegistries.ITEM.getKey(it).toString().equals(id)) continue;   // wall torch, wall sign... share the item of the normal one
+                ItemStack st = new ItemStack(it);
+                String mod = ns(id).equals("minecraft") ? "" : PlayerInfo.pretty(ns(id));
+                out.add(new Option(id, st.getHoverName().getString(), mod, st, shape(blk, id)));
+            } catch (Throwable ignored) {}
         }
-        if (out == null) return null;
-        out = "minecraft:" + (stripped ? "stripped_" : "") + out;
-        return exists(out) ? out : null;
+        out.sort((a, b) -> a.name().compareToIgnoreCase(b.name()));
+        all = out;
+        return out;
+    }
+
+    /** The shape of a block id, even if this Minecraft version doesn't have it. */
+    public static String shapeOf(String blockId) {
+        if (exists(blockId)) return shape(BuiltInRegistries.BLOCK.getValue(Identifier.parse(blockId)), blockId);
+        return shapeByName(path(blockId), null);
+    }
+
+    private static Set<String> words(String id) {
+        Set<String> w = new HashSet<>();
+        for (String s : path(id).split("_")) if (s.length() > 2) w.add(s);
+        return w;
+    }
+
+    /** Blocks of the same kind of piece, the most alike first (sharing a word in the name: "terracotta", "oak"...). */
+    public static List<Option> similar(String blockId) {
+        String shape = shapeOf(blockId);
+        Set<String> mine = words(blockId);
+        List<Option> out = new ArrayList<>();
+        for (Option o : allOptions()) if (!o.id().equals(blockId) && o.shape().equals(shape)) out.add(o);
+        out.sort((a, b) -> {
+            int sa = shared(mine, a.id()), sb = shared(mine, b.id());
+            if (sa != sb) return Integer.compare(sb, sa);
+            if (a.mod().isEmpty() != b.mod().isEmpty()) return a.mod().isEmpty() ? -1 : 1;
+            return a.name().compareToIgnoreCase(b.name());
+        });
+        return out;
+    }
+    private static int shared(Set<String> mine, String id) { int n = 0; for (String w : words(id)) if (mine.contains(w)) n++; return n; }
+
+    /** Search every block by name, id or mod name. Same-shape blocks come first. */
+    public static List<Option> search(String blockId, String query) {
+        String q = query.trim().toLowerCase(Locale.ROOT);
+        String shape = shapeOf(blockId);
+        List<Option> hit = new ArrayList<>();
+        for (Option o : allOptions()) {
+            if (o.id().equals(blockId)) continue;
+            if (o.name().toLowerCase(Locale.ROOT).contains(q) || o.id().contains(q.replace(' ', '_')) || o.mod().toLowerCase(Locale.ROOT).contains(q)) hit.add(o);
+        }
+        hit.sort((a, b) -> {
+            boolean sa = a.shape().equals(shape), sb = b.shape().equals(shape);
+            if (sa != sb) return sa ? -1 : 1;
+            boolean pa = a.name().toLowerCase(Locale.ROOT).startsWith(q), pb = b.name().toLowerCase(Locale.ROOT).startsWith(q);
+            if (pa != pb) return pa ? -1 : 1;
+            return a.name().compareToIgnoreCase(b.name());
+        });
+        return hit;
+    }
+
+    /** Blocks from other mods (empty without block mods). */
+    public static List<Option> modded() {
+        List<Option> out = new ArrayList<>();
+        for (Option o : allOptions()) if (!o.mod().isEmpty()) out.add(o);
+        out.sort((a, b) -> a.mod().equals(b.mod()) ? a.name().compareToIgnoreCase(b.name()) : a.mod().compareToIgnoreCase(b.mod()));
+        return out;
+    }
+
+    /** The wall-mounted version of a block, if it has one (spruce_sign -> spruce_wall_sign, torch -> wall_torch...). */
+    private static String wallVersionOf(String id) {
+        String n = ns(id), p = path(id);
+        List<String> tries = new ArrayList<>();
+        int i = p.lastIndexOf('_');
+        tries.add(i < 0 ? "wall_" + p : p.substring(0, i + 1) + "wall_" + p.substring(i + 1));
+        if (p.endsWith("_hanging_sign")) tries.add(p.replace("_hanging_sign", "_wall_hanging_sign"));
+        for (String t : tries) if (exists(n + ":" + t)) return n + ":" + t;
+        return null;
+    }
+
+    /** What each block of this materials row becomes when swapped to target (old block id -> new block id). */
+    public static Map<String, String> plan(String itemId, String target) {
+        Map<String, String> m = new LinkedHashMap<>();
+        for (String b : blocksForItem(itemId)) {
+            String to = target;
+            if (path(b).contains("wall_") && !path(target).contains("wall_")) { String w = wallVersionOf(target); if (w != null) to = w; }
+            if (!to.equals(b)) m.put(b, to);
+        }
+        return m;
     }
 
     /** Swap the block in a state string, keeping every property the new block also has. */
@@ -131,6 +215,24 @@ public final class Swapper {
         return out;
     }
 
+    private static Object nigFor; private static Set<String> nig = Collections.emptySet();
+    /** Materials rows (item ids) whose block doesn't exist in this Minecraft version (a build made in a newer version, or with a mod you don't have). */
+    public static Set<String> notInGame() {
+        Blueprint bp = BuildBlueprintClient.SESSION.blueprint();
+        if (bp == null) return Collections.emptySet();
+        String key = System.identityHashCode(bp.palette) + ":" + String.join("|", bp.palette).hashCode();
+        if (key.equals(nigFor)) return nig;
+        Set<String> out = new LinkedHashSet<>();
+        for (String st : bp.palette) {
+            String id = MaterialMap.blockId(st);
+            if (exists(id)) continue;
+            MaterialMap.Req r = MaterialMap.of(st);
+            out.add(r != null ? r.itemId() : id);
+        }
+        nigFor = key; nig = out;
+        return out;
+    }
+
     /** Apply: map of old block id -> new block id. Returns how many blocks changed. */
     public static int apply(Map<String, String> map) {
         if (map.isEmpty()) return 0;
@@ -141,39 +243,5 @@ public final class Swapper {
         Materials.refresh();
         SessionStore.dirty();
         return n;
-    }
-
-    /** The whole-set swap a -> b for this blueprint (old id -> new id). */
-    public static Map<String, String> setSwap(Mat a, Mat b) {
-        Map<String, String> m = new LinkedHashMap<>();
-        for (String id : counts().keySet()) {
-            Mat of = matOf(id);
-            if (of == null || !of.key().equals(a.key())) continue;
-            String to = mapId(id, a, b);
-            if (to != null) m.put(id, to);
-        }
-        return m;
-    }
-
-    public static List<Mat> setsLike(Mat a) { return a.kind().equals("wood") ? WOODS : a.kind().equals("stone") ? STONES : COLORS; }
-
-    /** Blocks that can replace this one on its own: same kind of piece (stairs for stairs...), or any full block. */
-    public static List<String> singleCandidates(String blockId) {
-        String n = path(blockId);
-        String suffix = null;
-        for (String f : new String[]{"_stairs", "_slab", "_wall", "_fence_gate", "_fence", "_door", "_trapdoor", "_button", "_pressure_plate", "_carpet", "_stained_glass_pane", "_pane", "_wall_sign", "_sign", "_banner", "_candle", "_lantern"})
-            if (n.endsWith(f)) { suffix = f; break; }
-        List<String> out = new ArrayList<>();
-        BlockState self = BuiltInRegistries.BLOCK.getValue(Identifier.parse(blockId)).defaultBlockState();
-        boolean cube = self.isSolidRender() || self.getBlock() instanceof net.minecraft.world.level.block.TransparentBlock;
-        for (Block blk : BuiltInRegistries.BLOCK) {
-            String id = BuiltInRegistries.BLOCK.getKey(blk).toString();
-            if (id.equals(blockId) || blk.asItem() == net.minecraft.world.item.Items.AIR) continue;
-            String p = path(id);
-            if (suffix != null) { if (p.endsWith(suffix) && !(suffix.equals("_slab") && false)) out.add(id); }
-            else if (cube) { BlockState d = blk.defaultBlockState(); if ((d.isSolidRender() || blk instanceof net.minecraft.world.level.block.TransparentBlock) && !d.hasBlockEntity()) out.add(id); }
-            else if (blk.getClass() == self.getBlock().getClass()) out.add(id);
-        }
-        return out;
     }
 }

@@ -20,7 +20,7 @@ public final class UiTest {
     private static boolean world, joined;
     private static String[] steps;
     private static final String[] MENU = {"settings", "settings-more", "saved", "build", "done"};
-    private static final String[] WORLD = {"world-ghost", "world-placed", "build", "settings", "settings-more", "saved", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "build", "swap", "swap-search", "build-missing", "help", "settings", "settings-more", "saved", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -164,6 +164,26 @@ public final class UiTest {
                 if (!BuildBlueprintClient.SESSION.loaded()) loadTestBuild();
                 Mc.setScreen(new MaterialsScreen(true));
             }
+            case "swap", "swap-search" -> {   // the swap screen for the most used block, then with a search typed
+                Materials.refresh();
+                var rows = Materials.rows();
+                if (rows.isEmpty()) { System.out.println("BBUITEST no materials to swap"); return; }
+                SwapScreen sw = new SwapScreen(new MaterialsScreen(), rows.get(0).id());
+                Mc.setScreen(sw);
+                System.out.println("BBUITEST swap options " + Swapper.allOptions().size() + " similar " + Swapper.similar(rows.get(0).id()).size());
+                if (what.equals("swap-search")) sw.testSearch("stairs");
+            }
+            case "build-missing" -> {   // pretend the build has a block this version doesn't have (made in a newer version)
+                var bp = BuildBlueprintClient.SESSION.blueprint();
+                if (bp != null && bp.palette.length > 0) {
+                    String victim = dev.buildblueprint.core.MaterialMap.blockId(bp.palette[bp.palette.length - 1]);
+                    BuildBlueprintClient.SESSION.mapPalette(st -> dev.buildblueprint.core.MaterialMap.blockId(st).equals(victim) ? "futureblocks:glow_brick" : st);
+                    Materials.refresh();
+                    System.out.println("BBUITEST not in game " + Swapper.notInGame());
+                }
+                Mc.setScreen(new MaterialsScreen(true));
+            }
+            case "help" -> Mc.setScreen(new HelpScreen(null, 3));
             default -> { if (world) { Copier.cancel(); Mc.setScreen(null); } System.out.println("BBUITEST done"); }
         }
     }
