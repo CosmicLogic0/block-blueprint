@@ -30,6 +30,13 @@ case "$loader" in
     F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -oE "<version>$P\.[0-9]+(-beta)?</version>" | sed 's/<[^>]*>//g' | sort -V | tail -1)
     [ -z "$F" ] && fail "no NeoForge for $gv"; spec="neoforge::$F" ;;
 esac
+# extra mods for some runs (.github/realtest-extra.txt: "<run name> <modrinth slug>"), e.g. a mod that adds blocks
+if [ -f .github/realtest-extra.txt ]; then
+  for slug in $(awk -v n="$name" '$1==n {print $2}' .github/realtest-extra.txt); do
+    u=$(curl -s "https://api.modrinth.com/v2/project/$slug/version?game_versions=%5B%22$gv%22%5D&loaders=%5B%22$loader%22%5D" -H "User-Agent: block-blueprint-ci" | python3 -c 'import json,sys; v=json.load(sys.stdin); print(next((f["url"] for f in v[0]["files"] if f["primary"]), v[0]["files"][0]["url"]) if v else "")')
+    if [ -n "$u" ]; then curl -sL "$u" -o "$G/mods/$(basename "$u")"; echo "extra mod: $(basename "$u")"; else echo "extra mod $slug: none for $gv"; fi
+  done
+fi
 echo "Launching $spec with $(basename "$jar")"; ls "$G/mods"
 
 export LIBGL_ALWAYS_SOFTWARE=1
