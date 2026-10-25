@@ -111,7 +111,7 @@ jobs:
         include:
           - { mc: "26.3",    dir: fabric-mod,    run: 25, target: 25, type: release, gv: "26.3" }
           - { mc: "26.2",    dir: fabric-mod,    run: 25, target: 25, type: beta,    gv: "26.2" }
-          - { mc: "26.1",    dir: fabric-mod,    run: 25, target: 25, type: beta,    gv: "26.1" }
+          - { mc: "26.1",    dir: fabric-mod,    run: 25, target: 25, type: beta,    gv: "26.1 26.1.1 26.1.2" }
           - { mc: "1.21.11", dir: ports/1.21.11, run: 21, target: 21, type: beta,    gv: "1.21.11" }
           - { mc: "1.21.10", dir: ports/1.21.11, run: 21, target: 21, type: beta,    gv: "1.21.10" }
           - { mc: "1.21.8",  dir: ports/1.21,    run: 21, target: 21, type: beta,    gv: "1.21.6 1.21.7 1.21.8" }
@@ -163,6 +163,16 @@ jobs:
           - { mc: "1.21.11", id: forge-1.21.11, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.11" }
           - { mc: "1.21.10", id: neoforge-1.21.10, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.10" }
           - { mc: "1.21.11", id: neoforge-1.21.11, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.11" }
+          - { mc: "26.3", id: neoforge-26.3, loader: neoforge, kind: neo26, dir: ports/neoforge-26, run: 25, target: 25, type: beta, gv: "26.3" }
+          - { mc: "26.3", id: forge-26.3, loader: forge, kind: forge26, dir: ports/forge-26, run: 25, target: 25, type: beta, gv: "26.3" }
+          - { mc: "26.2", id: neoforge-26.2, loader: neoforge, kind: neo26, dir: ports/neoforge-26, run: 25, target: 25, type: beta, gv: "26.2" }
+          - { mc: "26.2", id: forge-26.2, loader: forge, kind: forge26, dir: ports/forge-26, run: 25, target: 25, type: beta, gv: "26.2" }
+          - { mc: "26.1.2", id: neoforge-26.1.2, loader: neoforge, kind: neo26, dir: ports/neoforge-26, run: 25, target: 25, type: beta, gv: "26.1.2" }
+          - { mc: "26.1.2", id: forge-26.1.2, loader: forge, kind: forge26, dir: ports/forge-26, run: 25, target: 25, type: beta, gv: "26.1.2" }
+          - { mc: "26.1.1", id: neoforge-26.1.1, loader: neoforge, kind: neo26, dir: ports/neoforge-26, run: 25, target: 25, type: beta, gv: "26.1.1" }
+          - { mc: "26.1.1", id: forge-26.1.1, loader: forge, kind: forge26, dir: ports/forge-26, run: 25, target: 25, type: beta, gv: "26.1.1" }
+          - { mc: "26.1", id: neoforge-26.1, loader: neoforge, kind: neo26, dir: ports/neoforge-26, run: 25, target: 25, type: beta, gv: "26.1" }
+          - { mc: "26.1", id: forge-26.1, loader: forge, kind: forge26, dir: ports/forge-26, run: 25, target: 25, type: beta, gv: "26.1" }
     name: mod ${{ matrix.id || matrix.mc }}
     steps:
       - uses: actions/checkout@v4
@@ -177,6 +187,15 @@ jobs:
         id: fapi
         run: |
           if [ "${{ matrix.mc }}" = "26.3" ]; then echo "args=" >> "$GITHUB_OUTPUT"; exit 0; fi   # 26.3 uses the version in gradle.properties
+          if [ "${{ matrix.kind }}" = "neo26" ]; then
+            P="${{ matrix.mc }}"; case "$P" in *.*.*) ;; *) P="$P.0" ;; esac
+            F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -oE "<version>$P\.[0-9]+(-beta)?</version>" | sed 's/<[^>]*>//g' | sort -V | tail -1)
+            echo "args=-Pminecraft_version=${{ matrix.mc }} -Pneo_version=$F" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if [ "${{ matrix.kind }}" = "forge26" ]; then
+            F=$(curl -s https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml | grep -o "<version>${{ matrix.mc }}-[^<]*</version>" | sed 's/<[^>]*>//g; s/^${{ matrix.mc }}-//' | tail -1)
+            echo "args=-Pminecraft_version=${{ matrix.mc }} -Pforge_version=$F" >> "$GITHUB_OUTPUT"; exit 0
+          fi
           LOOM=$(curl -s https://maven.architectury.dev/dev/architectury/loom/dev.architectury.loom.gradle.plugin/maven-metadata.xml | grep -o "<latest>[^<]*</latest>" | sed 's/<[^>]*>//g')
           if [ "${{ matrix.loader }}" = "forge" ]; then
             F=$(curl -s https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml | grep -o "<version>${{ matrix.mc }}-[^<]*</version>" | sed 's/<[^>]*>//g; s/^${{ matrix.mc }}-//' | tail -1)

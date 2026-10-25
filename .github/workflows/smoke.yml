@@ -41,7 +41,7 @@ jobs:
             ${{ matrix.java }}
             21
       - name: Virtual screen and software OpenGL
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb mesa-utils libgl1-mesa-dri > /dev/null
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb mesa-utils libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers libvulkan1 > /dev/null
       - name: Versions
         id: v
         run: |
@@ -66,7 +66,7 @@ jobs:
           chmod +x gradlew
           export LIBGL_ALWAYS_SOFTWARE=1
           ./gradlew downloadAssets --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -q || ./gradlew downloadAssets --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -q || true
-          (timeout 900 xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew runClient --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -Prun_java=${{ matrix.java }} -Porg.gradle.java.installations.fromEnv=JAVA_HOME_${{ matrix.java }}_X64 -Porg.gradle.java.installations.auto-download=false > game.log 2>&1 &) 
+          (timeout 900 xvfb-run -a -s "-screen 0 1280x720x24 +extension GLX +extension Composite +render -noreset" ./gradlew runClient --no-daemon -Pminecraft_version=${{ matrix.mc }} ${{ steps.v.outputs.args }} -Prun_java=${{ matrix.java }} -Porg.gradle.java.installations.fromEnv=JAVA_HOME_${{ matrix.java }}_X64 -Porg.gradle.java.installations.auto-download=false > game.log 2>&1 &) 
           # wait until the game has started (title screen / sound engine) or crashed, at most ~13 minutes
           for i in $(seq 1 160); do
             sleep 5

@@ -11,7 +11,7 @@ public final class FabricLoader {
     public static FabricLoader getInstance() { return I; }
     public Path getConfigDir() { return FMLPaths.CONFIGDIR.get(); }
     public Optional<Container> getModContainer(String id) {
-        return ModList.get().getModContainerById(id).map(c -> new Container(c.getModInfo().getVersion().toString()));
+        return ModList.getModContainerById(id).map(c -> new Container(c.getModInfo().getVersion().toString()));
     }
     public static final class Container {
         private final String v; Container(String v) { this.v = v; }
