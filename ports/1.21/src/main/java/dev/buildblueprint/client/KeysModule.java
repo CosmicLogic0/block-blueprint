@@ -23,7 +23,7 @@ public final class KeysModule {
     private static final int[] held = new int[7];
 
     private static KeyMapping reg(String id, int key) {
-        return KeyBindingHelper.registerKeyBinding(new KeyMapping("key.buildblueprint." + id, Mc.keyboard(), key, CATEGORY));
+        return KeyBindingHelper.registerKeyBinding(V.key("key.buildblueprint." + id, key));
     }
 
     public static void init() {

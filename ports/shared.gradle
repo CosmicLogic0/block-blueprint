@@ -9,14 +9,15 @@ ext.bbCompatFor = { String mcv ->
     mcv.startsWith('1.18') ? '1.18.2' : mcv.startsWith('1.17') ? '1.17.1' : mcv.startsWith('1.16') ? '1.16.5' :
     mcv in ['1.21', '1.21.1'] ? '1.21.1' :
     mcv in ['1.21.2', '1.21.3', '1.21.4'] ? '1.21.4' :
-    mcv == '1.21.5' ? '1.21.5' : '1.21.8'
+    mcv == '1.21.5' ? '1.21.5' : mcv in ['1.21.9', '1.21.10'] ? '1.21.10' : mcv == '1.21.11' ? '1.21.11' : '1.21.8'
 }
 
 ext.bbFlags = { String compat -> [
     legacyGui: compat.startsWith('1.19') || compat.startsWith('1.18') || compat.startsWith('1.17') || compat.startsWith('1.16'),  // no GuiGraphics yet
     noBuilder: compat in ['1.19', '1.19.2', '1.18.2', '1.17.1', '1.16.5'],                                                        // no Button.builder / Tooltip
     oldText:   compat in ['1.18.2', '1.17.1', '1.16.5'],                                                                          // no Component.literal, commands v1
-    java8:     compat in ['1.16.5'],                                                                                              // Java 8: no records, no addRenderableWidget
+    java8:     compat in ['1.16.5'],
+    newTypes:  compat in ['1.21.11'],                                                                                             // RenderType moved to client.renderer.rendertype                                                                                              // Java 8: no records, no addRenderableWidget
 ] }
 
 // Java 8: turn each one-line `record Name(A a, B b) {` into an ordinary class (Jabel handles var / switch -> / instanceof patterns)
@@ -38,6 +39,7 @@ ext.bbRecordToClass = { String l ->
 
 ext.bbFilter = { String l, Map f ->
     if (f.legacyGui && l.trim() == 'import net.minecraft.client.gui.GuiGraphics;') return ''
+    if (f.newTypes) l = l.replace('import net.minecraft.client.renderer.RenderType;', 'import net.minecraft.client.renderer.rendertype.RenderType;')
     if (f.noBuilder) {
         l = l.replace('Button.builder(', 'Btn.builder(').replace('net.minecraft.client.gui.components.Tooltip.create(', 'Btn.tip(')
              .replace('Tooltip.create(', 'Btn.tip(').replace('net.minecraft.client.gui.components.Tooltip', 'Btn.Tip')
