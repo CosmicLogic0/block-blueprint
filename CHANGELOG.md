@@ -1,3 +1,8 @@
+## 1.2.1
+- **20 new Forge and NeoForge versions** (beta): Forge 1.18.1, 1.18.2, 1.19, 1.19.2, 1.19.3, 1.19.4, 1.20.2, 1.20.4, 1.20.6, 1.21.1, 1.21.3, 1.21.4 and 1.21.5; NeoForge 1.20.2, 1.20.4, 1.20.6, 1.21.3, 1.21.4, 1.21.5 and 1.21.8. Every one was started in Minecraft by an automatic test before upload.
+- New Fabric versions (beta): 1.21.9 and 1.16.5.
+- The in-game "new version" message now points to CurseForge and only shows when a new mod version is out.
+
 ## 1.2.0
 - App updates fixed: only one copy of the app can run, the update installs when you press Restart (not in the background when you close the app), the app closes completely first and opens again by itself, and the installer closes any leftover copy before replacing files.
 
