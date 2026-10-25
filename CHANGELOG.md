@@ -1,3 +1,6 @@
+## 1.2.2
+- New (beta): Forge 1.21.8 and 1.21.10, NeoForge 1.21.10 and 1.21.11 - launch-tested before upload.
+
 ## 1.2.1
 - **20 new Forge and NeoForge versions** (beta): Forge 1.18.1, 1.18.2, 1.19, 1.19.2, 1.19.3, 1.19.4, 1.20.2, 1.20.4, 1.20.6, 1.21.1, 1.21.3, 1.21.4 and 1.21.5; NeoForge 1.20.2, 1.20.4, 1.20.6, 1.21.3, 1.21.4, 1.21.5 and 1.21.8. Every one was started in Minecraft by an automatic test before upload.
 - New Fabric versions (beta): 1.21.9 and 1.16.5.

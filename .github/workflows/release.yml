@@ -158,6 +158,11 @@ jobs:
           - { mc: "1.20.4",  id: neoforge-1.20.4, loader: neoforge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.4" }
           - { mc: "1.20.2",  id: neoforge-1.20.2, loader: neoforge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.2" }
           - { mc: "1.21.9",  dir: ports/1.21.11, run: 21, target: 21, type: beta, gv: "1.21.9" }
+          - { mc: "1.21.8",  id: forge-1.21.8, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.8" }
+          - { mc: "1.21.10", id: forge-1.21.10, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.10" }
+          - { mc: "1.21.11", id: forge-1.21.11, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.11" }
+          - { mc: "1.21.10", id: neoforge-1.21.10, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.10" }
+          - { mc: "1.21.11", id: neoforge-1.21.11, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.11" }
     name: mod ${{ matrix.id || matrix.mc }}
     steps:
       - uses: actions/checkout@v4
