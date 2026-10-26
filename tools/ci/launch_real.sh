@@ -41,7 +41,7 @@ echo "Launching $spec with $(basename "$jar")"; ls "$G/mods"
 
 export LIBGL_ALWAYS_SOFTWARE=1
 # install first (downloads the game, libraries, Java), then start
-ok=0; for i in 1 2 3; do portablemc --main-dir "$G" start --dry "$spec" > install.log 2>&1 && { ok=1; break; }; sleep 20; done
+ok=0; for i in 1 2 3; do portablemc --main-dir "$G" start --dry --jvm-policy mojang-then-system "$spec" > install.log 2>&1 && { ok=1; break; }; sleep 20; done
 [ "$ok" = 1 ] || { cp install.log game.log; fail "the launcher could not install $spec"; }
 
 # --- a local server (vanilla, offline, creative, flat) for the game to join ---
@@ -64,7 +64,7 @@ echo "server up"
 # game options: no first-launch screens, keep running without focus
 printf 'onboardAccessibility:false\nskipMultiplayerWarning:true\njoinedFirstServer:true\npauseOnLostFocus:false\ntutorialStep:none\nrenderDistance:6\nguiScale:2\nnarrator:0\nsoundCategory_master:0.0\n' > "$G/options.txt"
 (timeout 900 xvfb-run -n 99 -s "-screen 0 1280x720x24 +extension GLX +render -noreset -ac" \
-   portablemc --main-dir "$G" start "$spec" --jvm-arg=-Xmx3G,-Dbuildblueprint.uitest=world,-Dbuildblueprint.uitest.server=127.0.0.1:25565 --resolution 1280x720 > game.log 2>&1 &)
+   portablemc --main-dir "$G" start --jvm-policy mojang-then-system "$spec" --jvm-arg=-Xmx3G,-Dbuildblueprint.uitest=world,-Dbuildblueprint.uitest.server=127.0.0.1:25565 --resolution 1280x720 > game.log 2>&1 &)
 
 started=0
 for i in $(seq 1 170); do
