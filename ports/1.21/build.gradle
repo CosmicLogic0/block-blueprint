@@ -38,6 +38,8 @@ tasks.register('bbCompat', Sync) {
 }
 
 def flags = bbFlags(compat)
+// Minecraft 1.16.1 and older: their Fabric API has no world render event, so a small mixin of our own fires one
+def oldFabric = mcv in ['1.16', '1.16.1', '1.15', '1.15.1', '1.15.2', '1.14.4']
 def java8 = flags.java8
 tasks.register('copyShared', Sync) {
     from('../../fabric-mod/src/main/java') { include 'dev/buildblueprint/core/**' }
@@ -49,11 +51,9 @@ tasks.register('bbMakeSources', Sync) {
     from 'src/main/java'
     into genMain
     inputs.property 'compat', compat
-    filter { String l -> bbFilter(l, flags) }
+    filter { String l -> def o = bbFilter(l, flags); oldFabric ? o.replace('net.fabricmc.fabric.api.client.rendering.v1.WorldRender', 'dev.buildblueprint.oldfabric.WorldRender') : o }
 }
 compileJava.dependsOn bbMakeSources, bbCompat
-// Minecraft 1.16.1 and older: their Fabric API has no world render event, so a small mixin of our own fires one
-def oldFabric = mcv in ['1.16', '1.16.1', '1.15', '1.15.1', '1.15.2', '1.14.4']
 sourceSets.main.java.srcDirs = [genMain, compatSrc, shared] + (oldFabric ? ['src/oldfabric/java'] : [])
 sourceSets.main.resources.srcDir(sharedRes)
 if (oldFabric) sourceSets.main.resources.srcDir('src/oldfabric/res')
