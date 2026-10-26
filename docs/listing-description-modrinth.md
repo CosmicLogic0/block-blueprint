@@ -56,8 +56,8 @@ Change any key in **Options → Controls**.
 
 ### 📦 Requirements
 
-- **Fabric:** Minecraft 1.16.5 to 26.3 (needs Fabric Loader and Fabric API)
-- **Forge:** Minecraft 1.18 to 26.3
+- **Fabric:** Minecraft 1.16.2 to 26.3 (needs Fabric Loader and Fabric API)
+- **Forge:** Minecraft 1.16.3 to 26.3
 - **NeoForge:** Minecraft 1.20.2 to 26.3
 - Pick the file for your Minecraft version and loader on the **Versions** tab.
 - Client-side only, so it works in single-player and on any server.
