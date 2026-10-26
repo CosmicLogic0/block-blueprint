@@ -38,6 +38,7 @@ tasks.register('bbMakeSources', Sync) {
         .replace('mc.player.sendSystemMessage(Component.literal(text).withStyle(color))', 'mc.player.displayClientMessage(Component.literal(text).withStyle(color), false)')
         .replace('mc.player.sendOverlayMessage(Component.literal(text))', 'mc.player.displayClientMessage(Component.literal(text), true)')
         .replace('GuiGraphicsExtractor', 'GuiGraphics')
+        .replace('ScreenEvents.afterExtract(', 'ScreenEvents.afterRender(')
         .replace('extractRenderState(', 'render(')
         .replace('g.text(', 'g.drawString(').replace('g.item(', 'g.renderItem(')
     }

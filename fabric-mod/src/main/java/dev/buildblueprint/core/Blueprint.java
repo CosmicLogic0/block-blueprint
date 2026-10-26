@@ -64,6 +64,15 @@ public final class Blueprint {
         return new Blueprint(name, sx, sy, sz, pal, out);
     }
 
+    /** A copy with every block whose state matches taken out (left empty). */
+    public Blueprint without(java.util.function.Predicate<String> drop) {
+        boolean[] d = new boolean[palette.length];
+        for (int i = 0; i < d.length; i++) d[i] = drop.test(palette[i]);
+        int[] out = cells.clone();
+        for (int k = 0; k < out.length; k++) if (out[k] != 0 && d[out[k] - 1]) out[k] = 0;
+        return new Blueprint(name, sx, sy, sz, palette, out);
+    }
+
     /** What the player must hold: item id -> count (air, fluids and second halves excluded). */
     public Map<String, Integer> materials() {
         int[] perPalette = new int[palette.length];

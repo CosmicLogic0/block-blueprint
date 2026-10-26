@@ -212,7 +212,7 @@ public class MaterialsScreen extends BBScreen {
         if (s.loaded()) {
             int bad = notHere.size();
             String foot = bad > 0 ? bad + " block" + (bad == 1 ? "" : "s") + " in this build " + (bad == 1 ? "isn't" : "aren't") + " in Minecraft " + dev.buildblueprint.core.SchemCodec.minecraftVersion() + "  ·  click one to swap it"
-                    : "Click a block to swap it for another";
+                    : "Click a block to swap it or remove it";
             String link = s.canUndoSwap() ? "Undo swap" : "";
             String sep = link.isEmpty() ? "" : "  ·  ";
             int fw = font.width(foot) + font.width(sep) + font.width(link), fx = width / 2 - fw / 2, fy = t + h + 3;
@@ -239,7 +239,7 @@ public class MaterialsScreen extends BBScreen {
             int[] ch = Chests.nearby(hovered.id(), 48);
             if (ch[0] > 0) tip.add(Component.literal("In chests nearby: " + ch[0] + " (" + ch[1] + " chest" + (ch[1] == 1 ? "" : "s") + ", green boxes)").withStyle(ChatFormatting.AQUA));
             if (hovered.missing() > 0) tip.add(Component.literal("Get " + hovered.missing() + " more" + (hovered.missing() >= 64 ? " (" + (hovered.missing() + 63) / 64 + " stacks)" : "")).withStyle(ChatFormatting.RED));
-            tip.add(Component.literal("Click to swap it for another block").withStyle(ChatFormatting.YELLOW));
+            tip.add(Component.literal("Click to swap it or remove it from the build").withStyle(ChatFormatting.YELLOW));
             V.tooltip(g, font, tip, mouseX, mouseY);
         }
     }

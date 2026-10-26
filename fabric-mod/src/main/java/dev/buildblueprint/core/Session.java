@@ -91,6 +91,12 @@ public final class Session {
         swapUndo.push(new Blueprint[]{base, current});
         base = withPalette(base, fn); current = withPalette(current, fn);
     }
+    /** Take blocks out of the build (e.g. snow on a roof). Undone like a swap. */
+    public void removeBlocks(java.util.function.Predicate<String> drop) {
+        if (base == null) return;
+        swapUndo.push(new Blueprint[]{base, current});
+        base = base.without(drop); current = current.without(drop);
+    }
     public boolean undoSwap() {
         if (swapUndo.isEmpty() || base == null) return false;
         Blueprint[] b = swapUndo.pop(); base = b[0]; current = b[1];

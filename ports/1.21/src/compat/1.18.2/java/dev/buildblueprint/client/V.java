@@ -70,6 +70,11 @@ public final class V {
     public static net.minecraft.world.item.ItemStack copyN(net.minecraft.world.item.ItemStack s, int n) { net.minecraft.world.item.ItemStack c = s.copy(); c.setCount(n); return c; }
     public static void hint(net.minecraft.client.gui.components.EditBox box, Component c) { box.setSuggestion(c.getString()); }
     public static void command(LocalPlayer p, String cmd) { p.chat("/" + cmd); }
+    /** Draw on top of every screen, after the screen itself (the chest highlight). Fabric's screen events; Forge has a stand-in. */
+    public static void onScreen(java.util.function.BiConsumer<Screen, GuiGraphics> body) {
+        net.fabricmc.fabric.api.client.screen.v1.ScreenEvents.AFTER_INIT.register((mc, screen, w, h) ->
+                net.fabricmc.fabric.api.client.screen.v1.ScreenEvents.afterRender(screen).register((s, pose, mx, my, d) -> body.accept(s, new GuiGraphics(pose, s))));
+    }
     public static void onHud(java.util.function.Consumer<GuiGraphics> body) {
         net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback.EVENT.register((pose, delta) -> body.accept(new GuiGraphics(pose, null)));
     }

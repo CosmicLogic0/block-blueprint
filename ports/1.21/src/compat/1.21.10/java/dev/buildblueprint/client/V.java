@@ -45,6 +45,11 @@ public final class V {
     public static String stateString(BlockState s) { return net.minecraft.commands.arguments.blocks.BlockStateParser.serialize(s); }
     public static net.minecraft.world.item.ItemStack copyN(net.minecraft.world.item.ItemStack s, int n) { return s.copyWithCount(n); }
     public static void command(LocalPlayer p, String cmd) { p.connection.sendCommand(cmd); }
+    /** Draw on top of every screen, after the screen itself (the chest highlight). Fabric's screen events; Forge has a stand-in. */
+    public static void onScreen(java.util.function.BiConsumer<Screen, GuiGraphics> body) {
+        net.fabricmc.fabric.api.client.screen.v1.ScreenEvents.AFTER_INIT.register((mc, screen, w, h) ->
+                net.fabricmc.fabric.api.client.screen.v1.ScreenEvents.afterRender(screen).register((s, g, mx, my, d) -> body.accept(s, g)));
+    }
     public static void onHud(java.util.function.Consumer<GuiGraphics> body) {
         net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback.EVENT.register((g, delta) -> body.accept(g));
     }

@@ -36,6 +36,7 @@ final class Modules {
         UpdateCheck.init();
         run("PreviewModule");
         run("HudModule");
+        run("ChestHighlight");   // green frames on the slots you need, inside chests
         keysActive = run("KeysModule");
         run("UiTest");   // screenshot tour, only in the automatic launch test
     }

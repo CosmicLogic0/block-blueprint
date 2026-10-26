@@ -20,7 +20,7 @@ public final class UiTest {
     private static boolean world, joined;
     private static String[] steps;
     private static final String[] MENU = {"settings", "settings-more", "saved", "build", "done"};
-    private static final String[] WORLD = {"world-ghost", "world-placed", "build", "swap", "swap-search", "build-missing", "help", "settings", "settings-more", "saved", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings", "settings-more", "saved", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -186,6 +186,22 @@ public final class UiTest {
                 Mc.setScreen(new MaterialsScreen(true));
             }
             case "help" -> Mc.setScreen(new HelpScreen(null, 3));
+            case "remove" -> {   // take the least used block out of the build, show the list, then put it back
+                Materials.refresh();
+                var rows = Materials.rows();
+                if (rows.isEmpty()) { System.out.println("BBUITEST nothing to remove"); return; }
+                int before = BuildBlueprintClient.SESSION.blueprint().blockCount();
+                int n = Swapper.remove(rows.get(rows.size() - 1).id());
+                int after = BuildBlueprintClient.SESSION.blueprint().blockCount();
+                boolean undone = BuildBlueprintClient.SESSION.undoSwap();
+                System.out.println("BBUITEST removed " + n + " blocks (" + before + " -> " + after + "), undo " + undone + " -> " + BuildBlueprintClient.SESSION.blueprint().blockCount());
+                Materials.refresh();
+                Mc.setScreen(new MaterialsScreen(true));
+            }
+            case "inventory" -> {   // any container screen: the chest highlight hooks in here
+                var pl = net.minecraft.client.Minecraft.getInstance().player;
+                if (pl != null) Mc.setScreen(new net.minecraft.client.gui.screens.inventory.InventoryScreen(pl));
+            }
             default -> { if (world) { Copier.cancel(); Mc.setScreen(null); } System.out.println("BBUITEST done"); }
         }
     }

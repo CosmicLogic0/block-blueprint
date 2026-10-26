@@ -10,7 +10,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / 'fabric-mod/src/menu/java/dev/buildblueprint/client'
 DST = ROOT / 'ports/1.21/src/main/java/dev/buildblueprint/client'
 MOD = ROOT / 'fabric-mod/src'
-FILES = [(SRC, n) for n in ['MaterialsScreen', 'SettingsScreen', 'CopyScreen', 'SwapScreen', 'SavedBuildsScreen', 'MenuModule', 'UiKit', 'HudModule', 'UiTest', 'HelpScreen']] + \
+FILES = [(SRC, n) for n in ['MaterialsScreen', 'SettingsScreen', 'CopyScreen', 'SwapScreen', 'SavedBuildsScreen', 'MenuModule', 'UiKit', 'HudModule', 'UiTest', 'HelpScreen', 'ChestHighlight']] + \
         [(MOD / 'keys/java/dev/buildblueprint/client', 'KeysModule'), (MOD / 'main/java/dev/buildblueprint/client', 'Copier'),
          (MOD / 'main/java/dev/buildblueprint/client', 'Swapper')]
 GLFW = {'LCONTROL': 'LEFT_CONTROL', 'RCONTROL': 'RIGHT_CONTROL', 'LSHIFT': 'LEFT_SHIFT', 'PAGEDOWN': 'PAGE_DOWN', 'PAGEUP': 'PAGE_UP', 'LALT': 'LEFT_ALT'}
@@ -45,6 +45,9 @@ SUBS = [
     (r'BuiltInRegistries\.BLOCK\.getValue\(Identifier\.parse\((\w+)\)\)', r'V.block(\1)'),
     (r'BlockStateParser\.parseForBlock\(BuiltInRegistries\.BLOCK, (\w+), false\)\.blockState\(\)', r'V.parseState(\1)'),
     (r'\.isBlank\(\)', '.trim().isEmpty()'),
+    # screen hook (chest highlight): Fabric's afterExtract on 26.x, V.onScreen on older versions and Forge
+    (r'ScreenEvents\.AFTER_INIT\.register\(\(mc, screen, w, h\) -> ScreenEvents\.afterExtract\(screen\)\.register\(\(s, g, mx, my, d\) -> (.*)\)\);$', r'V.onScreen((s, g) -> \1);'),
+    (r'^import net\.fabricmc\.fabric\.api\.client\.screen\.v1\.ScreenEvents;\n', ''),
     # registry access (Swapper and friends)
     (r'BuiltInRegistries\.BLOCK\.containsKey\(Identifier\.parse\((\w+)\)\)', r'V.blockExists(\1)'),
     (r'for \(Block (\w+) : BuiltInRegistries\.BLOCK\)', r'for (Block \1 : V.allBlocks())'),

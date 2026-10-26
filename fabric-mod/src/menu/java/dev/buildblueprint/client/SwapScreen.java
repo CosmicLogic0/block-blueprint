@@ -19,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
  * Top: what you're swapping and a search box. Then three lists: Similar (same kind of piece, most alike first),
  * All blocks, and blocks From mods. Pick one, check the preview at the bottom ("Blue Terracotta -> Cyan Terracotta,
  * 876 blocks"), press Swap. Double-click swaps straight away; Enter swaps the picked block.
+ * "Remove from build" takes that block out of the build altogether (snow on a roof, say).
  */
 public class SwapScreen extends Screen {
     private final Screen parent;
@@ -62,6 +63,9 @@ public class SwapScreen extends Screen {
         int x = px(), w = pw();
         addRenderableWidget(Button.builder(Component.literal("i"), b -> Mc.setScreen(new HelpScreen(this, 4))).bounds(x + w - 20, 8, 20, 20)
                 .tooltip(tip("How swapping works")).build());
+        int rw = Math.min(110, font.width("Remove from build") + 12);
+        addRenderableWidget(Button.builder(Component.literal("Remove from build"), b -> doRemove()).bounds(x + w - 24 - rw, 8, rw, 20)
+                .tooltip(tip("Take every " + fromName() + " out of the build, for example snow on a roof. Undo swap puts it back.")).build());
         String q = search == null ? "" : search.getValue();
         search = new EditBox(font, x, 38, w, 18, Component.literal("Search"));
         search.setHint(Component.literal("Search every block by name or mod..."));
@@ -114,6 +118,13 @@ public class SwapScreen extends Screen {
         onClose();
     }
 
+    private void doRemove() { Safe.run("removing blocks", () -> {
+        int n = Swapper.remove(itemId);
+        if (n == 0) { msg = "Nothing to remove."; return; }
+        Chat.bar("Removed " + n + " " + fromName() + " from the build  ·  Undo: click Undo swap in the build menu");
+        onClose();
+    }); }
+
     private String fromName() { ItemStack s = Materials.stackFor(itemId); return s.isEmpty() ? PlayerInfo.pretty(blockId) : s.getHoverName().getString(); }
     private int count() { int c = 0; var cs = Swapper.counts(); for (String b : Swapper.blocksForItem(itemId)) c += cs.getOrDefault(b, 0); return c; }
 
@@ -164,7 +175,7 @@ public class SwapScreen extends Screen {
         // what's being swapped
         ItemStack self = Materials.stackFor(itemId);
         if (!self.isEmpty()) g.item(self, x, 9);
-        g.text(font, UiKit.fit(font, "Swap " + fromName(), w - 50), x + 20, 9, UiKit.GOLD, true);
+        g.text(font, UiKit.fit(font, "Swap " + fromName(), w - 160), x + 20, 9, UiKit.GOLD, true);
         String sub = count() + " in this build";
         g.text(font, sub, x + 20, 21, UiKit.MUTED, false);
         if (notInGame) g.text(font, "  ·  not in Minecraft " + dev.buildblueprint.core.SchemCodec.minecraftVersion() + ", pick one to use instead", x + 20 + font.width(sub), 21, UiKit.ORANGE, false);

@@ -270,4 +270,17 @@ public final class Swapper {
         SessionStore.dirty();
         return n;
     }
+
+    /** Take every block of this item out of the build. Returns how many blocks were removed. */
+    public static int remove(String itemId) {
+        Set<String> ids = blocksForItem(itemId);
+        if (ids.isEmpty()) return 0;
+        Map<String, Integer> c = counts();
+        int n = 0;
+        for (String k : ids) n += c.getOrDefault(k, 0);
+        BuildBlueprintClient.SESSION.removeBlocks(st -> ids.contains(MaterialMap.blockId(st)));
+        Materials.refresh();
+        SessionStore.dirty();
+        return n;
+    }
 }
