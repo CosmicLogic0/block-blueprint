@@ -53,6 +53,9 @@ ext.bbFilter = { String l, Map f ->
     }
     if (f.mc115) {
         l = l.replaceAll(/(\w+)\.setMessage\(/, 'V.setMessage($1, ').replace('new EditBox(', 'V.editBox(')
+        l = l.replace('.plainSubstrByWidth(', '.substrByWidth(').replace('mc.level.dimension()', 'V.dim(mc.level)')
+             .replace('mc.getSingleplayerServer().getWorldData().getLevelName()', 'V.levelName(mc.getSingleplayerServer())')
+             .replaceAll(/Vec3\.atCenterOf\(([\w.]+)\)/, 'new Vec3($1.getX() + 0.5, $1.getY() + 0.5, $1.getZ() + 0.5)')
     }
     if (f.oldText) {
         l = l.replace('Component.literal(', 'new net.minecraft.network.chat.TextComponent(').replace('client.command.v2.', 'client.command.v1.')

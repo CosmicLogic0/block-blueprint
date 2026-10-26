@@ -70,6 +70,8 @@ public final class V {
     public static net.minecraft.world.item.ItemStack copyN(net.minecraft.world.item.ItemStack s, int n) { net.minecraft.world.item.ItemStack c = s.copy(); c.setCount(n); return c; }
     public static net.minecraft.client.gui.components.EditBox editBox(Font f, int x, int y, int w, int h, Component c) { return new net.minecraft.client.gui.components.EditBox(f, x, y, w, h, c.getString()); }
     public static void setMessage(net.minecraft.client.gui.components.AbstractWidget b, Component c) { b.setMessage(c.getString()); }
+    public static net.minecraft.world.level.dimension.DimensionType dim(Level l) { return l.getDimension().getType(); }
+    public static String levelName(net.minecraft.server.MinecraftServer s) { return s.getLevel(net.minecraft.world.level.dimension.DimensionType.OVERWORLD).getLevelData().getLevelName(); }
     public static void hint(net.minecraft.client.gui.components.EditBox box, Component c) { box.setSuggestion(c.getString()); }
     public static void command(LocalPlayer p, String cmd) { p.chat("/" + cmd); }
     /** Draw on top of every screen: this version's Fabric API has no screen events, so the chest highlight is off. */
