@@ -52,8 +52,11 @@ tasks.register('bbMakeSources', Sync) {
     filter { String l -> bbFilter(l, flags) }
 }
 compileJava.dependsOn bbMakeSources, bbCompat
-sourceSets.main.java.srcDirs = [genMain, compatSrc, shared]
+// Minecraft 1.16.1 and older: their Fabric API has no world render event, so a small mixin of our own fires one
+def oldFabric = mcv in ['1.16', '1.16.1', '1.15', '1.15.1', '1.15.2', '1.14.4']
+sourceSets.main.java.srcDirs = [genMain, compatSrc, shared] + (oldFabric ? ['src/oldfabric/java'] : [])
 sourceSets.main.resources.srcDir(sharedRes)
+if (oldFabric) sourceSets.main.resources.srcDir('src/oldfabric/res')
 compileJava.dependsOn copyShared
 processResources.dependsOn copySharedRes
 tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn copyShared, copySharedRes, bbMakeSources, bbCompat }
@@ -72,7 +75,8 @@ processResources {
     inputs.property 'mcdep', mcdep
     inputs.property 'java', javaVer
     inputs.property 'fapi', fapi
-    filesMatching('fabric.mod.json') { expand 'version': project.mod_version, 'mcdep': mcdep, 'java': javaVer, 'fapi': fapi }
+    inputs.property 'oldFabric', oldFabric
+    filesMatching('fabric.mod.json') { expand 'version': project.mod_version, 'mcdep': mcdep, 'java': javaVer, 'fapi': fapi, 'mixins': oldFabric ? '"buildblueprint.mixins.json"' : '' }
 }
 
 tasks.withType(JavaCompile).configureEach {

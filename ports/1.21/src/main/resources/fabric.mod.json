@@ -9,6 +9,7 @@
   ],
   "license": "All-Rights-Reserved",
   "environment": "client",
+  "mixins": [${mixins}],
   "entrypoints": {
     "client": [
       "dev.buildblueprint.client.BuildBlueprintClient"

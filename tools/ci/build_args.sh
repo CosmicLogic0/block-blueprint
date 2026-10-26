@@ -22,6 +22,6 @@ if [ "$loader" = "neoforge" ]; then
   F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -oE "<version>$P\.[0-9]+(-beta)?</version>" | sed 's/<[^>]*>//g' | sort -V | tail -1)
   echo "-Ploom.platform=neoforge -Pminecraft_version=$mc -Pforge_version=$F -Parch_loom_version=$LOOM -Pjava_version=$target $extra"; exit 0
 fi
-V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+$fapi</version>" | sed 's/<[^>]*>//g' | tail -1)
+V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -oE "<version>[^<]*\+(build\.[0-9]+-)?$fapi</version>" | sed 's/<[^>]*>//g' | tail -1)
 if [ -z "$V" ]; then echo "No Fabric API found for $fapi" >&2; exit 1; fi
 echo "-Pminecraft_version=$mc -Pfabric_api_version=$V -Pjava_version=$target $extra"
