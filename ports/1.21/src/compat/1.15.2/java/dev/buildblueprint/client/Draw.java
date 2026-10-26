@@ -13,7 +13,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-/** Drawing calls that differ between Minecraft versions (this copy: 1.16.5). */
+/** Drawing calls that differ between Minecraft versions (this copy: 1.15.x). */
 public final class Draw {
     private Draw() {}
     public static RenderType ghostType() { return Sheets.translucentCullBlockSheet(); }

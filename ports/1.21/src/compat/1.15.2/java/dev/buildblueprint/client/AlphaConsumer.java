@@ -13,7 +13,7 @@ final class AlphaConsumer implements VertexConsumer {
     @Override public VertexConsumer uv2(int u, int v) { inner.uv2(u, v); return this; }
     @Override public VertexConsumer normal(float x, float y, float z) { inner.normal(x, y, z); return this; }
     @Override public void endVertex() { inner.endVertex(); }
-    @Override public void vertex(float x, float y, float z, float r, float g, float b, float a, float u, float v, int overlay, int light, float nx, float ny, float nz) {
+    public void vertex(float x, float y, float z, float r, float g, float b, float a, float u, float v, int overlay, int light, float nx, float ny, float nz) {
         inner.vertex(x, y, z, r, g, b, alpha / 255f, u, v, overlay, light, nx, ny, nz);
     }
 }

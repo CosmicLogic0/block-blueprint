@@ -17,6 +17,7 @@ ext.bbFlags = { String compat -> [
     noBuilder: compat in ['1.19', '1.19.2', '1.18.2', '1.17.1', '1.16.5', '1.15.2'],                                              // no Button.builder / Tooltip
     oldText:   compat in ['1.18.2', '1.17.1', '1.16.5', '1.15.2'],                                                                          // no Component.literal, commands v1
     java8:     compat in ['1.16.5', '1.15.2'],
+    mc115:     compat in ['1.15.2'],                                                                                       // buttons / text boxes take plain text, no PoseStack in menus
     newTypes:  compat in ['1.21.11'],                                                                                             // RenderType moved to client.renderer.rendertype                                                                                              // Java 8: no records, no addRenderableWidget
 ] }
 
@@ -49,6 +50,9 @@ ext.bbFilter = { String l, Map f ->
     }
     if (f.java8) {
         l = bbRecordToClass(l).replace('addRenderableWidget(', 'addButton(').replaceAll(/\.getInventory\(\)/, '.inventory').replaceAll(/\.getYRot\(\)/, '.yRot')
+    }
+    if (f.mc115) {
+        l = l.replaceAll(/(\w+)\.setMessage\(/, 'V.setMessage($1, ').replace('new EditBox(', 'V.editBox(')
     }
     if (f.oldText) {
         l = l.replace('Component.literal(', 'new net.minecraft.network.chat.TextComponent(').replace('client.command.v2.', 'client.command.v1.')

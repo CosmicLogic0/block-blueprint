@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-/** Calls that differ between Minecraft versions (this copy: 1.16.5). */
+/** Calls that differ between Minecraft versions (this copy: 1.15.x). */
 public final class V {
     private V() {}
     public static ResourceLocation id(String s) { return new ResourceLocation(s); }
@@ -29,8 +29,8 @@ public final class V {
     public static boolean shift() { return Screen.hasShiftDown(); }
     public static boolean alt() { return Screen.hasAltDown(); }
     public static void tooltip(GuiGraphics g, Font f, List<? extends Component> lines, int x, int y) { g.renderComponentTooltip(f, new java.util.ArrayList<>(lines), x, y); }
-    public static void hudPush(GuiGraphics g, float sc) { g.pose().pushPose(); g.pose().scale(sc, sc, 1f); }
-    public static void hudPop(GuiGraphics g) { g.pose().popPose(); }
+    public static void hudPush(GuiGraphics g, float sc) { com.mojang.blaze3d.systems.RenderSystem.pushMatrix(); com.mojang.blaze3d.systems.RenderSystem.scalef(sc, sc, 1f); }
+    public static void hudPop(GuiGraphics g) { com.mojang.blaze3d.systems.RenderSystem.popMatrix(); }
     public static Screen keyBinds(Screen parent) { return new net.minecraft.client.gui.screens.controls.ControlsScreen(parent, Minecraft.getInstance().options); }
     public static double reach(Minecraft mc) { return mc.gameMode.getPickRange(); }
     public static boolean glass(Block b) { return b instanceof net.minecraft.world.level.block.HalfTransparentBlock; }
@@ -68,15 +68,14 @@ public final class V {
         return sb.toString();
     }
     public static net.minecraft.world.item.ItemStack copyN(net.minecraft.world.item.ItemStack s, int n) { net.minecraft.world.item.ItemStack c = s.copy(); c.setCount(n); return c; }
+    public static net.minecraft.client.gui.components.EditBox editBox(Font f, int x, int y, int w, int h, Component c) { return new net.minecraft.client.gui.components.EditBox(f, x, y, w, h, c.getString()); }
+    public static void setMessage(net.minecraft.client.gui.components.AbstractWidget b, Component c) { b.setMessage(c.getString()); }
     public static void hint(net.minecraft.client.gui.components.EditBox box, Component c) { box.setSuggestion(c.getString()); }
     public static void command(LocalPlayer p, String cmd) { p.chat("/" + cmd); }
-    /** Draw on top of every screen, after the screen itself (the chest highlight). Fabric's screen events; Forge has a stand-in. */
-    public static void onScreen(java.util.function.BiConsumer<Screen, GuiGraphics> body) {
-        net.fabricmc.fabric.api.client.screen.v1.ScreenEvents.AFTER_INIT.register((mc, screen, w, h) ->
-                net.fabricmc.fabric.api.client.screen.v1.ScreenEvents.afterRender(screen).register((s, pose, mx, my, d) -> body.accept(s, new GuiGraphics(pose, s))));
-    }
+    /** Draw on top of every screen: this version's Fabric API has no screen events, so the chest highlight is off. */
+    public static void onScreen(java.util.function.BiConsumer<Screen, GuiGraphics> body) { }
     public static void onHud(java.util.function.Consumer<GuiGraphics> body) {
-        net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback.EVENT.register((pose, delta) -> body.accept(new GuiGraphics(pose, null)));
+        net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback.EVENT.register(delta -> body.accept(new GuiGraphics(null, null)));
     }
     public static int mapColor(BlockState s) { var c = s.getMapColor(EmptyBlockGetter.INSTANCE, BlockPos.ZERO); return c == net.minecraft.world.level.material.MaterialColor.NONE ? 0 : c.col; }
     public static boolean replaceable(BlockState s) { return s.getMaterial().isReplaceable(); }
