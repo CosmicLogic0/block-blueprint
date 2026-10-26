@@ -57,3 +57,9 @@ ext.bbFilter = { String l, Map f ->
     }
     return l
 }
+
+// Swaps inside the version helpers (src/compat) for Minecraft versions that share a helper group but differ a little.
+ext.bbCompatFilter = { String l, String mcv ->
+    if (mcv in ['1.16', '1.16.1']) l = l.replace('screen.renderComponentTooltip(pose, ', 'screen.renderTooltip(pose, ')   // renamed in 1.16.2
+    return l
+}

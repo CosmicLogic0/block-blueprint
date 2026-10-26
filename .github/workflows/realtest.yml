@@ -51,7 +51,7 @@ jobs:
       - name: Build the mod (same as the release)
         working-directory: ${{ matrix.dir }}
         run: |
-          ARGS=$(bash "$GITHUB_WORKSPACE/tools/ci/build_args.sh" "${{ matrix.mc }}" "${{ matrix.loader }}" "${{ matrix.kind }}" "${{ matrix.target }}" "${{ matrix.fapi }}")
+          ARGS=$(bash "$GITHUB_WORKSPACE/tools/ci/build_args.sh" "${{ matrix.mc }}" "${{ matrix.loader }}" "${{ matrix.kind }}" "${{ matrix.target }}" "${{ matrix.fapi }}" "${{ matrix.extra }}")
           V=$(node -p "require('$GITHUB_WORKSPACE/package.json').version")
           chmod +x gradlew && rm -rf build/libs
           ./gradlew build -x test -Pmod_version="$V" $ARGS --no-daemon -q

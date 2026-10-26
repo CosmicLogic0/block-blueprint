@@ -145,6 +145,7 @@ jobs:
           - { mc: "1.18.1",  dir: ports/1.21,    run: 21, target: 17, type: beta,    gv: "1.18 1.18.1", fapi: "1.18" }
           - { mc: "1.17.1",  dir: ports/1.21,    run: 21, target: 16, type: beta,    gv: "1.17 1.17.1", fapi: "1.17" }
           - { mc: "1.16.5",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.5", fapi: "1.16" }
+          - { mc: "1.16.1",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16 1.16.1", fapi: "1.16" }
           - { mc: "1.16.4",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.4", fapi: "1.16" }
           - { mc: "1.16.3",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.3", fapi: "1.16" }
           - { mc: "1.16.2",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.2", fapi: "1.16" }
@@ -155,7 +156,7 @@ jobs:
           - { mc: "1.21.3",  id: forge-1.21.3, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.3" }
           - { mc: "1.21.1",  id: forge-1.21.1, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.1" }
           - { mc: "1.20.6",  id: forge-1.20.6, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.20.6" }
-          - { mc: "1.20.4",  id: forge-1.20.4, loader: forge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.4" }
+          - { mc: "1.20.4",  id: forge-1.20.4, loader: forge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.3 1.20.4", extra: "-Pmc_range=[1.20.3,1.20.4] -Pforge_major=49" }
           - { mc: "1.20.2",  id: forge-1.20.2, loader: forge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.2" }
           - { mc: "1.19.4",  id: forge-1.19.4, loader: forge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.19.4" }
           - { mc: "1.19.3",  id: forge-1.19.3, loader: forge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.19.3" }
@@ -166,7 +167,7 @@ jobs:
           - { mc: "1.17.1",  id: forge-1.17.1, loader: forge, dir: ports/forge, run: 21, target: 16, type: beta, gv: "1.17.1" }
           - { mc: "1.16.5",  id: forge-1.16.5, loader: forge, dir: ports/forge, run: 21, target: 8, type: beta, gv: "1.16.5" }
           - { mc: "1.16.4",  id: forge-1.16.4, loader: forge, dir: ports/forge, run: 21, target: 8, type: beta, gv: "1.16.4" }
-          - { mc: "1.16.3",  id: forge-1.16.3, loader: forge, dir: ports/forge, run: 21, target: 8, type: beta, gv: "1.16.3" }
+          - { mc: "1.16.3",  id: forge-1.16.3, loader: forge, dir: ports/forge, run: 21, target: 8, type: beta, gv: "1.16.1 1.16.2 1.16.3", extra: "-Pmc_range=[1.16.1,1.16.3] -Pforge_major=32" }
           - { mc: "1.21.8",  id: neoforge-1.21.8, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.8" }
           - { mc: "1.21.5",  id: neoforge-1.21.5, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.5" }
           - { mc: "1.21.4",  id: neoforge-1.21.4, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.4" }
@@ -175,6 +176,7 @@ jobs:
           - { mc: "1.20.4",  id: neoforge-1.20.4, loader: neoforge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.4" }
           - { mc: "1.20.2",  id: neoforge-1.20.2, loader: neoforge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.2" }
           - { mc: "1.20.3",  id: neoforge-1.20.3, loader: neoforge, dir: ports/forge, run: 21, target: 17, type: beta, gv: "1.20.3" }
+          - { mc: "1.20.5",  id: neoforge-1.20.5, loader: neoforge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.20.5" }
           - { mc: "1.21.9",  dir: ports/1.21.11, run: 21, target: 21, type: beta, gv: "1.21.9" }
           - { mc: "1.21.8",  id: forge-1.21.8, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.8" }
           - { mc: "1.21.10", id: forge-1.21.10, loader: forge, dir: ports/forge, run: 21, target: 21, type: beta, gv: "1.21.10" }
@@ -229,16 +231,16 @@ jobs:
           LOOM=$(curl -s https://maven.architectury.dev/dev/architectury/loom/dev.architectury.loom.gradle.plugin/maven-metadata.xml | grep -o "<latest>[^<]*</latest>" | sed 's/<[^>]*>//g')
           if [ "${{ matrix.loader }}" = "forge" ]; then
             F=$(curl -s https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml | grep -o "<version>${{ matrix.mc }}-[^<]*</version>" | sed 's/<[^>]*>//g; s/^${{ matrix.mc }}-//' | tail -1)
-            echo "args=-Pminecraft_version=${{ matrix.mc }} -Pforge_version=$F -Parch_loom_version=$LOOM -Pjava_version=${{ matrix.target }}" >> "$GITHUB_OUTPUT"; exit 0
+            echo "args=-Pminecraft_version=${{ matrix.mc }} -Pforge_version=$F -Parch_loom_version=$LOOM -Pjava_version=${{ matrix.target }} ${{ matrix.extra }}" >> "$GITHUB_OUTPUT"; exit 0
           fi
           if [ "${{ matrix.loader }}" = "neoforge" ]; then
             P=$(echo "${{ matrix.mc }}" | sed 's/^1\.//'); case "$P" in *.*) ;; *) P="$P.0" ;; esac
             F=$(curl -s https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -oE "<version>$P\.[0-9]+(-beta)?</version>" | sed 's/<[^>]*>//g' | sort -V | tail -1)
-            echo "args=-Ploom.platform=neoforge -Pminecraft_version=${{ matrix.mc }} -Pforge_version=$F -Parch_loom_version=$LOOM -Pjava_version=${{ matrix.target }}" >> "$GITHUB_OUTPUT"; exit 0
+            echo "args=-Ploom.platform=neoforge -Pminecraft_version=${{ matrix.mc }} -Pforge_version=$F -Parch_loom_version=$LOOM -Pjava_version=${{ matrix.target }} ${{ matrix.extra }}" >> "$GITHUB_OUTPUT"; exit 0
           fi
           V=$(curl -s https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml | grep -o "<version>[^<]*+${{ matrix.fapi || matrix.mc }}</version>" | sed 's/<[^>]*>//g' | tail -1)
           if [ -z "$V" ]; then echo "::error title=mc ${{ matrix.mc }}::No Fabric API found"; exit 1; fi
-          echo "args=-Pminecraft_version=${{ matrix.mc }} -Pfabric_api_version=$V -Pjava_version=${{ matrix.target }}" >> "$GITHUB_OUTPUT"
+          echo "args=-Pminecraft_version=${{ matrix.mc }} -Pfabric_api_version=$V -Pjava_version=${{ matrix.target }} ${{ matrix.extra }}" >> "$GITHUB_OUTPUT"
       - name: Build the mod
         if: needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))
         working-directory: ${{ matrix.dir }}
