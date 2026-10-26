@@ -22,7 +22,7 @@ public final class UiTest {
     private static boolean world, joined;
     private static String[] steps;
     private static final String[] MENU = {"settings", "settings-more", "saved", "build", "done"};
-    private static final String[] WORLD = {"world-ghost", "world-placed", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings", "settings-more", "saved", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings", "settings-more", "saved", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -166,10 +166,22 @@ public final class UiTest {
                 Copier.start();
                 if (Copier.c1 != null) Copier.c2 = Copier.c1.offset(6, 4, 6);
             }
+            case "world-only" -> {   // the eye: shift-click shows only one block's ghosts
+                Mc.setScreen(null);
+                Materials.refresh();
+                var rows = Materials.rows();
+                if (rows.isEmpty()) { System.out.println("BBUITEST nothing to hide"); return; }
+                java.util.List<String> all = new java.util.ArrayList<>();
+                for (Materials.Row r : rows) all.add(r.id());
+                Hide.only(rows.get(0).id(), all);
+                System.out.println("BBUITEST showing only " + rows.get(0).id() + ", " + Hide.count() + " hidden");
+            }
+            case "build-hidden" -> Mc.setScreen(new MaterialsScreen(false));   // the list with the closed eyes
             case "settings" -> { SettingsScreen.more = false; Mc.setScreen(new SettingsScreen(null)); }
             case "settings-more" -> { SettingsScreen.more = true; Mc.setScreen(new SettingsScreen(null)); }
             case "saved" -> Mc.setScreen(new SavedBuildsScreen());
             case "build" -> {
+                Hide.showAll();
                 if (!BuildBlueprintClient.SESSION.loaded()) loadTestBuild();
                 Mc.setScreen(new MaterialsScreen(true));
             }

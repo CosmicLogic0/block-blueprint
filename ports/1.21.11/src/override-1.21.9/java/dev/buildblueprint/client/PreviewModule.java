@@ -127,7 +127,7 @@ public final class PreviewModule {
     private static boolean needScan() {
         Session s = BuildBlueprintClient.SESSION;
         Minecraft mc = Minecraft.getInstance();
-        String key = s.loaded() && mc.player != null ? System.identityHashCode(s.blueprint()) + ":" + s.ox + "," + s.oy + "," + s.oz + ":" + s.layer + ":" + s.visible + ":" + Settings.range
+        String key = s.loaded() && mc.player != null ? System.identityHashCode(s.blueprint()) + ":" + s.ox + "," + s.oy + "," + s.oz + ":" + s.layer + ":" + s.visible + ":" + Settings.range + ":" + Hide.version()
                 + ":" + ((int) mc.player.getX() >> 2) + "," + ((int) mc.player.getY() >> 2) + "," + ((int) mc.player.getZ() >> 2) : "none";
         boolean changed = !key.equals(lastKey);
         lastKey = key;
@@ -150,7 +150,7 @@ public final class PreviewModule {
             for (int z = 0; z < bp.sz; z++)
                 for (int x = 0; x < bp.sx; x++) {
                     String st = bp.stateAt(x, y, z);
-                    if (st == null) continue;
+                    if (st == null || Hide.state(st)) continue;     // hidden with the eye in the build menu
                     int wx = s.ox + x, wy = s.oy + y, wz = s.oz + z;
                     double dx = wx + 0.5 - px, dy = wy + 0.5 - py, dz = wz + 0.5 - pz;
                     if (dx * dx + dy * dy + dz * dz > (double) Settings.range * Settings.range) continue;

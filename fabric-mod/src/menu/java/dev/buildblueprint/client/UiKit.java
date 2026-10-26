@@ -20,6 +20,28 @@ public final class UiKit {
         g.fill(x, y, x + w, y + 1, accent);
     }
 
+    /** A little eye, 13 x 10 pixels: open (you can see it) or closed (hidden). */
+    public static void eye(GuiGraphicsExtractor g, int x, int y, boolean open, int color) {
+        if (open) {
+            int[][] lid = {{4, 8}, {2, 3}, {1, 1}, {0, 0}, {0, 0}, {0, 0}, {1, 1}, {2, 3}, {4, 8}};   // left half of each row (mirrored)
+            for (int r = 0; r < lid.length; r++) {
+                int a = lid[r][0], b = lid[r][1];
+                if (r == 0 || r == 8) { g.fill(x + a, y + r, x + b + 1, y + r + 1, color); continue; }
+                g.fill(x + a, y + r, x + b + 1, y + r + 1, color);
+                g.fill(x + 12 - b, y + r, x + 12 - a + 1, y + r + 1, color);
+            }
+            g.fill(x + 5, y + 2, x + 8, y + 7, color);       // the iris
+            g.fill(x + 4, y + 3, x + 9, y + 6, color);
+            g.fill(x + 6, y + 3, x + 7, y + 5, 0xFF101018);  // pupil
+        } else {
+            g.fill(x, y + 3, x + 1, y + 5, color); g.fill(x + 12, y + 3, x + 13, y + 5, color);
+            g.fill(x + 1, y + 5, x + 2, y + 6, color); g.fill(x + 11, y + 5, x + 12, y + 6, color);
+            g.fill(x + 2, y + 6, x + 4, y + 7, color); g.fill(x + 9, y + 6, x + 11, y + 7, color);
+            g.fill(x + 4, y + 7, x + 9, y + 8, color);
+            g.fill(x + 2, y + 7, x + 3, y + 9, color); g.fill(x + 6, y + 8, x + 7, y + 10, color); g.fill(x + 10, y + 7, x + 11, y + 9, color);   // lashes
+        }
+    }
+
     /** Centred text. */
     public static void center(GuiGraphicsExtractor g, Font font, String s, int cx, int y, int color) {
         g.text(font, s, cx - font.width(s) / 2, y, color, true);

@@ -126,14 +126,28 @@ public class MaterialsScreen extends Screen {
         return super.keyPressed(e);
     }
 
-    private Materials.Row hoveredRow;
-    private int[] undoLink;
+    private Materials.Row hoveredRow, hoveredEye;
+    private int[] undoLink, eyeAll;
     @Override public boolean mouseClicked(net.minecraft.client.input.MouseButtonEvent e, boolean dbl) {
         if (super.mouseClicked(e, dbl)) return true;
         if (undoLink != null && e.x() >= undoLink[0] && e.x() < undoLink[2] && e.y() >= undoLink[1] && e.y() < undoLink[3]) {
             if (BuildBlueprintClient.SESSION.undoSwap()) { Materials.refresh(); SessionStore.dirty(); Chat.bar("Last swap undone"); }
             return true;
         }
+        if (hoveredEye != null && BuildBlueprintClient.SESSION.loaded()) {   // the eye: hide / show this block (Shift: only this block)
+            var mc = net.minecraft.client.Minecraft.getInstance();
+            if (mc.hasShiftDown()) {
+                List<String> all = new ArrayList<>();
+                for (Materials.Row r : Materials.rows()) all.add(r.id());
+                Hide.only(hoveredEye.id(), all);
+                Chat.bar(Hide.any() ? "Showing only " + hoveredEye.name() + "  ·  Shift-click the eye again to show everything" : "Showing every block again");
+            } else {
+                Hide.toggle(hoveredEye.id());
+                Chat.bar((Hide.item(hoveredEye.id()) ? "Hid " : "Showing ") + hoveredEye.name() + (Hide.any() ? "  ·  " + Hide.count() + " hidden" : ""));
+            }
+            return true;
+        }
+        if (eyeAll != null && e.x() >= eyeAll[0] && e.x() < eyeAll[2] && e.y() >= eyeAll[1] && e.y() < eyeAll[3] && Hide.any()) { Hide.showAll(); Chat.bar("Showing every block again"); return true; }
         if (hoveredRow != null && BuildBlueprintClient.SESSION.loaded()) { Mc.setScreen(new SwapScreen(this, hoveredRow.id())); return true; }
         return false;
     }
@@ -167,24 +181,32 @@ public class MaterialsScreen extends Screen {
         int rows = rowsFit(), h = rows * rowH() + 16;
         UiKit.panel(g, x - 2, t - 2, w + 4, h + 2, layerTab ? UiKit.BAR_LAYER : UiKit.BAR_BUILD);
         g.text(font, layerTab ? "Blocks for this layer" : "Blocks for the whole build", x + 4, t + 2, UiKit.MUTED, false);
+        int ex = x + w - 150;   // the eye column
+        boolean eyeAllHov = Hide.any() && mouseX >= ex - 2 && mouseX < ex + 15 && mouseY >= t && mouseY < t + 12;
+        UiKit.eye(g, ex, t + 1, !Hide.any(), eyeAllHov ? UiKit.WHITE : Hide.any() ? UiKit.ORANGE : UiKit.MUTED);
+        eyeAll = new int[]{ex - 2, t, ex + 15, t + 12};
         g.text(font, "have", x + w - 120, t + 2, UiKit.MUTED, false);
         g.text(font, "to place", x + w - 62, t + 2, UiKit.MUTED, false);
         List<Materials.Row> list = list();
         java.util.Set<String> notHere = Swapper.notInGame();
-        Materials.Row hovered = null;
+        Materials.Row hovered = null, eyeHov = null;
         int y = t + 14;
         for (int i = scroll; i < Math.min(list.size(), scroll + rows); i++, y += rowH()) {
             Materials.Row r = list.get(i);
             boolean hov = mouseX >= x && mouseX < x + w && mouseY >= y && mouseY < y + rowH();
-            if (hov) hovered = r;
+            boolean onEye = hov && mouseX >= ex - 3 && mouseX < ex + 16;
+            if (onEye) eyeHov = r; else if (hov) hovered = r;
+            boolean shown = !Hide.item(r.id());
             g.fill(x, y, x + w, y + rowH() - 1, hov ? 0x40FFFFFF : (i % 2 == 0 ? 0x14FFFFFF : 0x00000000));
             int col = r.done() ? UiKit.GREEN : r.enough() ? UiKit.BLUE : UiKit.RED;
             g.fill(x, y, x + 2, y + rowH() - 1, col);
             if (!r.icon().isEmpty()) g.item(r.icon(), x + 4, y + 1);
-            int room = w - 24 - 130;
+            UiKit.eye(g, ex, y + 5, shown, onEye ? UiKit.WHITE : shown ? 0xFFB8B8B8 : 0xFF6A6A6A);
+            int room = w - 24 - 156;   // name, up to the eye
             boolean missingHere = notHere.contains(r.id());
             String n = UiKit.fit(font, r.name(), missingHere ? room - 70 : room);
-            g.text(font, n, x + 24, y + 6, missingHere ? UiKit.ORANGE : r.done() ? UiKit.DIM : UiKit.WHITE, true);
+            g.text(font, n, x + 24, y + 6, !shown ? UiKit.DIM : missingHere ? UiKit.ORANGE : r.done() ? UiKit.DIM : UiKit.WHITE, true);
+            if (!shown) g.fill(x + 24, y + 10, x + 24 + font.width(n), y + 11, 0xFF6A6A6A);   // crossed out while hidden
             if (missingHere) {   // this block isn't in this Minecraft version: click it to pick another
                 int cx = x + 24 + font.width(n) + 5;
                 g.fill(cx, y + 5, cx + 62, y + 15, 0xFF5A3A10);
@@ -213,7 +235,7 @@ public class MaterialsScreen extends Screen {
         if (s.loaded()) {
             int bad = notHere.size();
             String foot = bad > 0 ? bad + " block" + (bad == 1 ? "" : "s") + " in this build " + (bad == 1 ? "isn't" : "aren't") + " in Minecraft " + dev.buildblueprint.core.SchemCodec.minecraftVersion() + "  ·  click one to swap it"
-                    : "Click a block to swap it or remove it";
+                    : Hide.any() ? Hide.count() + " hidden  ·  click the eye at the top to show them all" : "Click a block to swap or remove it  ·  the eye hides it";
             String link = s.canUndoSwap() ? "Undo swap" : "";
             String sep = link.isEmpty() ? "" : "  ·  ";
             int fw = font.width(foot) + font.width(sep) + font.width(link), fx = width / 2 - fw / 2, fy = t + h + 3;
@@ -230,7 +252,20 @@ public class MaterialsScreen extends Screen {
 
         super.extractRenderState(g, mouseX, mouseY, delta);
 
-        hoveredRow = hovered;
+        hoveredRow = hovered; hoveredEye = eyeHov;
+        if (eyeHov != null) {
+            List<Component> tip = new ArrayList<>();
+            boolean hid = Hide.item(eyeHov.id());
+            tip.add(Component.literal((hid ? "Show " : "Hide ") + eyeHov.name()).withStyle(ChatFormatting.WHITE));
+            tip.add(Component.literal(hid ? "Its ghost blocks are hidden right now" : "Hides its ghost blocks so you can see the rest better").withStyle(ChatFormatting.GRAY));
+            tip.add(Component.literal("Shift-click: show only this block").withStyle(ChatFormatting.YELLOW));
+            g.setComponentTooltipForNextFrame(font, tip, mouseX, mouseY);
+        } else if (eyeAllHov) {
+            List<Component> tip = new ArrayList<>();
+            tip.add(Component.literal("Show every block again").withStyle(ChatFormatting.WHITE));
+            tip.add(Component.literal(Hide.count() + " hidden").withStyle(ChatFormatting.GRAY));
+            g.setComponentTooltipForNextFrame(font, tip, mouseX, mouseY);
+        }
         if (hovered != null) {
             List<Component> tip = new ArrayList<>();
             tip.add(Component.literal(hovered.name()).withStyle(ChatFormatting.WHITE));
