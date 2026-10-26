@@ -23,6 +23,7 @@ public class BuildBlueprintClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        dev.buildblueprint.core.Session.fixState = Swapper::fixState;   // renamed blocks (chain -> iron_chain...) load in every version
         try {
             Cmd.register(BuildBlueprintClient::registerCommands);
         } catch (LinkageError e) {

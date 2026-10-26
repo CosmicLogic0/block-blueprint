@@ -120,6 +120,20 @@ public final class Swapper {
         return w;
     }
 
+    // blocks Minecraft renamed: each pair is {older name, newer name}. A build from either version loads in the other.
+    private static final String[][] RENAMED = {{"chain", "iron_chain"}, {"grass", "short_grass"}, {"grass_path", "dirt_path"}};
+    /** A block state with its block renamed to what this Minecraft version calls it (only when the old name isn't known here). */
+    public static String fixState(String state) {
+        String id = MaterialMap.blockId(state);
+        if (!ns(id).equals("minecraft") || exists(id)) return state;
+        String p = path(id);
+        for (String[] r : RENAMED) {
+            String other = p.equals(r[0]) ? r[1] : p.equals(r[1]) ? r[0] : null;
+            if (other != null && exists("minecraft:" + other)) return "minecraft:" + other + state.substring(id.length());
+        }
+        return state;
+    }
+
     /** Blocks of the same kind of piece, the most alike first: sharing a word in the name ("terracotta", "oak"...), then the closest colour. */
     public static List<Option> similar(String blockId) {
         String shape = shapeOf(blockId);

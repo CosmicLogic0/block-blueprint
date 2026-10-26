@@ -14,12 +14,16 @@ public final class Session {
     /** Placed: the blueprint can't be moved or rotated until unlocked (stops accidental key presses). */
     public boolean locked = false;
 
+    /** Turns block names this Minecraft version doesn't know into the name it uses (set by the game side, e.g. chain <-> iron_chain). */
+    public static java.util.function.UnaryOperator<String> fixState = st -> st;
+
     public boolean loaded() { return base != null; }
     public Blueprint blueprint() { return current; }
     public int turns() { return turns; }
 
     /** Load a blueprint so it sits in front of a player standing at (px,py,pz) facing the given yaw. */
     public void load(Blueprint bp, int px, int py, int pz, float yaw) {
+        bp = withPalette(bp, fixState);
         base = bp; turns = 0; current = bp; layer = -1; visible = true; locked = false; mirrored = false; swapUndo.clear();
         int[] f = forward(yaw);
         // Centre it sideways, put its near edge a few blocks ahead, base level with the player's feet.
@@ -100,6 +104,7 @@ public final class Session {
     }
     /** Restore a saved session exactly (used when you rejoin a world). */
     public void restore(Blueprint bp, int x, int y, int z, int layer, boolean locked) {
+        bp = withPalette(bp, fixState);
         base = bp; current = bp; turns = 0; ox = x; oy = y; oz = z; this.layer = layer; this.locked = locked; visible = true; mirrored = false; swapUndo.clear();
     }
 
