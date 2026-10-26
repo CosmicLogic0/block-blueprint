@@ -17,13 +17,16 @@ Start at the bottom. The mod shows one layer at a time and moves you up when you
 <img src="https://media.forgecdn.net/attachments/description/1762212/description_51bfc793-b635-455e-8a22-dc85600ab918.png" alt="Building layer by layer with the materials list" width="836">
 
 **📋 Know exactly what you need**<br>
-A live list shows every block the build needs, how many you have, and how many are left. Hover any block to see how many stacks you still need. Opened chests nearby that hold blocks you still need get a green glow.
+A live list shows every block the build needs, how many you have, and how many are left. Hover any block to see how many stacks you still need. Chests you've opened nearby that hold blocks you still need get a green glow, and when you open one, the slots with those blocks are **framed in green** so you know exactly what to take.
 
 **🎯 Never lose your place**<br>
-A pulsing box shows the next block to place. Middle-click any ghost block to put that block in your hand.
+A pulsing box shows the next block to place. Middle-click any ghost block to put that block in your hand. Placed a stair upside down or a log on its side? It gets a **red box** and a message telling you which way it should face.
 
 **🎨 Make it yours**<br>
-Click any block in the list and pick another one to use instead: any block in the game, even blocks from other mods you have. Search by name, or start with similar blocks (stairs stay stairs, closest colours first). Every block of that kind in the build changes, and **Undo swap** puts it back.
+Click any block in the list and pick another one to use instead: any block in the game, even blocks from other mods you have. Search by name, or start with similar blocks (stairs stay stairs, closest colours first). Every block of that kind in the build changes, and **Undo swap** puts it back. Don't want a block at all, like snow on a roof? **Remove** it from the build. Click the **eye** next to a block to hide its ghost blocks, or Shift-click it to see only that one block.
+
+**🧩 Works with modded blocks**<br>
+Got mods that add blocks? Build Blueprint works with them. Copy a build that uses modded blocks and it keeps them, schematic files with modded blocks load as they are, and the swap list shows every block from your other mods with the mod's name. If a build has blocks from a mod you don't have, or from a newer Minecraft version, the mod tells you and lets you swap them for blocks you do have.
 
 **📸 Copy any build in your world/Other servers**<br>
 Look at a corner of a build and press **Insert**. A box starts on that block: make it as big as the build with the arrow keys, or look at the far corner and press **Page Down** to stretch it there. Save it, share it as a code, or build it again somewhere else.
