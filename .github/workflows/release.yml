@@ -146,6 +146,7 @@ jobs:
           - { mc: "1.17.1",  dir: ports/1.21,    run: 21, target: 16, type: beta,    gv: "1.17 1.17.1", fapi: "1.17" }
           - { mc: "1.16.5",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.5", fapi: "1.16" }
           - { mc: "1.16.1",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16 1.16.1", fapi: "1.16" }
+          - { mc: "1.15.2",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.15 1.15.1 1.15.2", fapi: "1.15" }
           - { mc: "1.16.4",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.4", fapi: "1.16" }
           - { mc: "1.16.3",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.3", fapi: "1.16" }
           - { mc: "1.16.2",  dir: ports/1.21,    run: 21, target: 8,  type: beta,    gv: "1.16.2", fapi: "1.16" }

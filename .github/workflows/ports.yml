@@ -41,6 +41,7 @@ jobs:
           - { mc: "1.16.2",  dir: ports/1.21, java: 8, fapi: "1.16" }
           - { mc: "1.16.1",  dir: ports/1.21, java: 8, fapi: "1.16" }
           - { mc: "1.15.2",  dir: ports/1.21, java: 8, fapi: "1.15" }
+          - { mc: "1.15.2",  id: "forge-1.15.2", dir: ports/forge, java: 8, loader: forge }
           - { mc: "1.20.5",  id: "neoforge-1.20.5", dir: ports/forge, java: 21, loader: neoforge }
           - { mc: "1.20.1",  id: "forge-1.20.1", dir: ports/forge, java: 17, loader: forge }
           - { mc: "1.21.1",  id: "neoforge-1.21.1", dir: ports/forge, java: 21, loader: neoforge }

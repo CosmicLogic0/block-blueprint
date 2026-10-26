@@ -40,7 +40,7 @@ def eras = neo ? (mcv in ['1.20.2', '1.20.3', '1.20.4'] ? ['neoforge-1.20'] : mc
            mcv in ['1.20.5', '1.20.6'] || mcv.startsWith('1.21') ? ['forge-1.21'] :
            mcv == '1.19' ? ['forge-1.19.0', 'forge-1.19'] : mcv.startsWith('1.19') ? ['forge-1.19'] :
            mcv == '1.18.2' ? ['forge-1.18'] : mcv.startsWith('1.18') ? ['forge-1.18.1', 'forge-1.18'] :
-           mcv.startsWith('1.17') ? ['forge-1.17', 'forge-1.18'] : mcv.startsWith('1.16') ? ['forge-1.16'] : []
+           mcv.startsWith('1.17') ? ['forge-1.17', 'forge-1.18'] : mcv.startsWith('1.16') ? ['forge-1.16'] : mcv.startsWith('1.15') ? ['forge-1.15', 'forge-1.16'] : []
 println "Build Blueprint (Forge): Minecraft ${mcv}, helpers from ../1.21/src/compat/${compat}"
 
 def gen = layout.buildDirectory.dir('gen-src'), core = layout.buildDirectory.dir('core-src'), res = layout.buildDirectory.dir('shared-res')
