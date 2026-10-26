@@ -22,6 +22,7 @@ public final class Settings {
     public static int ghostAlpha = 55;         // percent opacity of the see-through blocks
     public static int range = 96;              // preview distance in blocks
     public static boolean redOutline = true;   // red boxes on blocks in the way
+    public static boolean checkFacing = true;  // blocks only count when they face the right way (stairs, logs, slabs...)
     public static boolean autoLayer = true;    // move to the next layer when one is finished
     public static boolean startLayer1 = true;  // loading a build starts on layer 1
     public static boolean nextHint = true;     // highlight the next block to place
@@ -40,7 +41,7 @@ public final class Settings {
         hudLines = i(p, "hudLines", hudLines); hudBar = b(p, "hudBar", hudBar); hudHints = b(p, "hudHints", hudHints);
         matMode = p.getProperty("matMode", matMode); ghostAlpha = i(p, "ghostAlpha", ghostAlpha); range = i(p, "range", range);
         redOutline = b(p, "redOutline", redOutline); autoLayer = b(p, "autoLayer", autoLayer); startLayer1 = b(p, "startLayer1", startLayer1);
-        nextHint = b(p, "nextHint", nextHint); ghostPick = b(p, "ghostPick", ghostPick); chestFinder = b(p, "chestFinder", chestFinder); hudStats = b(p, "hudStats", hudStats); sounds = b(p, "sounds", sounds);
+        nextHint = b(p, "nextHint", nextHint); ghostPick = b(p, "ghostPick", ghostPick); chestFinder = b(p, "chestFinder", chestFinder); checkFacing = b(p, "checkFacing", checkFacing); dev.buildblueprint.core.Orient.on = checkFacing; hudStats = b(p, "hudStats", hudStats); sounds = b(p, "sounds", sounds);
     }
 
     public static void save() {
@@ -50,7 +51,7 @@ public final class Settings {
         p.setProperty("hudLines", "" + hudLines); p.setProperty("hudBar", "" + hudBar); p.setProperty("hudHints", "" + hudHints);
         p.setProperty("matMode", matMode); p.setProperty("ghostAlpha", "" + ghostAlpha); p.setProperty("range", "" + range);
         p.setProperty("redOutline", "" + redOutline); p.setProperty("autoLayer", "" + autoLayer); p.setProperty("startLayer1", "" + startLayer1);
-        p.setProperty("nextHint", "" + nextHint); p.setProperty("ghostPick", "" + ghostPick); p.setProperty("chestFinder", "" + chestFinder); p.setProperty("hudStats", "" + hudStats); p.setProperty("sounds", "" + sounds);
+        p.setProperty("nextHint", "" + nextHint); p.setProperty("ghostPick", "" + ghostPick); p.setProperty("chestFinder", "" + chestFinder); p.setProperty("checkFacing", "" + checkFacing); p.setProperty("hudStats", "" + hudStats); p.setProperty("sounds", "" + sounds);
         try { Files.createDirectories(file().getParent()); try (Writer w = Files.newBufferedWriter(file())) { p.store(w, "Build Blueprint settings"); } } catch (IOException ignored) {}
     }
 

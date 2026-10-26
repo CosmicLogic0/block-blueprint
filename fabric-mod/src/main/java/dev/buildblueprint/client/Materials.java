@@ -2,6 +2,7 @@ package dev.buildblueprint.client;
 
 import dev.buildblueprint.core.Blueprint;
 import dev.buildblueprint.core.MaterialMap;
+import dev.buildblueprint.core.Orient;
 import dev.buildblueprint.core.Session;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,6 +86,7 @@ public final class Materials {
         Map<String, MaterialMap.Req> reqCache = new HashMap<>();
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
         int done = 0, all = 0;
+        Map<Long, String[]> wrong = new HashMap<>();
         int[] perLayer = new int[bp.sy], totLayer = new int[bp.sy];
         List<Map<String, int[]>> perItemLayer = new ArrayList<>();
         for (int y = 0; y < bp.sy; y++) perItemLayer.add(new LinkedHashMap<>());
@@ -101,8 +103,12 @@ public final class Materials {
                     int[] cl = perItemLayer.get(y).computeIfAbsent(r.itemId(), k -> new int[2]);
                     cl[1] += r.count(); totLayer[y]++;
                     pos.set(s.ox + x, s.oy + y, s.oz + z);
-                    String have = BuiltInRegistries.BLOCK.getKey(mc.level.getBlockState(pos).getBlock()).toString();
-                    if (have.equals(MaterialMap.blockId(st))) done++;
+                    net.minecraft.world.level.block.state.BlockState hs = mc.level.getBlockState(pos);
+                    String have = BuiltInRegistries.BLOCK.getKey(hs.getBlock()).toString();
+                    if (have.equals(MaterialMap.blockId(st))) {
+                        if (st.indexOf('[') < 0 || Orient.ok(st, hs.toString())) done++;
+                        else { perLayer[y]++; wrong.put(pos.asLong(), new String[]{st, hs.toString(), r.itemId()}); }   // there, but the wrong way round
+                    }
                     else { c[0] += r.count(); cl[0] += r.count(); perLayer[y]++; }
                 }
         Map<String, Integer> inv = PlayerInfo.inventoryCounts();
@@ -114,7 +120,30 @@ public final class Materials {
         layer = L; layerTotal = totLayer[L]; layerPlaced = totLayer[L] - perLayer[L];
         layerRows = toRows(perItemLayer.get(L), inv);
         placed = done;
+        sayWrong(wrong, mc);
         totalBlocks = all;
         Stats.update(bp, done, all);
+    }
+
+    private static java.util.Set<Long> wrongBefore = new java.util.HashSet<>();
+    private static int wrongCount;
+    public static int wrongWay() { return wrongCount; }
+    /** A block that was just placed the wrong way round (stairs upside down, a log on its side...): say how it should go. */
+    private static void sayWrong(Map<Long, String[]> wrong, Minecraft mc) {
+        wrongCount = wrong.size();
+        String[] first = null; double best = 0;
+        for (Map.Entry<Long, String[]> e : wrong.entrySet()) {
+            if (wrongBefore.contains(e.getKey())) continue;
+            BlockPos b = BlockPos.of(e.getKey());
+            double dx = b.getX() + 0.5 - mc.player.getX(), dy = b.getY() + 0.5 - mc.player.getY(), dz = b.getZ() + 0.5 - mc.player.getZ(), d = dx * dx + dy * dy + dz * dz;
+            if (d > 100 || (first != null && d >= best)) continue;
+            first = e.getValue(); best = d;
+        }
+        boolean fresh = !wrongBefore.isEmpty() || wrong.size() < 50;   // not right after loading a build into an old one
+        wrongBefore = new java.util.HashSet<>(wrong.keySet());
+        if (first == null || !fresh) return;
+        ItemStack it = stackFor(first[2]);
+        String name = it.isEmpty() ? PlayerInfo.pretty(MaterialMap.blockId(first[0])) : it.getHoverName().getString();
+        Chat.bar("Wrong way round: this " + name + " " + Orient.fix(first[0], first[1]) + "  ·  break it and place it again");
     }
 }

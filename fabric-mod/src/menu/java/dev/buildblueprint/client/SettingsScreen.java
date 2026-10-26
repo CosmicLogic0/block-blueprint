@@ -55,7 +55,9 @@ public class SettingsScreen extends Screen {
             opt(() -> "Build timer: " + onOff(Settings.hudStats), () -> Settings.hudStats = !Settings.hudStats, "How long you've been building and how many blocks a minute.");
             opt(() -> "Key hints: " + onOff(Settings.hudHints), () -> Settings.hudHints = !Settings.hudHints, "The small reminder of the keys under the corner list.");
             opt(() -> "Draw distance: " + Settings.range, () -> Settings.range = next(Settings.range, 32, 48, 64, 96, 128, 192), "How far away ghost blocks are still drawn. Lower = faster.");
-            opt(() -> "Red boxes: " + onOff(Settings.redOutline), () -> Settings.redOutline = !Settings.redOutline, "Red outline on blocks that are in the way of the build.");
+            opt(() -> "Red boxes: " + onOff(Settings.redOutline), () -> Settings.redOutline = !Settings.redOutline, "Red outline on blocks that are in the way of the build, or placed the wrong way round.");
+            opt(() -> "Check direction: " + onOff(Settings.checkFacing), () -> { Settings.checkFacing = !Settings.checkFacing; dev.buildblueprint.core.Orient.on = Settings.checkFacing; Materials.refresh(); },
+                    "Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.");
             opt(() -> "Pick from ghost: " + onOff(Settings.ghostPick), () -> Settings.ghostPick = !Settings.ghostPick, "Middle-click a ghost block to put that block in your hand.");
             opt(() -> "Placed: start at layer 1: " + onOff(Settings.startLayer1), () -> Settings.startLayer1 = !Settings.startLayer1, "A new build shows fully built so you can move it. When you place it, it switches to layer 1 so you can start building.");
         }

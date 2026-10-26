@@ -1,6 +1,7 @@
 ## 1.2.10
 - **Chest highlight:** when the list says a block you need is in a chest nearby, open that chest and the slots holding blocks your build still needs get a **green frame**, so you can see straight away which ones to take. Works in chests, barrels, shulker boxes and any other container. Follows the "Chest finder" setting.
 - **Remove a block from a build:** click a block in the build menu and press **Remove from build** to take every one of it out of the build - for example snow on a roof you don't want. **Undo swap** puts it back.
+- **Blocks must face the right way:** stairs, slabs (top or bottom), logs, doors, buttons, signs and more only count as done when they're placed the right way round. A block placed the wrong way gets a red box and a message saying how it should go ("should face north, be the right way up") - break it and place it again. Auto-build fixes them too. Turn it off in Settings > More > Check direction.
 - **Fixed: chains missing** from builds made in another Minecraft version (Minecraft 1.21.9 renamed chain to iron_chain). Grass / short grass and grass path / dirt path are fixed the same way.
 
 ## 1.2.9 (beta)

@@ -43,7 +43,7 @@ public class HelpScreen extends BBScreen {
         {"Build from the bottom up. Only the layer you're on is shown, so it's easy to see what goes where.",
          "The next block to place glows. When a layer is finished you move up to the next one by itself.",
          "key:Home / End:go up or down a layer",
-         "Blocks you placed correctly disappear from the ghost. A red outline means a different block is in the way."},
+         "Blocks you placed correctly disappear from the ghost. A red outline means a different block is in the way, or the block is the wrong way round (stairs upside down, a log on its side) - break it and place it again."},
         {"The build menu lists every block the build needs: how many you have and how many are still to place.",
          "The small list in the corner shows the same while you build. Chests you opened nearby that hold blocks you need glow green.",
          "Don't have a block? Click it in the list and pick any other block in the game (blocks from other mods too).",

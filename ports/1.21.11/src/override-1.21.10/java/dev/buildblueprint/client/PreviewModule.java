@@ -155,7 +155,7 @@ public final class PreviewModule {
                     pos.set(wx, wy, wz);
                     BlockState here = mc.level.getBlockState(pos);
                     String have = BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString();
-                    if (have.equals(MaterialMap.blockId(st))) continue;     // already built
+                    if (have.equals(MaterialMap.blockId(st)) && (st.indexOf('[') < 0 || dev.buildblueprint.core.Orient.ok(st, here.toString()))) continue;     // already built, the right way round (the wrong way round gets a red box)
                     if (here.isAir() || !here.getFluidState().isEmpty() || here.canBeReplaced()) {
                         BlockState want = parse(st);
                         if (want != null && ghosts.size() < MAX_GHOSTS) { ghosts.add(new Ghost(wx, wy, wz, want, x, y, z)); ghostAt.add(((long) x << 40) | ((long) y << 20) | z); }

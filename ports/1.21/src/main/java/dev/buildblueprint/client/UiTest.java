@@ -144,6 +144,12 @@ public final class UiTest {
             if (PlayerInfo.inWorld()) BuildBlueprintClient.SESSION.load(bp, PlayerInfo.x(), PlayerInfo.y(), PlayerInfo.z(), PlayerInfo.yaw());
             else BuildBlueprintClient.SESSION.load(bp, 0, 64, 0, 0f);
             System.out.println("BBUITEST loaded " + bp.blockCount() + " blocks");
+            try {   // direction check: a stair placed upside down and facing south, against one that should face north
+                String probe = "minecraft:oak_stairs[facing=south,half=top]";
+                String seen = V.parseState(probe).toString();
+                System.out.println("BBUITEST direction check: " + seen + " -> right way " + dev.buildblueprint.core.Orient.ok("minecraft:oak_stairs[facing=north,half=bottom]", seen)
+                        + " (" + dev.buildblueprint.core.Orient.fix("minecraft:oak_stairs[facing=north,half=bottom]", seen) + "), same way " + dev.buildblueprint.core.Orient.ok(probe, seen));
+            } catch (Exception e) { System.out.println("BBUITEST direction check failed: " + e); }
             System.out.println("BBUITEST renamed blocks: chain -> " + Swapper.fixState("minecraft:chain[axis=y]") + ", iron_chain -> " + Swapper.fixState("minecraft:iron_chain[axis=y]") + ", grass -> " + Swapper.fixState("minecraft:grass"));
         } catch (Exception e) { System.out.println("BBUITEST load failed: " + e); }
     }
