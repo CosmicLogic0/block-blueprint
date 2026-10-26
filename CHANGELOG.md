@@ -1,3 +1,8 @@
+## 1.2.10
+- **Chest highlight:** when the list says a block you need is in a chest nearby, open that chest and the slots holding blocks your build still needs get a **green frame**, so you can see straight away which ones to take. Works in chests, barrels, shulker boxes and any other container. Follows the "Chest finder" setting.
+- **Remove a block from a build:** click a block in the build menu and press **Remove from build** to take every one of it out of the build - for example snow on a roof you don't want. **Undo swap** puts it back.
+- **Fixed: chains missing** from builds made in another Minecraft version (Minecraft 1.21.9 renamed chain to iron_chain). Grass / short grass and grass path / dirt path are fixed the same way.
+
 ## 1.2.9 (beta)
 - **New block swap screen:** click a block in the build menu and pick ANY block in the game to use instead - including blocks from other mods you have installed (with the mod's name next to them).
   - Search box at the top: type a name or a mod.
