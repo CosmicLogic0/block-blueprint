@@ -22,7 +22,7 @@ public final class UiTest {
     private static boolean world, joined;
     private static String[] steps;
     private static final String[] MENU = {"settings", "settings-more", "saved", "build", "done"};
-    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings", "settings-more", "saved", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings", "settings-more", "saved", "world-special", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -160,6 +160,19 @@ public final class UiTest {
         switch (what) {
             case "world-ghost" -> { Mc.setScreen(null); loadTestBuild(); }
             case "world-placed" -> { Mc.setScreen(null); BuildBlueprintClient.setLocked(true); System.out.println("BBUITEST placed, layer " + (BuildBlueprintClient.SESSION.layer + 1)); }
+            case "world-special" -> {   // blocks the game draws in a special way: their ghosts use look-alike blocks
+                Mc.setScreen(null);
+                String[] pal = {"minecraft:chest[facing=north,type=single,waterlogged=false]", "minecraft:ender_chest[facing=north,waterlogged=false]",
+                        "minecraft:oak_sign[rotation=8,waterlogged=false]", "minecraft:red_bed[facing=north,occupied=false,part=foot]",
+                        "minecraft:white_banner[rotation=8]", "minecraft:skeleton_skull[rotation=8]", "minecraft:shulker_box[facing=up]", "minecraft:trapped_chest[facing=north,type=single,waterlogged=false]"};
+                int[] cells = new int[pal.length * 2];
+                for (int i = 0; i < pal.length; i++) cells[i * 2] = i + 1;
+                BuildBlueprintClient.setLocked(false);
+                BuildBlueprintClient.SESSION.load(new dev.buildblueprint.core.Blueprint("Special blocks", pal.length * 2, 1, 1, pal, cells), PlayerInfo.x(), PlayerInfo.y(), PlayerInfo.z(), PlayerInfo.yaw());
+                StringBuilder sb = new StringBuilder();
+                for (String st : pal) sb.append(dev.buildblueprint.core.MaterialMap.blockId(st)).append(" -> ").append(String.join("/", dev.buildblueprint.core.Standin.of(dev.buildblueprint.core.MaterialMap.blockId(st)))).append("; ");
+                System.out.println("BBUITEST stand-ins: " + sb);
+            }
             case "world-copy" -> {
                 Mc.setScreen(null);
                 BuildBlueprintClient.setLocked(false); BuildBlueprintClient.SESSION.clear();

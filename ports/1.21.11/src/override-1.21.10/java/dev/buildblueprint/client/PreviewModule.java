@@ -234,8 +234,15 @@ public final class PreviewModule {
         float alpha = Settings.ghostAlpha / 100f;
         for (Ghost g : ghosts) {
             List<BakedQuad>[] q = quads(g.state);
+            float[] box = null;
+            if (empty(q)) {   // chests, signs, beds...: no normal model, so draw a look-alike block at the real block's size
+                Object[] sb = standin(g.state);
+                if (sb == null) continue;
+                q = quads((BlockState) sb[0]); box = (float[]) sb[1];
+            }
             ps.pushPose();
             ps.translate(g.x, g.y, g.z);
+            if (box != null) { ps.translate(box[0], box[1], box[2]); ps.scale(box[3], box[4], box[5]); }
             PoseStack.Pose p = ps.last();
             for (int i = 0; i < 7; i++) {
                 if (i < 6 && hidden(bp, g, DIRS[i])) continue;   // skip faces pressed against another ghost
@@ -250,6 +257,30 @@ public final class PreviewModule {
             }
             ps.popPose();
         }
+    }
+
+    private static final Map<BlockState, Object[]> STANDIN = new HashMap<>();
+    private static boolean empty(List<BakedQuad>[] q) { for (List<BakedQuad> l : q) if (!l.isEmpty()) return false; return true; }
+    /** For blocks the game draws in a special way (chests, signs, beds, banners, heads...): a plain look-alike block and the real block's size. */
+    private static Object[] standin(BlockState st) {
+        if (STANDIN.containsKey(st)) return STANDIN.get(st);
+        Object[] out = null;
+        for (String id : dev.buildblueprint.core.Standin.of(BuiltInRegistries.BLOCK.getKey(st.getBlock()).toString())) {
+            BlockState b = parse(id);
+            if (b == null || empty(quads(b))) continue;
+            float[] box = {0.0625f, 0f, 0.0625f, 0.875f, 0.875f, 0.875f};
+            try {
+                net.minecraft.world.phys.shapes.VoxelShape sh = st.getShape(net.minecraft.world.level.EmptyBlockGetter.INSTANCE, BlockPos.ZERO);
+                if (!sh.isEmpty()) {
+                    net.minecraft.world.phys.AABB a = sh.bounds();
+                    box = new float[]{(float) a.minX, (float) a.minY, (float) a.minZ, (float) (a.maxX - a.minX), (float) (a.maxY - a.minY), (float) (a.maxZ - a.minZ)};
+                }
+            } catch (Throwable ignored) {}
+            out = new Object[]{b, box};
+            break;
+        }
+        STANDIN.put(st, out);
+        return out;
     }
 
     private static final Map<BlockState, Boolean> FULL = new HashMap<>();

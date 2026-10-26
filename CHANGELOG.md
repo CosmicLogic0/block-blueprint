@@ -3,6 +3,7 @@
 - **Remove a block from a build:** click a block in the build menu and press **Remove from build** to take every one of it out of the build - for example snow on a roof you don't want. **Undo swap** puts it back.
 - **Hide blocks with the eye:** every block in the build menu has an eye. Click it to hide that block's ghost blocks (the eye closes), click again to show them (the eye opens). **Shift-click** an eye to see only that one block - handy for doing all the logs, or all the stairs, in a layer. The eye at the top shows everything again.
 - **Blocks must face the right way:** stairs, slabs (top or bottom), logs, doors, buttons, signs and more only count as done when they're placed the right way round. A block placed the wrong way gets a red box and a message saying how it should go ("should face north, be the right way up") - break it and place it again. Auto-build fixes them too. Turn it off in Settings > More > Check direction.
+- **Fixed: chests had no ghost block** (just the green box). The same for trapped chests, ender chests, signs, beds, banners, heads and shulker boxes - the game draws these in a special way. Their ghosts now show as a look-alike block at the real size (planks for a chest, obsidian for an ender chest, the bed's colour of wool...).
 - **Fixed: chains missing** from builds made in another Minecraft version (Minecraft 1.21.9 renamed chain to iron_chain). Grass / short grass and grass path / dirt path are fixed the same way.
 
 ## 1.2.9 (beta)
