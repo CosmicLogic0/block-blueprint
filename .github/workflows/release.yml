@@ -24,6 +24,7 @@ jobs:
       cf: ${{ steps.v.outputs.cf }}
       ready: ${{ steps.v.outputs.ready }}
       mr: ${{ steps.v.outputs.mr }}
+      mronly: ${{ steps.v.outputs.mronly }}
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 2 }
@@ -38,6 +39,10 @@ jobs:
           CF=""
           if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qx .github/curseforge-upload.txt; then CF=" $(grep -v '^#' .github/curseforge-upload.txt | tr '\n' ' ') "; fi
           echo "cf=$CF" >> "$GITHUB_OUTPUT"; echo "CurseForge uploads this time: [$CF]"
+          # Modrinth-only re-upload: ids in .github/modrinth-retry.txt, when that file changes in this push (CurseForge is skipped)
+          MRONLY=""
+          if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qx .github/modrinth-retry.txt; then MRONLY=" $(grep -v '^#' .github/modrinth-retry.txt | tr '\n' ' ') "; fi
+          echo "mronly=$MRONLY" >> "$GITHUB_OUTPUT"; echo "Modrinth-only uploads: [$MRONLY]"
           # versions that passed the player-style launch test (realtest.yml) on every game version they're listed for go up as Release, the rest as Beta
           READY=""; [ -f .github/release-ready.txt ] && READY=" $(grep -v '^#' .github/release-ready.txt | tr '\n' ' ') "
           echo "ready=$READY" >> "$GITHUB_OUTPUT"; echo "Release (not beta): [$READY]"
@@ -110,7 +115,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [check, app]
     # the mod is only built when something goes to CurseForge (mod files are not put on GitHub)
-    if: always() && needs.check.outputs.cf != '' && (needs.check.outputs.new == 'true' && needs.app.result == 'success' || needs.check.outputs.retry == 'true')
+    if: always() && (needs.check.outputs.cf != '' || needs.check.outputs.mronly != '') && (needs.check.outputs.new == 'true' && needs.app.result == 'success' || needs.check.outputs.retry == 'true')
     strategy:
       fail-fast: false
       max-parallel: 8
@@ -252,7 +257,7 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
       - name: Upload to CurseForge
-        if: (needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))) && contains(needs.check.outputs.cf, format(' {0} ', matrix.id || matrix.mc))
+        if: needs.check.outputs.mronly == '' && (needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))) && contains(needs.check.outputs.cf, format(' {0} ', matrix.id || matrix.mc))
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           curseforge-id: 1762212
@@ -268,7 +273,7 @@ jobs:
           changelog-file: CHANGELOG.md
 
       - name: Upload to Modrinth
-        if: needs.check.outputs.mr != '' && (needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))) && contains(needs.check.outputs.cf, format(' {0} ', matrix.id || matrix.mc))
+        if: always() && needs.check.outputs.mr != '' && (needs.check.outputs.only == '' || contains(needs.check.outputs.only, format(' {0} ', matrix.id || matrix.mc))) && (contains(needs.check.outputs.cf, format(' {0} ', matrix.id || matrix.mc)) || contains(needs.check.outputs.mronly, format(' {0} ', matrix.id || matrix.mc)))
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: ${{ needs.check.outputs.mr }}
