@@ -47,7 +47,7 @@ public class SavedBuildsScreen extends BBScreen {
     private int T() { return 30; }
     private int B() { return height - 30; }                    // bottom of panels
     private int rowH() { return 18; }
-    private int rows() { return Math.max(1, (B() - T() - 72) / rowH()); }
+    private int rows() { return Math.max(1, (B() - T() - 94) / rowH()); }
     private int listTop() { return T() + 20; }
     private int pvX() { return M() + listW() + 8; }
     private int pvY() { return T() + 22; }
@@ -66,6 +66,8 @@ public class SavedBuildsScreen extends BBScreen {
         filter();
         if (pick != null) { for (int i = 0; i < builds.size(); i++) if (builds.get(i).file().equals(pick)) sel = i; pick = null; }
         int lx = M(), lw = listW();
+        addRenderableWidget(Button.builder(Component.literal("Get free builds"), b -> Mc.setScreen(new TemplatesScreen(this))).bounds(lx, B() - 66, lw, 20)
+                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("1,400+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds."))).build());
         addRenderableWidget(Button.builder(Component.literal("+ Paste build"), b -> paste()).bounds(lx, B() - 44, lw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too."))).build());
         addRenderableWidget(Button.builder(Component.literal("Copy from world"), b -> { onClose(); Copier.start(); }).bounds(lx, B() - 22, lw, 20)
@@ -132,7 +134,21 @@ public class SavedBuildsScreen extends BBScreen {
     private void paste() {
         err = ""; msg = "";
         try {
-            String data = SavedBuilds.parsePasted(Minecraft.getInstance().keyboardHandler.getClipboard());
+            String clip = Minecraft.getInstance().keyboardHandler.getClipboard();
+            int[] coop = CoopScreen.parseHeader(clip);
+            String data = SavedBuilds.parsePasted(clip);
+            if (coop != null) {   // a friend's co-op code: put the build in their exact spot, placed, then pick your part
+                Blueprint cb = BlueprintCodec.decode(data);
+                boolean known = false;
+                for (SavedBuilds.Entry be : builds) if (be.data().equals(data)) known = true;
+                if (!known) SavedBuilds.save(cb.name == null || cb.name.trim().isEmpty() ? "Co-op build" : cb.name, data);
+                BuildBlueprintClient.SESSION.restore(cb, coop[0], coop[1], coop[2], 0, true);
+                Coop.set(coop[3], 1);
+                Materials.refresh(); SessionStore.dirty();
+                Chat.ok("Co-op build placed where your friend has it. Pick which builder you are.");
+                Mc.setScreen(new CoopScreen(null));
+                return;
+            }
             for (int i = 0; i < builds.size(); i++) if (builds.get(i).data().equals(data)) { sel = i; msg = "You already saved this build."; return; }
             Blueprint bp = BlueprintCodec.decode(data);
             SavedBuilds.save(bp.name == null || bp.name.trim().isEmpty() ? "My build" : bp.name, data);

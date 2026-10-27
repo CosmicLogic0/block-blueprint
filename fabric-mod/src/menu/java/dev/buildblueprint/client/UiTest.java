@@ -22,7 +22,7 @@ public final class UiTest {
     private static boolean world, joined;
     private static String[] steps;
     private static final String[] MENU = {"settings", "settings-more", "saved", "build", "done"};
-    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings", "settings-more", "saved", "world-special", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "settings", "settings-more", "saved", "world-special", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -219,6 +219,29 @@ public final class UiTest {
                 Mc.setScreen(new MaterialsScreen(true));
             }
             case "help" -> Mc.setScreen(new HelpScreen(null, 3));
+            case "settings-extras" -> { SettingsScreen.more = false; SettingsScreen.extras = true; Mc.setScreen(new SettingsScreen(null)); }
+            case "build-raw" -> {   // Extras on: raw materials view, layer map, scaffold hints
+                SettingsScreen.extras = false;
+                Settings.rawMats = true; Settings.layerMap = true; Settings.scaffold = true;
+                Materials.refresh();
+                java.util.Map<String, Integer> need = new java.util.LinkedHashMap<>();
+                for (Materials.Row r : Materials.rows()) if (r.missing() > 0) need.put(r.id(), r.missing());
+                StringBuilder sb = new StringBuilder();
+                for (dev.buildblueprint.core.Recipes.Raw r : dev.buildblueprint.core.Recipes.breakDown(need, id -> !Materials.stackFor(id).isEmpty()))
+                    sb.append(r.count()).append(' ').append(r.id).append(r.smelt ? " (smelt)" : "").append("; ");
+                System.out.println("BBUITEST raw materials: " + sb);
+                System.out.println("BBUITEST mistakes " + Mistakes.count() + ", scaffold " + Materials.scaffold().size() + ", layer map " + Materials.mapW() + "x" + Materials.mapD());
+                MaterialsScreen.testRaw(true);
+                Mc.setScreen(new MaterialsScreen(false));
+            }
+            case "world-extras" -> { MaterialsScreen.testRaw(false); Mc.setScreen(null); if (Mistakes.count() > 0) Mistakes.show(); }
+            case "world-coop" -> { Mistakes.stop(); Coop.set(2, 1); Materials.refresh(); System.out.println("BBUITEST co-op: " + Coop.where(BuildBlueprintClient.SESSION.blueprint()) + ", my blocks " + Materials.totalBlocks()); Mc.setScreen(null); }
+            case "done-card" -> {
+                Coop.off(); Settings.rawMats = false; Settings.layerMap = false; Settings.scaffold = false; Materials.refresh();
+                Stats.completeAt = System.currentTimeMillis(); Stats.completeBlocks = Materials.totalBlocks(); Stats.completeMs = 754000; Stats.completePerMin = 23;
+                Mc.setScreen(null);
+            }
+            case "templates" -> Mc.setScreen(new TemplatesScreen(null));
             case "remove" -> {   // take the least used block out of the build, show the list, then put it back
                 Materials.refresh();
                 var rows = Materials.rows();

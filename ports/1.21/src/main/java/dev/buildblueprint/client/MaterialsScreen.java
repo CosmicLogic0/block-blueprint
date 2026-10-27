@@ -17,6 +17,8 @@ import net.minecraft.network.chat.Component;
  */
 public class MaterialsScreen extends BBScreen {
     private static boolean layerTab = false;   // remembered while the game runs
+    private static boolean raw = false;        // "Raw materials" view (Settings > Extras)
+    private final List<Object[]> links = new ArrayList<>();   // clickable text: {int[] x0,y0,x1,y1, Runnable}
     private static int scroll = 0;
     private int tick = 0;
     private String state = "";                 // what the tool row was built for; the screen rebuilds when it changes
@@ -51,6 +53,7 @@ public class MaterialsScreen extends BBScreen {
             t.add(new String[]{"Build layer", "Creative only: places just the layer you're on.", "autoLayer"});
             if (AutoBuild.canUndo()) t.add(new String[]{"Undo build", "Puts back what was there before the last auto-build.", "undo"});
         }
+        if (s.locked) t.add(new String[]{Coop.on() ? "Co-op " + Coop.me + "/" + Coop.parts : "Co-op", "Build this with friends: send them a code that puts it in this exact spot, and split it so everyone builds their own part.", "coop"});
         t.add(new String[]{"Remove", "Take this build out of your world view. It stays in Saved builds, so you can load it again.", "remove"});
         return t;
     }
@@ -106,6 +109,7 @@ public class MaterialsScreen extends BBScreen {
             case "auto" -> { AutoBuild.start(-1); onClose(); }
             case "autoLayer" -> { AutoBuild.start(Materials.layer()); onClose(); }
             case "undo" -> { AutoBuild.undoLast(); onClose(); }
+            case "coop" -> Mc.setScreen(new CoopScreen(this));
             case "remove" -> { BuildBlueprintClient.removeBuild(); MenuModule.openSaved(); }
             default -> { }
         }
@@ -129,6 +133,10 @@ public class MaterialsScreen extends BBScreen {
     private int[] undoLink, eyeAll;
     @Override public boolean mouseClicked(MouseButtonEvent e, boolean dbl) {
         if (super.mouseClicked(e, dbl)) return true;
+        for (Object[] l : links) {
+            int[] r = (int[]) l[0];
+            if (e.x() >= r[0] && e.x() < r[2] && e.y() >= r[1] && e.y() < r[3]) { ((Runnable) l[1]).run(); return true; }
+        }
         if (undoLink != null && e.x() >= undoLink[0] && e.x() < undoLink[2] && e.y() >= undoLink[1] && e.y() < undoLink[3]) {
             if (BuildBlueprintClient.SESSION.undoSwap()) { Materials.refresh(); SessionStore.dirty(); Chat.bar("Last swap undone"); }
             return true;
@@ -153,6 +161,45 @@ public class MaterialsScreen extends BBScreen {
 
     private List<Materials.Row> list() { return layerTab ? Materials.layerRows() : Materials.rows(); }
 
+    /** For the automatic screenshot test: open on the raw materials view. */
+    static void testRaw(boolean on) { raw = on; }
+
+    /** Clickable text (underlined while the mouse is on it). Returns its width. */
+    private int link(GuiGraphics g, String text, int x, int y, int color, int mouseX, int mouseY, Runnable action) {
+        int w = font.width(text);
+        boolean hov = mouseX >= x && mouseX < x + w && mouseY >= y - 1 && mouseY < y + 10;
+        g.drawString(font, text, x, y, hov ? UiKit.WHITE : color, false);
+        g.fill(x, y + 9, x + w, y + 10, hov ? UiKit.WHITE : color);
+        links.add(new Object[]{new int[]{x, y - 1, x + w, y + 10}, action});
+        return w;
+    }
+
+    /** Raw materials for what's still missing in this tab: logs for planks, sand for glass... */
+    private List<dev.buildblueprint.core.Recipes.Raw> rawRows() {
+        java.util.Map<String, Integer> need = new java.util.LinkedHashMap<>();
+        for (Materials.Row r : list()) if (r.missing() > 0) need.put(r.id(), r.missing());
+        return dev.buildblueprint.core.Recipes.breakDown(need, id -> !Materials.stackFor(id).isEmpty());
+    }
+
+    /** Copies the list as plain text (to paste in Discord, a note...). */
+    private void copyList() {
+        var s = BuildBlueprintClient.SESSION;
+        if (!s.loaded()) return;
+        StringBuilder sb = new StringBuilder();
+        sb.append(s.blueprint().name == null ? "Build" : s.blueprint().name).append(" - ").append(layerTab ? "layer " + (Materials.layer() + 1) : "whole build").append('\n');
+        if (raw && Settings.rawMats) {
+            sb.append("Raw materials to gather:\n");
+            for (dev.buildblueprint.core.Recipes.Raw r : rawRows()) sb.append("- ").append(r.count()).append(' ').append(nameOf(r.id)).append(stacks(r.count())).append('\n');
+        } else {
+            sb.append("Still to place (have / need):\n");
+            for (Materials.Row r : list()) if (!r.done()) sb.append("- ").append(r.name()).append(": ").append(r.have()).append(" / ").append(r.left()).append(stacks(r.left())).append('\n');
+        }
+        net.minecraft.client.Minecraft.getInstance().keyboardHandler.setClipboard(sb.toString());
+        Chat.bar("Copied the list - paste it anywhere (Ctrl+V)");
+    }
+    private static String stacks(int n) { return n >= 64 ? " (" + (n / 64) + " stack" + (n / 64 == 1 ? "" : "s") + (n % 64 > 0 ? " + " + n % 64 : "") + ")" : ""; }
+    private static String nameOf(String id) { var st = Materials.stackFor(id); return st.isEmpty() ? PlayerInfo.pretty(id) : st.getHoverName().getString(); }
+
     @Override public boolean mouseScrolled(double x, double y, double dx, double dy) {
         scroll = Math.max(0, Math.min(Math.max(0, list().size() - rowsFit()), scroll - (int) Math.signum(dy) * 2));
         return true;
@@ -164,6 +211,7 @@ public class MaterialsScreen extends BBScreen {
     private void draw(GuiGraphics g, int mouseX, int mouseY, float delta) {
         var s = BuildBlueprintClient.SESSION;
         int x = px(), w = pw(), t = top();
+        links.clear();
         tabAll.active = layerTab; tabLayer.active = !layerTab;
         int top = s.loaded() ? s.blueprint().sy : 0;
         tabLayer.setMessage(Component.literal(s.loaded() ? "Layer " + (Materials.layer() + 1) + " of " + top : "Layer"));
@@ -174,12 +222,25 @@ public class MaterialsScreen extends BBScreen {
         if (s.loaded()) {
             String st = s.locked ? "placed" : "not placed yet";
             g.drawString(font, st, x + w - 22 - font.width(st), 8, s.locked ? UiKit.GREEN : UiKit.ORANGE, true);
+            int bad = Mistakes.count();
+            if (bad > 0) {   // mistake finder: point at the wrong blocks one by one
+                String fx = bad + " to fix";
+                link(g, fx, x + w - 22 - font.width(st) - 10 - font.width(fx), 8, UiKit.RED, mouseX, mouseY, () -> { Mistakes.show(); onClose(); });
+            }
             UiKit.bar(g, font, x, 20, w, Materials.placed(), Materials.totalBlocks(), UiKit.BAR_BUILD, Materials.placed() + " / " + Materials.totalBlocks() + " placed");
         }
         // the list
         int rows = rowsFit(), h = rows * rowH() + 16;
         UiKit.panel(g, x - 2, t - 2, w + 4, h + 2, layerTab ? UiKit.BAR_LAYER : UiKit.BAR_BUILD);
-        g.drawString(font, layerTab ? "Blocks for this layer" : "Blocks for the whole build", x + 4, t + 2, UiKit.MUTED, false);
+        boolean rawView = raw && Settings.rawMats;
+        String head = rawView ? "Raw materials" : "Blocks needed";
+        g.drawString(font, head, x + 4, t + 2, UiKit.MUTED, false);
+        if (s.loaded()) {
+            int lx = x + 4 + font.width(head) + 10;
+            lx += link(g, "Copy", lx, t + 2, UiKit.BLUE, mouseX, mouseY, this::copyList) + 10;
+            if (Settings.rawMats) link(g, rawView ? "Blocks" : "Raw materials", lx, t + 2, UiKit.BLUE, mouseX, mouseY, () -> { raw = !raw; scroll = 0; });
+        }
+        if (rawView) { drawRaw(g, x, w, t, rowsFit(), h, mouseX, mouseY); super.extractRenderState(g, mouseX, mouseY, delta); hoveredRow = null; hoveredEye = null; eyeAll = null; return; }
         int ex = x + w - 150;   // the eye column
         boolean eyeAllHov = Hide.any() && mouseX >= ex - 2 && mouseX < ex + 15 && mouseY >= t && mouseY < t + 12;
         UiKit.eye(g, ex, t + 1, !Hide.any(), eyeAllHov ? UiKit.WHITE : Hide.any() ? UiKit.ORANGE : UiKit.MUTED);
@@ -275,6 +336,44 @@ public class MaterialsScreen extends BBScreen {
             if (ch[0] > 0) tip.add(Component.literal("In chests nearby: " + ch[0] + " (" + ch[1] + " chest" + (ch[1] == 1 ? "" : "s") + ", green boxes)").withStyle(ChatFormatting.AQUA));
             if (hovered.missing() > 0) tip.add(Component.literal("Get " + hovered.missing() + " more" + (hovered.missing() >= 64 ? " (" + (hovered.missing() + 63) / 64 + " stacks)" : "")).withStyle(ChatFormatting.RED));
             tip.add(Component.literal("Click to swap it or remove it from the build").withStyle(ChatFormatting.YELLOW));
+            V.tooltip(g, font, tip, mouseX, mouseY);
+        }
+    }
+
+    /** The "Raw materials" list: what to gather for the blocks you still need. */
+    private void drawRaw(GuiGraphics g, int x, int w, int t, int rows, int h, int mouseX, int mouseY) {
+        g.drawString(font, "have", x + w - 120, t + 2, UiKit.MUTED, false);
+        g.drawString(font, "to get", x + w - 56, t + 2, UiKit.MUTED, false);
+        List<dev.buildblueprint.core.Recipes.Raw> list = rawRows();
+        java.util.Map<String, Integer> inv = PlayerInfo.inventoryCounts();
+        scroll = Math.min(scroll, Math.max(0, list.size() - rows));
+        dev.buildblueprint.core.Recipes.Raw hovered = null;
+        int y = t + 14;
+        for (int i = scroll; i < Math.min(list.size(), scroll + rows); i++, y += rowH()) {
+            dev.buildblueprint.core.Recipes.Raw r = list.get(i);
+            boolean hov = mouseX >= x && mouseX < x + w && mouseY >= y && mouseY < y + rowH();
+            if (hov) hovered = r;
+            int have = inv.getOrDefault(r.id, 0), need = r.count();
+            g.fill(x, y, x + w, y + rowH() - 1, hov ? 0x40FFFFFF : (i % 2 == 0 ? 0x14FFFFFF : 0x00000000));
+            g.fill(x, y, x + 2, y + rowH() - 1, have >= need ? UiKit.GREEN : UiKit.RED);
+            var icon = Materials.stackFor(r.id);
+            if (!icon.isEmpty()) g.renderItem(icon, x + 4, y + 1);
+            String n = UiKit.fit(font, nameOf(r.id) + (r.smelt ? "  (furnace)" : ""), w - 24 - 140);
+            g.drawString(font, n, x + 24, y + 6, UiKit.WHITE, true);
+            String hv = String.valueOf(have), nd = need + stacks(need).replace(" (", "  (");
+            g.drawString(font, hv, x + w - 108 - font.width(hv) / 2, y + 6, have >= need ? UiKit.GREEN : UiKit.RED, true);
+            g.drawString(font, UiKit.fit(font, nd, 70), x + w - 66, y + 6, UiKit.WHITE, true);
+        }
+        if (list.isEmpty()) g.drawString(font, "Nothing left to gather - you have what the build needs!", x + 8, t + 22, UiKit.MUTED, true);
+        UiKit.center(g, font, "What to gather for the blocks you still need  ·  (furnace) = smelt some of it", width / 2, t + h + 3, UiKit.MUTED);
+        if (hovered != null) {
+            List<Component> tip = new ArrayList<>();
+            tip.add(Component.literal(nameOf(hovered.id)).withStyle(ChatFormatting.WHITE));
+            StringBuilder f = new StringBuilder();
+            for (String id : hovered.forItems) { if (f.length() > 0) f.append(", "); f.append(nameOf(id)); }
+            tip.add(Component.literal("For: " + f).withStyle(ChatFormatting.GRAY));
+            if (hovered.smelt) tip.add(Component.literal("Smelt some of it in a furnace first").withStyle(ChatFormatting.GOLD));
+            tip.add(Component.literal("Crafting table amounts - a stonecutter needs less for stone stairs and slabs").withStyle(ChatFormatting.DARK_GRAY));
             V.tooltip(g, font, tip, mouseX, mouseY);
         }
     }

@@ -13,11 +13,13 @@ import net.minecraft.network.chat.Component;
 
 /**
  * Settings, kept short: "Basics" has what most people change (how the ghost blocks look, the corner list, the helpers),
- * "More" has the fine-tuning. Every button says what it does when you hover it.
+ * "More" has the fine-tuning, "Extras" has helpers that are off until you turn them on. Every button says what it does
+ * when you hover it.
  */
 public class SettingsScreen extends Screen {
     private final Screen parent;
     static boolean more = false;   // which page, remembered while the game runs
+    static boolean extras = false; // the "Extras" page: helpers that are off until you turn them on
 
     public SettingsScreen(Screen parent) { super(Component.literal("Build Blueprint settings")); this.parent = parent; }
 
@@ -36,7 +38,14 @@ public class SettingsScreen extends Screen {
 
     @Override protected void init() {
         opts.clear();
-        if (!more) {
+        if (extras) {
+            opt(() -> "Raw materials: " + onOff(Settings.rawMats), () -> Settings.rawMats = !Settings.rawMats,
+                    "Adds \"Raw materials\" to the build menu: what to gather for the blocks you still need - logs for planks and stairs, sand for glass, cobblestone to smelt into stone...");
+            opt(() -> "Layer map: " + onOff(Settings.layerMap), () -> Settings.layerMap = !Settings.layerMap,
+                    "A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.");
+            opt(() -> "Scaffold hints: " + onOff(Settings.scaffold), () -> { Settings.scaffold = !Settings.scaffold; Materials.refresh(); },
+                    "Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.");
+        } else if (!more) {
             opt(() -> "Ghost blocks: " + Settings.ghostAlpha + "% solid", () -> Settings.ghostAlpha = next(Settings.ghostAlpha, 25, 40, 55, 70, 85), "How see-through the preview blocks are.");
             opt(() -> "Show preview: " + onOff(BuildBlueprintClient.SESSION.visible), () -> BuildBlueprintClient.SESSION.visible = !BuildBlueprintClient.SESSION.visible, "Hide or show the ghost blocks.");
             opt(() -> "Corner list: " + onOff(Settings.hudShow), () -> Settings.hudShow = !Settings.hudShow, "The list of blocks you still need, shown in a corner while you build.");
@@ -71,8 +80,11 @@ public class SettingsScreen extends Screen {
         }
         // page tabs
         int tw = 90;
-        addRenderableWidget(Button.builder(Component.literal("Basics"), b -> { more = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(width / 2 - tw - 2, 30, tw, 20).build()).active = more;
-        addRenderableWidget(Button.builder(Component.literal("More"), b -> { more = true; Mc.setScreen(new SettingsScreen(parent)); }).bounds(width / 2 + 2, 30, tw, 20).build()).active = !more;
+        int[] tx = UiKit.row(width / 2, 3, tw, 4);
+        addRenderableWidget(Button.builder(Component.literal("Basics"), b -> { more = false; extras = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[0], 30, tw, 20).build()).active = more || extras;
+        addRenderableWidget(Button.builder(Component.literal("More"), b -> { more = true; extras = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[1], 30, tw, 20).build()).active = !more || extras;
+        addRenderableWidget(Button.builder(Component.literal("Extras"), b -> { extras = true; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[2], 30, tw, 20)
+                .tooltip(Tooltip.create(Component.literal("Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints."))).build()).active = !extras;
         // bottom
         Minecraft mc = Minecraft.getInstance();
         int by = height - 26;
@@ -94,7 +106,7 @@ public class SettingsScreen extends Screen {
         UiKit.center(g, font, "Build Blueprint settings", width / 2, 12, UiKit.GOLD);
         int cols = cols(), cw = cols == 2 ? colW() : Math.min(260, width - 40), rows = (opts.size() + cols - 1) / cols;
         int w = cols * cw + (cols - 1) * 6 + 12;
-        UiKit.panel(g, width / 2 - w / 2, top() - 6, w, rows * 24 + 8, more ? UiKit.BLUE : UiKit.GOLD);
+        UiKit.panel(g, width / 2 - w / 2, top() - 6, w, rows * 24 + 8, extras ? UiKit.GREEN : more ? UiKit.BLUE : UiKit.GOLD);
         super.extractRenderState(g, mouseX, mouseY, delta);
         UiKit.center(g, font, "Hover a button to see what it does.", width / 2, height - 40, UiKit.DIM);
     }

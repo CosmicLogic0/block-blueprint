@@ -4,6 +4,7 @@ import dev.buildblueprint.core.Blueprint;
 import dev.buildblueprint.core.MaterialMap;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -97,6 +98,17 @@ public final class Swapper {
         out.sort((a, b) -> a.name().compareToIgnoreCase(b.name()));
         all = out;
         return out;
+    }
+
+    private static final Map<String, Integer> COLOR = new HashMap<>();
+    /** Map colour of a block id (for the layer map), grey if unknown. */
+    public static int colorOf(String blockId) {
+        Integer c = COLOR.get(blockId);
+        if (c != null) return c;
+        int v = 0x808080;
+        if (exists(blockId)) { int m = mapCol(BuiltInRegistries.BLOCK.getValue(Identifier.parse(blockId)).defaultBlockState()); if (m != 0) v = m; }
+        COLOR.put(blockId, v);
+        return v;
     }
 
     /** The block's colour on maps (a rough "what colour is it"), 0 if none. */

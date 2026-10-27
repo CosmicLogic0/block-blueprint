@@ -15,6 +15,8 @@ public final class Stats {
     private static long activeMs, lastTick, lastProgress;
     private static boolean announced;
 
+    /** The "Build complete!" card in the corner: when it happened and the numbers it shows. */
+    public static long completeAt; public static int completeBlocks, completePerMin; public static long completeMs;
     public static long activeMs() { return activeMs; }
     public static int placedByYou() { return placedByYou; }
     public static boolean started() { return bp != null && placedByYou > 0; }
@@ -41,6 +43,7 @@ public final class Stats {
         lastTick = t;
         if (total > 0 && placed >= total && lastPlaced < total && !announced && placedByYou > 0) {
             announced = true;
+            completeAt = t; completeBlocks = total; completeMs = activeMs; completePerMin = (int) Math.round(perMinute());
             Chat.ok("Build complete! " + total + " blocks · " + time(activeMs) + " building time"
                     + (perMinute() > 0 ? " · " + Math.round(perMinute()) + " blocks a minute" : "") + ".");
         }

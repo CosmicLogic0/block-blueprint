@@ -19,12 +19,15 @@ public final class HudModule {
             Minecraft mc = Minecraft.getInstance();
             var s = BuildBlueprintClient.SESSION;
             if (mc.player != null && Copier.active && Mc.screen() == null) { copyPanel(g, mc); return; }
+            if (mc.player != null && Mc.screen() == null && Stats.completeAt > 0 && System.currentTimeMillis() - Stats.completeAt < 9000) doneCard(g, mc);
             if (!Settings.hudShow || !s.loaded() || !s.visible || mc.player == null) return;
             if (Mc.screen() instanceof MaterialsScreen || Mc.screen() instanceof SavedBuildsScreen || Mc.screen() instanceof SettingsScreen) return;
             float sc = Settings.hudScale / 100f;
             int sw = (int) (g.guiWidth() / sc);
             V.hudPush(g, sc);
-            draw(g, mc, Settings.hudRight ? sw - W - 4 : 4, 4);
+            int hx = Settings.hudRight ? sw - W - 4 : 4;
+            int bottom = draw(g, mc, hx, 4);
+            if (Settings.layerMap) layerMap(g, mc, hx, bottom + 8);
             V.hudPop(g);
         }));
     }
@@ -59,7 +62,8 @@ public final class HudModule {
         g.drawString(font, t, x + w / 2 - font.width(t) / 2, y + 1, 0xFFFFFFFF, true);
     }
 
-    private static void draw(GuiGraphics g, Minecraft mc, int x, int y) {
+    /** Draws the corner list; returns where it ends. */
+    private static int draw(GuiGraphics g, Minecraft mc, int x, int y) {
         var s = BuildBlueprintClient.SESSION;
         var font = mc.font;
         boolean layerMode = Materials.showLayer();
@@ -71,7 +75,8 @@ public final class HudModule {
         boolean stats = Settings.hudStats && Stats.started();
         boolean hint = Settings.nextHint && Hint.pos != null && !complete;
         boolean notPlaced = !s.locked;
-        int h = 14 + (notPlaced ? 32 : 0) + (Settings.hudBar ? 26 : 0) + (stats ? 11 : 0) + (hint ? 22 : 0) + 12 + lines * 18 + (shown > lines ? 10 : 0) + (shown == 0 ? 10 : 0) + (Settings.hudHints ? 11 : 0);
+        boolean coop = Coop.on();
+        int h = 14 + (coop ? 11 : 0) + (notPlaced ? 32 : 0) + (Settings.hudBar ? 26 : 0) + (stats ? 11 : 0) + (hint ? 22 : 0) + 12 + lines * 18 + (shown > lines ? 10 : 0) + (shown == 0 ? 10 : 0) + (Settings.hudHints ? 11 : 0);
         // panel: dark glass with a 1px light edge, like vanilla tooltips
         g.fill(x - 3, y - 3, x + W + 3, y + h, 0xD0100A18);
         g.fill(x - 3, y - 3, x + W + 3, y - 2, 0xFF5A3FA0);
@@ -84,6 +89,7 @@ public final class HudModule {
         g.drawString(font, name, x, y, 0xFFFFFF55, true);
         if (!tag.isEmpty()) g.drawString(font, tag, x + W - font.width(tag), y, 0xFF55FF55, true);
         int ly = y + 12;
+        if (coop) { g.drawString(font, "Co-op: " + Coop.where(s.blueprint()), x, ly, UiKit.CYAN, false); ly += 11; }
         if (notPlaced) {   // still positioning: remind how to move and place it
             g.fill(x - 1, ly - 1, x + W + 1, ly + 30, 0x30FF9020);
             g.fill(x - 1, ly - 1, x + 1, ly + 30, 0xFFFFB050);
@@ -118,7 +124,10 @@ public final class HudModule {
             g.drawString(font, w, x + 22, ly + 10, 0xFFCCCCCC, false);
             ly += 22;
         }
-        if (complete) { g.drawString(font, "Build complete!", x, ly + 1, 0xFF55FF55, true); ly += 12; }
+        if (complete) {
+            g.drawString(font, "Build complete!", x, ly + 1, 0xFF55FF55, true); ly += 12;
+            g.drawString(font, "PgUp > Remove to clear it", x, ly, 0xFF999999, false); ly += 10;
+        }
         else {
             String head = layerMode ? "Layer " + (Materials.layer() + 1) + " needs:" : "Whole build needs:";
             g.drawString(font, head, x, ly + 1, 0xFFAAAAFF, true);
@@ -143,5 +152,59 @@ public final class HudModule {
             if (shown == 0) { g.drawString(font, "Layer done!", x, ly, 0xFF55FF55, true); ly += 10; }
         }
         if (Settings.hudHints) g.drawString(font, "Home/End layer · PgUp menu", x, ly + 1, 0xFF777777, false);
+        return y + h;
+    }
+
+    /**
+     * Layer map (Settings > Extras): the layer you're on, seen from above. Block colours = still to place,
+     * dark green = done, red = wrong block, white dot = you. Big builds show the part around you.
+     */
+    private static void layerMap(GuiGraphics g, Minecraft mc, int x, int y) {
+        int[] cells = Materials.layerCells();
+        int W0 = Materials.mapW(), D0 = Materials.mapD();
+        var s = BuildBlueprintClient.SESSION;
+        if (cells.length == 0 || W0 == 0 || D0 == 0 || mc.player == null || !s.loaded()) return;
+        var bp = s.blueprint();
+        int max = 56;
+        int pxl = (int) Math.floor(mc.player.getX()) - s.ox, pzl = (int) Math.floor(mc.player.getZ()) - s.oz;
+        int w = Math.min(W0, max), d = Math.min(D0, max);
+        int x0 = Math.max(0, Math.min(W0 - w, pxl - w / 2)), z0 = Math.max(0, Math.min(D0 - d, pzl - d / 2));
+        int cell = Math.max(1, Math.min(6, (W - 4) / Math.max(w, d)));
+        int mw = w * cell, mh = d * cell, mx = x + (W - mw) / 2, my = y + 12;
+        g.fill(x - 3, y - 3, x + W + 3, my + mh + 4, 0xD0100A18);
+        g.fill(x - 3, y - 3, x + W + 3, y - 2, 0xFF5A3FA0);
+        g.drawString(mc.font, "Layer " + (Materials.mapLayer() + 1) + " from above", x, y, 0xFFAAAAFF, true);
+        g.fill(mx - 1, my - 1, mx + mw + 1, my + mh + 1, 0xFF000000);
+        for (int zz = 0; zz < d; zz++)
+            for (int xx = 0; xx < w; xx++) {
+                int v = cells[(z0 + zz) * W0 + x0 + xx];
+                if (v < 0) continue;
+                int st = v >>> 24, pal = v & 0xFFFFFF, col;
+                if (st == 2) col = 0xFF2F6B35;
+                else if (st == 3) col = 0xFFFF3030;
+                else col = 0xFF000000 | (pal < bp.palette.length ? Swapper.colorOf(dev.buildblueprint.core.MaterialMap.blockId(bp.palette[pal])) : 0x808080);
+                g.fill(mx + xx * cell, my + zz * cell, mx + xx * cell + cell, my + zz * cell + cell, col);
+            }
+        int ux = pxl - x0, uz = pzl - z0;
+        if (ux >= 0 && uz >= 0 && ux < w && uz < d) {   // you: a white dot with a tick showing where you look
+            int cx = mx + ux * cell + cell / 2, cz = my + uz * cell + cell / 2;
+            g.fill(cx - 2, cz - 2, cx + 2, cz + 2, 0xFFFFFFFF);
+            double yaw = Math.toRadians(PlayerInfo.yaw());
+            int fx = (int) Math.round(-Math.sin(yaw) * 5), fz = (int) Math.round(Math.cos(yaw) * 5);
+            g.fill(cx + fx - 1, cz + fz - 1, cx + fx + 1, cz + fz + 1, 0xFFFFFF55);
+        }
+    }
+
+    /** "Build complete!" card in the top middle for a few seconds when the last block is placed. */
+    private static void doneCard(GuiGraphics g, Minecraft mc) {
+        var font = mc.font;
+        String a = "Build complete!";
+        String b = Stats.completeBlocks + " blocks  ·  " + Stats.time(Stats.completeMs) + (Stats.completePerMin > 0 ? "  ·  " + Stats.completePerMin + " a minute" : "");
+        String c = "Page Up > Remove to clear it";
+        int w = Math.max(font.width(b), font.width(c)) + 24, x = g.guiWidth() / 2 - w / 2, y = 26;
+        UiKit.panel(g, x, y, w, 44, UiKit.GREEN);
+        UiKit.center(g, font, a, x + w / 2, y + 6, UiKit.GREEN);
+        UiKit.center(g, font, b, x + w / 2, y + 18, UiKit.WHITE);
+        UiKit.center(g, font, c, x + w / 2, y + 30, UiKit.MUTED);
     }
 }
