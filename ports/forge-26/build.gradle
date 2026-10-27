@@ -43,7 +43,10 @@ tasks.register('bbSources', Sync) {
     into gen
     inputs.property 'compat', compat
     filter { String l -> l.replace('import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;', 'import net.minecraft.commands.CommandSourceStack;')
-                          .replace('FabricClientCommandSource', 'CommandSourceStack') }
+                          .replace('FabricClientCommandSource', 'CommandSourceStack')
+                          // our stand-ins for Fabric's classes live in our own package: packs with mods that bring the real
+                          // Fabric Loader classes (Sinytra Connector, jar-in-jar libraries) crashed with two classes of one name
+                          .replace('net.fabricmc.', 'dev.buildblueprint.fabric.') }
 }
 def mcRange = project.findProperty('mc_range') ?: "[${mcv}]"
 def forgeMajor = (project.forge_version.split('\\.')[0]) as int

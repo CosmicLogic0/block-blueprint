@@ -1,2 +1,6 @@
 fabric-1.20.1 blockus
 fabric-1.21.1 blockus
+neoforge-1.21.1 connector
+neoforge-1.21.1 forgified-fabric-api
+neoforge-26.3 connector
+neoforge-26.3 forgified-fabric-api

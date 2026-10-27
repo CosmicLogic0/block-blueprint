@@ -70,3 +70,8 @@ ext.bbCompatFilter = { String l, String mcv ->
     if (mcv in ['1.16', '1.16.1']) l = l.replace('screen.renderComponentTooltip(pose, ', 'screen.renderTooltip(pose, ')   // renamed in 1.16.2
     return l
 }
+
+// Forge / NeoForge builds: our stand-ins for Fabric's classes live in our own package, never under net.fabricmc.
+// Some packs have mods that bring the real Fabric Loader classes along (Sinytra Connector, jar-in-jar libraries); two
+// different classes with the same name crashed the game while loading ("IncompatibleClassChangeError ... FabricLoader").
+ext.bbRelocate = { String l -> l.replace('net.fabricmc.', 'dev.buildblueprint.fabric.') }
