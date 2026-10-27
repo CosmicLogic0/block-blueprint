@@ -1,3 +1,6 @@
+## 1.2.12
+- **Fixed: the game wouldn't start on NeoForge / Forge in some modpacks** (the error mentioned "FabricLoader"). Thanks for reporting!
+
 ## 1.2.11
 - **More Minecraft versions (now 100):**
   - Fabric 1.15.2 (beta) and Fabric 1.16.1

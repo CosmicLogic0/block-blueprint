@@ -1,7 +1,7 @@
 {
   "name": "block-blueprint",
   "productName": "Block Blueprint",
-  "version": "1.2.11",
+  "version": "1.2.12",
   "description": "Design Minecraft builds in 3D, then build them in your world with the Build Blueprint mod",
   "main": "main.js",
   "scripts": {
