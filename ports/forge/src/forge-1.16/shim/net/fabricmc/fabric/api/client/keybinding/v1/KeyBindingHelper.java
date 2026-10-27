@@ -15,8 +15,8 @@ public final class KeyBindingHelper {
     public static KeyMapping registerKeyBinding(KeyMapping k) {
         if (!hooked) { hooked = true; FMLJavaModLoadingContext.get().getModEventBus().addListener((FMLClientSetupEvent e) -> {
             Runnable r = () -> KEYS.forEach(ClientRegistry::registerKeyBinding);
-            try { e.enqueueWork(r); }
-            catch (NoSuchMethodError old) {   // Forge for 1.16.1-1.16.2 doesn't have enqueueWork yet
+            try { e.getClass().getMethod("enqueueWork", Runnable.class).invoke(e, r); }   // Forge 1.16.3+
+            catch (Throwable old) {   // Forge for 1.15-1.16.2 doesn't have enqueueWork yet
                 try { Class.forName("net.minecraftforge.fml.DeferredWorkQueue").getMethod("runLater", Runnable.class).invoke(null, r); } catch (Throwable t) { r.run(); }
             }
         }); }

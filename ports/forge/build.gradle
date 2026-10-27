@@ -57,7 +57,7 @@ tasks.register('bbShims', Sync) {
 tasks.register('bbRes', Sync) { from('../../fabric-mod/src/main/resources') { include 'assets/**' }; into res }
 tasks.register('bbMakeSources', Sync) {
     from '../1.21/src/main/java'
-    from "../1.21/src/compat/${compat}/java"
+    from("../1.21/src/compat/${compat}/java") { exclude 'net/**' }   // Fabric-only stand-ins (Forge has its own)
     into gen
     inputs.property 'compat', compat
     filter { String l -> bbFilter(bbCompatFilter(l, mcv), flags)
