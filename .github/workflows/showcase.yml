@@ -1,0 +1,60 @@
+# Makes the picture for the CurseForge / Modrinth pages: Minecraft 26.3 with the mod, a free community build is loaded,
+# placed and built layer by layer (auto-build), and the screenshots are put together into a GIF.
+# Runs when branch "showcase" is pushed; the GIF and the pictures go to branch "showcase-results".
+name: Showcase GIF
+
+on:
+  push:
+    branches: [showcase]
+
+permissions:
+  contents: write
+
+jobs:
+  gif:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: |
+            21
+            25
+      - name: Build the mod (Fabric 26.3)
+        working-directory: fabric-mod
+        run: |
+          V=$(node -p "require('$GITHUB_WORKSPACE/package.json').version")
+          chmod +x gradlew && ./gradlew build -x test -Pmod_version="$V" --no-daemon -q
+          mkdir -p "$GITHUB_WORKSPACE/jar"; for f in build/libs/buildblueprint-*.jar; do case "$f" in *-dev.jar|*-sources.jar) ;; *) cp "$f" "$GITHUB_WORKSPACE/jar/" ;; esac; done
+      - name: Virtual screen, software OpenGL, launcher
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq xvfb mesa-utils libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers libvulkan1 imagemagick libopenal1 pulseaudio gifsicle > /dev/null
+          pip install -q portablemc
+      - name: Play the tour
+        run: |
+          mkdir -p sc result
+          cp "renderer/templates/schem/m_cozy_cabins_and_cottages_cozy_cherry_cottage.nbt" "sc/Cozy Cherry Cottage.nbt"
+          UITEST_MODE=showcase BUILDS_DIR=sc bash tools/ci/launch_real.sh "$(ls jar/*.jar | head -1)" 26.3 fabric result fabric-26.3 || true
+          cp game.log result/game.log 2>/dev/null || true
+          grep BBUITEST game.log | head -60 || true
+      - name: Make the GIF
+        run: |
+          cd result
+          frames=""; for n in ghost menu placed layer-a layer-b layer-c layer-d layer-e layer-f layer-g layer-h layer-i layer-j done; do
+            f="fabric-26.3-sc-$n.png"; [ -f "$f" ] || continue
+            case "$n" in ghost) d=220 ;; menu) d=260 ;; placed) d=180 ;; done) d=400 ;; *) d=70 ;; esac
+            frames="$frames -delay $d $f"
+          done
+          echo "frames: $frames"
+          convert $frames -resize 960x -loop 0 showcase-raw.gif
+          gifsicle -O3 --colors 192 --lossy=40 showcase-raw.gif -o showcase.gif || cp showcase-raw.gif showcase.gif
+          rm -f showcase-raw.gif; ls -la
+      - name: Save results
+        if: always()
+        run: |
+          cd result
+          echo "${GITHUB_SHA}" > COMMIT
+          git init -q -b showcase-results && git config user.name ci && git config user.email ci@example.com
+          git add -A && git commit -qm "showcase ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" showcase-results

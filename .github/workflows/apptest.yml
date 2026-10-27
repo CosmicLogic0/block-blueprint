@@ -31,26 +31,20 @@ jobs:
           mkdir -p out
           npx electron-builder ${{ matrix.flag }} --publish never 2>&1 | tee out/build.log
           ls -la dist | tee out/dist.txt
-      - name: Mac - signature and open
+      - name: Mac - signature
         if: runner.os == 'macOS'
         run: |
           APP=$(find dist -maxdepth 2 -name "*.app" | head -1); echo "$APP" | tee out/app.txt
           codesign -dv "$APP" > out/sign.txt 2>&1 || true
           codesign --verify --deep --strict "$APP" >> out/sign.txt 2>&1 && echo VERIFY OK >> out/sign.txt || echo VERIFY FAILED >> out/sign.txt
           lipo -archs "$APP/Contents/MacOS/Block Blueprint" >> out/sign.txt 2>&1 || true
-          ( "$APP/Contents/MacOS/Block Blueprint" > out/run.log 2>&1 & ) ; sleep 25
-          screencapture -x out/shot.png || true
-          pgrep -f "Block Blueprint.app/Contents/MacOS" > /dev/null && echo RUNNING >> out/run.log || echo NOT RUNNING >> out/run.log
-          pkill -f "Block Blueprint.app/Contents/MacOS" || true
-      - name: Linux - open
-        if: runner.os == 'Linux'
+      - name: Open the app, first-time setup, editor
+        shell: bash
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq xvfb imagemagick > /dev/null
-          export DISPLAY=:99; Xvfb :99 -screen 0 1400x900x24 & sleep 2
-          ( dist/linux-unpacked/block-blueprint --no-sandbox > out/run.log 2>&1 & ) ; sleep 20
-          import -window root out/shot.png || true
-          pgrep -f linux-unpacked/block-blueprint > /dev/null && echo RUNNING >> out/run.log || echo NOT RUNNING >> out/run.log
-          pkill -f linux-unpacked/block-blueprint || true
+          npm i --no-save playwright@1.56.1 > /dev/null 2>&1
+          if [ "$RUNNER_OS" = macOS ]; then EXE="$(find dist -maxdepth 2 -name '*.app' | head -1)/Contents/MacOS/Block Blueprint"; node tools/ci/app_smoke.js "$EXE" out > out/run.log 2>&1 || true
+          else sudo apt-get update -qq && sudo apt-get install -y -qq xvfb > /dev/null; xvfb-run -a -s "-screen 0 1400x900x24" node tools/ci/app_smoke.js "$PWD/dist/linux-unpacked/block-blueprint" out > out/run.log 2>&1 || true; fi
+          cat out/run.log | head -40
       - name: Save results
         if: always()
         shell: bash

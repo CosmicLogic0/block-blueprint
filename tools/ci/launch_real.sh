@@ -9,7 +9,8 @@ jar="$1"; gv="$2"; loader="$3"; out="$4"; name="$5"
 mkdir -p "$out"; R="$out/$name.txt"
 G="$PWD/game"; mkdir -p "$G/mods" "$HOME/BlockBlueprint/builds"
 cp "$jar" "$G/mods/"
-cp .github/uitest/* "$HOME/BlockBlueprint/builds/" 2>/dev/null || true
+cp "${BUILDS_DIR:-.github/uitest}"/* "$HOME/BlockBlueprint/builds/" 2>/dev/null || true
+mode="${UITEST_MODE:-world}"   # "showcase": the listing picture tour (the player is op, for auto-build and /tp)
 
 fail() { { echo "FAIL $name: $1"; echo; [ -f game.log ] && grep -iE "incompatible|missing|requires|exception|error|crash|buildblueprint|BBUITEST" game.log | grep -viE "realms|telemetry|narrator|authlib|YggdrasilUserApi|Failed to fetch user properties|profile" | head -60; echo; echo "--- end of log ---"; tail -n 60 game.log 2>/dev/null; } > "$R"; cat "$R" | head -80; exit 0; }
 
@@ -56,6 +57,10 @@ elif [ "$minor" -lt 20 ] || { [ "$minor" = 20 ] && [ "$patch" -le 4 ]; }; then S
 else SJ="${JAVA_HOME_21_X64:-}"; lt="minecraft\\:flat"; fi
 echo "eula=true" > "$S/eula.txt"
 printf 'online-mode=false\nwhite-list=false\nenforce-whitelist=false\nenforce-secure-profile=false\ngamemode=creative\nlevel-type=%s\ngenerate-structures=false\ndifficulty=peaceful\nspawn-monsters=false\nspawn-animals=false\nspawn-protection=0\nview-distance=6\nmax-tick-time=-1\nmotd=Build Blueprint test\n' "$lt" > "$S/server.properties"
+if [ "$mode" = showcase ]; then
+  python3 -c "import hashlib,uuid,json; h=bytearray(hashlib.md5(b'OfflinePlayer:Builder').digest()); h[6]=h[6]&0x0f|0x30; h[8]=h[8]&0x3f|0x80; print(json.dumps([{'uuid':str(uuid.UUID(bytes=bytes(h))),'name':'Builder','level':4,'bypassesPlayerLimit':False}]))" > "$S/ops.json"
+  printf 'pvp=false\n' >> "$S/server.properties"
+fi
 (cd "$S" && timeout 1200 "$SJ/bin/java" -Xmx2G -jar server.jar nogui > server.log 2>&1 &)
 for i in $(seq 1 90); do sleep 4; grep -q 'Done (' "$S/server.log" && break; done
 grep -q 'Done (' "$S/server.log" || { cp "$S/server.log" game.log; fail "the test server for $gv did not start"; }
@@ -64,7 +69,7 @@ echo "server up"
 # game options: no first-launch screens, keep running without focus
 printf 'onboardAccessibility:false\nskipMultiplayerWarning:true\njoinedFirstServer:true\npauseOnLostFocus:false\ntutorialStep:none\nrenderDistance:6\nguiScale:2\nnarrator:0\nsoundCategory_master:0.0\n' > "$G/options.txt"
 (timeout 900 xvfb-run -n 99 -s "-screen 0 1280x720x24 +extension GLX +render -noreset -ac" \
-   portablemc --main-dir "$G" start --jvm-policy mojang-then-system "$spec" --jvm-arg=-Xmx3G,-Dbuildblueprint.uitest=world,-Dbuildblueprint.uitest.server=127.0.0.1:25565 --resolution 1280x720 > game.log 2>&1 &)
+   portablemc --main-dir "$G" start --jvm-policy mojang-then-system -u Builder "$spec" --jvm-arg=-Xmx3G,-Dbuildblueprint.uitest=$mode,-Dbuildblueprint.uitest.server=127.0.0.1:25565 --resolution 1280x720 > game.log 2>&1 &)
 
 started=0
 for i in $(seq 1 170); do

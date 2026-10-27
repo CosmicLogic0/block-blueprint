@@ -20,13 +20,18 @@ public final class UiTest {
     private static boolean world, joined;
     private static String[] steps;
     private static final String[] MENU = {"settings", "settings-more", "saved", "build", "done"};
-    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "settings", "settings-more", "saved", "world-special", "world-copy", "done"};
+    /** The listing picture: a build seen from a little way off, placed, then built layer by layer (auto-build, needs op). */
+    private static final String[] SHOWCASE = {"sc-ghost", "sc-menu", "sc-placed", "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e",
+            "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j", "sc-done", "done"};
+    private static boolean showcase;
+    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "saved", "world-special", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
         if (p == null) return;
-        world = p.equals("world");
-        steps = world ? WORLD : MENU;
+        showcase = p.equals("showcase");
+        world = p.equals("world") || showcase;
+        steps = showcase ? SHOWCASE : world ? WORLD : MENU;
         ClientTickEvents.END_CLIENT_TICK.register(mc -> Safe.run("ui test", UiTest::tick));
     }
 
@@ -154,8 +159,69 @@ public final class UiTest {
         } catch (Exception e) { System.out.println("BBUITEST load failed: " + e); }
     }
 
+    /** Sets the language the mod's texts use (only ours: the game's own texts stay as they were). */
+    private static void lang(String code) {
+        try { net.minecraft.client.Minecraft.getInstance().options.languageCode = code; } catch (Throwable t) { System.out.println("BBUITEST language failed: " + t); }
+    }
+
+    /** Showcase only (runs on 26.x, where names are readable): a chat command, and flying so the camera stays put. By name, so it compiles everywhere. */
+    private static void cmd(String c) {
+        try {
+            Object pl = net.minecraft.client.Minecraft.getInstance().player;
+            Object conn = pl.getClass().getField("connection").get(pl);
+            conn.getClass().getMethod("sendCommand", String.class).invoke(conn, c);
+        } catch (Throwable t) { System.out.println("BBUITEST command failed: " + t); }
+    }
+    private static void fly() {
+        try {
+            Object pl = net.minecraft.client.Minecraft.getInstance().player;
+            if (pl == null) return;
+            Object ab = pl.getClass().getMethod("getAbilities").invoke(pl);
+            ab.getClass().getField("flying").setBoolean(ab, true);
+            pl.getClass().getMethod("onUpdateAbilities").invoke(pl);
+        } catch (Throwable t) { System.out.println("BBUITEST fly failed: " + t); }
+    }
+
+    /** Puts the player a little way off the build, up in the air, looking at it (flying, so they stay there). */
+    private static String camera;   // the same spot every time
+    private static void viewBuild() {
+        var s = BuildBlueprintClient.SESSION;
+        var bp = s.blueprint();
+        var mc = net.minecraft.client.Minecraft.getInstance();
+        if (bp == null || mc.player == null) return;
+        if (camera != null) { cmd(camera); fly(); return; }
+        double cx = s.ox + bp.sx / 2.0, cy = s.oy + bp.sy * 0.4, cz = s.oz + bp.sz / 2.0;
+        double dx = PlayerInfo.x() - cx, dz = PlayerInfo.z() - cz;
+        double ang = Math.atan2(dz, dx) + 0.6;                       // a bit to the side, so you see two walls
+        double dist = Math.max(bp.sx, bp.sz) * 1.15 + 7, ex = cx + Math.cos(ang) * dist, ez = cz + Math.sin(ang) * dist, ey = s.oy + bp.sy * 0.9 + 4;
+        double tx = cx - ex, ty = cy - (ey + 1.62), tz = cz - ez;
+        float yaw = (float) Math.toDegrees(Math.atan2(-tx, tz)), pitch = (float) -Math.toDegrees(Math.atan2(ty, Math.sqrt(tx * tx + tz * tz)));
+        cmd("time set noon"); cmd("weather clear");
+        camera = String.format(java.util.Locale.ROOT, "tp @s %.2f %.2f %.2f %.1f %.1f", ex, ey, ez, yaw, pitch);
+        cmd(camera);
+        fly();
+        System.out.println("BBUITEST view from " + (int) ex + " " + (int) ey + " " + (int) ez);
+    }
+
     private static void open(String what) {
+        if (!what.startsWith("lang-")) lang("en_us");
         switch (what) {
+            case "sc-ghost" -> { Mc.setScreen(null); loadTestBuild(); viewBuild(); }
+            case "sc-menu" -> Mc.setScreen(new MaterialsScreen(true));
+            case "sc-placed" -> { Mc.setScreen(null); BuildBlueprintClient.setLocked(true); viewBuild(); }
+            case "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e", "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j" -> {
+                Mc.setScreen(null);
+                fly();
+                if (Materials.placed() < Materials.totalBlocks() && !AutoBuild.running()) AutoBuild.start(BuildBlueprintClient.SESSION.layer);
+                System.out.println("BBUITEST showcase layer " + (BuildBlueprintClient.SESSION.layer + 1) + ", placed " + Materials.placed() + "/" + Materials.totalBlocks());
+            }
+            case "sc-done" -> { Mc.setScreen(null); if (Stats.completeAt > 0) Stats.completeAt = System.currentTimeMillis(); System.out.println("BBUITEST showcase done, placed " + Materials.placed() + "/" + Materials.totalBlocks()); }
+            case "lang-es" -> {   // the mod's texts in other languages (Latin, Cyrillic and Chinese letters)
+                lang("es_es"); Mc.setScreen(new MaterialsScreen(true));
+                System.out.println("BBUITEST tr es: " + Tr.t("Layer 3 of 10") + " | " + Tr.t("Turned to 90 degrees") + " | " + Tr.t("Build complete! 120 blocks · 4m 10s building time · 30 blocks a minute."));
+            }
+            case "lang-ru" -> { lang("ru_ru"); Mc.setScreen(new HelpScreen(null, 7)); System.out.println("BBUITEST tr ru: " + Tr.t("Layer 3 of 10")); }
+            case "lang-zh" -> { lang("zh_cn"); SettingsScreen.more = false; SettingsScreen.extras = true; Mc.setScreen(new SettingsScreen(null)); System.out.println("BBUITEST tr zh: " + Tr.t("Layer 3 of 10")); }
             case "world-ghost" -> { Mc.setScreen(null); loadTestBuild(); }
             case "world-placed" -> { Mc.setScreen(null); BuildBlueprintClient.setLocked(true); System.out.println("BBUITEST placed, layer " + (BuildBlueprintClient.SESSION.layer + 1)); }
             case "world-special" -> {   // blocks the game draws in a special way: their ghosts use look-alike blocks
@@ -188,8 +254,8 @@ public final class UiTest {
                 System.out.println("BBUITEST showing only " + rows.get(0).id() + ", " + Hide.count() + " hidden");
             }
             case "build-hidden" -> Mc.setScreen(new MaterialsScreen(false));   // the list with the closed eyes
-            case "settings" -> { SettingsScreen.more = false; Mc.setScreen(new SettingsScreen(null)); }
-            case "settings-more" -> { SettingsScreen.more = true; Mc.setScreen(new SettingsScreen(null)); }
+            case "settings" -> { SettingsScreen.more = false; SettingsScreen.extras = false; Mc.setScreen(new SettingsScreen(null)); }
+            case "settings-more" -> { SettingsScreen.more = true; SettingsScreen.extras = false; Mc.setScreen(new SettingsScreen(null)); }
             case "saved" -> Mc.setScreen(new SavedBuildsScreen());
             case "build" -> {
                 Hide.showAll();

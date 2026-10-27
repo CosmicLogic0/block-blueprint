@@ -41,7 +41,7 @@ async function ensureAssets() {
   if (st.ready) return st;
   const el = $('#setup'); el.classList.remove('hidden');
   $('#loading').classList.add('hidden');
-  $('#setupMsg').textContent = `First-time setup: get the Minecraft ${st.target} block textures onto this PC.`;
+  $('#setupMsg').textContent = `First-time setup: get the Minecraft ${st.target} block textures onto this computer.`;
   $('#sDownload').textContent = `⬇ Download Minecraft ${st.target} from Mojang (official)`;
   if (api.isPhone) {
     ['#sDownload', '#sInstalled', '#sFolder'].forEach((q) => $(q).classList.add('hidden'));

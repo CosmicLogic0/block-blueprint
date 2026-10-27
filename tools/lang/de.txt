@@ -1,3 +1,5 @@
+Build Blueprint: dein Bau braucht den grün markierten Block
+Build Blueprint: dein Bau braucht die grün markierten Blöcke
 Mit Freunden bauen
 Koop-Code kopieren
 Schick diesen Code deinen Freunden. Sie fügen ihn unter Gespeicherte Bauten > Einfügen ein, und der Bau erscheint auch bei ihnen genau an dieser Stelle.
@@ -453,8 +455,8 @@ Nichts rückgängig zu machen.
 Mache das letzte automatische Bauen rückgängig ({0} Blöcke)...
 Gerade wird nicht automatisch gebaut.
 Angehalten nach {0} von {1} Blöcken.
-Rückgängig...
-Baue automatisch...
+Rückgängig... {0} / {1}
+Baue automatisch... {0} / {1}
 Rückgängig fertig.
 Automatisches Bauen fertig! {0} Blöcke gesetzt. Nutze Rückgängig im Bild-auf-Menü (oder /buildblueprint autobuild undo), um es zurückzunehmen.
 Build Blueprint {0} ist da (du hast {1}).

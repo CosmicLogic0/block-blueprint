@@ -1,3 +1,5 @@
+Build Blueprint : ta construction a besoin du bloc en vert
+Build Blueprint : ta construction a besoin des blocs en vert
 Construire entre amis
 Copier le code coop
 Envoie ce code à tes amis. Ils le collent dans Constructions sauvegardées > Coller, et la construction apparaît au même endroit chez eux aussi.
@@ -453,8 +455,8 @@ Rien à annuler.
 Annulation de la dernière construction auto ({0} blocs)...
 Pas de construction auto en cours.
 Arrêtée après {0} blocs sur {1}.
-Annulation...
-Construction auto...
+Annulation... {0} / {1}
+Construction auto... {0} / {1}
 Annulation terminée.
 Construction auto terminée ! {0} blocs posés. Utilise Annuler dans le menu Pg préc (ou /buildblueprint autobuild undo) pour la retirer.
 Build Blueprint {0} est sorti (tu as la {1}).

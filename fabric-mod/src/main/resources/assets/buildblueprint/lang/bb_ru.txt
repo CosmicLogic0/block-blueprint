@@ -1,4 +1,6 @@
 # Build Blueprint - ru
+Build Blueprint: your build needs the block in green	Build Blueprint: твоей постройке нужен блок, выделенный зелёным
+Build Blueprint: your build needs the blocks in green	Build Blueprint: твоей постройке нужны блоки, выделенные зелёным
 Build with friends	Строить с друзьями
 Copy co-op code	Скопировать код совместной стройки
 Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.	Отправь этот код друзьям. Они вставят его в Сохранённые постройки > Вставить, и постройка появится у них на этом же месте.
@@ -454,8 +456,8 @@ Nothing to undo.	Нечего отменять.
 Undoing the last auto-build ({0} blocks)...	Отмена последней автостройки (блоков: {0})...
 Not auto-building right now.	Сейчас автостройка не идёт.
 Stopped after {0} of {1} blocks.	Остановлено после {0} из {1} блоков.
-Undoing... 	Отмена... 
-Auto-building... 	Автостройка... 
+Undoing... {0} / {1}	Отмена... {0} / {1}
+Auto-building... {0} / {1}	Автостройка... {0} / {1}
 Undo finished.	Отмена завершена.
 Auto-build finished! {0} blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.	Автостройка готова! Поставлено блоков: {0}. Используй Отменить в меню Page Up (или /buildblueprint autobuild undo), чтобы убрать.
 Build Blueprint {0} is out (you have {1}).	Вышел Build Blueprint {0} (у тебя {1}).

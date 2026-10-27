@@ -1,4 +1,6 @@
 # Build Blueprint - es
+Build Blueprint: your build needs the block in green	Build Blueprint: tu construcción necesita el bloque en verde
+Build Blueprint: your build needs the blocks in green	Build Blueprint: tu construcción necesita los bloques en verde
 Build with friends	Construir con amigos
 Copy co-op code	Copiar código co-op
 Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.	Envía este código a tus amigos. Lo pegan en Construcciones guardadas > Pegar y la construcción aparece en este mismo sitio para ellos.
@@ -454,8 +456,8 @@ Nothing to undo.	Nada que deshacer.
 Undoing the last auto-build ({0} blocks)...	Deshaciendo la última autoconstrucción ({0} bloques)...
 Not auto-building right now.	No se está autoconstruyendo ahora.
 Stopped after {0} of {1} blocks.	Parada tras {0} de {1} bloques.
-Undoing... 	Deshaciendo... 
-Auto-building... 	Autoconstruyendo... 
+Undoing... {0} / {1}	Deshaciendo... {0} / {1}
+Auto-building... {0} / {1}	Autoconstruyendo... {0} / {1}
 Undo finished.	Deshacer terminado.
 Auto-build finished! {0} blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.	¡Autoconstrucción terminada! {0} bloques colocados. Usa Deshacer en el menú Re Pág (o /buildblueprint autobuild undo) para quitarla.
 Build Blueprint {0} is out (you have {1}).	Ya salió Build Blueprint {0} (tienes la {1}).

@@ -1,3 +1,5 @@
+Build Blueprint: tu construcción necesita el bloque en verde
+Build Blueprint: tu construcción necesita los bloques en verde
 Construir con amigos
 Copiar código co-op
 Envía este código a tus amigos. Lo pegan en Construcciones guardadas > Pegar y la construcción aparece en este mismo sitio para ellos.
@@ -453,8 +455,8 @@ Nada que deshacer.
 Deshaciendo la última autoconstrucción ({0} bloques)...
 No se está autoconstruyendo ahora.
 Parada tras {0} de {1} bloques.
-Deshaciendo...
-Autoconstruyendo...
+Deshaciendo... {0} / {1}
+Autoconstruyendo... {0} / {1}
 Deshacer terminado.
 ¡Autoconstrucción terminada! {0} bloques colocados. Usa Deshacer en el menú Re Pág (o /buildblueprint autobuild undo) para quitarla.
 Ya salió Build Blueprint {0} (tienes la {1}).

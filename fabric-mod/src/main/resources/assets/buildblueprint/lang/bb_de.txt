@@ -1,4 +1,6 @@
 # Build Blueprint - de
+Build Blueprint: your build needs the block in green	Build Blueprint: dein Bau braucht den grün markierten Block
+Build Blueprint: your build needs the blocks in green	Build Blueprint: dein Bau braucht die grün markierten Blöcke
 Build with friends	Mit Freunden bauen
 Copy co-op code	Koop-Code kopieren
 Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.	Schick diesen Code deinen Freunden. Sie fügen ihn unter Gespeicherte Bauten > Einfügen ein, und der Bau erscheint auch bei ihnen genau an dieser Stelle.
@@ -454,8 +456,8 @@ Nothing to undo.	Nichts rückgängig zu machen.
 Undoing the last auto-build ({0} blocks)...	Mache das letzte automatische Bauen rückgängig ({0} Blöcke)...
 Not auto-building right now.	Gerade wird nicht automatisch gebaut.
 Stopped after {0} of {1} blocks.	Angehalten nach {0} von {1} Blöcken.
-Undoing... 	Rückgängig... 
-Auto-building... 	Baue automatisch... 
+Undoing... {0} / {1}	Rückgängig... {0} / {1}
+Auto-building... {0} / {1}	Baue automatisch... {0} / {1}
 Undo finished.	Rückgängig fertig.
 Auto-build finished! {0} blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.	Automatisches Bauen fertig! {0} Blöcke gesetzt. Nutze Rückgängig im Bild-auf-Menü (oder /buildblueprint autobuild undo), um es zurückzunehmen.
 Build Blueprint {0} is out (you have {1}).	Build Blueprint {0} ist da (du hast {1}).

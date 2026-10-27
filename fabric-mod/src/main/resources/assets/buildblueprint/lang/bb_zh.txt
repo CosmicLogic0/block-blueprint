@@ -1,4 +1,6 @@
 # Build Blueprint - zh
+Build Blueprint: your build needs the block in green	Build Blueprint：你的建筑需要绿色标出的方块
+Build Blueprint: your build needs the blocks in green	Build Blueprint：你的建筑需要绿色标出的方块
 Build with friends	和朋友一起建造
 Copy co-op code	复制合作代码
 Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.	把这个代码发给朋友。他们在“已保存的建筑 > 粘贴”里粘贴后，建筑也会出现在他们那边的同一个位置。
@@ -454,8 +456,8 @@ Nothing to undo.	没有可撤销的。
 Undoing the last auto-build ({0} blocks)...	正在撤销上次自动建造（{0} 个方块）...
 Not auto-building right now.	现在没有在自动建造。
 Stopped after {0} of {1} blocks.	在 {0} / {1} 个方块后停止。
-Undoing... 	正在撤销... 
-Auto-building... 	正在自动建造... 
+Undoing... {0} / {1}	正在撤销... {0} / {1}
+Auto-building... {0} / {1}	正在自动建造... {0} / {1}
 Undo finished.	撤销完成。
 Auto-build finished! {0} blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.	自动建造完成！已放置 {0} 个方块。在 Page Up 菜单里用“撤销”（或 /buildblueprint autobuild undo）可以还原。
 Build Blueprint {0} is out (you have {1}).	Build Blueprint {0} 已发布（你的是 {1}）。

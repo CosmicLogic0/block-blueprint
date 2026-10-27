@@ -1,3 +1,5 @@
+Build Blueprint: your build needs the block in green
+Build Blueprint: your build needs the blocks in green
 Build with friends
 Copy co-op code
 Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.
@@ -453,8 +455,8 @@ Nothing to undo.
 Undoing the last auto-build ({0} blocks)...
 Not auto-building right now.
 Stopped after {0} of {1} blocks.
-Undoing... 
-Auto-building... 
+Undoing... {0} / {1}
+Auto-building... {0} / {1}
 Undo finished.
 Auto-build finished! {0} blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.
 Build Blueprint {0} is out (you have {1}).

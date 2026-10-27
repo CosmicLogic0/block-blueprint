@@ -131,7 +131,7 @@ public final class AutoBuild {
             next = end;
         }
         if (next % 2000 < (mc.hasSingleplayerServer() ? PER_TICK_LOCAL : PER_TICK_SERVER) || !running())
-            Chat.bar((undoing ? "Undoing... " : "Auto-building... ") + next + " / " + total);
+            Chat.bar(undoing ? "Undoing... " + next + " / " + total : "Auto-building... " + next + " / " + total);
         if (!running()) {
             Chat.ok(undoing ? "Undo finished." : "Auto-build finished! " + total + " blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.");
             if (!undoing) BuildBlueprintClient.SESSION.locked = true;   // it's built now: don't let it slide away

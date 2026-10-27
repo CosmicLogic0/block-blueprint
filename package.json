@@ -80,7 +80,8 @@
       "icon": "assets/icon-512.png",
       "category": "public.app-category.games",
       "identity": "-",
-      "artifactName": "Block-Blueprint-${version}-mac.${ext}"
+      "artifactName": "Block-Blueprint-${version}-mac.${ext}",
+      "hardenedRuntime": false
     },
     "dmg": {
       "title": "Block Blueprint"

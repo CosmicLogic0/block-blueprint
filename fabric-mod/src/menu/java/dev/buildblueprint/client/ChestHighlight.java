@@ -54,7 +54,7 @@ public final class ChestHighlight {
         }
         if (n > 0) {
             var font = net.minecraft.client.Minecraft.getInstance().font;
-            String t = "Build Blueprint: your build needs the " + (n == 1 ? "block" : "blocks") + " in green";
+            String t = Tr.t(n == 1 ? "Build Blueprint: your build needs the block in green" : "Build Blueprint: your build needs the blocks in green");
             g.text(font, t, s.width / 2 - font.width(t) / 2, Math.max(2, o[1] - 12), 0xFF55FF55, true);
         }
     }

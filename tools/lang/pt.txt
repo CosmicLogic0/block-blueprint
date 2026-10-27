@@ -1,3 +1,5 @@
+Build Blueprint: sua construção precisa do bloco em verde
+Build Blueprint: sua construção precisa dos blocos em verde
 Construir com amigos
 Copiar código co-op
 Mande este código para seus amigos. Eles colam em Construções salvas > Colar, e a construção aparece neste mesmo lugar para eles.
@@ -453,8 +455,8 @@ Nada para desfazer.
 Desfazendo a última construção automática ({0} blocos)...
 Não está construindo automaticamente agora.
 Parou depois de {0} de {1} blocos.
-Desfazendo...
-Construindo...
+Desfazendo... {0} / {1}
+Construindo... {0} / {1}
 Desfazer terminado.
 Construção automática pronta! {0} blocos colocados. Use Desfazer no menu Page Up (ou /buildblueprint autobuild undo) para tirar de volta.
 Build Blueprint {0} saiu (você tem a {1}).

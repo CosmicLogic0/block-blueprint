@@ -12,7 +12,7 @@ MENU = ROOT / 'fabric-mod/src/menu/java/dev/buildblueprint/client'
 MAIN = ROOT / 'fabric-mod/src/main/java/dev/buildblueprint/client'
 LANG = ROOT / 'fabric-mod/src/main/resources/assets/buildblueprint/lang'
 LANGS = ['es', 'pt', 'de', 'fr', 'ru', 'zh']
-SKIP = {'UiTest.java', 'ChestHighlight.java'}
+SKIP = {'UiTest.java'}
 
 def files():
     out = [p for p in sorted(MENU.glob('*.java')) if p.name not in SKIP]
