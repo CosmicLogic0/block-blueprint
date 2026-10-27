@@ -94,7 +94,11 @@ jobs:
       - name: Release notes
         shell: bash
         run: |
-          { echo "**Block Blueprint app for Windows:** download \`Block-Blueprint-Setup-${{ needs.check.outputs.version }}.exe\` below (installed apps update themselves)."
+          V=${{ needs.check.outputs.version }}
+          { echo "**Block Blueprint app:** download it below (installed apps tell you when there's a new version)."
+            echo "- Windows: \`Block-Blueprint-Setup-$V.exe\`"
+            echo "- Mac: \`Block-Blueprint-$V-mac.dmg\` (the first time, if macOS won't open it: System Settings > Privacy & Security > Open Anyway)"
+            echo "- Linux: \`Block-Blueprint-$V-linux.AppImage\` (make it executable and run it) or \`Block-Blueprint-$V-linux.deb\`"
             echo ""
             echo "**Build Blueprint Minecraft mod (Fabric, Forge, NeoForge):** download it on CurseForge: https://www.curseforge.com/minecraft/mc-mods/build-blueprint"
             echo ""; cat CHANGELOG.md; } > release-notes.md
@@ -109,6 +113,69 @@ jobs:
             dist/*.exe
             dist/*.exe.blockmap
             dist/latest.yml
+
+  # The same app for Mac and Linux, added to the release the Windows job made.
+  app-mac-linux:
+    needs: [check, app]
+    if: needs.check.outputs.new == 'true' && needs.app.result == 'success'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: macos-latest, flag: --mac }
+          - { os: ubuntu-latest, flag: --linux }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Build the app
+        shell: bash
+        run: |
+          set -o pipefail
+          npx electron-builder ${{ matrix.flag }} --publish never 2>&1 | tee build.log
+          ls -la dist
+      - name: Check the app has every file it needs
+        shell: bash
+        run: |
+          set -o pipefail
+          A=$(find dist -name app.asar -ipath '*resources*' | head -1); echo "$A"
+          npx --yes @electron/asar list "$A" | tr '\\' '/' > asar.txt
+          missing=0
+          for f in /renderer/app.js /renderer/vendor/OrbitControls.js /node_modules/three/build/three.module.js /node_modules/three/build/three.core.js /preload.js /main.js /assets/icon.png; do
+            grep -qx "$f" asar.txt || { echo "::error title=Missing from app::$f"; missing=1; }
+          done
+          exit $missing
+      - name: Mac app is signed (ad-hoc), so Apple silicon Macs open it
+        if: runner.os == 'macOS'
+        run: |
+          APP=$(find dist -maxdepth 2 -name "*.app" | head -1); echo "$APP"
+          codesign -dv "$APP" 2>&1 | tee sig.txt
+          codesign --verify --deep --strict "$APP"
+      - name: Linux app starts
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq xvfb > /dev/null
+          ( xvfb-run -a dist/linux-unpacked/block-blueprint --no-sandbox > run.log 2>&1 & ) ; sleep 20
+          pgrep -f linux-unpacked/block-blueprint > /dev/null || { cat run.log; echo "::error title=Linux app::did not start"; exit 1; }
+          pkill -f linux-unpacked/block-blueprint || true
+      - name: Show the build error
+        if: failure()
+        shell: bash
+        run: |
+          msg=$(tail -n 40 build.log | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')
+          echo "::error title=App build failed (${{ runner.os }})::$msg"
+      - name: Put it on the release page
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.check.outputs.version }}
+          files: |
+            dist/*.dmg
+            dist/*.AppImage
+            dist/*.deb
+            dist/latest-linux.yml
 
   # One build per Minecraft version. 26.3 is the main release; the others are marked Beta on CurseForge.
   mod:

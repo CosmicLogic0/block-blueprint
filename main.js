@@ -62,10 +62,11 @@ function readMeta() { try { return JSON.parse(fs.readFileSync(path.join(DATA_DIR
 function createWindow() {
   win = new BrowserWindow({
     width: 1400, height: 880, minWidth: 900, minHeight: 600,
-    backgroundColor: '#0f5cb5', title: 'Block Blueprint', icon: path.join(__dirname, 'assets', 'icon.ico'),
+    backgroundColor: '#0f5cb5', title: 'Block Blueprint', icon: path.join(__dirname, 'assets', process.platform === 'win32' ? 'icon.ico' : 'icon.png'),
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false },
   });
-  Menu.setApplicationMenu(null);
+  // Mac: keep the small app menu, without it Cmd+C / Cmd+V / Cmd+Q don't work. Windows and Linux: no menu bar.
+  Menu.setApplicationMenu(process.platform === 'darwin' ? Menu.buildFromTemplate([{ role: 'appMenu' }, { role: 'editMenu' }, { role: 'windowMenu' }]) : null);
   win.loadFile(path.join(__dirname, 'renderer', 'index.html'));
 }
 
@@ -74,12 +75,15 @@ function createWindow() {
 // Run from the folder (start.bat): can't replace itself, so it just tells you a new version is out and links to it.
 const RELEASES = 'https://github.com/CosmicLogic0/block-blueprint/releases/latest';
 const upd = { state: 'idle', version: null, error: null };
+// Windows (Setup .exe) and the Linux app file can replace themselves. The Mac app and the Linux .deb can't
+// (an unsigned Mac app isn't allowed to), so those just say a new version is out and link to the download page.
+const SELF_UPDATE = app.isPackaged && (process.platform === 'win32' || (process.platform === 'linux' && !!process.env.APPIMAGE));
 let au = null;
 function sendUpd() { for (const w of BrowserWindow.getAllWindows()) w.webContents.send('upd:state', { ...upd, current: app.getVersion(), installed: app.isPackaged }); }
 function newer(a, b) { const p = (v) => String(v).replace(/^v/, '').split('.').map((n) => parseInt(n, 10) || 0); const x = p(a), y = p(b); for (let i = 0; i < 3; i++) { if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0); } return false; }
 async function checkForUpdates(manual) {
   upd.state = 'checking'; upd.error = null; sendUpd();
-  if (app.isPackaged) {
+  if (SELF_UPDATE) {
     try {
       if (!au) {
         au = require('electron-updater').autoUpdater;
@@ -336,3 +340,4 @@ app.whenReady().then(() => {
 });
 
 app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });
+app.on('activate', () => { if (app.isReady() && BrowserWindow.getAllWindows().length === 0) createWindow(); });   // Mac: click the Dock icon

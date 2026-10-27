@@ -1,13 +1,16 @@
 {
   "name": "block-blueprint",
   "productName": "Block Blueprint",
+  "desktopName": "block-blueprint.desktop",
   "version": "1.2.11",
   "description": "Design Minecraft builds in 3D, then build them in your world with the Build Blueprint mod",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder --win --publish never",
-    "release": "electron-builder --win --publish always"
+    "release": "electron-builder --win --publish always",
+    "dist:linux": "electron-builder --linux --publish never",
+    "dist:mac": "electron-builder --mac --publish never"
   },
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
@@ -51,6 +54,36 @@
       "shortcutName": "Block Blueprint",
       "include": "build/installer.nsh",
       "runAfterFinish": true
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "assets/icon-512.png",
+      "category": "Game",
+      "executableName": "block-blueprint",
+      "maintainer": "CosmicLogic",
+      "synopsis": "Design Minecraft builds in 3D",
+      "artifactName": "Block-Blueprint-${version}-linux.${ext}",
+      "syncDesktopName": true
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ],
+      "icon": "assets/icon-512.png",
+      "category": "public.app-category.games",
+      "identity": "-",
+      "artifactName": "Block-Blueprint-${version}-mac.${ext}"
+    },
+    "dmg": {
+      "title": "Block Blueprint"
     },
     "publish": [
       {
