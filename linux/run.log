@@ -1,26 +1,15 @@
-APP FAILED TimeoutError: page.waitForSelector: Timeout 300000ms exceeded.
-loading text: Block Blueprint
-Something went wrong while loading
-1184 blocks ready
-Start the app
-Find your Minecraft textures
-Load the block pictures
-Build the block list
-Set up the 3D view
-Error: THREE.WebGLRenderer: Error creating WebGL context.
-Try closing and reopening the app. If it keeps happening, try Settings → Change textures, or reinstall from GitHub.
-main-err: [2916:1027/123134.950685:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-main-err: [2916:1027/123134.950726:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
-[2916:1027/123134.950760:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address ty
-main-err: [2946:1027/123139.135120:ERROR:gpu/command_buffer/service/context_group.cc:148] ContextResult::kFatalFailure: WebGL2 blocklisted
-main-err: [2946:1027/123139.140633:ERROR:gpu/command_buffer/service/context_group.cc:148] ContextResult::kFatalFailure: WebGL2 blocklisted
-error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Could not create a WebGL context, VENDOR = 0xffff, DEVICE = 0xffff, GL_VENDOR = Google Inc. (Mesa), GL_RENDERER = ANGLE (Mesa, llvmpipe (LLVM 20.1.2 256 bits), OpenGL 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.4), GL_VERSION = 25.2.8, Sandboxed = no, Optimus = no, AMD switchable = no, Reset notification strategy = 0x8261, ErrorMessage = BindToCurrentSequence failed: .
-error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Could not create a WebGL context, VENDOR = 0xffff, DEVICE = 0xffff, GL_VENDOR = Google Inc. (Mesa), GL_RENDERER = ANGLE (Mesa, llvmpipe (LLVM 20.1.2 256 bits), OpenGL 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.4), GL_VERSION = 25.2.8, Sandboxed = no, Optimus = no, AMD switchable = no, Reset notification strategy = 0x8261, ErrorMessage = BindToCurrentSequence failed: .
-error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.
-error: Error: THREE.WebGLRenderer: Error creating WebGL context.
-    at new WebGLRenderer (file:///home/runner/work/block-blueprint/block-blueprint/dist/linux-unpacked/resources/app.asar/node_modules/three/build/three.module.js:16458:13)
-    at main (file:///home/runner/work/block-blueprint/block-blueprint/dist/linux-unpacked/resources/app.asar/renderer/app.js:100:20)
-main-err: [2916:1027/123637.791822:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-main-err: [2916:1027/123637.791884:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
-main-err: [2916:1027/123637.792266:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-main-err: [2916:1027/123637.792305:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+APP OK
+main-err: [2985:1027/123932.695279:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+main-err: [2985:1027/123932.695326:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2985:1027/123932.695381:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address ty
+main-err: [2985:1027/123954.428648:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2985:1027/123954.428690:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner:
+main-err: [2985:1027/123954.428766:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+main-err: (node:2985) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/block-blueprint/block-blueprint/dist/linux-unpacked/resources/app.asar/renderer/schem.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incu
+main-err: [2985:1027/124001.184048:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+main-err: [2985:1027/124001.184156:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+main-err: [2985:1027/124001.184200:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2985:1027/124001.184217:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner:
+main-err: Debugger ending on ws://127.0.0.1:33587/670fbc13-504b-44c8-9b57-0f929da44a04
+For help, see: https://nodejs.org/learn/getting-started/debugging
