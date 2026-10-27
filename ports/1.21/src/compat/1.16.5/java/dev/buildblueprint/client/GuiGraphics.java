@@ -32,5 +32,19 @@ public final class GuiGraphics {
     public void disableScissor() { org.lwjgl.opengl.GL11.glDisable(org.lwjgl.opengl.GL11.GL_SCISSOR_TEST); }
     public int guiWidth() { return Minecraft.getInstance().getWindow().getGuiScaledWidth(); }
     public int guiHeight() { return Minecraft.getInstance().getWindow().getGuiScaledHeight(); }
-    public void renderComponentTooltip(Font f, List<Component> lines, int x, int y) { if (screen != null) screen.renderComponentTooltip(pose, lines, x, y); }
+    public void renderComponentTooltip(Font f, List<Component> lines, int x, int y) {
+        if (screen == null) return;
+        try { screen.renderComponentTooltip(pose, lines, x, y); }
+        catch (NoSuchMethodError old) {   // Minecraft 1.16.1 (Forge file shared with 1.16.3): the same method had another name
+            try {
+                for (Class<?> c = screen.getClass(); c != null; c = c.getSuperclass())
+                    for (java.lang.reflect.Method m : c.getDeclaredMethods()) {
+                        Class<?>[] t = m.getParameterTypes();
+                        if (t.length == 4 && t[0] == PoseStack.class && t[1] == List.class && t[2] == int.class && t[3] == int.class && m.getReturnType() == void.class) {
+                            m.setAccessible(true); m.invoke(screen, pose, lines, x, y); return;
+                        }
+                    }
+            } catch (Throwable ignored) {}
+        }
+    }
 }
