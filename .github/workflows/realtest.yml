@@ -57,8 +57,8 @@ jobs:
           ./gradlew build -x test -Pmod_version="$V" $ARGS --no-daemon -q
           mkdir -p "$GITHUB_WORKSPACE/jar"
           for f in build/libs/buildblueprint-*.jar; do case "$f" in *-dev.jar|*-sources.jar|*-javadoc.jar) ;; *) cp "$f" "$GITHUB_WORKSPACE/jar/" ;; esac; done
-          # Forge / NeoForge jars must not carry anything under net/fabricmc (clashes with packs that have the real Fabric Loader)
-          if [ -n "${{ matrix.loader }}" ] && unzip -l "$GITHUB_WORKSPACE"/jar/*.jar | grep -q "net/fabricmc/"; then echo "::error::net/fabricmc classes in the Forge/NeoForge jar"; rm -f "$GITHUB_WORKSPACE"/jar/*.jar; exit 1; fi
+          # No jar may carry anything under net/fabricmc: those names belong to Fabric itself (a second copy crashes packs that have it)
+          if unzip -l "$GITHUB_WORKSPACE"/jar/*.jar | grep -q "net/fabricmc/"; then echo "::error::net/fabricmc classes in the Forge/NeoForge jar"; rm -f "$GITHUB_WORKSPACE"/jar/*.jar; exit 1; fi
           ls -la "$GITHUB_WORKSPACE/jar"
       - uses: actions/upload-artifact@v4
         with: { name: "jar-${{ matrix.rid }}", path: jar/ }
