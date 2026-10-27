@@ -34,12 +34,12 @@ Caja de {0} x {1} x {2}  ·  {3} bloques
 Nombre:
 No queda nada en la caja: ajústala o conserva el suelo.
 Se guarda en Construcciones guardadas y copia su código al portapapeles.
-Conseguir una construcción
+Construcciones
 Mover y girar
 Colocar
-Construir por capas
-Bloques y cambios
-Copiar una construcción
+Por capas
+Cambiar bloques
+Copiar
 Bueno saber
 Más ayudas
 Una construcción es lo que quieres hacer, mostrada como bloques fantasma transparentes en tu mundo.

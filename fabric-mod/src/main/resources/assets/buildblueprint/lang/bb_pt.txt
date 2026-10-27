@@ -35,12 +35,12 @@ Save this build	Salvar esta construção
 Name:	Nome:
 Nothing left in the box - adjust it or keep the ground.	Não sobrou nada na caixa - ajuste a caixa ou mantenha o chão.
 Saves to Saved builds and copies its code to your clipboard.	Salva em Construções salvas e copia o código para a área de transferência.
-Get a build	Pegar uma construção
+Get a build	Construções
 Move and turn	Mover e girar
 Place it	Colocar
-Build layers	Construir por camadas
+Build layers	Por camadas
 Blocks and swaps	Blocos e trocas
-Copy a build	Copiar uma construção
+Copy a build	Copiar
 Good to know	Bom saber
 More helpers	Mais ajudas
 A build is what you want to make, shown as see-through ghost blocks in your world.	Uma construção é o que você quer fazer, mostrada como blocos fantasma transparentes no seu mundo.

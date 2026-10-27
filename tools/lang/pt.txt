@@ -34,12 +34,12 @@ Caixa de {0} x {1} x {2}  ·  {3} blocos
 Nome:
 Não sobrou nada na caixa - ajuste a caixa ou mantenha o chão.
 Salva em Construções salvas e copia o código para a área de transferência.
-Pegar uma construção
+Construções
 Mover e girar
 Colocar
-Construir por camadas
+Por camadas
 Blocos e trocas
-Copiar uma construção
+Copiar
 Bom saber
 Mais ajudas
 Uma construção é o que você quer fazer, mostrada como blocos fantasma transparentes no seu mundo.

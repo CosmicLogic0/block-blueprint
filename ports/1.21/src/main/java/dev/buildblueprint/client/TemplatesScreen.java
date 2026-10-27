@@ -45,7 +45,7 @@ public class TemplatesScreen extends BBScreen {
     private volatile String msg = "";
     private volatile boolean busy;
 
-    public TemplatesScreen(Screen parent) { super(Component.literal(Tr.t("Get a build"))); this.parent = parent; }
+    public TemplatesScreen(Screen parent) { super(Component.literal(Tr.t("Get free builds"))); this.parent = parent; }
 
     @Override public boolean isPauseScreen() { return false; }
 
@@ -175,7 +175,7 @@ public class TemplatesScreen extends BBScreen {
         if (all != null && shown.isEmpty() && search.getValue().isEmpty() && kind.isEmpty()) refill();
         int x = px(), w = pw(), top = listTop(), bot = listBottom();
         UiKit.panel(g, x - 6, 4, w + 12, height - 8, UiKit.GREEN);
-        g.drawString(font, Tr.t("Get a build"), x, 10, UiKit.GOLD, true);
+        g.drawString(font, Tr.t("Get free builds"), x, 10, UiKit.GOLD, true);
         String sub = all == null ? "" : all.size() + " free builds from the Minecraft community";
         g.drawString(font, Tr.t(sub), x, 22, UiKit.MUTED, false);
         g.fill(x, top - 2, x + w, bot, 0xFF15151C);

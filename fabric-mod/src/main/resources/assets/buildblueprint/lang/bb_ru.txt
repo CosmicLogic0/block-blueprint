@@ -35,12 +35,12 @@ Save this build	Сохранить эту постройку
 Name:	Название:
 Nothing left in the box - adjust it or keep the ground.	В рамке ничего не осталось - измени её или оставь землю.
 Saves to Saved builds and copies its code to your clipboard.	Сохраняет в Сохранённые постройки и копирует её код в буфер обмена.
-Get a build	Получить постройку
-Move and turn	Двигать и поворачивать
+Get a build	Постройки
+Move and turn	Сдвиг, поворот
 Place it	Закрепить
 Build layers	Строить по слоям
 Blocks and swaps	Блоки и замены
-Copy a build	Скопировать постройку
+Copy a build	Копирование
 Good to know	Полезно знать
 More helpers	Ещё помощники
 A build is what you want to make, shown as see-through ghost blocks in your world.	Постройка - это то, что ты хочешь построить, показанное прозрачными блоками-призраками в твоём мире.

@@ -34,12 +34,12 @@ Boîte de {0} x {1} x {2}  ·  {3} blocs
 Nom :
 Il ne reste rien dans la boîte - ajuste-la ou garde le sol.
 L'enregistre dans Constructions sauvegardées et copie son code dans le presse-papiers.
-Obtenir une construction
-Déplacer et tourner
+Constructions
+Bouger, tourner
 Placer
-Construire par couches
-Blocs et échanges
-Copier une construction
+Par couches
+Blocs, échanges
+Copier
 Bon à savoir
 Plus d'aides
 Une construction, c'est ce que tu veux bâtir, affiché en blocs fantômes transparents dans ton monde.

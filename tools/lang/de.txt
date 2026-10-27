@@ -35,10 +35,10 @@ Name:
 Nichts mehr in der Box - pass sie an oder behalte den Boden.
 Speichert unter Gespeicherte Bauten und kopiert den Code in die Zwischenablage.
 Bau holen
-Bewegen und drehen
+Bewegen, drehen
 Platzieren
-Schichtweise bauen
-Blöcke und Tauschen
+Schichtweise
+Blöcke tauschen
 Bau kopieren
 Gut zu wissen
 Mehr Helfer

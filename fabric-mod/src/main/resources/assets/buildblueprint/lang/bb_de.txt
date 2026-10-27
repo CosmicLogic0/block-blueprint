@@ -36,10 +36,10 @@ Name:	Name:
 Nothing left in the box - adjust it or keep the ground.	Nichts mehr in der Box - pass sie an oder behalte den Boden.
 Saves to Saved builds and copies its code to your clipboard.	Speichert unter Gespeicherte Bauten und kopiert den Code in die Zwischenablage.
 Get a build	Bau holen
-Move and turn	Bewegen und drehen
+Move and turn	Bewegen, drehen
 Place it	Platzieren
-Build layers	Schichtweise bauen
-Blocks and swaps	Blöcke und Tauschen
+Build layers	Schichtweise
+Blocks and swaps	Blöcke tauschen
 Copy a build	Bau kopieren
 Good to know	Gut zu wissen
 More helpers	Mehr Helfer
