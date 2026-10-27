@@ -5,6 +5,9 @@ const fs = require('fs');
 const assets = require('./lib/assets');
 const { buildCatalog } = require('./lib/catalog');
 
+// Linux: Chromium turns 3D off for many graphics drivers it doesn't know; the 3D view needs it, so ask for it anyway.
+if (process.platform === 'linux') app.commandLine.appendSwitch('ignore-gpu-blocklist');
+
 // Only one copy of the app at a time: a second copy left running would block updates from installing.
 if (!app.requestSingleInstanceLock()) { app.exit(0); }
 app.on('second-instance', () => { if (win && !win.isDestroyed()) { if (win.isMinimized()) win.restore(); win.show(); win.focus(); } });
