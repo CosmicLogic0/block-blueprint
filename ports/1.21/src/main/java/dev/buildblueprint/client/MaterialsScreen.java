@@ -197,6 +197,7 @@ public class MaterialsScreen extends BBScreen {
         net.minecraft.client.Minecraft.getInstance().keyboardHandler.setClipboard(sb.toString());
         Chat.bar("Copied the list - paste it anywhere (Ctrl+V)");
     }
+    private static int stacksOf(int n) { return (n + 63) / 64; }
     private static String stacks(int n) { return n >= 64 ? " (" + (n / 64) + " stack" + (n / 64 == 1 ? "" : "s") + (n % 64 > 0 ? " + " + n % 64 : "") + ")" : ""; }
     private static String nameOf(String id) { var st = Materials.stackFor(id); return st.isEmpty() ? PlayerInfo.pretty(id) : st.getHoverName().getString(); }
 
@@ -335,7 +336,7 @@ public class MaterialsScreen extends BBScreen {
             tip.add(Component.literal(Tr.t("You have: " + hovered.have())).withStyle(hovered.enough() ? ChatFormatting.GREEN : ChatFormatting.RED));
             int[] ch = Chests.nearby(hovered.id(), 48);
             if (ch[0] > 0) tip.add(Component.literal(Tr.t(ch[1] == 1 ? "In chests nearby: " + ch[0] + " (1 chest, green box)" : "In chests nearby: " + ch[0] + " (" + ch[1] + " chests, green boxes)")).withStyle(ChatFormatting.AQUA));
-            if (hovered.missing() > 0) tip.add(Component.literal(Tr.t(hovered.missing() >= 64 ? "Get " + hovered.missing() + " more (" + (hovered.missing() + 63) / 64 + " stacks)" : "Get " + hovered.missing() + " more")).withStyle(ChatFormatting.RED));
+            if (hovered.missing() > 0) tip.add(Component.literal(Tr.t(hovered.missing() >= 64 ? "Get " + hovered.missing() + " more (" + stacksOf(hovered.missing()) + " stacks)" : "Get " + hovered.missing() + " more")).withStyle(ChatFormatting.RED));
             tip.add(Component.literal(Tr.t("Click to swap it or remove it from the build")).withStyle(ChatFormatting.YELLOW));
             V.tooltip(g, font, tip, mouseX, mouseY);
         }

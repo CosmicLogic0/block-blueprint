@@ -1,0 +1,514 @@
+Build with friends
+Copy co-op code
+Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.
+How many people build it. Everyone should pick the same number.
+Which builder you are. Each friend picks a different number.
+Done
+Builders: {0}
+just me
+I'm builder {0}
+I'm builder -
+Load a build first.
+Place the build first (Delete), so friends get it in the same spot.
+Copied! Send it to your friends.
+1. Send them the build. It appears in this exact spot.
+2. Split the work. Everyone picks the same number of
+   builders, and a different builder number.
+You build {0}. You only see your part.
+Everyone sees the whole build.
+Copy build
+Name
+Leave out the dirt, grass and natural stone the build stands on.
+Leave out trees, leaves, grass and flowers around the build.
+Save build
+Adjust the box
+Go back and change the box: arrows grow it, Alt + arrows shrink it, Page Down stretches it to where you look. Then press Insert again.
+Cancel copy
+Ground: {0}
+left out
+Trees: {0}
+Save this build
+{0} x {1} x {2} box  ·  {3} blocks
+Name:
+Nothing left in the box - adjust it or keep the ground.
+Saves to Saved builds and copies its code to your clipboard.
+Get a build
+Move and turn
+Place it
+Build layers
+Blocks and swaps
+Copy a build
+Good to know
+A build is what you want to make, shown as see-through ghost blocks in your world.
+Open the build menu, click Saved builds, pick one and press Load into world.
+Builds come from three places:
+- the free Block Blueprint app: make or pick a build and press Send to Minecraft
+- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder
+- builds you copy from your own world (see Copy a build)
+Page Up
+open the build menu
+The build appears in front of you. Move it to where you want to build it.
+Arrow keys
+move it (hold Shift for 5 blocks)
+Ctrl + Up / Down
+move it up or down
+Page Down
+turn it
+In the build menu, To ground sets it right on the ground and Mirror flips it.
+When it's in the right spot, place it. A placed build is locked, so it can't slide away while you build.
+Delete
+place it (press again to unlock and move it)
+Placing starts layer by layer building at the bottom layer.
+Build from the bottom up. Only the layer you're on is shown, so it's easy to see what goes where.
+The next block to place glows. When a layer is finished you move up to the next one by itself.
+Home / End
+go up or down a layer
+Blocks you placed correctly disappear from the ghost. A red outline means a different block is in the way, or the block is the wrong way round (stairs upside down, a log on its side) - break it and place it again.
+The build menu lists every block the build needs: how many you have and how many are still to place.
+The small list in the corner shows the same while you build. Chests you opened nearby that hold blocks you need glow green.
+Don't have a block? Click it in the list and pick any other block in the game (blocks from other mods too).
+Every block of that kind in the build changes. Don't want a block at all (snow on a roof)? Press Remove from build.
+Undo swap puts it back.
+The eye next to a block hides its ghost blocks (click again to show them). Shift-click the eye to see only that block.
+See a build you like in your world? Copy it and build it again anywhere.
+Insert
+start a copy box on the block you look at
+make the box bigger (Alt + arrows: smaller)
+stretch the box to the block you look at
+save it (again)
+Copies go to Saved builds, and into the app too.
+In Creative mode, Auto-build places the whole build for you and Build layer places one layer. Undo build takes it back.
+Middle-click
+hold the block of the ghost you look at
+Settings lets you change how see-through the ghosts are, the corner list and more.
+Every key can be changed in Settings -> Key binds.
+How it works
+< Back
+Next >
+How Build Blueprint works
+Arrows
+grow the box that way
+Alt + arrows
+shrink it
+Ctrl + Up/Down
+top / bottom
+stretch to where you look
+Shift
+5 blocks at a time
+save it
+Copying a build
+{0} x {1} x {2} box
+big box
+{0} blocks
+Make the box as big as your build
+Co-op: {0}
+Not placed yet
+Arrows move it, PgDn turns it
+Shift = 5 blocks · Delete = place
+Layer {0}/{1}
+Time {0}
+{0} blocks/min
+Next: {0}
+  (in hand)
+Build complete!
+PgUp > Remove to clear it
+Layer {0} needs:
+Whole build needs:
++{0} more  (Page Up)
+Layer done!
+Home/End layer · PgUp menu
+Layer {0} from above
+{0} blocks  ·  {1}  ·  {2} a minute
+{0} blocks  ·  {1}
+Page Up > Remove to clear it
+Build
+Mirror
+Flip the build left <-> right, like in a mirror. Handy for matching houses on both sides of a street.
+To ground
+Move the build up or down so it sits right on the ground under it.
+Auto-build
+Creative only: places the whole build for you, bottom layer first. Blocks in the way are replaced (chests are left alone).
+Build layer
+Creative only: places just the layer you're on.
+Undo build
+Puts back what was there before the last auto-build.
+Co-op {0}/{1}
+Co-op
+Build this with friends: send them a code that puts it in this exact spot, and split it so everyone builds their own part.
+Remove
+Take this build out of your world view. It stays in Saved builds, so you can load it again.
+Whole build
+Every block the build still needs.
+Layer down (End key)
+Layer
+Just the layer you're building now.
+Layer up (Home key). Past the top shows all layers.
+Unlock
+Unlock it so you can move or turn it again.
+Lock the build where it is and start building, layer by layer (Delete key).
+Turn
+Turn the build 90 degrees (Page Down).
+Saved builds
+Your saved builds and schematics: load another one, paste a code, copy one from your world.
+Settings
+Last swap undone
+Showing only {0}  ·  Shift-click the eye again to show everything
+Showing every block again
+Hid {0}  ·  {1} hidden
+Showing {0}  ·  {1} hidden
+Showing {0}
+whole build
+Copied the list - paste it anywhere (Ctrl+V)
+Layer {0} of {1}
+No build loaded
+not placed yet
+{0} to fix
+{0} / {1} placed
+Raw materials
+Blocks needed
+Copy
+Blocks
+to place
+not in game
+Load a build first (Saved builds).
+This layer is done!
+Nothing left to place - the build is done!
+1 block in this build isn't in Minecraft {0}  ·  click it to swap it
+{0} blocks in this build aren't in Minecraft {1}  ·  click one to swap it
+{0} hidden  ·  click the eye at the top to show them all
+Click a block to swap or remove it  ·  the eye hides it
+Undo swap
+Show {0}
+Hide {0}
+Its ghost blocks are hidden right now
+Hides its ghost blocks so you can see the rest better
+Shift-click: show only this block
+Show every block again
+{0} hidden
+This block doesn't exist in Minecraft {0} - click to pick one to use instead
+Still to place: {0}  (of {1})
+You have: {0}
+In chests nearby: {0} (1 chest, green box)
+In chests nearby: {0} ({1} chests, green boxes)
+Get {0} more ({1} stacks)
+Get {0} more
+Click to swap it or remove it from the build
+to get
+  (furnace)
+Nothing left to gather - you have what the build needs!
+What to gather for the blocks you still need  ·  (furnace) = smelt some of it
+For: {0}
+Smelt some of it in a furnace first
+Crafting table amounts - a stonecutter needs less for stone stairs and slabs
+Search
+Search...
+Get free builds
+1,400+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.
++ Paste build
+Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.
+Copy from world
+Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.
+Current build
+Back to the build you have loaded (materials list).
+Fit
+Show the whole build again (scroll to zoom, drag to move).
+Load
+Load into world
+Show this build in front of you as ghost blocks (double-click or Enter does the same).
+Rename
+Delete this build from this computer. Click twice to be sure.
+Code
+Copy code
+Puts this build's BB1: code on your clipboard, to import in the Block Blueprint app or send to a friend.
+Save .schem
+Save this build as a .schem file (BlockBlueprint/schematics in your user folder) for WorldEdit, Litematica, Axiom...
+Save
+New build arrived: "{0}"
+View: 3D
+View: Top
+View: Front
+Co-op build placed where your friend has it. Pick which builder you are.
+You already saved this build.
+Saved "{0}" on this computer.
+Could not read the clipboard.
+Code for "{0}" copied - paste it in the app (Templates > Import code).
+Saved {0} in BlockBlueprint/schematics (your user folder).
+Couldn't save the .schem file: {0}
+Loaded "{0}" in front of you, fully built. Arrows move it (Shift = 5 blocks), Page Down turns it, Delete places it.
+Renamed to "{0}".
+Sure?
+Click Delete again to delete "{0}".
+Deleted "{0}".
+{0} saved
+{0} of {1}
+Double-click or Enter loads a build
+No build matches
+your search.
+No saved builds yet.
+From the app: copy a
+build code, then press
++ Paste build.
+From your world: press
+Copy from world.
+Schematics: put .schem,
+.litematic or .nbt files
+in BlockBlueprint/builds
+in your user folder.
+{0} x {1} x {2} · {3} blocks · {4} layers
+drag to move · scroll to zoom
+Can't read this build: {0}
+Paste a build to see it here
+Build Blueprint settings
+ON
+OFF
+Raw materials: {0}
+Adds "Raw materials" to the build menu: what to gather for the blocks you still need - logs for planks and stairs, sand for glass, cobblestone to smelt into stone...
+Layer map: {0}
+A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.
+Scaffold hints: {0}
+Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.
+Ghost blocks: {0}% solid
+How see-through the preview blocks are.
+Show preview: {0}
+Hide or show the ghost blocks.
+Corner list: {0}
+The list of blocks you still need, shown in a corner while you build.
+Corner: {0}
+top right
+top left
+Which top corner of the screen the list sits in.
+List size: {0}%
+Make the corner list smaller or bigger.
+Next block: {0}
+A yellow box shows which block to place next (bottom layer first, closest first).
+Auto next layer: {0}
+When you finish a layer, go to the next one by itself.
+Chest finder: {0}
+Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.
+Sounds: {0}
+A little ding when you finish a layer, and a level-up sound when the build is done.
+List shows: {0}
+this layer
+Auto: the layer you're on while building layer by layer, otherwise the whole build.
+Blocks in list: {0}
+How many block types the corner list shows before "+ more".
+Progress bars: {0}
+Green bar = whole build, blue bar = the layer you're on.
+Build timer: {0}
+How long you've been building and how many blocks a minute.
+Key hints: {0}
+The small reminder of the keys under the corner list.
+Draw distance: {0}
+How far away ghost blocks are still drawn. Lower = faster.
+Red boxes: {0}
+Red outline on blocks that are in the way of the build, or placed the wrong way round.
+Check direction: {0}
+Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.
+Pick from ghost: {0}
+Middle-click a ghost block to put that block in your hand.
+Placed: start at layer 1: {0}
+A new build shows fully built so you can move it. When you place it, it switches to layer 1 so you can start building.
+Basics
+More
+Extras
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints.
+Key binds...
+Change the keys (Options > Controls > Key Binds > Build Blueprint).
+A short guide to everything the mod does.
+Hover a button to see what it does.
+Swap blocks
+How swapping works
+Remove from build
+Take every {0} out of the build, for example snow on a roof. Undo swap puts it back.
+Search every block by name or mod...
+Similar ({0})
+Blocks of the same kind: stairs for stairs, slabs for slabs, full blocks for full blocks. The most alike come first.
+All blocks ({0})
+Every block in the game, A to Z.
+From mods ({0})
+Blocks added by the other mods you have installed.
+Swap
+Swap every block of this kind in the build (Enter).
+Undo last swap
+Back
+Last swap undone.
+Pick a block from the list first.
+Nothing to change.
+Swapped {0} {1} to {2}  ·  Undo: click Undo swap in the build menu
+Nothing to remove.
+Removed {0} {1} from the build  ·  Undo: click Undo swap in the build menu
+Swap {0}
+{0} in this build
+  ·  not in Minecraft {0}, pick one to use instead
+Nothing here.
+No block matches "{0}".
+Click a block to pick it  ·  double-click swaps right away
+Double-click to swap to this
+Got it! "{0}" is in Saved builds.
+Download failed - check your internet connection.
+{0} free builds from the Minecraft community
+Loading the list...
+{0}  ·  {1} blocks
+No build matches.
+Got it
+Download
+by {0}  ·  {1} license
+Click a build, then Get it  ·  double-click gets it right away
+By {0} ({1})
+Wrong way round: this {0} {1}  ·  break it and place it again
+All fixed! Nothing wrong in the build any more.
+Fixed! {0} left  ·  {1}
+Nothing to fix - every placed block is right.
+Mistake 1 of {0}: {1}
+this {0} {1}
+a {0} is where {1} goes - break it
+Fix: {0}
+Showing all layers
+A block in layer {0} was broken - back to layer {1}
+Layer {0} done! Now layer {1}
+Build complete! {0} blocks · {1} building time{2}.
+ · {0} blocks a minute
+fence gate
+pressure plate
+hanging sign
+Copy box started on the block you're looking at. Make it as big as your build:
+Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.
+Press Insert again to save it, Delete to cancel.
+Too far - a copy can be up to {0} blocks per side
+Stretched to that block  ·  box {0} x {1} x {2}  ·  Insert = save, Delete = cancel
+Copy cancelled
+Type /buildblueprint copy save <name> to save it.
+The box can't get any smaller that way
+That's as big as a copy can be ({0} per side)
+{0}{1}  ·  box {2} x {3} x {4}  ·  Insert = save, Delete = cancel
+Shrunk 
+Grew 
+There are no blocks inside that box.
+Saved "{0}" ({1} blocks, {2} x {3} x {4}) to your Saved builds.
+Its build code is on your clipboard - paste it in the Block Blueprint app (Templates > Import code) or send it to someone.
+Couldn't save: {0}
+Start a copy first: look at your build and press Insert (or /buildblueprint copy).
+Building time {0} · {1} blocks placed · {2} a minute
+Preview shown.
+Preview hidden.
+Blueprint cleared.
+Saved as a .schem file: {0}
+Open it with WorldEdit (copy it to config/worldedit/schematics), Litematica, Axiom or any other schematic tool.
+No blueprint loaded. Paste the lines from the app first (see /buildblueprint help).
+Got part {0} of {1}{2}
+ received so far. Keep pasting the rest.
+Loaded "{0}": {1} blocks, {2} x {3} x {4}.
+It's shown in front of you, fully built. Move it into place, then press Delete (or Page Up > Place it) to start building layer by layer.
+Keys: arrows move it (Up = forward, Down = back, Ctrl+Up/Down = up/down), Page Down rotates, Page Up opens the materials menu.
+The blueprint is placed (locked). Unlock it first: Page Up > Unlock, or /buildblueprint unlock.
+Placed! {0}
+Layer {0} of {1} - Home/End to change layer
+It won't move or rotate now
+Unlocked - move it with the arrow keys, then press Delete to place it again
+No ground found under the blueprint
+Already sitting on the ground
+Moved {0}{1} to sit on the ground
+up 
+down 
+Turned to {0}
+Removed "{0}" from view. It's still in Saved builds.
+Mirrored (flipped left <-> right)
+Back to normal (not mirrored)
+Unknown direction "{0}". Use: up, down, left, right, forward, back, north, south, east, west.
+Moved {0} {1}. Corner is now at {2}, {3}, {4}.
+Rotated. Corner is now at {0}, {1}, {2}.
+Blueprint corner moved to where you stand ({0}, {1}, {2}). Size {3} x {4} x {5}.
+Showing every layer.
+Showing layer {0} of {1} only.
+"{0}": {1} blocks, {2} x {3} x {4}, rotated {5}
+Corner at {0}, {1}, {2}; far corner at {3}, {4}, {5}.
+.schem, .litematic and .nbt files in <home>/BlockBlueprint/builds (or your WorldEdit / Litematica schematics folder) show up in Saved builds.
+Keys: Up = forward, Down = back, Left/Right, Ctrl+Up/Down = up/down, Page Down = rotate, Page Up = materials menu.
+--- {0}: you have / you need ---
+OK  {0}
+NEED {0} more  {1}
+You have everything.
+Auto-build only works in Creative mode.
+Load a blueprint first.
+Already building - /buildblueprint autobuild stop to stop.
+Nothing to place ({0} spots have chests or similar in the way).
+Nothing to place - it's all built already!
+On a server this uses /setblock, so you need to be an operator.
+Auto-building {0} blocks{1}...{2}
+ on layer {0}
+ (skipping {0} spots with chests or similar in the way)
+Wait for the auto-build to finish (or stop it) first.
+Nothing to undo.
+Undoing the last auto-build ({0} blocks)...
+Not auto-building right now.
+Stopped after {0} of {1} blocks.
+Undoing... 
+Auto-building... 
+Undo finished.
+Auto-build finished! {0} blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.
+Build Blueprint {0} is out (you have {1}).
+Update it in the CurseForge app, or get it from curseforge.com/minecraft/mc-mods/build-blueprint
+the west end
+the north end
+the east end
+the south end
+the middle
+part {0} of {1} ({2})
+{0} ahead
+{0} behind
+{0} right
+{0} left
+{0} up
+{0} down
+right here
+That schematic file is too big.
+Couldn't read {0}.
+Nothing to paste. Copy a build code (BB1:...) or the app's Export > "Copy all" lines, then paste here.
+Only {0} of {1} parts were pasted. Use "Copy all" in the app.
+That isn't a build code.
+That build is too big.
+That build code is broken - copy it again.
+That build code has no blocks in it.
+That build code couldn't be read.
+There's already a file called {0}.
+That file belongs to WorldEdit or Litematica. Delete it from {0} instead.
+Holding {0}
+Holding {0} (from your inventory)
+You don't have any {0} - check the chest finder (green boxes)
+Welcome back! Your blueprint "{0}" is still here{1} Page Up for the menu.
+ (placed).
+ - move it, then Place it.
+Couldn't bring back the blueprint you had here last time.
+is the wrong way round
+should {0}
+face up
+face down
+face {0}
+be upside down (top half)
+be the right way up (bottom half)
+be a double slab
+be a top slab
+be a bottom slab
+stand upright
+lie east-west
+lie north-south
+be turned to face {0}
+be on the floor
+hang from the ceiling
+be on a wall
+have its hinge on the {0}
+hang from the block above
+stand on the block below
+have {0} {1}
+north
+south
+east
+west
+north-east
+north-west
+south-east
+south-west
+left
+right
+kept
+auto

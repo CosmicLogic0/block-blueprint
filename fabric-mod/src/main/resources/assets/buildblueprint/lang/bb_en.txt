@@ -206,7 +206,7 @@ Still to place: {0}  (of {1})
 You have: {0}
 In chests nearby: {0} (1 chest, green box)
 In chests nearby: {0} ({1} chests, green boxes)
-Get {0} more ({1}
+Get {0} more ({1} stacks)
 Get {0} more
 Click to swap it or remove it from the build
 to get
