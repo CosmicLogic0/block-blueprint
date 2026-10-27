@@ -1,27 +1,5 @@
-APP FAILED TimeoutError: page.click: Timeout 30000ms exceeded.
-Call log:
-  - waiting for locator('#btnTemplates')
-    - locator resolved to <button id="btnTemplates" class="pill mcbtn" data-tip="Browse ready-made builds">…</button>
-  - attempting click action
-    2 × waiting for element to be visible, enabled and stable
-      - element is visible, enabled and stable
-      - scrolling into view if needed
-      - done scrolling
-      - <button class="icon" id="btnRedo" data-tip="Redo  ·  Ctrl+Y">↷</button> from <div id="actions" class="group">…</div> subtree intercepts pointer events
-    - retrying click action
-    - waiting 20ms
-    2 × waiting for element to be visible, enabled and stable
-      - element is visible, enabled and stable
-      - scrolling into view if needed
-      - done scrolling
-      - <button class="icon" id="btnRedo" data-tip="Redo  ·  Ctrl+Y">↷</button> from <div id="actions" class="group">…</div> subtree intercepts pointer events
-    - retrying click action
-      - waiting 100ms
-    53 × waiting for element to be visible, enabled and stable
-       - element is visible, enabled and stable
-       - scrolling into view if needed
-       - done scrolling
-       - <button class="icon" id="btnRedo" data-tip="Redo  ·  Ctrl+Y">↷</button> from <div id="actions" class="group">…</div> subtree intercepts pointer events
-     - retrying click action
-       - waiting 500ms
-
+APP OK
+main-err: (node:36685) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/runner/work/block-blueprint/block-blueprint/dist/mac-universal/Block%20Blueprint.app/Contents/Resources/app.asar/renderer/schem.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because modul
+main-err: Debugger ending on ws://127.0.0.1:49195/3d11b2ac-8f1a-4ccc-9dd0-5ed1a448a137
+For help, see: https://nodejs.org/learn/getting-started/debugging
