@@ -1,1 +1,27 @@
-RUNNING
+APP FAILED TimeoutError: page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('#btnTemplates')
+    - locator resolved to <button id="btnTemplates" class="pill mcbtn" data-tip="Browse ready-made builds">…</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <button class="icon" id="btnRedo" data-tip="Redo  ·  Ctrl+Y">↷</button> from <div id="actions" class="group">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <button class="icon" id="btnRedo" data-tip="Redo  ·  Ctrl+Y">↷</button> from <div id="actions" class="group">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    53 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <button class="icon" id="btnRedo" data-tip="Redo  ·  Ctrl+Y">↷</button> from <div id="actions" class="group">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+

@@ -16,7 +16,6 @@
   • downloaded electron zip extracted successfully  output=/Users/runner/work/block-blueprint/block-blueprint/dist/mac-universal-arm64-temp
   • searching for node modules  pm=npm searchDir=/Users/runner/work/block-blueprint/block-blueprint
   • packaging       platform=darwin arch=universal electron=45.0.0 appOutDir=dist/mac-universal
-  • ad-hoc signing with hardenedRuntime enabled requires the com.apple.security.cs.disable-library-validation entitlement to prevent app launch failures due to library validation. See https://electron.build/code-signing for details.
   • signing         file=dist/mac-universal/Block Blueprint.app platform=darwin type=distribution identityName=- identityHash=none provisioningProfile=none
   • skipped macOS notarization  reason=`notarize` options were unable to be generated
   • building        target=DMG arch=universal file=dist/Block-Blueprint-1.2.11-mac.dmg
