@@ -18,6 +18,7 @@ def files():
     out = [p for p in sorted(MENU.glob('*.java')) if p.name not in SKIP]
     out += [MAIN / n for n in ['Chat.java', 'Materials.java', 'Mistakes.java', 'Layers.java', 'Stats.java', 'Swapper.java', 'Copier.java',
                                'BuildBlueprintClient.java', 'AutoBuild.java', 'UpdateCheck.java', 'Coop.java', 'Hint.java', 'SavedBuilds.java', 'Chests.java', 'GhostPick.java', 'SessionStore.java']]
+    out.append(ROOT / 'fabric-mod/src/main/java/dev/buildblueprint/core/Orient.java')
     return [p for p in out if p.exists()]
 
 # ---------------------------------------------------------------- a tiny Java expression scanner
@@ -168,6 +169,9 @@ def extract():
         for t in templates_in(s):
             for u in (t.split(':', 2)[1:] if t.startswith('key:') else [t]):   # help pages: "key:Insert:what it does"
                 if keep(u) and u not in keys: keys.append(u)
+    # single lowercase words that get filled into other texts (directions, sides)
+    for w in ['north', 'south', 'east', 'west', 'north-east', 'north-west', 'south-east', 'south-west', 'left', 'right', 'kept', 'left out', 'just me', 'this layer', 'whole build', 'auto', 'top right', 'top left']:
+        if w not in keys: keys.append(w)
     LANG.mkdir(parents=True, exist_ok=True)
     (LANG / 'bb_en.txt').write_text('# Every text Build Blueprint shows. Translations: bb_<language>.txt, "English<TAB>translation".\n' + '\n'.join(keys) + '\n')
     print(len(keys), 'texts')

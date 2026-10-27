@@ -29,8 +29,7 @@ public final class Coop {
     public static String where(Blueprint bp) {
         if (!on() || bp == null) return "";
         boolean alongX = bp.sx >= bp.sz;
-        String a = alongX ? "west" : "north", b = alongX ? "east" : "south";
-        String side = me == 1 ? a + " end" : me == parts ? b + " end" : "middle";
-        return "part " + me + " of " + parts + " (the " + side + ")";
+        String side = me == 1 ? (alongX ? "the west end" : "the north end") : me == parts ? (alongX ? "the east end" : "the south end") : "the middle";
+        return "part " + me + " of " + parts + " (" + Tr.t(side) + ")";
     }
 }

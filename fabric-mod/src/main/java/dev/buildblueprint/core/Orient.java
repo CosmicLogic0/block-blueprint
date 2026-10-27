@@ -15,6 +15,9 @@ public final class Orient {
 
     /** The "Check block direction" setting. */
     public static boolean on = true;
+    /** Translates the words of fix() into the game's language (set by the mod; plain English here). */
+    public static java.util.function.UnaryOperator<String> tr = s -> s;
+    private static String tr(String template, String part) { return tr.apply(template).replace("{0}", tr.apply(part)); }
 
     private static final String[] CHECK = {"facing", "half", "axis", "type", "rotation", "face", "hinge", "attachment", "hanging", "vertical_direction", "orientation"};
 
@@ -49,19 +52,19 @@ public final class Orient {
             if (sb.length() > 0) sb.append(", ");
             sb.append(t);
         }
-        return sb.length() == 0 ? "is the wrong way round" : "should " + sb;
+        return sb.length() == 0 ? tr.apply("is the wrong way round") : tr("should {0}", sb.toString());
     }
 
     private static String say(String k, String v) {
         switch (k) {
-            case "facing": return v.equals("up") ? "face up" : v.equals("down") ? "face down" : "face " + v;
-            case "half": return v.equals("top") ? "be upside down (top half)" : v.equals("bottom") ? "be the right way up (bottom half)" : "";
-            case "type": return v.equals("double") ? "be a double slab" : v.equals("top") ? "be a top slab" : "be a bottom slab";
-            case "axis": return v.equals("y") ? "stand upright" : "lie " + (v.equals("x") ? "east-west" : "north-south");
-            case "rotation": return "be turned to face " + dir16(v);
-            case "face": return v.equals("floor") ? "be on the floor" : v.equals("ceiling") ? "hang from the ceiling" : "be on a wall";
-            case "hinge": return "have its hinge on the " + v;
-            case "hanging": return v.equals("true") ? "hang from the block above" : "stand on the block below";
+            case "facing": return v.equals("up") ? tr.apply("face up") : v.equals("down") ? tr.apply("face down") : tr("face {0}", v);
+            case "half": return v.equals("top") ? tr.apply("be upside down (top half)") : v.equals("bottom") ? tr.apply("be the right way up (bottom half)") : "";
+            case "type": return tr.apply(v.equals("double") ? "be a double slab" : v.equals("top") ? "be a top slab" : "be a bottom slab");
+            case "axis": return v.equals("y") ? tr.apply("stand upright") : tr.apply(v.equals("x") ? "lie east-west" : "lie north-south");
+            case "rotation": return tr("be turned to face {0}", dir16(v));
+            case "face": return tr.apply(v.equals("floor") ? "be on the floor" : v.equals("ceiling") ? "hang from the ceiling" : "be on a wall");
+            case "hinge": return tr("have its hinge on the {0}", v);
+            case "hanging": return tr.apply(v.equals("true") ? "hang from the block above" : "stand on the block below");
             default: return "have " + k.replace('_', ' ') + " " + v;
         }
     }

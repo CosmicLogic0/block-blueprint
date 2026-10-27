@@ -150,7 +150,7 @@ public class MaterialsScreen extends BBScreen {
                 Chat.bar(Hide.any() ? "Showing only " + hoveredEye.name() + "  ·  Shift-click the eye again to show everything" : "Showing every block again");
             } else {
                 Hide.toggle(hoveredEye.id());
-                Chat.bar((Hide.item(hoveredEye.id()) ? "Hid " : "Showing ") + hoveredEye.name() + (Hide.any() ? "  ·  " + Hide.count() + " hidden" : ""));
+                Chat.bar(Hide.item(hoveredEye.id()) ? "Hid " + hoveredEye.name() + "  ·  " + Hide.count() + " hidden" : Hide.any() ? "Showing " + hoveredEye.name() + "  ·  " + Hide.count() + " hidden" : "Showing " + hoveredEye.name());
             }
             return true;
         }
@@ -294,7 +294,8 @@ public class MaterialsScreen extends BBScreen {
         undoLink = null;
         if (s.loaded()) {
             int bad = notHere.size();
-            String foot = bad > 0 ? bad + " block" + (bad == 1 ? "" : "s") + " in this build " + (bad == 1 ? "isn't" : "aren't") + " in Minecraft " + dev.buildblueprint.core.SchemCodec.minecraftVersion() + "  ·  click one to swap it"
+            String foot = bad == 1 ? "1 block in this build isn't in Minecraft " + dev.buildblueprint.core.SchemCodec.minecraftVersion() + "  ·  click it to swap it"
+                    : bad > 1 ? bad + " blocks in this build aren't in Minecraft " + dev.buildblueprint.core.SchemCodec.minecraftVersion() + "  ·  click one to swap it"
                     : Hide.any() ? Hide.count() + " hidden  ·  click the eye at the top to show them all" : "Click a block to swap or remove it  ·  the eye hides it";
             String link = s.canUndoSwap() ? "Undo swap" : "";
             String sep = link.isEmpty() ? "" : "  ·  ";
@@ -316,7 +317,7 @@ public class MaterialsScreen extends BBScreen {
         if (eyeHov != null) {
             List<Component> tip = new ArrayList<>();
             boolean hid = Hide.item(eyeHov.id());
-            tip.add(Component.literal(Tr.t((hid ? "Show " : "Hide ") + eyeHov.name())).withStyle(ChatFormatting.WHITE));
+            tip.add(Component.literal(Tr.t(hid ? "Show " + eyeHov.name() : "Hide " + eyeHov.name())).withStyle(ChatFormatting.WHITE));
             tip.add(Component.literal(Tr.t(hid ? "Its ghost blocks are hidden right now" : "Hides its ghost blocks so you can see the rest better")).withStyle(ChatFormatting.GRAY));
             tip.add(Component.literal(Tr.t("Shift-click: show only this block")).withStyle(ChatFormatting.YELLOW));
             V.tooltip(g, font, tip, mouseX, mouseY);
@@ -333,8 +334,8 @@ public class MaterialsScreen extends BBScreen {
             tip.add(Component.literal(Tr.t("Still to place: " + hovered.left() + "  (of " + hovered.total() + ")")).withStyle(ChatFormatting.GRAY));
             tip.add(Component.literal(Tr.t("You have: " + hovered.have())).withStyle(hovered.enough() ? ChatFormatting.GREEN : ChatFormatting.RED));
             int[] ch = Chests.nearby(hovered.id(), 48);
-            if (ch[0] > 0) tip.add(Component.literal(Tr.t("In chests nearby: " + ch[0] + " (" + ch[1] + " chest" + (ch[1] == 1 ? "" : "s") + ", green boxes)")).withStyle(ChatFormatting.AQUA));
-            if (hovered.missing() > 0) tip.add(Component.literal(Tr.t("Get " + hovered.missing() + " more" + (hovered.missing() >= 64 ? " (" + (hovered.missing() + 63) / 64 + " stacks)" : ""))).withStyle(ChatFormatting.RED));
+            if (ch[0] > 0) tip.add(Component.literal(Tr.t(ch[1] == 1 ? "In chests nearby: " + ch[0] + " (1 chest, green box)" : "In chests nearby: " + ch[0] + " (" + ch[1] + " chests, green boxes)")).withStyle(ChatFormatting.AQUA));
+            if (hovered.missing() > 0) tip.add(Component.literal(Tr.t(hovered.missing() >= 64 ? "Get " + hovered.missing() + " more (" + (hovered.missing() + 63) / 64 + " stacks)" : "Get " + hovered.missing() + " more")).withStyle(ChatFormatting.RED));
             tip.add(Component.literal(Tr.t("Click to swap it or remove it from the build")).withStyle(ChatFormatting.YELLOW));
             V.tooltip(g, font, tip, mouseX, mouseY);
         }

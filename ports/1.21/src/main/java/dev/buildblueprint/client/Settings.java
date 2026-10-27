@@ -38,6 +38,7 @@ public final class Settings {
     private static Path file() { return FabricLoader.getInstance().getConfigDir().resolve("buildblueprint").resolve("settings.properties"); }
 
     public static void load() {
+        dev.buildblueprint.core.Orient.tr = Tr::t;   // wrong-way messages in the game's language
         Properties p = new Properties();
         try (Reader r = Files.newBufferedReader(file())) { p.load(r); } catch (IOException e) { return; }
         hudShow = b(p, "hudShow", hudShow); hudRight = b(p, "hudRight", hudRight); hudScale = i(p, "hudScale", hudScale);

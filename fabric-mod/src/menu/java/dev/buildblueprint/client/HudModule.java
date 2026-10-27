@@ -204,7 +204,8 @@ public final class HudModule {
     private static void doneCard(GuiGraphicsExtractor g, Minecraft mc) {
         var font = mc.font;
         String a = "Build complete!";
-        String b = Stats.completeBlocks + " blocks  ·  " + Stats.time(Stats.completeMs) + (Stats.completePerMin > 0 ? "  ·  " + Stats.completePerMin + " a minute" : "");
+        String b = Stats.completePerMin > 0 ? Stats.completeBlocks + " blocks  ·  " + Stats.time(Stats.completeMs) + "  ·  " + Stats.completePerMin + " a minute"
+                : Stats.completeBlocks + " blocks  ·  " + Stats.time(Stats.completeMs);
         String c = "Page Up > Remove to clear it";
         int w = Math.max(font.width(Tr.t(b)), font.width(Tr.t(c))) + 24, x = g.guiWidth() / 2 - w / 2, y = 26;
         UiKit.panel(g, x, y, w, 44, UiKit.GREEN);

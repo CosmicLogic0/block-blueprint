@@ -126,8 +126,8 @@ Whole build needs:
 Layer done!
 Home/End layer · PgUp menu
 Layer {0} from above
-{0} blocks  ·  {1}{2}
-  ·  {0} a minute
+{0} blocks  ·  {1}  ·  {2} a minute
+{0} blocks  ·  {1}
 Page Up > Remove to clear it
 Build
 Mirror
@@ -163,9 +163,9 @@ Settings
 Last swap undone
 Showing only {0}  ·  Shift-click the eye again to show everything
 Showing every block again
-Hid 
-Showing 
-  ·  {0} hidden
+Hid {0}  ·  {1} hidden
+Showing {0}  ·  {1} hidden
+Showing {0}
 layer {0}
 whole build
 Raw materials to gather:
@@ -189,14 +189,13 @@ not in game
 Load a build first (Saved builds).
 This layer is done!
 Nothing left to place - the build is done!
-{0} block{1} in this build {2} in Minecraft {3}  ·  click one to swap it
-isn't
-aren't
+1 block in this build isn't in Minecraft {0}  ·  click it to swap it
+{0} blocks in this build aren't in Minecraft {1}  ·  click one to swap it
 {0} hidden  ·  click the eye at the top to show them all
 Click a block to swap or remove it  ·  the eye hides it
 Undo swap
-Show 
-Hide 
+Show {0}
+Hide {0}
 Its ghost blocks are hidden right now
 Hides its ghost blocks so you can see the rest better
 Shift-click: show only this block
@@ -205,8 +204,10 @@ Show every block again
 This block doesn't exist in Minecraft {0} - click to pick one to use instead
 Still to place: {0}  (of {1})
 You have: {0}
-In chests nearby: {0} ({1} chest{2}, green boxes)
-Get {0} more{1}
+In chests nearby: {0} (1 chest, green box)
+In chests nearby: {0} ({1} chests, green boxes)
+Get {0} more ({1}
+Get {0} more
 Click to swap it or remove it from the build
 to get
   (furnace)
@@ -482,8 +483,12 @@ Auto-build finished! {0} blocks placed. Use Undo in the Page Up menu (or /buildb
 update check
 Build Blueprint {0} is out (you have {1}).
 Update it in the CurseForge app, or get it from curseforge.com/minecraft/mc-mods/build-blueprint
-{0} end
-part {0} of {1} (the {2})
+the west end
+the north end
+the east end
+the south end
+the middle
+part {0} of {1} ({2})
 {0} ahead
 {0} behind
 {0} right
@@ -516,3 +521,36 @@ Welcome back! Your blueprint "{0}" is still here{1} Page Up for the menu.
  (placed).
  - move it, then Place it.
 Couldn't bring back the blueprint you had here last time.
+is the wrong way round
+should {0}
+face up
+face down
+face {0}
+be upside down (top half)
+be the right way up (bottom half)
+be a double slab
+be a top slab
+be a bottom slab
+stand upright
+lie east-west
+lie north-south
+be turned to face {0}
+be on the floor
+hang from the ceiling
+be on a wall
+have its hinge on the {0}
+hang from the block above
+stand on the block below
+have {0} {1}
+north
+south
+east
+west
+north-east
+north-west
+south-east
+south-west
+left
+right
+kept
+auto
