@@ -1,0 +1,528 @@
+Mit Freunden bauen
+Koop-Code kopieren
+Schick diesen Code deinen Freunden. Sie fügen ihn unter Gespeicherte Bauten > Einfügen ein, und der Bau erscheint auch bei ihnen genau an dieser Stelle.
+Wie viele Leute daran bauen. Alle sollten dieselbe Zahl wählen.
+Welcher Bauer du bist. Jeder Freund wählt eine andere Zahl.
+Fertig
+Bauer: {0}
+nur ich
+Ich bin Bauer {0}
+Ich bin Bauer -
+Lade zuerst einen Bau.
+Platziere den Bau zuerst (Entf), damit deine Freunde ihn an derselben Stelle bekommen.
+Kopiert! Schick ihn deinen Freunden.
+1. Schick ihnen den Bau. Er erscheint genau an dieser Stelle.
+2. Teilt die Arbeit auf. Alle wählen dieselbe Anzahl
+   Bauer und eine andere Bauer-Nummer.
+Du baust {0}. Du siehst nur deinen Teil.
+Alle sehen den ganzen Bau.
+Bau kopieren
+Name
+Lässt Erde, Gras und natürlichen Stein weg, auf dem der Bau steht.
+Lässt Bäume, Blätter, Gras und Blumen um den Bau herum weg.
+Bau speichern
+Box anpassen
+Geh zurück und ändere die Box: Pfeiltasten vergrößern sie, Alt + Pfeiltasten verkleinern sie, Bild ab zieht sie bis dorthin, wo du hinschaust. Dann drück wieder Einfg.
+Kopieren abbrechen
+Boden: {0}
+weggelassen
+Bäume: {0}
+Diesen Bau speichern
+Box {0} x {1} x {2}  ·  {3} Blöcke
+Name:
+Nichts mehr in der Box - pass sie an oder behalte den Boden.
+Speichert unter Gespeicherte Bauten und kopiert den Code in die Zwischenablage.
+Bau holen
+Bewegen und drehen
+Platzieren
+Schichtweise bauen
+Blöcke und Tauschen
+Bau kopieren
+Gut zu wissen
+Ein Bau ist das, was du bauen willst, gezeigt als durchsichtige Geisterblöcke in deiner Welt.
+Öffne das Bau-Menü, klick auf Gespeicherte Bauten, wähl einen aus und drück In die Welt laden.
+Bauten kommen von drei Orten:
+- die kostenlose App Block Blueprint: erstelle oder wähle einen Bau und drück Send to Minecraft
+- Schematic-Dateien (.schem, .litematic, .nbt) im Ordner BlockBlueprint in deinem Benutzerordner
+- Bauten, die du aus deiner eigenen Welt kopierst (siehe Bau kopieren)
+Bild auf
+das Bau-Menü öffnen
+Der Bau erscheint vor dir. Beweg ihn dorthin, wo du ihn bauen willst.
+Pfeiltasten
+bewegen (Umschalt halten für 5 Blöcke)
+Strg + Hoch / Runter
+nach oben oder unten bewegen
+Bild ab
+drehen
+Im Bau-Menü setzt Auf den Boden ihn direkt auf den Boden und Spiegeln dreht ihn um.
+Wenn er an der richtigen Stelle ist, platzier ihn. Ein platzierter Bau ist fest, damit er beim Bauen nicht verrutscht.
+Entf
+platzieren (nochmal drücken zum Lösen und Bewegen)
+Beim Platzieren beginnt das schichtweise Bauen bei der untersten Schicht.
+Bau von unten nach oben. Nur die Schicht, auf der du bist, wird gezeigt, so siehst du leicht, was wohin gehört.
+Der nächste Block leuchtet. Ist eine Schicht fertig, geht es von selbst zur nächsten.
+Pos1 / Ende
+eine Schicht hoch oder runter
+Richtig gesetzte Blöcke verschwinden aus dem Geist. Ein roter Rahmen heißt: ein anderer Block ist im Weg, oder der Block ist falsch herum (Treppe auf dem Kopf, Stamm auf der Seite) - abbauen und neu setzen.
+Das Bau-Menü listet alle Blöcke, die der Bau braucht: wie viele du hast und wie viele noch zu setzen sind.
+Die kleine Liste in der Ecke zeigt dasselbe beim Bauen. Truhen in der Nähe, die du geöffnet hast und die Blöcke enthalten, die du brauchst, leuchten grün.
+Einen Block nicht da? Klick ihn in der Liste an und wähl irgendeinen anderen Block im Spiel (auch Blöcke aus anderen Mods).
+Jeder Block dieser Art im Bau ändert sich. Willst du einen Block gar nicht (Schnee auf einem Dach)? Drück Aus dem Bau entfernen.
+Tausch rückgängig holt ihn zurück.
+Das Auge neben einem Block versteckt seine Geisterblöcke (nochmal klicken zum Zeigen). Umschalt-Klick aufs Auge zeigt nur diesen Block.
+Siehst du in deiner Welt einen Bau, der dir gefällt? Kopier ihn und bau ihn woanders nach.
+Einfg
+eine Kopier-Box auf dem Block starten, den du ansiehst
+die Box vergrößern (Alt + Pfeiltasten: verkleinern)
+die Box bis zum Block ziehen, den du ansiehst
+speichern (nochmal)
+Kopien landen in Gespeicherte Bauten und auch in der App.
+Im Kreativmodus setzt Automatisch bauen den ganzen Bau für dich und Schicht bauen eine Schicht. Bau rückgängig nimmt es zurück.
+Mittelklick
+den Block des Geistes nehmen, den du ansiehst
+In den Einstellungen änderst du, wie durchsichtig die Geister sind, die Eckliste und mehr.
+Jede Taste lässt sich unter Einstellungen -> Steuerung ändern.
+So funktioniert's
+< Zurück
+Weiter >
+So funktioniert Build Blueprint
+Pfeiltasten
+die Box in diese Richtung vergrößern
+Alt + Pfeiltasten
+verkleinern
+Strg + Hoch/Runter
+oben / unten
+bis dorthin ziehen, wo du hinschaust
+Umschalt
+5 Blöcke auf einmal
+speichern
+Bau wird kopiert
+Box {0} x {1} x {2}
+große Box
+{0} Blöcke
+Mach die Box so groß wie deinen Bau
+Koop: {0}
+Noch nicht platziert
+Pfeile bewegen, Bild ab dreht
+Umschalt = 5 Blöcke · Entf = platzieren
+Schicht {0}/{1}
+Zeit {0}
+{0} Blöcke/Min
+Nächster: {0}
+  (in der Hand)
+Bau fertig!
+Bild auf > Entfernen zum Löschen
+Schicht {0} braucht:
+Ganzer Bau braucht:
++{0} mehr  (Bild auf)
+Schicht fertig!
+Pos1/Ende Schicht · Bild auf Menü
+Schicht {0} von oben
+{0} Blöcke  ·  {1}  ·  {2} pro Minute
+{0} Blöcke  ·  {1}
+Bild auf > Entfernen zum Löschen
+Bau
+Spiegeln
+Dreht den Bau links <-> rechts, wie in einem Spiegel. Praktisch für passende Häuser auf beiden Straßenseiten.
+Auf den Boden
+Bewegt den Bau hoch oder runter, damit er genau auf dem Boden darunter steht.
+Automatisch bauen
+Nur Kreativ: setzt den ganzen Bau für dich, unterste Schicht zuerst. Blöcke im Weg werden ersetzt (Truhen bleiben in Ruhe).
+Schicht bauen
+Nur Kreativ: setzt nur die Schicht, auf der du bist.
+Bau rückgängig
+Stellt wieder her, was vor dem letzten automatischen Bauen da war.
+Koop {0}/{1}
+Koop
+Bau das mit Freunden: schick ihnen einen Code, der ihn genau an diese Stelle setzt, und teilt ihn auf, damit jeder seinen Teil baut.
+Entfernen
+Nimmt diesen Bau aus deiner Welt. Er bleibt in Gespeicherte Bauten, du kannst ihn also wieder laden.
+Ganzer Bau
+Alle Blöcke, die der Bau noch braucht.
+Schicht runter (Ende-Taste)
+Schicht
+Nur die Schicht, die du gerade baust.
+Schicht hoch (Pos1-Taste). Über der obersten werden alle Schichten gezeigt.
+Lösen
+Lös ihn, damit du ihn wieder bewegen oder drehen kannst.
+Fixiert den Bau, wo er ist, und startet das Bauen, Schicht für Schicht (Entf-Taste).
+Drehen
+Dreht den Bau um 90 Grad (Bild ab).
+Gespeicherte Bauten
+Deine gespeicherten Bauten und Schematics: lade einen anderen, füg einen Code ein, kopier einen aus deiner Welt.
+Einstellungen
+Letzter Tausch rückgängig gemacht
+Nur {0} wird gezeigt  ·  Umschalt-Klick aufs Auge zeigt wieder alles
+Alle Blöcke werden wieder gezeigt
+{0} versteckt  ·  {1} versteckt
+{0} wird gezeigt  ·  {1} versteckt
+{0} wird gezeigt
+ganzer Bau
+Liste kopiert - füg sie überall ein (Strg+V)
+Schicht {0} von {1}
+Kein Bau geladen
+noch nicht platziert
+{0} zu reparieren
+{0} / {1} gesetzt
+Rohstoffe
+Benötigte Blöcke
+Kopieren
+Blöcke
+zu setzen
+nicht im Spiel
+Lade zuerst einen Bau (Gespeicherte Bauten).
+Diese Schicht ist fertig!
+Nichts mehr zu setzen - der Bau ist fertig!
+1 Block in diesem Bau gibt es nicht in Minecraft {0}  ·  klick ihn an, um ihn zu tauschen
+{0} Blöcke in diesem Bau gibt es nicht in Minecraft {1}  ·  klick einen an, um ihn zu tauschen
+{0} versteckt  ·  klick oben aufs Auge, um alle zu zeigen
+Klick einen Block an, um ihn zu tauschen oder zu entfernen  ·  das Auge versteckt ihn
+Tausch rückgängig
+{0} zeigen
+{0} verstecken
+Seine Geisterblöcke sind gerade versteckt
+Versteckt seine Geisterblöcke, damit du den Rest besser siehst
+Umschalt-Klick: nur diesen Block zeigen
+Alle Blöcke wieder zeigen
+{0} versteckt
+Diesen Block gibt es nicht in Minecraft {0} - klick, um einen anderen stattdessen zu wählen
+Noch zu setzen: {0}  (von {1})
+Du hast: {0}
+In Truhen in der Nähe: {0} (1 Truhe, grüne Box)
+In Truhen in der Nähe: {0} ({1} Truhen, grüne Boxen)
+Hol {0} mehr ({1} Stapel)
+Hol {0} mehr
+Klick, um ihn zu tauschen oder aus dem Bau zu entfernen
+zu holen
+  (Ofen)
+Nichts mehr zu sammeln - du hast, was der Bau braucht!
+Was du für die noch fehlenden Blöcke sammeln musst  ·  (Ofen) = einen Teil schmelzen
+Für: {0}
+Schmilz zuerst einen Teil davon im Ofen
+Werkbank-Mengen - eine Steinsäge braucht weniger für Steintreppen und -stufen
+Suchen
+Suchen...
+Kostenlose Bauten
+Über 1.400 kostenlose Bauten aus der Minecraft-Community: Häuser, Türme, Schiffe, Burgen... Lade einen herunter, und er ist in deinen Gespeicherten Bauten.
++ Bau einfügen
+Füg einen Bau-Code (BB1:...) oder die Export-Zeilen der App aus deiner Zwischenablage ein. Strg+V geht auch.
+Aus der Welt kopieren
+Speichere einen Bau, der schon in deiner Welt steht: eine Box startet auf dem Block, den du ansiehst - mach sie mit den Pfeiltasten so groß wie den Bau, dann drück Einfg.
+Aktueller Bau
+Zurück zum geladenen Bau (Materialliste).
+Einpassen
+Zeigt wieder den ganzen Bau (Mausrad zum Zoomen, ziehen zum Bewegen).
+Laden
+In die Welt laden
+Zeigt diesen Bau vor dir als Geisterblöcke (Doppelklick oder Enter tut dasselbe).
+Umbenennen
+Löscht diesen Bau von diesem Computer. Zweimal klicken zur Sicherheit.
+Code
+Code kopieren
+Legt den BB1:-Code dieses Baus in deine Zwischenablage, zum Importieren in die Block Blueprint App oder zum Schicken an einen Freund.
+.schem speichern
+Speichert diesen Bau als .schem-Datei (BlockBlueprint/schematics in deinem Benutzerordner) für WorldEdit, Litematica, Axiom...
+Speichern
+Neuer Bau angekommen: "{0}"
+Ansicht: 3D
+Ansicht: oben
+Ansicht: vorne
+Koop-Bau dort platziert, wo dein Freund ihn hat. Wähl, welcher Bauer du bist.
+Diesen Bau hast du schon gespeichert.
+"{0}" auf diesem Computer gespeichert.
+Die Zwischenablage konnte nicht gelesen werden.
+Code für "{0}" kopiert - füg ihn in der App ein (Templates > Import code).
+{0} in BlockBlueprint/schematics gespeichert (dein Benutzerordner).
+Die .schem-Datei konnte nicht gespeichert werden: {0}
+"{0}" vor dir geladen, komplett gebaut. Pfeile bewegen ihn (Umschalt = 5 Blöcke), Bild ab dreht ihn, Entf platziert ihn.
+Umbenannt in "{0}".
+Sicher?
+Klick nochmal auf Löschen, um "{0}" zu löschen.
+"{0}" gelöscht.
+{0} gespeichert
+{0} von {1}
+Doppelklick oder Enter lädt einen Bau
+Kein Bau passt
+zu deiner Suche.
+Noch keine gespeicherten Bauten.
+Aus der App: kopier einen
+Bau-Code, dann drück
++ Bau einfügen.
+Aus deiner Welt: drück
+Aus der Welt kopieren.
+Schematics: leg .schem-,
+.litematic- oder .nbt-Dateien
+in BlockBlueprint/builds
+in deinem Benutzerordner.
+{0} x {1} x {2} · {3} Blöcke · {4} Schichten
+ziehen zum Bewegen · Mausrad zum Zoomen
+Dieser Bau kann nicht gelesen werden: {0}
+Füg einen Bau ein, um ihn hier zu sehen
+Build Blueprint Einstellungen
+AN
+AUS
+Rohstoffe: {0}
+Fügt dem Bau-Menü "Rohstoffe" hinzu: was du für die noch fehlenden Blöcke sammeln musst - Stämme für Bretter und Treppen, Sand für Glas, Bruchstein zum Schmelzen zu Stein...
+Schichtkarte: {0}
+Eine kleine Karte der Schicht, auf der du bist, von oben gesehen, unter der Eckliste. Farben = noch zu setzen, dunkelgrün = fertig, rot = falsch, weißer Punkt = du.
+Gerüst-Hinweise: {0}
+Teile einer Schicht, die in der Luft schweben (Überhänge, Dächer), bekommen eine hellblaue Säule, die zeigt, wo du vorübergehende Blöcke setzen kannst, um sie zu erreichen.
+Geisterblöcke: {0}% fest
+Wie durchsichtig die Vorschau-Blöcke sind.
+Vorschau zeigen: {0}
+Versteckt oder zeigt die Geisterblöcke.
+Eckliste: {0}
+Die Liste der Blöcke, die du noch brauchst, in einer Ecke beim Bauen.
+Ecke: {0}
+oben rechts
+oben links
+In welcher oberen Ecke des Bildschirms die Liste sitzt.
+Listengröße: {0}%
+Macht die Eckliste kleiner oder größer.
+Nächster Block: {0}
+Eine gelbe Box zeigt, welchen Block du als Nächstes setzt (unterste Schicht zuerst, nächster zuerst).
+Automatisch nächste Schicht: {0}
+Wenn du eine Schicht fertig hast, geht es von selbst zur nächsten.
+Truhen-Finder: {0}
+Grüne Boxen auf Truhen, die Blöcke enthalten, die du noch brauchst. Öffne eine Truhe einmal, damit der Mod weiß, was drin ist.
+Töne: {0}
+Ein kleines Klingeln, wenn du eine Schicht fertig hast, und ein Level-up-Ton, wenn der Bau fertig ist.
+Liste zeigt: {0}
+diese Schicht
+Auto: die Schicht, auf der du bist, beim schichtweisen Bauen, sonst den ganzen Bau.
+Blöcke in der Liste: {0}
+Wie viele Blocksorten die Eckliste vor "+ mehr" zeigt.
+Fortschrittsbalken: {0}
+Grüner Balken = ganzer Bau, blauer Balken = die Schicht, auf der du bist.
+Bau-Timer: {0}
+Wie lange du schon baust und wie viele Blöcke pro Minute.
+Tasten-Hinweise: {0}
+Die kleine Tasten-Erinnerung unter der Eckliste.
+Sichtweite: {0}
+Wie weit weg Geisterblöcke noch gezeichnet werden. Weniger = schneller.
+Rote Boxen: {0}
+Roter Rahmen um Blöcke, die dem Bau im Weg sind oder falsch herum gesetzt wurden.
+Richtung prüfen: {0}
+Blöcke zählen nur als fertig, wenn sie richtig herum stehen: Treppen, Stufen (oben oder unten), Stämme, Türen, Knöpfe... Ein falsch herum gesetzter Block bekommt eine rote Box.
+Aus dem Geist nehmen: {0}
+Mittelklick auf einen Geisterblock legt dir diesen Block in die Hand.
+Beim Platzieren: bei Schicht 1 starten: {0}
+Ein neuer Bau wird komplett gezeigt, damit du ihn bewegen kannst. Beim Platzieren wechselt er zu Schicht 1, damit du anfangen kannst.
+Grundlagen
+Mehr
+Extras
+Zusätzliche Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise.
+Tastenbelegung...
+Ändere die Tasten (Optionen > Steuerung > Tastenbelegung > Build Blueprint).
+Eine kurze Anleitung zu allem, was der Mod kann.
+Fahr mit der Maus über einen Knopf, um zu sehen, was er tut.
+Blöcke tauschen
+So funktioniert das Tauschen
+Aus dem Bau entfernen
+Nimmt jeden {0} aus dem Bau, zum Beispiel Schnee auf einem Dach. Tausch rückgängig holt ihn zurück.
+Such jeden Block nach Name oder Mod...
+Ähnlich ({0})
+Blöcke derselben Art: Treppen für Treppen, Stufen für Stufen, volle Blöcke für volle Blöcke. Die ähnlichsten zuerst.
+Alle Blöcke ({0})
+Jeder Block im Spiel, A bis Z.
+Aus Mods ({0})
+Blöcke aus den anderen Mods, die du installiert hast.
+Tauschen
+Tauscht jeden Block dieser Art im Bau (Enter).
+Letzten Tausch rückgängig
+Zurück
+Letzter Tausch rückgängig gemacht.
+Wähl zuerst einen Block aus der Liste.
+Nichts zu ändern.
+{0} {1} gegen {2} getauscht  ·  Rückgängig: klick im Bau-Menü auf Tausch rückgängig
+Nichts zu entfernen.
+{0} {1} aus dem Bau entfernt  ·  Rückgängig: klick im Bau-Menü auf Tausch rückgängig
+{0} tauschen
+{0} in diesem Bau
+  ·  nicht in Minecraft {0}, wähl einen anderen stattdessen
+Hier ist nichts.
+Kein Block passt zu "{0}".
+Klick einen Block an, um ihn zu wählen  ·  Doppelklick tauscht sofort
+Doppelklick, um hierzu zu tauschen
+Nach Name oder Ersteller suchen...
+Zeigt eine Art von Bau: Häuser, Türme, Schiffe...
+Holen
+In Gespeicherte Bauten herunterladen.
+Alle Arten
+Die Liste konnte nicht geladen werden - prüf deine Internetverbindung.
+Lade {0} herunter...
+Geschafft! "{0}" ist in Gespeicherte Bauten.
+Download fehlgeschlagen - prüf deine Internetverbindung.
+{0} kostenlose Bauten aus der Minecraft-Community
+Liste wird geladen...
+{0}  ·  {1} Blöcke
+Kein Bau passt.
+Holen
+Herunterladen
+von {0}  ·  Lizenz {1}
+Klick einen Bau an, dann Holen  ·  Doppelklick holt ihn sofort
+Von {0} ({1})
+Falsch herum: dieser {0} {1}  ·  abbauen und neu setzen
+Alles repariert! Nichts mehr falsch im Bau.
+Repariert! Noch {0}  ·  {1}
+Nichts zu reparieren - jeder gesetzte Block stimmt.
+Fehler 1 von {0}: {1}
+dieser {0} {1}
+ein {0} ist da, wo {1} hingehört - abbauen
+Reparieren: {0}
+Alle Schichten werden gezeigt
+Ein Block in Schicht {0} wurde abgebaut - zurück zu Schicht {1}
+Schicht {0} fertig! Jetzt Schicht {1}
+Bau fertig! {0} Blöcke · {1} Bauzeit{2}.
+ · {0} Blöcke pro Minute
+Zauntor
+Druckplatte
+Hängeschild
+Kopier-Box auf dem Block gestartet, den du ansiehst. Mach sie so groß wie deinen Bau:
+Pfeile vergrößern sie, Alt + Pfeile verkleinern sie, Strg + Hoch/Runter für oben/unten, Umschalt = 5 Blöcke. Bild ab zieht sie bis zum Block, den du ansiehst.
+Drück nochmal Einfg zum Speichern, Entf zum Abbrechen.
+Zu weit - eine Kopie darf bis zu {0} Blöcke pro Seite haben
+Bis zu diesem Block gezogen  ·  Box {0} x {1} x {2}  ·  Einfg = speichern, Entf = abbrechen
+Kopieren abgebrochen
+Gib /buildblueprint copy save <name> ein, um sie zu speichern.
+Die Box kann in diese Richtung nicht kleiner werden
+Größer kann eine Kopie nicht sein ({0} pro Seite)
+Verkleinert nach {0}  ·  Box {1} x {2} x {3}  ·  Einfg = speichern, Entf = abbrechen
+Vergrößert nach {0}  ·  Box {1} x {2} x {3}  ·  Einfg = speichern, Entf = abbrechen
+In dieser Box sind keine Blöcke.
+"{0}" ({1} Blöcke, {2} x {3} x {4}) in deinen Gespeicherten Bauten gespeichert.
+Der Bau-Code ist in deiner Zwischenablage - füg ihn in die Block Blueprint App ein (Templates > Import code) oder schick ihn jemandem.
+Konnte nicht speichern: {0}
+Starte zuerst eine Kopie: schau deinen Bau an und drück Einfg (oder /buildblueprint copy).
+Bauzeit {0} · {1} Blöcke gesetzt · {2} pro Minute
+Vorschau sichtbar.
+Vorschau versteckt.
+Bau entfernt.
+Als .schem-Datei gespeichert: {0}
+Öffne sie mit WorldEdit (nach config/worldedit/schematics kopieren), Litematica, Axiom oder einem anderen Schematic-Tool.
+Kein Bau geladen. Füg zuerst die Zeilen aus der App ein (siehe /buildblueprint help).
+Teil {0} von {1} erhalten. Füg den Rest weiter ein.
+Teil {0} von {1} erhalten.
+"{0}" geladen: {1} Blöcke, {2} x {3} x {4}.
+Er wird vor dir gezeigt, komplett gebaut. Beweg ihn an seinen Platz, dann drück Entf (oder Bild auf > Platzieren), um Schicht für Schicht zu bauen.
+Tasten: Pfeile bewegen ihn (Hoch = vor, Runter = zurück, Strg+Hoch/Runter = hoch/runter), Bild ab dreht, Bild auf öffnet das Materialmenü.
+Der Bau ist platziert (fixiert). Löse ihn zuerst: Bild auf > Lösen, oder /buildblueprint unlock.
+Platziert! {0}
+Schicht {0} von {1} - Pos1/Ende zum Schichtwechsel
+Er bewegt oder dreht sich jetzt nicht mehr
+Gelöst - beweg ihn mit den Pfeiltasten, dann drück Entf, um ihn wieder zu platzieren
+Kein Boden unter dem Bau gefunden
+Steht schon auf dem Boden
+{0} nach oben bewegt, um auf dem Boden zu stehen
+{0} nach unten bewegt, um auf dem Boden zu stehen
+Um {0} Grad gedreht
+"{0}" aus der Ansicht entfernt. Er ist noch in Gespeicherte Bauten.
+Gespiegelt (links <-> rechts)
+Wieder normal (nicht gespiegelt)
+Unbekannte Richtung "{0}". Nutze: up, down, left, right, forward, back, north, south, east, west.
+{0} {1} bewegt. Die Ecke ist jetzt bei {2}, {3}, {4}.
+Gedreht. Die Ecke ist jetzt bei {0}, {1}, {2}.
+Ecke des Baus dorthin bewegt, wo du stehst ({0}, {1}, {2}). Größe {3} x {4} x {5}.
+Alle Schichten werden gezeigt.
+Nur Schicht {0} von {1} wird gezeigt.
+"{0}": {1} Blöcke, {2} x {3} x {4}, um {5} Grad gedreht.
+Ecke bei {0}, {1}, {2}; gegenüberliegende Ecke bei {3}, {4}, {5}.
+.schem-, .litematic- und .nbt-Dateien in <home>/BlockBlueprint/builds (oder deinem WorldEdit- / Litematica-Schematic-Ordner) erscheinen in Gespeicherte Bauten.
+Tasten: Hoch = vor, Runter = zurück, Links/Rechts, Strg+Hoch/Runter = hoch/runter, Bild ab = drehen, Bild auf = Materialmenü.
+--- {0}: du hast / du brauchst ---
+OK  {0}
+FEHLT {0} mehr  {1}
+Du hast alles.
+Automatisch bauen geht nur im Kreativmodus.
+Lade zuerst einen Bau.
+Baut schon - /buildblueprint autobuild stop zum Anhalten.
+Nichts zu setzen ({0} Stellen haben Truhen o. Ä. im Weg).
+Nichts zu setzen - alles ist schon gebaut!
+Auf einem Server nutzt das /setblock, du musst also Operator sein.
+Baue automatisch {0} Blöcke{1}...{2}
+ auf Schicht {0}
+ ({0} Stellen mit Truhen o. Ä. im Weg übersprungen)
+Warte erst, bis das automatische Bauen fertig ist (oder halte es an).
+Nichts rückgängig zu machen.
+Mache das letzte automatische Bauen rückgängig ({0} Blöcke)...
+Gerade wird nicht automatisch gebaut.
+Angehalten nach {0} von {1} Blöcken.
+Rückgängig...
+Baue automatisch...
+Rückgängig fertig.
+Automatisches Bauen fertig! {0} Blöcke gesetzt. Nutze Rückgängig im Bild-auf-Menü (oder /buildblueprint autobuild undo), um es zurückzunehmen.
+Build Blueprint {0} ist da (du hast {1}).
+Aktualisiere es in der CurseForge-App oder hol es auf curseforge.com/minecraft/mc-mods/build-blueprint
+das Westende
+das Nordende
+das Ostende
+das Südende
+die Mitte
+Teil {0} von {1} ({2})
+{0} vor dir
+{0} hinter dir
+{0} rechts
+{0} links
+{0} oben
+{0} unten
+genau hier
+Diese Schematic-Datei ist zu groß.
+{0} konnte nicht gelesen werden.
+Nichts zum Einfügen. Kopier einen Bau-Code (BB1:...) oder die Zeilen von Export > "Copy all" in der App, dann füg sie hier ein.
+Nur {0} von {1} Teilen wurden eingefügt. Nutze "Copy all" in der App.
+Das ist kein Bau-Code.
+Dieser Bau ist zu groß.
+Dieser Bau-Code ist kaputt - kopier ihn nochmal.
+Dieser Bau-Code enthält keine Blöcke.
+Dieser Bau-Code konnte nicht gelesen werden.
+Es gibt schon eine Datei namens {0}.
+Diese Datei gehört zu WorldEdit oder Litematica. Lösch sie stattdessen in {0}.
+Du hältst {0}
+Du hältst {0} (aus deinem Inventar)
+Du hast kein {0} - schau beim Truhen-Finder (grüne Boxen)
+Willkommen zurück! Dein Bau "{0}" ist noch da{1} Bild auf für das Menü.
+ (platziert).
+ - beweg ihn, dann platzier ihn.
+Der Bau, den du letztes Mal hier hattest, konnte nicht wiederhergestellt werden.
+ist falsch herum
+sollte {0}
+nach oben zeigen
+nach unten zeigen
+nach {0} zeigen
+auf dem Kopf stehen (obere Hälfte)
+richtig herum stehen (untere Hälfte)
+eine doppelte Stufe sein
+eine obere Stufe sein
+eine untere Stufe sein
+aufrecht stehen
+Ost-West liegen
+Nord-Süd liegen
+nach {0} gedreht sein
+auf dem Boden sein
+von der Decke hängen
+an einer Wand sein
+das Scharnier {0} haben
+am Block darüber hängen
+auf dem Block darunter stehen
+{0} {1} haben
+Norden
+Süden
+Osten
+Westen
+Nordosten
+Nordwesten
+Südosten
+Südwesten
+links
+rechts
+behalten
+auto
+Community-Bauten
+Häuser
+Türme
+Schiffe
+Ruinen und Tempel
+Burgen und Festungen
+Dorfgebäude
+Deko
+Lager und Außenposten

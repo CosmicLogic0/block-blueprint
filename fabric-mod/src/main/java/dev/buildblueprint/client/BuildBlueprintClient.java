@@ -103,7 +103,7 @@ public class BuildBlueprintClient implements ClientModInitializer {
         try {
             ChunkAssembler.Progress p = ASSEMBLER.accept(token, data);
             if (p.done() == null) {
-                Chat.say("Got part " + p.have() + " of " + p.total() + (p.have() < p.total() ? " received so far. Keep pasting the rest." : "."));
+                Chat.say(p.have() < p.total() ? "Got part " + p.have() + " of " + p.total() + ". Keep pasting the rest." : "Got part " + p.have() + " of " + p.total() + ".");
                 return 1;
             }
             Blueprint bp = p.done();
@@ -161,7 +161,7 @@ public class BuildBlueprintClient implements ClientModInitializer {
         int best = votes.entrySet().stream().max(java.util.Map.Entry.comparingByValue()).get().getKey();
         int d = best - SESSION.oy;
         SESSION.oy = best;
-        Chat.bar(d == 0 ? "Already sitting on the ground" : "Moved " + (d > 0 ? "up " : "down ") + Math.abs(d) + " to sit on the ground");
+        Chat.bar(d == 0 ? "Already sitting on the ground" : (d > 0 ? "Moved up " + d + " to sit on the ground" : "Moved down " + (-d) + " to sit on the ground"));
     }
 
     /** Turn button in the build menu: a quarter turn, like Page Down. */

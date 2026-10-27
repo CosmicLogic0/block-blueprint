@@ -344,6 +344,13 @@ No hay nada aquí.
 Ningún bloque coincide con "{0}".
 Haz clic en un bloque para elegirlo  ·  doble clic lo cambia al momento
 Doble clic para cambiar a este
+Busca por nombre o creador...
+Muestra un tipo de construcción: casas, torres, barcos...
+Conseguir
+Descárgala en Construcciones guardadas.
+Todos los tipos
+No se pudo cargar la lista: revisa tu conexión a internet.
+Descargando {0}...
 ¡Hecho! "{0}" está en Construcciones guardadas.
 La descarga falló: revisa tu conexión a internet.
 {0} construcciones gratis de la comunidad de Minecraft
@@ -380,9 +387,8 @@ Copia cancelada
 Escribe /buildblueprint copy save <nombre> para guardarla.
 La caja no puede ser más pequeña por ese lado
 Es lo más grande que puede ser una copia ({0} por lado)
-{0}{1}  ·  caja {2} x {3} x {4}  ·  Insert = guardar, Supr = cancelar
-Encogida
-Agrandada
+Encogida hacia el {0}  ·  caja {1} x {2} x {3}  ·  Insert = guardar, Supr = cancelar
+Agrandada hacia el {0}  ·  caja {1} x {2} x {3}  ·  Insert = guardar, Supr = cancelar
 No hay bloques dentro de esa caja.
 "{0}" guardada ({1} bloques, {2} x {3} x {4}) en tus Construcciones guardadas.
 Su código está en tu portapapeles: pégalo en la app Block Blueprint (Templates > Import code) o envíaselo a alguien.
@@ -395,8 +401,8 @@ Construcción quitada.
 Guardado como archivo .schem: {0}
 Ábrelo con WorldEdit (cópialo a config/worldedit/schematics), Litematica, Axiom o cualquier otra herramienta de esquemas.
 No hay ninguna construcción cargada. Pega primero las líneas de la app (ver /buildblueprint help).
-Recibida la parte {0} de {1}{2}
- recibidas hasta ahora. Sigue pegando el resto.
+Recibida la parte {0} de {1}. Sigue pegando el resto.
+Recibida la parte {0} de {1}.
 "{0}" cargada: {1} bloques, {2} x {3} x {4}.
 Se ve delante de ti, completa. Ponla en su sitio y pulsa Supr (o Re Pág > Colocarla) para construir capa por capa.
 Teclas: las flechas la mueven (Arriba = adelante, Abajo = atrás, Ctrl+Arriba/Abajo = subir/bajar), Av Pág la gira, Re Pág abre el menú de materiales.
@@ -407,10 +413,9 @@ Ya no se moverá ni girará
 Suelta: muévela con las flechas y pulsa Supr para colocarla otra vez
 No se encontró suelo bajo la construcción
 Ya está sobre el suelo
-Movida {0}{1} para quedar sobre el suelo
-arriba
-abajo
-Girada hacia {0}
+Subida {0} para quedar sobre el suelo
+Bajada {0} para quedar sobre el suelo
+Girada {0} grados
 "{0}" quitada de la vista. Sigue en Construcciones guardadas.
 En espejo (izquierda <-> derecha)
 Normal otra vez (sin espejo)
@@ -420,7 +425,7 @@ Girada. La esquina está ahora en {0}, {1}, {2}.
 Esquina de la construcción movida a donde estás ({0}, {1}, {2}). Tamaño {3} x {4} x {5}.
 Mostrando todas las capas.
 Mostrando solo la capa {0} de {1}.
-"{0}": {1} bloques, {2} x {3} x {4}, girada {5}
+"{0}": {1} bloques, {2} x {3} x {4}, girada {5} grados.
 Esquina en {0}, {1}, {2}; esquina opuesta en {3}, {4}, {5}.
 Los archivos .schem, .litematic y .nbt en <home>/BlockBlueprint/builds (o en tu carpeta de esquemas de WorldEdit / Litematica) aparecen en Construcciones guardadas.
 Teclas: Arriba = adelante, Abajo = atrás, Izquierda/Derecha, Ctrl+Arriba/Abajo = subir/bajar, Av Pág = girar, Re Pág = menú de materiales.
@@ -512,3 +517,12 @@ izquierda
 derecha
 conservado
 auto
+Construcciones de la comunidad
+Casas
+Torres
+Barcos
+Ruinas y templos
+Castillos y fuertes
+Edificios de aldea
+Decoración
+Campamentos y puestos

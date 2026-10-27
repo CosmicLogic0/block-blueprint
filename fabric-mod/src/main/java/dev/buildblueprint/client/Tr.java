@@ -53,7 +53,9 @@ public final class Tr {
         return out;
     }
 
-    private static String translate(String s) {
+    private static String translate(String s) { return translate(s, 0); }
+
+    private static String translate(String s, int depth) {
         String e = exact.get(s);
         if (e != null) return e;
         for (Object[] tp : templates) {
@@ -61,8 +63,8 @@ public final class Tr {
             if (!m.matches()) continue;
             String r = (String) tp[1];
             for (int i = m.groupCount(); i >= 1; i--) {
-                String part = m.group(i), tr = exact.get(part);
-                r = r.replace("{" + (i - 1) + "}", tr != null ? tr : part);
+                String part = m.group(i);   // the parts are translated too: "Build complete! ... · {0} blocks a minute"
+                r = r.replace("{" + (i - 1) + "}", depth < 3 && part.length() < s.length() ? translate(part, depth + 1) : part);
             }
             return r;
         }

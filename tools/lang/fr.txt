@@ -1,0 +1,528 @@
+Construire entre amis
+Copier le code coop
+Envoie ce code à tes amis. Ils le collent dans Constructions sauvegardées > Coller, et la construction apparaît au même endroit chez eux aussi.
+Combien de personnes la construisent. Tout le monde doit choisir le même nombre.
+Quel constructeur tu es. Chaque ami choisit un numéro différent.
+Terminé
+Constructeurs : {0}
+juste moi
+Je suis le constructeur {0}
+Je suis le constructeur -
+Charge d'abord une construction.
+Place d'abord la construction (Suppr), pour que tes amis l'aient au même endroit.
+Copié ! Envoie-le à tes amis.
+1. Envoie-leur la construction. Elle apparaît exactement ici.
+2. Partagez le travail. Tout le monde choisit le même nombre de
+   constructeurs, et un numéro de constructeur différent.
+Tu construis {0}. Tu ne vois que ta partie.
+Tout le monde voit la construction entière.
+Copier une construction
+Nom
+Laisse de côté la terre, l'herbe et la pierre naturelle sous la construction.
+Laisse de côté les arbres, feuilles, herbes et fleurs autour de la construction.
+Sauvegarder la construction
+Ajuster la boîte
+Reviens modifier la boîte : les flèches l'agrandissent, Alt + flèches la rétrécissent, Pg suiv l'étire jusqu'à l'endroit que tu regardes. Puis appuie encore sur Inser.
+Annuler la copie
+Sol : {0}
+laissé de côté
+Arbres : {0}
+Sauvegarder cette construction
+Boîte de {0} x {1} x {2}  ·  {3} blocs
+Nom :
+Il ne reste rien dans la boîte - ajuste-la ou garde le sol.
+L'enregistre dans Constructions sauvegardées et copie son code dans le presse-papiers.
+Obtenir une construction
+Déplacer et tourner
+La placer
+Construire par couches
+Blocs et échanges
+Copier une construction
+Bon à savoir
+Une construction, c'est ce que tu veux bâtir, affiché en blocs fantômes transparents dans ton monde.
+Ouvre le menu de construction, clique sur Constructions sauvegardées, choisis-en une et appuie sur Charger dans le monde.
+Les constructions viennent de trois endroits :
+- l'appli gratuite Block Blueprint : crée ou choisis une construction et appuie sur Send to Minecraft
+- les fichiers schématiques (.schem, .litematic, .nbt) dans le dossier BlockBlueprint de ton dossier utilisateur
+- les constructions que tu copies de ton propre monde (voir Copier une construction)
+Pg préc
+ouvrir le menu de construction
+La construction apparaît devant toi. Déplace-la là où tu veux la construire.
+Flèches
+la déplacer (maintiens Maj pour 5 blocs)
+Ctrl + Haut / Bas
+la monter ou la descendre
+Pg suiv
+la tourner
+Dans le menu de construction, Au sol la pose juste sur le sol et Miroir la retourne.
+Quand elle est au bon endroit, place-la. Une construction placée est verrouillée, elle ne bouge plus pendant que tu construis.
+Suppr
+la placer (appuie encore pour la déverrouiller et la déplacer)
+La placer lance la construction couche par couche, à partir de la couche du bas.
+Construis de bas en haut. Seule la couche où tu es s'affiche, c'est facile de voir ce qui va où.
+Le prochain bloc à poser brille. Quand une couche est finie, tu passes tout seul à la suivante.
+Début / Fin
+monter ou descendre d'une couche
+Les blocs bien posés disparaissent du fantôme. Un contour rouge veut dire qu'un autre bloc gêne, ou que le bloc est dans le mauvais sens (escalier à l'envers, bûche couchée) - casse-le et repose-le.
+Le menu de construction liste tous les blocs dont la construction a besoin : combien tu en as et combien il reste à poser.
+La petite liste dans le coin montre la même chose pendant que tu construis. Les coffres ouverts à proximité qui contiennent des blocs utiles brillent en vert.
+Il te manque un bloc ? Clique dessus dans la liste et choisis n'importe quel autre bloc du jeu (aussi ceux d'autres mods).
+Tous les blocs de ce type dans la construction changent. Tu ne veux pas d'un bloc (neige sur un toit) ? Appuie sur Retirer de la construction.
+Annuler l'échange le remet.
+L'œil à côté d'un bloc cache ses blocs fantômes (reclique pour les montrer). Maj + clic sur l'œil n'affiche que ce bloc.
+Tu vois une construction qui te plaît dans ton monde ? Copie-la et reconstruis-la n'importe où.
+Inser
+commencer une boîte de copie sur le bloc que tu regardes
+agrandir la boîte (Alt + flèches : plus petite)
+étirer la boîte jusqu'au bloc que tu regardes
+la sauvegarder (encore)
+Les copies vont dans Constructions sauvegardées, et dans l'appli aussi.
+En mode Créatif, Construction auto pose toute la construction pour toi et Construire la couche pose une couche. Annuler la construction la retire.
+Clic molette
+prendre le bloc du fantôme que tu regardes
+Les Paramètres te permettent de changer la transparence des fantômes, la liste du coin et plus.
+Chaque touche peut être changée dans Paramètres -> Commandes.
+Comment ça marche
+< Retour
+Suivant >
+Comment marche Build Blueprint
+Flèches
+agrandir la boîte de ce côté
+Alt + flèches
+la rétrécir
+Ctrl + Haut/Bas
+haut / bas
+étirer jusqu'à l'endroit regardé
+Maj
+5 blocs à la fois
+la sauvegarder
+Copie d'une construction
+Boîte de {0} x {1} x {2}
+grande boîte
+{0} blocs
+Fais la boîte aussi grande que ta construction
+Coop : {0}
+Pas encore placée
+Flèches pour bouger, Pg suiv pour tourner
+Maj = 5 blocs · Suppr = placer
+Couche {0}/{1}
+Temps {0}
+{0} blocs/min
+Suivant : {0}
+  (en main)
+Construction terminée !
+Pg préc > Retirer pour l'effacer
+La couche {0} a besoin de :
+La construction a besoin de :
++{0} de plus  (Pg préc)
+Couche finie !
+Début/Fin couche · Pg préc menu
+Couche {0} vue de dessus
+{0} blocs  ·  {1}  ·  {2} par minute
+{0} blocs  ·  {1}
+Pg préc > Retirer pour l'effacer
+Construction
+Miroir
+Retourne la construction gauche <-> droite, comme dans un miroir. Pratique pour des maisons assorties des deux côtés d'une rue.
+Au sol
+Monte ou descend la construction pour qu'elle repose juste sur le sol.
+Construction auto
+Créatif uniquement : pose toute la construction pour toi, couche du bas d'abord. Les blocs qui gênent sont remplacés (les coffres ne sont pas touchés).
+Construire la couche
+Créatif uniquement : pose seulement la couche où tu es.
+Annuler la construction
+Remet ce qu'il y avait avant la dernière construction auto.
+Coop {0}/{1}
+Coop
+Construis-la entre amis : envoie-leur un code qui la place exactement ici, et partagez-la pour que chacun construise sa partie.
+Retirer
+Retire cette construction de ton monde. Elle reste dans Constructions sauvegardées, tu peux donc la recharger.
+Construction entière
+Tous les blocs dont la construction a encore besoin.
+Couche en dessous (touche Fin)
+Couche
+Seulement la couche que tu construis maintenant.
+Couche au-dessus (touche Début). Au-delà du sommet, toutes les couches s'affichent.
+Déverrouiller
+La déverrouiller pour pouvoir la déplacer ou la tourner à nouveau.
+Verrouille la construction où elle est et commence à construire, couche par couche (touche Suppr).
+Tourner
+Tourne la construction de 90 degrés (Pg suiv).
+Constructions sauvegardées
+Tes constructions et schématiques sauvegardées : charges-en une autre, colle un code, copie-en une de ton monde.
+Paramètres
+Dernier échange annulé
+Seulement {0} affiché  ·  Maj + clic sur l'œil à nouveau pour tout afficher
+Tous les blocs sont de nouveau affichés
+{0} caché  ·  {1} cachés
+{0} affiché  ·  {1} cachés
+{0} affiché
+construction entière
+Liste copiée - colle-la où tu veux (Ctrl+V)
+Couche {0} sur {1}
+Aucune construction chargée
+pas encore placée
+{0} à corriger
+{0} / {1} posés
+Matières premières
+Blocs nécessaires
+Copier
+Blocs
+à poser
+pas dans le jeu
+Charge d'abord une construction (Constructions sauvegardées).
+Cette couche est finie !
+Plus rien à poser - la construction est finie !
+1 bloc de cette construction n'existe pas dans Minecraft {0}  ·  clique dessus pour l'échanger
+{0} blocs de cette construction n'existent pas dans Minecraft {1}  ·  clique sur l'un d'eux pour l'échanger
+{0} cachés  ·  clique sur l'œil en haut pour tout afficher
+Clique sur un bloc pour l'échanger ou le retirer  ·  l'œil le cache
+Annuler l'échange
+Afficher {0}
+Cacher {0}
+Ses blocs fantômes sont cachés pour l'instant
+Cache ses blocs fantômes pour mieux voir le reste
+Maj + clic : afficher seulement ce bloc
+Afficher tous les blocs
+{0} cachés
+Ce bloc n'existe pas dans Minecraft {0} - clique pour en choisir un autre à la place
+Reste à poser : {0}  (sur {1})
+Tu as : {0}
+Dans les coffres proches : {0} (1 coffre, boîte verte)
+Dans les coffres proches : {0} ({1} coffres, boîtes vertes)
+Récupère-en {0} de plus ({1} piles)
+Récupère-en {0} de plus
+Clique pour l'échanger ou le retirer de la construction
+à récupérer
+  (four)
+Plus rien à récolter - tu as tout ce qu'il faut !
+Quoi récolter pour les blocs qui te manquent  ·  (four) = en faire cuire une partie
+Pour : {0}
+Fais-en d'abord cuire une partie dans un four
+Quantités pour l'établi - un tailleur de pierre en demande moins pour les escaliers et dalles en pierre
+Rechercher
+Rechercher...
+Constructions gratuites
+Plus de 1 400 constructions gratuites de la communauté Minecraft : maisons, tours, bateaux, châteaux... Télécharges-en une et elle est dans tes Constructions sauvegardées.
++ Coller une construction
+Colle un code de construction (BB1:...) ou les lignes d'Export de l'appli depuis ton presse-papiers. Ctrl+V marche aussi.
+Copier du monde
+Sauvegarde une construction déjà présente dans ton monde : une boîte commence sur le bloc que tu regardes - agrandis-la à la taille de la construction avec les flèches, puis appuie sur Inser.
+Construction actuelle
+Retour à la construction chargée (liste des matériaux).
+Ajuster
+Affiche à nouveau toute la construction (molette pour zoomer, glisser pour déplacer).
+Charger
+Charger dans le monde
+Affiche cette construction devant toi en blocs fantômes (double-clic ou Entrée fait pareil).
+Renommer
+Supprime cette construction de cet ordinateur. Clique deux fois pour confirmer.
+Code
+Copier le code
+Met le code BB1: de cette construction dans ton presse-papiers, pour l'importer dans l'appli Block Blueprint ou l'envoyer à un ami.
+Sauver en .schem
+Sauvegarde cette construction en fichier .schem (BlockBlueprint/schematics dans ton dossier utilisateur) pour WorldEdit, Litematica, Axiom...
+Sauvegarder
+Nouvelle construction reçue : « {0} »
+Vue : 3D
+Vue : dessus
+Vue : face
+Construction coop placée là où ton ami l'a. Choisis quel constructeur tu es.
+Tu as déjà sauvegardé cette construction.
+« {0} » sauvegardée sur cet ordinateur.
+Impossible de lire le presse-papiers.
+Code de « {0} » copié - colle-le dans l'appli (Templates > Import code).
+{0} sauvegardé dans BlockBlueprint/schematics (ton dossier utilisateur).
+Impossible de sauvegarder le fichier .schem : {0}
+« {0} » chargée devant toi, entièrement construite. Les flèches la déplacent (Maj = 5 blocs), Pg suiv la tourne, Suppr la place.
+Renommée en « {0} ».
+Sûr ?
+Clique encore sur Supprimer pour supprimer « {0} ».
+« {0} » supprimée.
+{0} sauvegardées
+{0} sur {1}
+Double-clic ou Entrée charge une construction
+Aucune construction ne correspond
+à ta recherche.
+Aucune construction sauvegardée.
+Depuis l'appli : copie un
+code de construction, puis appuie sur
++ Coller une construction.
+Depuis ton monde : appuie sur
+Copier du monde.
+Schématiques : mets des fichiers .schem,
+.litematic ou .nbt
+dans BlockBlueprint/builds
+de ton dossier utilisateur.
+{0} x {1} x {2} · {3} blocs · {4} couches
+glisser pour déplacer · molette pour zoomer
+Impossible de lire cette construction : {0}
+Colle une construction pour la voir ici
+Paramètres de Build Blueprint
+OUI
+NON
+Matières premières : {0}
+Ajoute « Matières premières » au menu de construction : quoi récolter pour les blocs qui te manquent - des bûches pour les planches et escaliers, du sable pour le verre, de la pierre taillée à cuire en roche...
+Carte de la couche : {0}
+Une petite carte de la couche où tu es, vue de dessus, sous la liste du coin. Couleurs = à poser, vert foncé = fait, rouge = faux, point blanc = toi.
+Aide échafaudage : {0}
+Les parties d'une couche qui flottent dans les airs (avancées, toits) reçoivent une colonne bleu clair qui montre où poser des blocs temporaires pour les atteindre.
+Blocs fantômes : {0} % opaques
+La transparence des blocs d'aperçu.
+Afficher l'aperçu : {0}
+Cache ou affiche les blocs fantômes.
+Liste du coin : {0}
+La liste des blocs qui te manquent, dans un coin pendant que tu construis.
+Coin : {0}
+en haut à droite
+en haut à gauche
+Dans quel coin du haut de l'écran se trouve la liste.
+Taille de la liste : {0} %
+Rend la liste du coin plus petite ou plus grande.
+Prochain bloc : {0}
+Une boîte jaune montre quel bloc poser ensuite (couche du bas d'abord, le plus proche d'abord).
+Couche suivante auto : {0}
+Quand tu finis une couche, passe tout seul à la suivante.
+Détecteur de coffres : {0}
+Des boîtes vertes sur les coffres qui contiennent des blocs qu'il te faut encore. Ouvre un coffre une fois pour que le mod sache ce qu'il contient.
+Sons : {0}
+Un petit « ding » quand tu finis une couche, et le son de montée de niveau quand la construction est finie.
+La liste montre : {0}
+cette couche
+Auto : la couche où tu es quand tu construis couche par couche, sinon toute la construction.
+Blocs dans la liste : {0}
+Combien de types de blocs la liste du coin affiche avant « + de plus ».
+Barres de progression : {0}
+Barre verte = toute la construction, barre bleue = la couche où tu es.
+Chrono : {0}
+Depuis combien de temps tu construis et combien de blocs par minute.
+Aide des touches : {0}
+Le petit rappel des touches sous la liste du coin.
+Distance d'affichage : {0}
+Jusqu'à quelle distance les blocs fantômes sont dessinés. Moins = plus rapide.
+Boîtes rouges : {0}
+Contour rouge sur les blocs qui gênent la construction, ou posés dans le mauvais sens.
+Vérifier le sens : {0}
+Les blocs ne comptent comme faits que s'ils sont dans le bon sens : escaliers, dalles (haut ou bas), bûches, portes, boutons... Un bloc posé dans le mauvais sens reçoit une boîte rouge.
+Prendre du fantôme : {0}
+Clic molette sur un bloc fantôme pour mettre ce bloc dans ta main.
+Une fois placée : commencer à la couche 1 : {0}
+Une nouvelle construction s'affiche entière pour que tu puisses la déplacer. Quand tu la places, elle passe à la couche 1 pour que tu commences à construire.
+Bases
+Plus
+Extras
+Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de la couche, aide échafaudage.
+Touches...
+Change les touches (Options > Commandes > Touches > Build Blueprint).
+Un petit guide de tout ce que fait le mod.
+Survole un bouton pour voir ce qu'il fait.
+Échanger des blocs
+Comment marchent les échanges
+Retirer de la construction
+Retire tous les {0} de la construction, par exemple la neige sur un toit. Annuler l'échange les remet.
+Cherche n'importe quel bloc par nom ou par mod...
+Similaires ({0})
+Des blocs du même genre : escaliers pour escaliers, dalles pour dalles, blocs pleins pour blocs pleins. Les plus proches d'abord.
+Tous les blocs ({0})
+Tous les blocs du jeu, de A à Z.
+Des mods ({0})
+Les blocs ajoutés par les autres mods que tu as installés.
+Échanger
+Échange tous les blocs de ce type dans la construction (Entrée).
+Annuler le dernier échange
+Retour
+Dernier échange annulé.
+Choisis d'abord un bloc dans la liste.
+Rien à changer.
+{0} {1} échangés contre {2}  ·  Annuler : clique sur Annuler l'échange dans le menu de construction
+Rien à retirer.
+{0} {1} retirés de la construction  ·  Annuler : clique sur Annuler l'échange dans le menu de construction
+Échanger {0}
+{0} dans cette construction
+  ·  pas dans Minecraft {0}, choisis-en un autre à la place
+Rien ici.
+Aucun bloc ne correspond à « {0} ».
+Clique sur un bloc pour le choisir  ·  double-clic pour échanger tout de suite
+Double-clic pour échanger contre celui-ci
+Cherche par nom ou par créateur...
+Affiche un type de construction : maisons, tours, bateaux...
+Obtenir
+La télécharger dans Constructions sauvegardées.
+Tous les types
+Impossible de charger la liste - vérifie ta connexion internet.
+Téléchargement de {0}...
+C'est fait ! « {0} » est dans Constructions sauvegardées.
+Échec du téléchargement - vérifie ta connexion internet.
+{0} constructions gratuites de la communauté Minecraft
+Chargement de la liste...
+{0}  ·  {1} blocs
+Aucune construction ne correspond.
+Obtenir
+Télécharger
+par {0}  ·  licence {1}
+Clique sur une construction, puis sur Obtenir  ·  double-clic pour l'obtenir tout de suite
+Par {0} ({1})
+Dans le mauvais sens : ce {0} {1}  ·  casse-le et repose-le
+Tout est corrigé ! Plus rien de faux dans la construction.
+Corrigé ! Encore {0}  ·  {1}
+Rien à corriger - tous les blocs posés sont bons.
+Erreur 1 sur {0} : {1}
+ce {0} {1}
+un {0} est là où va {1} - casse-le
+Corriger : {0}
+Toutes les couches affichées
+Un bloc de la couche {0} a été cassé - retour à la couche {1}
+Couche {0} finie ! Maintenant la couche {1}
+Construction terminée ! {0} blocs · {1} de construction{2}.
+ · {0} blocs par minute
+portillon
+plaque de pression
+pancarte suspendue
+Boîte de copie commencée sur le bloc que tu regardes. Agrandis-la à la taille de ta construction :
+Les flèches l'agrandissent, Alt + flèches la rétrécissent, Ctrl + Haut/Bas pour le haut/bas, Maj = 5 blocs. Pg suiv l'étire jusqu'au bloc que tu regardes.
+Appuie encore sur Inser pour sauvegarder, Suppr pour annuler.
+Trop loin - une copie peut faire jusqu'à {0} blocs de côté
+Étirée jusqu'à ce bloc  ·  boîte {0} x {1} x {2}  ·  Inser = sauvegarder, Suppr = annuler
+Copie annulée
+Tape /buildblueprint copy save <nom> pour la sauvegarder.
+La boîte ne peut pas rétrécir plus de ce côté
+C'est la taille maximale d'une copie ({0} de côté)
+Rétrécie vers {0}  ·  boîte {1} x {2} x {3}  ·  Inser = sauvegarder, Suppr = annuler
+Agrandie vers {0}  ·  boîte {1} x {2} x {3}  ·  Inser = sauvegarder, Suppr = annuler
+Il n'y a aucun bloc dans cette boîte.
+« {0} » sauvegardée ({1} blocs, {2} x {3} x {4}) dans tes Constructions sauvegardées.
+Son code est dans ton presse-papiers - colle-le dans l'appli Block Blueprint (Templates > Import code) ou envoie-le à quelqu'un.
+Impossible de sauvegarder : {0}
+Commence d'abord une copie : regarde ta construction et appuie sur Inser (ou /buildblueprint copy).
+Temps de construction {0} · {1} blocs posés · {2} par minute
+Aperçu affiché.
+Aperçu caché.
+Construction retirée.
+Sauvegardé en fichier .schem : {0}
+Ouvre-le avec WorldEdit (copie-le dans config/worldedit/schematics), Litematica, Axiom ou tout autre outil de schématiques.
+Aucune construction chargée. Colle d'abord les lignes de l'appli (voir /buildblueprint help).
+Partie {0} sur {1} reçue. Continue de coller le reste.
+Partie {0} sur {1} reçue.
+« {0} » chargée : {1} blocs, {2} x {3} x {4}.
+Elle s'affiche devant toi, entièrement construite. Mets-la en place, puis appuie sur Suppr (ou Pg préc > La placer) pour construire couche par couche.
+Touches : les flèches la déplacent (Haut = avant, Bas = arrière, Ctrl+Haut/Bas = monter/descendre), Pg suiv la tourne, Pg préc ouvre le menu des matériaux.
+La construction est placée (verrouillée). Déverrouille-la d'abord : Pg préc > Déverrouiller, ou /buildblueprint unlock.
+Placée ! {0}
+Couche {0} sur {1} - Début/Fin pour changer de couche
+Elle ne bougera plus et ne tournera plus
+Déverrouillée - déplace-la avec les flèches, puis appuie sur Suppr pour la replacer
+Aucun sol trouvé sous la construction
+Déjà posée sur le sol
+Montée de {0} pour reposer sur le sol
+Descendue de {0} pour reposer sur le sol
+Tournée de {0} degrés
+« {0} » retirée de la vue. Elle est toujours dans Constructions sauvegardées.
+En miroir (gauche <-> droite)
+Normale à nouveau (sans miroir)
+Direction inconnue « {0} ». Utilise : up, down, left, right, forward, back, north, south, east, west.
+Déplacée {0} {1}. Le coin est maintenant en {2}, {3}, {4}.
+Tournée. Le coin est maintenant en {0}, {1}, {2}.
+Coin de la construction déplacé là où tu es ({0}, {1}, {2}). Taille {3} x {4} x {5}.
+Toutes les couches affichées.
+Seule la couche {0} sur {1} est affichée.
+« {0} » : {1} blocs, {2} x {3} x {4}, tournée de {5} degrés.
+Coin en {0}, {1}, {2} ; coin opposé en {3}, {4}, {5}.
+Les fichiers .schem, .litematic et .nbt dans <home>/BlockBlueprint/builds (ou ton dossier de schématiques WorldEdit / Litematica) apparaissent dans Constructions sauvegardées.
+Touches : Haut = avant, Bas = arrière, Gauche/Droite, Ctrl+Haut/Bas = monter/descendre, Pg suiv = tourner, Pg préc = menu des matériaux.
+--- {0} : tu as / il te faut ---
+OK  {0}
+MANQUE encore {0}  {1}
+Tu as tout.
+La construction auto ne marche qu'en mode Créatif.
+Charge d'abord une construction.
+Construction déjà en cours - /buildblueprint autobuild stop pour l'arrêter.
+Rien à poser ({0} emplacements ont des coffres ou autres qui gênent).
+Rien à poser - tout est déjà construit !
+Sur un serveur, ceci utilise /setblock, il faut donc être opérateur.
+Construction auto de {0} blocs{1}...{2}
+ sur la couche {0}
+ ({0} emplacements avec des coffres ou autres sautés)
+Attends d'abord que la construction auto se termine (ou arrête-la).
+Rien à annuler.
+Annulation de la dernière construction auto ({0} blocs)...
+Pas de construction auto en cours.
+Arrêtée après {0} blocs sur {1}.
+Annulation...
+Construction auto...
+Annulation terminée.
+Construction auto terminée ! {0} blocs posés. Utilise Annuler dans le menu Pg préc (ou /buildblueprint autobuild undo) pour la retirer.
+Build Blueprint {0} est sorti (tu as la {1}).
+Mets-le à jour dans l'appli CurseForge, ou récupère-le sur curseforge.com/minecraft/mc-mods/build-blueprint
+le bout ouest
+le bout nord
+le bout est
+le bout sud
+le milieu
+partie {0} sur {1} ({2})
+{0} devant
+{0} derrière
+{0} à droite
+{0} à gauche
+{0} au-dessus
+{0} en dessous
+juste ici
+Ce fichier schématique est trop gros.
+Impossible de lire {0}.
+Rien à coller. Copie un code de construction (BB1:...) ou les lignes Export > « Copy all » de l'appli, puis colle-les ici.
+Seulement {0} parties sur {1} ont été collées. Utilise « Copy all » dans l'appli.
+Ce n'est pas un code de construction.
+Cette construction est trop grande.
+Ce code de construction est cassé - copie-le à nouveau.
+Ce code de construction ne contient aucun bloc.
+Impossible de lire ce code de construction.
+Il existe déjà un fichier nommé {0}.
+Ce fichier appartient à WorldEdit ou Litematica. Supprime-le plutôt depuis {0}.
+En main : {0}
+En main : {0} (de ton inventaire)
+Tu n'as pas de {0} - regarde le détecteur de coffres (boîtes vertes)
+Bon retour ! Ta construction « {0} » est toujours là{1} Pg préc pour le menu.
+ (placée).
+ - déplace-la, puis place-la.
+Impossible de récupérer la construction que tu avais ici la dernière fois.
+est dans le mauvais sens
+devrait {0}
+regarder vers le haut
+regarder vers le bas
+regarder vers {0}
+être à l'envers (moitié haute)
+être à l'endroit (moitié basse)
+être une dalle double
+être une dalle du haut
+être une dalle du bas
+être debout
+être couché est-ouest
+être couché nord-sud
+être tourné vers {0}
+être au sol
+pendre du plafond
+être sur un mur
+avoir sa charnière à {0}
+pendre au bloc du dessus
+reposer sur le bloc du dessous
+avoir {0} {1}
+le nord
+le sud
+l'est
+l'ouest
+le nord-est
+le nord-ouest
+le sud-est
+le sud-ouest
+gauche
+droite
+gardé
+auto
+Constructions de la communauté
+Maisons
+Tours
+Bateaux
+Ruines et temples
+Châteaux et forts
+Bâtiments de village
+Déco
+Camps et avant-postes

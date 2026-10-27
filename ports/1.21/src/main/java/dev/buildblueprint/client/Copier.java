@@ -103,7 +103,8 @@ public final class Copier {
         if (x1 - x0 >= MAX_SIDE || y1 - y0 >= MAX_SIDE || z1 - z0 >= MAX_SIDE) { Chat.bar("That's as big as a copy can be (" + MAX_SIDE + " per side)"); return; }
         c1 = new BlockPos(x0, y0, z0); c2 = new BlockPos(x1, y1, z1); lastCount = -1; countTick = 0;
         int[] s = size();
-        Chat.bar((shrink ? "Shrunk " : "Grew ") + dir + "  ·  box " + s[0] + " x " + s[1] + " x " + s[2] + "  ·  Insert = save, Delete = cancel");
+        Chat.bar(shrink ? "Shrunk " + dir + "  ·  box " + s[0] + " x " + s[1] + " x " + s[2] + "  ·  Insert = save, Delete = cancel"
+                        : "Grew " + dir + "  ·  box " + s[0] + " x " + s[1] + " x " + s[2] + "  ·  Insert = save, Delete = cancel");
     }
 
     /** Called every tick from the keys module: keeps the block count in the corner up to date. */

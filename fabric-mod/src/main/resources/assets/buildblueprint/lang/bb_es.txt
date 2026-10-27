@@ -345,6 +345,13 @@ Nothing here.	No hay nada aquí.
 No block matches "{0}".	Ningún bloque coincide con "{0}".
 Click a block to pick it  ·  double-click swaps right away	Haz clic en un bloque para elegirlo  ·  doble clic lo cambia al momento
 Double-click to swap to this	Doble clic para cambiar a este
+Search by name or creator...	Busca por nombre o creador...
+Show one kind of build: houses, towers, ships...	Muestra un tipo de construcción: casas, torres, barcos...
+Get it	Conseguir
+Download it into Saved builds.	Descárgala en Construcciones guardadas.
+All kinds	Todos los tipos
+Couldn't reach the build list - check your internet connection.	No se pudo cargar la lista: revisa tu conexión a internet.
+Downloading {0}...	Descargando {0}...
 Got it! "{0}" is in Saved builds.	¡Hecho! "{0}" está en Construcciones guardadas.
 Download failed - check your internet connection.	La descarga falló: revisa tu conexión a internet.
 {0} free builds from the Minecraft community	{0} construcciones gratis de la comunidad de Minecraft
@@ -381,9 +388,8 @@ Copy cancelled	Copia cancelada
 Type /buildblueprint copy save <name> to save it.	Escribe /buildblueprint copy save <nombre> para guardarla.
 The box can't get any smaller that way	La caja no puede ser más pequeña por ese lado
 That's as big as a copy can be ({0} per side)	Es lo más grande que puede ser una copia ({0} por lado)
-{0}{1}  ·  box {2} x {3} x {4}  ·  Insert = save, Delete = cancel	{0}{1}  ·  caja {2} x {3} x {4}  ·  Insert = guardar, Supr = cancelar
-Shrunk 	Encogida
-Grew 	Agrandada
+Shrunk {0}  ·  box {1} x {2} x {3}  ·  Insert = save, Delete = cancel	Encogida hacia el {0}  ·  caja {1} x {2} x {3}  ·  Insert = guardar, Supr = cancelar
+Grew {0}  ·  box {1} x {2} x {3}  ·  Insert = save, Delete = cancel	Agrandada hacia el {0}  ·  caja {1} x {2} x {3}  ·  Insert = guardar, Supr = cancelar
 There are no blocks inside that box.	No hay bloques dentro de esa caja.
 Saved "{0}" ({1} blocks, {2} x {3} x {4}) to your Saved builds.	"{0}" guardada ({1} bloques, {2} x {3} x {4}) en tus Construcciones guardadas.
 Its build code is on your clipboard - paste it in the Block Blueprint app (Templates > Import code) or send it to someone.	Su código está en tu portapapeles: pégalo en la app Block Blueprint (Templates > Import code) o envíaselo a alguien.
@@ -396,8 +402,8 @@ Blueprint cleared.	Construcción quitada.
 Saved as a .schem file: {0}	Guardado como archivo .schem: {0}
 Open it with WorldEdit (copy it to config/worldedit/schematics), Litematica, Axiom or any other schematic tool.	Ábrelo con WorldEdit (cópialo a config/worldedit/schematics), Litematica, Axiom o cualquier otra herramienta de esquemas.
 No blueprint loaded. Paste the lines from the app first (see /buildblueprint help).	No hay ninguna construcción cargada. Pega primero las líneas de la app (ver /buildblueprint help).
-Got part {0} of {1}{2}	Recibida la parte {0} de {1}{2}
- received so far. Keep pasting the rest.	 recibidas hasta ahora. Sigue pegando el resto.
+Got part {0} of {1}. Keep pasting the rest.	Recibida la parte {0} de {1}. Sigue pegando el resto.
+Got part {0} of {1}.	Recibida la parte {0} de {1}.
 Loaded "{0}": {1} blocks, {2} x {3} x {4}.	"{0}" cargada: {1} bloques, {2} x {3} x {4}.
 It's shown in front of you, fully built. Move it into place, then press Delete (or Page Up > Place it) to start building layer by layer.	Se ve delante de ti, completa. Ponla en su sitio y pulsa Supr (o Re Pág > Colocarla) para construir capa por capa.
 Keys: arrows move it (Up = forward, Down = back, Ctrl+Up/Down = up/down), Page Down rotates, Page Up opens the materials menu.	Teclas: las flechas la mueven (Arriba = adelante, Abajo = atrás, Ctrl+Arriba/Abajo = subir/bajar), Av Pág la gira, Re Pág abre el menú de materiales.
@@ -408,10 +414,9 @@ It won't move or rotate now	Ya no se moverá ni girará
 Unlocked - move it with the arrow keys, then press Delete to place it again	Suelta: muévela con las flechas y pulsa Supr para colocarla otra vez
 No ground found under the blueprint	No se encontró suelo bajo la construcción
 Already sitting on the ground	Ya está sobre el suelo
-Moved {0}{1} to sit on the ground	Movida {0}{1} para quedar sobre el suelo
-up 	arriba
-down 	abajo
-Turned to {0}	Girada hacia {0}
+Moved up {0} to sit on the ground	Subida {0} para quedar sobre el suelo
+Moved down {0} to sit on the ground	Bajada {0} para quedar sobre el suelo
+Turned to {0} degrees	Girada {0} grados
 Removed "{0}" from view. It's still in Saved builds.	"{0}" quitada de la vista. Sigue en Construcciones guardadas.
 Mirrored (flipped left <-> right)	En espejo (izquierda <-> derecha)
 Back to normal (not mirrored)	Normal otra vez (sin espejo)
@@ -421,7 +426,7 @@ Rotated. Corner is now at {0}, {1}, {2}.	Girada. La esquina está ahora en {0}, 
 Blueprint corner moved to where you stand ({0}, {1}, {2}). Size {3} x {4} x {5}.	Esquina de la construcción movida a donde estás ({0}, {1}, {2}). Tamaño {3} x {4} x {5}.
 Showing every layer.	Mostrando todas las capas.
 Showing layer {0} of {1} only.	Mostrando solo la capa {0} de {1}.
-"{0}": {1} blocks, {2} x {3} x {4}, rotated {5}	"{0}": {1} bloques, {2} x {3} x {4}, girada {5}
+"{0}": {1} blocks, {2} x {3} x {4}, rotated {5} degrees.	"{0}": {1} bloques, {2} x {3} x {4}, girada {5} grados.
 Corner at {0}, {1}, {2}; far corner at {3}, {4}, {5}.	Esquina en {0}, {1}, {2}; esquina opuesta en {3}, {4}, {5}.
 .schem, .litematic and .nbt files in <home>/BlockBlueprint/builds (or your WorldEdit / Litematica schematics folder) show up in Saved builds.	Los archivos .schem, .litematic y .nbt en <home>/BlockBlueprint/builds (o en tu carpeta de esquemas de WorldEdit / Litematica) aparecen en Construcciones guardadas.
 Keys: Up = forward, Down = back, Left/Right, Ctrl+Up/Down = up/down, Page Down = rotate, Page Up = materials menu.	Teclas: Arriba = adelante, Abajo = atrás, Izquierda/Derecha, Ctrl+Arriba/Abajo = subir/bajar, Av Pág = girar, Re Pág = menú de materiales.
@@ -443,8 +448,8 @@ Nothing to undo.	Nada que deshacer.
 Undoing the last auto-build ({0} blocks)...	Deshaciendo la última autoconstrucción ({0} bloques)...
 Not auto-building right now.	No se está autoconstruyendo ahora.
 Stopped after {0} of {1} blocks.	Parada tras {0} de {1} bloques.
-Undoing... 	Deshaciendo...
-Auto-building... 	Autoconstruyendo...
+Undoing... 	Deshaciendo... 
+Auto-building... 	Autoconstruyendo... 
 Undo finished.	Deshacer terminado.
 Auto-build finished! {0} blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.	¡Autoconstrucción terminada! {0} bloques colocados. Usa Deshacer en el menú Re Pág (o /buildblueprint autobuild undo) para quitarla.
 Build Blueprint {0} is out (you have {1}).	Ya salió Build Blueprint {0} (tienes la {1}).
@@ -513,3 +518,12 @@ left	izquierda
 right	derecha
 kept	conservado
 auto	auto
+Community Builds	Construcciones de la comunidad
+Houses	Casas
+Towers	Torres
+Ships	Barcos
+Ruins & Temples	Ruinas y templos
+Castles & Forts	Castillos y fuertes
+Village Buildings	Edificios de aldea
+Decor	Decoración
+Camps & Outposts	Campamentos y puestos

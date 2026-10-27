@@ -1,0 +1,528 @@
+Construir com amigos
+Copiar código co-op
+Mande este código para seus amigos. Eles colam em Construções salvas > Colar, e a construção aparece neste mesmo lugar para eles.
+Quantas pessoas vão construir. Todos devem escolher o mesmo número.
+Qual construtor você é. Cada amigo escolhe um número diferente.
+Pronto
+Construtores: {0}
+só eu
+Sou o construtor {0}
+Sou o construtor -
+Carregue uma construção primeiro.
+Coloque a construção primeiro (Delete), para os amigos a terem no mesmo lugar.
+Copiado! Mande para seus amigos.
+1. Mande a construção para eles. Ela aparece neste mesmo lugar.
+2. Dividam o trabalho. Todos escolhem o mesmo número de
+   construtores e um número de construtor diferente.
+Você constrói {0}. Você só vê a sua parte.
+Todos veem a construção inteira.
+Copiar construção
+Nome
+Deixa de fora a terra, a grama e a pedra natural em que a construção está.
+Deixa de fora árvores, folhas, grama e flores em volta da construção.
+Salvar construção
+Ajustar a caixa
+Volte e mude a caixa: as setas aumentam, Alt + setas diminuem, Page Down estica até onde você olha. Depois aperte Insert de novo.
+Cancelar cópia
+Chão: {0}
+deixado de fora
+Árvores: {0}
+Salvar esta construção
+Caixa de {0} x {1} x {2}  ·  {3} blocos
+Nome:
+Não sobrou nada na caixa - ajuste a caixa ou mantenha o chão.
+Salva em Construções salvas e copia o código para a área de transferência.
+Pegar uma construção
+Mover e girar
+Colocar
+Construir por camadas
+Blocos e trocas
+Copiar uma construção
+Bom saber
+Uma construção é o que você quer fazer, mostrada como blocos fantasma transparentes no seu mundo.
+Abra o menu de construção, clique em Construções salvas, escolha uma e aperte Carregar no mundo.
+As construções vêm de três lugares:
+- o app gratuito Block Blueprint: crie ou escolha uma construção e aperte Send to Minecraft
+- arquivos de esquema (.schem, .litematic, .nbt) na pasta BlockBlueprint da sua pasta de usuário
+- construções que você copia do seu próprio mundo (veja Copiar uma construção)
+Page Up
+abrir o menu de construção
+A construção aparece na sua frente. Mova para onde quer construir.
+Setas
+mover (segure Shift para 5 blocos)
+Ctrl + Cima / Baixo
+subir ou descer
+Page Down
+girar
+No menu de construção, Para o chão a coloca bem em cima do chão e Espelhar a inverte.
+Quando estiver no lugar certo, coloque. Uma construção colocada fica travada, então não escorrega enquanto você constrói.
+Delete
+colocar (aperte de novo para destravar e mover)
+Ao colocar, começa a construção camada por camada pela camada de baixo.
+Construa de baixo para cima. Só a camada em que você está aparece, então fica fácil ver o que vai onde.
+O próximo bloco a colocar brilha. Quando uma camada termina, você passa para a próxima sozinho.
+Home / End
+subir ou descer uma camada
+Os blocos colocados certos somem do fantasma. Um contorno vermelho quer dizer que há outro bloco no caminho, ou que o bloco está virado errado (escada de cabeça para baixo, tronco deitado) - quebre e coloque de novo.
+O menu de construção lista todos os blocos que a construção precisa: quantos você tem e quantos ainda faltam colocar.
+A listinha no canto mostra o mesmo enquanto você constrói. Baús que você abriu por perto com blocos que você precisa brilham em verde.
+Não tem um bloco? Clique nele na lista e escolha qualquer outro bloco do jogo (de outros mods também).
+Todos os blocos desse tipo na construção mudam. Não quer um bloco (neve num telhado)? Aperte Tirar da construção.
+Desfazer troca coloca de volta.
+O olho ao lado de um bloco esconde os blocos fantasma dele (clique de novo para mostrar). Shift + clique no olho mostra só esse bloco.
+Viu uma construção que gostou no seu mundo? Copie e construa de novo em qualquer lugar.
+Insert
+começar uma caixa de cópia no bloco que você olha
+aumentar a caixa (Alt + setas: diminuir)
+esticar a caixa até o bloco que você olha
+salvar (de novo)
+As cópias vão para Construções salvas, e para o app também.
+No modo Criativo, Construir tudo coloca a construção inteira para você e Construir camada coloca uma camada. Desfazer construção tira de volta.
+Clique do meio
+pegar o bloco do fantasma que você olha
+Em Configurações você muda a transparência dos fantasmas, a lista do canto e mais.
+Todas as teclas podem ser mudadas em Configurações -> Controles.
+Como funciona
+< Voltar
+Próximo >
+Como o Build Blueprint funciona
+Setas
+aumentar a caixa para esse lado
+Alt + setas
+diminuir
+Ctrl + Cima/Baixo
+cima / baixo
+esticar até onde você olha
+Shift
+5 blocos de cada vez
+salvar
+Copiando uma construção
+Caixa de {0} x {1} x {2}
+caixa grande
+{0} blocos
+Faça a caixa do tamanho da sua construção
+Co-op: {0}
+Ainda não colocada
+Setas movem, PgDn gira
+Shift = 5 blocos · Delete = colocar
+Camada {0}/{1}
+Tempo {0}
+{0} blocos/min
+Próximo: {0}
+  (na mão)
+Construção completa!
+PgUp > Remover para limpar
+A camada {0} precisa:
+A construção precisa:
++{0} mais  (Page Up)
+Camada pronta!
+Home/End camada · PgUp menu
+Camada {0} vista de cima
+{0} blocos  ·  {1}  ·  {2} por minuto
+{0} blocos  ·  {1}
+Page Up > Remover para limpar
+Construção
+Espelhar
+Inverte a construção esquerda <-> direita, como num espelho. Útil para casas iguais dos dois lados de uma rua.
+Para o chão
+Sobe ou desce a construção para ela ficar bem em cima do chão.
+Construir tudo
+Só no Criativo: coloca a construção inteira para você, começando pela camada de baixo. Blocos no caminho são trocados (baús são deixados em paz).
+Construir camada
+Só no Criativo: coloca só a camada em que você está.
+Desfazer construção
+Coloca de volta o que tinha antes da última construção automática.
+Co-op {0}/{1}
+Co-op
+Construa com amigos: mande um código que coloca a construção neste mesmo lugar, e dividam para cada um fazer a sua parte.
+Remover
+Tira esta construção do seu mundo. Ela fica em Construções salvas, então dá para carregar de novo.
+Construção inteira
+Todos os blocos que a construção ainda precisa.
+Descer camada (tecla End)
+Camada
+Só a camada que você está construindo agora.
+Subir camada (tecla Home). Acima da última mostra todas as camadas.
+Destravar
+Destrava para poder mover ou girar de novo.
+Trava a construção onde está e começa a construir, camada por camada (tecla Delete).
+Girar
+Gira a construção 90 graus (Page Down).
+Construções salvas
+Suas construções e esquemas salvos: carregue outra, cole um código, copie uma do seu mundo.
+Configurações
+Última troca desfeita
+Mostrando só {0}  ·  Shift + clique no olho de novo para mostrar tudo
+Mostrando todos os blocos de novo
+Escondido: {0}  ·  {1} escondidos
+Mostrando {0}  ·  {1} escondidos
+Mostrando {0}
+construção inteira
+Lista copiada - cole onde quiser (Ctrl+V)
+Camada {0} de {1}
+Nenhuma construção carregada
+ainda não colocada
+{0} para corrigir
+{0} / {1} colocados
+Matérias-primas
+Blocos necessários
+Copiar
+Blocos
+para colocar
+não está no jogo
+Carregue uma construção primeiro (Construções salvas).
+Esta camada está pronta!
+Não falta nada para colocar - a construção está pronta!
+1 bloco desta construção não existe no Minecraft {0}  ·  clique nele para trocar
+{0} blocos desta construção não existem no Minecraft {1}  ·  clique em um para trocar
+{0} escondidos  ·  clique no olho lá em cima para mostrar todos
+Clique num bloco para trocar ou remover  ·  o olho esconde
+Desfazer troca
+Mostrar {0}
+Esconder {0}
+Os blocos fantasma dele estão escondidos agora
+Esconde os blocos fantasma dele para ver melhor o resto
+Shift + clique: mostrar só este bloco
+Mostrar todos os blocos de novo
+{0} escondidos
+Este bloco não existe no Minecraft {0} - clique para escolher outro no lugar
+Falta colocar: {0}  (de {1})
+Você tem: {0}
+Em baús por perto: {0} (1 baú, caixa verde)
+Em baús por perto: {0} ({1} baús, caixas verdes)
+Pegue mais {0} ({1} pacotes)
+Pegue mais {0}
+Clique para trocar ou tirar da construção
+para pegar
+  (fornalha)
+Não falta nada para juntar - você tem o que a construção precisa!
+O que juntar para os blocos que ainda faltam  ·  (fornalha) = derreta uma parte
+Para: {0}
+Derreta uma parte numa fornalha primeiro
+Quantidades da bancada - o cortador de pedras usa menos para escadas e lajes de pedra
+Pesquisar
+Pesquisar...
+Construções grátis
+Mais de 1.400 construções grátis da comunidade do Minecraft: casas, torres, navios, castelos... Baixe uma e ela fica nas suas Construções salvas.
++ Colar construção
+Cole um código de construção (BB1:...) ou as linhas de Exportar do app da sua área de transferência. Ctrl+V também funciona.
+Copiar do mundo
+Salve uma construção que já está no seu mundo: uma caixa começa no bloco que você olha - deixe do tamanho da construção com as setas, depois aperte Insert.
+Construção atual
+Voltar para a construção carregada (lista de materiais).
+Ajustar
+Mostra a construção inteira de novo (role para dar zoom, arraste para mover).
+Carregar
+Carregar no mundo
+Mostra esta construção na sua frente como blocos fantasma (clique duplo ou Enter faz o mesmo).
+Renomear
+Apaga esta construção deste computador. Clique duas vezes para confirmar.
+Código
+Copiar código
+Coloca o código BB1: desta construção na área de transferência, para importar no app Block Blueprint ou mandar para um amigo.
+Salvar .schem
+Salva esta construção como arquivo .schem (BlockBlueprint/schematics na sua pasta de usuário) para WorldEdit, Litematica, Axiom...
+Salvar
+Chegou uma construção nova: "{0}"
+Vista: 3D
+Vista: cima
+Vista: frente
+Construção co-op colocada onde seu amigo a tem. Escolha qual construtor você é.
+Você já salvou esta construção.
+"{0}" salva neste computador.
+Não deu para ler a área de transferência.
+Código de "{0}" copiado - cole no app (Templates > Import code).
+{0} salvo em BlockBlueprint/schematics (sua pasta de usuário).
+Não deu para salvar o arquivo .schem: {0}
+"{0}" carregada na sua frente, completa. As setas movem (Shift = 5 blocos), Page Down gira, Delete coloca.
+Renomeada para "{0}".
+Certeza?
+Clique em Apagar de novo para apagar "{0}".
+"{0}" apagada.
+{0} salvas
+{0} de {1}
+Clique duplo ou Enter carrega uma construção
+Nenhuma construção combina
+com a sua pesquisa.
+Nenhuma construção salva ainda.
+Pelo app: copie um
+código de construção e aperte
++ Colar construção.
+Pelo seu mundo: aperte
+Copiar do mundo.
+Esquemas: coloque arquivos .schem,
+.litematic ou .nbt
+em BlockBlueprint/builds
+na sua pasta de usuário.
+{0} x {1} x {2} · {3} blocos · {4} camadas
+arraste para mover · role para dar zoom
+Não dá para ler esta construção: {0}
+Cole uma construção para ver aqui
+Configurações do Build Blueprint
+LIGADO
+DESLIGADO
+Matérias-primas: {0}
+Adiciona "Matérias-primas" ao menu de construção: o que juntar para os blocos que ainda faltam - troncos para tábuas e escadas, areia para vidro, pedregulho para derreter em pedra...
+Mapa da camada: {0}
+Um mapinha da camada em que você está, visto de cima, embaixo da lista do canto. Cores = falta colocar, verde escuro = pronto, vermelho = errado, ponto branco = você.
+Dicas de andaime: {0}
+Partes de uma camada que flutuam no ar (beirais, telhados) ganham uma coluna azul-clara mostrando onde pôr blocos temporários para alcançá-las.
+Blocos fantasma: {0}% sólidos
+Quanto os blocos de prévia são transparentes.
+Mostrar prévia: {0}
+Esconde ou mostra os blocos fantasma.
+Lista do canto: {0}
+A lista dos blocos que ainda faltam, num canto enquanto você constrói.
+Canto: {0}
+em cima à direita
+em cima à esquerda
+Em qual canto de cima da tela fica a lista.
+Tamanho da lista: {0}%
+Deixa a lista do canto menor ou maior.
+Próximo bloco: {0}
+Uma caixa amarela mostra qual bloco colocar depois (camada de baixo primeiro, mais perto primeiro).
+Próxima camada automática: {0}
+Quando você termina uma camada, vai para a próxima sozinho.
+Localizador de baús: {0}
+Caixas verdes nos baús que têm blocos que você ainda precisa. Abra um baú uma vez para o mod saber o que tem dentro.
+Sons: {0}
+Um plim quando você termina uma camada, e o som de subir de nível quando a construção fica pronta.
+A lista mostra: {0}
+esta camada
+Auto: a camada em que você está ao construir camada por camada; senão, a construção inteira.
+Blocos na lista: {0}
+Quantos tipos de bloco a lista do canto mostra antes de "+ mais".
+Barras de progresso: {0}
+Barra verde = construção inteira, barra azul = a camada em que você está.
+Cronômetro: {0}
+Há quanto tempo você está construindo e quantos blocos por minuto.
+Dicas de teclas: {0}
+O pequeno lembrete das teclas embaixo da lista do canto.
+Distância de desenho: {0}
+Até que distância os blocos fantasma são desenhados. Menos = mais rápido.
+Caixas vermelhas: {0}
+Contorno vermelho nos blocos que estão no caminho da construção, ou colocados virados errado.
+Checar direção: {0}
+Os blocos só contam como prontos quando estão virados certo: escadas, lajes (em cima ou embaixo), troncos, portas, botões... Um bloco virado errado ganha uma caixa vermelha.
+Pegar do fantasma: {0}
+Clique do meio num bloco fantasma para pôr esse bloco na mão.
+Ao colocar: começar na camada 1: {0}
+Uma construção nova aparece completa para você poder mover. Quando você coloca, ela muda para a camada 1 para começar a construir.
+Básico
+Mais
+Extras
+Ajudas extras, desligadas até você ligar: matérias-primas, mapa da camada, dicas de andaime.
+Controles...
+Mude as teclas (Opções > Controles > Atalhos do teclado > Build Blueprint).
+Um guia curto de tudo o que o mod faz.
+Passe o mouse num botão para ver o que ele faz.
+Trocar blocos
+Como as trocas funcionam
+Tirar da construção
+Tira todos os {0} da construção, por exemplo neve num telhado. Desfazer troca coloca de volta.
+Pesquise qualquer bloco por nome ou mod...
+Parecidos ({0})
+Blocos do mesmo tipo: escadas por escadas, lajes por lajes, blocos inteiros por blocos inteiros. Os mais parecidos primeiro.
+Todos ({0})
+Todos os blocos do jogo, de A a Z.
+De mods ({0})
+Blocos adicionados pelos outros mods que você tem instalados.
+Trocar
+Troca todos os blocos deste tipo na construção (Enter).
+Desfazer última troca
+Voltar
+Última troca desfeita.
+Escolha um bloco da lista primeiro.
+Nada para mudar.
+{0} {1} trocados por {2}  ·  Desfazer: clique em Desfazer troca no menu de construção
+Nada para tirar.
+{0} {1} tirados da construção  ·  Desfazer: clique em Desfazer troca no menu de construção
+Trocar {0}
+{0} nesta construção
+  ·  não existe no Minecraft {0}, escolha outro no lugar
+Nada aqui.
+Nenhum bloco combina com "{0}".
+Clique num bloco para escolher  ·  clique duplo troca na hora
+Clique duplo para trocar por este
+Pesquise por nome ou criador...
+Mostra um tipo de construção: casas, torres, navios...
+Pegar
+Baixa para Construções salvas.
+Todos os tipos
+Não deu para carregar a lista - confira sua conexão com a internet.
+Baixando {0}...
+Pronto! "{0}" está em Construções salvas.
+O download falhou - confira sua conexão com a internet.
+{0} construções grátis da comunidade do Minecraft
+Carregando a lista...
+{0}  ·  {1} blocos
+Nenhuma construção combina.
+Pegar
+Baixar
+por {0}  ·  licença {1}
+Clique numa construção e depois em Pegar  ·  clique duplo baixa na hora
+Por {0} ({1})
+Virado errado: este {0} {1}  ·  quebre e coloque de novo
+Tudo corrigido! Não tem mais nada errado na construção.
+Corrigido! Faltam {0}  ·  {1}
+Nada para corrigir - todos os blocos colocados estão certos.
+Erro 1 de {0}: {1}
+este {0} {1}
+tem {0} onde vai {1} - quebre
+Corrigir: {0}
+Mostrando todas as camadas
+Um bloco da camada {0} foi quebrado - de volta à camada {1}
+Camada {0} pronta! Agora a camada {1}
+Construção completa! {0} blocos · {1} de construção{2}.
+ · {0} blocos por minuto
+portão de cerca
+placa de pressão
+placa pendurada
+Caixa de cópia começada no bloco que você olha. Deixe do tamanho da sua construção:
+As setas aumentam, Alt + setas diminuem, Ctrl + Cima/Baixo para cima/baixo, Shift = 5 blocos. Page Down estica até o bloco que você olha.
+Aperte Insert de novo para salvar, Delete para cancelar.
+Longe demais - uma cópia pode ter até {0} blocos por lado
+Esticada até esse bloco  ·  caixa {0} x {1} x {2}  ·  Insert = salvar, Delete = cancelar
+Cópia cancelada
+Digite /buildblueprint copy save <nome> para salvar.
+A caixa não pode ficar menor para esse lado
+É o maior que uma cópia pode ser ({0} por lado)
+Diminuída para o {0}  ·  caixa {1} x {2} x {3}  ·  Insert = salvar, Delete = cancelar
+Aumentada para o {0}  ·  caixa {1} x {2} x {3}  ·  Insert = salvar, Delete = cancelar
+Não tem nenhum bloco dentro dessa caixa.
+"{0}" salva ({1} blocos, {2} x {3} x {4}) nas suas Construções salvas.
+O código está na sua área de transferência - cole no app Block Blueprint (Templates > Import code) ou mande para alguém.
+Não deu para salvar: {0}
+Comece uma cópia primeiro: olhe para sua construção e aperte Insert (ou /buildblueprint copy).
+Tempo de construção {0} · {1} blocos colocados · {2} por minuto
+Prévia visível.
+Prévia escondida.
+Construção removida.
+Salvo como arquivo .schem: {0}
+Abra com WorldEdit (copie para config/worldedit/schematics), Litematica, Axiom ou qualquer outra ferramenta de esquemas.
+Nenhuma construção carregada. Cole as linhas do app primeiro (veja /buildblueprint help).
+Recebida a parte {0} de {1}. Continue colando o resto.
+Recebida a parte {0} de {1}.
+"{0}" carregada: {1} blocos, {2} x {3} x {4}.
+Ela aparece na sua frente, completa. Coloque no lugar, depois aperte Delete (ou Page Up > Colocar) para construir camada por camada.
+Teclas: as setas movem (Cima = frente, Baixo = trás, Ctrl+Cima/Baixo = subir/descer), Page Down gira, Page Up abre o menu de materiais.
+A construção está colocada (travada). Destrave primeiro: Page Up > Destravar, ou /buildblueprint unlock.
+Colocada! {0}
+Camada {0} de {1} - Home/End para mudar de camada
+Ela não vai mais mover nem girar
+Destravada - mova com as setas, depois aperte Delete para colocar de novo
+Não achei chão embaixo da construção
+Já está em cima do chão
+Subiu {0} para ficar em cima do chão
+Desceu {0} para ficar em cima do chão
+Girada {0} graus
+"{0}" tirada da vista. Ela continua em Construções salvas.
+Espelhada (esquerda <-> direita)
+Normal de novo (sem espelho)
+Direção desconhecida "{0}". Use: up, down, left, right, forward, back, north, south, east, west.
+Movida {0} {1}. O canto agora está em {2}, {3}, {4}.
+Girada. O canto agora está em {0}, {1}, {2}.
+Canto da construção movido para onde você está ({0}, {1}, {2}). Tamanho {3} x {4} x {5}.
+Mostrando todas as camadas.
+Mostrando só a camada {0} de {1}.
+"{0}": {1} blocos, {2} x {3} x {4}, girada {5} graus.
+Canto em {0}, {1}, {2}; canto oposto em {3}, {4}, {5}.
+Arquivos .schem, .litematic e .nbt em <home>/BlockBlueprint/builds (ou na sua pasta de esquemas do WorldEdit / Litematica) aparecem em Construções salvas.
+Teclas: Cima = frente, Baixo = trás, Esquerda/Direita, Ctrl+Cima/Baixo = subir/descer, Page Down = girar, Page Up = menu de materiais.
+--- {0}: você tem / você precisa ---
+OK  {0}
+FALTAM mais {0}  {1}
+Você tem tudo.
+Construir tudo só funciona no modo Criativo.
+Carregue uma construção primeiro.
+Já está construindo - /buildblueprint autobuild stop para parar.
+Nada para colocar ({0} lugares têm baús ou parecidos no caminho).
+Nada para colocar - já está tudo construído!
+Num servidor isto usa /setblock, então você precisa ser operador.
+Construindo {0} blocos automaticamente{1}...{2}
+ na camada {0}
+ (pulando {0} lugares com baús ou parecidos no caminho)
+Espere a construção automática terminar (ou pare) primeiro.
+Nada para desfazer.
+Desfazendo a última construção automática ({0} blocos)...
+Não está construindo automaticamente agora.
+Parou depois de {0} de {1} blocos.
+Desfazendo...
+Construindo...
+Desfazer terminado.
+Construção automática pronta! {0} blocos colocados. Use Desfazer no menu Page Up (ou /buildblueprint autobuild undo) para tirar de volta.
+Build Blueprint {0} saiu (você tem a {1}).
+Atualize no app do CurseForge, ou baixe em curseforge.com/minecraft/mc-mods/build-blueprint
+a ponta oeste
+a ponta norte
+a ponta leste
+a ponta sul
+o meio
+parte {0} de {1} ({2})
+{0} à frente
+{0} atrás
+{0} à direita
+{0} à esquerda
+{0} acima
+{0} abaixo
+bem aqui
+Esse arquivo de esquema é grande demais.
+Não deu para ler {0}.
+Nada para colar. Copie um código de construção (BB1:...) ou as linhas de Export > "Copy all" do app, depois cole aqui.
+Só {0} de {1} partes foram coladas. Use "Copy all" no app.
+Isso não é um código de construção.
+Essa construção é grande demais.
+Esse código de construção está quebrado - copie de novo.
+Esse código de construção não tem blocos.
+Não deu para ler esse código de construção.
+Já existe um arquivo chamado {0}.
+Esse arquivo é do WorldEdit ou do Litematica. Apague em {0}.
+Segurando {0}
+Segurando {0} (do seu inventário)
+Você não tem {0} - veja o localizador de baús (caixas verdes)
+Bem-vindo de volta! Sua construção "{0}" continua aqui{1} Page Up para o menu.
+ (colocada).
+ - mova, depois coloque.
+Não deu para trazer de volta a construção que você tinha aqui da última vez.
+está virado errado
+deveria {0}
+virar para cima
+virar para baixo
+virar para o {0}
+ficar de cabeça para baixo (metade de cima)
+ficar do jeito certo (metade de baixo)
+ser uma laje dupla
+ser uma laje de cima
+ser uma laje de baixo
+ficar em pé
+ficar deitado leste-oeste
+ficar deitado norte-sul
+ficar virado para o {0}
+ficar no chão
+pendurar no teto
+ficar numa parede
+ter a dobradiça à {0}
+pendurar no bloco de cima
+ficar em cima do bloco de baixo
+ter {0} {1}
+norte
+sul
+leste
+oeste
+nordeste
+noroeste
+sudeste
+sudoeste
+esquerda
+direita
+mantido
+auto
+Construções da comunidade
+Casas
+Torres
+Navios
+Ruínas e templos
+Castelos e fortes
+Construções de vila
+Decoração
+Acampamentos e postos

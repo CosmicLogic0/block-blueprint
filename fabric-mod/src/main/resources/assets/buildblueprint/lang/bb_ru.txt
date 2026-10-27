@@ -1,0 +1,529 @@
+# Build Blueprint - ru
+Build with friends	Строить с друзьями
+Copy co-op code	Скопировать код совместной стройки
+Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.	Отправь этот код друзьям. Они вставят его в Сохранённые постройки > Вставить, и постройка появится у них на этом же месте.
+How many people build it. Everyone should pick the same number.	Сколько человек строит. Все должны выбрать одно и то же число.
+Which builder you are. Each friend picks a different number.	Какой ты строитель. Каждый друг выбирает свой номер.
+Done	Готово
+Builders: {0}	Строителей: {0}
+just me	только я
+I'm builder {0}	Я строитель {0}
+I'm builder -	Я строитель -
+Load a build first.	Сначала загрузи постройку.
+Place the build first (Delete), so friends get it in the same spot.	Сначала закрепи постройку (Delete), чтобы у друзей она была на том же месте.
+Copied! Send it to your friends.	Скопировано! Отправь друзьям.
+1. Send them the build. It appears in this exact spot.	1. Отправь им постройку. Она появится на этом же месте.
+2. Split the work. Everyone picks the same number of	2. Поделите работу. Все выбирают одинаковое число
+   builders, and a different builder number.	   строителей и разные номера строителя.
+You build {0}. You only see your part.	Ты строишь {0}. Ты видишь только свою часть.
+Everyone sees the whole build.	Все видят всю постройку.
+Copy build	Скопировать постройку
+Name	Название
+Leave out the dirt, grass and natural stone the build stands on.	Не брать землю, траву и камень, на которых стоит постройка.
+Leave out trees, leaves, grass and flowers around the build.	Не брать деревья, листву, траву и цветы вокруг постройки.
+Save build	Сохранить постройку
+Adjust the box	Изменить рамку
+Go back and change the box: arrows grow it, Alt + arrows shrink it, Page Down stretches it to where you look. Then press Insert again.	Вернись и измени рамку: стрелки увеличивают её, Alt + стрелки уменьшают, Page Down растягивает до места, куда смотришь. Потом снова нажми Insert.
+Cancel copy	Отменить копирование
+Ground: {0}	Земля: {0}
+left out	не берётся
+Trees: {0}	Деревья: {0}
+Save this build	Сохранить эту постройку
+{0} x {1} x {2} box  ·  {3} blocks	Рамка {0} x {1} x {2}  ·  блоков: {3}
+Name:	Название:
+Nothing left in the box - adjust it or keep the ground.	В рамке ничего не осталось - измени её или оставь землю.
+Saves to Saved builds and copies its code to your clipboard.	Сохраняет в Сохранённые постройки и копирует её код в буфер обмена.
+Get a build	Получить постройку
+Move and turn	Двигать и поворачивать
+Place it	Закрепить
+Build layers	Строить по слоям
+Blocks and swaps	Блоки и замены
+Copy a build	Скопировать постройку
+Good to know	Полезно знать
+A build is what you want to make, shown as see-through ghost blocks in your world.	Постройка - это то, что ты хочешь построить, показанное прозрачными блоками-призраками в твоём мире.
+Open the build menu, click Saved builds, pick one and press Load into world.	Открой меню постройки, нажми Сохранённые постройки, выбери одну и нажми Загрузить в мир.
+Builds come from three places:	Постройки берутся из трёх мест:
+- the free Block Blueprint app: make or pick a build and press Send to Minecraft	- бесплатное приложение Block Blueprint: создай или выбери постройку и нажми Send to Minecraft
+- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder	- файлы схем (.schem, .litematic, .nbt) в папке BlockBlueprint в твоей папке пользователя
+- builds you copy from your own world (see Copy a build)	- постройки, которые ты копируешь из своего мира (см. Скопировать постройку)
+Page Up	Page Up
+open the build menu	открыть меню постройки
+The build appears in front of you. Move it to where you want to build it.	Постройка появится перед тобой. Передвинь её туда, где хочешь строить.
+Arrow keys	Стрелки
+move it (hold Shift for 5 blocks)	двигать (держи Shift для 5 блоков)
+Ctrl + Up / Down	Ctrl + Вверх / Вниз
+move it up or down	поднять или опустить
+Page Down	Page Down
+turn it	повернуть
+In the build menu, To ground sets it right on the ground and Mirror flips it.	В меню постройки кнопка На землю ставит её прямо на землю, а Отразить зеркально переворачивает.
+When it's in the right spot, place it. A placed build is locked, so it can't slide away while you build.	Когда она на нужном месте, закрепи её. Закреплённая постройка не сдвинется, пока ты строишь.
+Delete	Delete
+place it (press again to unlock and move it)	закрепить (нажми ещё раз, чтобы открепить и двигать)
+Placing starts layer by layer building at the bottom layer.	После закрепления начинается стройка по слоям с нижнего слоя.
+Build from the bottom up. Only the layer you're on is shown, so it's easy to see what goes where.	Строй снизу вверх. Показан только слой, на котором ты сейчас, так легко понять, что куда ставить.
+The next block to place glows. When a layer is finished you move up to the next one by itself.	Следующий блок для установки светится. Когда слой готов, ты сам переходишь на следующий.
+Home / End	Home / End
+go up or down a layer	слой вверх или вниз
+Blocks you placed correctly disappear from the ghost. A red outline means a different block is in the way, or the block is the wrong way round (stairs upside down, a log on its side) - break it and place it again.	Правильно поставленные блоки исчезают из призрака. Красная рамка значит, что мешает другой блок или блок стоит не той стороной (ступеньки вверх ногами, бревно на боку) - сломай и поставь заново.
+The build menu lists every block the build needs: how many you have and how many are still to place.	Меню постройки показывает все нужные блоки: сколько у тебя есть и сколько ещё поставить.
+The small list in the corner shows the same while you build. Chests you opened nearby that hold blocks you need glow green.	Маленький список в углу показывает то же самое во время стройки. Открытые рядом сундуки с нужными блоками подсвечиваются зелёным.
+Don't have a block? Click it in the list and pick any other block in the game (blocks from other mods too).	Нет какого-то блока? Нажми на него в списке и выбери любой другой блок в игре (и из других модов тоже).
+Every block of that kind in the build changes. Don't want a block at all (snow on a roof)? Press Remove from build.	Меняются все блоки этого вида в постройке. Блок совсем не нужен (снег на крыше)? Нажми Убрать из постройки.
+Undo swap puts it back.	Отменить замену возвращает его.
+The eye next to a block hides its ghost blocks (click again to show them). Shift-click the eye to see only that block.	Глаз рядом с блоком прячет его блоки-призраки (нажми ещё раз, чтобы показать). Shift + клик по глазу показывает только этот блок.
+See a build you like in your world? Copy it and build it again anywhere.	Видишь в мире постройку, которая нравится? Скопируй её и построй заново где угодно.
+Insert	Insert
+start a copy box on the block you look at	начать рамку копирования на блоке, на который смотришь
+make the box bigger (Alt + arrows: smaller)	увеличить рамку (Alt + стрелки: уменьшить)
+stretch the box to the block you look at	растянуть рамку до блока, на который смотришь
+save it (again)	сохранить (ещё раз)
+Copies go to Saved builds, and into the app too.	Копии попадают в Сохранённые постройки, а также в приложение.
+In Creative mode, Auto-build places the whole build for you and Build layer places one layer. Undo build takes it back.	В творческом режиме Автостройка ставит всю постройку за тебя, а Построить слой - один слой. Отменить стройку убирает её.
+Middle-click	Средняя кнопка мыши
+hold the block of the ghost you look at	взять в руку блок призрака, на который смотришь
+Settings lets you change how see-through the ghosts are, the corner list and more.	В настройках можно изменить прозрачность призраков, список в углу и другое.
+Every key can be changed in Settings -> Key binds.	Любую клавишу можно сменить в Настройки -> Управление.
+How it works	Как это работает
+< Back	< Назад
+Next >	Далее >
+How Build Blueprint works	Как работает Build Blueprint
+Arrows	Стрелки
+grow the box that way	увеличить рамку в эту сторону
+Alt + arrows	Alt + стрелки
+shrink it	уменьшить её
+Ctrl + Up/Down	Ctrl + Вверх/Вниз
+top / bottom	верх / низ
+stretch to where you look	растянуть до места, куда смотришь
+Shift	Shift
+5 blocks at a time	по 5 блоков
+save it	сохранить
+Copying a build	Копирование постройки
+{0} x {1} x {2} box	Рамка {0} x {1} x {2}
+big box	большая рамка
+{0} blocks	блоков: {0}
+Make the box as big as your build	Сделай рамку размером с постройку
+Co-op: {0}	Совместно: {0}
+Not placed yet	Ещё не закреплена
+Arrows move it, PgDn turns it	Стрелки двигают, PgDn поворачивает
+Shift = 5 blocks · Delete = place	Shift = 5 блоков · Delete = закрепить
+Layer {0}/{1}	Слой {0}/{1}
+Time {0}	Время {0}
+{0} blocks/min	{0} бл./мин
+Next: {0}	Далее: {0}
+  (in hand)	  (в руке)
+Build complete!	Постройка готова!
+PgUp > Remove to clear it	PgUp > Убрать, чтобы очистить
+Layer {0} needs:	Слою {0} нужно:
+Whole build needs:	Всей постройке нужно:
++{0} more  (Page Up)	+ещё {0}  (Page Up)
+Layer done!	Слой готов!
+Home/End layer · PgUp menu	Home/End слой · PgUp меню
+Layer {0} from above	Слой {0} сверху
+{0} blocks  ·  {1}  ·  {2} a minute	блоков: {0}  ·  {1}  ·  {2} в минуту
+{0} blocks  ·  {1}	блоков: {0}  ·  {1}
+Page Up > Remove to clear it	Page Up > Убрать, чтобы очистить
+Build	Постройка
+Mirror	Отразить
+Flip the build left <-> right, like in a mirror. Handy for matching houses on both sides of a street.	Переворачивает постройку лево <-> право, как в зеркале. Удобно для одинаковых домов по обе стороны улицы.
+To ground	На землю
+Move the build up or down so it sits right on the ground under it.	Поднимает или опускает постройку, чтобы она стояла прямо на земле.
+Auto-build	Автостройка
+Creative only: places the whole build for you, bottom layer first. Blocks in the way are replaced (chests are left alone).	Только в творческом: ставит всю постройку за тебя, начиная с нижнего слоя. Мешающие блоки заменяются (сундуки не трогаются).
+Build layer	Построить слой
+Creative only: places just the layer you're on.	Только в творческом: ставит только слой, на котором ты сейчас.
+Undo build	Отменить стройку
+Puts back what was there before the last auto-build.	Возвращает то, что было до последней автостройки.
+Co-op {0}/{1}	Совместно {0}/{1}
+Co-op	Совместно
+Build this with friends: send them a code that puts it in this exact spot, and split it so everyone builds their own part.	Строй с друзьями: отправь им код, который ставит постройку точно на это место, и разделите её, чтобы каждый строил свою часть.
+Remove	Убрать
+Take this build out of your world view. It stays in Saved builds, so you can load it again.	Убирает эту постройку из твоего мира. Она остаётся в Сохранённых постройках, её можно загрузить снова.
+Whole build	Вся постройка
+Every block the build still needs.	Все блоки, которые ещё нужны постройке.
+Layer down (End key)	Слой вниз (клавиша End)
+Layer	Слой
+Just the layer you're building now.	Только слой, который ты строишь сейчас.
+Layer up (Home key). Past the top shows all layers.	Слой вверх (клавиша Home). Выше верхнего показываются все слои.
+Unlock	Открепить
+Unlock it so you can move or turn it again.	Открепи её, чтобы снова двигать или поворачивать.
+Lock the build where it is and start building, layer by layer (Delete key).	Закрепляет постройку на месте и начинает стройку, слой за слоем (клавиша Delete).
+Turn	Повернуть
+Turn the build 90 degrees (Page Down).	Поворачивает постройку на 90 градусов (Page Down).
+Saved builds	Сохранённые постройки
+Your saved builds and schematics: load another one, paste a code, copy one from your world.	Твои сохранённые постройки и схемы: загрузи другую, вставь код, скопируй из своего мира.
+Settings	Настройки
+Last swap undone	Последняя замена отменена
+Showing only {0}  ·  Shift-click the eye again to show everything	Показан только {0}  ·  Shift + клик по глазу ещё раз, чтобы показать всё
+Showing every block again	Снова показаны все блоки
+Hid {0}  ·  {1} hidden	Скрыт {0}  ·  скрыто: {1}
+Showing {0}  ·  {1} hidden	Показан {0}  ·  скрыто: {1}
+Showing {0}	Показан {0}
+whole build	вся постройка
+Copied the list - paste it anywhere (Ctrl+V)	Список скопирован - вставь куда угодно (Ctrl+V)
+Layer {0} of {1}	Слой {0} из {1}
+No build loaded	Постройка не загружена
+not placed yet	ещё не закреплена
+{0} to fix	исправить: {0}
+{0} / {1} placed	поставлено {0} / {1}
+Raw materials	Сырьё
+Blocks needed	Нужные блоки
+Copy	Копировать
+Blocks	Блоки
+to place	поставить
+not in game	нет в игре
+Load a build first (Saved builds).	Сначала загрузи постройку (Сохранённые постройки).
+This layer is done!	Этот слой готов!
+Nothing left to place - the build is done!	Ставить больше нечего - постройка готова!
+1 block in this build isn't in Minecraft {0}  ·  click it to swap it	1 блока из этой постройки нет в Minecraft {0}  ·  нажми на него, чтобы заменить
+{0} blocks in this build aren't in Minecraft {1}  ·  click one to swap it	Блоков из этой постройки нет в Minecraft {1}: {0}  ·  нажми на один, чтобы заменить
+{0} hidden  ·  click the eye at the top to show them all	Скрыто: {0}  ·  нажми на глаз сверху, чтобы показать все
+Click a block to swap or remove it  ·  the eye hides it	Нажми на блок, чтобы заменить или убрать его  ·  глаз его прячет
+Undo swap	Отменить замену
+Show {0}	Показать {0}
+Hide {0}	Скрыть {0}
+Its ghost blocks are hidden right now	Его блоки-призраки сейчас скрыты
+Hides its ghost blocks so you can see the rest better	Прячет его блоки-призраки, чтобы лучше видеть остальное
+Shift-click: show only this block	Shift + клик: показать только этот блок
+Show every block again	Снова показать все блоки
+{0} hidden	Скрыто: {0}
+This block doesn't exist in Minecraft {0} - click to pick one to use instead	Этого блока нет в Minecraft {0} - нажми, чтобы выбрать другой вместо него
+Still to place: {0}  (of {1})	Ещё поставить: {0}  (из {1})
+You have: {0}	У тебя есть: {0}
+In chests nearby: {0} (1 chest, green box)	В сундуках рядом: {0} (1 сундук, зелёная рамка)
+In chests nearby: {0} ({1} chests, green boxes)	В сундуках рядом: {0} (сундуков: {1}, зелёные рамки)
+Get {0} more ({1} stacks)	Добудь ещё {0} (стаков: {1})
+Get {0} more	Добудь ещё {0}
+Click to swap it or remove it from the build	Нажми, чтобы заменить или убрать из постройки
+to get	добыть
+  (furnace)	  (печь)
+Nothing left to gather - you have what the build needs!	Больше ничего добывать не нужно - у тебя есть всё для постройки!
+What to gather for the blocks you still need  ·  (furnace) = smelt some of it	Что добыть для блоков, которых ещё не хватает  ·  (печь) = часть переплавить
+For: {0}	Для: {0}
+Smelt some of it in a furnace first	Сначала переплавь часть в печи
+Crafting table amounts - a stonecutter needs less for stone stairs and slabs	Количество для верстака - камнерезу нужно меньше для каменных ступенек и плит
+Search	Поиск
+Search...	Поиск...
+Get free builds	Бесплатные постройки
+1,400+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	Больше 1400 бесплатных построек от сообщества Minecraft: дома, башни, корабли, замки... Скачай одну, и она будет в Сохранённых постройках.
++ Paste build	+ Вставить постройку
+Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.	Вставь код постройки (BB1:...) или строки экспорта из приложения из буфера обмена. Ctrl+V тоже работает.
+Copy from world	Скопировать из мира
+Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.	Сохрани постройку, которая уже есть в мире: рамка начинается на блоке, на который смотришь - сделай её размером с постройку стрелками, затем нажми Insert.
+Current build	Текущая постройка
+Back to the build you have loaded (materials list).	Назад к загруженной постройке (список материалов).
+Fit	Вписать
+Show the whole build again (scroll to zoom, drag to move).	Снова показать всю постройку (колесо - масштаб, перетаскивание - сдвиг).
+Load	Загрузить
+Load into world	Загрузить в мир
+Show this build in front of you as ghost blocks (double-click or Enter does the same).	Показывает эту постройку перед тобой блоками-призраками (двойной клик или Enter делают то же).
+Rename	Переименовать
+Delete this build from this computer. Click twice to be sure.	Удаляет эту постройку с этого компьютера. Нажми дважды для подтверждения.
+Code	Код
+Copy code	Скопировать код
+Puts this build's BB1: code on your clipboard, to import in the Block Blueprint app or send to a friend.	Копирует код BB1: этой постройки в буфер обмена, чтобы импортировать в приложение Block Blueprint или отправить другу.
+Save .schem	Сохранить .schem
+Save this build as a .schem file (BlockBlueprint/schematics in your user folder) for WorldEdit, Litematica, Axiom...	Сохраняет постройку файлом .schem (BlockBlueprint/schematics в твоей папке пользователя) для WorldEdit, Litematica, Axiom...
+Save	Сохранить
+New build arrived: "{0}"	Пришла новая постройка: «{0}»
+View: 3D	Вид: 3D
+View: Top	Вид: сверху
+View: Front	Вид: спереди
+Co-op build placed where your friend has it. Pick which builder you are.	Совместная постройка поставлена там же, где у друга. Выбери, какой ты строитель.
+You already saved this build.	Ты уже сохранил эту постройку.
+Saved "{0}" on this computer.	«{0}» сохранена на этом компьютере.
+Could not read the clipboard.	Не удалось прочитать буфер обмена.
+Code for "{0}" copied - paste it in the app (Templates > Import code).	Код «{0}» скопирован - вставь его в приложение (Templates > Import code).
+Saved {0} in BlockBlueprint/schematics (your user folder).	{0} сохранён в BlockBlueprint/schematics (твоя папка пользователя).
+Couldn't save the .schem file: {0}	Не удалось сохранить файл .schem: {0}
+Loaded "{0}" in front of you, fully built. Arrows move it (Shift = 5 blocks), Page Down turns it, Delete places it.	«{0}» загружена перед тобой целиком. Стрелки двигают (Shift = 5 блоков), Page Down поворачивает, Delete закрепляет.
+Renamed to "{0}".	Переименовано в «{0}».
+Sure?	Точно?
+Click Delete again to delete "{0}".	Нажми Удалить ещё раз, чтобы удалить «{0}».
+Deleted "{0}".	«{0}» удалена.
+{0} saved	Сохранено: {0}
+{0} of {1}	{0} из {1}
+Double-click or Enter loads a build	Двойной клик или Enter загружает постройку
+No build matches	Ни одна постройка не подходит
+your search.	под твой поиск.
+No saved builds yet.	Сохранённых построек пока нет.
+From the app: copy a	Из приложения: скопируй
+build code, then press	код постройки, потом нажми
++ Paste build.	+ Вставить постройку.
+From your world: press	Из твоего мира: нажми
+Copy from world.	Скопировать из мира.
+Schematics: put .schem,	Схемы: положи файлы .schem,
+.litematic or .nbt files	.litematic или .nbt
+in BlockBlueprint/builds	в BlockBlueprint/builds
+in your user folder.	в твоей папке пользователя.
+{0} x {1} x {2} · {3} blocks · {4} layers	{0} x {1} x {2} · блоков: {3} · слоёв: {4}
+drag to move · scroll to zoom	перетаскивай - сдвиг · колесо - масштаб
+Can't read this build: {0}	Не удаётся прочитать постройку: {0}
+Paste a build to see it here	Вставь постройку, чтобы увидеть её здесь
+Build Blueprint settings	Настройки Build Blueprint
+ON	ВКЛ
+OFF	ВЫКЛ
+Raw materials: {0}	Сырьё: {0}
+Adds "Raw materials" to the build menu: what to gather for the blocks you still need - logs for planks and stairs, sand for glass, cobblestone to smelt into stone...	Добавляет «Сырьё» в меню постройки: что добыть для недостающих блоков - брёвна для досок и ступенек, песок для стекла, булыжник для переплавки в камень...
+Layer map: {0}	Карта слоя: {0}
+A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.	Маленькая карта слоя, на котором ты сейчас, вид сверху, под списком в углу. Цвета = ещё поставить, тёмно-зелёный = готово, красный = неправильно, белая точка = ты.
+Scaffold hints: {0}	Подсказки лесов: {0}
+Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.	Части слоя, висящие в воздухе (выступы, крыши), получают голубой столб, показывающий, где поставить временные блоки, чтобы до них дотянуться.
+Ghost blocks: {0}% solid	Блоки-призраки: {0}% плотности
+How see-through the preview blocks are.	Насколько прозрачны блоки предпросмотра.
+Show preview: {0}	Показывать предпросмотр: {0}
+Hide or show the ghost blocks.	Скрывает или показывает блоки-призраки.
+Corner list: {0}	Список в углу: {0}
+The list of blocks you still need, shown in a corner while you build.	Список блоков, которые ещё нужны, в углу экрана во время стройки.
+Corner: {0}	Угол: {0}
+top right	сверху справа
+top left	сверху слева
+Which top corner of the screen the list sits in.	В каком верхнем углу экрана будет список.
+List size: {0}%	Размер списка: {0}%
+Make the corner list smaller or bigger.	Делает список в углу меньше или больше.
+Next block: {0}	Следующий блок: {0}
+A yellow box shows which block to place next (bottom layer first, closest first).	Жёлтая рамка показывает, какой блок ставить следующим (сначала нижний слой, сначала ближайший).
+Auto next layer: {0}	Автопереход на слой: {0}
+When you finish a layer, go to the next one by itself.	Когда закончишь слой, сам переходишь на следующий.
+Chest finder: {0}	Поиск сундуков: {0}
+Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.	Зелёные рамки на сундуках, где есть нужные тебе блоки. Открой сундук один раз, чтобы мод знал, что внутри.
+Sounds: {0}	Звуки: {0}
+A little ding when you finish a layer, and a level-up sound when the build is done.	Короткий звон, когда закончишь слой, и звук нового уровня, когда постройка готова.
+List shows: {0}	Список показывает: {0}
+this layer	этот слой
+Auto: the layer you're on while building layer by layer, otherwise the whole build.	Авто: слой, на котором ты, при стройке по слоям, иначе всю постройку.
+Blocks in list: {0}	Блоков в списке: {0}
+How many block types the corner list shows before "+ more".	Сколько видов блоков показывает список в углу до «+ ещё».
+Progress bars: {0}	Полоски прогресса: {0}
+Green bar = whole build, blue bar = the layer you're on.	Зелёная полоска = вся постройка, синяя = слой, на котором ты.
+Build timer: {0}	Таймер стройки: {0}
+How long you've been building and how many blocks a minute.	Сколько ты уже строишь и сколько блоков в минуту.
+Key hints: {0}	Подсказки клавиш: {0}
+The small reminder of the keys under the corner list.	Маленькая подсказка клавиш под списком в углу.
+Draw distance: {0}	Дальность отрисовки: {0}
+How far away ghost blocks are still drawn. Lower = faster.	Как далеко ещё рисуются блоки-призраки. Меньше = быстрее.
+Red boxes: {0}	Красные рамки: {0}
+Red outline on blocks that are in the way of the build, or placed the wrong way round.	Красная рамка у блоков, которые мешают постройке или стоят не той стороной.
+Check direction: {0}	Проверять направление: {0}
+Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Блоки засчитываются, только если стоят правильной стороной: ступеньки, плиты (верх или низ), брёвна, двери, кнопки... Блок, стоящий не той стороной, получает красную рамку.
+Pick from ghost: {0}	Брать из призрака: {0}
+Middle-click a ghost block to put that block in your hand.	Средняя кнопка мыши по блоку-призраку даёт этот блок в руку.
+Placed: start at layer 1: {0}	После закрепления начинать со слоя 1: {0}
+A new build shows fully built so you can move it. When you place it, it switches to layer 1 so you can start building.	Новая постройка показана целиком, чтобы её можно было двигать. Когда закрепишь, она переключится на слой 1, чтобы начать стройку.
+Basics	Основное
+More	Ещё
+Extras	Дополнительно
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints.	Дополнительные помощники, выключены, пока не включишь: сырьё, карта слоя, подсказки лесов.
+Key binds...	Клавиши...
+Change the keys (Options > Controls > Key Binds > Build Blueprint).	Смени клавиши (Настройки > Управление > Назначение клавиш > Build Blueprint).
+A short guide to everything the mod does.	Короткое руководство по всему, что умеет мод.
+Hover a button to see what it does.	Наведи на кнопку, чтобы узнать, что она делает.
+Swap blocks	Заменить блоки
+How swapping works	Как работает замена
+Remove from build	Убрать из постройки
+Take every {0} out of the build, for example snow on a roof. Undo swap puts it back.	Убирает все {0} из постройки, например снег на крыше. Отменить замену возвращает их.
+Search every block by name or mod...	Ищи любой блок по названию или моду...
+Similar ({0})	Похожие ({0})
+Blocks of the same kind: stairs for stairs, slabs for slabs, full blocks for full blocks. The most alike come first.	Блоки того же вида: ступеньки на ступеньки, плиты на плиты, полные блоки на полные. Самые похожие первыми.
+All blocks ({0})	Все блоки ({0})
+Every block in the game, A to Z.	Все блоки в игре, от А до Я.
+From mods ({0})	Из модов ({0})
+Blocks added by the other mods you have installed.	Блоки из других установленных у тебя модов.
+Swap	Заменить
+Swap every block of this kind in the build (Enter).	Заменяет все блоки этого вида в постройке (Enter).
+Undo last swap	Отменить последнюю замену
+Back	Назад
+Last swap undone.	Последняя замена отменена.
+Pick a block from the list first.	Сначала выбери блок в списке.
+Nothing to change.	Нечего менять.
+Swapped {0} {1} to {2}  ·  Undo: click Undo swap in the build menu	Заменено: {0} {1} на {2}  ·  Отмена: нажми Отменить замену в меню постройки
+Nothing to remove.	Нечего убирать.
+Removed {0} {1} from the build  ·  Undo: click Undo swap in the build menu	Убрано из постройки: {0} {1}  ·  Отмена: нажми Отменить замену в меню постройки
+Swap {0}	Заменить {0}
+{0} in this build	{0} в этой постройке
+  ·  not in Minecraft {0}, pick one to use instead	  ·  нет в Minecraft {0}, выбери другой вместо него
+Nothing here.	Здесь ничего нет.
+No block matches "{0}".	Нет блоков по запросу «{0}».
+Click a block to pick it  ·  double-click swaps right away	Нажми на блок, чтобы выбрать  ·  двойной клик сразу заменяет
+Double-click to swap to this	Двойной клик, чтобы заменить на этот
+Search by name or creator...	Поиск по названию или автору...
+Show one kind of build: houses, towers, ships...	Показывает один вид построек: дома, башни, корабли...
+Get it	Получить
+Download it into Saved builds.	Скачать в Сохранённые постройки.
+All kinds	Все виды
+Couldn't reach the build list - check your internet connection.	Не удалось загрузить список - проверь подключение к интернету.
+Downloading {0}...	Скачивание {0}...
+Got it! "{0}" is in Saved builds.	Готово! «{0}» в Сохранённых постройках.
+Download failed - check your internet connection.	Не удалось скачать - проверь подключение к интернету.
+{0} free builds from the Minecraft community	Бесплатных построек от сообщества Minecraft: {0}
+Loading the list...	Загрузка списка...
+{0}  ·  {1} blocks	{0}  ·  блоков: {1}
+No build matches.	Ни одна постройка не подходит.
+Got it	Получено
+Download	Скачать
+by {0}  ·  {1} license	автор: {0}  ·  лицензия {1}
+Click a build, then Get it  ·  double-click gets it right away	Нажми на постройку, затем Получить  ·  двойной клик скачивает сразу
+By {0} ({1})	Автор: {0} ({1})
+Wrong way round: this {0} {1}  ·  break it and place it again	Не той стороной: этот {0} {1}  ·  сломай и поставь заново
+All fixed! Nothing wrong in the build any more.	Всё исправлено! В постройке больше нет ошибок.
+Fixed! {0} left  ·  {1}	Исправлено! Осталось {0}  ·  {1}
+Nothing to fix - every placed block is right.	Нечего исправлять - все поставленные блоки верны.
+Mistake 1 of {0}: {1}	Ошибка 1 из {0}: {1}
+this {0} {1}	этот {0} {1}
+a {0} is where {1} goes - break it	{0} стоит там, где должен быть {1} - сломай
+Fix: {0}	Исправить: {0}
+Showing all layers	Показаны все слои
+A block in layer {0} was broken - back to layer {1}	Сломан блок в слое {0} - назад к слою {1}
+Layer {0} done! Now layer {1}	Слой {0} готов! Теперь слой {1}
+Build complete! {0} blocks · {1} building time{2}.	Постройка готова! Блоков: {0} · время стройки {1}{2}.
+ · {0} blocks a minute	 · {0} блоков в минуту
+fence gate	калитка
+pressure plate	нажимная плита
+hanging sign	подвесная табличка
+Copy box started on the block you're looking at. Make it as big as your build:	Рамка копирования начата на блоке, на который ты смотришь. Сделай её размером с постройку:
+Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.	Стрелки увеличивают, Alt + стрелки уменьшают, Ctrl + Вверх/Вниз для верха/низа, Shift = 5 блоков. Page Down растягивает до блока, на который смотришь.
+Press Insert again to save it, Delete to cancel.	Нажми Insert ещё раз, чтобы сохранить, Delete - чтобы отменить.
+Too far - a copy can be up to {0} blocks per side	Слишком далеко - копия может быть до {0} блоков по каждой стороне
+Stretched to that block  ·  box {0} x {1} x {2}  ·  Insert = save, Delete = cancel	Растянуто до этого блока  ·  рамка {0} x {1} x {2}  ·  Insert = сохранить, Delete = отмена
+Copy cancelled	Копирование отменено
+Type /buildblueprint copy save <name> to save it.	Введи /buildblueprint copy save <название>, чтобы сохранить.
+The box can't get any smaller that way	Рамка не может стать меньше в эту сторону
+That's as big as a copy can be ({0} per side)	Больше копия быть не может ({0} по стороне)
+Shrunk {0}  ·  box {1} x {2} x {3}  ·  Insert = save, Delete = cancel	Уменьшено: {0}  ·  рамка {1} x {2} x {3}  ·  Insert = сохранить, Delete = отмена
+Grew {0}  ·  box {1} x {2} x {3}  ·  Insert = save, Delete = cancel	Увеличено: {0}  ·  рамка {1} x {2} x {3}  ·  Insert = сохранить, Delete = отмена
+There are no blocks inside that box.	В этой рамке нет блоков.
+Saved "{0}" ({1} blocks, {2} x {3} x {4}) to your Saved builds.	«{0}» сохранена (блоков: {1}, {2} x {3} x {4}) в Сохранённые постройки.
+Its build code is on your clipboard - paste it in the Block Blueprint app (Templates > Import code) or send it to someone.	Её код в буфере обмена - вставь его в приложение Block Blueprint (Templates > Import code) или отправь кому-нибудь.
+Couldn't save: {0}	Не удалось сохранить: {0}
+Start a copy first: look at your build and press Insert (or /buildblueprint copy).	Сначала начни копирование: посмотри на постройку и нажми Insert (или /buildblueprint copy).
+Building time {0} · {1} blocks placed · {2} a minute	Время стройки {0} · поставлено блоков: {1} · {2} в минуту
+Preview shown.	Предпросмотр показан.
+Preview hidden.	Предпросмотр скрыт.
+Blueprint cleared.	Постройка убрана.
+Saved as a .schem file: {0}	Сохранено как файл .schem: {0}
+Open it with WorldEdit (copy it to config/worldedit/schematics), Litematica, Axiom or any other schematic tool.	Открой его в WorldEdit (скопируй в config/worldedit/schematics), Litematica, Axiom или любом другом инструменте для схем.
+No blueprint loaded. Paste the lines from the app first (see /buildblueprint help).	Постройка не загружена. Сначала вставь строки из приложения (см. /buildblueprint help).
+Got part {0} of {1}. Keep pasting the rest.	Получена часть {0} из {1}. Продолжай вставлять остальное.
+Got part {0} of {1}.	Получена часть {0} из {1}.
+Loaded "{0}": {1} blocks, {2} x {3} x {4}.	«{0}» загружена: блоков: {1}, {2} x {3} x {4}.
+It's shown in front of you, fully built. Move it into place, then press Delete (or Page Up > Place it) to start building layer by layer.	Она показана перед тобой целиком. Поставь её на место, затем нажми Delete (или Page Up > Закрепить), чтобы строить по слоям.
+Keys: arrows move it (Up = forward, Down = back, Ctrl+Up/Down = up/down), Page Down rotates, Page Up opens the materials menu.	Клавиши: стрелки двигают (Вверх = вперёд, Вниз = назад, Ctrl+Вверх/Вниз = выше/ниже), Page Down поворачивает, Page Up открывает меню материалов.
+The blueprint is placed (locked). Unlock it first: Page Up > Unlock, or /buildblueprint unlock.	Постройка закреплена. Сначала открепи её: Page Up > Открепить или /buildblueprint unlock.
+Placed! {0}	Закреплено! {0}
+Layer {0} of {1} - Home/End to change layer	Слой {0} из {1} - Home/End для смены слоя
+It won't move or rotate now	Теперь она не сдвинется и не повернётся
+Unlocked - move it with the arrow keys, then press Delete to place it again	Откреплено - двигай стрелками, затем нажми Delete, чтобы закрепить снова
+No ground found under the blueprint	Под постройкой не найдена земля
+Already sitting on the ground	Уже стоит на земле
+Moved up {0} to sit on the ground	Поднята на {0}, чтобы стоять на земле
+Moved down {0} to sit on the ground	Опущена на {0}, чтобы стоять на земле
+Turned to {0} degrees	Повёрнута на {0} градусов
+Removed "{0}" from view. It's still in Saved builds.	«{0}» убрана из вида. Она осталась в Сохранённых постройках.
+Mirrored (flipped left <-> right)	Отражено (лево <-> право)
+Back to normal (not mirrored)	Снова обычная (без отражения)
+Unknown direction "{0}". Use: up, down, left, right, forward, back, north, south, east, west.	Неизвестное направление «{0}». Используй: up, down, left, right, forward, back, north, south, east, west.
+Moved {0} {1}. Corner is now at {2}, {3}, {4}.	Сдвинута {0} {1}. Угол теперь в {2}, {3}, {4}.
+Rotated. Corner is now at {0}, {1}, {2}.	Повёрнута. Угол теперь в {0}, {1}, {2}.
+Blueprint corner moved to where you stand ({0}, {1}, {2}). Size {3} x {4} x {5}.	Угол постройки перенесён туда, где ты стоишь ({0}, {1}, {2}). Размер {3} x {4} x {5}.
+Showing every layer.	Показаны все слои.
+Showing layer {0} of {1} only.	Показан только слой {0} из {1}.
+"{0}": {1} blocks, {2} x {3} x {4}, rotated {5} degrees.	«{0}»: блоков: {1}, {2} x {3} x {4}, повёрнута на {5} градусов.
+Corner at {0}, {1}, {2}; far corner at {3}, {4}, {5}.	Угол в {0}, {1}, {2}; дальний угол в {3}, {4}, {5}.
+.schem, .litematic and .nbt files in <home>/BlockBlueprint/builds (or your WorldEdit / Litematica schematics folder) show up in Saved builds.	Файлы .schem, .litematic и .nbt в <home>/BlockBlueprint/builds (или в папке схем WorldEdit / Litematica) появляются в Сохранённых постройках.
+Keys: Up = forward, Down = back, Left/Right, Ctrl+Up/Down = up/down, Page Down = rotate, Page Up = materials menu.	Клавиши: Вверх = вперёд, Вниз = назад, Влево/Вправо, Ctrl+Вверх/Вниз = выше/ниже, Page Down = поворот, Page Up = меню материалов.
+--- {0}: you have / you need ---	--- {0}: есть / нужно ---
+OK  {0}	OK  {0}
+NEED {0} more  {1}	НУЖНО ещё {0}  {1}
+You have everything.	У тебя всё есть.
+Auto-build only works in Creative mode.	Автостройка работает только в творческом режиме.
+Load a blueprint first.	Сначала загрузи постройку.
+Already building - /buildblueprint autobuild stop to stop.	Уже строится - /buildblueprint autobuild stop, чтобы остановить.
+Nothing to place ({0} spots have chests or similar in the way).	Нечего ставить (мест, где мешают сундуки и т. п.: {0}).
+Nothing to place - it's all built already!	Нечего ставить - всё уже построено!
+On a server this uses /setblock, so you need to be an operator.	На сервере это использует /setblock, поэтому нужны права оператора.
+Auto-building {0} blocks{1}...{2}	Автостройка: блоков {0}{1}...{2}
+ on layer {0}	 на слое {0}
+ (skipping {0} spots with chests or similar in the way)	 (пропущено мест с сундуками и т. п.: {0})
+Wait for the auto-build to finish (or stop it) first.	Сначала дождись конца автостройки (или останови её).
+Nothing to undo.	Нечего отменять.
+Undoing the last auto-build ({0} blocks)...	Отмена последней автостройки (блоков: {0})...
+Not auto-building right now.	Сейчас автостройка не идёт.
+Stopped after {0} of {1} blocks.	Остановлено после {0} из {1} блоков.
+Undoing... 	Отмена... 
+Auto-building... 	Автостройка... 
+Undo finished.	Отмена завершена.
+Auto-build finished! {0} blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.	Автостройка готова! Поставлено блоков: {0}. Используй Отменить в меню Page Up (или /buildblueprint autobuild undo), чтобы убрать.
+Build Blueprint {0} is out (you have {1}).	Вышел Build Blueprint {0} (у тебя {1}).
+Update it in the CurseForge app, or get it from curseforge.com/minecraft/mc-mods/build-blueprint	Обнови его в приложении CurseForge или скачай на curseforge.com/minecraft/mc-mods/build-blueprint
+the west end	западный край
+the north end	северный край
+the east end	восточный край
+the south end	южный край
+the middle	середина
+part {0} of {1} ({2})	часть {0} из {1} ({2})
+{0} ahead	{0} впереди
+{0} behind	{0} позади
+{0} right	{0} справа
+{0} left	{0} слева
+{0} up	{0} выше
+{0} down	{0} ниже
+right here	прямо здесь
+That schematic file is too big.	Этот файл схемы слишком большой.
+Couldn't read {0}.	Не удалось прочитать {0}.
+Nothing to paste. Copy a build code (BB1:...) or the app's Export > "Copy all" lines, then paste here.	Нечего вставлять. Скопируй код постройки (BB1:...) или строки Export > «Copy all» из приложения, потом вставь сюда.
+Only {0} of {1} parts were pasted. Use "Copy all" in the app.	Вставлено только {0} из {1} частей. Используй «Copy all» в приложении.
+That isn't a build code.	Это не код постройки.
+That build is too big.	Эта постройка слишком большая.
+That build code is broken - copy it again.	Этот код постройки повреждён - скопируй его снова.
+That build code has no blocks in it.	В этом коде постройки нет блоков.
+That build code couldn't be read.	Не удалось прочитать этот код постройки.
+There's already a file called {0}.	Файл с именем {0} уже существует.
+That file belongs to WorldEdit or Litematica. Delete it from {0} instead.	Этот файл принадлежит WorldEdit или Litematica. Удали его в {0}.
+Holding {0}	В руке: {0}
+Holding {0} (from your inventory)	В руке: {0} (из инвентаря)
+You don't have any {0} - check the chest finder (green boxes)	У тебя нет {0} - смотри поиск сундуков (зелёные рамки)
+Welcome back! Your blueprint "{0}" is still here{1} Page Up for the menu.	С возвращением! Твоя постройка «{0}» всё ещё здесь{1} Page Up - меню.
+ (placed).	 (закреплена).
+ - move it, then Place it.	 - передвинь её, затем закрепи.
+Couldn't bring back the blueprint you had here last time.	Не удалось вернуть постройку, которая была здесь в прошлый раз.
+is the wrong way round	стоит не той стороной
+should {0}	должен {0}
+face up	смотреть вверх
+face down	смотреть вниз
+face {0}	смотреть на {0}
+be upside down (top half)	быть перевёрнутым (верхняя половина)
+be the right way up (bottom half)	стоять правильно (нижняя половина)
+be a double slab	быть двойной плитой
+be a top slab	быть верхней плитой
+be a bottom slab	быть нижней плитой
+stand upright	стоять вертикально
+lie east-west	лежать с востока на запад
+lie north-south	лежать с севера на юг
+be turned to face {0}	быть повёрнутым на {0}
+be on the floor	стоять на полу
+hang from the ceiling	висеть на потолке
+be on a wall	быть на стене
+have its hinge on the {0}	иметь петли {0}
+hang from the block above	висеть на блоке сверху
+stand on the block below	стоять на блоке снизу
+have {0} {1}	иметь {0} {1}
+north	север
+south	юг
+east	восток
+west	запад
+north-east	северо-восток
+north-west	северо-запад
+south-east	юго-восток
+south-west	юго-запад
+left	слева
+right	справа
+kept	оставлено
+auto	авто
+Community Builds	Постройки сообщества
+Houses	Дома
+Towers	Башни
+Ships	Корабли
+Ruins & Temples	Руины и храмы
+Castles & Forts	Замки и крепости
+Village Buildings	Деревенские здания
+Decor	Декор
+Camps & Outposts	Лагеря и аванпосты

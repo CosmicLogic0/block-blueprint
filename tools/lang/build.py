@@ -17,6 +17,7 @@ for code in sys.argv[1:] or ['es', 'pt', 'de', 'fr', 'ru', 'zh']:
     for i, (en, t) in enumerate(zip(keys, tr), 1):
         a, b = sorted(re.findall(r'\{\d+\}', en)), sorted(re.findall(r'\{\d+\}', t))
         if a != b: print(code, i, 'placeholders differ:', en, '=>', t); ok = False
+        t = en[:len(en) - len(en.lstrip())] + t.strip() + en[len(en.rstrip()):]   # same spaces at the ends as the English
         lines.append(en + '\t' + t)
     OUT.joinpath('bb_%s.txt' % code).write_text('# Build Blueprint - %s\n' % code + '\n'.join(lines) + '\n')
     print(code, len(lines), 'texts')

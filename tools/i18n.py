@@ -138,6 +138,12 @@ def templates_in(s):
         while True:
             e = operand_end(s, j)
             if e <= skip_ws(s, j): break
+            while True:                                            # a * 90, n / 2, i % 4 belong to the same part
+                k = skip_ws(s, e)
+                if k < len(s) and s[k] in '*/%' and s[k + 1:k + 2] not in ('=', '/', '*'):
+                    e2 = operand_end(s, k + 1)
+                    if e2 > skip_ws(s, k + 1): e = e2; continue
+                break
             op = s[skip_ws(s, j):e].strip()
             parts.append(('lit', unescape(op)) if STR.fullmatch(op) else ('var', op))
             k = skip_ws(s, e)
@@ -160,17 +166,34 @@ def keep(t):
     if t in ('Block{', '}'): return False
     return True
 
+def no_comments(s):
+    """The code without // and /* */ comments (but "https://..." inside strings stays)."""
+    out = []; i = 0
+    while i < len(s):
+        c = s[i]
+        if c == '"':
+            m = STR.match(s, i); e = m.end() if m else i + 1; out.append(s[i:e]); i = e; continue
+        if c == "'":
+            m = re.match(r"'(?:[^'\\]|\\.)*'", s[i:]); e = i + (m.end() if m else 1); out.append(s[i:e]); i = e; continue
+        if s.startswith('//', i):
+            j = s.find('\n', i); i = len(s) if j < 0 else j; continue
+        if s.startswith('/*', i):
+            j = s.find('*/', i + 2); i = len(s) if j < 0 else j + 2; out.append(' '); continue
+        out.append(c); i += 1
+    return ''.join(out)
+
 def extract():
     keys = []
     for p in files():
         s = p.read_text()
-        s = re.sub(r'//[^\n]*', '', s)                      # comments
-        s = re.sub(r'/\*.*?\*/', '', s, flags=re.S)
+        s = no_comments(s)
         for t in templates_in(s):
             for u in (t.split(':', 2)[1:] if t.startswith('key:') else [t]):   # help pages: "key:Insert:what it does"
                 if keep(u) and u not in keys: keys.append(u)
     # single lowercase words that get filled into other texts (directions, sides)
-    for w in ['north', 'south', 'east', 'west', 'north-east', 'north-west', 'south-east', 'south-west', 'left', 'right', 'kept', 'left out', 'just me', 'this layer', 'whole build', 'auto', 'top right', 'top left']:
+    for w in ['north', 'south', 'east', 'west', 'north-east', 'north-west', 'south-east', 'south-west', 'left', 'right', 'kept', 'left out', 'just me', 'this layer', 'whole build', 'auto', 'top right', 'top left',
+              # kinds of free builds (renderer/templates/mod-index.tsv)
+              'Community Builds', 'Houses', 'Towers', 'Ships', 'Ruins & Temples', 'Castles & Forts', 'Village Buildings', 'Decor', 'Camps & Outposts']:
         if w not in keys: keys.append(w)
     LANG.mkdir(parents=True, exist_ok=True)
     (LANG / 'bb_en.txt').write_text('# Every text Build Blueprint shows. Translations: bb_<language>.txt, "English<TAB>translation".\n' + '\n'.join(keys) + '\n')

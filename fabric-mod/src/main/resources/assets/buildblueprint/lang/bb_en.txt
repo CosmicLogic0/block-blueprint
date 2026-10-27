@@ -368,6 +368,18 @@ No block matches "{0}".
 Click a block to pick it  ·  double-click swaps right away
 Minecraft
 Double-click to swap to this
+Search by name or creator...
+Show one kind of build: houses, towers, ships...
+Get it
+Download it into Saved builds.
+All kinds
+Couldn't reach the build list - check your internet connection.
+Build Blueprint templates
+User-Agent
+HTTP {0}
+too big
+Downloading {0}...
+{0} - by {1}
 Got it! "{0}" is in Saved builds.
 Download failed - check your internet connection.
 Build Blueprint download
@@ -408,9 +420,8 @@ Copy cancelled
 Type /buildblueprint copy save <name> to save it.
 The box can't get any smaller that way
 That's as big as a copy can be ({0} per side)
-{0}{1}  ·  box {2} x {3} x {4}  ·  Insert = save, Delete = cancel
-Shrunk 
-Grew 
+Shrunk {0}  ·  box {1} x {2} x {3}  ·  Insert = save, Delete = cancel
+Grew {0}  ·  box {1} x {2} x {3}  ·  Insert = save, Delete = cancel
 dev.buildblueprint.client.MenuModule
 openCopy
 Copied build
@@ -428,8 +439,8 @@ Blueprint cleared.
 Saved as a .schem file: {0}
 Open it with WorldEdit (copy it to config/worldedit/schematics), Litematica, Axiom or any other schematic tool.
 No blueprint loaded. Paste the lines from the app first (see /buildblueprint help).
-Got part {0} of {1}{2}
- received so far. Keep pasting the rest.
+Got part {0} of {1}. Keep pasting the rest.
+Got part {0} of {1}.
 Loaded "{0}": {1} blocks, {2} x {3} x {4}.
 It's shown in front of you, fully built. Move it into place, then press Delete (or Page Up > Place it) to start building layer by layer.
 Keys: arrows move it (Up = forward, Down = back, Ctrl+Up/Down = up/down), Page Down rotates, Page Up opens the materials menu.
@@ -440,10 +451,9 @@ It won't move or rotate now
 Unlocked - move it with the arrow keys, then press Delete to place it again
 No ground found under the blueprint
 Already sitting on the ground
-Moved {0}{1} to sit on the ground
-up 
-down 
-Turned to {0}
+Moved up {0} to sit on the ground
+Moved down {0} to sit on the ground
+Turned to {0} degrees
 Removed "{0}" from view. It's still in Saved builds.
 Mirrored (flipped left <-> right)
 Back to normal (not mirrored)
@@ -453,7 +463,7 @@ Rotated. Corner is now at {0}, {1}, {2}.
 Blueprint corner moved to where you stand ({0}, {1}, {2}). Size {3} x {4} x {5}.
 Showing every layer.
 Showing layer {0} of {1} only.
-"{0}": {1} blocks, {2} x {3} x {4}, rotated {5}
+"{0}": {1} blocks, {2} x {3} x {4}, rotated {5} degrees.
 Corner at {0}, {1}, {2}; far corner at {3}, {4}, {5}.
 .schem, .litematic and .nbt files in <home>/BlockBlueprint/builds (or your WorldEdit / Litematica schematics folder) show up in Saved builds.
 Keys: Up = forward, Down = back, Left/Right, Ctrl+Up/Down = up/down, Page Down = rotate, Page Up = materials menu.
@@ -554,3 +564,12 @@ left
 right
 kept
 auto
+Community Builds
+Houses
+Towers
+Ships
+Ruins & Temples
+Castles & Forts
+Village Buildings
+Decor
+Camps & Outposts

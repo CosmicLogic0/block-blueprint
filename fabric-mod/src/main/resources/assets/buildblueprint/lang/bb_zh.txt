@@ -1,0 +1,529 @@
+# Build Blueprint - zh
+Build with friends	和朋友一起建造
+Copy co-op code	复制合作代码
+Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.	把这个代码发给朋友。他们在“已保存的建筑 > 粘贴”里粘贴后，建筑也会出现在他们那边的同一个位置。
+How many people build it. Everyone should pick the same number.	有几个人一起建造。每个人都要选同一个数字。
+Which builder you are. Each friend picks a different number.	你是第几个建造者。每个朋友选不同的数字。
+Done	完成
+Builders: {0}	建造者：{0}
+just me	只有我
+I'm builder {0}	我是建造者 {0}
+I'm builder -	我是建造者 -
+Load a build first.	请先加载一个建筑。
+Place the build first (Delete), so friends get it in the same spot.	请先放置建筑（Delete），这样朋友们会在同一个位置得到它。
+Copied! Send it to your friends.	已复制！发给你的朋友吧。
+1. Send them the build. It appears in this exact spot.	1. 把建筑发给他们。它会出现在这个位置。
+2. Split the work. Everyone picks the same number of	2. 分配工作。每个人选同样的建造者
+   builders, and a different builder number.	   人数，以及不同的建造者编号。
+You build {0}. You only see your part.	你负责建造{0}。你只能看到自己的部分。
+Everyone sees the whole build.	所有人都能看到整个建筑。
+Copy build	复制建筑
+Name	名称
+Leave out the dirt, grass and natural stone the build stands on.	不包括建筑下面的泥土、草和天然石头。
+Leave out trees, leaves, grass and flowers around the build.	不包括建筑周围的树、树叶、草和花。
+Save build	保存建筑
+Adjust the box	调整范围框
+Go back and change the box: arrows grow it, Alt + arrows shrink it, Page Down stretches it to where you look. Then press Insert again.	返回修改范围框：方向键扩大，Alt + 方向键缩小，Page Down 拉伸到你看着的地方。然后再按一次 Insert。
+Cancel copy	取消复制
+Ground: {0}	地面：{0}
+left out	不包括
+Trees: {0}	树木：{0}
+Save this build	保存这个建筑
+{0} x {1} x {2} box  ·  {3} blocks	{0} x {1} x {2} 的范围框  ·  {3} 个方块
+Name:	名称：
+Nothing left in the box - adjust it or keep the ground.	范围框里什么都没有了 - 调整一下，或者保留地面。
+Saves to Saved builds and copies its code to your clipboard.	保存到“已保存的建筑”，并把它的代码复制到剪贴板。
+Get a build	获取建筑
+Move and turn	移动和旋转
+Place it	放置
+Build layers	按层建造
+Blocks and swaps	方块和替换
+Copy a build	复制建筑
+Good to know	小提示
+A build is what you want to make, shown as see-through ghost blocks in your world.	建筑就是你想建造的东西，在你的世界里显示为半透明的幽灵方块。
+Open the build menu, click Saved builds, pick one and press Load into world.	打开建筑菜单，点击“已保存的建筑”，选一个，然后按“加载到世界”。
+Builds come from three places:	建筑有三个来源：
+- the free Block Blueprint app: make or pick a build and press Send to Minecraft	- 免费的 Block Blueprint 应用：制作或选择一个建筑，然后按 Send to Minecraft
+- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder	- 用户文件夹中 BlockBlueprint 文件夹里的原理图文件（.schem、.litematic、.nbt）
+- builds you copy from your own world (see Copy a build)	- 从你自己的世界里复制的建筑（见“复制建筑”）
+Page Up	Page Up
+open the build menu	打开建筑菜单
+The build appears in front of you. Move it to where you want to build it.	建筑会出现在你面前。把它移到你想建造的地方。
+Arrow keys	方向键
+move it (hold Shift for 5 blocks)	移动（按住 Shift 一次移动 5 格）
+Ctrl + Up / Down	Ctrl + 上 / 下
+move it up or down	上移或下移
+Page Down	Page Down
+turn it	旋转
+In the build menu, To ground sets it right on the ground and Mirror flips it.	在建筑菜单里，“放到地面”会把它放在地面上，“镜像”会把它翻转。
+When it's in the right spot, place it. A placed build is locked, so it can't slide away while you build.	位置合适后就放置它。放置后的建筑会被锁定，建造时不会滑走。
+Delete	Delete
+place it (press again to unlock and move it)	放置（再按一次解锁并移动）
+Placing starts layer by layer building at the bottom layer.	放置后会从最底层开始逐层建造。
+Build from the bottom up. Only the layer you're on is shown, so it's easy to see what goes where.	从下往上建造。只显示你所在的那一层，很容易看出什么东西放在哪里。
+The next block to place glows. When a layer is finished you move up to the next one by itself.	下一个要放的方块会发光。一层完成后会自动进入下一层。
+Home / End	Home / End
+go up or down a layer	上一层或下一层
+Blocks you placed correctly disappear from the ghost. A red outline means a different block is in the way, or the block is the wrong way round (stairs upside down, a log on its side) - break it and place it again.	放对的方块会从幽灵中消失。红色边框表示有别的方块挡住了，或者方块方向放反了（楼梯倒置、原木横放）- 打掉重新放。
+The build menu lists every block the build needs: how many you have and how many are still to place.	建筑菜单列出建筑需要的所有方块：你有多少，还要放多少。
+The small list in the corner shows the same while you build. Chests you opened nearby that hold blocks you need glow green.	建造时角落里的小列表显示同样的内容。附近你打开过的、装有你需要的方块的箱子会发绿光。
+Don't have a block? Click it in the list and pick any other block in the game (blocks from other mods too).	缺少某个方块？在列表中点击它，然后选择游戏中的任意其他方块（也包括其他模组的方块）。
+Every block of that kind in the build changes. Don't want a block at all (snow on a roof)? Press Remove from build.	建筑里所有这种方块都会改变。完全不想要某个方块（屋顶上的雪）？按“从建筑中移除”。
+Undo swap puts it back.	“撤销替换”可以恢复。
+The eye next to a block hides its ghost blocks (click again to show them). Shift-click the eye to see only that block.	方块旁边的眼睛可以隐藏它的幽灵方块（再点一次显示）。按住 Shift 点眼睛只显示这个方块。
+See a build you like in your world? Copy it and build it again anywhere.	在世界里看到喜欢的建筑？复制下来，在任何地方再建一次。
+Insert	Insert
+start a copy box on the block you look at	在你看着的方块上开始一个复制范围框
+make the box bigger (Alt + arrows: smaller)	扩大范围框（Alt + 方向键：缩小）
+stretch the box to the block you look at	把范围框拉伸到你看着的方块
+save it (again)	保存（再按一次）
+Copies go to Saved builds, and into the app too.	复制的建筑会保存到“已保存的建筑”，也会进入应用。
+In Creative mode, Auto-build places the whole build for you and Build layer places one layer. Undo build takes it back.	在创造模式下，“自动建造”会帮你放好整个建筑，“建造本层”会放一层。“撤销建造”可以还原。
+Middle-click	鼠标中键
+hold the block of the ghost you look at	拿起你看着的幽灵方块
+Settings lets you change how see-through the ghosts are, the corner list and more.	在设置里可以调整幽灵方块的透明度、角落列表等。
+Every key can be changed in Settings -> Key binds.	所有按键都可以在“设置 -> 按键绑定”中更改。
+How it works	使用方法
+< Back	< 返回
+Next >	下一页 >
+How Build Blueprint works	Build Blueprint 使用方法
+Arrows	方向键
+grow the box that way	向那个方向扩大范围框
+Alt + arrows	Alt + 方向键
+shrink it	缩小
+Ctrl + Up/Down	Ctrl + 上/下
+top / bottom	顶部 / 底部
+stretch to where you look	拉伸到你看着的地方
+Shift	Shift
+5 blocks at a time	一次 5 格
+save it	保存
+Copying a build	正在复制建筑
+{0} x {1} x {2} box	{0} x {1} x {2} 的范围框
+big box	大范围框
+{0} blocks	{0} 个方块
+Make the box as big as your build	把范围框调到和建筑一样大
+Co-op: {0}	合作：{0}
+Not placed yet	还没放置
+Arrows move it, PgDn turns it	方向键移动，PgDn 旋转
+Shift = 5 blocks · Delete = place	Shift = 5 格 · Delete = 放置
+Layer {0}/{1}	第 {0}/{1} 层
+Time {0}	时间 {0}
+{0} blocks/min	{0} 个方块/分钟
+Next: {0}	下一个：{0}
+  (in hand)	  （手中）
+Build complete!	建筑完成！
+PgUp > Remove to clear it	PgUp > 移除 来清除
+Layer {0} needs:	第 {0} 层需要：
+Whole build needs:	整个建筑需要：
++{0} more  (Page Up)	+还有 {0} 种  (Page Up)
+Layer done!	本层完成！
+Home/End layer · PgUp menu	Home/End 换层 · PgUp 菜单
+Layer {0} from above	第 {0} 层俯视图
+{0} blocks  ·  {1}  ·  {2} a minute	{0} 个方块  ·  {1}  ·  每分钟 {2} 个
+{0} blocks  ·  {1}	{0} 个方块  ·  {1}
+Page Up > Remove to clear it	Page Up > 移除 来清除
+Build	建筑
+Mirror	镜像
+Flip the build left <-> right, like in a mirror. Handy for matching houses on both sides of a street.	把建筑左右翻转，就像照镜子。适合在街道两边建一样的房子。
+To ground	放到地面
+Move the build up or down so it sits right on the ground under it.	把建筑上移或下移，让它正好立在下面的地面上。
+Auto-build	自动建造
+Creative only: places the whole build for you, bottom layer first. Blocks in the way are replaced (chests are left alone).	仅限创造模式：帮你放好整个建筑，从最底层开始。挡路的方块会被替换（箱子不会动）。
+Build layer	建造本层
+Creative only: places just the layer you're on.	仅限创造模式：只放你所在的那一层。
+Undo build	撤销建造
+Puts back what was there before the last auto-build.	恢复上一次自动建造之前的样子。
+Co-op {0}/{1}	合作 {0}/{1}
+Co-op	合作
+Build this with friends: send them a code that puts it in this exact spot, and split it so everyone builds their own part.	和朋友一起建造：发给他们一个代码，把建筑放在这个位置，再分工让每个人建自己的部分。
+Remove	移除
+Take this build out of your world view. It stays in Saved builds, so you can load it again.	把这个建筑从你的世界视图中移除。它仍在“已保存的建筑”里，可以再次加载。
+Whole build	整个建筑
+Every block the build still needs.	建筑还需要的所有方块。
+Layer down (End key)	下一层（End 键）
+Layer	本层
+Just the layer you're building now.	只显示你正在建造的这一层。
+Layer up (Home key). Past the top shows all layers.	上一层（Home 键）。超过最顶层会显示所有层。
+Unlock	解锁
+Unlock it so you can move or turn it again.	解锁后可以再次移动或旋转。
+Lock the build where it is and start building, layer by layer (Delete key).	把建筑锁定在当前位置并开始逐层建造（Delete 键）。
+Turn	旋转
+Turn the build 90 degrees (Page Down).	把建筑旋转 90 度（Page Down）。
+Saved builds	已保存的建筑
+Your saved builds and schematics: load another one, paste a code, copy one from your world.	你保存的建筑和原理图：加载另一个、粘贴代码、从你的世界复制一个。
+Settings	设置
+Last swap undone	已撤销上次替换
+Showing only {0}  ·  Shift-click the eye again to show everything	只显示 {0}  ·  再按住 Shift 点眼睛显示全部
+Showing every block again	重新显示所有方块
+Hid {0}  ·  {1} hidden	已隐藏 {0}  ·  隐藏了 {1} 种
+Showing {0}  ·  {1} hidden	显示 {0}  ·  隐藏了 {1} 种
+Showing {0}	显示 {0}
+whole build	整个建筑
+Copied the list - paste it anywhere (Ctrl+V)	列表已复制 - 可以粘贴到任何地方（Ctrl+V）
+Layer {0} of {1}	第 {0} 层，共 {1} 层
+No build loaded	没有加载建筑
+not placed yet	还没放置
+{0} to fix	{0} 处要修正
+{0} / {1} placed	已放置 {0} / {1}
+Raw materials	原材料
+Blocks needed	需要的方块
+Copy	复制
+Blocks	方块
+to place	待放置
+not in game	游戏中没有
+Load a build first (Saved builds).	请先加载一个建筑（已保存的建筑）。
+This layer is done!	这一层完成了！
+Nothing left to place - the build is done!	没有要放的了 - 建筑完成了！
+1 block in this build isn't in Minecraft {0}  ·  click it to swap it	这个建筑里有 1 种方块在 Minecraft {0} 中不存在  ·  点击它来替换
+{0} blocks in this build aren't in Minecraft {1}  ·  click one to swap it	这个建筑里有 {0} 种方块在 Minecraft {1} 中不存在  ·  点击其中一个来替换
+{0} hidden  ·  click the eye at the top to show them all	隐藏了 {0} 种  ·  点击上方的眼睛全部显示
+Click a block to swap or remove it  ·  the eye hides it	点击方块来替换或移除  ·  眼睛可以隐藏它
+Undo swap	撤销替换
+Show {0}	显示 {0}
+Hide {0}	隐藏 {0}
+Its ghost blocks are hidden right now	它的幽灵方块现在被隐藏了
+Hides its ghost blocks so you can see the rest better	隐藏它的幽灵方块，更容易看清其他部分
+Shift-click: show only this block	Shift + 点击：只显示这个方块
+Show every block again	重新显示所有方块
+{0} hidden	隐藏了 {0} 种
+This block doesn't exist in Minecraft {0} - click to pick one to use instead	这个方块在 Minecraft {0} 中不存在 - 点击选择一个替代方块
+Still to place: {0}  (of {1})	还要放置：{0}  （共 {1}）
+You have: {0}	你有：{0}
+In chests nearby: {0} (1 chest, green box)	附近箱子里：{0}（1 个箱子，绿色框）
+In chests nearby: {0} ({1} chests, green boxes)	附近箱子里：{0}（{1} 个箱子，绿色框）
+Get {0} more ({1} stacks)	还要获取 {0} 个（{1} 组）
+Get {0} more	还要获取 {0} 个
+Click to swap it or remove it from the build	点击来替换它，或从建筑中移除
+to get	待获取
+  (furnace)	  （熔炉）
+Nothing left to gather - you have what the build needs!	不用再收集了 - 建筑需要的你都有了！
+What to gather for the blocks you still need  ·  (furnace) = smelt some of it	还缺的方块需要收集什么  ·  （熔炉）= 有一部分要烧炼
+For: {0}	用于：{0}
+Smelt some of it in a furnace first	先在熔炉里烧炼一部分
+Crafting table amounts - a stonecutter needs less for stone stairs and slabs	按工作台计算的数量 - 用切石机做石质楼梯和台阶需要的更少
+Search	搜索
+Search...	搜索...
+Get free builds	免费建筑
+1,400+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	来自 Minecraft 社区的 1400 多个免费建筑：房子、塔、船、城堡……下载一个，它就会出现在“已保存的建筑”里。
++ Paste build	+ 粘贴建筑
+Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.	从剪贴板粘贴建筑代码（BB1:...）或应用的导出内容。Ctrl+V 也可以。
+Copy from world	从世界复制
+Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.	保存一个已经在你世界里的建筑：范围框从你看着的方块开始 - 用方向键把它调到和建筑一样大，然后按 Insert。
+Current build	当前建筑
+Back to the build you have loaded (materials list).	回到已加载的建筑（材料列表）。
+Fit	适应
+Show the whole build again (scroll to zoom, drag to move).	重新显示整个建筑（滚轮缩放，拖动移动）。
+Load	加载
+Load into world	加载到世界
+Show this build in front of you as ghost blocks (double-click or Enter does the same).	把这个建筑以幽灵方块的形式显示在你面前（双击或按 Enter 也一样）。
+Rename	重命名
+Delete this build from this computer. Click twice to be sure.	从这台电脑上删除这个建筑。点击两次确认。
+Code	代码
+Copy code	复制代码
+Puts this build's BB1: code on your clipboard, to import in the Block Blueprint app or send to a friend.	把这个建筑的 BB1: 代码复制到剪贴板，可以导入 Block Blueprint 应用或发给朋友。
+Save .schem	保存为 .schem
+Save this build as a .schem file (BlockBlueprint/schematics in your user folder) for WorldEdit, Litematica, Axiom...	把这个建筑保存为 .schem 文件（用户文件夹中的 BlockBlueprint/schematics），可用于 WorldEdit、Litematica、Axiom……
+Save	保存
+New build arrived: "{0}"	收到新建筑：“{0}”
+View: 3D	视图：3D
+View: Top	视图：顶部
+View: Front	视图：正面
+Co-op build placed where your friend has it. Pick which builder you are.	合作建筑已放在你朋友那边的位置。选择你是第几个建造者。
+You already saved this build.	你已经保存过这个建筑了。
+Saved "{0}" on this computer.	已在这台电脑上保存“{0}”。
+Could not read the clipboard.	无法读取剪贴板。
+Code for "{0}" copied - paste it in the app (Templates > Import code).	已复制“{0}”的代码 - 粘贴到应用里（Templates > Import code）。
+Saved {0} in BlockBlueprint/schematics (your user folder).	已将 {0} 保存到 BlockBlueprint/schematics（你的用户文件夹）。
+Couldn't save the .schem file: {0}	无法保存 .schem 文件：{0}
+Loaded "{0}" in front of you, fully built. Arrows move it (Shift = 5 blocks), Page Down turns it, Delete places it.	已在你面前加载“{0}”，完整显示。方向键移动（Shift = 5 格），Page Down 旋转，Delete 放置。
+Renamed to "{0}".	已重命名为“{0}”。
+Sure?	确定吗？
+Click Delete again to delete "{0}".	再点一次“删除”来删除“{0}”。
+Deleted "{0}".	已删除“{0}”。
+{0} saved	已保存 {0} 个
+{0} of {1}	{0} / {1}
+Double-click or Enter loads a build	双击或按 Enter 加载建筑
+No build matches	没有建筑符合
+your search.	你的搜索。
+No saved builds yet.	还没有保存的建筑。
+From the app: copy a	从应用：复制一个
+build code, then press	建筑代码，然后按
++ Paste build.	+ 粘贴建筑。
+From your world: press	从你的世界：按
+Copy from world.	从世界复制。
+Schematics: put .schem,	原理图：把 .schem、
+.litematic or .nbt files	.litematic 或 .nbt 文件
+in BlockBlueprint/builds	放进用户文件夹中的
+in your user folder.	BlockBlueprint/builds。
+{0} x {1} x {2} · {3} blocks · {4} layers	{0} x {1} x {2} · {3} 个方块 · {4} 层
+drag to move · scroll to zoom	拖动移动 · 滚轮缩放
+Can't read this build: {0}	无法读取这个建筑：{0}
+Paste a build to see it here	粘贴一个建筑在这里查看
+Build Blueprint settings	Build Blueprint 设置
+ON	开
+OFF	关
+Raw materials: {0}	原材料：{0}
+Adds "Raw materials" to the build menu: what to gather for the blocks you still need - logs for planks and stairs, sand for glass, cobblestone to smelt into stone...	在建筑菜单中加入“原材料”：还缺的方块需要收集什么 - 原木做木板和楼梯，沙子做玻璃，圆石烧成石头……
+Layer map: {0}	本层地图：{0}
+A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.	在角落列表下面显示你所在层的俯视小地图。彩色 = 待放置，深绿 = 已完成，红色 = 错误，白点 = 你。
+Scaffold hints: {0}	脚手架提示：{0}
+Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.	一层中悬空的部分（悬挑、屋顶）会显示一根浅蓝色柱子，告诉你在哪里放临时方块才能够到。
+Ghost blocks: {0}% solid	幽灵方块：{0}% 不透明
+How see-through the preview blocks are.	预览方块的透明程度。
+Show preview: {0}	显示预览：{0}
+Hide or show the ghost blocks.	隐藏或显示幽灵方块。
+Corner list: {0}	角落列表：{0}
+The list of blocks you still need, shown in a corner while you build.	建造时显示在角落的、你还需要的方块列表。
+Corner: {0}	角落：{0}
+top right	右上
+top left	左上
+Which top corner of the screen the list sits in.	列表显示在屏幕的哪个上角。
+List size: {0}%	列表大小：{0}%
+Make the corner list smaller or bigger.	把角落列表调小或调大。
+Next block: {0}	下一个方块：{0}
+A yellow box shows which block to place next (bottom layer first, closest first).	黄色框显示下一个要放的方块（先底层，先最近的）。
+Auto next layer: {0}	自动下一层：{0}
+When you finish a layer, go to the next one by itself.	完成一层后自动进入下一层。
+Chest finder: {0}	箱子查找：{0}
+Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.	装有你还需要的方块的箱子会显示绿色框。打开一次箱子，模组就会知道里面有什么。
+Sounds: {0}	声音：{0}
+A little ding when you finish a layer, and a level-up sound when the build is done.	完成一层时有一声提示音，建筑完成时有升级的声音。
+List shows: {0}	列表显示：{0}
+this layer	本层
+Auto: the layer you're on while building layer by layer, otherwise the whole build.	自动：逐层建造时显示你所在的层，否则显示整个建筑。
+Blocks in list: {0}	列表中的方块：{0}
+How many block types the corner list shows before "+ more".	角落列表在“+ 更多”之前显示几种方块。
+Progress bars: {0}	进度条：{0}
+Green bar = whole build, blue bar = the layer you're on.	绿色条 = 整个建筑，蓝色条 = 你所在的层。
+Build timer: {0}	建造计时：{0}
+How long you've been building and how many blocks a minute.	你已经建造了多久，以及每分钟放了多少方块。
+Key hints: {0}	按键提示：{0}
+The small reminder of the keys under the corner list.	角落列表下方的小按键提示。
+Draw distance: {0}	绘制距离：{0}
+How far away ghost blocks are still drawn. Lower = faster.	多远以内的幽灵方块会被绘制。越小越流畅。
+Red boxes: {0}	红色框：{0}
+Red outline on blocks that are in the way of the build, or placed the wrong way round.	挡住建筑或方向放反的方块会显示红色边框。
+Check direction: {0}	检查方向：{0}
+Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	方块只有朝向正确才算完成：楼梯、台阶（上半或下半）、原木、门、按钮……方向放反的方块会显示红色框。
+Pick from ghost: {0}	从幽灵拿取：{0}
+Middle-click a ghost block to put that block in your hand.	用鼠标中键点击幽灵方块，就能把这个方块拿到手上。
+Placed: start at layer 1: {0}	放置后从第 1 层开始：{0}
+A new build shows fully built so you can move it. When you place it, it switches to layer 1 so you can start building.	新建筑会完整显示，方便你移动。放置后会切换到第 1 层，让你开始建造。
+Basics	基础
+More	更多
+Extras	附加
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints.	额外的辅助功能，默认关闭，需要你自己打开：原材料、本层地图、脚手架提示。
+Key binds...	按键绑定...
+Change the keys (Options > Controls > Key Binds > Build Blueprint).	修改按键（选项 > 控制 > 按键绑定 > Build Blueprint）。
+A short guide to everything the mod does.	模组所有功能的简短指南。
+Hover a button to see what it does.	把鼠标移到按钮上可以看到它的作用。
+Swap blocks	替换方块
+How swapping works	替换是怎么工作的
+Remove from build	从建筑中移除
+Take every {0} out of the build, for example snow on a roof. Undo swap puts it back.	把所有 {0} 从建筑中移除，例如屋顶上的雪。“撤销替换”可以恢复。
+Search every block by name or mod...	按名称或模组搜索任意方块...
+Similar ({0})	相似（{0}）
+Blocks of the same kind: stairs for stairs, slabs for slabs, full blocks for full blocks. The most alike come first.	同一类的方块：楼梯换楼梯，台阶换台阶，完整方块换完整方块。最相似的排在前面。
+All blocks ({0})	全部方块（{0}）
+Every block in the game, A to Z.	游戏中的所有方块，按字母排序。
+From mods ({0})	来自模组（{0}）
+Blocks added by the other mods you have installed.	你安装的其他模组添加的方块。
+Swap	替换
+Swap every block of this kind in the build (Enter).	替换建筑中所有这种方块（Enter）。
+Undo last swap	撤销上次替换
+Back	返回
+Last swap undone.	已撤销上次替换。
+Pick a block from the list first.	请先从列表中选一个方块。
+Nothing to change.	没有要改的。
+Swapped {0} {1} to {2}  ·  Undo: click Undo swap in the build menu	已将 {0} 个 {1} 替换为 {2}  ·  撤销：在建筑菜单中点击“撤销替换”
+Nothing to remove.	没有要移除的。
+Removed {0} {1} from the build  ·  Undo: click Undo swap in the build menu	已从建筑中移除 {0} 个 {1}  ·  撤销：在建筑菜单中点击“撤销替换”
+Swap {0}	替换 {0}
+{0} in this build	这个建筑中的 {0}
+  ·  not in Minecraft {0}, pick one to use instead	  ·  Minecraft {0} 中没有，请选一个替代方块
+Nothing here.	这里什么都没有。
+No block matches "{0}".	没有方块符合“{0}”。
+Click a block to pick it  ·  double-click swaps right away	点击方块来选择  ·  双击立即替换
+Double-click to swap to this	双击替换成这个
+Search by name or creator...	按名称或作者搜索...
+Show one kind of build: houses, towers, ships...	只显示一种建筑：房子、塔、船……
+Get it	获取
+Download it into Saved builds.	下载到“已保存的建筑”。
+All kinds	所有种类
+Couldn't reach the build list - check your internet connection.	无法加载建筑列表 - 请检查网络连接。
+Downloading {0}...	正在下载 {0}...
+Got it! "{0}" is in Saved builds.	完成！“{0}”已在“已保存的建筑”里。
+Download failed - check your internet connection.	下载失败 - 请检查网络连接。
+{0} free builds from the Minecraft community	来自 Minecraft 社区的 {0} 个免费建筑
+Loading the list...	正在加载列表...
+{0}  ·  {1} blocks	{0}  ·  {1} 个方块
+No build matches.	没有符合的建筑。
+Got it	已获取
+Download	下载
+by {0}  ·  {1} license	作者 {0}  ·  {1} 许可证
+Click a build, then Get it  ·  double-click gets it right away	点击一个建筑，然后点“获取”  ·  双击立即获取
+By {0} ({1})	作者 {0}（{1}）
+Wrong way round: this {0} {1}  ·  break it and place it again	方向放反了：这个{0}{1}  ·  打掉重新放
+All fixed! Nothing wrong in the build any more.	全部修正！建筑里没有错误了。
+Fixed! {0} left  ·  {1}	已修正！还剩 {0} 处  ·  {1}
+Nothing to fix - every placed block is right.	没有要修正的 - 所有放置的方块都是对的。
+Mistake 1 of {0}: {1}	错误 1 / {0}：{1}
+this {0} {1}	这个{0}{1}
+a {0} is where {1} goes - break it	{0} 放在了 {1} 的位置 - 打掉它
+Fix: {0}	修正：{0}
+Showing all layers	显示所有层
+A block in layer {0} was broken - back to layer {1}	第 {0} 层的一个方块被破坏了 - 回到第 {1} 层
+Layer {0} done! Now layer {1}	第 {0} 层完成！现在是第 {1} 层
+Build complete! {0} blocks · {1} building time{2}.	建筑完成！{0} 个方块 · 建造用时 {1}{2}。
+ · {0} blocks a minute	 · 每分钟 {0} 个方块
+fence gate	栅栏门
+pressure plate	压力板
+hanging sign	悬挂式告示牌
+Copy box started on the block you're looking at. Make it as big as your build:	复制范围框已从你看着的方块开始。把它调到和你的建筑一样大：
+Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.	方向键扩大，Alt + 方向键缩小，Ctrl + 上/下 调整顶部/底部，Shift = 5 格。Page Down 拉伸到你看着的方块。
+Press Insert again to save it, Delete to cancel.	再按 Insert 保存，按 Delete 取消。
+Too far - a copy can be up to {0} blocks per side	太远了 - 复制范围每边最多 {0} 格
+Stretched to that block  ·  box {0} x {1} x {2}  ·  Insert = save, Delete = cancel	已拉伸到那个方块  ·  范围框 {0} x {1} x {2}  ·  Insert = 保存，Delete = 取消
+Copy cancelled	已取消复制
+Type /buildblueprint copy save <name> to save it.	输入 /buildblueprint copy save <名称> 来保存。
+The box can't get any smaller that way	范围框在这个方向不能再小了
+That's as big as a copy can be ({0} per side)	复制范围最大就是这么大了（每边 {0} 格）
+Shrunk {0}  ·  box {1} x {2} x {3}  ·  Insert = save, Delete = cancel	已向{0}缩小  ·  范围框 {1} x {2} x {3}  ·  Insert = 保存，Delete = 取消
+Grew {0}  ·  box {1} x {2} x {3}  ·  Insert = save, Delete = cancel	已向{0}扩大  ·  范围框 {1} x {2} x {3}  ·  Insert = 保存，Delete = 取消
+There are no blocks inside that box.	这个范围框里没有方块。
+Saved "{0}" ({1} blocks, {2} x {3} x {4}) to your Saved builds.	已将“{0}”（{1} 个方块，{2} x {3} x {4}）保存到“已保存的建筑”。
+Its build code is on your clipboard - paste it in the Block Blueprint app (Templates > Import code) or send it to someone.	它的建筑代码已在剪贴板 - 粘贴到 Block Blueprint 应用（Templates > Import code）或发给别人。
+Couldn't save: {0}	无法保存：{0}
+Start a copy first: look at your build and press Insert (or /buildblueprint copy).	请先开始复制：看着你的建筑，按 Insert（或 /buildblueprint copy）。
+Building time {0} · {1} blocks placed · {2} a minute	建造用时 {0} · 已放置 {1} 个方块 · 每分钟 {2} 个
+Preview shown.	预览已显示。
+Preview hidden.	预览已隐藏。
+Blueprint cleared.	建筑已清除。
+Saved as a .schem file: {0}	已保存为 .schem 文件：{0}
+Open it with WorldEdit (copy it to config/worldedit/schematics), Litematica, Axiom or any other schematic tool.	用 WorldEdit（复制到 config/worldedit/schematics）、Litematica、Axiom 或其他原理图工具打开。
+No blueprint loaded. Paste the lines from the app first (see /buildblueprint help).	没有加载建筑。请先粘贴应用里的内容（见 /buildblueprint help）。
+Got part {0} of {1}. Keep pasting the rest.	已收到第 {0} 部分，共 {1} 部分。继续粘贴剩下的部分。
+Got part {0} of {1}.	已收到第 {0} 部分，共 {1} 部分。
+Loaded "{0}": {1} blocks, {2} x {3} x {4}.	已加载“{0}”：{1} 个方块，{2} x {3} x {4}。
+It's shown in front of you, fully built. Move it into place, then press Delete (or Page Up > Place it) to start building layer by layer.	它完整地显示在你面前。把它移到位置上，然后按 Delete（或 Page Up > 放置）开始逐层建造。
+Keys: arrows move it (Up = forward, Down = back, Ctrl+Up/Down = up/down), Page Down rotates, Page Up opens the materials menu.	按键：方向键移动（上 = 前，下 = 后，Ctrl+上/下 = 升/降），Page Down 旋转，Page Up 打开材料菜单。
+The blueprint is placed (locked). Unlock it first: Page Up > Unlock, or /buildblueprint unlock.	建筑已放置（锁定）。请先解锁：Page Up > 解锁，或 /buildblueprint unlock。
+Placed! {0}	已放置！{0}
+Layer {0} of {1} - Home/End to change layer	第 {0} 层，共 {1} 层 - 用 Home/End 换层
+It won't move or rotate now	现在它不会移动或旋转了
+Unlocked - move it with the arrow keys, then press Delete to place it again	已解锁 - 用方向键移动，然后按 Delete 再次放置
+No ground found under the blueprint	建筑下面没有找到地面
+Already sitting on the ground	已经在地面上了
+Moved up {0} to sit on the ground	已上移 {0} 格，让它立在地面上
+Moved down {0} to sit on the ground	已下移 {0} 格，让它立在地面上
+Turned to {0} degrees	已旋转 {0} 度
+Removed "{0}" from view. It's still in Saved builds.	已将“{0}”从视图中移除。它仍在“已保存的建筑”里。
+Mirrored (flipped left <-> right)	已镜像（左右翻转）
+Back to normal (not mirrored)	恢复正常（未镜像）
+Unknown direction "{0}". Use: up, down, left, right, forward, back, north, south, east, west.	未知方向“{0}”。可用：up、down、left、right、forward、back、north、south、east、west。
+Moved {0} {1}. Corner is now at {2}, {3}, {4}.	已移动 {0} {1}。角落现在在 {2}, {3}, {4}。
+Rotated. Corner is now at {0}, {1}, {2}.	已旋转。角落现在在 {0}, {1}, {2}。
+Blueprint corner moved to where you stand ({0}, {1}, {2}). Size {3} x {4} x {5}.	建筑角落已移到你站的位置（{0}, {1}, {2}）。大小 {3} x {4} x {5}。
+Showing every layer.	显示所有层。
+Showing layer {0} of {1} only.	只显示第 {0} 层，共 {1} 层。
+"{0}": {1} blocks, {2} x {3} x {4}, rotated {5} degrees.	“{0}”：{1} 个方块，{2} x {3} x {4}，旋转 {5} 度。
+Corner at {0}, {1}, {2}; far corner at {3}, {4}, {5}.	角落在 {0}, {1}, {2}；对角在 {3}, {4}, {5}。
+.schem, .litematic and .nbt files in <home>/BlockBlueprint/builds (or your WorldEdit / Litematica schematics folder) show up in Saved builds.	<home>/BlockBlueprint/builds（或你的 WorldEdit / Litematica 原理图文件夹）中的 .schem、.litematic 和 .nbt 文件会显示在“已保存的建筑”里。
+Keys: Up = forward, Down = back, Left/Right, Ctrl+Up/Down = up/down, Page Down = rotate, Page Up = materials menu.	按键：上 = 前，下 = 后，左/右，Ctrl+上/下 = 升/降，Page Down = 旋转，Page Up = 材料菜单。
+--- {0}: you have / you need ---	--- {0}：你有 / 你需要 ---
+OK  {0}	OK  {0}
+NEED {0} more  {1}	还需要 {0} 个  {1}
+You have everything.	你全都有了。
+Auto-build only works in Creative mode.	自动建造只能在创造模式下使用。
+Load a blueprint first.	请先加载一个建筑。
+Already building - /buildblueprint autobuild stop to stop.	正在建造 - 用 /buildblueprint autobuild stop 停止。
+Nothing to place ({0} spots have chests or similar in the way).	没有要放的（有 {0} 处被箱子等挡住）。
+Nothing to place - it's all built already!	没有要放的 - 已经全部建好了！
+On a server this uses /setblock, so you need to be an operator.	在服务器上这会使用 /setblock，所以你需要是管理员。
+Auto-building {0} blocks{1}...{2}	正在自动建造 {0} 个方块{1}...{2}
+ on layer {0}	 （第 {0} 层）
+ (skipping {0} spots with chests or similar in the way)	 （跳过 {0} 处被箱子等挡住的位置）
+Wait for the auto-build to finish (or stop it) first.	请先等自动建造完成（或停止它）。
+Nothing to undo.	没有可撤销的。
+Undoing the last auto-build ({0} blocks)...	正在撤销上次自动建造（{0} 个方块）...
+Not auto-building right now.	现在没有在自动建造。
+Stopped after {0} of {1} blocks.	在 {0} / {1} 个方块后停止。
+Undoing... 	正在撤销... 
+Auto-building... 	正在自动建造... 
+Undo finished.	撤销完成。
+Auto-build finished! {0} blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.	自动建造完成！已放置 {0} 个方块。在 Page Up 菜单里用“撤销”（或 /buildblueprint autobuild undo）可以还原。
+Build Blueprint {0} is out (you have {1}).	Build Blueprint {0} 已发布（你的是 {1}）。
+Update it in the CurseForge app, or get it from curseforge.com/minecraft/mc-mods/build-blueprint	在 CurseForge 应用里更新，或从 curseforge.com/minecraft/mc-mods/build-blueprint 下载
+the west end	西端
+the north end	北端
+the east end	东端
+the south end	南端
+the middle	中间
+part {0} of {1} ({2})	第 {0} 部分，共 {1} 部分（{2}）
+{0} ahead	前方 {0}
+{0} behind	后方 {0}
+{0} right	右边 {0}
+{0} left	左边 {0}
+{0} up	上方 {0}
+{0} down	下方 {0}
+right here	就在这里
+That schematic file is too big.	这个原理图文件太大了。
+Couldn't read {0}.	无法读取 {0}。
+Nothing to paste. Copy a build code (BB1:...) or the app's Export > "Copy all" lines, then paste here.	没有可粘贴的。复制一个建筑代码（BB1:...）或应用里 Export > “Copy all” 的内容，然后粘贴到这里。
+Only {0} of {1} parts were pasted. Use "Copy all" in the app.	只粘贴了 {1} 部分中的 {0} 部分。请在应用里使用“Copy all”。
+That isn't a build code.	这不是建筑代码。
+That build is too big.	这个建筑太大了。
+That build code is broken - copy it again.	这个建筑代码坏了 - 请重新复制。
+That build code has no blocks in it.	这个建筑代码里没有方块。
+That build code couldn't be read.	无法读取这个建筑代码。
+There's already a file called {0}.	已经有一个叫 {0} 的文件了。
+That file belongs to WorldEdit or Litematica. Delete it from {0} instead.	这个文件属于 WorldEdit 或 Litematica。请到 {0} 删除它。
+Holding {0}	手持 {0}
+Holding {0} (from your inventory)	手持 {0}（来自你的物品栏）
+You don't have any {0} - check the chest finder (green boxes)	你没有 {0} - 看看箱子查找（绿色框）
+Welcome back! Your blueprint "{0}" is still here{1} Page Up for the menu.	欢迎回来！你的建筑“{0}”还在这里{1} Page Up 打开菜单。
+ (placed).	 （已放置）。
+ - move it, then Place it.	 - 移动它，然后放置。
+Couldn't bring back the blueprint you had here last time.	无法恢复你上次在这里的建筑。
+is the wrong way round	方向放反了
+should {0}	应该{0}
+face up	朝上
+face down	朝下
+face {0}	朝{0}
+be upside down (top half)	倒置（上半部分）
+be the right way up (bottom half)	正放（下半部分）
+be a double slab	是双层台阶
+be a top slab	是上半台阶
+be a bottom slab	是下半台阶
+stand upright	竖直放置
+lie east-west	东西向横放
+lie north-south	南北向横放
+be turned to face {0}	转向{0}
+be on the floor	放在地面上
+hang from the ceiling	挂在天花板上
+be on a wall	放在墙上
+have its hinge on the {0}	铰链在{0}
+hang from the block above	挂在上方的方块上
+stand on the block below	立在下方的方块上
+have {0} {1}	有 {0} {1}
+north	北
+south	南
+east	东
+west	西
+north-east	东北
+north-west	西北
+south-east	东南
+south-west	西南
+left	左边
+right	右边
+kept	保留
+auto	自动
+Community Builds	社区建筑
+Houses	房屋
+Towers	塔楼
+Ships	船只
+Ruins & Temples	遗迹和神殿
+Castles & Forts	城堡和要塞
+Village Buildings	村庄建筑
+Decor	装饰
+Camps & Outposts	营地和前哨

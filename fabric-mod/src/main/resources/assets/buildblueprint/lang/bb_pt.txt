@@ -1,0 +1,529 @@
+# Build Blueprint - pt
+Build with friends	Construir com amigos
+Copy co-op code	Copiar código co-op
+Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.	Mande este código para seus amigos. Eles colam em Construções salvas > Colar, e a construção aparece neste mesmo lugar para eles.
+How many people build it. Everyone should pick the same number.	Quantas pessoas vão construir. Todos devem escolher o mesmo número.
+Which builder you are. Each friend picks a different number.	Qual construtor você é. Cada amigo escolhe um número diferente.
+Done	Pronto
+Builders: {0}	Construtores: {0}
+just me	só eu
+I'm builder {0}	Sou o construtor {0}
+I'm builder -	Sou o construtor -
+Load a build first.	Carregue uma construção primeiro.
+Place the build first (Delete), so friends get it in the same spot.	Coloque a construção primeiro (Delete), para os amigos a terem no mesmo lugar.
+Copied! Send it to your friends.	Copiado! Mande para seus amigos.
+1. Send them the build. It appears in this exact spot.	1. Mande a construção para eles. Ela aparece neste mesmo lugar.
+2. Split the work. Everyone picks the same number of	2. Dividam o trabalho. Todos escolhem o mesmo número de
+   builders, and a different builder number.	   construtores e um número de construtor diferente.
+You build {0}. You only see your part.	Você constrói {0}. Você só vê a sua parte.
+Everyone sees the whole build.	Todos veem a construção inteira.
+Copy build	Copiar construção
+Name	Nome
+Leave out the dirt, grass and natural stone the build stands on.	Deixa de fora a terra, a grama e a pedra natural em que a construção está.
+Leave out trees, leaves, grass and flowers around the build.	Deixa de fora árvores, folhas, grama e flores em volta da construção.
+Save build	Salvar construção
+Adjust the box	Ajustar a caixa
+Go back and change the box: arrows grow it, Alt + arrows shrink it, Page Down stretches it to where you look. Then press Insert again.	Volte e mude a caixa: as setas aumentam, Alt + setas diminuem, Page Down estica até onde você olha. Depois aperte Insert de novo.
+Cancel copy	Cancelar cópia
+Ground: {0}	Chão: {0}
+left out	deixado de fora
+Trees: {0}	Árvores: {0}
+Save this build	Salvar esta construção
+{0} x {1} x {2} box  ·  {3} blocks	Caixa de {0} x {1} x {2}  ·  {3} blocos
+Name:	Nome:
+Nothing left in the box - adjust it or keep the ground.	Não sobrou nada na caixa - ajuste a caixa ou mantenha o chão.
+Saves to Saved builds and copies its code to your clipboard.	Salva em Construções salvas e copia o código para a área de transferência.
+Get a build	Pegar uma construção
+Move and turn	Mover e girar
+Place it	Colocar
+Build layers	Construir por camadas
+Blocks and swaps	Blocos e trocas
+Copy a build	Copiar uma construção
+Good to know	Bom saber
+A build is what you want to make, shown as see-through ghost blocks in your world.	Uma construção é o que você quer fazer, mostrada como blocos fantasma transparentes no seu mundo.
+Open the build menu, click Saved builds, pick one and press Load into world.	Abra o menu de construção, clique em Construções salvas, escolha uma e aperte Carregar no mundo.
+Builds come from three places:	As construções vêm de três lugares:
+- the free Block Blueprint app: make or pick a build and press Send to Minecraft	- o app gratuito Block Blueprint: crie ou escolha uma construção e aperte Send to Minecraft
+- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder	- arquivos de esquema (.schem, .litematic, .nbt) na pasta BlockBlueprint da sua pasta de usuário
+- builds you copy from your own world (see Copy a build)	- construções que você copia do seu próprio mundo (veja Copiar uma construção)
+Page Up	Page Up
+open the build menu	abrir o menu de construção
+The build appears in front of you. Move it to where you want to build it.	A construção aparece na sua frente. Mova para onde quer construir.
+Arrow keys	Setas
+move it (hold Shift for 5 blocks)	mover (segure Shift para 5 blocos)
+Ctrl + Up / Down	Ctrl + Cima / Baixo
+move it up or down	subir ou descer
+Page Down	Page Down
+turn it	girar
+In the build menu, To ground sets it right on the ground and Mirror flips it.	No menu de construção, Para o chão a coloca bem em cima do chão e Espelhar a inverte.
+When it's in the right spot, place it. A placed build is locked, so it can't slide away while you build.	Quando estiver no lugar certo, coloque. Uma construção colocada fica travada, então não escorrega enquanto você constrói.
+Delete	Delete
+place it (press again to unlock and move it)	colocar (aperte de novo para destravar e mover)
+Placing starts layer by layer building at the bottom layer.	Ao colocar, começa a construção camada por camada pela camada de baixo.
+Build from the bottom up. Only the layer you're on is shown, so it's easy to see what goes where.	Construa de baixo para cima. Só a camada em que você está aparece, então fica fácil ver o que vai onde.
+The next block to place glows. When a layer is finished you move up to the next one by itself.	O próximo bloco a colocar brilha. Quando uma camada termina, você passa para a próxima sozinho.
+Home / End	Home / End
+go up or down a layer	subir ou descer uma camada
+Blocks you placed correctly disappear from the ghost. A red outline means a different block is in the way, or the block is the wrong way round (stairs upside down, a log on its side) - break it and place it again.	Os blocos colocados certos somem do fantasma. Um contorno vermelho quer dizer que há outro bloco no caminho, ou que o bloco está virado errado (escada de cabeça para baixo, tronco deitado) - quebre e coloque de novo.
+The build menu lists every block the build needs: how many you have and how many are still to place.	O menu de construção lista todos os blocos que a construção precisa: quantos você tem e quantos ainda faltam colocar.
+The small list in the corner shows the same while you build. Chests you opened nearby that hold blocks you need glow green.	A listinha no canto mostra o mesmo enquanto você constrói. Baús que você abriu por perto com blocos que você precisa brilham em verde.
+Don't have a block? Click it in the list and pick any other block in the game (blocks from other mods too).	Não tem um bloco? Clique nele na lista e escolha qualquer outro bloco do jogo (de outros mods também).
+Every block of that kind in the build changes. Don't want a block at all (snow on a roof)? Press Remove from build.	Todos os blocos desse tipo na construção mudam. Não quer um bloco (neve num telhado)? Aperte Tirar da construção.
+Undo swap puts it back.	Desfazer troca coloca de volta.
+The eye next to a block hides its ghost blocks (click again to show them). Shift-click the eye to see only that block.	O olho ao lado de um bloco esconde os blocos fantasma dele (clique de novo para mostrar). Shift + clique no olho mostra só esse bloco.
+See a build you like in your world? Copy it and build it again anywhere.	Viu uma construção que gostou no seu mundo? Copie e construa de novo em qualquer lugar.
+Insert	Insert
+start a copy box on the block you look at	começar uma caixa de cópia no bloco que você olha
+make the box bigger (Alt + arrows: smaller)	aumentar a caixa (Alt + setas: diminuir)
+stretch the box to the block you look at	esticar a caixa até o bloco que você olha
+save it (again)	salvar (de novo)
+Copies go to Saved builds, and into the app too.	As cópias vão para Construções salvas, e para o app também.
+In Creative mode, Auto-build places the whole build for you and Build layer places one layer. Undo build takes it back.	No modo Criativo, Construir tudo coloca a construção inteira para você e Construir camada coloca uma camada. Desfazer construção tira de volta.
+Middle-click	Clique do meio
+hold the block of the ghost you look at	pegar o bloco do fantasma que você olha
+Settings lets you change how see-through the ghosts are, the corner list and more.	Em Configurações você muda a transparência dos fantasmas, a lista do canto e mais.
+Every key can be changed in Settings -> Key binds.	Todas as teclas podem ser mudadas em Configurações -> Controles.
+How it works	Como funciona
+< Back	< Voltar
+Next >	Próximo >
+How Build Blueprint works	Como o Build Blueprint funciona
+Arrows	Setas
+grow the box that way	aumentar a caixa para esse lado
+Alt + arrows	Alt + setas
+shrink it	diminuir
+Ctrl + Up/Down	Ctrl + Cima/Baixo
+top / bottom	cima / baixo
+stretch to where you look	esticar até onde você olha
+Shift	Shift
+5 blocks at a time	5 blocos de cada vez
+save it	salvar
+Copying a build	Copiando uma construção
+{0} x {1} x {2} box	Caixa de {0} x {1} x {2}
+big box	caixa grande
+{0} blocks	{0} blocos
+Make the box as big as your build	Faça a caixa do tamanho da sua construção
+Co-op: {0}	Co-op: {0}
+Not placed yet	Ainda não colocada
+Arrows move it, PgDn turns it	Setas movem, PgDn gira
+Shift = 5 blocks · Delete = place	Shift = 5 blocos · Delete = colocar
+Layer {0}/{1}	Camada {0}/{1}
+Time {0}	Tempo {0}
+{0} blocks/min	{0} blocos/min
+Next: {0}	Próximo: {0}
+  (in hand)	  (na mão)
+Build complete!	Construção completa!
+PgUp > Remove to clear it	PgUp > Remover para limpar
+Layer {0} needs:	A camada {0} precisa:
+Whole build needs:	A construção precisa:
++{0} more  (Page Up)	+{0} mais  (Page Up)
+Layer done!	Camada pronta!
+Home/End layer · PgUp menu	Home/End camada · PgUp menu
+Layer {0} from above	Camada {0} vista de cima
+{0} blocks  ·  {1}  ·  {2} a minute	{0} blocos  ·  {1}  ·  {2} por minuto
+{0} blocks  ·  {1}	{0} blocos  ·  {1}
+Page Up > Remove to clear it	Page Up > Remover para limpar
+Build	Construção
+Mirror	Espelhar
+Flip the build left <-> right, like in a mirror. Handy for matching houses on both sides of a street.	Inverte a construção esquerda <-> direita, como num espelho. Útil para casas iguais dos dois lados de uma rua.
+To ground	Para o chão
+Move the build up or down so it sits right on the ground under it.	Sobe ou desce a construção para ela ficar bem em cima do chão.
+Auto-build	Construir tudo
+Creative only: places the whole build for you, bottom layer first. Blocks in the way are replaced (chests are left alone).	Só no Criativo: coloca a construção inteira para você, começando pela camada de baixo. Blocos no caminho são trocados (baús são deixados em paz).
+Build layer	Construir camada
+Creative only: places just the layer you're on.	Só no Criativo: coloca só a camada em que você está.
+Undo build	Desfazer construção
+Puts back what was there before the last auto-build.	Coloca de volta o que tinha antes da última construção automática.
+Co-op {0}/{1}	Co-op {0}/{1}
+Co-op	Co-op
+Build this with friends: send them a code that puts it in this exact spot, and split it so everyone builds their own part.	Construa com amigos: mande um código que coloca a construção neste mesmo lugar, e dividam para cada um fazer a sua parte.
+Remove	Remover
+Take this build out of your world view. It stays in Saved builds, so you can load it again.	Tira esta construção do seu mundo. Ela fica em Construções salvas, então dá para carregar de novo.
+Whole build	Construção inteira
+Every block the build still needs.	Todos os blocos que a construção ainda precisa.
+Layer down (End key)	Descer camada (tecla End)
+Layer	Camada
+Just the layer you're building now.	Só a camada que você está construindo agora.
+Layer up (Home key). Past the top shows all layers.	Subir camada (tecla Home). Acima da última mostra todas as camadas.
+Unlock	Destravar
+Unlock it so you can move or turn it again.	Destrava para poder mover ou girar de novo.
+Lock the build where it is and start building, layer by layer (Delete key).	Trava a construção onde está e começa a construir, camada por camada (tecla Delete).
+Turn	Girar
+Turn the build 90 degrees (Page Down).	Gira a construção 90 graus (Page Down).
+Saved builds	Construções salvas
+Your saved builds and schematics: load another one, paste a code, copy one from your world.	Suas construções e esquemas salvos: carregue outra, cole um código, copie uma do seu mundo.
+Settings	Configurações
+Last swap undone	Última troca desfeita
+Showing only {0}  ·  Shift-click the eye again to show everything	Mostrando só {0}  ·  Shift + clique no olho de novo para mostrar tudo
+Showing every block again	Mostrando todos os blocos de novo
+Hid {0}  ·  {1} hidden	Escondido: {0}  ·  {1} escondidos
+Showing {0}  ·  {1} hidden	Mostrando {0}  ·  {1} escondidos
+Showing {0}	Mostrando {0}
+whole build	construção inteira
+Copied the list - paste it anywhere (Ctrl+V)	Lista copiada - cole onde quiser (Ctrl+V)
+Layer {0} of {1}	Camada {0} de {1}
+No build loaded	Nenhuma construção carregada
+not placed yet	ainda não colocada
+{0} to fix	{0} para corrigir
+{0} / {1} placed	{0} / {1} colocados
+Raw materials	Matérias-primas
+Blocks needed	Blocos necessários
+Copy	Copiar
+Blocks	Blocos
+to place	para colocar
+not in game	não está no jogo
+Load a build first (Saved builds).	Carregue uma construção primeiro (Construções salvas).
+This layer is done!	Esta camada está pronta!
+Nothing left to place - the build is done!	Não falta nada para colocar - a construção está pronta!
+1 block in this build isn't in Minecraft {0}  ·  click it to swap it	1 bloco desta construção não existe no Minecraft {0}  ·  clique nele para trocar
+{0} blocks in this build aren't in Minecraft {1}  ·  click one to swap it	{0} blocos desta construção não existem no Minecraft {1}  ·  clique em um para trocar
+{0} hidden  ·  click the eye at the top to show them all	{0} escondidos  ·  clique no olho lá em cima para mostrar todos
+Click a block to swap or remove it  ·  the eye hides it	Clique num bloco para trocar ou remover  ·  o olho esconde
+Undo swap	Desfazer troca
+Show {0}	Mostrar {0}
+Hide {0}	Esconder {0}
+Its ghost blocks are hidden right now	Os blocos fantasma dele estão escondidos agora
+Hides its ghost blocks so you can see the rest better	Esconde os blocos fantasma dele para ver melhor o resto
+Shift-click: show only this block	Shift + clique: mostrar só este bloco
+Show every block again	Mostrar todos os blocos de novo
+{0} hidden	{0} escondidos
+This block doesn't exist in Minecraft {0} - click to pick one to use instead	Este bloco não existe no Minecraft {0} - clique para escolher outro no lugar
+Still to place: {0}  (of {1})	Falta colocar: {0}  (de {1})
+You have: {0}	Você tem: {0}
+In chests nearby: {0} (1 chest, green box)	Em baús por perto: {0} (1 baú, caixa verde)
+In chests nearby: {0} ({1} chests, green boxes)	Em baús por perto: {0} ({1} baús, caixas verdes)
+Get {0} more ({1} stacks)	Pegue mais {0} ({1} pacotes)
+Get {0} more	Pegue mais {0}
+Click to swap it or remove it from the build	Clique para trocar ou tirar da construção
+to get	para pegar
+  (furnace)	  (fornalha)
+Nothing left to gather - you have what the build needs!	Não falta nada para juntar - você tem o que a construção precisa!
+What to gather for the blocks you still need  ·  (furnace) = smelt some of it	O que juntar para os blocos que ainda faltam  ·  (fornalha) = derreta uma parte
+For: {0}	Para: {0}
+Smelt some of it in a furnace first	Derreta uma parte numa fornalha primeiro
+Crafting table amounts - a stonecutter needs less for stone stairs and slabs	Quantidades da bancada - o cortador de pedras usa menos para escadas e lajes de pedra
+Search	Pesquisar
+Search...	Pesquisar...
+Get free builds	Construções grátis
+1,400+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	Mais de 1.400 construções grátis da comunidade do Minecraft: casas, torres, navios, castelos... Baixe uma e ela fica nas suas Construções salvas.
++ Paste build	+ Colar construção
+Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.	Cole um código de construção (BB1:...) ou as linhas de Exportar do app da sua área de transferência. Ctrl+V também funciona.
+Copy from world	Copiar do mundo
+Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.	Salve uma construção que já está no seu mundo: uma caixa começa no bloco que você olha - deixe do tamanho da construção com as setas, depois aperte Insert.
+Current build	Construção atual
+Back to the build you have loaded (materials list).	Voltar para a construção carregada (lista de materiais).
+Fit	Ajustar
+Show the whole build again (scroll to zoom, drag to move).	Mostra a construção inteira de novo (role para dar zoom, arraste para mover).
+Load	Carregar
+Load into world	Carregar no mundo
+Show this build in front of you as ghost blocks (double-click or Enter does the same).	Mostra esta construção na sua frente como blocos fantasma (clique duplo ou Enter faz o mesmo).
+Rename	Renomear
+Delete this build from this computer. Click twice to be sure.	Apaga esta construção deste computador. Clique duas vezes para confirmar.
+Code	Código
+Copy code	Copiar código
+Puts this build's BB1: code on your clipboard, to import in the Block Blueprint app or send to a friend.	Coloca o código BB1: desta construção na área de transferência, para importar no app Block Blueprint ou mandar para um amigo.
+Save .schem	Salvar .schem
+Save this build as a .schem file (BlockBlueprint/schematics in your user folder) for WorldEdit, Litematica, Axiom...	Salva esta construção como arquivo .schem (BlockBlueprint/schematics na sua pasta de usuário) para WorldEdit, Litematica, Axiom...
+Save	Salvar
+New build arrived: "{0}"	Chegou uma construção nova: "{0}"
+View: 3D	Vista: 3D
+View: Top	Vista: cima
+View: Front	Vista: frente
+Co-op build placed where your friend has it. Pick which builder you are.	Construção co-op colocada onde seu amigo a tem. Escolha qual construtor você é.
+You already saved this build.	Você já salvou esta construção.
+Saved "{0}" on this computer.	"{0}" salva neste computador.
+Could not read the clipboard.	Não deu para ler a área de transferência.
+Code for "{0}" copied - paste it in the app (Templates > Import code).	Código de "{0}" copiado - cole no app (Templates > Import code).
+Saved {0} in BlockBlueprint/schematics (your user folder).	{0} salvo em BlockBlueprint/schematics (sua pasta de usuário).
+Couldn't save the .schem file: {0}	Não deu para salvar o arquivo .schem: {0}
+Loaded "{0}" in front of you, fully built. Arrows move it (Shift = 5 blocks), Page Down turns it, Delete places it.	"{0}" carregada na sua frente, completa. As setas movem (Shift = 5 blocos), Page Down gira, Delete coloca.
+Renamed to "{0}".	Renomeada para "{0}".
+Sure?	Certeza?
+Click Delete again to delete "{0}".	Clique em Apagar de novo para apagar "{0}".
+Deleted "{0}".	"{0}" apagada.
+{0} saved	{0} salvas
+{0} of {1}	{0} de {1}
+Double-click or Enter loads a build	Clique duplo ou Enter carrega uma construção
+No build matches	Nenhuma construção combina
+your search.	com a sua pesquisa.
+No saved builds yet.	Nenhuma construção salva ainda.
+From the app: copy a	Pelo app: copie um
+build code, then press	código de construção e aperte
++ Paste build.	+ Colar construção.
+From your world: press	Pelo seu mundo: aperte
+Copy from world.	Copiar do mundo.
+Schematics: put .schem,	Esquemas: coloque arquivos .schem,
+.litematic or .nbt files	.litematic ou .nbt
+in BlockBlueprint/builds	em BlockBlueprint/builds
+in your user folder.	na sua pasta de usuário.
+{0} x {1} x {2} · {3} blocks · {4} layers	{0} x {1} x {2} · {3} blocos · {4} camadas
+drag to move · scroll to zoom	arraste para mover · role para dar zoom
+Can't read this build: {0}	Não dá para ler esta construção: {0}
+Paste a build to see it here	Cole uma construção para ver aqui
+Build Blueprint settings	Configurações do Build Blueprint
+ON	LIGADO
+OFF	DESLIGADO
+Raw materials: {0}	Matérias-primas: {0}
+Adds "Raw materials" to the build menu: what to gather for the blocks you still need - logs for planks and stairs, sand for glass, cobblestone to smelt into stone...	Adiciona "Matérias-primas" ao menu de construção: o que juntar para os blocos que ainda faltam - troncos para tábuas e escadas, areia para vidro, pedregulho para derreter em pedra...
+Layer map: {0}	Mapa da camada: {0}
+A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.	Um mapinha da camada em que você está, visto de cima, embaixo da lista do canto. Cores = falta colocar, verde escuro = pronto, vermelho = errado, ponto branco = você.
+Scaffold hints: {0}	Dicas de andaime: {0}
+Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.	Partes de uma camada que flutuam no ar (beirais, telhados) ganham uma coluna azul-clara mostrando onde pôr blocos temporários para alcançá-las.
+Ghost blocks: {0}% solid	Blocos fantasma: {0}% sólidos
+How see-through the preview blocks are.	Quanto os blocos de prévia são transparentes.
+Show preview: {0}	Mostrar prévia: {0}
+Hide or show the ghost blocks.	Esconde ou mostra os blocos fantasma.
+Corner list: {0}	Lista do canto: {0}
+The list of blocks you still need, shown in a corner while you build.	A lista dos blocos que ainda faltam, num canto enquanto você constrói.
+Corner: {0}	Canto: {0}
+top right	em cima à direita
+top left	em cima à esquerda
+Which top corner of the screen the list sits in.	Em qual canto de cima da tela fica a lista.
+List size: {0}%	Tamanho da lista: {0}%
+Make the corner list smaller or bigger.	Deixa a lista do canto menor ou maior.
+Next block: {0}	Próximo bloco: {0}
+A yellow box shows which block to place next (bottom layer first, closest first).	Uma caixa amarela mostra qual bloco colocar depois (camada de baixo primeiro, mais perto primeiro).
+Auto next layer: {0}	Próxima camada automática: {0}
+When you finish a layer, go to the next one by itself.	Quando você termina uma camada, vai para a próxima sozinho.
+Chest finder: {0}	Localizador de baús: {0}
+Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.	Caixas verdes nos baús que têm blocos que você ainda precisa. Abra um baú uma vez para o mod saber o que tem dentro.
+Sounds: {0}	Sons: {0}
+A little ding when you finish a layer, and a level-up sound when the build is done.	Um plim quando você termina uma camada, e o som de subir de nível quando a construção fica pronta.
+List shows: {0}	A lista mostra: {0}
+this layer	esta camada
+Auto: the layer you're on while building layer by layer, otherwise the whole build.	Auto: a camada em que você está ao construir camada por camada; senão, a construção inteira.
+Blocks in list: {0}	Blocos na lista: {0}
+How many block types the corner list shows before "+ more".	Quantos tipos de bloco a lista do canto mostra antes de "+ mais".
+Progress bars: {0}	Barras de progresso: {0}
+Green bar = whole build, blue bar = the layer you're on.	Barra verde = construção inteira, barra azul = a camada em que você está.
+Build timer: {0}	Cronômetro: {0}
+How long you've been building and how many blocks a minute.	Há quanto tempo você está construindo e quantos blocos por minuto.
+Key hints: {0}	Dicas de teclas: {0}
+The small reminder of the keys under the corner list.	O pequeno lembrete das teclas embaixo da lista do canto.
+Draw distance: {0}	Distância de desenho: {0}
+How far away ghost blocks are still drawn. Lower = faster.	Até que distância os blocos fantasma são desenhados. Menos = mais rápido.
+Red boxes: {0}	Caixas vermelhas: {0}
+Red outline on blocks that are in the way of the build, or placed the wrong way round.	Contorno vermelho nos blocos que estão no caminho da construção, ou colocados virados errado.
+Check direction: {0}	Checar direção: {0}
+Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Os blocos só contam como prontos quando estão virados certo: escadas, lajes (em cima ou embaixo), troncos, portas, botões... Um bloco virado errado ganha uma caixa vermelha.
+Pick from ghost: {0}	Pegar do fantasma: {0}
+Middle-click a ghost block to put that block in your hand.	Clique do meio num bloco fantasma para pôr esse bloco na mão.
+Placed: start at layer 1: {0}	Ao colocar: começar na camada 1: {0}
+A new build shows fully built so you can move it. When you place it, it switches to layer 1 so you can start building.	Uma construção nova aparece completa para você poder mover. Quando você coloca, ela muda para a camada 1 para começar a construir.
+Basics	Básico
+More	Mais
+Extras	Extras
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints.	Ajudas extras, desligadas até você ligar: matérias-primas, mapa da camada, dicas de andaime.
+Key binds...	Controles...
+Change the keys (Options > Controls > Key Binds > Build Blueprint).	Mude as teclas (Opções > Controles > Atalhos do teclado > Build Blueprint).
+A short guide to everything the mod does.	Um guia curto de tudo o que o mod faz.
+Hover a button to see what it does.	Passe o mouse num botão para ver o que ele faz.
+Swap blocks	Trocar blocos
+How swapping works	Como as trocas funcionam
+Remove from build	Tirar da construção
+Take every {0} out of the build, for example snow on a roof. Undo swap puts it back.	Tira todos os {0} da construção, por exemplo neve num telhado. Desfazer troca coloca de volta.
+Search every block by name or mod...	Pesquise qualquer bloco por nome ou mod...
+Similar ({0})	Parecidos ({0})
+Blocks of the same kind: stairs for stairs, slabs for slabs, full blocks for full blocks. The most alike come first.	Blocos do mesmo tipo: escadas por escadas, lajes por lajes, blocos inteiros por blocos inteiros. Os mais parecidos primeiro.
+All blocks ({0})	Todos ({0})
+Every block in the game, A to Z.	Todos os blocos do jogo, de A a Z.
+From mods ({0})	De mods ({0})
+Blocks added by the other mods you have installed.	Blocos adicionados pelos outros mods que você tem instalados.
+Swap	Trocar
+Swap every block of this kind in the build (Enter).	Troca todos os blocos deste tipo na construção (Enter).
+Undo last swap	Desfazer última troca
+Back	Voltar
+Last swap undone.	Última troca desfeita.
+Pick a block from the list first.	Escolha um bloco da lista primeiro.
+Nothing to change.	Nada para mudar.
+Swapped {0} {1} to {2}  ·  Undo: click Undo swap in the build menu	{0} {1} trocados por {2}  ·  Desfazer: clique em Desfazer troca no menu de construção
+Nothing to remove.	Nada para tirar.
+Removed {0} {1} from the build  ·  Undo: click Undo swap in the build menu	{0} {1} tirados da construção  ·  Desfazer: clique em Desfazer troca no menu de construção
+Swap {0}	Trocar {0}
+{0} in this build	{0} nesta construção
+  ·  not in Minecraft {0}, pick one to use instead	  ·  não existe no Minecraft {0}, escolha outro no lugar
+Nothing here.	Nada aqui.
+No block matches "{0}".	Nenhum bloco combina com "{0}".
+Click a block to pick it  ·  double-click swaps right away	Clique num bloco para escolher  ·  clique duplo troca na hora
+Double-click to swap to this	Clique duplo para trocar por este
+Search by name or creator...	Pesquise por nome ou criador...
+Show one kind of build: houses, towers, ships...	Mostra um tipo de construção: casas, torres, navios...
+Get it	Pegar
+Download it into Saved builds.	Baixa para Construções salvas.
+All kinds	Todos os tipos
+Couldn't reach the build list - check your internet connection.	Não deu para carregar a lista - confira sua conexão com a internet.
+Downloading {0}...	Baixando {0}...
+Got it! "{0}" is in Saved builds.	Pronto! "{0}" está em Construções salvas.
+Download failed - check your internet connection.	O download falhou - confira sua conexão com a internet.
+{0} free builds from the Minecraft community	{0} construções grátis da comunidade do Minecraft
+Loading the list...	Carregando a lista...
+{0}  ·  {1} blocks	{0}  ·  {1} blocos
+No build matches.	Nenhuma construção combina.
+Got it	Pegar
+Download	Baixar
+by {0}  ·  {1} license	por {0}  ·  licença {1}
+Click a build, then Get it  ·  double-click gets it right away	Clique numa construção e depois em Pegar  ·  clique duplo baixa na hora
+By {0} ({1})	Por {0} ({1})
+Wrong way round: this {0} {1}  ·  break it and place it again	Virado errado: este {0} {1}  ·  quebre e coloque de novo
+All fixed! Nothing wrong in the build any more.	Tudo corrigido! Não tem mais nada errado na construção.
+Fixed! {0} left  ·  {1}	Corrigido! Faltam {0}  ·  {1}
+Nothing to fix - every placed block is right.	Nada para corrigir - todos os blocos colocados estão certos.
+Mistake 1 of {0}: {1}	Erro 1 de {0}: {1}
+this {0} {1}	este {0} {1}
+a {0} is where {1} goes - break it	tem {0} onde vai {1} - quebre
+Fix: {0}	Corrigir: {0}
+Showing all layers	Mostrando todas as camadas
+A block in layer {0} was broken - back to layer {1}	Um bloco da camada {0} foi quebrado - de volta à camada {1}
+Layer {0} done! Now layer {1}	Camada {0} pronta! Agora a camada {1}
+Build complete! {0} blocks · {1} building time{2}.	Construção completa! {0} blocos · {1} de construção{2}.
+ · {0} blocks a minute	 · {0} blocos por minuto
+fence gate	portão de cerca
+pressure plate	placa de pressão
+hanging sign	placa pendurada
+Copy box started on the block you're looking at. Make it as big as your build:	Caixa de cópia começada no bloco que você olha. Deixe do tamanho da sua construção:
+Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.	As setas aumentam, Alt + setas diminuem, Ctrl + Cima/Baixo para cima/baixo, Shift = 5 blocos. Page Down estica até o bloco que você olha.
+Press Insert again to save it, Delete to cancel.	Aperte Insert de novo para salvar, Delete para cancelar.
+Too far - a copy can be up to {0} blocks per side	Longe demais - uma cópia pode ter até {0} blocos por lado
+Stretched to that block  ·  box {0} x {1} x {2}  ·  Insert = save, Delete = cancel	Esticada até esse bloco  ·  caixa {0} x {1} x {2}  ·  Insert = salvar, Delete = cancelar
+Copy cancelled	Cópia cancelada
+Type /buildblueprint copy save <name> to save it.	Digite /buildblueprint copy save <nome> para salvar.
+The box can't get any smaller that way	A caixa não pode ficar menor para esse lado
+That's as big as a copy can be ({0} per side)	É o maior que uma cópia pode ser ({0} por lado)
+Shrunk {0}  ·  box {1} x {2} x {3}  ·  Insert = save, Delete = cancel	Diminuída para o {0}  ·  caixa {1} x {2} x {3}  ·  Insert = salvar, Delete = cancelar
+Grew {0}  ·  box {1} x {2} x {3}  ·  Insert = save, Delete = cancel	Aumentada para o {0}  ·  caixa {1} x {2} x {3}  ·  Insert = salvar, Delete = cancelar
+There are no blocks inside that box.	Não tem nenhum bloco dentro dessa caixa.
+Saved "{0}" ({1} blocks, {2} x {3} x {4}) to your Saved builds.	"{0}" salva ({1} blocos, {2} x {3} x {4}) nas suas Construções salvas.
+Its build code is on your clipboard - paste it in the Block Blueprint app (Templates > Import code) or send it to someone.	O código está na sua área de transferência - cole no app Block Blueprint (Templates > Import code) ou mande para alguém.
+Couldn't save: {0}	Não deu para salvar: {0}
+Start a copy first: look at your build and press Insert (or /buildblueprint copy).	Comece uma cópia primeiro: olhe para sua construção e aperte Insert (ou /buildblueprint copy).
+Building time {0} · {1} blocks placed · {2} a minute	Tempo de construção {0} · {1} blocos colocados · {2} por minuto
+Preview shown.	Prévia visível.
+Preview hidden.	Prévia escondida.
+Blueprint cleared.	Construção removida.
+Saved as a .schem file: {0}	Salvo como arquivo .schem: {0}
+Open it with WorldEdit (copy it to config/worldedit/schematics), Litematica, Axiom or any other schematic tool.	Abra com WorldEdit (copie para config/worldedit/schematics), Litematica, Axiom ou qualquer outra ferramenta de esquemas.
+No blueprint loaded. Paste the lines from the app first (see /buildblueprint help).	Nenhuma construção carregada. Cole as linhas do app primeiro (veja /buildblueprint help).
+Got part {0} of {1}. Keep pasting the rest.	Recebida a parte {0} de {1}. Continue colando o resto.
+Got part {0} of {1}.	Recebida a parte {0} de {1}.
+Loaded "{0}": {1} blocks, {2} x {3} x {4}.	"{0}" carregada: {1} blocos, {2} x {3} x {4}.
+It's shown in front of you, fully built. Move it into place, then press Delete (or Page Up > Place it) to start building layer by layer.	Ela aparece na sua frente, completa. Coloque no lugar, depois aperte Delete (ou Page Up > Colocar) para construir camada por camada.
+Keys: arrows move it (Up = forward, Down = back, Ctrl+Up/Down = up/down), Page Down rotates, Page Up opens the materials menu.	Teclas: as setas movem (Cima = frente, Baixo = trás, Ctrl+Cima/Baixo = subir/descer), Page Down gira, Page Up abre o menu de materiais.
+The blueprint is placed (locked). Unlock it first: Page Up > Unlock, or /buildblueprint unlock.	A construção está colocada (travada). Destrave primeiro: Page Up > Destravar, ou /buildblueprint unlock.
+Placed! {0}	Colocada! {0}
+Layer {0} of {1} - Home/End to change layer	Camada {0} de {1} - Home/End para mudar de camada
+It won't move or rotate now	Ela não vai mais mover nem girar
+Unlocked - move it with the arrow keys, then press Delete to place it again	Destravada - mova com as setas, depois aperte Delete para colocar de novo
+No ground found under the blueprint	Não achei chão embaixo da construção
+Already sitting on the ground	Já está em cima do chão
+Moved up {0} to sit on the ground	Subiu {0} para ficar em cima do chão
+Moved down {0} to sit on the ground	Desceu {0} para ficar em cima do chão
+Turned to {0} degrees	Girada {0} graus
+Removed "{0}" from view. It's still in Saved builds.	"{0}" tirada da vista. Ela continua em Construções salvas.
+Mirrored (flipped left <-> right)	Espelhada (esquerda <-> direita)
+Back to normal (not mirrored)	Normal de novo (sem espelho)
+Unknown direction "{0}". Use: up, down, left, right, forward, back, north, south, east, west.	Direção desconhecida "{0}". Use: up, down, left, right, forward, back, north, south, east, west.
+Moved {0} {1}. Corner is now at {2}, {3}, {4}.	Movida {0} {1}. O canto agora está em {2}, {3}, {4}.
+Rotated. Corner is now at {0}, {1}, {2}.	Girada. O canto agora está em {0}, {1}, {2}.
+Blueprint corner moved to where you stand ({0}, {1}, {2}). Size {3} x {4} x {5}.	Canto da construção movido para onde você está ({0}, {1}, {2}). Tamanho {3} x {4} x {5}.
+Showing every layer.	Mostrando todas as camadas.
+Showing layer {0} of {1} only.	Mostrando só a camada {0} de {1}.
+"{0}": {1} blocks, {2} x {3} x {4}, rotated {5} degrees.	"{0}": {1} blocos, {2} x {3} x {4}, girada {5} graus.
+Corner at {0}, {1}, {2}; far corner at {3}, {4}, {5}.	Canto em {0}, {1}, {2}; canto oposto em {3}, {4}, {5}.
+.schem, .litematic and .nbt files in <home>/BlockBlueprint/builds (or your WorldEdit / Litematica schematics folder) show up in Saved builds.	Arquivos .schem, .litematic e .nbt em <home>/BlockBlueprint/builds (ou na sua pasta de esquemas do WorldEdit / Litematica) aparecem em Construções salvas.
+Keys: Up = forward, Down = back, Left/Right, Ctrl+Up/Down = up/down, Page Down = rotate, Page Up = materials menu.	Teclas: Cima = frente, Baixo = trás, Esquerda/Direita, Ctrl+Cima/Baixo = subir/descer, Page Down = girar, Page Up = menu de materiais.
+--- {0}: you have / you need ---	--- {0}: você tem / você precisa ---
+OK  {0}	OK  {0}
+NEED {0} more  {1}	FALTAM mais {0}  {1}
+You have everything.	Você tem tudo.
+Auto-build only works in Creative mode.	Construir tudo só funciona no modo Criativo.
+Load a blueprint first.	Carregue uma construção primeiro.
+Already building - /buildblueprint autobuild stop to stop.	Já está construindo - /buildblueprint autobuild stop para parar.
+Nothing to place ({0} spots have chests or similar in the way).	Nada para colocar ({0} lugares têm baús ou parecidos no caminho).
+Nothing to place - it's all built already!	Nada para colocar - já está tudo construído!
+On a server this uses /setblock, so you need to be an operator.	Num servidor isto usa /setblock, então você precisa ser operador.
+Auto-building {0} blocks{1}...{2}	Construindo {0} blocos automaticamente{1}...{2}
+ on layer {0}	 na camada {0}
+ (skipping {0} spots with chests or similar in the way)	 (pulando {0} lugares com baús ou parecidos no caminho)
+Wait for the auto-build to finish (or stop it) first.	Espere a construção automática terminar (ou pare) primeiro.
+Nothing to undo.	Nada para desfazer.
+Undoing the last auto-build ({0} blocks)...	Desfazendo a última construção automática ({0} blocos)...
+Not auto-building right now.	Não está construindo automaticamente agora.
+Stopped after {0} of {1} blocks.	Parou depois de {0} de {1} blocos.
+Undoing... 	Desfazendo... 
+Auto-building... 	Construindo... 
+Undo finished.	Desfazer terminado.
+Auto-build finished! {0} blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.	Construção automática pronta! {0} blocos colocados. Use Desfazer no menu Page Up (ou /buildblueprint autobuild undo) para tirar de volta.
+Build Blueprint {0} is out (you have {1}).	Build Blueprint {0} saiu (você tem a {1}).
+Update it in the CurseForge app, or get it from curseforge.com/minecraft/mc-mods/build-blueprint	Atualize no app do CurseForge, ou baixe em curseforge.com/minecraft/mc-mods/build-blueprint
+the west end	a ponta oeste
+the north end	a ponta norte
+the east end	a ponta leste
+the south end	a ponta sul
+the middle	o meio
+part {0} of {1} ({2})	parte {0} de {1} ({2})
+{0} ahead	{0} à frente
+{0} behind	{0} atrás
+{0} right	{0} à direita
+{0} left	{0} à esquerda
+{0} up	{0} acima
+{0} down	{0} abaixo
+right here	bem aqui
+That schematic file is too big.	Esse arquivo de esquema é grande demais.
+Couldn't read {0}.	Não deu para ler {0}.
+Nothing to paste. Copy a build code (BB1:...) or the app's Export > "Copy all" lines, then paste here.	Nada para colar. Copie um código de construção (BB1:...) ou as linhas de Export > "Copy all" do app, depois cole aqui.
+Only {0} of {1} parts were pasted. Use "Copy all" in the app.	Só {0} de {1} partes foram coladas. Use "Copy all" no app.
+That isn't a build code.	Isso não é um código de construção.
+That build is too big.	Essa construção é grande demais.
+That build code is broken - copy it again.	Esse código de construção está quebrado - copie de novo.
+That build code has no blocks in it.	Esse código de construção não tem blocos.
+That build code couldn't be read.	Não deu para ler esse código de construção.
+There's already a file called {0}.	Já existe um arquivo chamado {0}.
+That file belongs to WorldEdit or Litematica. Delete it from {0} instead.	Esse arquivo é do WorldEdit ou do Litematica. Apague em {0}.
+Holding {0}	Segurando {0}
+Holding {0} (from your inventory)	Segurando {0} (do seu inventário)
+You don't have any {0} - check the chest finder (green boxes)	Você não tem {0} - veja o localizador de baús (caixas verdes)
+Welcome back! Your blueprint "{0}" is still here{1} Page Up for the menu.	Bem-vindo de volta! Sua construção "{0}" continua aqui{1} Page Up para o menu.
+ (placed).	 (colocada).
+ - move it, then Place it.	 - mova, depois coloque.
+Couldn't bring back the blueprint you had here last time.	Não deu para trazer de volta a construção que você tinha aqui da última vez.
+is the wrong way round	está virado errado
+should {0}	deveria {0}
+face up	virar para cima
+face down	virar para baixo
+face {0}	virar para o {0}
+be upside down (top half)	ficar de cabeça para baixo (metade de cima)
+be the right way up (bottom half)	ficar do jeito certo (metade de baixo)
+be a double slab	ser uma laje dupla
+be a top slab	ser uma laje de cima
+be a bottom slab	ser uma laje de baixo
+stand upright	ficar em pé
+lie east-west	ficar deitado leste-oeste
+lie north-south	ficar deitado norte-sul
+be turned to face {0}	ficar virado para o {0}
+be on the floor	ficar no chão
+hang from the ceiling	pendurar no teto
+be on a wall	ficar numa parede
+have its hinge on the {0}	ter a dobradiça à {0}
+hang from the block above	pendurar no bloco de cima
+stand on the block below	ficar em cima do bloco de baixo
+have {0} {1}	ter {0} {1}
+north	norte
+south	sul
+east	leste
+west	oeste
+north-east	nordeste
+north-west	noroeste
+south-east	sudeste
+south-west	sudoeste
+left	esquerda
+right	direita
+kept	mantido
+auto	auto
+Community Builds	Construções da comunidade
+Houses	Casas
+Towers	Torres
+Ships	Navios
+Ruins & Temples	Ruínas e templos
+Castles & Forts	Castelos e fortes
+Village Buildings	Construções de vila
+Decor	Decoração
+Camps & Outposts	Acampamentos e postos
