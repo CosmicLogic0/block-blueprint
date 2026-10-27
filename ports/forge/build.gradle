@@ -63,6 +63,7 @@ tasks.register('bbMakeSources', Sync) {
     filter { String l -> bbFilter(bbCompatFilter(l, mcv), flags)
                           .replace('net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource', 'net.minecraft.commands.CommandSourceStack')
                           .replace('net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource', 'net.minecraft.commands.CommandSourceStack')
+                          .replace('dev.buildblueprint.fabric.fabric.api.client.command.v1.FabricClientCommandSource', 'net.minecraft.commands.CommandSourceStack')   // 1.15: already moved to our package by bbFilter
                           .replace('FabricClientCommandSource', 'CommandSourceStack')
                           .with { bbRelocate(it) } }
 }
