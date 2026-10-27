@@ -1,0 +1,13 @@
+[3251:1027/120746.422574:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[3251:1027/120746.444822:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[3251:1027/120746.450570:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[3251:1027/120746.454077:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[3251:1027/120746.454161:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[3251:1027/120746.459413:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[3251:1027/120806.756856:ERROR:content/common/zygote/zygote_communication_linux.cc:313] Failed to send GetTerminationStatus message to zygote
+[3251:1027/120806.757454:ERROR:content/common/zygote/zygote_communication_linux.cc:313] Failed to send GetTerminationStatus message to zygote
+[3251:1027/120806.759444:ERROR:content/browser/gpu/gpu_process_host.cc:1038] GPU process launch failed: error_code=1002
+[3251:1027/120806.759700:ERROR:content/browser/network_service_instance_impl.cc:652] Network service crashed or was terminated, restarting service.
+[3251:1027/120806.763642:ERROR:content/browser/gpu/gpu_process_host.cc:1038] GPU process launch failed: error_code=1002
+[3251:1027/120806.764135:ERROR:content/browser/gpu/gpu_process_host.cc:1038] GPU process launch failed: error_code=1002
+[3251:1027/120806.764147:FATAL:content/browser/gpu/gpu_data_manager_impl_private.cc:389] GPU process isn't usable. Goodbye.
