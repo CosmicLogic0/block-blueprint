@@ -13,7 +13,13 @@ public final class KeyBindingHelper {
     private static final List<KeyMapping> KEYS = new ArrayList<>();
     private static boolean hooked;
     public static KeyMapping registerKeyBinding(KeyMapping k) {
-        if (!hooked) { hooked = true; FMLJavaModLoadingContext.get().getModEventBus().addListener((FMLClientSetupEvent e) -> e.enqueueWork(() -> KEYS.forEach(ClientRegistry::registerKeyBinding))); }
+        if (!hooked) { hooked = true; FMLJavaModLoadingContext.get().getModEventBus().addListener((FMLClientSetupEvent e) -> {
+            Runnable r = () -> KEYS.forEach(ClientRegistry::registerKeyBinding);
+            try { e.enqueueWork(r); }
+            catch (NoSuchMethodError old) {   // Forge for 1.16.1-1.16.2 doesn't have enqueueWork yet
+                try { Class.forName("net.minecraftforge.fml.DeferredWorkQueue").getMethod("runLater", Runnable.class).invoke(null, r); } catch (Throwable t) { r.run(); }
+            }
+        }); }
         KEYS.add(k);
         return k;
     }
