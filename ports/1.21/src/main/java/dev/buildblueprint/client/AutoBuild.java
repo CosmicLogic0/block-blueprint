@@ -32,6 +32,9 @@ public final class AutoBuild {
     private static boolean undoing = false;
     private static List<Job> undo = new ArrayList<>();   // what was there before the last auto-build
     private static boolean ticking = false;
+    // A block that needs a neighbour (a torch, a door's top half...) can fail the first time: one quiet second pass picks those up.
+    private static int recheckIn = 0, lastLayer = -1;
+    private static boolean secondPass = false;
 
     public static boolean running() { return next < queue.size(); }
     public static boolean canUndo() { return !undo.isEmpty() && !running(); }
@@ -52,7 +55,9 @@ public final class AutoBuild {
     }
 
     /** onlyLayer = -1 for the whole build, else one layer (0-based). */
-    public static void start(int onlyLayer) {
+    public static void start(int onlyLayer) { secondPass = false; start(onlyLayer, false); }
+
+    private static void start(int onlyLayer, boolean quiet) {
         Session s = BuildBlueprintClient.SESSION;
         Minecraft mc = Minecraft.getInstance();
         if (!PlayerInfo.inWorld()) return;
@@ -80,9 +85,11 @@ public final class AutoBuild {
                 before.add(new Job(at, here, V.stateString(here)));
             }
         }
-        if (jobs.isEmpty()) { Chat.ok(kept > 0 ? "Nothing to place (" + kept + " spots have chests or similar in the way)." : "Nothing to place - it's all built already!"); return; }
-        if (!mc.hasSingleplayerServer()) Chat.warn("On a server this uses /setblock, so you need to be an operator.");
-        queue = jobs; next = 0; total = jobs.size(); undo = before; undoing = false;
+        if (jobs.isEmpty()) { if (quiet) return; Chat.ok(kept > 0 ? "Nothing to place (" + kept + " spots have chests or similar in the way)." : "Nothing to place - it's all built already!"); return; }
+        if (!quiet && !mc.hasSingleplayerServer()) Chat.warn("On a server this uses /setblock, so you need to be an operator.");
+        if (quiet) before.addAll(undo);   // the second pass: undo still takes everything back (what was there first goes back last, so it wins)
+        queue = jobs; next = 0; total = jobs.size(); undo = before; undoing = false; lastLayer = onlyLayer;
+        if (quiet) return;
         Chat.ok("Auto-building " + total + " blocks" + (onlyLayer >= 0 ? " on layer " + (onlyLayer + 1) : "") + "..."
                 + (kept > 0 ? " (skipping " + kept + " spots with chests or similar in the way)" : ""));
     }
@@ -107,6 +114,7 @@ public final class AutoBuild {
     }
 
     private static void tick(Minecraft mc) {
+        if (recheckIn > 0 && --recheckIn == 0 && !running()) { secondPass = true; start(lastLayer, true); return; }
         if (!running()) return;
         if (mc.player == null || mc.level == null) { queue = new ArrayList<>(); next = 0; return; }
         if (mc.hasSingleplayerServer() && mc.getSingleplayerServer() != null) {
@@ -128,11 +136,12 @@ public final class AutoBuild {
             }
             next = end;
         }
-        if (next % 2000 < (mc.hasSingleplayerServer() ? PER_TICK_LOCAL : PER_TICK_SERVER) || !running())
+        if (!secondPass && (next % 2000 < (mc.hasSingleplayerServer() ? PER_TICK_LOCAL : PER_TICK_SERVER) || !running()))
             Chat.bar(undoing ? "Undoing... " + next + " / " + total : "Auto-building... " + next + " / " + total);
         if (!running()) {
-            Chat.ok(undoing ? "Undo finished." : "Auto-build finished! " + total + " blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.");
+            if (undoing || !secondPass) Chat.ok(undoing ? "Undo finished." : "Auto-build finished! " + total + " blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.");
             if (!undoing) BuildBlueprintClient.SESSION.locked = true;   // it's built now: don't let it slide away
+            if (!undoing && !secondPass) recheckIn = mc.hasSingleplayerServer() ? 5 : 20;
             undoing = false;
             Materials.refresh();
         }

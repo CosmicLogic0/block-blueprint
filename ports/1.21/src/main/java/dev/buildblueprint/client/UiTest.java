@@ -22,7 +22,7 @@ public final class UiTest {
     private static final String[] MENU = {"settings", "settings-more", "saved", "build", "done"};
     /** The listing picture: a build seen from a little way off, placed, then built layer by layer (auto-build, needs op). */
     private static final String[] SHOWCASE = {"sc-ghost", "sc-menu", "sc-placed", "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e",
-            "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j", "sc-done", "done"};
+            "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j", "sc-layer-k", "sc-done", "done"};
     private static boolean showcase;
     private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "saved", "world-special", "world-copy", "done"};
 
@@ -193,7 +193,7 @@ public final class UiTest {
         double cx = s.ox + bp.sx / 2.0, cy = s.oy + bp.sy * 0.4, cz = s.oz + bp.sz / 2.0;
         double dx = PlayerInfo.x() - cx, dz = PlayerInfo.z() - cz;
         double ang = Math.atan2(dz, dx) + 0.6;                       // a bit to the side, so you see two walls
-        double dist = Math.max(bp.sx, bp.sz) * 1.15 + 7, ex = cx + Math.cos(ang) * dist, ez = cz + Math.sin(ang) * dist, ey = s.oy + bp.sy * 0.9 + 4;
+        double dist = Math.max(bp.sx, bp.sz) * 0.8 + 4, ex = cx + Math.cos(ang) * dist, ez = cz + Math.sin(ang) * dist, ey = s.oy + bp.sy * 0.75 + 3;
         double tx = cx - ex, ty = cy - (ey + 1.62), tz = cz - ez;
         float yaw = (float) Math.toDegrees(Math.atan2(-tx, tz)), pitch = (float) -Math.toDegrees(Math.atan2(ty, Math.sqrt(tx * tx + tz * tz)));
         cmd("time set noon"); cmd("weather clear");
@@ -206,10 +206,10 @@ public final class UiTest {
     private static void open(String what) {
         if (!what.startsWith("lang-")) lang("en_us");
         switch (what) {
-            case "sc-ghost" -> { Mc.setScreen(null); loadTestBuild(); viewBuild(); }
+            case "sc-ghost" -> { Mc.setScreen(null); Settings.hudScale = 75; loadTestBuild(); viewBuild(); }
             case "sc-menu" -> Mc.setScreen(new MaterialsScreen(true));
             case "sc-placed" -> { Mc.setScreen(null); BuildBlueprintClient.setLocked(true); viewBuild(); }
-            case "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e", "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j" -> {
+            case "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e", "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j", "sc-layer-k" -> {
                 Mc.setScreen(null);
                 fly();
                 if (Materials.placed() < Materials.totalBlocks() && !AutoBuild.running()) AutoBuild.start(BuildBlueprintClient.SESSION.layer);

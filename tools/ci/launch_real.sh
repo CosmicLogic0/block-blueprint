@@ -68,6 +68,7 @@ echo "server up"
 
 # game options: no first-launch screens, keep running without focus
 printf 'onboardAccessibility:false\nskipMultiplayerWarning:true\njoinedFirstServer:true\npauseOnLostFocus:false\ntutorialStep:none\nrenderDistance:6\nguiScale:2\nnarrator:0\nsoundCategory_master:0.0\n' > "$G/options.txt"
+[ "$mode" = showcase ] && printf 'chatVisibility:2\n' >> "$G/options.txt"   # the picture: no chat lines over the build
 (timeout 900 xvfb-run -n 99 -s "-screen 0 1280x720x24 +extension GLX +render -noreset -ac" \
    portablemc --main-dir "$G" start --jvm-policy mojang-then-system -u Builder "$spec" --jvm-arg=-Xmx3G,-Dbuildblueprint.uitest=$mode,-Dbuildblueprint.uitest.server=127.0.0.1:25565 --resolution 1280x720 > game.log 2>&1 &)
 

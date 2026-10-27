@@ -41,7 +41,7 @@ jobs:
       - name: Make the GIF
         run: |
           cd result
-          frames=""; for n in ghost menu placed layer-a layer-b layer-c layer-d layer-e layer-f layer-g layer-h layer-i layer-j done; do
+          frames=""; for n in ghost menu placed layer-a layer-b layer-c layer-d layer-e layer-f layer-g layer-h layer-i layer-j layer-k done; do
             f="fabric-26.3-sc-$n.png"; [ -f "$f" ] || continue
             case "$n" in ghost) d=220 ;; menu) d=260 ;; placed) d=180 ;; done) d=400 ;; *) d=70 ;; esac
             frames="$frames -delay $d $f"
