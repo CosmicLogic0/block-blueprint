@@ -1,9 +1,9 @@
 total 464120
-drwxr-xr-x   8 runner  staff        256 Oct 27 12:31 .
-drwxr-xr-x  28 runner  staff        896 Oct 27 12:29 ..
-drwxr-xr-x   3 runner  staff         96 Oct 27 12:29 .icon-icns
--rw-r--r--@  1 runner  staff  237369881 Oct 27 12:30 Block-Blueprint-1.2.11-mac.dmg
--rw-r--r--   1 runner  staff     249690 Oct 27 12:31 Block-Blueprint-1.2.11-mac.dmg.blockmap
--rw-r--r--   1 runner  staff       2080 Oct 27 12:31 builder-debug.yml
--rw-r--r--   1 runner  staff        358 Oct 27 12:31 latest-mac.yml
-drwxr-xr-x   3 runner  staff         96 Oct 27 12:30 mac-universal
+drwxr-xr-x   8 runner  staff        256 Oct 27 12:39 .
+drwxr-xr-x  28 runner  staff        896 Oct 27 12:37 ..
+drwxr-xr-x   3 runner  staff         96 Oct 27 12:37 .icon-icns
+-rw-r--r--@  1 runner  staff  237370054 Oct 27 12:38 Block-Blueprint-1.2.12-mac.dmg
+-rw-r--r--   1 runner  staff     249531 Oct 27 12:39 Block-Blueprint-1.2.12-mac.dmg.blockmap
+-rw-r--r--   1 runner  staff       2080 Oct 27 12:39 builder-debug.yml
+-rw-r--r--   1 runner  staff        358 Oct 27 12:39 latest-mac.yml
+drwxr-xr-x   3 runner  staff         96 Oct 27 12:38 mac-universal

@@ -18,6 +18,6 @@
   • packaging       platform=darwin arch=universal electron=45.0.0 appOutDir=dist/mac-universal
   • signing         file=dist/mac-universal/Block Blueprint.app platform=darwin type=distribution identityName=- identityHash=none provisioningProfile=none
   • skipped macOS notarization  reason=`notarize` options were unable to be generated
-  • building        target=DMG arch=universal file=dist/Block-Blueprint-1.2.11-mac.dmg
+  • building        target=DMG arch=universal file=dist/Block-Blueprint-1.2.12-mac.dmg
   • downloaded      label=dmgbuild-bundle-arm64-75c8a6c.tar.gz progress=100%
-  • building block map  blockMapFile=dist/Block-Blueprint-1.2.11-mac.dmg.blockmap
+  • building block map  blockMapFile=dist/Block-Blueprint-1.2.12-mac.dmg.blockmap

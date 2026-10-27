@@ -1,5 +1,5 @@
 APP OK
-main-err: (node:36685) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/runner/work/block-blueprint/block-blueprint/dist/mac-universal/Block%20Blueprint.app/Contents/Resources/app.asar/renderer/schem.js is not specified and it doesn't parse as CommonJS.
+main-err: (node:35737) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/runner/work/block-blueprint/block-blueprint/dist/mac-universal/Block%20Blueprint.app/Contents/Resources/app.asar/renderer/schem.js is not specified and it doesn't parse as CommonJS.
 Reparsing as ES module because modul
-main-err: Debugger ending on ws://127.0.0.1:49195/3d11b2ac-8f1a-4ccc-9dd0-5ed1a448a137
+main-err: Debugger ending on ws://127.0.0.1:49196/262c8dac-838f-47b5-bcd8-d92d81bf7ce3
 For help, see: https://nodejs.org/learn/getting-started/debugging
