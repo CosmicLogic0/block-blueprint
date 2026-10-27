@@ -4,6 +4,8 @@
 
 Ever tried to copy a build from a picture or a video and lost count halfway through? **Build Blueprint** puts the whole build into your world as **see-through ghost blocks**. You place the real blocks right where the ghosts are, one layer at a time, until it's done.
 
+**📂 Works with schematic files:** .litematic, .schem and .nbt
+
 ---
 
 ### 🔥 What it does

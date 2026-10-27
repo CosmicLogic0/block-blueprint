@@ -62,12 +62,14 @@ ext.bbFilter = { String l, Map f ->
         if (l.contains('ClientCommandRegistrationCallback.EVENT.register')) return '        body.accept(ClientCommandManager.DISPATCHER);'
         if (l.contains('import net.fabricmc.fabric.api.client.command.v1.ClientCommandRegistrationCallback')) return ''
     }
+    if (f.mc115) l = l.replace('net.fabricmc.fabric.api.client.command.v1.', 'dev.buildblueprint.fabric.fabric.api.client.command.v1.')   // our own stand-ins, never under net.fabricmc
     return l
 }
 
 // Swaps inside the version helpers (src/compat) for Minecraft versions that share a helper group but differ a little.
 ext.bbCompatFilter = { String l, String mcv ->
     if (mcv in ['1.16', '1.16.1']) l = l.replace('screen.renderComponentTooltip(pose, ', 'screen.renderTooltip(pose, ')   // renamed in 1.16.2
+    if (mcv.startsWith('1.15')) l = l.replace('net.fabricmc.fabric.api.client.command.v1', 'dev.buildblueprint.fabric.fabric.api.client.command.v1')   // 1.15: our command stand-ins, in our own package
     return l
 }
 
