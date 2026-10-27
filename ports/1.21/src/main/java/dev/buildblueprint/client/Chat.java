@@ -9,12 +9,14 @@ public final class Chat {
     private Chat() {}
 
     public static void say(ChatFormatting color, String text) {
+        text = Tr.t(text);   // in the game's language
         Minecraft mc = Minecraft.getInstance();
         if (mc.player != null) V.chat(mc.player, Component.literal(text).withStyle(color));
     }
 
     /** A short message above the hotbar (used by the keybinds so chat isn't spammed). */
     public static void bar(String text) {
+        text = Tr.t(text);
         Minecraft mc = Minecraft.getInstance();
         if (mc.player != null) mc.player.displayClientMessage(Component.literal(text), true);
     }

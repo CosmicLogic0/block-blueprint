@@ -45,13 +45,13 @@ public final class HudModule {
                 {"Page Down", "stretch to where you look"}, {"Shift", "5 blocks at a time"}, {"Insert", "save it"}, {"Delete", "cancel"}};
         int h = 34 + keys.length * 12;
         UiKit.panel(g, x - 3, y - 3, w + 6, h + 3, UiKit.CYAN);
-        g.text(font, "Copying a build", x, y, UiKit.CYAN, true);
+        g.text(font, Tr.t("Copying a build"), x, y, UiKit.CYAN, true);
         int[] s = Copier.size();
-        g.text(font, s[0] + " x " + s[1] + " x " + s[2] + " box", x, y + 12, UiKit.WHITE, true);
+        g.text(font, Tr.t(s[0] + " x " + s[1] + " x " + s[2] + " box"), x, y + 12, UiKit.WHITE, true);
         int c = Copier.count();
         String cnt = c == -1 ? "counting..." : c == -2 ? "big box" : c + " blocks";
-        g.text(font, cnt, x + w - font.width(cnt), y + 12, 0xFFAAFFAA, true);
-        g.text(font, "Make the box as big as your build", x, y + 22, UiKit.MUTED, false);
+        g.text(font, Tr.t(cnt), x + w - font.width(Tr.t(cnt)), y + 12, 0xFFAAFFAA, true);
+        g.text(font, Tr.t("Make the box as big as your build"), x, y + 22, UiKit.MUTED, false);
         for (int i = 0; i < keys.length; i++) UiKit.key(g, font, x, y + 36 + i * 12, keys[i][0], keys[i][1]);
     }
 
@@ -64,7 +64,7 @@ public final class HudModule {
         g.fill(x, y, x + f, y + 9, col);
         if (f > 0) g.fill(x, y, x + f, y + 2, 0x50FFFFFF);
         String t = label + "  " + (int) Math.floor(100.0 * done / total) + "%";
-        g.text(font, t, x + w / 2 - font.width(t) / 2, y + 1, 0xFFFFFFFF, true);
+        g.text(font, Tr.t(t), x + w / 2 - font.width(Tr.t(t)) / 2, y + 1, 0xFFFFFFFF, true);
     }
 
     /** Draws the corner list; returns where it ends. */
@@ -89,18 +89,18 @@ public final class HudModule {
 
         String name = s.blueprint().name == null ? "Blueprint" : s.blueprint().name;
         String tag = s.locked ? "placed" : "";
-        int nroom = W - 4 - (tag.isEmpty() ? 0 : font.width(tag) + 6);
-        if (font.width(name) > nroom) name = font.plainSubstrByWidth(name, nroom - 6) + "..";
-        g.text(font, name, x, y, 0xFFFFFF55, true);
-        if (!tag.isEmpty()) g.text(font, tag, x + W - font.width(tag), y, 0xFF55FF55, true);
+        int nroom = W - 4 - (tag.isEmpty() ? 0 : font.width(Tr.t(tag)) + 6);
+        if (font.width(Tr.t(name)) > nroom) name = font.plainSubstrByWidth(name, nroom - 6) + "..";
+        g.text(font, Tr.t(name), x, y, 0xFFFFFF55, true);
+        if (!tag.isEmpty()) g.text(font, Tr.t(tag), x + W - font.width(Tr.t(tag)), y, 0xFF55FF55, true);
         int ly = y + 12;
-        if (coop) { g.text(font, "Co-op: " + Coop.where(s.blueprint()), x, ly, UiKit.CYAN, false); ly += 11; }
+        if (coop) { g.text(font, Tr.t("Co-op: " + Coop.where(s.blueprint())), x, ly, UiKit.CYAN, false); ly += 11; }
         if (notPlaced) {   // still positioning: remind how to move and place it
             g.fill(x - 1, ly - 1, x + W + 1, ly + 30, 0x30FF9020);
             g.fill(x - 1, ly - 1, x + 1, ly + 30, 0xFFFFB050);
-            g.text(font, "Not placed yet", x + 4, ly, 0xFFFFB050, true);
-            g.text(font, "Arrows move it, PgDn turns it", x + 4, ly + 10, 0xFFCCCCCC, false);
-            g.text(font, "Shift = 5 blocks · Delete = place", x + 4, ly + 20, 0xFFCCCCCC, false);
+            g.text(font, Tr.t("Not placed yet"), x + 4, ly, 0xFFFFB050, true);
+            g.text(font, Tr.t("Arrows move it, PgDn turns it"), x + 4, ly + 10, 0xFFCCCCCC, false);
+            g.text(font, Tr.t("Shift = 5 blocks · Delete = place"), x + 4, ly + 20, 0xFFCCCCCC, false);
             ly += 32;
         }
         if (Settings.hudBar) {
@@ -112,8 +112,8 @@ public final class HudModule {
         }
         if (stats) {
             String a = "Time " + Stats.time(Stats.activeMs()), b = Math.round(Stats.perMinute()) + " blocks/min";
-            g.text(font, a, x, ly, 0xFFBBBBBB, true);
-            g.text(font, b, x + W - font.width(b), ly, 0xFFBBBBBB, true);
+            g.text(font, Tr.t(a), x, ly, 0xFFBBBBBB, true);
+            g.text(font, Tr.t(b), x + W - font.width(Tr.t(b)), ly, 0xFFBBBBBB, true);
             ly += 11;
         }
         if (hint) {
@@ -122,22 +122,22 @@ public final class HudModule {
             g.fill(x - 1, ly - 1, x + 1, ly + 19, Hint.inHand ? 0xFF60FF60 : 0xFFFFE040);
             if (!Hint.icon.isEmpty()) g.item(Hint.icon, x + 3, ly + 1);
             String n = "Next: " + Hint.name;
-            if (font.width(n) > W - 26) n = font.plainSubstrByWidth(n, W - 32) + "..";
-            g.text(font, n, x + 22, ly, 0xFFFFFFFF, true);
+            if (font.width(Tr.t(n)) > W - 26) n = font.plainSubstrByWidth(n, W - 32) + "..";
+            g.text(font, Tr.t(n), x + 22, ly, 0xFFFFFFFF, true);
             String w = Hint.where(mc.player) + (Hint.inHand ? "  (in hand)" : "");
-            if (font.width(w) > W - 26) w = font.plainSubstrByWidth(w, W - 32) + "..";
-            g.text(font, w, x + 22, ly + 10, 0xFFCCCCCC, false);
+            if (font.width(Tr.t(w)) > W - 26) w = font.plainSubstrByWidth(w, W - 32) + "..";
+            g.text(font, Tr.t(w), x + 22, ly + 10, 0xFFCCCCCC, false);
             ly += 22;
         }
         if (complete) {
-            g.text(font, "Build complete!", x, ly + 1, 0xFF55FF55, true); ly += 12;
-            g.text(font, "PgUp > Remove to clear it", x, ly, 0xFF999999, false); ly += 10;
+            g.text(font, Tr.t("Build complete!"), x, ly + 1, 0xFF55FF55, true); ly += 12;
+            g.text(font, Tr.t("PgUp > Remove to clear it"), x, ly, 0xFF999999, false); ly += 10;
         }
         else {
             String head = layerMode ? "Layer " + (Materials.layer() + 1) + " needs:" : "Whole build needs:";
-            g.text(font, head, x, ly + 1, 0xFFAAAAFF, true);
+            g.text(font, Tr.t(head), x, ly + 1, 0xFFAAAAFF, true);
             String hv = "have/need";
-            g.text(font, hv, x + W - font.width(hv), ly + 1, 0xFF888888, false);
+            g.text(font, Tr.t(hv), x + W - font.width(Tr.t(hv)), ly + 1, 0xFF888888, false);
             ly += 12;
             int drawn = 0;
             for (Materials.Row r : rows) {
@@ -147,16 +147,16 @@ public final class HudModule {
                 if (!r.icon().isEmpty()) g.item(r.icon(), x, ly);
                 String n = r.name();
                 String count = r.have() + "/" + r.left();
-                int room = W - 22 - font.width(count) - 6;
-                if (font.width(n) > room) n = font.plainSubstrByWidth(n, room - 6) + "..";
-                g.text(font, n, x + 20, ly + 5, 0xFFE0E0E0, true);
-                g.text(font, count, x + W - font.width(count), ly + 5, r.enough() ? 0xFF55FF55 : 0xFFFF6060, true);
+                int room = W - 22 - font.width(Tr.t(count)) - 6;
+                if (font.width(Tr.t(n)) > room) n = font.plainSubstrByWidth(n, room - 6) + "..";
+                g.text(font, Tr.t(n), x + 20, ly + 5, 0xFFE0E0E0, true);
+                g.text(font, Tr.t(count), x + W - font.width(Tr.t(count)), ly + 5, r.enough() ? 0xFF55FF55 : 0xFFFF6060, true);
                 ly += 18;
             }
-            if (shown > lines) { g.text(font, "+" + (shown - lines) + " more  (Page Up)", x, ly, 0xFF999999, true); ly += 10; }
-            if (shown == 0) { g.text(font, "Layer done!", x, ly, 0xFF55FF55, true); ly += 10; }
+            if (shown > lines) { g.text(font, Tr.t("+" + (shown - lines) + " more  (Page Up)"), x, ly, 0xFF999999, true); ly += 10; }
+            if (shown == 0) { g.text(font, Tr.t("Layer done!"), x, ly, 0xFF55FF55, true); ly += 10; }
         }
-        if (Settings.hudHints) g.text(font, "Home/End layer · PgUp menu", x, ly + 1, 0xFF777777, false);
+        if (Settings.hudHints) g.text(font, Tr.t("Home/End layer · PgUp menu"), x, ly + 1, 0xFF777777, false);
         return y + h;
     }
 
@@ -206,7 +206,7 @@ public final class HudModule {
         String a = "Build complete!";
         String b = Stats.completeBlocks + " blocks  ·  " + Stats.time(Stats.completeMs) + (Stats.completePerMin > 0 ? "  ·  " + Stats.completePerMin + " a minute" : "");
         String c = "Page Up > Remove to clear it";
-        int w = Math.max(font.width(b), font.width(c)) + 24, x = g.guiWidth() / 2 - w / 2, y = 26;
+        int w = Math.max(font.width(Tr.t(b)), font.width(Tr.t(c))) + 24, x = g.guiWidth() / 2 - w / 2, y = 26;
         UiKit.panel(g, x, y, w, 44, UiKit.GREEN);
         UiKit.center(g, font, a, x + w / 2, y + 6, UiKit.GREEN);
         UiKit.center(g, font, b, x + w / 2, y + 18, UiKit.WHITE);

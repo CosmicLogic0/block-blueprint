@@ -13,7 +13,7 @@ MOD = ROOT / 'fabric-mod/src'
 FILES = [(SRC, n) for n in ['MaterialsScreen', 'SettingsScreen', 'CopyScreen', 'SwapScreen', 'SavedBuildsScreen', 'MenuModule', 'UiKit', 'HudModule', 'UiTest', 'HelpScreen', 'ChestHighlight', 'CoopScreen', 'TemplatesScreen']] + \
         [(MOD / 'keys/java/dev/buildblueprint/client', 'KeysModule'), (MOD / 'main/java/dev/buildblueprint/client', 'Copier'),
          (MOD / 'main/java/dev/buildblueprint/client', 'Swapper')] + \
-        [(MOD / 'main/java/dev/buildblueprint/client', n) for n in ['Materials', 'Settings', 'Coop', 'Mistakes', 'Hide', 'Stats']]
+        [(MOD / 'main/java/dev/buildblueprint/client', n) for n in ['Materials', 'Settings', 'Coop', 'Mistakes', 'Hide', 'Stats', 'Tr', 'Hint', 'Chat']]
 GLFW = {'LCONTROL': 'LEFT_CONTROL', 'RCONTROL': 'RIGHT_CONTROL', 'LSHIFT': 'LEFT_SHIFT', 'PAGEDOWN': 'PAGE_DOWN', 'PAGEUP': 'PAGE_UP', 'LALT': 'LEFT_ALT'}
 
 SUBS = [
@@ -42,13 +42,16 @@ SUBS = [
     (r'\bg\.item\(', 'g.renderItem('),
     (r'Modules\.menuKey\.matches\(e\)', 'V.keyMatches(Modules.menuKey, e.key(), e.scancode())'),
     (r'g\.setComponentTooltipForNextFrame\(font, ', 'V.tooltip(g, font, '),
-    (r'List\.of\(Component\.literal\(hover\)\)', 'java.util.Collections.singletonList(Component.literal(hover))'),
+    (r'List\.of\(Component\.literal\(Tr\.t\(hover\)\)\)', 'java.util.Collections.singletonList(Component.literal(Tr.t(hover)))'),
     (r'BuiltInRegistries\.BLOCK\.getValue\(Identifier\.parse\((\w+)\)\)', r'V.block(\1)'),
     (r'BlockStateParser\.parseForBlock\(BuiltInRegistries\.BLOCK, (\w+), false\)\.blockState\(\)', r'V.parseState(\1)'),
     (r'\.isBlank\(\)', '.trim().isEmpty()'),
     # screen hook (chest highlight): Fabric's afterExtract on 26.x, V.onScreen on older versions and Forge
     (r'ScreenEvents\.AFTER_INIT\.register\(\(mc, screen, w, h\) -> ScreenEvents\.afterExtract\(screen\)\.register\(\(s, g, mx, my, d\) -> (.*)\)\);$', r'V.onScreen((s, g) -> \1);'),
     (r'^import net\.fabricmc\.fabric\.api\.client\.screen\.v1\.ScreenEvents;\n', ''),
+    # chat (Chat)
+    (r'mc\.player\.sendSystemMessage\(Component\.literal\(text\)\.withStyle\(color\)\)', 'V.chat(mc.player, Component.literal(text).withStyle(color))'),
+    (r'mc\.player\.sendOverlayMessage\(Component\.literal\(text\)\)', 'mc.player.displayClientMessage(Component.literal(text), true)'),
     # registry access (Swapper and friends)
     (r'BuiltInRegistries\.BLOCK\.containsKey\(Identifier\.parse\((\w+)\)\)', r'V.blockExists(\1)'),
     (r'for \(Item (\w+) : BuiltInRegistries\.ITEM\)', r'for (Item \1 : V.allItems())'),

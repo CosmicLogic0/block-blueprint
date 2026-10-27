@@ -44,14 +44,16 @@ public final class UiKit {
 
     /** Centred text. */
     public static void center(GuiGraphicsExtractor g, Font font, String s, int cx, int y, int color) {
-        g.text(font, s, cx - font.width(s) / 2, y, color, true);
+        s = Tr.t(s);
+        g.text(font, Tr.t(s), cx - font.width(Tr.t(s)) / 2, y, color, true);
     }
 
     /** Cuts text that doesn't fit and adds "..". */
     public static String fit(Font font, String s, int w) {
         if (s == null) return "";
-        if (font.width(s) <= w) return s;
-        return font.plainSubstrByWidth(s, Math.max(0, w - font.width(".."))) + "..";
+        s = Tr.t(s);
+        if (font.width(Tr.t(s)) <= w) return s;
+        return font.plainSubstrByWidth(s, Math.max(0, w - font.width(Tr.t("..")))) + "..";
     }
 
     /** A progress bar with its label in the middle, e.g. "120 / 400 placed  30%". */
@@ -63,21 +65,22 @@ public final class UiKit {
         g.fill(x, y, x + f, y + 10, color);
         if (f > 0) g.fill(x, y, x + f, y + 2, 0x50FFFFFF);
         String t = label + "  " + (int) Math.floor(100.0 * done / total) + "%";
-        g.text(font, t, x + w / 2 - font.width(t) / 2, y + 1, WHITE, true);
+        g.text(font, Tr.t(t), x + w / 2 - font.width(Tr.t(t)) / 2, y + 1, WHITE, true);
     }
 
     /** A little key cap like [Insert] followed by what it does. Returns the x after it. */
     public static int key(GuiGraphicsExtractor g, Font font, int x, int y, String key, String what) {
-        int kw = font.width(key) + 6;
+        key = Tr.t(key); what = Tr.t(what);
+        int kw = font.width(Tr.t(key)) + 6;
         g.fill(x, y - 1, x + kw, y + 9, 0xFF3A3A44);
         g.fill(x, y + 9, x + kw, y + 10, 0xFF1A1A20);
-        g.text(font, key, x + 3, y, WHITE, false);
-        g.text(font, what, x + kw + 4, y, 0xFFCCCCCC, false);
-        return x + kw + 4 + font.width(what) + 10;
+        g.text(font, Tr.t(key), x + 3, y, WHITE, false);
+        g.text(font, Tr.t(what), x + kw + 4, y, 0xFFCCCCCC, false);
+        return x + kw + 4 + font.width(Tr.t(what)) + 10;
     }
 
     /** Width of a key hint drawn by {@link #key}. */
-    public static int keyWidth(Font font, String key, String what) { return font.width(key) + 6 + 4 + font.width(what) + 10; }
+    public static int keyWidth(Font font, String key, String what) { return font.width(Tr.t(key)) + 6 + 4 + font.width(Tr.t(what)) + 10; }
 
     /** Evenly spaced button positions across a row: returns the x of each button. */
     public static int[] row(int centerX, int count, int buttonW, int gap) {

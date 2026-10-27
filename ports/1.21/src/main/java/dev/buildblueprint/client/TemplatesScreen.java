@@ -45,7 +45,7 @@ public class TemplatesScreen extends BBScreen {
     private volatile String msg = "";
     private volatile boolean busy;
 
-    public TemplatesScreen(Screen parent) { super(Component.literal("Get a build")); this.parent = parent; }
+    public TemplatesScreen(Screen parent) { super(Component.literal(Tr.t("Get a build"))); this.parent = parent; }
 
     @Override public boolean isPauseScreen() { return false; }
 
@@ -60,17 +60,17 @@ public class TemplatesScreen extends BBScreen {
         if (all == null && !loading) load();
         int x = px(), w = pw();
         String q = search == null ? "" : search.getValue();
-        search = new EditBox(font, x, 36, w - 124, 18, Component.literal("Search"));
-        search.setHint(Component.literal("Search by name or creator..."));
+        search = new EditBox(font, x, 36, w - 124, 18, Component.literal(Tr.t("Search")));
+        search.setHint(Component.literal(Tr.t("Search by name or creator...")));
         search.setValue(q);
         search.setResponder(t -> { scroll = 0; refill(); });
         addRenderableWidget(search);
-        kindBtn = addRenderableWidget(Button.builder(Component.literal(kindLabel()), b -> { kind = nextKind(); b.setMessage(Component.literal(kindLabel())); scroll = 0; refill(); })
-                .bounds(x + w - 120, 35, 120, 20).tooltip(Tooltip.create(Component.literal("Show one kind of build: houses, towers, ships..."))).build());
+        kindBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t(kindLabel())), b -> { kind = nextKind(); b.setMessage(Component.literal(Tr.t(kindLabel()))); scroll = 0; refill(); })
+                .bounds(x + w - 120, 35, 120, 20).tooltip(Tooltip.create(Component.literal(Tr.t("Show one kind of build: houses, towers, ships...")))).build());
         int by = height - 26, bw = (w - 4) / 2;
-        getBtn = addRenderableWidget(Button.builder(Component.literal("Get it"), b -> get()).bounds(x, by, bw, 20)
-                .tooltip(Tooltip.create(Component.literal("Download it into Saved builds."))).build());
-        addRenderableWidget(Button.builder(Component.literal("Back"), b -> onClose()).bounds(x + bw + 4, by, w - bw - 4, 20).build());
+        getBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t("Get it")), b -> get()).bounds(x, by, bw, 20)
+                .tooltip(Tooltip.create(Component.literal(Tr.t("Download it into Saved builds.")))).build());
+        addRenderableWidget(Button.builder(Component.literal(Tr.t("Back")), b -> onClose()).bounds(x + bw + 4, by, w - bw - 4, 20).build());
         refill();
         setFocused(search);
     }
@@ -175,9 +175,9 @@ public class TemplatesScreen extends BBScreen {
         if (all != null && shown.isEmpty() && search.getValue().isEmpty() && kind.isEmpty()) refill();
         int x = px(), w = pw(), top = listTop(), bot = listBottom();
         UiKit.panel(g, x - 6, 4, w + 12, height - 8, UiKit.GREEN);
-        g.drawString(font, "Get a build", x, 10, UiKit.GOLD, true);
+        g.drawString(font, Tr.t("Get a build"), x, 10, UiKit.GOLD, true);
         String sub = all == null ? "" : all.size() + " free builds from the Minecraft community";
-        g.drawString(font, sub, x, 22, UiKit.MUTED, false);
+        g.drawString(font, Tr.t(sub), x, 22, UiKit.MUTED, false);
         g.fill(x, top - 2, x + w, bot, 0xFF15151C);
         if (all == null) UiKit.center(g, font, loadError != null ? loadError : "Loading the list...", x + w / 2, top + 20, loadError != null ? UiKit.ORANGE : UiKit.MUTED);
         T hover = null;
@@ -188,9 +188,9 @@ public class TemplatesScreen extends BBScreen {
             if (hov) hover = t;
             if (sel || hov) g.fill(x, y, x + w - 6, y + rowH() - 1, sel ? 0xFF2F4A2A : 0xFF2A2A38);
             String right = t.size + "  ·  " + t.blocks + " blocks";
-            g.drawString(font, UiKit.fit(font, t.name, w - 30 - font.width(right) - 90), x + 4, y + 3, sel ? UiKit.WHITE : UiKit.TEXT, false);
-            g.drawString(font, UiKit.fit(font, t.cat, 84), x + w - 14 - font.width(right) - 90, y + 3, 0xFF8C7CC8, false);
-            g.drawString(font, right, x + w - 10 - font.width(right), y + 3, UiKit.MUTED, false);
+            g.drawString(font, Tr.t(UiKit.fit(font, t.name, w - 30 - font.width(Tr.t(right)) - 90)), x + 4, y + 3, sel ? UiKit.WHITE : UiKit.TEXT, false);
+            g.drawString(font, Tr.t(UiKit.fit(font, t.cat, 84)), x + w - 14 - font.width(Tr.t(right)) - 90, y + 3, 0xFF8C7CC8, false);
+            g.drawString(font, Tr.t(right), x + w - 10 - font.width(Tr.t(right)), y + 3, UiKit.MUTED, false);
         }
         if (all != null && shown.isEmpty()) UiKit.center(g, font, "No build matches.", x + w / 2, top + 20, UiKit.MUTED);
         if (shown.size() > rows) {   // scroll bar
@@ -202,17 +202,17 @@ public class TemplatesScreen extends BBScreen {
         int iy = bot + 6;
         if (!msg.isEmpty()) UiKit.center(g, font, msg, x + w / 2, iy + 4, msg.startsWith("Got it") ? UiKit.GREEN : msg.startsWith("Download") ? UiKit.MUTED : UiKit.ORANGE);
         else if (pick != null) {
-            g.drawString(font, UiKit.fit(font, pick.name, w), x, iy, UiKit.WHITE, true);
-            g.drawString(font, UiKit.fit(font, "by " + pick.by + "  ·  " + pick.license + " license", w), x, iy + 11, UiKit.MUTED, false);
+            g.drawString(font, Tr.t(UiKit.fit(font, pick.name, w)), x, iy, UiKit.WHITE, true);
+            g.drawString(font, Tr.t(UiKit.fit(font, "by " + pick.by + "  ·  " + pick.license + " license", w)), x, iy + 11, UiKit.MUTED, false);
         } else UiKit.center(g, font, "Click a build, then Get it  ·  double-click gets it right away", x + w / 2, iy + 4, UiKit.MUTED);
         getBtn.active = pick != null && !busy;
         kindBtn.active = all != null;
         super.extractRenderState(g, mouseX, mouseY, delta);
         if (hover != null) {
             List<Component> tip = new ArrayList<>();
-            tip.add(Component.literal(hover.name));
-            tip.add(Component.literal("By " + hover.by + " (" + hover.license + ")"));
-            if (!hover.link.isEmpty()) tip.add(Component.literal(hover.link));
+            tip.add(Component.literal(Tr.t(hover.name)));
+            tip.add(Component.literal(Tr.t("By " + hover.by + " (" + hover.license + ")")));
+            if (!hover.link.isEmpty()) tip.add(Component.literal(Tr.t(hover.link)));
             V.tooltip(g, font, tip, mouseX, mouseY);
         }
     }

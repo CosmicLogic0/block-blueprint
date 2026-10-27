@@ -25,9 +25,9 @@ public final class Hint {
         double ahead = dx * fx + dz * fz, right = dx * -fz + dz * fx;
         StringBuilder sb = new StringBuilder();
         int a = (int) Math.round(ahead), r = (int) Math.round(right), u = (int) Math.round(dy);
-        if (a != 0) sb.append(Math.abs(a)).append(a > 0 ? " ahead" : " behind");
-        if (r != 0) sb.append(sb.length() > 0 ? ", " : "").append(Math.abs(r)).append(r > 0 ? " right" : " left");
-        if (u != 0) sb.append(sb.length() > 0 ? ", " : "").append(Math.abs(u)).append(u > 0 ? " up" : " down");
-        return sb.length() == 0 ? "right here" : sb.toString();
+        if (a != 0) sb.append(Tr.t((a > 0 ? "{0} ahead" : "{0} behind").replace("{0}", String.valueOf(Math.abs(a)))));
+        if (r != 0) sb.append(sb.length() > 0 ? ", " : "").append(Tr.t((r > 0 ? "{0} right" : "{0} left").replace("{0}", String.valueOf(Math.abs(r)))));
+        if (u != 0) sb.append(sb.length() > 0 ? ", " : "").append(Tr.t((u > 0 ? "{0} up" : "{0} down").replace("{0}", String.valueOf(Math.abs(u)))));
+        return sb.length() == 0 ? Tr.t("right here") : sb.toString();
     }
 }

@@ -63,7 +63,7 @@ public class HelpScreen extends Screen {
          "Every key can be changed in Settings -> Key binds."}};
 
     public HelpScreen(Screen parent, int page) {
-        super(Component.literal("How it works"));
+        super(Component.literal(Tr.t("How it works")));
         this.parent = parent; this.page = Math.max(0, Math.min(TITLES.length - 1, page));
     }
 
@@ -80,13 +80,13 @@ public class HelpScreen extends Screen {
         if (wide()) {
             for (int i = 0; i < TITLES.length; i++) {
                 int p = i;
-                tabs.add(addRenderableWidget(Button.builder(Component.literal((i + 1) + ". " + TITLES[i]), b -> go(p)).bounds(x, 34 + i * 22, navW() - 6, 20).build()));
+                tabs.add(addRenderableWidget(Button.builder(Component.literal(Tr.t((i + 1) + ". " + TITLES[i])), b -> go(p)).bounds(x, 34 + i * 22, navW() - 6, 20).build()));
             }
         }
         int by = height - 26, bw = 80;
-        prev = addRenderableWidget(Button.builder(Component.literal("< Back"), b -> go(page - 1)).bounds(x + navW(), by, bw, 20).build());
-        next = addRenderableWidget(Button.builder(Component.literal("Next >"), b -> go(page + 1)).bounds(x + navW() + bw + 4, by, bw, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Done"), b -> onClose()).bounds(x + w - bw, by, bw, 20).build());
+        prev = addRenderableWidget(Button.builder(Component.literal(Tr.t("< Back")), b -> go(page - 1)).bounds(x + navW(), by, bw, 20).build());
+        next = addRenderableWidget(Button.builder(Component.literal(Tr.t("Next >")), b -> go(page + 1)).bounds(x + navW() + bw + 4, by, bw, 20).build());
+        addRenderableWidget(Button.builder(Component.literal(Tr.t("Done")), b -> onClose()).bounds(x + w - bw, by, bw, 20).build());
         go(page);
     }
 
@@ -111,7 +111,7 @@ public class HelpScreen extends Screen {
         StringBuilder line = new StringBuilder();
         for (String word : s.split(" ")) {
             String t = line.length() == 0 ? word : line + " " + word;
-            if (font.width(t) > w && line.length() > 0) { out.add(line.toString()); line = new StringBuilder(indent + word); }
+            if (font.width(Tr.t(t)) > w && line.length() > 0) { out.add(line.toString()); line = new StringBuilder(indent + word); }
             else line = new StringBuilder(t);
         }
         if (line.length() > 0) out.add(line.toString());
@@ -124,10 +124,10 @@ public class HelpScreen extends Screen {
     private void draw(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
         int x = px(), w = pw();
         UiKit.panel(g, x - 6, 4, w + 12, height - 8, UiKit.CYAN);
-        g.text(font, "How Build Blueprint works", x, 12, UiKit.GOLD, true);
+        g.text(font, Tr.t("How Build Blueprint works"), x, 12, UiKit.GOLD, true);
         String pg = (page + 1) + " / " + TITLES.length;
-        g.text(font, pg, x + w - font.width(pg), 12, UiKit.MUTED, false);
-        if (!wide()) { g.text(font, TITLES[page], x, 24, UiKit.WHITE, true); }
+        g.text(font, Tr.t(pg), x + w - font.width(Tr.t(pg)), 12, UiKit.MUTED, false);
+        if (!wide()) { g.text(font, Tr.t(TITLES[page]), x, 24, UiKit.WHITE, true); }
 
         // the page
         int cx = x + navW(), cw = w - navW(), y = 34;
@@ -140,8 +140,8 @@ public class HelpScreen extends Screen {
             if (!st.isEmpty()) g.item(st, ix + 3, y + 11);
             ix += 26;
         }
-        if (page == 4) { g.text(font, "->", cx + 8 + 22 + 1, y + 15, UiKit.GOLD, true); }
-        g.text(font, TITLES[page], ix + 6, y + 15, UiKit.WHITE, true);
+        if (page == 4) { g.text(font, Tr.t("->"), cx + 8 + 22 + 1, y + 15, UiKit.GOLD, true); }
+        g.text(font, Tr.t(TITLES[page]), ix + 6, y + 15, UiKit.WHITE, true);
         drawPicture(g, cx + cw - 70, y + 6);
         int ty = y + 40, tw = cw - 16;
         for (String line : TEXT[page]) {
@@ -152,7 +152,7 @@ public class HelpScreen extends Screen {
                 ty += 15;
                 continue;
             }
-            for (String l : wrap(line, tw)) { g.text(font, l, cx + 8, ty, l.startsWith("-") || l.startsWith("  ") ? 0xFFCCCCCC : UiKit.TEXT, false); ty += 11; }
+            for (String l : wrap(Tr.t(line), tw)) { g.text(font, Tr.t(l), cx + 8, ty, l.startsWith("-") || l.startsWith("  ") ? 0xFFCCCCCC : UiKit.TEXT, false); ty += 11; }
             ty += 4;
         }
         super.extractRenderState(g, mouseX, mouseY, delta);

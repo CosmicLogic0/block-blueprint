@@ -36,7 +36,7 @@ public class SwapScreen extends Screen {
     private String msg = "";
 
     public SwapScreen(Screen parent, String itemId) {
-        super(Component.literal("Swap blocks"));
+        super(Component.literal(Tr.t("Swap blocks")));
         this.parent = parent; this.itemId = itemId;
         var ids = Swapper.blocksForItem(itemId);
         this.blockId = ids.isEmpty() ? itemId : ids.iterator().next();
@@ -56,35 +56,35 @@ public class SwapScreen extends Screen {
     private int visRows() { return Math.max(1, (listBottom() - listTop() - 4) / rowH()); }
     private int totalRows() { return (shown.size() + cols() - 1) / cols(); }
     private int maxScroll() { return Math.max(0, totalRows() - visRows()); }
-    private static net.minecraft.client.gui.components.Tooltip tip(String t) { return Tooltip.create(Component.literal(t)); }
+    private static net.minecraft.client.gui.components.Tooltip tip(String t) { return Tooltip.create(Component.literal(Tr.t(t))); }
 
     @Override protected void init() {
         if (similar == null) { similar = Swapper.similar(blockId); mods = Swapper.modded(); }
         int x = px(), w = pw();
-        addRenderableWidget(Button.builder(Component.literal("i"), b -> Mc.setScreen(new HelpScreen(this, 4))).bounds(x + w - 20, 8, 20, 20)
+        addRenderableWidget(Button.builder(Component.literal(Tr.t("i")), b -> Mc.setScreen(new HelpScreen(this, 4))).bounds(x + w - 20, 8, 20, 20)
                 .tooltip(tip("How swapping works")).build());
-        int rw = Math.min(110, font.width("Remove from build") + 12);
-        addRenderableWidget(Button.builder(Component.literal("Remove from build"), b -> doRemove()).bounds(x + w - 24 - rw, 8, rw, 20)
+        int rw = Math.min(110, font.width(Tr.t("Remove from build")) + 12);
+        addRenderableWidget(Button.builder(Component.literal(Tr.t("Remove from build")), b -> doRemove()).bounds(x + w - 24 - rw, 8, rw, 20)
                 .tooltip(tip("Take every " + fromName() + " out of the build, for example snow on a roof. Undo swap puts it back.")).build());
         String q = search == null ? "" : search.getValue();
-        search = new EditBox(font, x, 38, w, 18, Component.literal("Search"));
-        search.setHint(Component.literal("Search every block by name or mod..."));
+        search = new EditBox(font, x, 38, w, 18, Component.literal(Tr.t("Search")));
+        search.setHint(Component.literal(Tr.t("Search every block by name or mod...")));
         search.setValue(q);
         search.setResponder(t -> { scroll = 0; refill(); });
         addRenderableWidget(search);
         boolean hasMods = !mods.isEmpty();
         int n = hasMods ? 3 : 2, tw = (w - (n - 1) * 4) / n;
-        tSimilar = addRenderableWidget(Button.builder(Component.literal("Similar (" + similar.size() + ")"), b -> setTab("similar")).bounds(x, 60, tw, 20)
+        tSimilar = addRenderableWidget(Button.builder(Component.literal(Tr.t("Similar (" + similar.size() + ")")), b -> setTab("similar")).bounds(x, 60, tw, 20)
                 .tooltip(tip("Blocks of the same kind: stairs for stairs, slabs for slabs, full blocks for full blocks. The most alike come first.")).build());
-        tAll = addRenderableWidget(Button.builder(Component.literal("All blocks (" + Swapper.allOptions().size() + ")"), b -> setTab("all")).bounds(x + tw + 4, 60, tw, 20)
+        tAll = addRenderableWidget(Button.builder(Component.literal(Tr.t("All blocks (" + Swapper.allOptions().size() + ")")), b -> setTab("all")).bounds(x + tw + 4, 60, tw, 20)
                 .tooltip(tip("Every block in the game, A to Z.")).build());
-        if (hasMods) tMods = addRenderableWidget(Button.builder(Component.literal("From mods (" + mods.size() + ")"), b -> setTab("mods")).bounds(x + 2 * (tw + 4), 60, w - 2 * (tw + 4), 20)
+        if (hasMods) tMods = addRenderableWidget(Button.builder(Component.literal(Tr.t("From mods (" + mods.size() + ")")), b -> setTab("mods")).bounds(x + 2 * (tw + 4), 60, w - 2 * (tw + 4), 20)
                 .tooltip(tip("Blocks added by the other mods you have installed.")).build());
         int by = height - 24, bw = (w - 8) / 3;
-        swapBtn = addRenderableWidget(Button.builder(Component.literal("Swap"), b -> doSwap()).bounds(x, by, bw, 20)
+        swapBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t("Swap")), b -> doSwap()).bounds(x, by, bw, 20)
                 .tooltip(tip("Swap every block of this kind in the build (Enter).")).build());
-        undoBtn = addRenderableWidget(Button.builder(Component.literal("Undo last swap"), b -> undo()).bounds(x + bw + 4, by, bw, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Back"), b -> onClose()).bounds(x + 2 * (bw + 4), by, w - 2 * (bw + 4), 20).build());
+        undoBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t("Undo last swap")), b -> undo()).bounds(x + bw + 4, by, bw, 20).build());
+        addRenderableWidget(Button.builder(Component.literal(Tr.t("Back")), b -> onClose()).bounds(x + 2 * (bw + 4), by, w - 2 * (bw + 4), 20).build());
         if (tab.equals("similar") && similar.isEmpty()) tab = "all";
         if (tab.equals("mods") && !hasMods) tab = "all";
         refill();
@@ -175,10 +175,10 @@ public class SwapScreen extends Screen {
         // what's being swapped
         ItemStack self = Materials.stackFor(itemId);
         if (!self.isEmpty()) g.item(self, x, 9);
-        g.text(font, UiKit.fit(font, "Swap " + fromName(), w - 160), x + 20, 9, UiKit.GOLD, true);
+        g.text(font, Tr.t(UiKit.fit(font, "Swap " + fromName(), w - 160)), x + 20, 9, UiKit.GOLD, true);
         String sub = count() + " in this build";
-        g.text(font, sub, x + 20, 21, UiKit.MUTED, false);
-        if (notInGame) g.text(font, "  ·  not in Minecraft " + dev.buildblueprint.core.SchemCodec.minecraftVersion() + ", pick one to use instead", x + 20 + font.width(sub), 21, UiKit.ORANGE, false);
+        g.text(font, Tr.t(sub), x + 20, 21, UiKit.MUTED, false);
+        if (notInGame) g.text(font, Tr.t("  ·  not in Minecraft " + dev.buildblueprint.core.SchemCodec.minecraftVersion() + ", pick one to use instead"), x + 20 + font.width(Tr.t(sub)), 21, UiKit.ORANGE, false);
         // tabs: the active one is greyed out (pressed), like the build menu tabs
         String q = search.getValue().trim();
         tSimilar.active = !similar.isEmpty() && (!q.isEmpty() || !tab.equals("similar"));
@@ -204,11 +204,11 @@ public class SwapScreen extends Screen {
                 g.item(o.icon(), cx + 2, cy + 1);
                 int room = cw - 24;
                 String tag = o.mod();
-                int tagW = tag.isEmpty() ? 0 : Math.min(font.width(tag) + 6, room / 2);
-                g.text(font, UiKit.fit(font, o.name(), room - tagW), cx + 21, cy + 6, sel ? UiKit.WHITE : UiKit.TEXT, false);
+                int tagW = tag.isEmpty() ? 0 : Math.min(font.width(Tr.t(tag)) + 6, room / 2);
+                g.text(font, Tr.t(UiKit.fit(font, o.name(), room - tagW)), cx + 21, cy + 6, sel ? UiKit.WHITE : UiKit.TEXT, false);
                 if (tagW > 0) {
                     String t = UiKit.fit(font, tag, tagW - 6);
-                    g.text(font, t, cx + cw - 3 - font.width(t), cy + 6, 0xFF8C7CC8, false);
+                    g.text(font, Tr.t(t), cx + cw - 3 - font.width(Tr.t(t)), cy + 6, 0xFF8C7CC8, false);
                 }
             }
         }
@@ -226,23 +226,23 @@ public class SwapScreen extends Screen {
             UiKit.center(g, font, msg.isEmpty() ? "Click a block to pick it  ·  double-click swaps right away" : msg, x + w / 2, py + 4, msg.isEmpty() ? UiKit.MUTED : UiKit.ORANGE);
         } else {
             String a = UiKit.fit(font, fromName(), (w - 140) / 2), b = UiKit.fit(font, pick.name(), (w - 140) / 2), n = count() + " blocks";
-            int total = 18 + font.width(a) + 22 + 18 + font.width(b) + 12 + font.width(n), sx = x + (w - total) / 2;
+            int total = 18 + font.width(Tr.t(a)) + 22 + 18 + font.width(Tr.t(b)) + 12 + font.width(Tr.t(n)), sx = x + (w - total) / 2;
             if (!self.isEmpty()) g.item(self, sx, py);
-            g.text(font, a, sx + 18, py + 4, UiKit.WHITE, true);
-            int ax = sx + 18 + font.width(a) + 6;
-            g.text(font, "->", ax, py + 4, UiKit.GOLD, true);
+            g.text(font, Tr.t(a), sx + 18, py + 4, UiKit.WHITE, true);
+            int ax = sx + 18 + font.width(Tr.t(a)) + 6;
+            g.text(font, Tr.t("->"), ax, py + 4, UiKit.GOLD, true);
             g.item(pick.icon(), ax + 16, py);
-            g.text(font, b, ax + 34, py + 4, UiKit.GOLD, true);
-            g.text(font, n, ax + 34 + font.width(b) + 12, py + 4, UiKit.MUTED, false);
+            g.text(font, Tr.t(b), ax + 34, py + 4, UiKit.GOLD, true);
+            g.text(font, Tr.t(n), ax + 34 + font.width(Tr.t(b)) + 12, py + 4, UiKit.MUTED, false);
         }
         swapBtn.active = pick != null;
         undoBtn.active = BuildBlueprintClient.SESSION.canUndoSwap();
         super.extractRenderState(g, mouseX, mouseY, delta);
         if (hover != null && !dragging) {
             List<Component> tip = new ArrayList<>();
-            tip.add(Component.literal(hover.name()).withStyle(ChatFormatting.WHITE));
-            tip.add(Component.literal((hover.mod().isEmpty() ? "Minecraft" : hover.mod()) + "  ·  " + hover.shape()).withStyle(ChatFormatting.GRAY));
-            tip.add(Component.literal("Double-click to swap to this").withStyle(ChatFormatting.YELLOW));
+            tip.add(Component.literal(Tr.t(hover.name())).withStyle(ChatFormatting.WHITE));
+            tip.add(Component.literal(Tr.t((hover.mod().isEmpty() ? "Minecraft" : hover.mod()) + "  ·  " + hover.shape())).withStyle(ChatFormatting.GRAY));
+            tip.add(Component.literal(Tr.t("Double-click to swap to this")).withStyle(ChatFormatting.YELLOW));
             g.setComponentTooltipForNextFrame(font, tip, mouseX, mouseY);
         }
     }
