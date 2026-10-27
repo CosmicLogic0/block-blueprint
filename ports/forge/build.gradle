@@ -52,7 +52,7 @@ tasks.register('bbShims', Sync) {
     from("src/${loaderName}/shim") { if (flags.oldText) exclude 'net/fabricmc/fabric/api/client/command/v2/**' }
     into shims
     inputs.property 'eras', eras.join(',')
-    filter { String l -> bbFilter(l, flags) }
+    filter { String l -> bbRelocate(bbFilter(l, flags)) }
 }
 tasks.register('bbRes', Sync) { from('../../fabric-mod/src/main/resources') { include 'assets/**' }; into res }
 tasks.register('bbMakeSources', Sync) {
@@ -63,10 +63,11 @@ tasks.register('bbMakeSources', Sync) {
     filter { String l -> bbFilter(bbCompatFilter(l, mcv), flags)
                           .replace('net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource', 'net.minecraft.commands.CommandSourceStack')
                           .replace('net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource', 'net.minecraft.commands.CommandSourceStack')
-                          .replace('FabricClientCommandSource', 'CommandSourceStack') }
+                          .replace('FabricClientCommandSource', 'CommandSourceStack')
+                          .with { bbRelocate(it) } }
 }
 def entries = layout.buildDirectory.dir('entry-src'), eraRes = layout.buildDirectory.dir('era-res')
-tasks.register('bbEntry', Sync) { duplicatesStrategy = DuplicatesStrategy.EXCLUDE; eras.each { from("src/${it}/entry") }; from("src/${loaderName}/entry"); into entries }
+tasks.register('bbEntry', Sync) { duplicatesStrategy = DuplicatesStrategy.EXCLUDE; eras.each { from("src/${it}/entry") }; from("src/${loaderName}/entry"); into entries; filter { String l -> bbRelocate(l) } }
 tasks.register('bbEraRes', Sync) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     eras.each { from("src/${it}/res") }

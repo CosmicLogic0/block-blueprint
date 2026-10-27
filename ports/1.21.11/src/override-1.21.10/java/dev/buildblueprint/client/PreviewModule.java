@@ -80,8 +80,9 @@ public final class PreviewModule {
     private static void drawLines(PoseStack.Pose p, VertexConsumer vc) {
         Minecraft mc = Minecraft.getInstance();
         if (Settings.redOutline) for (Red r : reds) box(p, vc, new AABB(new BlockPos(r.x, r.y, r.z)).inflate(0.004), 0xFFFF2020);
+        if (Settings.scaffold) for (BlockPos sb : Materials.scaffold()) box(p, vc, new AABB(sb).inflate(-0.08), 0xFF60C8FF);   // where temporary blocks help (Settings > Extras)
         // next block to place: pulsing yellow box, and a guide line when it's far away
-        if (Settings.nextHint && Hint.pos != null) {
+        if ((Settings.nextHint || Mistakes.showing()) && Hint.pos != null) {
             float pulse = 0.6f + 0.4f * (float) Math.sin(System.currentTimeMillis() / 180.0);
             box(p, vc, new AABB(Hint.pos).inflate(0.01 + 0.03 * pulse), Hint.inHand ? 0xFF60FF60 : 0xFFFFE040);
             var pl = mc.player;
@@ -148,7 +149,7 @@ public final class PreviewModule {
             for (int z = 0; z < bp.sz; z++)
                 for (int x = 0; x < bp.sx; x++) {
                     String st = bp.stateAt(x, y, z);
-                    if (st == null || Hide.state(st)) continue;     // hidden with the eye in the build menu
+                    if (st == null || Hide.state(st) || !Coop.mine(bp, x, z)) continue;     // hidden with the eye in the build menu, or a friend's part (co-op)
                     int wx = s.ox + x, wy = s.oy + y, wz = s.oz + z;
                     double dx = wx + 0.5 - px, dy = wy + 0.5 - py, dz = wz + 0.5 - pz;
                     if (dx * dx + dy * dy + dz * dz > (double) Settings.range * Settings.range) continue;
@@ -168,6 +169,7 @@ public final class PreviewModule {
 
     /** Next block helper: lowest unfinished layer first, then the block you're holding, then the closest. */
     private static void pickHint(Minecraft mc) {
+        if (Mistakes.aim(mc)) return;   // showing mistakes: the guide points at the one to fix
         if (!Settings.nextHint || ghosts.isEmpty() || mc.player == null) { Hint.clear(); return; }
         int low = Integer.MAX_VALUE;
         for (Ghost g : ghosts) low = Math.min(low, g.ly);

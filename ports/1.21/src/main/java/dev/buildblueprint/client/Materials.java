@@ -75,25 +75,45 @@ public final class Materials {
         return out;
     }
 
+    /** Layer map: the shown layer as a grid. Each cell: -1 = nothing there, else (status << 24) | palette index; status 1 = to place, 2 = done, 3 = wrong. */
+    private static int[] layerCells = new int[0];
+    private static int mapW, mapD, mapLayer = -1;
+    private static List<BlockPos> scaffold = java.util.Collections.emptyList();
+    public static int[] layerCells() { return layerCells; }
+    public static int mapW() { return mapW; }
+    public static int mapD() { return mapD; }
+    public static int mapLayer() { return mapLayer; }
+    /** Scaffolding hints: where temporary blocks help to reach parts of this layer that float in the air. */
+    public static List<BlockPos> scaffold() { return scaffold; }
+
+    /** Is there something solid in the world here to place a block against? */
+    private static boolean solid(net.minecraft.world.level.block.state.BlockState b) { return !b.isAir() && b.getFluidState().isEmpty() && !V.replaceable(b); }
+
     /** Recount now (also called when the menu opens). */
     public static void refresh() {
         Session s = BuildBlueprintClient.SESSION;
         Minecraft mc = Minecraft.getInstance();
-        if (!s.loaded() || mc.level == null || mc.player == null) { rows = layerRows = java.util.Collections.emptyList(); placed = totalBlocks = layerPlaced = layerTotal = 0; return; }
+        if (!s.loaded() || mc.level == null || mc.player == null) {
+            rows = layerRows = java.util.Collections.emptyList(); placed = totalBlocks = layerPlaced = layerTotal = 0;
+            layerCells = new int[0]; mapLayer = -1; scaffold = java.util.Collections.emptyList(); Mistakes.update(new ArrayList<>());
+            return;
+        }
         Blueprint bp = s.blueprint();
         Map<String, int[]> per = new LinkedHashMap<>();          // item -> {left, total}
         Map<String, MaterialMap.Req> reqCache = new HashMap<>();
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
         int done = 0, all = 0;
         Map<Long, String[]> wrong = new HashMap<>();
+        List<Mistakes.Mistake> mistakes = new ArrayList<>();
         int[] perLayer = new int[bp.sy], totLayer = new int[bp.sy];
+        byte[] status = new byte[bp.sx * bp.sy * bp.sz];   // 1 to place, 2 done, 3 wrong
         List<Map<String, int[]>> perItemLayer = new ArrayList<>();
         for (int y = 0; y < bp.sy; y++) perItemLayer.add(new LinkedHashMap<>());
         for (int y = 0; y < bp.sy; y++)
             for (int z = 0; z < bp.sz; z++)
                 for (int x = 0; x < bp.sx; x++) {
                     String st = bp.stateAt(x, y, z);
-                    if (st == null) continue;
+                    if (st == null || !Coop.mine(bp, x, z)) continue;   // co-op: only my part of the build
                     MaterialMap.Req r = reqCache.computeIfAbsent(st, MaterialMap::of);
                     if (r == null) continue;
                     all++;
@@ -103,12 +123,21 @@ public final class Materials {
                     cl[1] += r.count(); totLayer[y]++;
                     pos.set(s.ox + x, s.oy + y, s.oz + z);
                     net.minecraft.world.level.block.state.BlockState hs = mc.level.getBlockState(pos);
-                    String have = V.blockId(hs.getBlock());
+                    net.minecraft.world.level.block.Block hb = hs.getBlock();
+                    String have = V.blockId(hb);
+                    int idx = bp.index(x, y, z);
                     if (have.equals(MaterialMap.blockId(st))) {
-                        if (st.indexOf('[') < 0 || Orient.ok(st, hs.toString())) done++;
-                        else { perLayer[y]++; wrong.put(pos.asLong(), new String[]{st, hs.toString(), r.itemId()}); }   // there, but the wrong way round
+                        if (st.indexOf('[') < 0 || Orient.ok(st, hs.toString())) { done++; status[idx] = 2; }
+                        else {   // there, but the wrong way round
+                            perLayer[y]++; status[idx] = 3;
+                            wrong.put(pos.asLong(), new String[]{st, hs.toString(), r.itemId()});
+                            mistakes.add(Mistakes.make(pos.asLong(), st, hs.toString(), r.itemId(), true));
+                        }
+                    } else {
+                        c[0] += r.count(); cl[0] += r.count(); perLayer[y]++;
+                        if (solid(hs)) { status[idx] = 3; mistakes.add(Mistakes.make(pos.asLong(), st, "Block{" + have + "}", r.itemId(), false)); }
+                        else status[idx] = 1;
                     }
-                    else { c[0] += r.count(); cl[0] += r.count(); perLayer[y]++; }
                 }
         Map<String, Integer> inv = PlayerInfo.inventoryCounts();
         rows = toRows(per, inv);
@@ -120,8 +149,82 @@ public final class Materials {
         layerRows = toRows(perItemLayer.get(L), inv);
         placed = done;
         sayWrong(wrong, mc);
+        Mistakes.update(mistakes);
         totalBlocks = all;
         Stats.update(bp, done, all);
+        // layer map
+        int[] cells = new int[bp.sx * bp.sz];
+        for (int z = 0; z < bp.sz; z++)
+            for (int x = 0; x < bp.sx; x++) {
+                int i = bp.index(x, L, z), v = bp.cells[i];
+                cells[z * bp.sx + x] = v == 0 || status[i] == 0 ? -1 : (status[i] << 24) | (v - 1);
+            }
+        layerCells = cells; mapW = bp.sx; mapD = bp.sz; mapLayer = L;
+        scaffold = Settings.scaffold ? findScaffold(bp, s, mc, status, L) : java.util.Collections.<BlockPos>emptyList();
+    }
+
+    /**
+     * Parts of layer L still to place that don't touch anything solid - not the world, and not a block of the layer that
+     * can be reached from something solid - float in the air. For each such floating group, one column of temporary
+     * blocks from the ground up to just under it shows where to put scaffolding.
+     */
+    private static List<BlockPos> findScaffold(Blueprint bp, Session s, Minecraft mc, byte[] status, int L) {
+        int W = bp.sx, D = bp.sz;
+        boolean[] reach = new boolean[W * D];
+        java.util.ArrayDeque<Integer> q = new java.util.ArrayDeque<>();
+        BlockPos.MutableBlockPos p = new BlockPos.MutableBlockPos();
+        int[][] six = {{1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}};
+        for (int z = 0; z < D; z++)
+            for (int x = 0; x < W; x++) {
+                int i = bp.index(x, L, z);
+                if (bp.cells[i] == 0 || status[i] == 0) continue;
+                boolean ok = status[i] == 2 || status[i] == 3;   // already a block there
+                for (int[] d : six) {
+                    if (ok) break;
+                    p.set(s.ox + x + d[0], s.oy + L + d[1], s.oz + z + d[2]);
+                    if (solid(mc.level.getBlockState(p))) ok = true;
+                }
+                if (ok) { reach[z * W + x] = true; q.add(z * W + x); }
+            }
+        while (!q.isEmpty()) {   // anything joined to a reachable block can be placed against it
+            int c = q.poll(), x = c % W, z = c / W;
+            int[][] four = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+            for (int[] d : four) {
+                int nx = x + d[0], nz = z + d[1];
+                if (nx < 0 || nz < 0 || nx >= W || nz >= D) continue;
+                int n = nz * W + nx;
+                if (reach[n] || bp.cells[bp.index(nx, L, nz)] == 0 || status[bp.index(nx, L, nz)] == 0) continue;
+                reach[n] = true; q.add(n);
+            }
+        }
+        List<BlockPos> out = new ArrayList<>();
+        boolean[] seen = new boolean[W * D];
+        for (int z = 0; z < D; z++)
+            for (int x = 0; x < W; x++) {
+                int c = z * W + x;
+                if (seen[c] || reach[c] || bp.cells[bp.index(x, L, z)] == 0 || status[bp.index(x, L, z)] != 1) continue;
+                // one floating group: find the cell with the shortest drop to the ground
+                java.util.ArrayDeque<Integer> g = new java.util.ArrayDeque<>();
+                g.add(c); seen[c] = true;
+                int bestX = x, bestZ = z, bestDrop = Integer.MAX_VALUE;
+                while (!g.isEmpty()) {
+                    int k = g.poll(), gx = k % W, gz = k / W;
+                    int drop = 0;
+                    for (int y = s.oy + L - 1; y > s.oy + L - 24; y--) { p.set(s.ox + gx, y, s.oz + gz); if (solid(mc.level.getBlockState(p))) break; drop++; }
+                    if (drop < bestDrop) { bestDrop = drop; bestX = gx; bestZ = gz; }
+                    int[][] four = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+                    for (int[] d : four) {
+                        int nx = gx + d[0], nz = gz + d[1];
+                        if (nx < 0 || nz < 0 || nx >= W || nz >= D) continue;
+                        int n = nz * W + nx;
+                        if (seen[n] || reach[n] || bp.cells[bp.index(nx, L, nz)] == 0 || status[bp.index(nx, L, nz)] != 1) continue;
+                        seen[n] = true; g.add(n);
+                    }
+                }
+                for (int i = 1; i <= Math.min(bestDrop, 23); i++) out.add(new BlockPos(s.ox + bestX, s.oy + L - i, s.oz + bestZ));
+                if (out.size() > 400) return out;
+            }
+        return out;
     }
 
     private static java.util.Set<Long> wrongBefore = new java.util.HashSet<>();

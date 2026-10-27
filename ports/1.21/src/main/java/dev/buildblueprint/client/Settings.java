@@ -29,6 +29,10 @@ public final class Settings {
     public static boolean ghostPick = true;    // middle-click a ghost block to hold it
     public static boolean chestFinder = true;  // highlight chests that hold blocks you need
     public static boolean hudStats = true;
+    // Extras (Settings > Extras): off until the player turns them on
+    public static boolean rawMats = false;     // "Raw materials" view in the build menu (logs for planks, sand for glass...)
+    public static boolean layerMap = false;    // small floor plan of the layer you're on, under the corner list
+    public static boolean scaffold = false;    // light blue columns where temporary blocks help to reach floating parts
     public static boolean sounds = true;       // ding when a layer / the build is finished     // build timer + blocks/minute in the corner list
 
     private static Path file() { return FabricLoader.getInstance().getConfigDir().resolve("buildblueprint").resolve("settings.properties"); }
@@ -42,6 +46,7 @@ public final class Settings {
         matMode = p.getProperty("matMode", matMode); ghostAlpha = i(p, "ghostAlpha", ghostAlpha); range = i(p, "range", range);
         redOutline = b(p, "redOutline", redOutline); autoLayer = b(p, "autoLayer", autoLayer); startLayer1 = b(p, "startLayer1", startLayer1);
         nextHint = b(p, "nextHint", nextHint); ghostPick = b(p, "ghostPick", ghostPick); chestFinder = b(p, "chestFinder", chestFinder); checkFacing = b(p, "checkFacing", checkFacing); dev.buildblueprint.core.Orient.on = checkFacing; hudStats = b(p, "hudStats", hudStats); sounds = b(p, "sounds", sounds);
+        rawMats = b(p, "rawMats", rawMats); layerMap = b(p, "layerMap", layerMap); scaffold = b(p, "scaffold", scaffold);
     }
 
     public static void save() {
@@ -52,6 +57,7 @@ public final class Settings {
         p.setProperty("matMode", matMode); p.setProperty("ghostAlpha", "" + ghostAlpha); p.setProperty("range", "" + range);
         p.setProperty("redOutline", "" + redOutline); p.setProperty("autoLayer", "" + autoLayer); p.setProperty("startLayer1", "" + startLayer1);
         p.setProperty("nextHint", "" + nextHint); p.setProperty("ghostPick", "" + ghostPick); p.setProperty("chestFinder", "" + chestFinder); p.setProperty("checkFacing", "" + checkFacing); p.setProperty("hudStats", "" + hudStats); p.setProperty("sounds", "" + sounds);
+        p.setProperty("rawMats", "" + rawMats); p.setProperty("layerMap", "" + layerMap); p.setProperty("scaffold", "" + scaffold);
         try { Files.createDirectories(file().getParent()); try (Writer w = Files.newBufferedWriter(file())) { p.store(w, "Build Blueprint settings"); } } catch (IOException ignored) {}
     }
 

@@ -37,6 +37,7 @@ public final class PreviewModule {
     private static final int MAX_GHOSTS = 60000, MAX_RED = 3000;
     private static final double RANGE = 64;
     private static final GizmoStyle RED = GizmoStyle.stroke(0xFFFF2020, 6f);
+    private static final GizmoStyle SCAFFOLD = GizmoStyle.stroke(0xFF60C8FF, 2f);
     private static final GizmoStyle CHEST = GizmoStyle.stroke(0xFF40FF80, 3f);
     private static int chestTick = 0;
     private static List<BlockPos> chestCache = new ArrayList<>();
@@ -72,8 +73,9 @@ public final class PreviewModule {
         }));
         WorldRenderEvents.END_EXTRACTION.register(ctx -> Safe.run("the outlines", () -> {
             if (Settings.redOutline) for (Red r : reds) Gizmos.cuboid(new BlockPos(r.x, r.y, r.z), RED);
+            if (Settings.scaffold) for (BlockPos sb : Materials.scaffold()) Gizmos.cuboid(sb, SCAFFOLD);   // where temporary blocks help (Settings > Extras)
             // next block to place: pulsing yellow box, and a guide line when it's far away
-            if (Settings.nextHint && Hint.pos != null) {
+            if ((Settings.nextHint || Mistakes.showing()) && Hint.pos != null) {
                 float pulse = 3f + 2f * (float) Math.sin(System.currentTimeMillis() / 180.0);
                 Gizmos.cuboid(Hint.pos, GizmoStyle.stroke(Hint.inHand ? 0xFF60FF60 : 0xFFFFE040, pulse));
                 var pl = Minecraft.getInstance().player;
@@ -129,7 +131,7 @@ public final class PreviewModule {
             for (int z = 0; z < bp.sz; z++)
                 for (int x = 0; x < bp.sx; x++) {
                     String st = bp.stateAt(x, y, z);
-                    if (st == null || Hide.state(st)) continue;     // hidden with the eye in the build menu
+                    if (st == null || Hide.state(st) || !Coop.mine(bp, x, z)) continue;     // hidden with the eye in the build menu, or a friend's part (co-op)
                     int wx = s.ox + x, wy = s.oy + y, wz = s.oz + z;
                     double dx = wx + 0.5 - px, dy = wy + 0.5 - py, dz = wz + 0.5 - pz;
                     if (dx * dx + dy * dy + dz * dz > (double) Settings.range * Settings.range) continue;
@@ -149,6 +151,7 @@ public final class PreviewModule {
 
     /** Next block helper: lowest unfinished layer first, then the block you're holding, then the closest. */
     private static void pickHint(Minecraft mc) {
+        if (Mistakes.aim(mc)) return;   // showing mistakes: the guide points at the one to fix
         if (!Settings.nextHint || ghosts.isEmpty() || mc.player == null) { Hint.clear(); return; }
         int low = Integer.MAX_VALUE;
         for (Ghost g : ghosts) low = Math.min(low, g.ly);

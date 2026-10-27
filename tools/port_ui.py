@@ -12,7 +12,8 @@ DST = ROOT / 'ports/1.21/src/main/java/dev/buildblueprint/client'
 MOD = ROOT / 'fabric-mod/src'
 FILES = [(SRC, n) for n in ['MaterialsScreen', 'SettingsScreen', 'CopyScreen', 'SwapScreen', 'SavedBuildsScreen', 'MenuModule', 'UiKit', 'HudModule', 'UiTest', 'HelpScreen', 'ChestHighlight']] + \
         [(MOD / 'keys/java/dev/buildblueprint/client', 'KeysModule'), (MOD / 'main/java/dev/buildblueprint/client', 'Copier'),
-         (MOD / 'main/java/dev/buildblueprint/client', 'Swapper')]
+         (MOD / 'main/java/dev/buildblueprint/client', 'Swapper')] + \
+        [(MOD / 'main/java/dev/buildblueprint/client', n) for n in ['Materials', 'Settings', 'Coop', 'Mistakes', 'Hide']]
 GLFW = {'LCONTROL': 'LEFT_CONTROL', 'RCONTROL': 'RIGHT_CONTROL', 'LSHIFT': 'LEFT_SHIFT', 'PAGEDOWN': 'PAGE_DOWN', 'PAGEUP': 'PAGE_UP', 'LALT': 'LEFT_ALT'}
 
 SUBS = [
@@ -50,6 +51,8 @@ SUBS = [
     (r'^import net\.fabricmc\.fabric\.api\.client\.screen\.v1\.ScreenEvents;\n', ''),
     # registry access (Swapper and friends)
     (r'BuiltInRegistries\.BLOCK\.containsKey\(Identifier\.parse\((\w+)\)\)', r'V.blockExists(\1)'),
+    (r'for \(Item (\w+) : BuiltInRegistries\.ITEM\)', r'for (Item \1 : V.allItems())'),
+    (r'\b(\w+)\.canBeReplaced\(\)', r'V.replaceable(\1)'),
     (r'for \(Block (\w+) : BuiltInRegistries\.BLOCK\)', r'for (Block \1 : V.allBlocks())'),
     (r'BuiltInRegistries\.BLOCK\.getKey\((\w+)\)\.toString\(\)', r'V.blockId(\1)'),
     (r'BuiltInRegistries\.ITEM\.getKey\((\w+)\)\.toString\(\)', r'V.itemId(\1)'),
