@@ -1,3 +1,10 @@
+## 1.2.11
+- **More Minecraft versions (now 100):**
+  - Fabric 1.15.2 (beta) and Fabric 1.16.1
+  - Forge 1.15.2, 1.16.1, 1.16.2 and 1.20.3 (the Forge 1.16.3 file now also works on 1.16.1 and 1.16.2, the Forge 1.20.4 file on 1.20.3)
+  - NeoForge 1.20.5
+- Fabric 1.15.2: the /buildblueprint commands and the chest highlight aren't available there (that Fabric API doesn't have them); everything else works.
+
 ## 1.2.10
 - **Chest highlight:** when the list says a block you need is in a chest nearby, open that chest and the slots holding blocks your build still needs get a **green frame**, so you can see straight away which ones to take. Works in chests, barrels, shulker boxes and any other container. Follows the "Chest finder" setting. (Fabric 1.16.2 - 1.16.4: needs Fabric API 0.42.0+1.16.)
 - **Remove a block from a build:** click a block in the build menu and press **Remove from build** to take every one of it out of the build - for example snow on a roof you don't want. **Undo swap** puts it back.
