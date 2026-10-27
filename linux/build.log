@@ -1,4 +1,4 @@
-  • electron-builder  version=26.15.3 os=6.17.0-1022-azure
+  • electron-builder  version=26.15.3 os=7.0.0-1017-azure
   • loaded configuration  file=package.json ("build" field)
   • executing @electron/rebuild  electronVersion=45.0.0 arch=x64 buildFromSource=false workspaceRoot=/home/runner/work/block-blueprint/block-blueprint projectDir=./ appDir=./
   • installing native dependencies  arch=x64
