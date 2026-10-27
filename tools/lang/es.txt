@@ -39,6 +39,7 @@ Construir por capas
 Bloques y cambios
 Copiar una construcción
 Bueno saber
+Más ayudas
 Una construcción es lo que quieres hacer, mostrada como bloques fantasma transparentes en tu mundo.
 Abre el menú de construcción, pulsa Construcciones guardadas, elige una y pulsa Cargar en el mundo.
 Las construcciones vienen de tres sitios:
@@ -82,6 +83,11 @@ Clic central
 coger el bloque del fantasma que miras
 En Ajustes cambias lo transparentes que son los fantasmas, la lista de la esquina y más.
 Todas las teclas se pueden cambiar en Ajustes -> Controles.
+Construir con amigos: Co-op en el menú de construcción te da un código para tus amigos. La construcción aparece en el mismo sitio para ellos y cada uno construye su parte.
+¿Algo mal colocado? El menú de construcción muestra arriba cuántos hay que arreglar. Haz clic para ver cada uno.
+Construcciones guardadas > Construcciones gratis tiene más de 1.400 construcciones gratis de la comunidad de Minecraft.
+Ajustes > Extras tiene más ayudas que puedes encender: materias primas, un mapa de la capa en la que estás y ayuda de andamios.
+El mod usa el idioma de tu juego: inglés, español, portugués, alemán, francés, ruso y chino.
 Cómo funciona
 < Atrás
 Siguiente >

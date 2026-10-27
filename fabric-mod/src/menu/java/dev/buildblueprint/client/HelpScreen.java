@@ -10,7 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
 /**
- * "How it works": seven short pages with a small picture each, one idea per page. Opened with the i button in the build
+ * "How it works": eight short pages with a small picture each, one idea per page. Opened with the i button in the build
  * menu, the swap screen and Settings. Left: the page list. Right: the page. Bottom: Back / Next / Done.
  */
 public class HelpScreen extends Screen {
@@ -19,11 +19,11 @@ public class HelpScreen extends Screen {
     private Button prev, next;
     private final List<Button> tabs = new ArrayList<>();
 
-    private static final String[] TITLES = {"Get a build", "Move and turn", "Place it", "Build layers", "Blocks and swaps", "Copy a build", "Good to know"};
+    private static final String[] TITLES = {"Get a build", "Move and turn", "Place it", "Build layers", "Blocks and swaps", "Copy a build", "Good to know", "More helpers"};
     private static final String[][] ICONS = {
         {"minecraft:writable_book", "minecraft:chest", "minecraft:paper"}, {"minecraft:compass"}, {"minecraft:lodestone"},
         {"minecraft:oak_planks", "minecraft:cobblestone", "minecraft:stone_bricks"}, {"minecraft:blue_terracotta", "minecraft:cyan_terracotta"},
-        {"minecraft:map"}, {"minecraft:command_block", "minecraft:clock"}};
+        {"minecraft:map"}, {"minecraft:command_block", "minecraft:clock"}, {"minecraft:bell", "minecraft:compass"}};
     /** Each page: lines of text; a line starting with "key:" is a key hint "key:KEY:what it does". */
     private static final String[][] TEXT = {
         {"A build is what you want to make, shown as see-through ghost blocks in your world.",
@@ -60,7 +60,12 @@ public class HelpScreen extends Screen {
         {"In Creative mode, Auto-build places the whole build for you and Build layer places one layer. Undo build takes it back.",
          "key:Middle-click:hold the block of the ghost you look at",
          "Settings lets you change how see-through the ghosts are, the corner list and more.",
-         "Every key can be changed in Settings -> Key binds."}};
+         "Every key can be changed in Settings -> Key binds."},
+        {"Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.",
+         "Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.",
+         "Saved builds > Get free builds has 1,400+ free builds from the Minecraft community.",
+         "Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.",
+         "The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese."}};
 
     public HelpScreen(Screen parent, int page) {
         super(Component.literal(Tr.t("How it works")));
@@ -80,7 +85,7 @@ public class HelpScreen extends Screen {
         if (wide()) {
             for (int i = 0; i < TITLES.length; i++) {
                 int p = i;
-                tabs.add(addRenderableWidget(Button.builder(Component.literal(Tr.t((i + 1) + ". " + TITLES[i])), b -> go(p)).bounds(x, 34 + i * 22, navW() - 6, 20).build()));
+                tabs.add(addRenderableWidget(Button.builder(Component.literal((i + 1) + ". " + Tr.t(TITLES[i])), b -> go(p)).bounds(x, 34 + i * 22, navW() - 6, 20).build()));
             }
         }
         int by = height - 26, bw = 80;

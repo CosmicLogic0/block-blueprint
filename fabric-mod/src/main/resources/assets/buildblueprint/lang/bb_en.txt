@@ -44,6 +44,7 @@ Build layers
 Blocks and swaps
 Copy a build
 Good to know
+More helpers
 A build is what you want to make, shown as see-through ghost blocks in your world.
 Open the build menu, click Saved builds, pick one and press Load into world.
 Builds come from three places:
@@ -87,6 +88,11 @@ Middle-click
 hold the block of the ghost you look at
 Settings lets you change how see-through the ghosts are, the corner list and more.
 Every key can be changed in Settings -> Key binds.
+Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.
+Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.
+Saved builds > Get free builds has 1,400+ free builds from the Minecraft community.
+Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.
+The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.
 How it works
 < Back
 Next >

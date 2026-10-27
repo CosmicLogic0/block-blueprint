@@ -40,6 +40,7 @@ Build layers	Строить по слоям
 Blocks and swaps	Блоки и замены
 Copy a build	Скопировать постройку
 Good to know	Полезно знать
+More helpers	Ещё помощники
 A build is what you want to make, shown as see-through ghost blocks in your world.	Постройка - это то, что ты хочешь построить, показанное прозрачными блоками-призраками в твоём мире.
 Open the build menu, click Saved builds, pick one and press Load into world.	Открой меню постройки, нажми Сохранённые постройки, выбери одну и нажми Загрузить в мир.
 Builds come from three places:	Постройки берутся из трёх мест:
@@ -83,6 +84,11 @@ Middle-click	Средняя кнопка мыши
 hold the block of the ghost you look at	взять в руку блок призрака, на который смотришь
 Settings lets you change how see-through the ghosts are, the corner list and more.	В настройках можно изменить прозрачность призраков, список в углу и другое.
 Every key can be changed in Settings -> Key binds.	Любую клавишу можно сменить в Настройки -> Управление.
+Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Стройка с друзьями: кнопка Совместно в меню постройки даёт код для друзей. Постройка появится у них на том же месте, и каждый строит свою часть.
+Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.	Что-то поставлено неправильно? Меню постройки показывает сверху, сколько исправить. Нажми, чтобы увидеть каждую ошибку.
+Saved builds > Get free builds has 1,400+ free builds from the Minecraft community.	Сохранённые постройки > Бесплатные постройки: больше 1400 бесплатных построек от сообщества Minecraft.
+Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Настройки > Дополнительно: ещё помощники, которые можно включить: сырьё, карта слоя и подсказки лесов.
+The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	Мод использует язык игры: английский, испанский, португальский, немецкий, французский, русский и китайский.
 How it works	Как это работает
 < Back	< Назад
 Next >	Далее >

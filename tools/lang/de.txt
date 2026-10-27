@@ -39,6 +39,7 @@ Schichtweise bauen
 Blöcke und Tauschen
 Bau kopieren
 Gut zu wissen
+Mehr Helfer
 Ein Bau ist das, was du bauen willst, gezeigt als durchsichtige Geisterblöcke in deiner Welt.
 Öffne das Bau-Menü, klick auf Gespeicherte Bauten, wähl einen aus und drück In die Welt laden.
 Bauten kommen von drei Orten:
@@ -82,6 +83,11 @@ Mittelklick
 den Block des Geistes nehmen, den du ansiehst
 In den Einstellungen änderst du, wie durchsichtig die Geister sind, die Eckliste und mehr.
 Jede Taste lässt sich unter Einstellungen -> Steuerung ändern.
+Mit Freunden bauen: Koop im Bau-Menü gibt dir einen Code für deine Freunde. Der Bau erscheint bei ihnen an derselben Stelle, und jeder baut seinen eigenen Teil.
+Etwas falsch gesetzt? Das Bau-Menü zeigt oben, wie viele zu reparieren sind. Klick darauf, um jeden einzeln zu sehen.
+Gespeicherte Bauten > Kostenlose Bauten hat über 1.400 kostenlose Bauten aus der Minecraft-Community.
+Einstellungen > Extras hat weitere Helfer zum Einschalten: Rohstoffe, eine Karte deiner Schicht und Gerüst-Hinweise.
+Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, Französisch, Russisch und Chinesisch.
 So funktioniert's
 < Zurück
 Weiter >

@@ -40,6 +40,7 @@ Build layers	Construir por capas
 Blocks and swaps	Bloques y cambios
 Copy a build	Copiar una construcción
 Good to know	Bueno saber
+More helpers	Más ayudas
 A build is what you want to make, shown as see-through ghost blocks in your world.	Una construcción es lo que quieres hacer, mostrada como bloques fantasma transparentes en tu mundo.
 Open the build menu, click Saved builds, pick one and press Load into world.	Abre el menú de construcción, pulsa Construcciones guardadas, elige una y pulsa Cargar en el mundo.
 Builds come from three places:	Las construcciones vienen de tres sitios:
@@ -83,6 +84,11 @@ Middle-click	Clic central
 hold the block of the ghost you look at	coger el bloque del fantasma que miras
 Settings lets you change how see-through the ghosts are, the corner list and more.	En Ajustes cambias lo transparentes que son los fantasmas, la lista de la esquina y más.
 Every key can be changed in Settings -> Key binds.	Todas las teclas se pueden cambiar en Ajustes -> Controles.
+Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Construir con amigos: Co-op en el menú de construcción te da un código para tus amigos. La construcción aparece en el mismo sitio para ellos y cada uno construye su parte.
+Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.	¿Algo mal colocado? El menú de construcción muestra arriba cuántos hay que arreglar. Haz clic para ver cada uno.
+Saved builds > Get free builds has 1,400+ free builds from the Minecraft community.	Construcciones guardadas > Construcciones gratis tiene más de 1.400 construcciones gratis de la comunidad de Minecraft.
+Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Ajustes > Extras tiene más ayudas que puedes encender: materias primas, un mapa de la capa en la que estás y ayuda de andamios.
+The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	El mod usa el idioma de tu juego: inglés, español, portugués, alemán, francés, ruso y chino.
 How it works	Cómo funciona
 < Back	< Atrás
 Next >	Siguiente >

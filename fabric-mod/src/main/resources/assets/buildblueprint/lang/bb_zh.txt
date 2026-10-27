@@ -40,6 +40,7 @@ Build layers	按层建造
 Blocks and swaps	方块和替换
 Copy a build	复制建筑
 Good to know	小提示
+More helpers	更多帮助
 A build is what you want to make, shown as see-through ghost blocks in your world.	建筑就是你想建造的东西，在你的世界里显示为半透明的幽灵方块。
 Open the build menu, click Saved builds, pick one and press Load into world.	打开建筑菜单，点击“已保存的建筑”，选一个，然后按“加载到世界”。
 Builds come from three places:	建筑有三个来源：
@@ -83,6 +84,11 @@ Middle-click	鼠标中键
 hold the block of the ghost you look at	拿起你看着的幽灵方块
 Settings lets you change how see-through the ghosts are, the corner list and more.	在设置里可以调整幽灵方块的透明度、角落列表等。
 Every key can be changed in Settings -> Key binds.	所有按键都可以在“设置 -> 按键绑定”中更改。
+Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	和朋友一起建造：建筑菜单里的“合作”会给你一个代码发给朋友。建筑会出现在他们那边的同一个位置，每个人建自己的部分。
+Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.	有东西放错了？建筑菜单顶部会显示要修正几处。点击它就会逐个带你去看。
+Saved builds > Get free builds has 1,400+ free builds from the Minecraft community.	“已保存的建筑 > 免费建筑”里有来自 Minecraft 社区的 1400 多个免费建筑。
+Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	“设置 > 附加”里还有更多可以打开的辅助功能：原材料、本层地图和脚手架提示。
+The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	模组会跟随游戏语言：英语、西班牙语、葡萄牙语、德语、法语、俄语和中文。
 How it works	使用方法
 < Back	< 返回
 Next >	下一页 >

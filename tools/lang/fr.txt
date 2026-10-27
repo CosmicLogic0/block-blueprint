@@ -39,6 +39,7 @@ Construire par couches
 Blocs et échanges
 Copier une construction
 Bon à savoir
+Plus d'aides
 Une construction, c'est ce que tu veux bâtir, affiché en blocs fantômes transparents dans ton monde.
 Ouvre le menu de construction, clique sur Constructions sauvegardées, choisis-en une et appuie sur Charger dans le monde.
 Les constructions viennent de trois endroits :
@@ -82,6 +83,11 @@ Clic molette
 prendre le bloc du fantôme que tu regardes
 Les Paramètres te permettent de changer la transparence des fantômes, la liste du coin et plus.
 Chaque touche peut être changée dans Paramètres -> Commandes.
+Construire entre amis : Coop dans le menu de construction te donne un code pour tes amis. La construction apparaît au même endroit chez eux, et chacun construit sa partie.
+Quelque chose de mal posé ? Le menu de construction affiche en haut combien il y a à corriger. Clique dessus pour les voir un par un.
+Constructions sauvegardées > Constructions gratuites propose plus de 1 400 constructions gratuites de la communauté Minecraft.
+Paramètres > Extras propose d'autres aides à activer : matières premières, une carte de la couche où tu es, et l'aide échafaudage.
+Le mod suit la langue de ton jeu : anglais, espagnol, portugais, allemand, français, russe et chinois.
 Comment ça marche
 < Retour
 Suivant >

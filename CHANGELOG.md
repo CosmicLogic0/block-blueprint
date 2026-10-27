@@ -1,3 +1,17 @@
+## 1.3.0
+- **Build with friends:** press **Co-op** in the build menu (once the build is placed) and send your friends the code. They paste it in Saved builds > Paste and the build appears in the exact same spot for them. Pick how many builders there are and which one you are - the build is split into strips and everyone sees only their own part.
+- **Mistake finder:** when a block is wrong (a different block, or placed the wrong way round), the build menu shows **"3 to fix"** at the top. Click it and the mod points you to each one; when you fix one it moves on to the next by itself.
+- **Free builds in the game:** Saved builds > **Get free builds** - 1,400+ free builds from the Minecraft community (houses, towers, ships, castles...). Search, pick one, press Get it. Every build shows who made it and its license.
+- **Copy the block list:** the **Copy** link in the build menu puts the list of blocks you still need on your clipboard, to paste in a chat or a note.
+- **Build complete card:** when you finish a build you get a short summary: blocks placed, building time and blocks a minute.
+- **The mod speaks your language:** Spanish, Portuguese, German, French, Russian and Chinese. It follows the game's language by itself.
+- **New Extras page in Settings** (all off until you turn them on):
+  - **Raw materials:** what to gather for the blocks you still need - logs for planks and stairs, sand for glass, cobblestone to smelt into stone...
+  - **Layer map:** a small map of the layer you're on, seen from above.
+  - **Scaffold hints:** parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.
+- **How it works** has a new page about all of this.
+- **Block Blueprint app for Mac and Linux:** download it from the same page as the Windows app.
+
 ## 1.2.11
 - **More Minecraft versions (now 100):**
   - Fabric 1.15.2 (beta) and Fabric 1.16.1

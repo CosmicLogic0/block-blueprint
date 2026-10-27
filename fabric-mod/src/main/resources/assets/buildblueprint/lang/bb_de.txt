@@ -40,6 +40,7 @@ Build layers	Schichtweise bauen
 Blocks and swaps	Blöcke und Tauschen
 Copy a build	Bau kopieren
 Good to know	Gut zu wissen
+More helpers	Mehr Helfer
 A build is what you want to make, shown as see-through ghost blocks in your world.	Ein Bau ist das, was du bauen willst, gezeigt als durchsichtige Geisterblöcke in deiner Welt.
 Open the build menu, click Saved builds, pick one and press Load into world.	Öffne das Bau-Menü, klick auf Gespeicherte Bauten, wähl einen aus und drück In die Welt laden.
 Builds come from three places:	Bauten kommen von drei Orten:
@@ -83,6 +84,11 @@ Middle-click	Mittelklick
 hold the block of the ghost you look at	den Block des Geistes nehmen, den du ansiehst
 Settings lets you change how see-through the ghosts are, the corner list and more.	In den Einstellungen änderst du, wie durchsichtig die Geister sind, die Eckliste und mehr.
 Every key can be changed in Settings -> Key binds.	Jede Taste lässt sich unter Einstellungen -> Steuerung ändern.
+Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Mit Freunden bauen: Koop im Bau-Menü gibt dir einen Code für deine Freunde. Der Bau erscheint bei ihnen an derselben Stelle, und jeder baut seinen eigenen Teil.
+Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.	Etwas falsch gesetzt? Das Bau-Menü zeigt oben, wie viele zu reparieren sind. Klick darauf, um jeden einzeln zu sehen.
+Saved builds > Get free builds has 1,400+ free builds from the Minecraft community.	Gespeicherte Bauten > Kostenlose Bauten hat über 1.400 kostenlose Bauten aus der Minecraft-Community.
+Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Einstellungen > Extras hat weitere Helfer zum Einschalten: Rohstoffe, eine Karte deiner Schicht und Gerüst-Hinweise.
+The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, Französisch, Russisch und Chinesisch.
 How it works	So funktioniert's
 < Back	< Zurück
 Next >	Weiter >
