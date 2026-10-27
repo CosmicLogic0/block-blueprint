@@ -1,0 +1,21 @@
+PASS fabric-26.3
+[12:31:13] [Render thread] [INFO] [STDOUT]: BBUITEST waiting on GenericMessageScreen
+[12:31:23] [Render thread] [INFO] [STDOUT]: BBUITEST joining 127.0.0.1:25565
+[12:31:27] [Render thread] [INFO] [STDOUT]: BBUITEST in world
+[12:31:42] [Render thread] [INFO] [STDOUT]: BBUITEST loaded 842 blocks
+[12:31:42] [Render thread] [INFO] [STDOUT]: BBUITEST direction check: Block{minecraft:oak_stairs}[facing=south,half=top,shape=straight,waterlogged=false] -> right way false (should face north, be the right way up (bottom half)), same way true
+[12:31:42] [Render thread] [INFO] [STDOUT]: BBUITEST renamed blocks: chain -> minecraft:iron_chain[axis=y], iron_chain -> minecraft:iron_chain[axis=y], grass -> minecraft:short_grass
+[12:31:42] [Render thread] [INFO] [STDOUT]: BBUITEST view from 18 -49 -7
+[12:31:45] [Render thread] [INFO] [STDOUT]: BBUITEST shot sc-ghost
+[12:31:51] [Render thread] [INFO] [STDOUT]: BBUITEST shot sc-menu
+[12:31:56] [Render thread] [INFO] [STDOUT]: BBUITEST shot sc-placed
+[12:31:58] [Render thread] [INFO] [STDOUT]: BBUITEST showcase layer 1, placed 0/838
+[12:32:02] [Render thread] [INFO] [STDOUT]: BBUITEST shot sc-layer-a
+[12:32:04] [Render thread] [INFO] [STDOUT]: BBUITEST showcase layer 1, placed 181/838
+[12:32:07] [Render thread] [INFO] [STDOUT]: BBUITEST shot sc-layer-b
+[12:32:09] [Render thread] [INFO] [STDOUT]: BBUITEST showcase layer 2, placed 182/838
+[12:32:13] [Render thread] [INFO] [STDOUT]: BBUITEST shot sc-layer-c
+[12:32:15] [Render thread] [INFO] [STDOUT]: BBUITEST showcase layer 3, placed 332/838
+[12:32:18] [Render thread] [INFO] [STDOUT]: BBUITEST shot sc-layer-d
+[12:32:20] [Render thread] [INFO] [STDOUT]: BBUITEST showcase layer 4, placed 437/838
+[12:32:24] [Render thread] [INFO] [STDOUT]: BBUITEST shot sc-layer-e
