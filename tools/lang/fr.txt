@@ -36,7 +36,7 @@ Il ne reste rien dans la boîte - ajuste-la ou garde le sol.
 L'enregistre dans Constructions sauvegardées et copie son code dans le presse-papiers.
 Obtenir une construction
 Déplacer et tourner
-La placer
+Placer
 Construire par couches
 Blocs et échanges
 Copier une construction
@@ -134,11 +134,11 @@ Miroir
 Retourne la construction gauche <-> droite, comme dans un miroir. Pratique pour des maisons assorties des deux côtés d'une rue.
 Au sol
 Monte ou descend la construction pour qu'elle repose juste sur le sol.
-Construction auto
+Construire
 Créatif uniquement : pose toute la construction pour toi, couche du bas d'abord. Les blocs qui gênent sont remplacés (les coffres ne sont pas touchés).
-Construire la couche
+1 couche
 Créatif uniquement : pose seulement la couche où tu es.
-Annuler la construction
+Annuler
 Remet ce qu'il y avait avant la dernière construction auto.
 Coop {0}/{1}
 Coop
@@ -151,14 +151,14 @@ Couche en dessous (touche Fin)
 Couche
 Seulement la couche que tu construis maintenant.
 Couche au-dessus (touche Début). Au-delà du sommet, toutes les couches s'affichent.
-Déverrouiller
+Libérer
 La déverrouiller pour pouvoir la déplacer ou la tourner à nouveau.
 Verrouille la construction où elle est et commence à construire, couche par couche (touche Suppr).
 Tourner
 Tourne la construction de 90 degrés (Pg suiv).
-Constructions sauvegardées
+Sauvegardes
 Tes constructions et schématiques sauvegardées : charges-en une autre, colle un code, copie-en une de ton monde.
-Paramètres
+Options
 Dernier échange annulé
 Seulement {0} affiché  ·  Maj + clic sur l'œil à nouveau pour tout afficher
 Tous les blocs sont de nouveau affichés
@@ -525,6 +525,9 @@ gauche
 droite
 gardé
 auto
+tu as
+placée
+coffre
 Constructions de la communauté
 Maisons
 Tours

@@ -68,9 +68,9 @@ public class TemplatesScreen extends BBScreen {
         kindBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t(kindLabel())), b -> { kind = nextKind(); b.setMessage(Component.literal(Tr.t(kindLabel()))); scroll = 0; refill(); })
                 .bounds(x + w - 120, 35, 120, 20).tooltip(Tooltip.create(Component.literal(Tr.t("Show one kind of build: houses, towers, ships...")))).build());
         int by = height - 26, bw = (w - 4) / 2;
-        getBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t("Get it")), b -> get()).bounds(x, by, bw, 20)
+        getBtn = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Get it", bw - 8)), b -> get()).bounds(x, by, bw, 20)
                 .tooltip(Tooltip.create(Component.literal(Tr.t("Download it into Saved builds.")))).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Back")), b -> onClose()).bounds(x + bw + 4, by, w - bw - 4, 20).build());
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Back", (w - bw - 4) - 8)), b -> onClose()).bounds(x + bw + 4, by, w - bw - 4, 20).build());
         refill();
         setFocused(search);
     }

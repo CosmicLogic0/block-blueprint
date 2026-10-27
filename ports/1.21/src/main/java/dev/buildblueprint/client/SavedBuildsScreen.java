@@ -66,19 +66,19 @@ public class SavedBuildsScreen extends BBScreen {
         filter();
         if (pick != null) { for (int i = 0; i < builds.size(); i++) if (builds.get(i).file().equals(pick)) sel = i; pick = null; }
         int lx = M(), lw = listW();
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Get free builds")), b -> Mc.setScreen(new TemplatesScreen(this))).bounds(lx, B() - 66, lw, 20)
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Get free builds", lw - 8)), b -> Mc.setScreen(new TemplatesScreen(this))).bounds(lx, B() - 66, lw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("1,400+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.")))).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("+ Paste build")), b -> paste()).bounds(lx, B() - 44, lw, 20)
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "+ Paste build", lw - 8)), b -> paste()).bounds(lx, B() - 44, lw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.")))).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Copy from world")), b -> { onClose(); Copier.start(); }).bounds(lx, B() - 22, lw, 20)
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Copy from world", lw - 8)), b -> { onClose(); Copier.start(); }).bounds(lx, B() - 22, lw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.")))).build());
         boolean loaded = BuildBlueprintClient.SESSION.loaded();
-        if (loaded) addRenderableWidget(Button.builder(Component.literal(Tr.t("Current build")), b -> MenuModule.openMaterials()).bounds(lx, B() + 4, lw / 2 - 2, 20)
+        if (loaded) addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Current build", (lw / 2 - 2) - 8)), b -> MenuModule.openMaterials()).bounds(lx, B() + 4, lw / 2 - 2, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("Back to the build you have loaded (materials list).")))).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Settings")), b -> MenuModule.openSettings(this)).bounds(loaded ? lx + lw / 2 + 2 : lx, B() + 4, loaded ? lw / 2 - 2 : lw, 20).build());
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Settings", (loaded ? lw / 2 - 2 : lw) - 8)), b -> MenuModule.openSettings(this)).bounds(loaded ? lx + lw / 2 + 2 : lx, B() + 4, loaded ? lw / 2 - 2 : lw, 20).build());
         // preview toolbar
         int x = pvX(), y = T();
-        viewBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t(viewName())), b -> { view = (view + 1) % 3; panX = panY = 0; b.setMessage(Component.literal(Tr.t(viewName()))); }).bounds(x, y, 70, 20).build());
+        viewBtn = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, viewName(), 70 - 8)), b -> { view = (view + 1) % 3; panX = panY = 0; b.setMessage(Component.literal(Tr.t(viewName()))); }).bounds(x, y, 70, 20).build());
         addRenderableWidget(Button.builder(Component.literal(Tr.t("⟲")), b -> turn = (turn + 3) % 4).bounds(x + 74, y, 20, 20).build());
         addRenderableWidget(Button.builder(Component.literal(Tr.t("⟳")), b -> turn = (turn + 1) % 4).bounds(x + 96, y, 20, 20).build());
         addRenderableWidget(Button.builder(Component.literal(Tr.t("Fit")), b -> { zoom = 1f; panX = panY = 0; }).bounds(x + 122, y, 30, 20)
@@ -89,20 +89,20 @@ public class SavedBuildsScreen extends BBScreen {
         int aw = Math.min(100, (pvW() - 16) / 5), lw0 = Math.min(120, aw + 20);
         aw = Math.min(aw, (pvW() - lw0 - 16) / 4);
         boolean shortL = aw < 74;
-        addRenderableWidget(Button.builder(Component.literal(Tr.t(shortL ? "Load" : "Load into world")), b -> loadSel()).bounds(x, ay, lw0, 20)
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, shortL ? "Load" : "Load into world", lw0 - 8)), b -> loadSel()).bounds(x, ay, lw0, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("Show this build in front of you as ghost blocks (double-click or Enter does the same).")))).build());
         int ax = x + lw0 + 4;
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Rename")), b -> startRename()).bounds(ax, ay, aw, 20).build());
-        delBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t("Delete")), b -> deleteSel()).bounds(ax + (aw + 4), ay, aw, 20)
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Rename", aw - 8)), b -> startRename()).bounds(ax, ay, aw, 20).build());
+        delBtn = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Delete", aw - 8)), b -> deleteSel()).bounds(ax + (aw + 4), ay, aw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("Delete this build from this computer. Click twice to be sure.")))).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t(shortL ? "Code" : "Copy code")), b -> copyCode()).bounds(ax + 2 * (aw + 4), ay, aw, 20)
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, shortL ? "Code" : "Copy code", aw - 8)), b -> copyCode()).bounds(ax + 2 * (aw + 4), ay, aw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("Puts this build's BB1: code on your clipboard, to import in the Block Blueprint app or send to a friend.")))).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t(shortL ? ".schem" : "Save .schem")), b -> exportSchem()).bounds(ax + 3 * (aw + 4), ay, aw, 20)
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, shortL ? ".schem" : "Save .schem", aw - 8)), b -> exportSchem()).bounds(ax + 3 * (aw + 4), ay, aw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("Save this build as a .schem file (BlockBlueprint/schematics in your user folder) for WorldEdit, Litematica, Axiom...")))).build());
         nameBox = new EditBox(font, x + 2, B() - 20, Math.min(220, pvW() - 80), 16, Component.literal(Tr.t("Name")));
         nameBox.setMaxLength(40); nameBox.visible = false;
         addRenderableWidget(nameBox);
-        saveName = addRenderableWidget(Button.builder(Component.literal(Tr.t("Save")), b -> finishRename()).bounds(x + Math.min(224, pvW() - 76), B() - 22, 60, 20).build());
+        saveName = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Save", 60 - 8)), b -> finishRename()).bounds(x + Math.min(224, pvW() - 76), B() - 22, 60, 20).build());
         saveName.visible = false;
     }
     private int ticks = 0;

@@ -133,13 +133,13 @@ Page Up > Remove to clear it	Page Up > Remover para limpar
 Build	Construção
 Mirror	Espelhar
 Flip the build left <-> right, like in a mirror. Handy for matching houses on both sides of a street.	Inverte a construção esquerda <-> direita, como num espelho. Útil para casas iguais dos dois lados de uma rua.
-To ground	Para o chão
+To ground	Ao chão
 Move the build up or down so it sits right on the ground under it.	Sobe ou desce a construção para ela ficar bem em cima do chão.
-Auto-build	Construir tudo
+Auto-build	Construir
 Creative only: places the whole build for you, bottom layer first. Blocks in the way are replaced (chests are left alone).	Só no Criativo: coloca a construção inteira para você, começando pela camada de baixo. Blocos no caminho são trocados (baús são deixados em paz).
-Build layer	Construir camada
+Build layer	1 camada
 Creative only: places just the layer you're on.	Só no Criativo: coloca só a camada em que você está.
-Undo build	Desfazer construção
+Undo build	Desfazer
 Puts back what was there before the last auto-build.	Coloca de volta o que tinha antes da última construção automática.
 Co-op {0}/{1}	Co-op {0}/{1}
 Co-op	Co-op
@@ -157,9 +157,9 @@ Unlock it so you can move or turn it again.	Destrava para poder mover ou girar d
 Lock the build where it is and start building, layer by layer (Delete key).	Trava a construção onde está e começa a construir, camada por camada (tecla Delete).
 Turn	Girar
 Turn the build 90 degrees (Page Down).	Gira a construção 90 graus (Page Down).
-Saved builds	Construções salvas
+Saved builds	Salvas
 Your saved builds and schematics: load another one, paste a code, copy one from your world.	Suas construções e esquemas salvos: carregue outra, cole um código, copie uma do seu mundo.
-Settings	Configurações
+Settings	Ajustes
 Last swap undone	Última troca desfeita
 Showing only {0}  ·  Shift-click the eye again to show everything	Mostrando só {0}  ·  Shift + clique no olho de novo para mostrar tudo
 Showing every block again	Mostrando todos os blocos de novo
@@ -526,6 +526,9 @@ left	esquerda
 right	direita
 kept	mantido
 auto	auto
+have	tem
+placed	colocada
+chest	baú
 Community Builds	Construções da comunidade
 Houses	Casas
 Towers	Torres

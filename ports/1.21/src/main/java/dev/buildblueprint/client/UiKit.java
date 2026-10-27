@@ -64,7 +64,7 @@ public final class UiKit {
         int f = (int) Math.round(w * Math.min(1.0, done / (double) total));
         g.fill(x, y, x + f, y + 10, color);
         if (f > 0) g.fill(x, y, x + f, y + 2, 0x50FFFFFF);
-        String t = label + "  " + (int) Math.floor(100.0 * done / total) + "%";
+        String t = Tr.t(label) + "  " + (int) Math.floor(100.0 * done / total) + "%";
         g.drawString(font, Tr.t(t), x + w / 2 - font.width(Tr.t(t)) / 2, y + 1, WHITE, true);
     }
 

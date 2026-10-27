@@ -135,11 +135,11 @@ Mirror	Отразить
 Flip the build left <-> right, like in a mirror. Handy for matching houses on both sides of a street.	Переворачивает постройку лево <-> право, как в зеркале. Удобно для одинаковых домов по обе стороны улицы.
 To ground	На землю
 Move the build up or down so it sits right on the ground under it.	Поднимает или опускает постройку, чтобы она стояла прямо на земле.
-Auto-build	Автостройка
+Auto-build	Построить
 Creative only: places the whole build for you, bottom layer first. Blocks in the way are replaced (chests are left alone).	Только в творческом: ставит всю постройку за тебя, начиная с нижнего слоя. Мешающие блоки заменяются (сундуки не трогаются).
-Build layer	Построить слой
+Build layer	1 слой
 Creative only: places just the layer you're on.	Только в творческом: ставит только слой, на котором ты сейчас.
-Undo build	Отменить стройку
+Undo build	Отменить
 Puts back what was there before the last auto-build.	Возвращает то, что было до последней автостройки.
 Co-op {0}/{1}	Совместно {0}/{1}
 Co-op	Совместно
@@ -157,7 +157,7 @@ Unlock it so you can move or turn it again.	Открепи её, чтобы сн
 Lock the build where it is and start building, layer by layer (Delete key).	Закрепляет постройку на месте и начинает стройку, слой за слоем (клавиша Delete).
 Turn	Повернуть
 Turn the build 90 degrees (Page Down).	Поворачивает постройку на 90 градусов (Page Down).
-Saved builds	Сохранённые постройки
+Saved builds	Сохранённые
 Your saved builds and schematics: load another one, paste a code, copy one from your world.	Твои сохранённые постройки и схемы: загрузи другую, вставь код, скопируй из своего мира.
 Settings	Настройки
 Last swap undone	Последняя замена отменена
@@ -526,6 +526,9 @@ left	слева
 right	справа
 kept	оставлено
 auto	авто
+have	есть
+placed	закреплена
+chest	сундук
 Community Builds	Постройки сообщества
 Houses	Дома
 Towers	Башни

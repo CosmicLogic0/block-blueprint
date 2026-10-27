@@ -64,7 +64,7 @@ public class SwapScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal(Tr.t("i")), b -> Mc.setScreen(new HelpScreen(this, 4))).bounds(x + w - 20, 8, 20, 20)
                 .tooltip(tip("How swapping works")).build());
         int rw = Math.min(110, font.width(Tr.t("Remove from build")) + 12);
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Remove from build")), b -> doRemove()).bounds(x + w - 24 - rw, 8, rw, 20)
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Remove from build", rw - 8)), b -> doRemove()).bounds(x + w - 24 - rw, 8, rw, 20)
                 .tooltip(tip("Take every " + fromName() + " out of the build, for example snow on a roof. Undo swap puts it back.")).build());
         String q = search == null ? "" : search.getValue();
         search = new EditBox(font, x, 38, w, 18, Component.literal(Tr.t("Search")));
@@ -74,17 +74,17 @@ public class SwapScreen extends Screen {
         addRenderableWidget(search);
         boolean hasMods = !mods.isEmpty();
         int n = hasMods ? 3 : 2, tw = (w - (n - 1) * 4) / n;
-        tSimilar = addRenderableWidget(Button.builder(Component.literal(Tr.t("Similar (" + similar.size() + ")")), b -> setTab("similar")).bounds(x, 60, tw, 20)
+        tSimilar = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Similar (" + similar.size() + ")", tw - 8)), b -> setTab("similar")).bounds(x, 60, tw, 20)
                 .tooltip(tip("Blocks of the same kind: stairs for stairs, slabs for slabs, full blocks for full blocks. The most alike come first.")).build());
-        tAll = addRenderableWidget(Button.builder(Component.literal(Tr.t("All blocks (" + Swapper.allOptions().size() + ")")), b -> setTab("all")).bounds(x + tw + 4, 60, tw, 20)
+        tAll = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "All blocks (" + Swapper.allOptions().size() + ")", tw - 8)), b -> setTab("all")).bounds(x + tw + 4, 60, tw, 20)
                 .tooltip(tip("Every block in the game, A to Z.")).build());
-        if (hasMods) tMods = addRenderableWidget(Button.builder(Component.literal(Tr.t("From mods (" + mods.size() + ")")), b -> setTab("mods")).bounds(x + 2 * (tw + 4), 60, w - 2 * (tw + 4), 20)
+        if (hasMods) tMods = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "From mods (" + mods.size() + ")", (w - 2 * (tw + 4)) - 8)), b -> setTab("mods")).bounds(x + 2 * (tw + 4), 60, w - 2 * (tw + 4), 20)
                 .tooltip(tip("Blocks added by the other mods you have installed.")).build());
         int by = height - 24, bw = (w - 8) / 3;
-        swapBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t("Swap")), b -> doSwap()).bounds(x, by, bw, 20)
+        swapBtn = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Swap", bw - 8)), b -> doSwap()).bounds(x, by, bw, 20)
                 .tooltip(tip("Swap every block of this kind in the build (Enter).")).build());
-        undoBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t("Undo last swap")), b -> undo()).bounds(x + bw + 4, by, bw, 20).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Back")), b -> onClose()).bounds(x + 2 * (bw + 4), by, w - 2 * (bw + 4), 20).build());
+        undoBtn = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Undo last swap", bw - 8)), b -> undo()).bounds(x + bw + 4, by, bw, 20).build());
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Back", (w - 2 * (bw + 4)) - 8)), b -> onClose()).bounds(x + 2 * (bw + 4), by, w - 2 * (bw + 4), 20).build());
         if (tab.equals("similar") && similar.isEmpty()) tab = "all";
         if (tab.equals("mods") && !hasMods) tab = "all";
         refill();

@@ -37,7 +37,7 @@ Nothing left in the box - adjust it or keep the ground.	No queda nada en la caja
 Saves to Saved builds and copies its code to your clipboard.	Se guarda en Construcciones guardadas y copia su código al portapapeles.
 Get a build	Conseguir una construcción
 Move and turn	Mover y girar
-Place it	Colocarla
+Place it	Colocar
 Build layers	Construir por capas
 Blocks and swaps	Bloques y cambios
 Copy a build	Copiar una construcción
@@ -135,11 +135,11 @@ Mirror	Espejo
 Flip the build left <-> right, like in a mirror. Handy for matching houses on both sides of a street.	Da la vuelta a la construcción izquierda <-> derecha, como en un espejo. Útil para casas iguales a ambos lados de una calle.
 To ground	Al suelo
 Move the build up or down so it sits right on the ground under it.	Sube o baja la construcción para que quede justo sobre el suelo.
-Auto-build	Autoconstruir
+Auto-build	Construir
 Creative only: places the whole build for you, bottom layer first. Blocks in the way are replaced (chests are left alone).	Solo en Creativo: coloca toda la construcción por ti, empezando por la capa de abajo. Los bloques en medio se reemplazan (los cofres se respetan).
-Build layer	Construir capa
+Build layer	Una capa
 Creative only: places just the layer you're on.	Solo en Creativo: coloca solo la capa en la que estás.
-Undo build	Deshacer construcción
+Undo build	Deshacer
 Puts back what was there before the last auto-build.	Vuelve a poner lo que había antes de la última autoconstrucción.
 Co-op {0}/{1}	Co-op {0}/{1}
 Co-op	Co-op
@@ -157,7 +157,7 @@ Unlock it so you can move or turn it again.	Suéltala para poder moverla o girar
 Lock the build where it is and start building, layer by layer (Delete key).	Fija la construcción donde está y empieza a construir, capa por capa (tecla Supr).
 Turn	Girar
 Turn the build 90 degrees (Page Down).	Gira la construcción 90 grados (Av Pág).
-Saved builds	Construcciones guardadas
+Saved builds	Guardadas
 Your saved builds and schematics: load another one, paste a code, copy one from your world.	Tus construcciones y esquemas guardados: carga otra, pega un código o copia una de tu mundo.
 Settings	Ajustes
 Last swap undone	Último cambio deshecho
@@ -526,6 +526,9 @@ left	izquierda
 right	derecha
 kept	conservado
 auto	auto
+have	tienes
+placed	colocada
+chest	cofre
 Community Builds	Construcciones de la comunidad
 Houses	Casas
 Towers	Torres

@@ -133,13 +133,13 @@ Page Up > Remove to clear it	Bild auf > Entfernen zum Löschen
 Build	Bau
 Mirror	Spiegeln
 Flip the build left <-> right, like in a mirror. Handy for matching houses on both sides of a street.	Dreht den Bau links <-> rechts, wie in einem Spiegel. Praktisch für passende Häuser auf beiden Straßenseiten.
-To ground	Auf den Boden
+To ground	Zum Boden
 Move the build up or down so it sits right on the ground under it.	Bewegt den Bau hoch oder runter, damit er genau auf dem Boden darunter steht.
-Auto-build	Automatisch bauen
+Auto-build	Auto-Bau
 Creative only: places the whole build for you, bottom layer first. Blocks in the way are replaced (chests are left alone).	Nur Kreativ: setzt den ganzen Bau für dich, unterste Schicht zuerst. Blöcke im Weg werden ersetzt (Truhen bleiben in Ruhe).
-Build layer	Schicht bauen
+Build layer	1 Schicht
 Creative only: places just the layer you're on.	Nur Kreativ: setzt nur die Schicht, auf der du bist.
-Undo build	Bau rückgängig
+Undo build	Rückgängig
 Puts back what was there before the last auto-build.	Stellt wieder her, was vor dem letzten automatischen Bauen da war.
 Co-op {0}/{1}	Koop {0}/{1}
 Co-op	Koop
@@ -157,9 +157,9 @@ Unlock it so you can move or turn it again.	Lös ihn, damit du ihn wieder bewege
 Lock the build where it is and start building, layer by layer (Delete key).	Fixiert den Bau, wo er ist, und startet das Bauen, Schicht für Schicht (Entf-Taste).
 Turn	Drehen
 Turn the build 90 degrees (Page Down).	Dreht den Bau um 90 Grad (Bild ab).
-Saved builds	Gespeicherte Bauten
+Saved builds	Meine Bauten
 Your saved builds and schematics: load another one, paste a code, copy one from your world.	Deine gespeicherten Bauten und Schematics: lade einen anderen, füg einen Code ein, kopier einen aus deiner Welt.
-Settings	Einstellungen
+Settings	Optionen
 Last swap undone	Letzter Tausch rückgängig gemacht
 Showing only {0}  ·  Shift-click the eye again to show everything	Nur {0} wird gezeigt  ·  Umschalt-Klick aufs Auge zeigt wieder alles
 Showing every block again	Alle Blöcke werden wieder gezeigt
@@ -526,6 +526,9 @@ left	links
 right	rechts
 kept	behalten
 auto	auto
+have	hast
+placed	platziert
+chest	Truhe
 Community Builds	Community-Bauten
 Houses	Häuser
 Towers	Türme

@@ -577,6 +577,9 @@ left
 right
 kept
 auto
+have
+placed
+chest
 Community Builds
 Houses
 Towers

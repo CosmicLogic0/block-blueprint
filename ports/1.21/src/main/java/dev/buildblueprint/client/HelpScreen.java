@@ -84,13 +84,13 @@ public class HelpScreen extends BBScreen {
         if (wide()) {
             for (int i = 0; i < TITLES.length; i++) {
                 int p = i;
-                tabs.add(addRenderableWidget(Button.builder(Component.literal((i + 1) + ". " + Tr.t(TITLES[i])), b -> go(p)).bounds(x, 34 + i * 22, navW() - 6, 20).build()));
+                tabs.add(addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, (i + 1) + ". " + Tr.t(TITLES[i]), navW() - 14)), b -> go(p)).bounds(x, 34 + i * 22, navW() - 6, 20).build()));
             }
         }
         int by = height - 26, bw = 80;
-        prev = addRenderableWidget(Button.builder(Component.literal(Tr.t("< Back")), b -> go(page - 1)).bounds(x + navW(), by, bw, 20).build());
-        next = addRenderableWidget(Button.builder(Component.literal(Tr.t("Next >")), b -> go(page + 1)).bounds(x + navW() + bw + 4, by, bw, 20).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Done")), b -> onClose()).bounds(x + w - bw, by, bw, 20).build());
+        prev = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "< Back", bw - 8)), b -> go(page - 1)).bounds(x + navW(), by, bw, 20).build());
+        next = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Next >", bw - 8)), b -> go(page + 1)).bounds(x + navW() + bw + 4, by, bw, 20).build());
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Done", bw - 8)), b -> onClose()).bounds(x + w - bw, by, bw, 20).build());
         go(page);
     }
 

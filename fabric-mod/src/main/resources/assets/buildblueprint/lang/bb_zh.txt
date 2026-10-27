@@ -526,6 +526,9 @@ left	左边
 right	右边
 kept	保留
 auto	自动
+have	拥有
+placed	已放置
+chest	箱子
 Community Builds	社区建筑
 Houses	房屋
 Towers	塔楼

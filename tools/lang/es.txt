@@ -36,7 +36,7 @@ No queda nada en la caja: ajústala o conserva el suelo.
 Se guarda en Construcciones guardadas y copia su código al portapapeles.
 Conseguir una construcción
 Mover y girar
-Colocarla
+Colocar
 Construir por capas
 Bloques y cambios
 Copiar una construcción
@@ -134,11 +134,11 @@ Espejo
 Da la vuelta a la construcción izquierda <-> derecha, como en un espejo. Útil para casas iguales a ambos lados de una calle.
 Al suelo
 Sube o baja la construcción para que quede justo sobre el suelo.
-Autoconstruir
+Construir
 Solo en Creativo: coloca toda la construcción por ti, empezando por la capa de abajo. Los bloques en medio se reemplazan (los cofres se respetan).
-Construir capa
+Una capa
 Solo en Creativo: coloca solo la capa en la que estás.
-Deshacer construcción
+Deshacer
 Vuelve a poner lo que había antes de la última autoconstrucción.
 Co-op {0}/{1}
 Co-op
@@ -156,7 +156,7 @@ Suéltala para poder moverla o girarla otra vez.
 Fija la construcción donde está y empieza a construir, capa por capa (tecla Supr).
 Girar
 Gira la construcción 90 grados (Av Pág).
-Construcciones guardadas
+Guardadas
 Tus construcciones y esquemas guardados: carga otra, pega un código o copia una de tu mundo.
 Ajustes
 Último cambio deshecho
@@ -525,6 +525,9 @@ izquierda
 derecha
 conservado
 auto
+tienes
+colocada
+cofre
 Construcciones de la comunidad
 Casas
 Torres

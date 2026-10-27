@@ -33,16 +33,16 @@ public class CopyScreen extends BBScreen {
         treesBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t("")), b -> { Copier.skipTrees = !Copier.skipTrees; label(); recount(); })
                 .bounds(cx + 2, y + 26, 108, 20).tooltip(Tooltip.create(Component.literal(Tr.t("Leave out trees, leaves, grass and flowers around the build.")))).build());
         label();
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Save build")), b -> save()).bounds(cx - 110, y + 52, 108, 20).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Adjust the box")), b -> onClose()).bounds(cx + 2, y + 52, 108, 20)
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Save build", 108 - 8)), b -> save()).bounds(cx - 110, y + 52, 108, 20).build());
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Adjust the box", 108 - 8)), b -> onClose()).bounds(cx + 2, y + 52, 108, 20)
                 .tooltip(Tooltip.create(Component.literal(Tr.t("Go back and change the box: arrows grow it, Alt + arrows shrink it, Page Down stretches it to where you look. Then press Insert again.")))).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Cancel copy")), b -> { Copier.cancel(); onClose(); }).bounds(cx - 54, y + 78, 108, 20).build());
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Cancel copy", 108 - 8)), b -> { Copier.cancel(); onClose(); }).bounds(cx - 54, y + 78, 108, 20).build());
         if (blocks < 0) recount();
     }
 
     private void label() {
-        groundBtn.setMessage(Component.literal(Tr.t("Ground: " + (Copier.skipGround ? "left out" : "kept"))));
-        treesBtn.setMessage(Component.literal(Tr.t("Trees: " + (Copier.skipTrees ? "left out" : "kept"))));
+        groundBtn.setMessage(Component.literal(UiKit.fit(font, "Ground: " + (Copier.skipGround ? "left out" : "kept"), 100)));
+        treesBtn.setMessage(Component.literal(UiKit.fit(font, "Trees: " + (Copier.skipTrees ? "left out" : "kept"), 100)));
     }
 
     private void save() {

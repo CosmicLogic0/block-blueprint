@@ -37,7 +37,7 @@ Nothing left in the box - adjust it or keep the ground.	Il ne reste rien dans la
 Saves to Saved builds and copies its code to your clipboard.	L'enregistre dans Constructions sauvegardées et copie son code dans le presse-papiers.
 Get a build	Obtenir une construction
 Move and turn	Déplacer et tourner
-Place it	La placer
+Place it	Placer
 Build layers	Construire par couches
 Blocks and swaps	Blocs et échanges
 Copy a build	Copier une construction
@@ -135,11 +135,11 @@ Mirror	Miroir
 Flip the build left <-> right, like in a mirror. Handy for matching houses on both sides of a street.	Retourne la construction gauche <-> droite, comme dans un miroir. Pratique pour des maisons assorties des deux côtés d'une rue.
 To ground	Au sol
 Move the build up or down so it sits right on the ground under it.	Monte ou descend la construction pour qu'elle repose juste sur le sol.
-Auto-build	Construction auto
+Auto-build	Construire
 Creative only: places the whole build for you, bottom layer first. Blocks in the way are replaced (chests are left alone).	Créatif uniquement : pose toute la construction pour toi, couche du bas d'abord. Les blocs qui gênent sont remplacés (les coffres ne sont pas touchés).
-Build layer	Construire la couche
+Build layer	1 couche
 Creative only: places just the layer you're on.	Créatif uniquement : pose seulement la couche où tu es.
-Undo build	Annuler la construction
+Undo build	Annuler
 Puts back what was there before the last auto-build.	Remet ce qu'il y avait avant la dernière construction auto.
 Co-op {0}/{1}	Coop {0}/{1}
 Co-op	Coop
@@ -152,14 +152,14 @@ Layer down (End key)	Couche en dessous (touche Fin)
 Layer	Couche
 Just the layer you're building now.	Seulement la couche que tu construis maintenant.
 Layer up (Home key). Past the top shows all layers.	Couche au-dessus (touche Début). Au-delà du sommet, toutes les couches s'affichent.
-Unlock	Déverrouiller
+Unlock	Libérer
 Unlock it so you can move or turn it again.	La déverrouiller pour pouvoir la déplacer ou la tourner à nouveau.
 Lock the build where it is and start building, layer by layer (Delete key).	Verrouille la construction où elle est et commence à construire, couche par couche (touche Suppr).
 Turn	Tourner
 Turn the build 90 degrees (Page Down).	Tourne la construction de 90 degrés (Pg suiv).
-Saved builds	Constructions sauvegardées
+Saved builds	Sauvegardes
 Your saved builds and schematics: load another one, paste a code, copy one from your world.	Tes constructions et schématiques sauvegardées : charges-en une autre, colle un code, copie-en une de ton monde.
-Settings	Paramètres
+Settings	Options
 Last swap undone	Dernier échange annulé
 Showing only {0}  ·  Shift-click the eye again to show everything	Seulement {0} affiché  ·  Maj + clic sur l'œil à nouveau pour tout afficher
 Showing every block again	Tous les blocs sont de nouveau affichés
@@ -526,6 +526,9 @@ left	gauche
 right	droite
 kept	gardé
 auto	auto
+have	tu as
+placed	placée
+chest	coffre
 Community Builds	Constructions de la communauté
 Houses	Maisons
 Towers	Tours

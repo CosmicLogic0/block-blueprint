@@ -24,14 +24,14 @@ public class CoopScreen extends Screen {
 
     @Override protected void init() {
         int x = px(), w = pw(), y = 50;
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Copy co-op code")), b -> copy()).bounds(x, y + 22, w, 20)
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Copy co-op code", w - 8)), b -> copy()).bounds(x, y + 22, w, 20)
                 .tooltip(Tooltip.create(Component.literal(Tr.t("Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.")))).build());
         int half = (w - 4) / 2;
         builders = addRenderableWidget(Button.builder(Component.literal(Tr.t("")), b -> { int p = Coop.parts >= 4 ? 1 : Coop.parts + 1; Coop.set(p, Math.min(Coop.me, p)); after(); })
                 .bounds(x, y + 82, half, 20).tooltip(Tooltip.create(Component.literal(Tr.t("How many people build it. Everyone should pick the same number.")))).build());
         me = addRenderableWidget(Button.builder(Component.literal(Tr.t("")), b -> { Coop.set(Coop.parts, Coop.me >= Coop.parts ? 1 : Coop.me + 1); after(); })
                 .bounds(x + half + 4, y + 82, w - half - 4, 20).tooltip(Tooltip.create(Component.literal(Tr.t("Which builder you are. Each friend picks a different number.")))).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Done")), b -> onClose()).bounds(width / 2 - 50, height - 28, 100, 20).build());
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Done", 100 - 8)), b -> onClose()).bounds(width / 2 - 50, height - 28, 100, 20).build());
         labels();
     }
 

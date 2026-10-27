@@ -132,13 +132,13 @@ Bild auf > Entfernen zum Löschen
 Bau
 Spiegeln
 Dreht den Bau links <-> rechts, wie in einem Spiegel. Praktisch für passende Häuser auf beiden Straßenseiten.
-Auf den Boden
+Zum Boden
 Bewegt den Bau hoch oder runter, damit er genau auf dem Boden darunter steht.
-Automatisch bauen
+Auto-Bau
 Nur Kreativ: setzt den ganzen Bau für dich, unterste Schicht zuerst. Blöcke im Weg werden ersetzt (Truhen bleiben in Ruhe).
-Schicht bauen
+1 Schicht
 Nur Kreativ: setzt nur die Schicht, auf der du bist.
-Bau rückgängig
+Rückgängig
 Stellt wieder her, was vor dem letzten automatischen Bauen da war.
 Koop {0}/{1}
 Koop
@@ -156,9 +156,9 @@ Lös ihn, damit du ihn wieder bewegen oder drehen kannst.
 Fixiert den Bau, wo er ist, und startet das Bauen, Schicht für Schicht (Entf-Taste).
 Drehen
 Dreht den Bau um 90 Grad (Bild ab).
-Gespeicherte Bauten
+Meine Bauten
 Deine gespeicherten Bauten und Schematics: lade einen anderen, füg einen Code ein, kopier einen aus deiner Welt.
-Einstellungen
+Optionen
 Letzter Tausch rückgängig gemacht
 Nur {0} wird gezeigt  ·  Umschalt-Klick aufs Auge zeigt wieder alles
 Alle Blöcke werden wieder gezeigt
@@ -525,6 +525,9 @@ links
 rechts
 behalten
 auto
+hast
+platziert
+Truhe
 Community-Bauten
 Häuser
 Türme

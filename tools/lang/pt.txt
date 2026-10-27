@@ -132,13 +132,13 @@ Page Up > Remover para limpar
 Construção
 Espelhar
 Inverte a construção esquerda <-> direita, como num espelho. Útil para casas iguais dos dois lados de uma rua.
-Para o chão
+Ao chão
 Sobe ou desce a construção para ela ficar bem em cima do chão.
-Construir tudo
+Construir
 Só no Criativo: coloca a construção inteira para você, começando pela camada de baixo. Blocos no caminho são trocados (baús são deixados em paz).
-Construir camada
+1 camada
 Só no Criativo: coloca só a camada em que você está.
-Desfazer construção
+Desfazer
 Coloca de volta o que tinha antes da última construção automática.
 Co-op {0}/{1}
 Co-op
@@ -156,9 +156,9 @@ Destrava para poder mover ou girar de novo.
 Trava a construção onde está e começa a construir, camada por camada (tecla Delete).
 Girar
 Gira a construção 90 graus (Page Down).
-Construções salvas
+Salvas
 Suas construções e esquemas salvos: carregue outra, cole um código, copie uma do seu mundo.
-Configurações
+Ajustes
 Última troca desfeita
 Mostrando só {0}  ·  Shift + clique no olho de novo para mostrar tudo
 Mostrando todos os blocos de novo
@@ -525,6 +525,9 @@ esquerda
 direita
 mantido
 auto
+tem
+colocada
+baú
 Construções da comunidade
 Casas
 Torres

@@ -72,24 +72,24 @@ public class MaterialsScreen extends Screen {
                 .tooltip(tip("How Build Blueprint works")).build());
         // tabs: whole build | < layer N of M >
         int half = w / 2 - 2;
-        tabAll = addRenderableWidget(Button.builder(Component.literal(Tr.t("Whole build")), b -> { layerTab = false; scroll = 0; }).bounds(x, ty, half, 20)
+        tabAll = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Whole build", half - 8)), b -> { layerTab = false; scroll = 0; }).bounds(x, ty, half, 20)
                 .tooltip(tip("Every block the build still needs.")).build());
         layerDown = addRenderableWidget(Button.builder(Component.literal(Tr.t("<")), b -> { Layers.step(-1); layerTab = true; Materials.refresh(); }).bounds(x + half + 4, ty, 20, 20)
                 .tooltip(tip("Layer down (End key)")).build());
-        tabLayer = addRenderableWidget(Button.builder(Component.literal(Tr.t("Layer")), b -> { layerTab = true; scroll = 0; }).bounds(x + half + 26, ty, half - 44, 20)
+        tabLayer = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Layer", (half - 44) - 8)), b -> { layerTab = true; scroll = 0; }).bounds(x + half + 26, ty, half - 44, 20)
                 .tooltip(tip("Just the layer you're building now.")).build());
         layerUp = addRenderableWidget(Button.builder(Component.literal(Tr.t(">")), b -> { Layers.step(1); layerTab = true; Materials.refresh(); }).bounds(x + w - 20, ty, 20, 20)
                 .tooltip(tip("Layer up (Home key). Past the top shows all layers.")).build());
         // main row
         int by = height - 24, bw = Math.min(96, (w - 12) / 4);
         int[] bx = UiKit.row(width / 2, 4, bw, 4);
-        addRenderableWidget(Button.builder(Component.literal(Tr.t(s.locked ? "Unlock" : "Place it")), b -> { BuildBlueprintClient.setLocked(!BuildBlueprintClient.SESSION.locked); rebuild(); })
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, s.locked ? "Unlock" : "Place it", bw - 8)), b -> { BuildBlueprintClient.setLocked(!BuildBlueprintClient.SESSION.locked); rebuild(); })
                 .bounds(bx[0], by, bw, 20).tooltip(tip(s.locked ? "Unlock it so you can move or turn it again." : "Lock the build where it is and start building, layer by layer (Delete key).")).build()).active = s.loaded();
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Turn")), b -> { BuildBlueprintClient.turn(); Materials.refresh(); })
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Turn", bw - 8)), b -> { BuildBlueprintClient.turn(); Materials.refresh(); })
                 .bounds(bx[1], by, bw, 20).tooltip(tip("Turn the build 90 degrees (Page Down).")).build()).active = s.loaded() && !s.locked;
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Saved builds")), b -> MenuModule.openSaved()).bounds(bx[2], by, bw, 20)
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Saved builds", bw - 8)), b -> MenuModule.openSaved()).bounds(bx[2], by, bw, 20)
                 .tooltip(tip("Your saved builds and schematics: load another one, paste a code, copy one from your world.")).build());
-        addRenderableWidget(Button.builder(Component.literal(Tr.t("Settings")), b -> MenuModule.openSettings(this)).bounds(bx[3], by, bw, 20).build());
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Settings", bw - 8)), b -> MenuModule.openSettings(this)).bounds(bx[3], by, bw, 20).build());
         // tools row: only what makes sense now
         List<String[]> t = tools();
         if (!t.isEmpty()) {
@@ -97,7 +97,7 @@ public class MaterialsScreen extends Screen {
             int[] tx = UiKit.row(width / 2, t.size(), tw, 4);
             for (int i = 0; i < t.size(); i++) {
                 String[] d = t.get(i);
-                Button btn = addRenderableWidget(Button.builder(Component.literal(Tr.t(d[0])), b -> tool(d[2])).bounds(tx[i], by - 24, tw, 20).tooltip(tip(d[1])).build());
+                Button btn = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, d[0], tw - 8)), b -> tool(d[2])).bounds(tx[i], by - 24, tw, 20).tooltip(tip(d[1])).build());
                 if ((d[2].equals("auto") || d[2].equals("autoLayer")) && AutoBuild.running()) btn.active = false;
             }
         }
