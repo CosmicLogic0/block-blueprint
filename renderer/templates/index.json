@@ -240,26 +240,6 @@
 ]
 },
 {
-"id": "m_mvs_moogs_voyager_structure_config_pack_1_20_2_houses_large_warped_tower",
-"name": "Large Warped Tower",
-"cat": "Houses",
-"schem": true,
-"size": [
-24,
-44,
-30
-],
-"blocks": 5047,
-"types": 116,
-"desc": "From \"MVS - Moog's Voyager Structures (config pack)\" by FinnDog_123 (MIT). https://modrinth.com/mod/mvs-moogs-voyager-structure-config-pack",
-"credit": "FinnDog_123 (MIT)",
-"source": "https://modrinth.com/mod/mvs-moogs-voyager-structure-config-pack",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
 "id": "m_townfall_dungeon_data_arena_arena_prise",
 "name": "Arena Prise",
 "cat": "Community Builds",
@@ -1620,26 +1600,6 @@
 ]
 },
 {
-"id": "m_mvs_moogs_voyager_structure_config_pack_1_20_2_houses_prismarine_house_1",
-"name": "Prismarine House 1",
-"cat": "Houses",
-"schem": true,
-"size": [
-16,
-22,
-22
-],
-"blocks": 2055,
-"types": 56,
-"desc": "From \"MVS - Moog's Voyager Structures (config pack)\" by FinnDog_123 (MIT). https://modrinth.com/mod/mvs-moogs-voyager-structure-config-pack",
-"credit": "FinnDog_123 (MIT)",
-"source": "https://modrinth.com/mod/mvs-moogs-voyager-structure-config-pack",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
 "id": "m_more_chinese_structures_tower_tower_2",
 "name": "Tower 2",
 "cat": "Towers",
@@ -1721,26 +1681,6 @@
 },
 {
 "id": "m_mvs_moogs_voyager_structure_config_pack_1_20_0_houses_mud_brick_house_1",
-"name": "Mud Brick House 1",
-"cat": "Houses",
-"schem": true,
-"size": [
-19,
-24,
-24
-],
-"blocks": 2756,
-"types": 53,
-"desc": "From \"MVS - Moog's Voyager Structures (config pack)\" by FinnDog_123 (MIT). https://modrinth.com/mod/mvs-moogs-voyager-structure-config-pack",
-"credit": "FinnDog_123 (MIT)",
-"source": "https://modrinth.com/mod/mvs-moogs-voyager-structure-config-pack",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
-"id": "m_mvs_moogs_voyager_structure_config_pack_1_20_2_houses_mud_brick_house_1",
 "name": "Mud Brick House 1",
 "cat": "Houses",
 "schem": true,
@@ -1881,26 +1821,6 @@
 },
 {
 "id": "m_mvs_moogs_voyager_structure_config_pack_1_20_0_houses_prismarine_house_2",
-"name": "Prismarine House 2",
-"cat": "Houses",
-"schem": true,
-"size": [
-19,
-21,
-27
-],
-"blocks": 2053,
-"types": 53,
-"desc": "From \"MVS - Moog's Voyager Structures (config pack)\" by FinnDog_123 (MIT). https://modrinth.com/mod/mvs-moogs-voyager-structure-config-pack",
-"credit": "FinnDog_123 (MIT)",
-"source": "https://modrinth.com/mod/mvs-moogs-voyager-structure-config-pack",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
-"id": "m_mvs_moogs_voyager_structure_config_pack_1_20_2_houses_prismarine_house_2",
 "name": "Prismarine House 2",
 "cat": "Houses",
 "schem": true,
@@ -10580,26 +10500,6 @@
 ]
 },
 {
-"id": "m_underground_villages_village_underground_zombie_houses_fletcher_house_1",
-"name": "Fletcher House 1",
-"cat": "Houses",
-"schem": true,
-"size": [
-9,
-7,
-11
-],
-"blocks": 271,
-"types": 21,
-"desc": "From \"Underground Villages\" by Mrbysco (MIT). https://modrinth.com/mod/underground-villages",
-"credit": "Mrbysco (MIT)",
-"source": "https://modrinth.com/mod/underground-villages",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
 "id": "m_timo_cherry_fisher",
 "name": "Fisher",
 "cat": "Community Builds",
@@ -11821,26 +11721,6 @@
 },
 {
 "id": "m_jungle_and_swamp_villages_village_jungle_houses_jungle_fisher_cottage_1",
-"name": "Jungle Fisher Cottage 1",
-"cat": "Houses",
-"schem": true,
-"size": [
-9,
-8,
-14
-],
-"blocks": 311,
-"types": 19,
-"desc": "From \"Jungle and Swamp Villages\" by JurassicBeast (MIT). https://modrinth.com/datapack/jungle-and-swamp-villages",
-"credit": "JurassicBeast (MIT)",
-"source": "https://modrinth.com/datapack/jungle-and-swamp-villages",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
-"id": "m_jungle_and_swamp_villages_village_jungle_zombie_houses_jungle_fisher_cottage_1",
 "name": "Jungle Fisher Cottage 1",
 "cat": "Houses",
 "schem": true,
@@ -15360,26 +15240,6 @@
 ]
 },
 {
-"id": "m_underground_villages_village_underground_houses_meeting_point_4",
-"name": "Meeting Point 4",
-"cat": "Houses",
-"schem": true,
-"size": [
-10,
-5,
-16
-],
-"blocks": 265,
-"types": 16,
-"desc": "From \"Underground Villages\" by Mrbysco (MIT). https://modrinth.com/mod/underground-villages",
-"credit": "Mrbysco (MIT)",
-"source": "https://modrinth.com/mod/underground-villages",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
 "id": "m_emerald_craft_village_swamp_houses_swamp_fletcher_house_1",
 "name": "Swamp Fletcher House 1",
 "cat": "Houses",
@@ -18240,26 +18100,6 @@
 ]
 },
 {
-"id": "m_underground_villages_village_underground_zombie_houses_small_house_8",
-"name": "Small House 8",
-"cat": "Houses",
-"schem": true,
-"size": [
-8,
-9,
-9
-],
-"blocks": 256,
-"types": 14,
-"desc": "From \"Underground Villages\" by Mrbysco (MIT). https://modrinth.com/mod/underground-villages",
-"credit": "Mrbysco (MIT)",
-"source": "https://modrinth.com/mod/underground-villages",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
 "id": "m_the_pit_pitroomdeep1",
 "name": "Pitroomdeep1",
 "cat": "Community Builds",
@@ -18880,26 +18720,6 @@
 ]
 },
 {
-"id": "m_underground_villages_village_underground_zombie_houses_meeting_point_5",
-"name": "Meeting Point 5",
-"cat": "Houses",
-"schem": true,
-"size": [
-10,
-5,
-11
-],
-"blocks": 218,
-"types": 14,
-"desc": "From \"Underground Villages\" by Mrbysco (MIT). https://modrinth.com/mod/underground-villages",
-"credit": "Mrbysco (MIT)",
-"source": "https://modrinth.com/mod/underground-villages",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
 "id": "m_above_and_below_main_hall_top",
 "name": "Main Hall Top",
 "cat": "Community Builds",
@@ -19234,26 +19054,6 @@
 "desc": "From \"Workshops of Doom\" by Commoble (MIT). https://modrinth.com/mod/workshops-of-doom",
 "credit": "Commoble (MIT)",
 "source": "https://modrinth.com/mod/workshops-of-doom",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
-"id": "m_underground_villages_village_underground_zombie_houses_medium_house_2",
-"name": "Medium House 2",
-"cat": "Houses",
-"schem": true,
-"size": [
-7,
-6,
-13
-],
-"blocks": 269,
-"types": 13,
-"desc": "From \"Underground Villages\" by Mrbysco (MIT). https://modrinth.com/mod/underground-villages",
-"credit": "Mrbysco (MIT)",
-"source": "https://modrinth.com/mod/underground-villages",
 "license": "MIT",
 "tags": [
 "open-license"
@@ -22194,26 +21994,6 @@
 "desc": "From \"Endless Desert\" by Truff1e (MIT). https://modrinth.com/datapack/endless-desert",
 "credit": "Truff1e (MIT)",
 "source": "https://modrinth.com/datapack/endless-desert",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
-"id": "m_bieluuus_hard_dungeons_village_desert_houses_desert_fisher_1",
-"name": "Desert Fisher 1",
-"cat": "Houses",
-"schem": true,
-"size": [
-8,
-6,
-11
-],
-"blocks": 230,
-"types": 11,
-"desc": "From \"Bieluuu's hard dungeons\" by Unlstd (MIT). https://modrinth.com/datapack/bieluuus-hard-dungeons",
-"credit": "Unlstd (MIT)",
-"source": "https://modrinth.com/datapack/bieluuus-hard-dungeons",
 "license": "MIT",
 "tags": [
 "open-license"
@@ -28114,26 +27894,6 @@
 "desc": "From \"Endless Desert\" by Truff1e (MIT). https://modrinth.com/datapack/endless-desert",
 "credit": "Truff1e (MIT)",
 "source": "https://modrinth.com/datapack/endless-desert",
-"license": "MIT",
-"tags": [
-"open-license"
-]
-},
-{
-"id": "m_bieluuus_hard_dungeons_village_desert_houses_desert_animal_pen_2",
-"name": "Desert Animal Pen 2",
-"cat": "Houses",
-"schem": true,
-"size": [
-10,
-5,
-8
-],
-"blocks": 154,
-"types": 6,
-"desc": "From \"Bieluuu's hard dungeons\" by Unlstd (MIT). https://modrinth.com/datapack/bieluuus-hard-dungeons",
-"credit": "Unlstd (MIT)",
-"source": "https://modrinth.com/datapack/bieluuus-hard-dungeons",
 "license": "MIT",
 "tags": [
 "open-license"
