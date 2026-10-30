@@ -16,6 +16,7 @@ contextBridge.exposeInMainWorld('api', {
   openText: () => ipcRenderer.invoke('file:open'),
   savePng: (name, dataUrl) => ipcRenderer.invoke('file:savePng', name, dataUrl),
   saveSchem: (name, b64) => ipcRenderer.invoke('file:saveSchem', name, b64),
+  saveBedrock: (name, b64) => ipcRenderer.invoke('file:saveBedrock', name, b64),
   updates: {
     check: () => ipcRenderer.invoke('upd:check'),
     get: () => ipcRenderer.invoke('upd:get'),

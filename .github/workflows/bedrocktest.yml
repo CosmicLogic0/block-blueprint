@@ -1,0 +1,45 @@
+# Loads builds saved with "Save for Bedrock" in the real Minecraft Bedrock server and checks their blocks.
+# Runs when branch "bedrocktest" is pushed; the log goes to branch "bedrocktest-results".
+name: Bedrock test
+
+on:
+  push:
+    branches: [bedrocktest]
+
+permissions:
+  contents: write
+
+jobs:
+  bds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Bedrock server
+        run: |
+          url=$(curl -s -H "User-Agent: Mozilla/5.0" https://net-secondary.web.minecraft-services.net/api/v1.0/download/links | python3 -c "import json,sys; print([l['downloadUrl'] for l in json.load(sys.stdin)['result']['links'] if l['downloadType']=='serverBedrockLinux'][0])")
+          echo "$url"; mkdir -p bds && cd bds && curl -sL -A "Mozilla/5.0" "$url" -o bds.zip && unzip -q bds.zip && ls
+      - name: Packs and world
+        run: |
+          node tools/bedrock/test_packs.mjs "$PWD" "$PWD/bds"
+          cd bds
+          sed -i 's/^level-type=.*/level-type=FLAT/; s/^gamemode=.*/gamemode=creative/; s/^allow-cheats=.*/allow-cheats=true/' server.properties
+          mkdir -p "worlds/Bedrock level" && cp packs.json "worlds/Bedrock level/world_behavior_packs.json"
+      - name: Load the builds and check them
+        run: |
+          cd bds; mkdir -p ../res; mkfifo in
+          (tail -f in | LD_LIBRARY_PATH=. ./bedrock_server > ../res/server.log 2>&1 &)
+          exec 3>in
+          for i in $(seq 1 60); do grep -q "Server started" ../res/server.log && break; sleep 2; done
+          sleep 5; cat cmds1.txt >&3; sleep 15; cat cmds2.txt >&3; sleep 10; echo stop >&3; sleep 5
+          cp packs.json cmds1.txt cmds2.txt ../res/
+          grep -iE "structure|found|block at|error|pack" ../res/server.log | head -80
+          { echo "found: $(grep -c 'Successfully found' ../res/server.log) of $(wc -l < cmds2.txt)"; grep -ciE 'Loaded structure|Structure loaded' ../res/server.log; } | tee ../res/SUMMARY.txt
+      - name: Save
+        if: always()
+        run: |
+          cd res && echo "${GITHUB_SHA}" > COMMIT
+          git init -q -b bedrocktest-results && git config user.name ci && git config user.email ci@example.com
+          git add -A && git commit -qm "bedrock test ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" bedrocktest-results

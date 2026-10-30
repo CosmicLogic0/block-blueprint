@@ -5,6 +5,7 @@ import { Baker, buildWorldGeometry, buildBlockGeometry, buildMultiGeometry, enco
 import { encodeBlueprint } from './export.js';
 import { simulate, useBlock } from './redstone.js';
 import { schematicToBuild, buildToSchem, isGzip, isSchematicName, dataVersionFor } from './schem.js';
+import { bedrockMap, buildToMcpack } from './bedrock.js';
 
 THREE.ColorManagement.enabled = false; // vanilla-style: textures * shade, no color-space conversion
 
@@ -1130,6 +1131,21 @@ async function main() {
       const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([gz])); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
     } catch (err) { toast(err.message || 'Could not save the .schem file', 4000); }
   };
+  // ---- Minecraft Bedrock: a .mcstructure file (structure block / "/structure load")
+  async function saveBedrock(data, title) {
+    try {
+      const r = buildToMcpack(data, await bedrockMap(), title);
+      let ok = false;
+      if (api.saveBedrock) { const s = await api.saveBedrock(r.id + '.mcpack', b64u(r.bytes).replace(/-/g, '+').replace(/_/g, '/')); ok = s.ok; }
+      else { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([r.bytes])); a.download = r.id + '.mcpack'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000); ok = true; }
+      if (!ok) return;
+      await dialog({ title: 'Saved for Bedrock', ok: 'Got it',
+        msg: `1. Open the .mcpack file - Minecraft Bedrock starts and adds it.  2. In your world's settings, Behavior Packs: turn on "Block Blueprint: ${String(title || 'Build').slice(0, 40)}".  3. In the world, type  /structure load blueprint:${r.id} ~ ~ ~  (or use a structure block set to Load with the name blueprint:${r.id}). Size ${r.size.join(' x ')}.`
+          + (r.missing.length ? ` ${r.missing.length} kind${r.missing.length > 1 ? 's' : ''} of block Bedrock doesn't have ${r.missing.length > 1 ? 'were' : 'was'} left out: ${r.missing.slice(0, 6).join(', ')}${r.missing.length > 6 ? '...' : ''}.` : '') });
+    } catch (err) { toast(err.message || 'Could not save the Bedrock file', 4000); }
+  }
+  $('#tdBedrock').onclick = async () => { const data = JSON.parse(await rawFor(tplCur)); saveBedrock(data, tplCur.name); };
+  $('#expBedrock').onclick = () => { if (!world.size) { toast('Build something first'); return; } saveBedrock(JSON.parse(serialize()), $('#expName').value.trim() || 'My Build'); };
   $('#tdCode').onclick = async () => {
     const raw = await rawFor(tplCur);
     const data = JSON.parse(raw); data.name = tplCur.name;

@@ -195,6 +195,12 @@ app.whenReady().then(() => {
     fs.writeFileSync(r.filePath, Buffer.from(String(b64), 'base64'));
     return { ok: true, path: r.filePath };
   });
+  ipcMain.handle('file:saveBedrock', async (_e, name, b64) => {
+    const r = await dialog.showSaveDialog(win, { title: 'Save for Minecraft Bedrock', defaultPath: path.join(DEFAULT_SAVE_DIR, name), filters: [{ name: 'Minecraft Bedrock pack', extensions: ['mcpack'] }] });
+    if (r.canceled || !r.filePath) return { ok: false };
+    fs.writeFileSync(r.filePath, Buffer.from(String(b64), 'base64'));
+    return { ok: true, path: r.filePath };
+  });
   ipcMain.handle('file:savePng', async (_e, name, dataUrl) => {
     const r = await dialog.showSaveDialog(win, { title: 'Save screenshot', defaultPath: path.join(DEFAULT_SAVE_DIR, name), filters: [{ name: 'PNG image', extensions: ['png'] }] });
     if (r.canceled || !r.filePath) return { ok: false };
