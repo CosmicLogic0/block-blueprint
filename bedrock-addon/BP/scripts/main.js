@@ -7,6 +7,7 @@ import { world, system, BlockPermutation, MolangVariableMap, GameMode, CommandPe
 import { ActionFormData, ModalFormData, FormCancelationReason } from '@minecraft/server-ui';
 import { colorOf } from './colors.js';
 import { rotateStates, rotatePos } from './rotate.js';
+import { GHOSTS } from './ghosts.js';
 
 const TICKS = 10;          // markers and the hint line every half second
 const RANGE = 32;          // markers this far from the player
@@ -107,7 +108,36 @@ function matches(block, cell) {
   for (const k of CHECK) if (k in cell.states && k in have && have[k] !== cell.states[k]) return false;
   return true;
 }
-function isEmpty(block) { return !block || block.isAir || block.isLiquid; }
+const isGhost = (block) => !!block && block.typeId.startsWith('bb:g_');
+function isEmpty(block) { return !block || block.isAir || block.isLiquid || isGhost(block); }
+
+// ---------------------------------------------------------------- ghost blocks: a small, see-past copy of each block
+// that goes in an empty spot of the layer you're on (bb:g_<name>, drawn with the block's own textures). They can't be
+// touched or walked into, and placing the real block simply replaces them.
+const ghostPerms = new Map();
+function ghostFor(name) {
+  const short = name.replace('minecraft:', '');
+  if (!GHOSTS.has(short)) return null;
+  let p = ghostPerms.get(short);
+  if (p === undefined) { try { p = BlockPermutation.resolve('bb:g_' + short); } catch { p = null; } ghostPerms.set(short, p); }
+  return p;
+}
+const ghostsOn = (player) => player.getDynamicProperty('bb:ghosts') !== false;
+/** Takes the ghost blocks of one layer away (when you change layer, move or remove the build). */
+function clearGhosts(dim, s, b, layerIdx) {
+  if (!b || layerIdx === undefined || layerIdx < 0) return;
+  const cells = (b.layers[layerIdx] || []).map((c) => worldCell(s, b, c));
+  const air = BlockPermutation.resolve('minecraft:air');
+  system.runJob((function* () {
+    let n = 0;
+    for (const wc of cells) { try { const blk = dim.getBlock(wc); if (isGhost(blk)) blk.setPermutation(air); } catch {} if (++n % 200 === 0) yield; }
+  })());
+}
+/** Call before changing where the build is or which layer is shown. */
+function beforeChange(player, s) {
+  const b = s && builds.get(s.id);
+  if (b && s.gl !== undefined) { clearGhosts(player.dimension, { ...s }, b, s.gl); s.gl = undefined; }
+}
 
 // ---------------------------------------------------------------- markers + hint line, every half second
 const molang = new Map();
@@ -157,7 +187,9 @@ function tick(player) {
   }
   // building: the layer you're on
   const layer = b.layers[s.layer] || [];
-  let left = 0, wrong = 0, best = null, bestD = 1e9, shown = 0;
+  const ghosts = ghostsOn(player);
+  if (s.gl !== s.layer) { if (s.gl !== undefined) clearGhosts(dim, { ...s }, b, s.gl); s.gl = ghosts ? s.layer : undefined; save(player); }
+  let left = 0, wrong = 0, best = null, bestD = 1e9, shown = 0, budget = 200;
   for (const c of layer) {
     const wc = worldCell(s, b, c);
     let blk; try { blk = dim.getBlock(wc); } catch { blk = undefined; }
@@ -167,7 +199,10 @@ function tick(player) {
     if (bad) wrong++;
     const dd = (wc.x + 0.5 - l.x) ** 2 + (wc.y - l.y) ** 2 + (wc.z + 0.5 - l.z) ** 2;
     if (dd < bestD) { bestD = dd; best = wc; }
-    if (shown < MAX_MARKERS && near(wc)) { shown++; player.spawnParticle(bad ? 'bb:wrong' : 'bb:ghost', { x: wc.x + 0.5, y: wc.y + 0.5, z: wc.z + 0.5 }, bad ? RED : colorVars(c.name, 0.8)); }
+    let ghost = isGhost(blk);
+    if (ghosts && blk && blk.isAir && budget > 0) { const g = ghostFor(c.name); if (g) { try { blk.setPermutation(g); ghost = true; budget--; } catch {} } }
+    if (ghost && !ghosts) { try { blk.setPermutation(BlockPermutation.resolve('minecraft:air')); } catch {} ghost = false; }
+    if (!ghost && shown < MAX_MARKERS && near(wc)) { shown++; player.spawnParticle(bad ? 'bb:wrong' : 'bb:ghost', { x: wc.x + 0.5, y: wc.y + 0.5, z: wc.z + 0.5 }, bad ? RED : colorVars(c.name, 0.8)); }
   }
   if (left === 0) {   // layer done: next one, or the whole build is done
     if (s.layer < b.sy - 1) {
@@ -291,17 +326,18 @@ async function openMenu(player) {
     } else {
       add('Blocks this layer needs', () => showNeeds(player, s, b, true));
       add('Blocks the whole build needs', () => showNeeds(player, s, b, false));
-      add('Layer up', () => { s.layer = Math.min(b.sy - 1, s.layer + 1); s.done = false; save(player); });
-      add('Layer down', () => { s.layer = Math.max(0, s.layer - 1); s.done = false; save(player); });
-      add('Unlock (move it again)', () => { s.locked = false; save(player); });
+      add('Layer up', () => { beforeChange(player, s); s.layer = Math.min(b.sy - 1, s.layer + 1); s.done = false; save(player); });
+      add('Layer down', () => { beforeChange(player, s); s.layer = Math.max(0, s.layer - 1); s.done = false; save(player); });
+      add('Unlock (move it again)', () => { beforeChange(player, s); s.locked = false; save(player); });
+      add(ghostsOn(player) ? 'Ghost blocks: ON' : 'Ghost blocks: OFF', () => { const on = !ghostsOn(player); player.setDynamicProperty('bb:ghosts', on); if (!on) beforeChange(player, s); reopen(player); });
       if (player.getGameMode() === GameMode.Creative) {
         add('Auto-build this layer (Creative)', () => autoBuild(player, s, b, true));
         add('Auto-build everything (Creative)', () => autoBuild(player, s, b, false));
         if ((undo.get(player.id) || []).length) add('Undo auto-build', () => undoAuto(player));
       }
     }
-    add('Pick another build', () => pickBuild(player));
-    add('Remove this build', () => { sessions.delete(player.id); save(player); player.sendMessage('Build removed. Pick one again any time.'); });
+    add('Pick another build', () => { beforeChange(player, s); pickBuild(player); });
+    add('Remove this build', () => { beforeChange(player, s); sessions.delete(player.id); save(player); player.sendMessage('Build removed. Pick one again any time.'); });
   }
   const r = await show(f, player);
   if (r.canceled || r.selection === undefined) return;
@@ -332,6 +368,7 @@ async function pickBuild(player) {
   player.onScreenDisplay.setActionBar('Loading ' + niceName(id) + '...');
   loadBuild(id, (b) => {
     if (!b) { player.sendMessage('§cCould not read that build.'); return; }
+    beforeChange(player, sessions.get(player.id));
     const s = { id, ox: 0, oy: 0, oz: 0, turns: 0, locked: false, layer: 0 };
     placeInFront(player, s, b);
     sessions.set(player.id, s); save(player);
@@ -367,6 +404,12 @@ system.afterEvents.scriptEventReceive.subscribe((e) => {
   const dim = world.getDimension('overworld');
   const ids = buildIds();
   console.warn('BBTEST builds ' + ids.length + ': ' + ids.join(', '));
+  {   // every ghost block exists and can be put in the world
+    let ok = 0; const bad = [];
+    for (const g of GHOSTS) { try { BlockPermutation.resolve('bb:g_' + g); ok++; } catch (e) { if (bad.length < 8) bad.push(g); } }
+    try { const blk = dim.getBlock({ x: 0, y: 150, z: 0 }); blk.setPermutation(ghostFor('minecraft:oak_planks')); console.warn('BBTEST ghost in world: ' + blk.typeId); blk.setPermutation(BlockPermutation.resolve('minecraft:air')); } catch (e) { console.warn('BBTEST ghost in world FAIL ' + e); }
+    console.warn(`BBTEST ghosts ${ok}/${GHOSTS.size}` + (bad.length ? ' FAIL ' + bad.join(', ') : ''));
+  }
   // 16 spots, 40 apart (one ticking area of 160 x 160): every build straight, the first two also turned
   const jobs = ids.map((id) => [id, 0]).concat(ids.slice(0, 2).map((id) => [id, 1])).slice(0, 16);
   let pending = 0, slot = 0;

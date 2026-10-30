@@ -18,7 +18,11 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - name: Build the add-on
-        run: node tools/bedrock/build_addon.mjs
+        run: |
+          git clone -q --depth 1 --filter=blob:none --no-checkout https://github.com/Mojang/bedrock-samples mc-samples
+          (cd mc-samples && git sparse-checkout set --no-cone resource_pack/blocks.json resource_pack/textures/terrain_texture.json && git checkout -q)
+          python3 tools/bedrock/make_ghosts.py mc-samples/resource_pack bedrock-addon
+          node tools/bedrock/build_addon.mjs
       - name: Bedrock server
         run: |
           url=$(curl -s -H "User-Agent: Mozilla/5.0" https://net-secondary.web.minecraft-services.net/api/v1.0/download/links | python3 -c "import json,sys; print([l['downloadUrl'] for l in json.load(sys.stdin)['result']['links'] if l['downloadType']=='serverBedrockLinux'][0])")
