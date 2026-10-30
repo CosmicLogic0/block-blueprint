@@ -1,0 +1,77 @@
+NO LOG FILE! - setting up server logging...
+[2026-10-30 05:32:28:602 INFO] Starting Server
+[2026-10-30 05:32:28:602 INFO] Version: 1.26.61.1
+[2026-10-30 05:32:28:602 INFO] Session ID: 0d4b7462-2aba-4b1a-98be-def223162a45
+[2026-10-30 05:32:28:602 INFO] Build ID: 53069370
+[2026-10-30 05:32:28:602 INFO] Branch: r/26_u6
+[2026-10-30 05:32:28:602 INFO] Commit ID: 86f7b32281709abd4444adb52887796af061c7bd
+[2026-10-30 05:32:28:602 INFO] Configuration: Publish
+[2026-10-30 05:32:28:602 INFO] Contents of server.properties: {"allow-cheats":"true","allow-inbound-script-debugging":"false","allow-list":"true","allow-outbound-script-debugging":"false","block-network-ids-are-hashes":"true","chat-restriction":"None","client-side-chunk-generation-enabled":"true","compression-algorithm":"zlib","compression-threshold":"1","content-log-console-output-enabled":"false","content-log-file-enabled":"false","content-log-level":"info","default-player-permission-level":"member","difficulty":"easy","disable-custom-skins":"false","disable-persona":"false","disable-player-interaction":"false","enable-lan-visibility":"true","force-gamemode":"false","gamemode":"creative","level-name":"Bedrock level","max-players":"10","max-threads":"8","online-mode":"true","persistent-ticking-area-max-chunks":"100","persistent-ticking-area-max-count":"10","player-idle-timeout":"30","player-movement-action-direction-threshold":"0.85","player-position-acceptance-threshold":"0.5","script-debugger-auto-attach":"disabled","server-authoritative-block-breaking-pick-range-scalar":"1.5","server-authoritative-dismount-strict":"false","server-authoritative-entity-attack-range-tolerance":"0.5","server-authoritative-entity-attack-range-validation":"disabled","server-authoritative-entity-attack-request-validation":"disabled","server-authoritative-entity-interactions-strict":"false","server-authoritative-movement-strict":"false","server-build-radius-ratio":"Disabled","server-name":"Dedicated Server","server-port":"19132","server-portv6":"19133","server-udp-ports":"19132","texturepack-required":"false","tick-distance":"4","transient-ticking-area-max-chunks":"300","transport":"nethernet","view-distance":"32"}
+[2026-10-30 05:32:28:602 INFO] Level Name: Bedrock level
+[2026-10-30 05:32:28:602 INFO] Profiler config ('bootstrap.json') load result: success=1, errorMessage=(null)
+[2026-10-30 05:32:28:603 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-10-30 05:32:28:603 INFO] Game mode: 1 Creative
+[2026-10-30 05:32:28:603 INFO] Difficulty: 1 EASY
+[2026-10-30 05:32:28:605 WARN] Content logging to console is disabled.  Enable it with content-log-console-output-enabled=true in server.properties
+[2026-10-30 05:32:28:606 INFO] 
+
+#####################################################
+#                                                   #
+#              CREATING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-10-30 05:32:28:994 INFO] Opening level 'worlds/Bedrock level/db'
+[2026-10-30 05:32:28:995 INFO] Accepting clients on [::]:19132
+[2026-10-30 05:32:29:038 INFO] Pack Stack - [00] Block Blueprint: House 1 (id: ae067152-4a36-43c1-8012-b5b0e80ff734, version: 1.0.0) @ behavior_packs/house_1
+[2026-10-30 05:32:29:038 INFO] Pack Stack - [01] Block Blueprint: ages_cozy_cherry_cottage (id: ecbf5c22-029b-49ae-82c4-c1ed8411563b, version: 1.0.0) @ behavior_packs/ages_cozy_cherry_cottage
+[2026-10-30 05:32:29:038 INFO] Pack Stack - [02] Block Blueprint: ouses_large_warped_tower (id: aba4a073-a61f-45d2-96ea-faf7b79a1a9f, version: 1.0.0) @ behavior_packs/ouses_large_warped_tower
+[2026-10-30 05:32:29:241 INFO] Signed in to signaling service successfully
+[2026-10-30 05:32:29:908 INFO] Waiting for Minecraft services...
+[2026-10-30 05:32:30:108 INFO] Server started.
+[2026-10-30 05:32:30:108 WARN] ================ ALLOW LIST WARNING ===================
+[2026-10-30 05:32:30:108 WARN] Allow list is enabled but contains no entries. 
+[2026-10-30 05:32:30:108 WARN] Use allowlist add <playername> for you and your friends so that they can access the server, or modify allowlist.json manually.
+[2026-10-30 05:32:30:108 WARN] 
+Alternatively, the allow list can be turned off by typing allowlist off or manually toggled in the server.properties file.
+[2026-10-30 05:32:30:108 WARN] =======================================================
+[2026-10-30 05:32:30:108 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-10-30 05:32:30:108 INFO] Server Telemetry is currently not enabled. 
+[2026-10-30 05:32:30:108 INFO] Enabling this telemetry helps us improve the game.
+[2026-10-30 05:32:30:108 INFO] 
+[2026-10-30 05:32:30:108 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-10-30 05:32:30:108 INFO] to the server.properties file in the handheld/src-server directory
+[2026-10-30 05:32:30:108 INFO] ======================================================
+[2026-10-30 05:32:35:732 INFO] Added ticking area from 0, 0, 0 to 207, 0, 79.
+1/10 ticking areas in use.
+[2026-10-30 05:32:35:732 INFO] Set the time of 'minecraft:overworld' to 6000
+[2026-10-30 05:32:47:656 INFO] Loaded a structure of name blueprint:house_1
+[2026-10-30 05:32:47:694 INFO] Loaded a structure of name blueprint:ages_cozy_cherry_cottage
+[2026-10-30 05:32:47:788 INFO] Loaded a structure of name blueprint:ouses_large_warped_tower
+[2026-10-30 05:33:02:615 INFO] Successfully found the block at 15,100,9.
+[2026-10-30 05:33:02:665 INFO] Successfully found the block at 11,101,16.
+[2026-10-30 05:33:02:715 INFO] Successfully found the block at 12,111,11.
+[2026-10-30 05:33:02:765 INFO] Successfully found the block at 6,108,5.
+[2026-10-30 05:33:02:820 INFO] Successfully found the block at 9,101,15.
+[2026-10-30 05:33:02:870 INFO] Successfully found the block at 23,100,6.
+[2026-10-30 05:33:02:920 INFO] Successfully found the block at 29,112,9.
+[2026-10-30 05:33:02:970 INFO] Successfully found the block at 17,105,5.
+[2026-10-30 05:33:03:020 INFO] Successfully found the block at 35,100,0.
+[2026-10-30 05:33:03:070 INFO] Successfully found the block at 42,100,7.
+[2026-10-30 05:33:03:120 INFO] Successfully found the block at 40,101,2.
+[2026-10-30 05:33:03:170 INFO] Successfully found the block at 37,101,11.
+[2026-10-30 05:33:03:220 INFO] Successfully found the block at 47,102,10.
+[2026-10-30 05:33:03:270 INFO] Successfully found the block at 43,104,11.
+[2026-10-30 05:33:03:320 INFO] Successfully found the block at 43,106,4.
+[2026-10-30 05:33:03:370 INFO] Successfully found the block at 40,107,8.
+[2026-10-30 05:33:03:420 INFO] Successfully found the block at 42,109,12.
+[2026-10-30 05:33:03:470 INFO] Successfully found the block at 62,100,0.
+[2026-10-30 05:33:03:520 INFO] Successfully found the block at 66,103,6.
+[2026-10-30 05:33:03:570 INFO] Successfully found the block at 57,108,4.
+[2026-10-30 05:33:03:620 INFO] Successfully found the block at 64,113,23.
+[2026-10-30 05:33:03:670 INFO] Successfully found the block at 62,119,9.
+[2026-10-30 05:33:03:720 INFO] Successfully found the block at 62,124,5.
+[2026-10-30 05:33:03:770 INFO] Successfully found the block at 68,128,3.
+[2026-10-30 05:33:03:820 INFO] Successfully found the block at 68,133,15.
+[2026-10-30 05:33:12:631 INFO] Server stop requested.
+[2026-10-30 05:33:12:681 INFO] Stopping server...
+Quit correctly

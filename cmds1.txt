@@ -1,0 +1,5 @@
+tickingarea add 0 90 0 200 160 64 bb
+time set noon
+structure load blueprint:house_1 0 100 0
+structure load blueprint:ages_cozy_cherry_cottage 35 100 0
+structure load blueprint:ouses_large_warped_tower 53 100 0
