@@ -29,10 +29,10 @@ jobs:
       - name: Load the builds and check them
         run: |
           cd bds; mkdir -p ../res; mkfifo in
-          (tail -f in | LD_LIBRARY_PATH=. ./bedrock_server > ../res/server.log 2>&1 &)
+          (cat in | LD_LIBRARY_PATH=. ./bedrock_server > ../res/server.log 2>&1 &)
           exec 3>in
           for i in $(seq 1 60); do grep -q "Server started" ../res/server.log && break; sleep 2; done
-          sleep 5; cat cmds1.txt >&3; sleep 15; cat cmds2.txt >&3; sleep 10; echo stop >&3; sleep 5
+          sleep 5; head -2 cmds1.txt >&3; sleep 12; tail -n +3 cmds1.txt >&3; sleep 15; cat cmds2.txt >&3; sleep 10; echo stop >&3; sleep 5; exec 3>&-
           cp packs.json cmds1.txt cmds2.txt ../res/
           grep -iE "structure|found|block at|error|pack" ../res/server.log | head -80
           { echo "found: $(grep -c 'Successfully found' ../res/server.log) of $(wc -l < cmds2.txt)"; grep -ciE 'Loaded structure|Structure loaded' ../res/server.log; } | tee ../res/SUMMARY.txt
