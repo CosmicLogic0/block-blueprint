@@ -87,7 +87,7 @@ Les Paramètres te permettent de changer la transparence des fantômes, la liste
 Chaque touche peut être changée dans Paramètres -> Commandes.
 Construire entre amis : Coop dans le menu de construction te donne un code pour tes amis. La construction apparaît au même endroit chez eux, et chacun construit sa partie.
 Quelque chose de mal posé ? Le menu de construction affiche en haut combien il y a à corriger. Clique dessus pour les voir un par un.
-Constructions sauvegardées > Constructions gratuites propose plus de 1 400 constructions gratuites de la communauté Minecraft.
+Constructions sauvegardées > Constructions gratuites propose plus de 1 300 constructions gratuites de la communauté Minecraft.
 Paramètres > Extras propose d'autres aides à activer : matières premières, une carte de la couche où tu es, et l'aide échafaudage.
 Le mod suit la langue de ton jeu : anglais, espagnol, portugais, allemand, français, russe et chinois.
 Comment ça marche
@@ -211,7 +211,7 @@ Quantités pour l'établi - un tailleur de pierre en demande moins pour les esca
 Rechercher
 Rechercher...
 Constructions gratuites
-Plus de 1 400 constructions gratuites de la communauté Minecraft : maisons, tours, bateaux, châteaux... Télécharges-en une et elle est dans tes Constructions sauvegardées.
+Plus de 1 300 constructions gratuites de la communauté Minecraft : maisons, tours, bateaux, châteaux... Télécharges-en une et elle est dans tes Constructions sauvegardées.
 + Coller une construction
 Colle un code de construction (BB1:...) ou les lignes d'Export de l'appli depuis ton presse-papiers. Ctrl+V marche aussi.
 Copier du monde

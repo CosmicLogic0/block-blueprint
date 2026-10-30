@@ -87,7 +87,7 @@ In den Einstellungen änderst du, wie durchsichtig die Geister sind, die Ecklist
 Jede Taste lässt sich unter Einstellungen -> Steuerung ändern.
 Mit Freunden bauen: Koop im Bau-Menü gibt dir einen Code für deine Freunde. Der Bau erscheint bei ihnen an derselben Stelle, und jeder baut seinen eigenen Teil.
 Etwas falsch gesetzt? Das Bau-Menü zeigt oben, wie viele zu reparieren sind. Klick darauf, um jeden einzeln zu sehen.
-Gespeicherte Bauten > Kostenlose Bauten hat über 1.400 kostenlose Bauten aus der Minecraft-Community.
+Gespeicherte Bauten > Kostenlose Bauten hat über 1.300 kostenlose Bauten aus der Minecraft-Community.
 Einstellungen > Extras hat weitere Helfer zum Einschalten: Rohstoffe, eine Karte deiner Schicht und Gerüst-Hinweise.
 Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, Französisch, Russisch und Chinesisch.
 So funktioniert's
@@ -211,7 +211,7 @@ Werkbank-Mengen - eine Steinsäge braucht weniger für Steintreppen und -stufen
 Suchen
 Suchen...
 Kostenlose Bauten
-Über 1.400 kostenlose Bauten aus der Minecraft-Community: Häuser, Türme, Schiffe, Burgen... Lade einen herunter, und er ist in deinen Gespeicherten Bauten.
+Über 1.300 kostenlose Bauten aus der Minecraft-Community: Häuser, Türme, Schiffe, Burgen... Lade einen herunter, und er ist in deinen Gespeicherten Bauten.
 + Bau einfügen
 Füg einen Bau-Code (BB1:...) oder die Export-Zeilen der App aus deiner Zwischenablage ein. Strg+V geht auch.
 Aus der Welt kopieren

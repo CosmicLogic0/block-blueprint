@@ -62,7 +62,7 @@ public class HelpScreen extends BBScreen {
          "Every key can be changed in Settings -> Key binds."},
         {"Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.",
          "Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.",
-         "Saved builds > Get free builds has 1,400+ free builds from the Minecraft community.",
+         "Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.",
          "Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.",
          "The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese."}};
 

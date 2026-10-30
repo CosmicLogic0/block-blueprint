@@ -88,7 +88,7 @@ Settings lets you change how see-through the ghosts are, the corner list and mor
 Every key can be changed in Settings -> Key binds.	Jede Taste lässt sich unter Einstellungen -> Steuerung ändern.
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Mit Freunden bauen: Koop im Bau-Menü gibt dir einen Code für deine Freunde. Der Bau erscheint bei ihnen an derselben Stelle, und jeder baut seinen eigenen Teil.
 Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.	Etwas falsch gesetzt? Das Bau-Menü zeigt oben, wie viele zu reparieren sind. Klick darauf, um jeden einzeln zu sehen.
-Saved builds > Get free builds has 1,400+ free builds from the Minecraft community.	Gespeicherte Bauten > Kostenlose Bauten hat über 1.400 kostenlose Bauten aus der Minecraft-Community.
+Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	Gespeicherte Bauten > Kostenlose Bauten hat über 1.300 kostenlose Bauten aus der Minecraft-Community.
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Einstellungen > Extras hat weitere Helfer zum Einschalten: Rohstoffe, eine Karte deiner Schicht und Gerüst-Hinweise.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, Französisch, Russisch und Chinesisch.
 How it works	So funktioniert's
@@ -212,7 +212,7 @@ Crafting table amounts - a stonecutter needs less for stone stairs and slabs	Wer
 Search	Suchen
 Search...	Suchen...
 Get free builds	Kostenlose Bauten
-1,400+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	Über 1.400 kostenlose Bauten aus der Minecraft-Community: Häuser, Türme, Schiffe, Burgen... Lade einen herunter, und er ist in deinen Gespeicherten Bauten.
+1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	Über 1.300 kostenlose Bauten aus der Minecraft-Community: Häuser, Türme, Schiffe, Burgen... Lade einen herunter, und er ist in deinen Gespeicherten Bauten.
 + Paste build	+ Bau einfügen
 Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.	Füg einen Bau-Code (BB1:...) oder die Export-Zeilen der App aus deiner Zwischenablage ein. Strg+V geht auch.
 Copy from world	Aus der Welt kopieren

@@ -87,7 +87,7 @@ Em Configurações você muda a transparência dos fantasmas, a lista do canto e
 Todas as teclas podem ser mudadas em Configurações -> Controles.
 Construir com amigos: Co-op no menu de construção te dá um código para seus amigos. A construção aparece no mesmo lugar para eles, e cada um constrói a sua parte.
 Algo colocado errado? O menu de construção mostra lá em cima quantos faltam corrigir. Clique para ver cada um.
-Construções salvas > Construções grátis tem mais de 1.400 construções grátis da comunidade do Minecraft.
+Construções salvas > Construções grátis tem mais de 1.300 construções grátis da comunidade do Minecraft.
 Configurações > Extras tem mais ajudas que você pode ligar: matérias-primas, um mapa da camada em que você está e dicas de andaime.
 O mod segue o idioma do seu jogo: inglês, espanhol, português, alemão, francês, russo e chinês.
 Como funciona
@@ -211,7 +211,7 @@ Quantidades da bancada - o cortador de pedras usa menos para escadas e lajes de 
 Pesquisar
 Pesquisar...
 Construções grátis
-Mais de 1.400 construções grátis da comunidade do Minecraft: casas, torres, navios, castelos... Baixe uma e ela fica nas suas Construções salvas.
+Mais de 1.300 construções grátis da comunidade do Minecraft: casas, torres, navios, castelos... Baixe uma e ela fica nas suas Construções salvas.
 + Colar construção
 Cole um código de construção (BB1:...) ou as linhas de Exportar do app da sua área de transferência. Ctrl+V também funciona.
 Copiar do mundo

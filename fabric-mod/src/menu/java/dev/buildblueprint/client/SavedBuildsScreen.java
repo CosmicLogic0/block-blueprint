@@ -72,7 +72,7 @@ public class SavedBuildsScreen extends Screen {
         if (pick != null) { for (int i = 0; i < builds.size(); i++) if (builds.get(i).file().equals(pick)) sel = i; pick = null; }
         int lx = M(), lw = listW();
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Get free builds", lw - 8)), b -> Mc.setScreen(new TemplatesScreen(this))).bounds(lx, B() - 66, lw, 20)
-                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("1,400+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.")))).build());
+                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.")))).build());
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "+ Paste build", lw - 8)), b -> paste()).bounds(lx, B() - 44, lw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.")))).build());
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Copy from world", lw - 8)), b -> { onClose(); Copier.start(); }).bounds(lx, B() - 22, lw, 20)

@@ -87,7 +87,7 @@ En Ajustes cambias lo transparentes que son los fantasmas, la lista de la esquin
 Todas las teclas se pueden cambiar en Ajustes -> Controles.
 Construir con amigos: Co-op en el menú de construcción te da un código para tus amigos. La construcción aparece en el mismo sitio para ellos y cada uno construye su parte.
 ¿Algo mal colocado? El menú de construcción muestra arriba cuántos hay que arreglar. Haz clic para ver cada uno.
-Construcciones guardadas > Construcciones gratis tiene más de 1.400 construcciones gratis de la comunidad de Minecraft.
+Construcciones guardadas > Construcciones gratis tiene más de 1.300 construcciones gratis de la comunidad de Minecraft.
 Ajustes > Extras tiene más ayudas que puedes encender: materias primas, un mapa de la capa en la que estás y ayuda de andamios.
 El mod usa el idioma de tu juego: inglés, español, portugués, alemán, francés, ruso y chino.
 Cómo funciona
@@ -211,7 +211,7 @@ Cantidades de la mesa de crafteo: un cortapiedras necesita menos para escaleras 
 Buscar
 Buscar...
 Construcciones gratis
-Más de 1.400 construcciones gratis de la comunidad de Minecraft: casas, torres, barcos, castillos... Descarga una y estará en tus Construcciones guardadas.
+Más de 1.300 construcciones gratis de la comunidad de Minecraft: casas, torres, barcos, castillos... Descarga una y estará en tus Construcciones guardadas.
 + Pegar construcción
 Pega un código de construcción (BB1:...) o las líneas de Exportar de la app desde tu portapapeles. Ctrl+V también funciona.
 Copiar del mundo

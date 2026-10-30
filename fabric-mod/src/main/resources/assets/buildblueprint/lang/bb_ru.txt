@@ -88,7 +88,7 @@ Settings lets you change how see-through the ghosts are, the corner list and mor
 Every key can be changed in Settings -> Key binds.	Любую клавишу можно сменить в Настройки -> Управление.
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Стройка с друзьями: кнопка Совместно в меню постройки даёт код для друзей. Постройка появится у них на том же месте, и каждый строит свою часть.
 Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.	Что-то поставлено неправильно? Меню постройки показывает сверху, сколько исправить. Нажми, чтобы увидеть каждую ошибку.
-Saved builds > Get free builds has 1,400+ free builds from the Minecraft community.	Сохранённые постройки > Бесплатные постройки: больше 1400 бесплатных построек от сообщества Minecraft.
+Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	Сохранённые постройки > Бесплатные постройки: больше 1300 бесплатных построек от сообщества Minecraft.
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Настройки > Дополнительно: ещё помощники, которые можно включить: сырьё, карта слоя и подсказки лесов.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	Мод использует язык игры: английский, испанский, португальский, немецкий, французский, русский и китайский.
 How it works	Как это работает
@@ -212,7 +212,7 @@ Crafting table amounts - a stonecutter needs less for stone stairs and slabs	К�
 Search	Поиск
 Search...	Поиск...
 Get free builds	Бесплатные постройки
-1,400+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	Больше 1400 бесплатных построек от сообщества Minecraft: дома, башни, корабли, замки... Скачай одну, и она будет в Сохранённых постройках.
+1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	Больше 1300 бесплатных построек от сообщества Minecraft: дома, башни, корабли, замки... Скачай одну, и она будет в Сохранённых постройках.
 + Paste build	+ Вставить постройку
 Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.	Вставь код постройки (BB1:...) или строки экспорта из приложения из буфера обмена. Ctrl+V тоже работает.
 Copy from world	Скопировать из мира

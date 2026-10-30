@@ -88,7 +88,7 @@ Settings lets you change how see-through the ghosts are, the corner list and mor
 Every key can be changed in Settings -> Key binds.	Todas as teclas podem ser mudadas em Configurações -> Controles.
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Construir com amigos: Co-op no menu de construção te dá um código para seus amigos. A construção aparece no mesmo lugar para eles, e cada um constrói a sua parte.
 Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.	Algo colocado errado? O menu de construção mostra lá em cima quantos faltam corrigir. Clique para ver cada um.
-Saved builds > Get free builds has 1,400+ free builds from the Minecraft community.	Construções salvas > Construções grátis tem mais de 1.400 construções grátis da comunidade do Minecraft.
+Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	Construções salvas > Construções grátis tem mais de 1.300 construções grátis da comunidade do Minecraft.
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Configurações > Extras tem mais ajudas que você pode ligar: matérias-primas, um mapa da camada em que você está e dicas de andaime.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	O mod segue o idioma do seu jogo: inglês, espanhol, português, alemão, francês, russo e chinês.
 How it works	Como funciona
@@ -212,7 +212,7 @@ Crafting table amounts - a stonecutter needs less for stone stairs and slabs	Qua
 Search	Pesquisar
 Search...	Pesquisar...
 Get free builds	Construções grátis
-1,400+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	Mais de 1.400 construções grátis da comunidade do Minecraft: casas, torres, navios, castelos... Baixe uma e ela fica nas suas Construções salvas.
+1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	Mais de 1.300 construções grátis da comunidade do Minecraft: casas, torres, navios, castelos... Baixe uma e ela fica nas suas Construções salvas.
 + Paste build	+ Colar construção
 Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.	Cole um código de construção (BB1:...) ou as linhas de Exportar do app da sua área de transferência. Ctrl+V também funciona.
 Copy from world	Copiar do mundo
