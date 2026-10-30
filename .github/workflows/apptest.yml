@@ -45,6 +45,7 @@ jobs:
           if [ "$RUNNER_OS" = macOS ]; then EXE="$(find dist -maxdepth 2 -name '*.app' | head -1)/Contents/MacOS/Block Blueprint"; node tools/ci/app_smoke.js "$EXE" out > out/run.log 2>&1 || true
           else sudo apt-get update -qq && sudo apt-get install -y -qq xvfb > /dev/null; xvfb-run -a -s "-screen 0 1400x900x24" node tools/ci/app_smoke.js "$PWD/dist/linux-unpacked/block-blueprint" out > out/run.log 2>&1 || true; fi
           cat out/run.log | head -40
+          if [ "$RUNNER_OS" = Linux ]; then xvfb-run -a -s "-screen 0 1700x1100x24" node tools/ci/app_gallery.js "$PWD/dist/linux-unpacked/block-blueprint" out >> out/run.log 2>&1 || true; fi
       - name: Save results
         if: always()
         shell: bash
