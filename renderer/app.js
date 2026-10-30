@@ -898,7 +898,7 @@ async function main() {
       const d = document.createElement('div'); d.className = 'tcard';
       d.innerHTML = `<img loading="lazy" alt=""><b></b><span></span>`;
       const img = d.querySelector('img');
-      if (t.cat === 'From Minecraft' || t.src === 'game' || t.schem) { d.classList.add('fromMc'); d._tpl = t; thumbObs.observe(d); }   // preview drawn when the card scrolls into view
+      if (t.cat === 'From Minecraft' || t.src === 'game' || t.schem) { d.classList.add('fromMc'); if (!t.schem) d.classList.add('mcBadge'); d._tpl = t; thumbObs.observe(d); }   // badge only on builds from the game, not the community ones   // preview drawn when the card scrolls into view
       else img.src = t.cat === 'My Builds' ? (t.thumb || '') : TPLSRC.thumb(t.id);
       d.querySelector('b').textContent = t.name;
       d.querySelector('span').textContent = `${t.size.join(' × ')} · ${t.blocks.toLocaleString()} blocks`;
