@@ -1,4 +1,4 @@
-  • electron-builder  version=26.15.3 os=6.17.0-1022-azure
+  • electron-builder  version=26.15.3 os=7.0.0-1017-azure
   • loaded configuration  file=package.json ("build" field)
   • executing @electron/rebuild  electronVersion=45.0.0 arch=x64 buildFromSource=false workspaceRoot=/home/runner/work/block-blueprint/block-blueprint projectDir=./ appDir=./
   • installing native dependencies  arch=x64
@@ -7,10 +7,10 @@
   • downloaded      label=electron progress=100%
   • downloaded electron zip extracted successfully  output=/home/runner/work/block-blueprint/block-blueprint/dist/linux-unpacked
   • searching for node modules  pm=npm searchDir=/home/runner/work/block-blueprint/block-blueprint
-  • building        target=AppImage arch=x64 file=dist/Block-Blueprint-1.2.12-linux.AppImage
+  • building        target=AppImage arch=x64 file=dist/Block-Blueprint-1.3.0-linux.AppImage
   • downloaded      label=appimage-12.0.1.7z progress=100%
   • downloaded      label=7zip-linux-x64.tar.gz progress=100%
-  • building embedded block map  file=dist/Block-Blueprint-1.2.12-linux.AppImage
-  • building        target=deb arch=x64 file=dist/Block-Blueprint-1.2.12-linux.deb
+  • building embedded block map  file=dist/Block-Blueprint-1.3.0-linux.AppImage
+  • building        target=deb arch=x64 file=dist/Block-Blueprint-1.3.0-linux.deb
   • adding autoupdate files for: deb  resourceDir=dist/linux-unpacked/resources
   • downloaded      label=fpm-1.17.0-ruby-3.4.3-linux-amd64.7z progress=100%

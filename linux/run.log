@@ -1,15 +1,22 @@
 APP OK
-main-err: [2985:1027/123932.695279:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-main-err: [2985:1027/123932.695326:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
-[2985:1027/123932.695381:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address ty
-main-err: [2985:1027/123954.428648:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-[2985:1027/123954.428690:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner:
-main-err: [2985:1027/123954.428766:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
-main-err: (node:2985) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/block-blueprint/block-blueprint/dist/linux-unpacked/resources/app.asar/renderer/schem.js is not specified and it doesn't parse as CommonJS.
+main-err: [2867:1030/031750.634389:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+main-err: [2867:1030/031750.634471:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2867:1030/031750.634509:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address ty
+main-err: [2867:1030/031806.956034:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+main-err: [2867:1030/031806.956208:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+main-err: [2867:1030/031806.956240:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+main-err: [2867:1030/031806.956348:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+main-err: (node:2867) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/block-blueprint/block-blueprint/dist/linux-unpacked/resources/app.asar/renderer/schem.js is not specified and it doesn't parse as CommonJS.
 Reparsing as ES module because module syntax was detected. This incu
-main-err: [2985:1027/124001.184048:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-main-err: [2985:1027/124001.184156:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
-main-err: [2985:1027/124001.184200:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-[2985:1027/124001.184217:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner:
-main-err: Debugger ending on ws://127.0.0.1:33587/670fbc13-504b-44c8-9b57-0f929da44a04
+main-err: [2867:1030/031813.649504:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+main-err: [2867:1030/031813.650606:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+main-err: [2867:1030/031813.651370:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+main-err: [2867:1030/031813.651477:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+main-err: Debugger ending on ws://127.0.0.1:39351/5223a694-2727-40f7-97ad-7aa47e6db0c4
 For help, see: https://nodejs.org/learn/getting-started/debugging
+gallery Castles & Forts true
+gallery Houses true
+gallery Ships true
+gallery Towers true
+gallery Ruins & Temples true
+gallery Village Buildings true

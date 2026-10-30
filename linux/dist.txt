@@ -1,8 +1,8 @@
-total 248388
-drwxr-xr-x  3 runner runner      4096 Oct 27 12:39 .
-drwxr-xr-x 17 runner runner      4096 Oct 27 12:37 ..
--rwxr-xr-x  1 runner runner 140582224 Oct 27 12:37 Block-Blueprint-1.2.12-linux.AppImage
--rw-r--r--  1 runner runner 113745604 Oct 27 12:39 Block-Blueprint-1.2.12-linux.deb
--rw-r--r--  1 runner runner      1039 Oct 27 12:39 builder-debug.yml
--rw-r--r--  1 runner runner       560 Oct 27 12:39 latest-linux.yml
-drwxr-xr-x  4 runner runner      4096 Oct 27 12:37 linux-unpacked
+total 248052
+drwxr-xr-x  3 runner runner      4096 Oct 30 03:17 .
+drwxr-xr-x 17 runner runner      4096 Oct 30 03:15 ..
+-rwxr-xr-x  1 runner runner 140582315 Oct 30 03:16 Block-Blueprint-1.3.0-linux.AppImage
+-rw-r--r--  1 runner runner 113399848 Oct 30 03:17 Block-Blueprint-1.3.0-linux.deb
+-rw-r--r--  1 runner runner      1039 Oct 30 03:17 builder-debug.yml
+-rw-r--r--  1 runner runner       556 Oct 30 03:17 latest-linux.yml
+drwxr-xr-x  4 runner runner      4096 Oct 30 03:15 linux-unpacked
