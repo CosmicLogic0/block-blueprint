@@ -4,7 +4,7 @@
 // next one, red shows a wrong block, and the line above the hotbar says what to place and where.
 // Open the menu with the Blueprint item (paper + blue dye) or /bb:menu.
 import { world, system, BlockPermutation, MolangVariableMap, GameMode, CommandPermissionLevel, CustomCommandStatus, ItemStack } from '@minecraft/server';
-import { ActionFormData, ModalFormData } from '@minecraft/server-ui';
+import { ActionFormData, ModalFormData, FormCancelationReason } from '@minecraft/server-ui';
 import { colorOf } from './colors.js';
 import { rotateStates, rotatePos } from './rotate.js';
 
@@ -259,6 +259,15 @@ function undoAuto(player) {
 }
 
 // ---------------------------------------------------------------- the menu
+/** Shows a form; if the chat is still open (typed /bb:menu), waits until it closes. */
+async function show(form, player) {
+  for (let i = 0; i < 40; i++) {
+    const r = await form.show(player);
+    if (r.cancelationReason !== FormCancelationReason.UserBusy) return r;
+    await new Promise((res) => system.runTimeout(res, 5));
+  }
+  return { canceled: true };
+}
 async function openMenu(player) {
   const s = sessions.get(player.id), b = s && builds.get(s.id);
   const f = new ActionFormData().title('Build Blueprint');
@@ -294,7 +303,7 @@ async function openMenu(player) {
     add('Pick another build', () => pickBuild(player));
     add('Remove this build', () => { sessions.delete(player.id); save(player); player.sendMessage('Build removed. Pick one again any time.'); });
   }
-  const r = await f.show(player);
+  const r = await show(f, player);
   if (r.canceled || r.selection === undefined) return;
   acts[r.selection]?.();
 }
@@ -304,11 +313,11 @@ async function pickBuild(player) {
   const ids = buildIds();
   if (!ids.length) {
     const f = new ActionFormData().title('No builds yet').body('Builds come from:\n- the Block Blueprint app on PC: open a build, press "Save for Bedrock" and open the file\n- structures you save in this world with a structure block\nThen use the Blueprint again.').button('OK');
-    await f.show(player); return;
+    await show(f, player); return;
   }
   let list = ids;
   if (ids.length > 20) {
-    const q = await new ModalFormData().title('Find a build').textField(`${ids.length} builds. Type part of a name (or leave empty for all):`, 'house, tower, ship...').show(player);
+    const q = await show(new ModalFormData().title('Find a build').textField(`${ids.length} builds. Type part of a name (or leave empty for all):`, 'house, tower, ship...'), player);
     if (q.canceled) return;
     const t = String(q.formValues?.[0] || '').toLowerCase().trim();
     if (t) list = ids.filter((id) => niceName(id).toLowerCase().includes(t) || id.toLowerCase().includes(t));
@@ -317,7 +326,7 @@ async function pickBuild(player) {
   list = list.slice(0, 100);
   const f = new ActionFormData().title('Pick a build');
   for (const id of list) f.button(niceName(id) + '\n§8' + id);
-  const r = await f.show(player);
+  const r = await show(f, player);
   if (r.canceled || r.selection === undefined) return;
   const id = list[r.selection];
   player.onScreenDisplay.setActionBar('Loading ' + niceName(id) + '...');
@@ -333,7 +342,7 @@ async function pickBuild(player) {
 async function showNeeds(player, s, b, onlyLayer) {
   const rows = needs(player, s, b, onlyLayer);
   const lines = rows.length ? rows.map((r) => `${r.have >= r.need ? '§a' : '§c'}${label(r.id)}§r  ${r.have}/${r.need}`) : ['§aNothing left - you have placed it all!'];
-  await new ActionFormData().title(onlyLayer ? `Layer ${s.layer + 1} needs` : 'The whole build needs').body('have / need\n\n' + lines.join('\n')).button('OK').show(player);
+  await show(new ActionFormData().title(onlyLayer ? `Layer ${s.layer + 1} needs` : 'The whole build needs').body('have / need\n\n' + lines.join('\n')).button('OK'), player);
 }
 
 // ---------------------------------------------------------------- ways in: the Blueprint item, /bb:menu

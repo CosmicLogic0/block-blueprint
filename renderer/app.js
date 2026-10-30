@@ -1140,7 +1140,7 @@ async function main() {
       else { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([r.bytes])); a.download = r.id + '.mcpack'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000); ok = true; }
       if (!ok) return;
       await dialog({ title: 'Saved for Bedrock', ok: 'Got it',
-        msg: `1. Open the .mcpack file - Minecraft Bedrock starts and adds it.  2. In your world's settings, Behavior Packs: turn on "Block Blueprint: ${String(title || 'Build').slice(0, 40)}".  3. In the world, type  /structure load blueprint:${r.id} ~ ~ ~  (or use a structure block set to Load with the name blueprint:${r.id}). Size ${r.size.join(' x ')}.`
+        msg: `1. Open the .mcpack file - Minecraft Bedrock starts and adds it.  2. In your world's settings, Behavior Packs: turn on "Block Blueprint: ${String(title || 'Build').slice(0, 40)}".  3. In the world, type  /structure load blueprint:${r.id} ~ ~ ~  (or use a structure block set to Load with the name blueprint:${r.id}). Size ${r.size.join(' x ')}.  With the Build Blueprint add-on for Bedrock, it's also in the Blueprint's list, to build layer by layer.`
           + (r.missing.length ? ` ${r.missing.length} kind${r.missing.length > 1 ? 's' : ''} of block Bedrock doesn't have ${r.missing.length > 1 ? 'were' : 'was'} left out: ${r.missing.slice(0, 6).join(', ')}${r.missing.length > 6 ? '...' : ''}.` : '') });
     } catch (err) { toast(err.message || 'Could not save the Bedrock file', 4000); }
   }

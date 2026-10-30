@@ -5,8 +5,7 @@
     "components": {
       "minecraft:icon": "bb_blueprint",
       "minecraft:display_name": { "value": "item.bb:blueprint.name" },
-      "minecraft:max_stack_size": 1,
-      "minecraft:hand_equipped": false
+      "minecraft:max_stack_size": 1
     }
   }
 }
