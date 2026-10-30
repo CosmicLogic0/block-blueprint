@@ -10,6 +10,7 @@
   - **Layer map:** a small map of the layer you're on, seen from above.
   - **Scaffold hints:** parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.
 - **How it works** has a new page about all of this.
+- Auto-build no longer skips the odd block that needs another block next to it first.
 - **Block Blueprint app for Mac and Linux:** download it from the same page as the Windows app.
 ## 1.2.12
 - **Fixed: the game wouldn't start on NeoForge / Forge in some modpacks** (the error mentioned "FabricLoader"). Thanks for reporting!
