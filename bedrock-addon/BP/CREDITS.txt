@@ -1,0 +1,20 @@
+Build Blueprint for Minecraft Bedrock
+
+Starter builds, each used under its creator's open license (license texts in the licenses folder):
+
+bb:cozy_cherry_cottage - "Cozy Cherry Cottage" by mooredesign13_63897 (MIT) https://modrinth.com/mod/cozy-cabins-and-cottages
+bb:cozy_oak_cabin - "Cozy Oak Cabin" by mooredesign13_63897 (MIT) https://modrinth.com/mod/cozy-cabins-and-cottages
+bb:oak_windmill - "Cozy Oak Windmill" by mooredesign13_63897 (MIT) https://modrinth.com/mod/cozy-cabins-and-cottages
+bb:beach_house - "Beach House" by mooredesign13_63897 (MIT) https://modrinth.com/mod/combat-structures
+bb:barn - "Barn" by FinnDog_123 (MIT) https://modrinth.com/mod/mvs-moogs-voyager-structure-config-pack
+bb:cherry_farm - "Farm" by Timo_11 (BSD-3-Clause) https://modrinth.com/datapack/timo
+bb:copper_shop - "Copper Shop" by Reggarf (MIT) https://modrinth.com/mod/underground-village-stoneholm
+bb:magician_tent - "Big Magician Tent" by Swuks (MIT) https://modrinth.com/datapack/deserters-camps
+bb:knight_tower - "9x14 Knighttower 3" by tombkingsts (MIT) https://modrinth.com/mod/flying_castles
+bb:small_castle - "Caste Villagers" by berezka (MIT) https://modrinth.com/mod/berezkas-castle
+bb:church - "Church" by Ellipog (MIT) https://modrinth.com/datapack/christmas-dimension
+bb:jungle_temple - "Jungle Temple Top" by mooredesign13_63897 (MIT) https://modrinth.com/mod/archaeology-ruins
+bb:trade_boat - "Acacia Traveling Trade Boat" by mooredesign13_63897 (MIT) https://modrinth.com/mod/combat-structures
+bb:big_boat - "Boat" by mooredesign13_63897 (MIT) https://modrinth.com/mod/combat-structures
+
+Bedrock block names: GeyserMC mappings (MIT) https://github.com/GeyserMC/mappings

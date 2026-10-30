@@ -1,0 +1,5 @@
+MVS - Moog's Voyager Structures (config pack) by FinnDog_123
+https://modrinth.com/mod/mvs-moogs-voyager-structure-config-pack
+License: MIT
+
+(no license file in the download; license as listed on Modrinth)

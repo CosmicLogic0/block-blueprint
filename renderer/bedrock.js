@@ -103,7 +103,7 @@ export function buildToMcstructure(build, map) {
 // ---- a tiny behavior pack (.mcpack = zip) holding the structure: double-click it and Bedrock imports it
 const CRC = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
 function crc32(u8) { let c = 0xffffffff; for (let i = 0; i < u8.length; i++) c = CRC[(c ^ u8[i]) & 255] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; }
-function zip(files) {   // [{ name, data: Uint8Array }] -> stored (no compression) zip
+export function zip(files) {   // [{ name, data: Uint8Array }] -> stored (no compression) zip
   const parts = [], central = []; let off = 0;
   const le = (n, v) => { const b = new Uint8Array(n); for (let i = 0; i < n; i++) b[i] = (v >>> (8 * i)) & 0xff; return b; };
   for (const f of files) {

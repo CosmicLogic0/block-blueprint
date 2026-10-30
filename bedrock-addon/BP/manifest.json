@@ -1,0 +1,20 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Build Blueprint",
+    "description": "Build anything layer by layer: see where every block goes, what to place next, and what you still need. Use the Blueprint item (or /bb:menu).",
+    "uuid": "091ec75c-2c9e-423a-a736-e5fc8db21709",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 40]
+  },
+  "modules": [
+    { "type": "data", "uuid": "54f6dd76-b768-47ae-9dd6-b19bf0101c96", "version": [1, 0, 0] },
+    { "type": "script", "language": "javascript", "uuid": "c4de3795-7d63-4f30-84f7-e69b2bc7c79b", "version": [1, 0, 0], "entry": "scripts/main.js" }
+  ],
+  "dependencies": [
+    { "uuid": "217b922e-d7be-45fa-827a-2ce05499da59", "version": [1, 0, 0] },
+    { "module_name": "@minecraft/server", "version": "2.8.0" },
+    { "module_name": "@minecraft/server-ui", "version": "2.0.0" }
+  ],
+  "metadata": { "authors": ["CosmicLogic"], "url": "https://www.curseforge.com/minecraft/mc-mods/build-blueprint" }
+}

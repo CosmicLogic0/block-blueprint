@@ -1,0 +1,12 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Build Blueprint (pictures)",
+    "description": "The markers and the Blueprint item for Build Blueprint.",
+    "uuid": "217b922e-d7be-45fa-827a-2ce05499da59",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 40]
+  },
+  "modules": [{ "type": "resources", "uuid": "da8360be-52f4-4650-b329-88d5af10d5a2", "version": [1, 0, 0] }],
+  "dependencies": [{ "uuid": "091ec75c-2c9e-423a-a736-e5fc8db21709", "version": [1, 0, 0] }]
+}
