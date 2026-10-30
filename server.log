@@ -1,0 +1,86 @@
+NO LOG FILE! - setting up server logging...
+[2026-10-30 09:27:49:621 INFO] Starting Server
+[2026-10-30 09:27:49:621 INFO] Version: 1.26.61.1
+[2026-10-30 09:27:49:621 INFO] Session ID: 0a097042-0844-44d6-a6bc-6c6803af6440
+[2026-10-30 09:27:49:621 INFO] Build ID: 53069370
+[2026-10-30 09:27:49:621 INFO] Branch: r/26_u6
+[2026-10-30 09:27:49:621 INFO] Commit ID: 86f7b32281709abd4444adb52887796af061c7bd
+[2026-10-30 09:27:49:621 INFO] Configuration: Publish
+[2026-10-30 09:27:49:621 INFO] Contents of server.properties: {"allow-cheats":"true","allow-inbound-script-debugging":"false","allow-list":"true","allow-outbound-script-debugging":"false","block-network-ids-are-hashes":"true","chat-restriction":"None","client-side-chunk-generation-enabled":"true","compression-algorithm":"zlib","compression-threshold":"1","content-log-console-output-enabled":"true","content-log-file-enabled":"false","content-log-level":"info","default-player-permission-level":"member","difficulty":"easy","disable-custom-skins":"false","disable-persona":"false","disable-player-interaction":"false","enable-lan-visibility":"true","force-gamemode":"false","gamemode":"creative","level-name":"Bedrock level","max-players":"10","max-threads":"8","online-mode":"true","persistent-ticking-area-max-chunks":"100","persistent-ticking-area-max-count":"10","player-idle-timeout":"30","player-movement-action-direction-threshold":"0.85","player-position-acceptance-threshold":"0.5","script-debugger-auto-attach":"disabled","server-authoritative-block-breaking-pick-range-scalar":"1.5","server-authoritative-dismount-strict":"false","server-authoritative-entity-attack-range-tolerance":"0.5","server-authoritative-entity-attack-range-validation":"disabled","server-authoritative-entity-attack-request-validation":"disabled","server-authoritative-entity-interactions-strict":"false","server-authoritative-movement-strict":"false","server-build-radius-ratio":"Disabled","server-name":"Dedicated Server","server-port":"19132","server-portv6":"19133","server-udp-ports":"19132","texturepack-required":"false","tick-distance":"4","transient-ticking-area-max-chunks":"300","transport":"nethernet","view-distance":"32"}
+[2026-10-30 09:27:49:621 INFO] Level Name: Bedrock level
+[2026-10-30 09:27:49:621 INFO] Profiler config ('bootstrap.json') load result: success=1, errorMessage=(null)
+[2026-10-30 09:27:49:622 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-10-30 09:27:49:622 INFO] Game mode: 1 Creative
+[2026-10-30 09:27:49:622 INFO] Difficulty: 1 EASY
+[2026-10-30 09:27:49:624 INFO] Content logging to console is enabled.
+[2026-10-30 09:27:49:625 INFO] 
+
+#####################################################
+#                                                   #
+#              CREATING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-10-30 09:27:50:012 INFO] Opening level 'worlds/Bedrock level/db'
+[2026-10-30 09:27:50:013 INFO] Accepting clients on [::]:19132
+[2026-10-30 09:27:50:053 INFO] Pack Stack - [00] Build Blueprint (id: 091ec75c-2c9e-423a-a736-e5fc8db21709, version: 1.0.0) @ behavior_packs/build_blueprint
+[2026-10-30 09:27:50:523 INFO] Signed in to signaling service successfully
+[2026-10-30 09:27:51:200 INFO] Server started.
+[2026-10-30 09:27:51:200 WARN] ================ ALLOW LIST WARNING ===================
+[2026-10-30 09:27:51:200 WARN] Allow list is enabled but contains no entries. 
+[2026-10-30 09:27:51:200 WARN] Use allowlist add <playername> for you and your friends so that they can access the server, or modify allowlist.json manually.
+[2026-10-30 09:27:51:200 WARN] 
+Alternatively, the allow list can be turned off by typing allowlist off or manually toggled in the server.properties file.
+[2026-10-30 09:27:51:200 WARN] =======================================================
+[2026-10-30 09:27:51:200 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-10-30 09:27:51:200 INFO] Server Telemetry is currently not enabled. 
+[2026-10-30 09:27:51:200 INFO] Enabling this telemetry helps us improve the game.
+[2026-10-30 09:27:51:200 INFO] 
+[2026-10-30 09:27:51:200 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-10-30 09:27:51:200 INFO] to the server.properties file in the handheld/src-server directory
+[2026-10-30 09:27:51:200 INFO] ======================================================
+[2026-10-30 09:27:54:772 INFO] Added ticking area from 0, 0, 0 to 159, 0, 159.
+1/10 ticking areas in use.
+[2026-10-30 09:28:04:638 INFO] Script event bb:selftest has been sent
+[2026-10-30 09:28:04:676 WARN] [Scripting] BBTEST builds 14: bb:barn, bb:beach_house, bb:big_boat, bb:cherry_farm, bb:church, bb:copper_shop, bb:cozy_cherry_cottage, bb:cozy_oak_cabin, bb:jungle_temple, bb:knight_tower, bb:magician_tent, bb:oak_windmill, bb:small_castle, bb:trade_boat
+
+[2026-10-30 09:28:04:687 WARN] [Scripting] BBTEST ghost in world: bb:g_oak_planks
+
+[2026-10-30 09:28:04:687 WARN] [Scripting] BBTEST ghosts 1254/1254
+
+[2026-10-30 09:28:05:442 WARN] [Scripting] BBTEST bb:copper_shop turn 0: 10x6x9 381 blocks, placed 381 (failed 0), match 381/381, item kinds 19
+
+[2026-10-30 09:28:05:463 WARN] [Scripting] BBTEST bb:magician_tent turn 0: 13x8x10 348 blocks, placed 348 (failed 0), match 348/348, item kinds 25
+
+[2026-10-30 09:28:05:795 WARN] [Scripting] BBTEST bb:cherry_farm turn 0: 13x9x19 545 blocks, placed 545 (failed 0), match 545/545, item kinds 23
+
+[2026-10-30 09:28:05:832 WARN] [Scripting] BBTEST bb:knight_tower turn 0: 14x16x9 567 blocks, placed 567 (failed 0), match 567/567, item kinds 15
+
+[2026-10-30 09:28:05:910 WARN] [Scripting] BBTEST bb:cozy_oak_cabin turn 0: 9x11x13 607 blocks, placed 607 (failed 0), match 607/607, item kinds 16
+
+[2026-10-30 09:28:06:140 WARN] [Scripting] BBTEST bb:trade_boat turn 0: 10x10x17 664 blocks, placed 664 (failed 0), match 664/664, item kinds 12
+
+[2026-10-30 09:28:06:231 WARN] [Scripting] BBTEST bb:beach_house turn 0: 12x12x15 854 blocks, placed 854 (failed 0), match 854/854, item kinds 16
+
+[2026-10-30 09:28:06:284 WARN] [Scripting] BBTEST bb:beach_house turn 1: 12x12x15 854 blocks, placed 854 (failed 0), match 854/854, item kinds 16
+
+[2026-10-30 09:28:06:325 WARN] [Scripting] BBTEST bb:cozy_cherry_cottage turn 0: 14x10x13 842 blocks, placed 842 (failed 0), match 842/842, item kinds 19
+
+[2026-10-30 09:28:06:419 WARN] [Scripting] BBTEST bb:barn turn 0: 15x10x18 892 blocks, placed 892 (failed 0), match 892/892, item kinds 36
+
+[2026-10-30 09:28:06:473 WARN] [Scripting] BBTEST bb:barn turn 1: 15x10x18 892 blocks, placed 892 (failed 0), match 892/892, item kinds 36
+
+[2026-10-30 09:28:06:600 WARN] [Scripting] BBTEST bb:church turn 0: 15x21x11 900 blocks, placed 900 (failed 0), match 900/900, item kinds 42
+
+[2026-10-30 09:28:06:807 WARN] [Scripting] BBTEST bb:big_boat turn 0: 9x25x31 1008 blocks, placed 1008 (failed 0), match 1008/1008, item kinds 15
+
+[2026-10-30 09:28:06:892 WARN] [Scripting] BBTEST bb:oak_windmill turn 0: 19x19x12 1395 blocks, placed 1395 (failed 0), match 1395/1395, item kinds 25
+
+[2026-10-30 09:28:06:963 WARN] [Scripting] BBTEST bb:jungle_temple turn 0: 19x22x14 1442 blocks, placed 1434 (failed 0), match 1429/1442 MISS minecraft:vine{"vine_direction_bits":0} got minecraft:air{} | minecraft:vine{"vine_direction_bits":0} got minecraft:air{} | minecraft:vine{"vine_direction_bits":0} got minecraft:air{}, item kinds 25
+
+[2026-10-30 09:28:07:028 WARN] [Scripting] BBTEST bb:small_castle turn 0: 20x12x21 1443 blocks, placed 1443 (failed 0), match 1443/1443, item kinds 25
+
+[2026-10-30 09:28:07:028 WARN] [Scripting] BBTEST done
+
+[2026-10-30 09:28:10:650 INFO] Server stop requested.
+[2026-10-30 09:28:10:696 INFO] Stopping server...
+Quit correctly
