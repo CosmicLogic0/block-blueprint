@@ -154,3 +154,6 @@ License texts: renderer/templates/licenses/<project>.txt. The **Minecraft Buildi
 | weidestcraft | CodeNPlay (MIT) | 1 | https://modrinth.com/mod/weidestcraft |
 | winter-enchantments | King_Tajin (Apache-2.0) | 2 | https://modrinth.com/mod/winter-enchantments |
 | workshops-of-doom | Commoble (MIT) | 9 | https://modrinth.com/mod/workshops-of-doom |
+
+## Bedrock block names
+"Save for Bedrock" uses a Java to Bedrock block table built from [GeyserMC's mappings](https://github.com/GeyserMC/mappings) (MIT, license in renderer/bedrock-blocks-LICENSE.txt). Thank you, GeyserMC!

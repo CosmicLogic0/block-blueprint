@@ -1,3 +1,8 @@
+## 1.3.1 (coming next)
+- **App: Save for Bedrock.** Any build (yours or one of the free ones) can be saved as a Minecraft Bedrock file. Open it and Bedrock adds it; then type /structure load blueprint:<name> ~ ~ ~ in your world (the app shows the exact line). Tested in the real Bedrock server.
+- App: the free community builds have a blue **Free build** badge; builds from your own game keep **From Minecraft**. In the game, downloaded ones are tagged **free build** in Saved builds.
+- Free builds: 12 builds that were in the list twice are gone (1,393 builds).
+
 ## 1.3.0
 - **Build with friends:** press **Co-op** in the build menu (once the build is placed) and send your friends the code. They paste it in Saved builds > Paste and the build appears in the exact same spot for them. Pick how many builders there are and which one you are - the build is split into strips and everyone sees only their own part.
 - **Mistake finder:** when a block is wrong (a different block, or placed the wrong way round), the build menu shows **"3 to fix"** at the top. Click it and the mod points you to each one; when you fix one it moves on to the next by itself.
