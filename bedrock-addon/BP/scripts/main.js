@@ -28,7 +28,8 @@ function buildIds() {
   const m = world.structureManager, ids = new Set();
   try { for (const id of m.getPackStructureIds()) ids.add(id); } catch {}
   try { for (const id of m.getWorldStructureIds()) ids.add(id); } catch {}
-  return [...ids].filter((id) => !id.startsWith('minecraft:')).sort((a, b) => niceName(a).localeCompare(niceName(b)));
+  // ours and the player's (namespace:name); Minecraft's own structure pieces have no namespace
+  return [...ids].filter((id) => id.includes(':') && !id.startsWith('minecraft:')).sort((a, b) => niceName(a).localeCompare(niceName(b)));
 }
 
 /** Reads a structure into a build, a bit every tick so the game doesn't stall. */
@@ -99,8 +100,9 @@ function placeInFront(player, s, b) {
   s.oy = py;
 }
 
+const base = (n) => n.replace('minecraft:flowing_', 'minecraft:');   // flowing water / lava turn into still ones
 function matches(block, cell) {
-  if (!block || block.typeId !== cell.name) return false;
+  if (!block || base(block.typeId) !== base(cell.name)) return false;
   const have = block.permutation.getAllStates();
   for (const k of CHECK) if (k in cell.states && k in have && have[k] !== cell.states[k]) return false;
   return true;
@@ -354,10 +356,12 @@ system.afterEvents.scriptEventReceive.subscribe((e) => {
       pending++;
       const ox = (slot % 4) * 40, oz = Math.floor(slot / 4) * 40; slot++;
       loadBuild(id, (b) => {
-        if (!b) { console.warn('BBTEST ' + id + ' FAIL could not read'); return; }
+        if (!b) { console.warn('BBTEST ' + id + ' FAIL could not read'); if (--pending === 0) console.warn('BBTEST done'); return; }
         const s = { id, ox, oy: 100, oz, turns, locked: true, layer: 0 };
         system.runJob((function* () {
           let placed = 0, bad = 0, n = 0;
+          const stone = BlockPermutation.resolve('minecraft:stone');   // a floor under it, so sand and gravel stay put
+          for (let x = 0; x < 40; x++) for (let z = 0; z < 40; z++) { try { dim.getBlock({ x: ox + x, y: 99, z: oz + z }).setPermutation(stone); } catch {} }
           for (const layer of b.layers) for (const c of layer) {
             const wc = worldCell(s, b, c);
             try { let perm; try { perm = BlockPermutation.resolve(wc.name, wc.states); } catch { perm = BlockPermutation.resolve(wc.name); } dim.getBlock(wc).setPermutation(perm); placed++; } catch { bad++; }
