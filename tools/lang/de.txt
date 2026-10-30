@@ -232,6 +232,7 @@ Legt den BB1:-Code dieses Baus in deine Zwischenablage, zum Importieren in die B
 Speichert diesen Bau als .schem-Datei (BlockBlueprint/schematics in deinem Benutzerordner) für WorldEdit, Litematica, Axiom...
 Speichern
 Neuer Bau angekommen: "{0}"
+kostenlos
 Ansicht: 3D
 Ansicht: oben
 Ansicht: vorne

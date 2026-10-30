@@ -232,6 +232,7 @@ Salvar .schem
 Salva esta construção como arquivo .schem (BlockBlueprint/schematics na sua pasta de usuário) para WorldEdit, Litematica, Axiom...
 Salvar
 Chegou uma construção nova: "{0}"
+grátis
 Vista: 3D
 Vista: cima
 Vista: frente

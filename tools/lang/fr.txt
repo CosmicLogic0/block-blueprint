@@ -232,6 +232,7 @@ Sauver en .schem
 Sauvegarde cette construction en fichier .schem (BlockBlueprint/schematics dans ton dossier utilisateur) pour WorldEdit, Litematica, Axiom...
 Sauvegarder
 Nouvelle construction reçue : « {0} »
+gratuite
 Vue : 3D
 Vue : dessus
 Vue : face

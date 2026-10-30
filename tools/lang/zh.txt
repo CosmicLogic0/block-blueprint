@@ -232,6 +232,7 @@ Shift + 点击：只显示这个方块
 把这个建筑保存为 .schem 文件（用户文件夹中的 BlockBlueprint/schematics），可用于 WorldEdit、Litematica、Axiom……
 保存
 收到新建筑：“{0}”
+免费
 视图：3D
 视图：顶部
 视图：正面

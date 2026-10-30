@@ -233,6 +233,7 @@ Save .schem	Guardar .schem
 Save this build as a .schem file (BlockBlueprint/schematics in your user folder) for WorldEdit, Litematica, Axiom...	Guarda esta construcción como archivo .schem (BlockBlueprint/schematics en tu carpeta de usuario) para WorldEdit, Litematica, Axiom...
 Save	Guardar
 New build arrived: "{0}"	Ha llegado una construcción nueva: "{0}"
+free build	gratis
 View: 3D	Vista: 3D
 View: Top	Vista: arriba
 View: Front	Vista: frente

@@ -235,7 +235,8 @@ html, body { margin: 0; height: 100%; overflow: hidden; font-family: "Segoe UI",
 #exporter .expOld summary { cursor: pointer; font-size: 12px; color: #9aa4b4; padding: 4px 0; }
 #exporter .expOld[open] summary { margin-bottom: 6px; }
 .tcard.fromMc { position: relative; }
-.tcard.mcBadge::after { content: 'From Minecraft'; position: absolute; top: 8px; left: 8px; font-size: 10px; padding: 2px 6px; background: #3c8527; color: #fff; border: 1px solid #1e4d12; box-shadow: inset 0 -2px #2a641c; }
+.tcard.mcBadge::after, .tcard.freeBadge::after { content: 'From Minecraft'; position: absolute; top: 8px; left: 8px; font-size: 10px; padding: 2px 6px; background: #3c8527; color: #fff; border: 1px solid #1e4d12; box-shadow: inset 0 -2px #2a641c; }
+.tcard.freeBadge::after { content: 'Free build'; background: #2f6fb5; border-color: #1b4677; box-shadow: inset 0 -2px #23558c; }
 
 /* updates */
 #updBox { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; color: #aab4c2; }

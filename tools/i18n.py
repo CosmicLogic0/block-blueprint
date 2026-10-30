@@ -191,7 +191,7 @@ def extract():
             for u in (t.split(':', 2)[1:] if t.startswith('key:') else [t]):   # help pages: "key:Insert:what it does"
                 if keep(u) and u not in keys: keys.append(u)
     # single lowercase words that get filled into other texts (directions, sides)
-    for w in ['north', 'south', 'east', 'west', 'north-east', 'north-west', 'south-east', 'south-west', 'left', 'right', 'kept', 'left out', 'just me', 'this layer', 'whole build', 'auto', 'top right', 'top left', 'have', 'placed', 'chest',
+    for w in ['north', 'south', 'east', 'west', 'north-east', 'north-west', 'south-east', 'south-west', 'left', 'right', 'kept', 'left out', 'just me', 'this layer', 'whole build', 'auto', 'top right', 'top left', 'have', 'placed', 'chest', 'free build',
               # kinds of free builds (renderer/templates/mod-index.tsv)
               'Community Builds', 'Houses', 'Towers', 'Ships', 'Ruins & Temples', 'Castles & Forts', 'Village Buildings', 'Decor', 'Camps & Outposts']:
         if w not in keys: keys.append(w)

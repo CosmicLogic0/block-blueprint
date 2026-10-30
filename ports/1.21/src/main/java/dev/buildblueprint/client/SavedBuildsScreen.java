@@ -126,7 +126,9 @@ public class SavedBuildsScreen extends BBScreen {
     }
     private static String kind(SavedBuilds.Entry e) {
         if (!SavedBuilds.isFile(e)) return "";
-        String f = e.file(); return f.substring(f.lastIndexOf('.') + 1).toLowerCase(java.util.Locale.ROOT);
+        String f = e.file();
+        if (f.endsWith(".nbt") && f.contains(" - by ")) return "free build";   // downloaded with Get free builds
+        return f.substring(f.lastIndexOf('.') + 1).toLowerCase(java.util.Locale.ROOT);
     }
     private String viewName() { return view == 0 ? "View: 3D" : view == 1 ? "View: Top" : "View: Front"; }
 
