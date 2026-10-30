@@ -214,25 +214,35 @@ function needs(player, s, b, onlyLayer) {
 
 // ---------------------------------------------------------------- auto-build (Creative)
 const undo = new Map();   // player id -> [{x, y, z, perm}]
+
+/** Places the cells (bottom first), then once more for any that fell off (a door's bottom half, a hanging lantern
+ *  placed before the block it hangs from...). Calls back with how many were placed. Yields so the game keeps running. */
+function* placeCells(dim, cells, before, keepChests) {
+  let count = 0, n = 0;
+  for (let pass = 0; pass < 2; pass++) {
+    for (const wc of cells) {
+      try {
+        const blk = dim.getBlock(wc);
+        if (!blk || matches(blk, wc)) continue;
+        if (keepChests && blk.getComponent('minecraft:inventory')) continue;   // don't wipe out chests
+        if (pass === 0 && before) before.push({ x: wc.x, y: wc.y, z: wc.z, perm: blk.permutation });
+        let perm; try { perm = BlockPermutation.resolve(wc.name, wc.states); } catch { perm = BlockPermutation.resolve(wc.name); }
+        blk.setPermutation(perm); if (pass === 0) count++;
+      } catch {}
+      if (++n % 150 === 0) yield;
+    }
+  }
+  return count;
+}
 function autoBuild(player, s, b, onlyLayer) {
   if (player.getGameMode() !== GameMode.Creative) { player.sendMessage('§cAuto-build only works in Creative mode.'); return; }
   const dim = player.dimension, before = [];
   const layers = onlyLayer ? [b.layers[s.layer] || []] : b.layers;
   undo.set(player.id, before);
-  let count = 0;
+  const cells = [];
+  for (const layer of layers) for (const c of layer) cells.push(worldCell(s, b, c));
   system.runJob((function* () {
-    for (const layer of layers) for (const c of layer) {
-      const wc = worldCell(s, b, c);
-      try {
-        const blk = dim.getBlock(wc);
-        if (!blk || matches(blk, wc)) continue;
-        if (blk.getComponent('minecraft:inventory')) continue;   // don't wipe out chests
-        before.push({ x: wc.x, y: wc.y, z: wc.z, perm: blk.permutation });
-        let perm; try { perm = BlockPermutation.resolve(wc.name, wc.states); } catch { perm = BlockPermutation.resolve(wc.name); }
-        blk.setPermutation(perm); count++;
-      } catch {}
-      if (count % 150 === 0) yield;
-    }
+    const count = yield* placeCells(dim, cells, before, true);
     player.sendMessage(`§aAuto-build finished: ${count} blocks placed.§r Blueprint > Undo auto-build takes it back.`);
   })());
 }
@@ -359,14 +369,11 @@ system.afterEvents.scriptEventReceive.subscribe((e) => {
         if (!b) { console.warn('BBTEST ' + id + ' FAIL could not read'); if (--pending === 0) console.warn('BBTEST done'); return; }
         const s = { id, ox, oy: 100, oz, turns, locked: true, layer: 0 };
         system.runJob((function* () {
-          let placed = 0, bad = 0, n = 0;
+          let n = 0;
           const stone = BlockPermutation.resolve('minecraft:stone');   // a floor under it, so sand and gravel stay put
           for (let x = 0; x < 40; x++) for (let z = 0; z < 40; z++) { try { dim.getBlock({ x: ox + x, y: 99, z: oz + z }).setPermutation(stone); } catch {} }
-          for (const layer of b.layers) for (const c of layer) {
-            const wc = worldCell(s, b, c);
-            try { let perm; try { perm = BlockPermutation.resolve(wc.name, wc.states); } catch { perm = BlockPermutation.resolve(wc.name); } dim.getBlock(wc).setPermutation(perm); placed++; } catch { bad++; }
-            if (++n % 300 === 0) yield;
-          }
+          const cells = []; for (const layer of b.layers) for (const c of layer) cells.push(worldCell(s, b, c));
+          const placed = yield* placeCells(dim, cells, null, false), bad = 0;
           let ok = 0, miss = 0; const missEx = [];
           for (const layer of b.layers) for (const c of layer) {
             const wc = worldCell(s, b, c);
