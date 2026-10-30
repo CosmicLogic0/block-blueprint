@@ -115,8 +115,13 @@ function colorVars(name, a) {
   if (!m) { const c = colorOf(name); m = new MolangVariableMap(); m.setColorRGBA('variable.color', { red: c[0], green: c[1], blue: c[2], alpha: a }); molang.set(k, m); }
   return m;
 }
-const YELLOW = (() => { const m = new MolangVariableMap(); m.setColorRGBA('variable.color', { red: 1, green: 0.9, blue: 0.2, alpha: 0.9 }); return m; })();
-const RED = (() => { const m = new MolangVariableMap(); m.setColorRGBA('variable.color', { red: 1, green: 0.15, blue: 0.15, alpha: 0.9 }); return m; })();
+let YELLOW, RED;   // made on first use (not allowed while the world is still starting)
+function fixed() {
+  if (!YELLOW) {
+    YELLOW = new MolangVariableMap(); YELLOW.setColorRGBA('variable.color', { red: 1, green: 0.9, blue: 0.2, alpha: 0.9 });
+    RED = new MolangVariableMap(); RED.setColorRGBA('variable.color', { red: 1, green: 0.15, blue: 0.15, alpha: 0.9 });
+  }
+}
 
 function dirWords(player, x, y, z) {
   const l = player.location, dx = x + 0.5 - l.x, dz = z + 0.5 - l.z, dy = y - Math.floor(l.y);
@@ -131,6 +136,7 @@ function dirWords(player, x, y, z) {
 const label = (id) => niceName(id);
 
 function tick(player) {
+  fixed();
   const s = sessions.get(player.id);
   if (!s) return;
   const b = builds.get(s.id);
@@ -340,14 +346,16 @@ system.afterEvents.scriptEventReceive.subscribe((e) => {
   const dim = world.getDimension('overworld');
   const ids = buildIds();
   console.warn('BBTEST builds ' + ids.length + ': ' + ids.join(', '));
-  let x = 0, pending = 0;
-  for (const id of ids) {
-    for (const turns of [0, 1]) {
+  // 16 spots, 40 apart (one ticking area of 160 x 160): every build straight, the first two also turned
+  const jobs = ids.map((id) => [id, 0]).concat(ids.slice(0, 2).map((id) => [id, 1])).slice(0, 16);
+  let pending = 0, slot = 0;
+  for (const [id, turns] of jobs) {
+    {
       pending++;
-      const ox = x; x += 70;
+      const ox = (slot % 4) * 40, oz = Math.floor(slot / 4) * 40; slot++;
       loadBuild(id, (b) => {
         if (!b) { console.warn('BBTEST ' + id + ' FAIL could not read'); return; }
-        const s = { id, ox, oy: 100, oz: 0, turns, locked: true, layer: 0 };
+        const s = { id, ox, oy: 100, oz, turns, locked: true, layer: 0 };
         system.runJob((function* () {
           let placed = 0, bad = 0, n = 0;
           for (const layer of b.layers) for (const c of layer) {

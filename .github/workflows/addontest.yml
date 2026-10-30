@@ -38,7 +38,7 @@ jobs:
           (cat in | LD_LIBRARY_PATH=. ./bedrock_server > ../res/server.log 2>&1 &)
           exec 3>in
           for i in $(seq 1 60); do grep -q "Server started" ../res/server.log && break; sleep 2; done
-          sleep 3; echo "tickingarea add 0 90 0 1999 160 40 bb" >&3; sleep 10
+          sleep 3; echo "tickingarea add 0 90 0 159 160 159 bb" >&3; sleep 10
           echo "scriptevent bb:selftest" >&3
           for i in $(seq 1 90); do grep -q "BBTEST done" ../res/server.log && break; sleep 2; done
           sleep 2; echo stop >&3; sleep 5; exec 3>&-
