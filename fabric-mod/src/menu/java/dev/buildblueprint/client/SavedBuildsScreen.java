@@ -288,7 +288,7 @@ public class SavedBuildsScreen extends Screen {
     // The picture is worked out once into a pixel buffer (only when the build, view, zoom, position or size changes),
     // then drawn as a few flat rectangles. Drawing every block every frame made big builds lag badly.
     private String rasterKey; private int[] rects = new int[0]; private int rectCount;
-    private Blueprint countBp; private int count;
+    private Blueprint countBp; private int countN;
     private void drawPreview(GuiGraphicsExtractor g, Blueprint bp) {
         int px = pvX(), py = pvY(), pw = pvW(), ph = pvH();
         if (pw <= 0 || ph <= 0) return;
@@ -434,8 +434,8 @@ public class SavedBuildsScreen extends Screen {
                 drawPreview(g, bp);
                 if (!renaming) {
                     g.text(font, Tr.t(e.name()), pvX() + 2, B() - 18, 0xFFFFFFFF, true);
-                    if (bp != countBp) { countBp = bp; count = bp.blockCount(); }
-                    String info = bp.sx + " x " + bp.sy + " x " + bp.sz + " · " + count + " blocks · " + bp.sy + " layers";
+                    if (bp != countBp) { countBp = bp; countN = bp.blockCount(); }
+                    String info = bp.sx + " x " + bp.sy + " x " + bp.sz + " · " + countN + " blocks · " + bp.sy + " layers";
                     g.text(font, Tr.t(info), pvX() + pvW() - font.width(Tr.t(info)), B() - 18, 0xFFAAAAAA, true);
                 }
                 g.text(font, Tr.t("drag to move · scroll to zoom"), pvX() + 4, pvY() + pvH() - 11, 0x99FFFFFF, false);

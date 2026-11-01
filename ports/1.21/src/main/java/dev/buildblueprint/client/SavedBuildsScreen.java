@@ -283,7 +283,7 @@ public class SavedBuildsScreen extends BBScreen {
     // The picture is worked out once into a pixel buffer (only when the build, view, zoom, position or size changes),
     // then drawn as a few flat rectangles. Drawing every block every frame made big builds lag badly.
     private String rasterKey; private int[] rects = new int[0]; private int rectCount;
-    private Blueprint countBp; private int count;
+    private Blueprint countBp; private int countN;
     private void drawPreview(GuiGraphics g, Blueprint bp) {
         int px = pvX(), py = pvY(), pw = pvW(), ph = pvH();
         if (pw <= 0 || ph <= 0) return;
@@ -355,16 +355,23 @@ public class SavedBuildsScreen extends BBScreen {
                 rect(X, Y, X + s, Y + s, shade(c, f));
             }
         }
-        // rows of one color -> spans; a span the same as the one right above it just makes that rectangle taller
+        // a very busy picture (thousands of tiny different blocks) is drawn with bigger pixels, so it stays quick
+        for (int k = 1; k <= 4; k++) { rectsFrom(pw, ph, k); if (rectCount <= 12000) break; }
+    }
+
+    /** Rows of one color -> spans; a span the same as the one right above it just makes that rectangle taller.
+     *  k = pixel size (1 = full detail). */
+    private void rectsFrom(int pw0, int ph0, int k) {
+        int pw = (pw0 + k - 1) / k, ph = (ph0 + k - 1) / k;
         int[] out = new int[1024]; int n = 0;
         int[] open = new int[pw * 2 + 2]; int openN = 0;   // indexes into out of the rectangles that reached the row above
         int[] next = new int[pw * 2 + 2];
         for (int y = 0; y < ph; y++) {
-            int nextN = 0, row = y * pw, oi = 0;
+            int nextN = 0, row = Math.min(y * k, ph0 - 1) * pw0, oi = 0;
             for (int x = 0; x < pw; ) {
-                int c = buf[row + x];
+                int c = buf[row + Math.min(x * k, pw0 - 1)];
                 if (c == 0) { x++; continue; }
-                int x0 = x; while (x < pw && buf[row + x] == c) x++;
+                int x0 = x; while (x < pw && buf[row + Math.min(x * k, pw0 - 1)] == c) x++;
                 while (oi < openN && out[open[oi] * 5] < x0) oi++;
                 int idx = -1;
                 if (oi < openN) { int r = open[oi] * 5; if (out[r] == x0 && out[r + 2] == x && out[r + 4] == c && out[r + 3] == y) idx = open[oi]; }
@@ -377,6 +384,7 @@ public class SavedBuildsScreen extends BBScreen {
             }
             int[] t = open; open = next; next = t; openN = nextN;
         }
+        if (k > 1) for (int i = 0; i < n * 5; i++) if (i % 5 != 4) out[i] = Math.min(out[i] * k, (i % 5) % 2 == 0 ? pw0 : ph0);
         rects = out; rectCount = n;
     }
 
@@ -421,8 +429,8 @@ public class SavedBuildsScreen extends BBScreen {
                 drawPreview(g, bp);
                 if (!renaming) {
                     g.drawString(font, Tr.t(e.name()), pvX() + 2, B() - 18, 0xFFFFFFFF, true);
-                    if (bp != countBp) { countBp = bp; count = bp.blockCount(); }
-                    String info = bp.sx + " x " + bp.sy + " x " + bp.sz + " · " + count + " blocks · " + bp.sy + " layers";
+                    if (bp != countBp) { countBp = bp; countN = bp.blockCount(); }
+                    String info = bp.sx + " x " + bp.sy + " x " + bp.sz + " · " + countN + " blocks · " + bp.sy + " layers";
                     g.drawString(font, Tr.t(info), pvX() + pvW() - font.width(Tr.t(info)), B() - 18, 0xFFAAAAAA, true);
                 }
                 g.drawString(font, Tr.t("drag to move · scroll to zoom"), pvX() + 4, pvY() + pvH() - 11, 0x99FFFFFF, false);
