@@ -1,4 +1,5 @@
-## 1.3.1 (coming next)
+## 1.3.1
+- **Fixed: Saved builds got slower and slower with big builds** (until Minecraft had to be restarted). The build picture is now worked out once instead of every frame, and only the last few builds stay in memory. New setting: Settings > More > **Build picture** on/off.
 - **App: Save for Bedrock.** Any build (yours or one of the free ones) can be saved as a Minecraft Bedrock file. Open it and Bedrock adds it; then type /structure load blueprint:<name> ~ ~ ~ in your world (the app shows the exact line). Tested in the real Bedrock server.
 - App: the free community builds have a blue **Free build** badge; builds from your own game keep **From Minecraft**. In the game, downloaded ones are tagged **free build** in Saved builds.
 - Free builds: 12 builds that were in the list twice are gone (1,393 builds).
