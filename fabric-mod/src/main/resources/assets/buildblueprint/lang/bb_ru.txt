@@ -249,6 +249,7 @@ Renamed to "{0}".	Переименовано в «{0}».
 Sure?	Точно?
 Click Delete again to delete "{0}".	Нажми Удалить ещё раз, чтобы удалить «{0}».
 Deleted "{0}".	«{0}» удалена.
+Build picture is off (Settings > More)	Картинка постройки выключена (Настройки > Ещё)
 {0} saved	Сохранено: {0}
 {0} of {1}	{0} из {1}
 Double-click or Enter loads a build	Двойной клик или Enter загружает постройку
@@ -316,6 +317,8 @@ Check direction: {0}	Проверять направление: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Блоки засчитываются, только если стоят правильной стороной: ступеньки, плиты (верх или низ), брёвна, двери, кнопки... Блок, стоящий не той стороной, получает красную рамку.
 Pick from ghost: {0}	Брать из призрака: {0}
 Middle-click a ghost block to put that block in your hand.	Средняя кнопка мыши по блоку-призраку даёт этот блок в руку.
+Build picture: {0}	Картинка постройки: {0}
+The picture of a build in Saved builds. Turn it off if the menu gets slow.	Картинка постройки в Сохранённых. Выключи, если меню тормозит.
 Placed: start at layer 1: {0}	После закрепления начинать со слоя 1: {0}
 A new build shows fully built so you can move it. When you place it, it switches to layer 1 so you can start building.	Новая постройка показана целиком, чтобы её можно было двигать. Когда закрепишь, она переключится на слой 1, чтобы начать стройку.
 Basics	Основное

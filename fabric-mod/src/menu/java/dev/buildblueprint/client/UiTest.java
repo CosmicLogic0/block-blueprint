@@ -258,7 +258,15 @@ public final class UiTest {
             case "build-hidden" -> Mc.setScreen(new MaterialsScreen(false));   // the list with the closed eyes
             case "settings" -> { SettingsScreen.more = false; SettingsScreen.extras = false; Mc.setScreen(new SettingsScreen(null)); }
             case "settings-more" -> { SettingsScreen.more = true; SettingsScreen.extras = false; Mc.setScreen(new SettingsScreen(null)); }
-            case "saved" -> Mc.setScreen(new SavedBuildsScreen());
+            case "saved" -> {
+                Mc.setScreen(new SavedBuildsScreen());
+                try {   // a big build (80 x 50 x 80, about 200,000 blocks): the picture must be quick to work out and small to draw
+                    String[] pal = {"minecraft:stone", "minecraft:oak_planks", "minecraft:glass", "minecraft:red_wool", "minecraft:spruce_log[axis=y]"};
+                    int sx = 80, sy = 50, sz = 80; int[] cells = new int[sx * sy * sz];
+                    for (int i = 0; i < cells.length; i++) cells[i] = (i * 2654435761L % 7) < 4 ? (int) (i * 40503L % 5) + 1 : 0;
+                    System.out.println("BBUITEST big picture: " + SavedBuildsScreen.bench(new dev.buildblueprint.core.Blueprint("Big", sx, sy, sz, pal, cells)));
+                } catch (Throwable t) { System.out.println("BBUITEST big picture failed: " + t); }
+            }
             case "build" -> {
                 Hide.showAll();
                 if (!BuildBlueprintClient.SESSION.loaded()) loadTestBuild();

@@ -248,6 +248,7 @@ Renomeada para "{0}".
 Certeza?
 Clique em Apagar de novo para apagar "{0}".
 "{0}" apagada.
+A imagem da construção está desligada (Ajustes > Mais)
 {0} salvas
 {0} de {1}
 Clique duplo ou Enter carrega uma construção
@@ -315,6 +316,8 @@ Checar direção: {0}
 Os blocos só contam como prontos quando estão virados certo: escadas, lajes (em cima ou embaixo), troncos, portas, botões... Um bloco virado errado ganha uma caixa vermelha.
 Pegar do fantasma: {0}
 Clique do meio num bloco fantasma para pôr esse bloco na mão.
+Imagem da construção: {0}
+A imagem de uma construção em Salvas. Desligue se o menu ficar lento.
 Ao colocar: começar na camada 1: {0}
 Uma construção nova aparece completa para você poder mover. Quando você coloca, ela muda para a camada 1 para começar a construir.
 Básico

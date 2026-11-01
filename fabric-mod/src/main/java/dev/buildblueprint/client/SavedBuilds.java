@@ -30,7 +30,10 @@ public final class SavedBuilds {
     public record Entry(String file, String name, String data, long modified) {}
 
     private static final Pattern LOAD = Pattern.compile("load\\s+([A-Za-z0-9_-]+)\\.(\\d+)\\.(\\d+)\\s+([A-Za-z0-9_=-]+)");
-    private static final Map<String, Blueprint> CACHE = new HashMap<>();
+    // the last few builds looked at (keeping every one filled memory when you clicked through big builds)
+    private static final Map<String, Blueprint> CACHE = new java.util.LinkedHashMap<String, Blueprint>(16, 0.75f, true) {
+        @Override protected boolean removeEldestEntry(Map.Entry<String, Blueprint> e) { return size() > 6; }
+    };
 
     /**
      * Shared library: <home>/BlockBlueprint/builds. Every modpack / launcher on this PC uses the same folder,

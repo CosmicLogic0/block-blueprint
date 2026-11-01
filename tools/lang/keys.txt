@@ -248,6 +248,7 @@ Renamed to "{0}".
 Sure?
 Click Delete again to delete "{0}".
 Deleted "{0}".
+Build picture is off (Settings > More)
 {0} saved
 {0} of {1}
 Double-click or Enter loads a build
@@ -315,6 +316,8 @@ Check direction: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.
 Pick from ghost: {0}
 Middle-click a ghost block to put that block in your hand.
+Build picture: {0}
+The picture of a build in Saved builds. Turn it off if the menu gets slow.
 Placed: start at layer 1: {0}
 A new build shows fully built so you can move it. When you place it, it switches to layer 1 so you can start building.
 Basics

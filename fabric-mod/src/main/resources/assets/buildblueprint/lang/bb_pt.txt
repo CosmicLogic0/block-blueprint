@@ -249,6 +249,7 @@ Renamed to "{0}".	Renomeada para "{0}".
 Sure?	Certeza?
 Click Delete again to delete "{0}".	Clique em Apagar de novo para apagar "{0}".
 Deleted "{0}".	"{0}" apagada.
+Build picture is off (Settings > More)	A imagem da construção está desligada (Ajustes > Mais)
 {0} saved	{0} salvas
 {0} of {1}	{0} de {1}
 Double-click or Enter loads a build	Clique duplo ou Enter carrega uma construção
@@ -316,6 +317,8 @@ Check direction: {0}	Checar direção: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Os blocos só contam como prontos quando estão virados certo: escadas, lajes (em cima ou embaixo), troncos, portas, botões... Um bloco virado errado ganha uma caixa vermelha.
 Pick from ghost: {0}	Pegar do fantasma: {0}
 Middle-click a ghost block to put that block in your hand.	Clique do meio num bloco fantasma para pôr esse bloco na mão.
+Build picture: {0}	Imagem da construção: {0}
+The picture of a build in Saved builds. Turn it off if the menu gets slow.	A imagem de uma construção em Salvas. Desligue se o menu ficar lento.
 Placed: start at layer 1: {0}	Ao colocar: começar na camada 1: {0}
 A new build shows fully built so you can move it. When you place it, it switches to layer 1 so you can start building.	Uma construção nova aparece completa para você poder mover. Quando você coloca, ela muda para a camada 1 para começar a construir.
 Basics	Básico

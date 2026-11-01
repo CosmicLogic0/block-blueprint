@@ -248,6 +248,7 @@ Renommée en « {0} ».
 Sûr ?
 Clique encore sur Supprimer pour supprimer « {0} ».
 « {0} » supprimée.
+L'image de la construction est désactivée (Options > Plus)
 {0} sauvegardées
 {0} sur {1}
 Double-clic ou Entrée charge une construction
@@ -315,6 +316,8 @@ Vérifier le sens : {0}
 Les blocs ne comptent comme faits que s'ils sont dans le bon sens : escaliers, dalles (haut ou bas), bûches, portes, boutons... Un bloc posé dans le mauvais sens reçoit une boîte rouge.
 Prendre du fantôme : {0}
 Clic molette sur un bloc fantôme pour mettre ce bloc dans ta main.
+Image de la construction : {0}
+L'image d'une construction dans Sauvegardes. Désactive-la si le menu devient lent.
 Une fois placée : commencer à la couche 1 : {0}
 Une nouvelle construction s'affiche entière pour que tu puisses la déplacer. Quand tu la places, elle passe à la couche 1 pour que tu commences à construire.
 Bases

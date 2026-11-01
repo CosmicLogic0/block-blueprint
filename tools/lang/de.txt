@@ -248,6 +248,7 @@ Umbenannt in "{0}".
 Sicher?
 Klick nochmal auf Löschen, um "{0}" zu löschen.
 "{0}" gelöscht.
+Das Baubild ist aus (Optionen > Mehr)
 {0} gespeichert
 {0} von {1}
 Doppelklick oder Enter lädt einen Bau
@@ -315,6 +316,8 @@ Richtung prüfen: {0}
 Blöcke zählen nur als fertig, wenn sie richtig herum stehen: Treppen, Stufen (oben oder unten), Stämme, Türen, Knöpfe... Ein falsch herum gesetzter Block bekommt eine rote Box.
 Aus dem Geist nehmen: {0}
 Mittelklick auf einen Geisterblock legt dir diesen Block in die Hand.
+Baubild: {0}
+Das Bild eines Baus in Meine Bauten. Schalte es aus, wenn das Menü langsam wird.
 Beim Platzieren: bei Schicht 1 starten: {0}
 Ein neuer Bau wird komplett gezeigt, damit du ihn bewegen kannst. Beim Platzieren wechselt er zu Schicht 1, damit du anfangen kannst.
 Grundlagen

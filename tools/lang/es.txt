@@ -248,6 +248,7 @@ Renombrada a "{0}".
 ¿Seguro?
 Haz clic en Borrar otra vez para borrar "{0}".
 "{0}" borrada.
+La imagen de la construcción está apagada (Ajustes > Más)
 {0} guardadas
 {0} de {1}
 Doble clic o Intro carga una construcción
@@ -315,6 +316,8 @@ Comprobar dirección: {0}
 Los bloques solo cuentan como hechos si miran hacia el lado correcto: escaleras, losas (arriba o abajo), troncos, puertas, botones... Un bloque al revés recibe una caja roja.
 Coger del fantasma: {0}
 Clic central en un bloque fantasma para ponerte ese bloque en la mano.
+Imagen de la construcción: {0}
+La imagen de una construcción en Guardadas. Apágala si el menú va lento.
 Al colocar: empezar en la capa 1: {0}
 Una construcción nueva se ve completa para que puedas moverla. Al colocarla pasa a la capa 1 para que empieces a construir.
 Básico

@@ -249,6 +249,7 @@ Renamed to "{0}".	已重命名为“{0}”。
 Sure?	确定吗？
 Click Delete again to delete "{0}".	再点一次“删除”来删除“{0}”。
 Deleted "{0}".	已删除“{0}”。
+Build picture is off (Settings > More)	建筑预览图已关闭（设置 > 更多）
 {0} saved	已保存 {0} 个
 {0} of {1}	{0} / {1}
 Double-click or Enter loads a build	双击或按 Enter 加载建筑
@@ -316,6 +317,8 @@ Check direction: {0}	检查方向：{0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	方块只有朝向正确才算完成：楼梯、台阶（上半或下半）、原木、门、按钮……方向放反的方块会显示红色框。
 Pick from ghost: {0}	从幽灵拿取：{0}
 Middle-click a ghost block to put that block in your hand.	用鼠标中键点击幽灵方块，就能把这个方块拿到手上。
+Build picture: {0}	建筑预览图：{0}
+The picture of a build in Saved builds. Turn it off if the menu gets slow.	已保存的建筑里的预览图。如果菜单变卡可以关闭。
 Placed: start at layer 1: {0}	放置后从第 1 层开始：{0}
 A new build shows fully built so you can move it. When you place it, it switches to layer 1 so you can start building.	新建筑会完整显示，方便你移动。放置后会切换到第 1 层，让你开始建造。
 Basics	基础
