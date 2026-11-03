@@ -42,8 +42,10 @@ public class TemplatesScreen extends BBScreen {
     private T pick;
     private int scroll;
     private EditBox search;
-    private Button getBtn, kindBtn;
+    private Button getBtn, kindBtn, sizeBtn, sortBtn, randBtn;
     private static String kind = "";            // "" = all kinds
+    private static int sizeF = 0;                // 0 any, 1 small (under 500 blocks), 2 medium (500-3,000), 3 big (3,000+)
+    private static int sort = 0;                // 0 name, 1 fewest blocks, 2 most blocks
     private volatile String msg = "";
     private volatile boolean busy;
 
@@ -68,7 +70,7 @@ public class TemplatesScreen extends BBScreen {
     private int pvW() { return Math.max(140, Math.min(260, pw() * 2 / 5)); }
     private int pvX() { return px() + pw() - pvW(); }
     private int px() { return (width - pw()) / 2; }
-    private int listTop() { return 62; }
+    private int listTop() { return 84; }
     private int listBottom() { return height - 60; }
     private int rowH() { return 14; }
     private int visRows() { return Math.max(1, (listBottom() - listTop()) / rowH()); }
@@ -84,6 +86,13 @@ public class TemplatesScreen extends BBScreen {
         addRenderableWidget(search);
         kindBtn = addRenderableWidget(Button.builder(Component.literal(Tr.t(kindLabel())), b -> { kind = nextKind(); b.setMessage(Component.literal(Tr.t(kindLabel()))); scroll = 0; refill(); })
                 .bounds(x + w - 120, 35, 120, 20).tooltip(Tooltip.create(Component.literal(Tr.t("Show one kind of build: houses, towers, ships...")))).build());
+        int fw = (w - 8) / 3;   // second row: size, sort, random
+        sizeBtn = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, sizeLabel(), fw - 8)), b -> { sizeF = (sizeF + 1) % 4; b.setMessage(Component.literal(UiKit.fit(font, sizeLabel(), fw - 8))); scroll = 0; refill(); })
+                .bounds(x, 58, fw, 20).tooltip(Tooltip.create(Component.literal(Tr.t("Show only small, medium or big builds (by how many blocks they have).")))).build());
+        sortBtn = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, sortLabel(), fw - 8)), b -> { sort = (sort + 1) % 3; b.setMessage(Component.literal(UiKit.fit(font, sortLabel(), fw - 8))); scroll = 0; refill(); })
+                .bounds(x + fw + 4, 58, fw, 20).build());
+        randBtn = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Random build", w - 2 * fw - 16)), b -> random())
+                .bounds(x + 2 * fw + 8, 58, w - 2 * fw - 8, 20).tooltip(Tooltip.create(Component.literal(Tr.t("Pick a random build from the list, to find something new.")))).build());
         int by = height - 26, bw = (w - 4) / 2;
         getBtn = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Get it", bw - 8)), b -> get()).bounds(x, by, bw, 20)
                 .tooltip(Tooltip.create(Component.literal(Tr.t("Download it into Saved builds.")))).build());
@@ -104,6 +113,18 @@ public class TemplatesScreen extends BBScreen {
         int i = k.indexOf(kind);
         return i + 1 >= k.size() ? "" : k.get(i + 1);
     }
+    private static String sizeLabel() { return sizeF == 1 ? "Small (under 500)" : sizeF == 2 ? "Medium (500 to 3,000)" : sizeF == 3 ? "Big (3,000+)" : "Any size"; }
+    private static String sortLabel() { return sort == 1 ? "Sort: fewest blocks" : sort == 2 ? "Sort: most blocks" : "Sort: A to Z"; }
+    private static boolean fits(T t) { return sizeF == 0 || (sizeF == 1 ? t.blocks < 500 : sizeF == 2 ? t.blocks >= 500 && t.blocks < 3000 : t.blocks >= 3000); }
+
+    private void random() {
+        if (shown.isEmpty()) return;
+        int i = new java.util.Random().nextInt(shown.size());
+        pick = shown.get(i); turn = 0; msg = "";
+        scroll = Math.max(0, Math.min(Math.max(0, shown.size() - visRows()), i - visRows() / 2));   // show it in the list
+        fetchPicture(pick);
+    }
+
     private static String kindLabel() { return kind.isEmpty() ? "All kinds" : kind; }
 
     private void refill() {
@@ -111,9 +132,12 @@ public class TemplatesScreen extends BBScreen {
         String q = search == null ? "" : search.getValue().trim().toLowerCase(Locale.ROOT);
         if (all != null) for (T t : all) {
             if (!kind.isEmpty() && !t.cat.equals(kind)) continue;
+            if (!fits(t)) continue;
             if (!q.isEmpty() && !(t.name.toLowerCase(Locale.ROOT).contains(q) || t.by.toLowerCase(Locale.ROOT).contains(q) || t.cat.toLowerCase(Locale.ROOT).contains(q))) continue;
             out.add(t);
         }
+        if (sort == 1) out.sort((a, b) -> Integer.compare(a.blocks, b.blocks));
+        else if (sort == 2) out.sort((a, b) -> Integer.compare(b.blocks, a.blocks));
         shown = out;
         if (pick != null && !shown.contains(pick)) pick = null;
     }
@@ -244,6 +268,8 @@ public class TemplatesScreen extends BBScreen {
         } else UiKit.center(g, font, "Click a build, then Get it  ·  double-click gets it right away", x + w / 2, iy + 4, UiKit.MUTED);
         getBtn.active = pick != null && !busy;
         kindBtn.active = all != null;
+        sizeBtn.active = sortBtn.active = all != null;
+        randBtn.active = !shown.isEmpty();
         super.extractRenderState(g, mouseX, mouseY, delta);
         if (hover != null) {
             List<Component> tip = new ArrayList<>();

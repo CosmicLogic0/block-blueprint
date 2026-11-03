@@ -18,6 +18,7 @@ Primero coloca la construcción (Supr) para que tus amigos la tengan en el mismo
    constructores y un número de constructor distinto.
 Construyes {0}. Solo ves tu parte.
 Todos ven la construcción entera.
+Copiado
 Copiar construcción
 Nombre
 Deja fuera la tierra, la hierba y la piedra natural sobre la que está la construcción.
@@ -143,6 +144,8 @@ Vuelve a poner lo que había antes de la última autoconstrucción.
 Co-op {0}/{1}
 Co-op
 Constrúyela con amigos: envíales un código que la pone en este mismo sitio y repartidla para que cada uno haga su parte.
+Lista de compras
+Lo que aún tienes que conseguir, contando lo que llevas y los cofres que has abierto cerca, en stacks. Cópiala para pegarla o imprimirla.
 Quitar
 Quita esta construcción de tu mundo. Se queda en Construcciones guardadas, así que puedes cargarla otra vez.
 Construcción entera
@@ -277,6 +280,8 @@ Mapa de capa: {0}
 Un mapa pequeño de la capa en la que estás, visto desde arriba, bajo la lista de la esquina. Colores = por colocar, verde oscuro = hecho, rojo = mal, punto blanco = tú.
 Ayuda de andamios: {0}
 Las partes de una capa que flotan en el aire (voladizos, tejados) muestran una columna azul claro donde poner bloques temporales para alcanzarlas.
+Solo capas cercanas: {0}
+Antes de colocar una construcción, dibuja solo las capas cerca de tu altura (3 bajo tus pies a 4 encima) en vez de todo. Más ligero para construcciones grandes, y puedes ver el interior.
 Bloques fantasma: {0}% sólidos
 Lo transparentes que son los bloques de vista previa.
 Mostrar vista previa: {0}
@@ -323,11 +328,35 @@ Una construcción nueva se ve completa para que puedas moverla. Al colocarla pas
 Básico
 Más
 Extras
-Ayudas extra, apagadas hasta que las enciendas: materias primas, mapa de capa, ayuda de andamios.
+Ayudas extra, apagadas hasta que las actives: materias primas, mapa de capa, pistas de andamio, solo capas cercanas.
 Controles...
 Cambia las teclas (Opciones > Controles > Asignación de teclas > Build Blueprint).
 Una guía corta de todo lo que hace el mod.
+Informar de un error
+Página abierta
+Los datos están rellenados en la página de GitHub (y copiados). Añade lo que pasó y pulsa Create.
+Datos copiados. Pégalos en github.com/CosmicLogic0/block-blueprint/issues
+Abre un informe de error en GitHub con tu versión de Minecraft, la del mod y el último problema ya rellenados. No se envía nada hasta que pulses Create en la página.
 Pasa el ratón por un botón para ver qué hace.
+Copiar lista
+Copia la lista como texto, para pegarla en un chat o una nota, o imprimirla.
+Atrás
+1 stack + {0}
+1 stack
+{0} stacks + {1}
+{0} stacks
+Por conseguir:
+Ya lo tienes (encima o en cofres):
+¡No falta nada!
+Copiada: pégala donde quieras (Ctrl+V)
+Lo que aún tienes que conseguir, contando lo que llevas y los cofres que has abierto cerca.
+Capa {0}
+en cofres
+listo
+{0} en 1 cofre cerca
+{0} en {1} cofres cerca
+Abre tus cofres una vez para que se cuenten sus bloques.
+Se cuentan los cofres a menos de 48 bloques.
 Cambiar bloques
 Cómo funcionan los cambios
 Quitar de la construcción
@@ -342,7 +371,6 @@ Bloques añadidos por los otros mods que tienes instalados.
 Cambiar
 Cambia todos los bloques de este tipo en la construcción (Intro).
 Deshacer último cambio
-Atrás
 Último cambio deshecho.
 Primero elige un bloque de la lista.
 No hay nada que cambiar.
@@ -358,8 +386,18 @@ Haz clic en un bloque para elegirlo  ·  doble clic lo cambia al momento
 Doble clic para cambiar a este
 Busca por nombre o creador...
 Muestra un tipo de construcción: casas, torres, barcos...
+Muestra solo construcciones pequeñas, medianas o grandes (según sus bloques).
+Al azar
+Elige una construcción al azar de la lista para descubrir algo nuevo.
 Conseguir
 Descárgala en Construcciones guardadas.
+Pequeñas (menos de 500)
+Medianas (500 a 3.000)
+Grandes (3.000+)
+Cualquier tamaño
+Orden: menos bloques
+Orden: más bloques
+Orden: A a Z
 Todos los tipos
 No se pudo cargar la lista: revisa tu conexión a internet.
 Descargando {0}...

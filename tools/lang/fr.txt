@@ -18,6 +18,7 @@ Copié ! Envoie-le à tes amis.
    constructeurs, et un numéro de constructeur différent.
 Tu construis {0}. Tu ne vois que ta partie.
 Tout le monde voit la construction entière.
+Copié
 Copier une construction
 Nom
 Laisse de côté la terre, l'herbe et la pierre naturelle sous la construction.
@@ -143,6 +144,8 @@ Remet ce qu'il y avait avant la dernière construction auto.
 Coop {0}/{1}
 Coop
 Construis-la entre amis : envoie-leur un code qui la place exactement ici, et partagez-la pour que chacun construise sa partie.
+Liste de courses
+Ce qu'il te reste à trouver, en comptant ce que tu portes et les coffres ouverts à proximité, en piles. Copie-la pour la coller ou l'imprimer.
 Retirer
 Retire cette construction de ton monde. Elle reste dans Constructions sauvegardées, tu peux donc la recharger.
 Construction entière
@@ -277,6 +280,8 @@ Carte de la couche : {0}
 Une petite carte de la couche où tu es, vue de dessus, sous la liste du coin. Couleurs = à poser, vert foncé = fait, rouge = faux, point blanc = toi.
 Aide échafaudage : {0}
 Les parties d'une couche qui flottent dans les airs (avancées, toits) reçoivent une colonne bleu clair qui montre où poser des blocs temporaires pour les atteindre.
+Couches proches seulement : {0}
+Avant de placer une construction, seules les couches autour de ta hauteur sont dessinées (3 sous tes pieds à 4 au-dessus) au lieu de tout. Plus léger pour les grosses constructions, et tu vois l'intérieur.
 Blocs fantômes : {0} % opaques
 La transparence des blocs d'aperçu.
 Afficher l'aperçu : {0}
@@ -323,11 +328,35 @@ Une nouvelle construction s'affiche entière pour que tu puisses la déplacer. Q
 Bases
 Plus
 Extras
-Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de la couche, aide échafaudage.
+Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de couche, aides d'échafaudage, couches proches seulement.
 Touches...
 Change les touches (Options > Commandes > Touches > Build Blueprint).
 Un petit guide de tout ce que fait le mod.
+Signaler un bug
+Page ouverte
+Les détails sont remplis sur la page GitHub (et copiés). Ajoute ce qui s'est passé, puis clique sur Create.
+Détails copiés. Colle-les sur github.com/CosmicLogic0/block-blueprint/issues
+Ouvre un rapport de bug sur GitHub avec ta version de Minecraft, celle du mod et le dernier problème déjà remplis. Rien n'est envoyé tant que tu n'as pas cliqué sur Create sur la page.
 Survole un bouton pour voir ce qu'il fait.
+Copier la liste
+Copie la liste en texte, pour la coller dans un chat ou une note, ou l'imprimer.
+Retour
+1 pile + {0}
+1 pile
+{0} piles + {1}
+{0} piles
+À trouver :
+Déjà là (sur toi ou dans des coffres) :
+Plus rien à trouver !
+Copiée – colle-la où tu veux (Ctrl+V)
+Ce qu'il te reste à trouver, en comptant ce que tu portes et les coffres ouverts à proximité.
+Couche {0}
+dans les coffres
+ok
+{0} dans 1 coffre proche
+{0} dans {1} coffres proches
+Ouvre tes coffres une fois pour que leurs blocs soient comptés.
+Les coffres à moins de 48 blocs sont comptés.
 Échanger des blocs
 Comment marchent les échanges
 Retirer de la construction
@@ -342,7 +371,6 @@ Les blocs ajoutés par les autres mods que tu as installés.
 Échanger
 Échange tous les blocs de ce type dans la construction (Entrée).
 Annuler le dernier échange
-Retour
 Dernier échange annulé.
 Choisis d'abord un bloc dans la liste.
 Rien à changer.
@@ -358,8 +386,18 @@ Clique sur un bloc pour le choisir  ·  double-clic pour échanger tout de suite
 Double-clic pour échanger contre celui-ci
 Cherche par nom ou par créateur...
 Affiche un type de construction : maisons, tours, bateaux...
+Affiche seulement les petites, moyennes ou grandes constructions (selon leur nombre de blocs).
+Au hasard
+Choisit une construction au hasard dans la liste, pour découvrir quelque chose de nouveau.
 Obtenir
 La télécharger dans Constructions sauvegardées.
+Petites (moins de 500)
+Moyennes (500 à 3 000)
+Grandes (3 000+)
+Toutes tailles
+Tri : moins de blocs
+Tri : plus de blocs
+Tri : A à Z
 Tous les types
 Impossible de charger la liste - vérifie ta connexion internet.
 Téléchargement de {0}...

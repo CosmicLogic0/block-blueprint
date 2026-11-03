@@ -18,6 +18,7 @@ Copiado! Mande para seus amigos.
    construtores e um número de construtor diferente.
 Você constrói {0}. Você só vê a sua parte.
 Todos veem a construção inteira.
+Copiado
 Copiar construção
 Nome
 Deixa de fora a terra, a grama e a pedra natural em que a construção está.
@@ -143,6 +144,8 @@ Coloca de volta o que tinha antes da última construção automática.
 Co-op {0}/{1}
 Co-op
 Construa com amigos: mande um código que coloca a construção neste mesmo lugar, e dividam para cada um fazer a sua parte.
+Lista de compras
+O que você ainda precisa conseguir, contando o que carrega e os baús que abriu por perto, em pilhas. Copie para colar ou imprimir.
 Remover
 Tira esta construção do seu mundo. Ela fica em Construções salvas, então dá para carregar de novo.
 Construção inteira
@@ -277,6 +280,8 @@ Mapa da camada: {0}
 Um mapinha da camada em que você está, visto de cima, embaixo da lista do canto. Cores = falta colocar, verde escuro = pronto, vermelho = errado, ponto branco = você.
 Dicas de andaime: {0}
 Partes de uma camada que flutuam no ar (beirais, telhados) ganham uma coluna azul-clara mostrando onde pôr blocos temporários para alcançá-las.
+Só camadas próximas: {0}
+Antes de posicionar uma construção, desenha só as camadas perto da sua altura (3 abaixo dos pés a 4 acima) em vez de tudo. Mais leve para construções grandes, e dá para ver por dentro.
 Blocos fantasma: {0}% sólidos
 Quanto os blocos de prévia são transparentes.
 Mostrar prévia: {0}
@@ -323,11 +328,35 @@ Uma construção nova aparece completa para você poder mover. Quando você colo
 Básico
 Mais
 Extras
-Ajudas extras, desligadas até você ligar: matérias-primas, mapa da camada, dicas de andaime.
+Ajudas extras, desligadas até você ligar: matérias-primas, mapa da camada, dicas de andaime, só camadas próximas.
 Controles...
 Mude as teclas (Opções > Controles > Atalhos do teclado > Build Blueprint).
 Um guia curto de tudo o que o mod faz.
+Relatar um erro
+Página aberta
+Os dados estão preenchidos na página do GitHub (e copiados). Escreva o que aconteceu e clique em Create.
+Dados copiados. Cole em github.com/CosmicLogic0/block-blueprint/issues
+Abre um relato de erro no GitHub com sua versão do Minecraft, a do mod e o último problema já preenchidos. Nada é enviado até você clicar em Create na página.
 Passe o mouse num botão para ver o que ele faz.
+Copiar lista
+Copia a lista como texto, para colar num chat ou nota, ou imprimir.
+Voltar
+1 pilha + {0}
+1 pilha
+{0} pilhas + {1}
+{0} pilhas
+Para conseguir:
+Já tem (com você ou em baús):
+Não falta nada!
+Copiada: cole onde quiser (Ctrl+V)
+O que você ainda precisa conseguir, contando o que carrega e os baús que abriu por perto.
+Camada {0}
+em baús
+pronto
+{0} em 1 baú perto
+{0} em {1} baús perto
+Abra seus baús uma vez para os blocos serem contados.
+Contam os baús a até 48 blocos.
 Trocar blocos
 Como as trocas funcionam
 Tirar da construção
@@ -342,7 +371,6 @@ Blocos adicionados pelos outros mods que você tem instalados.
 Trocar
 Troca todos os blocos deste tipo na construção (Enter).
 Desfazer última troca
-Voltar
 Última troca desfeita.
 Escolha um bloco da lista primeiro.
 Nada para mudar.
@@ -358,8 +386,18 @@ Clique num bloco para escolher  ·  clique duplo troca na hora
 Clique duplo para trocar por este
 Pesquise por nome ou criador...
 Mostra um tipo de construção: casas, torres, navios...
+Mostra só construções pequenas, médias ou grandes (pelo número de blocos).
+Aleatória
+Escolhe uma construção aleatória da lista para descobrir algo novo.
 Pegar
 Baixa para Construções salvas.
+Pequenas (menos de 500)
+Médias (500 a 3.000)
+Grandes (3.000+)
+Qualquer tamanho
+Ordem: menos blocos
+Ordem: mais blocos
+Ordem: A a Z
 Todos os tipos
 Não deu para carregar a lista - confira sua conexão com a internet.
 Baixando {0}...
