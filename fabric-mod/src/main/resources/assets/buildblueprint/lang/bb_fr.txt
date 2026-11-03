@@ -19,6 +19,7 @@ Copied! Send it to your friends.	Copié ! Envoie-le à tes amis.
    builders, and a different builder number.	   constructeurs, et un numéro de constructeur différent.
 You build {0}. You only see your part.	Tu construis {0}. Tu ne vois que ta partie.
 Everyone sees the whole build.	Tout le monde voit la construction entière.
+Copied	Copié
 Copy build	Copier une construction
 Name	Nom
 Leave out the dirt, grass and natural stone the build stands on.	Laisse de côté la terre, l'herbe et la pierre naturelle sous la construction.
@@ -144,6 +145,8 @@ Puts back what was there before the last auto-build.	Remet ce qu'il y avait avan
 Co-op {0}/{1}	Coop {0}/{1}
 Co-op	Coop
 Build this with friends: send them a code that puts it in this exact spot, and split it so everyone builds their own part.	Construis-la entre amis : envoie-leur un code qui la place exactement ici, et partagez-la pour que chacun construise sa partie.
+Shopping list	Liste de courses
+What you still have to get, after what you carry and the chests you've opened nearby, in stacks. Copy it to paste or print.	Ce qu'il te reste à trouver, en comptant ce que tu portes et les coffres ouverts à proximité, en piles. Copie-la pour la coller ou l'imprimer.
 Remove	Retirer
 Take this build out of your world view. It stays in Saved builds, so you can load it again.	Retire cette construction de ton monde. Elle reste dans Constructions sauvegardées, tu peux donc la recharger.
 Whole build	Construction entière
@@ -278,6 +281,8 @@ Layer map: {0}	Carte de la couche : {0}
 A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.	Une petite carte de la couche où tu es, vue de dessus, sous la liste du coin. Couleurs = à poser, vert foncé = fait, rouge = faux, point blanc = toi.
 Scaffold hints: {0}	Aide échafaudage : {0}
 Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.	Les parties d'une couche qui flottent dans les airs (avancées, toits) reçoivent une colonne bleu clair qui montre où poser des blocs temporaires pour les atteindre.
+Nearby layers only: {0}	Couches proches seulement : {0}
+Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.	Avant de placer une construction, seules les couches autour de ta hauteur sont dessinées (3 sous tes pieds à 4 au-dessus) au lieu de tout. Plus léger pour les grosses constructions, et tu vois l'intérieur.
 Ghost blocks: {0}% solid	Blocs fantômes : {0} % opaques
 How see-through the preview blocks are.	La transparence des blocs d'aperçu.
 Show preview: {0}	Afficher l'aperçu : {0}
@@ -324,11 +329,35 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics	Bases
 More	Plus
 Extras	Extras
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints.	Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de la couche, aide échafaudage.
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.	Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de couche, aides d'échafaudage, couches proches seulement.
 Key binds...	Touches...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	Change les touches (Options > Commandes > Touches > Build Blueprint).
 A short guide to everything the mod does.	Un petit guide de tout ce que fait le mod.
+Report a bug	Signaler un bug
+Page opened	Page ouverte
+The details are filled in on the GitHub page (and copied). Add what happened, then press Create.	Les détails sont remplis sur la page GitHub (et copiés). Ajoute ce qui s'est passé, puis clique sur Create.
+Copied the details. Paste them at github.com/CosmicLogic0/block-blueprint/issues	Détails copiés. Colle-les sur github.com/CosmicLogic0/block-blueprint/issues
+Opens a bug report on GitHub with your Minecraft version, mod version and the last problem already filled in. Nothing is sent until you press Create on the page.	Ouvre un rapport de bug sur GitHub avec ta version de Minecraft, celle du mod et le dernier problème déjà remplis. Rien n'est envoyé tant que tu n'as pas cliqué sur Create sur la page.
 Hover a button to see what it does.	Survole un bouton pour voir ce qu'il fait.
+Copy list	Copier la liste
+Copy the list as text, to paste in a chat or a note, or to print.	Copie la liste en texte, pour la coller dans un chat ou une note, ou l'imprimer.
+Back	Retour
+1 stack + {0}	1 pile + {0}
+1 stack	1 pile
+{0} stacks + {1}	{0} piles + {1}
+{0} stacks	{0} piles
+To get:	À trouver :
+Already got (carried or in chests):	Déjà là (sur toi ou dans des coffres) :
+Nothing left to get!	Plus rien à trouver !
+Copied - paste it anywhere (Ctrl+V)	Copiée – colle-la où tu veux (Ctrl+V)
+What you still have to get, after what you carry and the chests you've opened nearby.	Ce qu'il te reste à trouver, en comptant ce que tu portes et les coffres ouverts à proximité.
+Layer {0}	Couche {0}
+in chests	dans les coffres
+got it	ok
+{0} in 1 chest near you	{0} dans 1 coffre proche
+{0} in {1} chests near you	{0} dans {1} coffres proches
+Open your chests once so their blocks are counted.	Ouvre tes coffres une fois pour que leurs blocs soient comptés.
+Chests within 48 blocks are counted.	Les coffres à moins de 48 blocs sont comptés.
 Swap blocks	Échanger des blocs
 How swapping works	Comment marchent les échanges
 Remove from build	Retirer de la construction
@@ -343,7 +372,6 @@ Blocks added by the other mods you have installed.	Les blocs ajoutés par les au
 Swap	Échanger
 Swap every block of this kind in the build (Enter).	Échange tous les blocs de ce type dans la construction (Entrée).
 Undo last swap	Annuler le dernier échange
-Back	Retour
 Last swap undone.	Dernier échange annulé.
 Pick a block from the list first.	Choisis d'abord un bloc dans la liste.
 Nothing to change.	Rien à changer.
@@ -359,8 +387,18 @@ Click a block to pick it  ·  double-click swaps right away	Clique sur un bloc p
 Double-click to swap to this	Double-clic pour échanger contre celui-ci
 Search by name or creator...	Cherche par nom ou par créateur...
 Show one kind of build: houses, towers, ships...	Affiche un type de construction : maisons, tours, bateaux...
+Show only small, medium or big builds (by how many blocks they have).	Affiche seulement les petites, moyennes ou grandes constructions (selon leur nombre de blocs).
+Random build	Au hasard
+Pick a random build from the list, to find something new.	Choisit une construction au hasard dans la liste, pour découvrir quelque chose de nouveau.
 Get it	Obtenir
 Download it into Saved builds.	La télécharger dans Constructions sauvegardées.
+Small (under 500)	Petites (moins de 500)
+Medium (500 to 3,000)	Moyennes (500 à 3 000)
+Big (3,000+)	Grandes (3 000+)
+Any size	Toutes tailles
+Sort: fewest blocks	Tri : moins de blocs
+Sort: most blocks	Tri : plus de blocs
+Sort: A to Z	Tri : A à Z
 All kinds	Tous les types
 Couldn't reach the build list - check your internet connection.	Impossible de charger la liste - vérifie ta connexion internet.
 Downloading {0}...	Téléchargement de {0}...

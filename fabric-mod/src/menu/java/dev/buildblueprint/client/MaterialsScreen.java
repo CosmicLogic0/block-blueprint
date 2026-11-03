@@ -55,6 +55,7 @@ public class MaterialsScreen extends Screen {
             if (AutoBuild.canUndo()) t.add(new String[]{"Undo build", "Puts back what was there before the last auto-build.", "undo"});
         }
         if (s.locked) t.add(new String[]{Coop.on() ? "Co-op " + Coop.me + "/" + Coop.parts : "Co-op", "Build this with friends: send them a code that puts it in this exact spot, and split it so everyone builds their own part.", "coop"});
+        if (!creative()) t.add(new String[]{"Shopping list", "What you still have to get, after what you carry and the chests you've opened nearby, in stacks. Copy it to paste or print.", "shop"});
         t.add(new String[]{"Remove", "Take this build out of your world view. It stays in Saved builds, so you can load it again.", "remove"});
         return t;
     }
@@ -111,6 +112,7 @@ public class MaterialsScreen extends Screen {
             case "autoLayer" -> { AutoBuild.start(Materials.layer()); onClose(); }
             case "undo" -> { AutoBuild.undoLast(); onClose(); }
             case "coop" -> Mc.setScreen(new CoopScreen(this));
+            case "shop" -> Mc.setScreen(new ShoppingScreen(this, layerTab));
             case "remove" -> { BuildBlueprintClient.removeBuild(); MenuModule.openSaved(); }
             default -> { }
         }

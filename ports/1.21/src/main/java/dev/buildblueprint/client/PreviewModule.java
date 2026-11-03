@@ -129,8 +129,9 @@ public final class PreviewModule {
     // milliseconds at a time over several frames instead of freezing the game. Moving the build moves the ghosts
     // already worked out straight away. Between full checks only the ghosts, the red boxes and the cells around you
     // are looked at again (that's where blocks get placed and broken).
+    private static final int NEAR_BELOW = 3, NEAR_ABOVE = 4;   // "nearby layers only": from 3 below your feet to 4 above
     private static final long FIRST_NS = 8_000_000L, BUDGET_NS = 3_000_000L, FULL_EVERY_MS = 2500;
-    private static String lastBuild = "";
+    private static String lastBuild = "", lastNear = "";
     private static int lastOx, lastOy, lastOz, frame = 0;
     private static long lastFull = 0;
     private static boolean sorted = false, wasShown = false;
@@ -149,13 +150,14 @@ public final class PreviewModule {
         }
         wasShown = true;
         Blueprint bp = s.blueprint();
-        String build = System.identityHashCode(bp) + ":" + s.layer + ":" + Settings.range + ":" + Hide.version() + ":" + Coop.parts + "/" + Coop.me;
+        String build = System.identityHashCode(bp) + ":" + s.layer + ":" + Settings.range + ":" + Hide.version() + ":" + Coop.parts + "/" + Coop.me + ":" + Settings.nearLayers;
         double px = mc.player.getX(), py = mc.player.getY(), pz = mc.player.getZ();
+        String near = Settings.nearLayers && s.layer < 0 ? "" + (int) Math.floor(py) : "";   // nearby layers only: which height you're at
         long now = System.currentTimeMillis(), t0 = System.nanoTime();
         if (!build.equals(lastBuild)) {   // another build, layer, distance or hidden blocks: start again
             lastBuild = build; lastOx = s.ox; lastOy = s.oy; lastOz = s.oz;
             ghosts = new ArrayList<>(); reds = new ArrayList<>(); view = null;
-            job = new Scan(s, bp, px, py, pz); lastFull = now;
+            job = new Scan(s, bp, px, py, pz); lastFull = now; lastNear = near;
             run(mc, s, t0 + FIRST_NS);
         } else if (s.ox != lastOx || s.oy != lastOy || s.oz != lastOz) {   // moved: the ghosts go with it now, then it's checked again
             int dx = s.ox - lastOx, dy = s.oy - lastOy, dz = s.oz - lastOz;
@@ -164,12 +166,12 @@ public final class PreviewModule {
             reds = new ArrayList<>();
             if (view != null) view.redAt.clear();
             lastOx = s.ox; lastOy = s.oy; lastOz = s.oz;
-            job = new Scan(s, bp, px, py, pz); lastFull = now;
+            job = new Scan(s, bp, px, py, pz); lastFull = now; lastNear = near;
             run(mc, s, t0 + FIRST_NS);
         } else if (job != null) {
             run(mc, s, t0 + BUDGET_NS);
-        } else if (now - lastFull > FULL_EVERY_MS || view == null || view.far(px, py, pz)) {   // now and then, and when you've walked a fair way
-            job = new Scan(s, bp, px, py, pz); lastFull = now;
+        } else if (now - lastFull > FULL_EVERY_MS || view == null || view.far(px, py, pz) || !near.equals(lastNear)) {   // now and then, when you've walked a fair way, or gone up or down (nearby layers only)
+            job = new Scan(s, bp, px, py, pz); lastFull = now; lastNear = near;
             run(mc, s, t0 + BUDGET_NS);
         } else if (frame % 8 == 0) {
             refresh(mc, s);
@@ -229,7 +231,8 @@ public final class PreviewModule {
         final boolean[] hid;
         int ox, oy, oz;
         final double px, py, pz, r2;
-        final int x0, x1, y0, y1, z0, z1;
+        final int x0, x1, y0, y1, z0, z1, feet;
+        final boolean near;
         int y, z;
         final List<Ghost> g = new ArrayList<>();
         final List<Red> r = new ArrayList<>();
@@ -242,14 +245,18 @@ public final class PreviewModule {
             hid = new boolean[bp.palette.length + 1];
             if (Hide.any()) for (int i = 0; i < bp.palette.length; i++) hid[i + 1] = bp.palette[i] != null && Hide.state(bp.palette[i]);   // hidden with the eye in the build menu
             x0 = Math.max(0, (int) Math.floor(px - range) - ox); x1 = Math.min(bp.sx - 1, (int) Math.ceil(px + range) - ox);   // only the part that's close enough
-            y0 = Math.max(0, (int) Math.floor(py - range) - oy); y1 = Math.min(bp.sy - 1, (int) Math.ceil(py + range) - oy);
+            near = Settings.nearLayers && s.layer < 0; feet = (int) Math.floor(py);
+            y0 = Math.max(0, Math.max((int) Math.floor(py - range) - oy, near ? feet - NEAR_BELOW - oy : 0)); y1 = Math.min(bp.sy - 1, Math.min((int) Math.ceil(py + range) - oy, near ? feet + NEAR_ABOVE - oy : bp.sy - 1));
             z0 = Math.max(0, (int) Math.floor(pz - range) - oz); z1 = Math.min(bp.sz - 1, (int) Math.ceil(pz + range) - oz);
             y = y0; z = z0;
         }
 
+        /** Is this layer drawn? The layer you're on when building layer by layer; with "nearby layers only" just the ones around your height. */
+        boolean shown(Session s, int y) { return s.layerShown(y) && (!near || (oy + y >= feet - NEAR_BELOW && oy + y <= feet + NEAR_ABOVE)); }
+
         /** Drawn at all? A block on a layer that's shown, not hidden, in my part (co-op) and close enough. */
         boolean in(Session s, int c, int x, int y, int z) {
-            if (c == 0 || hid[c] || !s.layerShown(y) || !Coop.mine(bp, x, z)) return false;
+            if (c == 0 || hid[c] || !shown(s, y) || !Coop.mine(bp, x, z)) return false;
             double dx = ox + x + 0.5 - px, dy = oy + y + 0.5 - py, dz = oz + z + 0.5 - pz;
             return dx * dx + dy * dy + dz * dz <= r2;
         }
@@ -260,7 +267,7 @@ public final class PreviewModule {
         boolean step(Minecraft mc, Session s, long until) {
             BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
             while (y <= y1 && x0 <= x1 && z0 <= z1) {
-                if (s.layerShown(y)) {
+                if (shown(s, y)) {
                     int base = (y * bp.sz + z) * bp.sx;
                     for (int x = x0; x <= x1; x++) {
                         int c = bp.cells[base + x];
@@ -331,7 +338,7 @@ public final class PreviewModule {
                 for (int i = 0; i < 6; i++) {
                     Direction d = DIRS[i];
                     int nx = g.lx + d.getStepX(), ny = g.ly + d.getStepY(), nz = g.lz + d.getStepZ();
-                    if (nx < 0 || ny < 0 || nz < 0 || nx >= bp.sx || ny >= bp.sy || nz >= bp.sz || !s.layerShown(ny)) continue;
+                    if (nx < 0 || ny < 0 || nz < 0 || nx >= bp.sx || ny >= bp.sy || nz >= bp.sz || !v.shown(s, ny)) continue;
                     int n = bp.index(nx, ny, nz);
                     if (v.at.get(n) && v.p.full[bp.cells[n]]) m |= 1 << i;
                 }

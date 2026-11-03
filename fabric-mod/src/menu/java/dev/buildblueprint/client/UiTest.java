@@ -26,7 +26,7 @@ public final class UiTest {
     private static final String[] SHOWCASE = {"sc-ghost", "sc-menu", "sc-placed", "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e",
             "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j", "sc-layer-k", "sc-done", "done"};
     private static boolean showcase;
-    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "saved", "world-perf", "world-special", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "shopping", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "saved", "world-perf", "world-near", "world-special", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -60,6 +60,7 @@ public final class UiTest {
             return;
         }
         if ("world-perf".equals(steps[step])) perfTick();
+        if ("world-near".equals(steps[step]) && tick == 100) System.out.println("BBUITEST perf nearby layers only: " + Perf.report());
         if (++tick == 40) pressF2();                                              // Minecraft's own screenshot, once the screen has settled
         if (tick == 70) System.out.println("BBUITEST shot " + steps[step]);     // the test picks up the newest screenshot now
         if (tick < 110) return;
@@ -243,7 +244,7 @@ public final class UiTest {
             case "world-ghost" -> { Mc.setScreen(null); loadTestBuild(); }
             case "world-placed" -> { Mc.setScreen(null); BuildBlueprintClient.setLocked(true); System.out.println("BBUITEST placed, layer " + (BuildBlueprintClient.SESSION.layer + 1)); }
             case "world-special" -> {   // blocks the game draws in a special way: their ghosts use look-alike blocks
-                Mc.setScreen(null);
+                Mc.setScreen(null); Settings.nearLayers = false;
                 String[] pal = {"minecraft:chest[facing=north,type=single,waterlogged=false]", "minecraft:ender_chest[facing=north,waterlogged=false]",
                         "minecraft:oak_sign[rotation=8,waterlogged=false]", "minecraft:red_bed[facing=north,occupied=false,part=foot]",
                         "minecraft:white_banner[rotation=8]", "minecraft:skeleton_skull[rotation=8]", "minecraft:shulker_box[facing=up]", "minecraft:trapped_chest[facing=north,type=single,waterlogged=false]"};
@@ -266,6 +267,13 @@ public final class UiTest {
                 BuildBlueprintClient.SESSION.load(new dev.buildblueprint.core.Blueprint("Perf test", sx, sy, sz, pal, cells), PlayerInfo.x(), PlayerInfo.y(), PlayerInfo.z(), PlayerInfo.yaw());
                 Perf.reset();
                 System.out.println("BBUITEST perf loaded " + n + " blocks");
+            }
+            case "world-near" -> {   // the same big build with "nearby layers only" on
+                Mc.setScreen(null); Settings.nearLayers = true; Perf.reset();
+            }
+            case "shopping" -> {
+                Mc.setScreen(new ShoppingScreen(null, false));
+                System.out.println("BBUITEST bug report: " + BugReport.text().replace("\n", " | "));
             }
             case "world-copy" -> {
                 Mc.setScreen(null);

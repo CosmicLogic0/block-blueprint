@@ -18,6 +18,7 @@ Kopiert! Schick ihn deinen Freunden.
    Bauer und eine andere Bauer-Nummer.
 Du baust {0}. Du siehst nur deinen Teil.
 Alle sehen den ganzen Bau.
+Kopiert
 Bau kopieren
 Name
 Lässt Erde, Gras und natürlichen Stein weg, auf dem der Bau steht.
@@ -143,6 +144,8 @@ Stellt wieder her, was vor dem letzten automatischen Bauen da war.
 Koop {0}/{1}
 Koop
 Bau das mit Freunden: schick ihnen einen Code, der ihn genau an diese Stelle setzt, und teilt ihn auf, damit jeder seinen Teil baut.
+Einkaufsliste
+Was du noch besorgen musst, nach dem, was du dabeihast, und den Truhen in der Nähe, die du geöffnet hast, in Stapeln. Kopiere sie zum Einfügen oder Drucken.
 Entfernen
 Nimmt diesen Bau aus deiner Welt. Er bleibt in Gespeicherte Bauten, du kannst ihn also wieder laden.
 Ganzer Bau
@@ -277,6 +280,8 @@ Schichtkarte: {0}
 Eine kleine Karte der Schicht, auf der du bist, von oben gesehen, unter der Eckliste. Farben = noch zu setzen, dunkelgrün = fertig, rot = falsch, weißer Punkt = du.
 Gerüst-Hinweise: {0}
 Teile einer Schicht, die in der Luft schweben (Überhänge, Dächer), bekommen eine hellblaue Säule, die zeigt, wo du vorübergehende Blöcke setzen kannst, um sie zu erreichen.
+Nur nahe Schichten: {0}
+Bevor du ein Bauwerk platzierst, werden nur die Schichten um deine Höhe gezeichnet (3 unter deinen Füßen bis 4 darüber) statt allem. Leichter für große Bauwerke, und du siehst hinein.
 Geisterblöcke: {0}% fest
 Wie durchsichtig die Vorschau-Blöcke sind.
 Vorschau zeigen: {0}
@@ -323,11 +328,35 @@ Ein neuer Bau wird komplett gezeigt, damit du ihn bewegen kannst. Beim Platziere
 Grundlagen
 Mehr
 Extras
-Zusätzliche Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise.
+Extra-Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise, nur nahe Schichten.
 Tastenbelegung...
 Ändere die Tasten (Optionen > Steuerung > Tastenbelegung > Build Blueprint).
 Eine kurze Anleitung zu allem, was der Mod kann.
+Fehler melden
+Seite geöffnet
+Die Angaben stehen schon auf der GitHub-Seite (und sind kopiert). Schreib, was passiert ist, und drück Create.
+Angaben kopiert. Füge sie ein auf github.com/CosmicLogic0/block-blueprint/issues
+Öffnet eine Fehlermeldung auf GitHub, in der deine Minecraft-Version, die Mod-Version und das letzte Problem schon stehen. Nichts wird gesendet, bis du auf der Seite Create drückst.
 Fahr mit der Maus über einen Knopf, um zu sehen, was er tut.
+Liste kopieren
+Kopiert die Liste als Text, zum Einfügen in einen Chat oder eine Notiz, oder zum Drucken.
+Zurück
+1 Stapel + {0}
+1 Stapel
+{0} Stapel + {1}
+{0} Stapel
+Noch zu besorgen:
+Schon da (dabei oder in Truhen):
+Nichts mehr zu besorgen!
+Kopiert – überall einfügen (Strg+V)
+Was du noch besorgen musst, nach dem, was du dabeihast, und den Truhen in der Nähe.
+Schicht {0}
+in Truhen
+da
+{0} in 1 Truhe in der Nähe
+{0} in {1} Truhen in der Nähe
+Öffne deine Truhen einmal, damit ihre Blöcke gezählt werden.
+Truhen im Umkreis von 48 Blöcken werden gezählt.
 Blöcke tauschen
 So funktioniert das Tauschen
 Aus dem Bau entfernen
@@ -342,7 +371,6 @@ Blöcke aus den anderen Mods, die du installiert hast.
 Tauschen
 Tauscht jeden Block dieser Art im Bau (Enter).
 Letzten Tausch rückgängig
-Zurück
 Letzter Tausch rückgängig gemacht.
 Wähl zuerst einen Block aus der Liste.
 Nichts zu ändern.
@@ -358,8 +386,18 @@ Klick einen Block an, um ihn zu wählen  ·  Doppelklick tauscht sofort
 Doppelklick, um hierzu zu tauschen
 Nach Name oder Ersteller suchen...
 Zeigt eine Art von Bau: Häuser, Türme, Schiffe...
+Zeigt nur kleine, mittlere oder große Bauwerke (nach Anzahl der Blöcke).
+Zufällig
+Wählt ein zufälliges Bauwerk aus der Liste, um etwas Neues zu finden.
 Holen
 In Gespeicherte Bauten herunterladen.
+Klein (unter 500)
+Mittel (500 bis 3.000)
+Groß (3.000+)
+Jede Größe
+Sortierung: wenigste Blöcke
+Sortierung: meiste Blöcke
+Sortierung: A bis Z
 Alle Arten
 Die Liste konnte nicht geladen werden - prüf deine Internetverbindung.
 Lade {0} herunter...

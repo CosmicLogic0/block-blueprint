@@ -158,6 +158,8 @@ Puts back what was there before the last auto-build.
 Co-op {0}/{1}
 Co-op
 Build this with friends: send them a code that puts it in this exact spot, and split it so everyone builds their own part.
+Shopping list
+What you still have to get, after what you carry and the chests you've opened nearby, in stacks. Copy it to paste or print.
 Remove
 Take this build out of your world view. It stays in Saved builds, so you can load it again.
 Whole build
@@ -303,6 +305,8 @@ Layer map: {0}
 A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.
 Scaffold hints: {0}
 Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.
+Nearby layers only: {0}
+Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.
 Ghost blocks: {0}% solid
 How see-through the preview blocks are.
 Show preview: {0}
@@ -349,12 +353,37 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics
 More
 Extras
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints.
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.
 Key binds...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).
 A short guide to everything the mod does.
+Report a bug
+Page opened
+The details are filled in on the GitHub page (and copied). Add what happened, then press Create.
+Copied the details. Paste them at github.com/CosmicLogic0/block-blueprint/issues
+Opens a bug report on GitHub with your Minecraft version, mod version and the last problem already filled in. Nothing is sent until you press Create on the page.
 the settings menu
 Hover a button to see what it does.
+Copy list
+Copy the list as text, to paste in a chat or a note, or to print.
+Back
+1 stack + {0}
+1 stack
+{0} stacks + {1}
+{0} stacks
+To get:
+Already got (carried or in chests):
+Nothing left to get!
+Copied - paste it anywhere (Ctrl+V)
+the shopping list
+What you still have to get, after what you carry and the chests you've opened nearby.
+Layer {0}
+in chests
+got it
+{0} in 1 chest near you
+{0} in {1} chests near you
+Open your chests once so their blocks are counted.
+Chests within 48 blocks are counted.
 Swap blocks
 How swapping works
 Remove from build
@@ -369,7 +398,6 @@ Blocks added by the other mods you have installed.
 Swap
 Swap every block of this kind in the build (Enter).
 Undo last swap
-Back
 Last swap undone.
 swapping blocks
 Pick a block from the list first.
@@ -389,8 +417,18 @@ Minecraft
 Double-click to swap to this
 Search by name or creator...
 Show one kind of build: houses, towers, ships...
+Show only small, medium or big builds (by how many blocks they have).
+Random build
+Pick a random build from the list, to find something new.
 Get it
 Download it into Saved builds.
+Small (under 500)
+Medium (500 to 3,000)
+Big (3,000+)
+Any size
+Sort: fewest blocks
+Sort: most blocks
+Sort: A to Z
 All kinds
 Couldn't reach the build list - check your internet connection.
 Build Blueprint templates
