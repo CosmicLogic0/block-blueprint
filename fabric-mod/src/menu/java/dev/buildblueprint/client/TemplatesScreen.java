@@ -8,7 +8,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Locale;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -21,7 +23,7 @@ import net.minecraft.network.chat.Component;
 
 /**
  * Free builds to download (the same open-license community builds as in the Block Blueprint app), straight from the game:
- * search, pick one, press Get it, and it's in Saved builds. Every build shows who made it and its license.
+ * search, pick one to see a picture of it, press Get it, and it's in Saved builds. Every build shows who made it and its license.
  */
 public class TemplatesScreen extends Screen {
     private static final String BASE = "https://raw.githubusercontent.com/CosmicLogic0/block-blueprint/main/renderer/templates/";
@@ -47,11 +49,26 @@ public class TemplatesScreen extends Screen {
     private volatile String msg = "";
     private volatile boolean busy;
 
+    /** A build fetched for its picture (kept, so Get it doesn't download it again). */
+    private static final class Got { volatile byte[] data; volatile dev.buildblueprint.core.Blueprint bp; volatile boolean failed; }
+    private static final Map<String, Got> GOT = java.util.Collections.synchronizedMap(new LinkedHashMap<String, Got>(16, 0.75f, true) {
+        @Override protected boolean removeEldestEntry(Map.Entry<String, Got> e) { return size() > 8; }   // only the last few, big builds take memory
+    });
+    private final BuildPicture pic = new BuildPicture();
+    private int turn = 0;
+    private boolean autoPick;
+    /** Self-test: picks the first build once the list is there, so its picture shows. */
+    public TemplatesScreen autoPick() { autoPick = true; return this; }
+
     public TemplatesScreen(Screen parent) { super(Component.literal(Tr.t("Get free builds"))); this.parent = parent; }
 
     @Override public boolean isPauseScreen() { return false; }
 
-    private int pw() { return Math.min(440, width - 16); }
+    private int pw() { return Math.min(660, width - 16); }
+    private boolean side() { return pw() >= 400; }                                  // room for the picture next to the list
+    private int lw() { return side() ? pw() - pvW() - 6 : pw(); }                  // list width
+    private int pvW() { return Math.max(140, Math.min(260, pw() * 2 / 5)); }
+    private int pvX() { return px() + pw() - pvW(); }
     private int px() { return (width - pw()) / 2; }
     private int listTop() { return 62; }
     private int listBottom() { return height - 60; }
@@ -136,7 +153,8 @@ public class TemplatesScreen extends Screen {
         busy = true; msg = "Downloading " + t.name + "...";
         Thread th = new Thread(() -> {
             try {
-                byte[] data = fetch(BASE + "schem/" + t.file);
+                Got got = GOT.get(t.file);
+                byte[] data = got != null && got.data != null ? got.data : fetch(BASE + "schem/" + t.file);
                 String safe = (t.name + " - by " + t.by).replaceAll("[\\\\/:*?\"<>|]", "_").trim();
                 Path p = SavedBuilds.dir().resolve(safe + ".nbt");
                 Files.write(p, data);
@@ -147,16 +165,32 @@ public class TemplatesScreen extends Screen {
         th.setDaemon(true); th.start();
     }
 
+    /** Downloads the picked build in the background to show its picture. */
+    private static void fetchPicture(T t) {
+        if (t == null || !Settings.preview3d || GOT.containsKey(t.file)) return;
+        Got got = new Got();
+        GOT.put(t.file, got);
+        Thread th = new Thread(() -> {
+            try {
+                byte[] data = fetch(BASE + "schem/" + t.file);
+                got.data = data;
+                got.bp = dev.buildblueprint.core.SchemCodec.read(data, t.file);
+            } catch (Throwable e) { got.failed = true; GOT.remove(t.file); }
+        }, "Build Blueprint picture");
+        th.setDaemon(true); th.start();
+    }
+
     // --- input
     private int hit(double mx, double my) {
-        if (mx < px() || mx >= px() + pw() - 6 || my < listTop() || my >= listTop() + visRows() * rowH()) return -1;
+        if (mx < px() || mx >= px() + lw() - 6 || my < listTop() || my >= listTop() + visRows() * rowH()) return -1;
         int i = (int) ((my - listTop()) / rowH()) + scroll;
         return i < shown.size() ? i : -1;
     }
     @Override public boolean mouseClicked(MouseButtonEvent e, boolean dbl) {
         if (super.mouseClicked(e, dbl)) return true;
         int i = hit(e.x(), e.y());
-        if (i >= 0) { pick = shown.get(i); msg = ""; if (dbl) get(); return true; }
+        if (i >= 0) { if (pick != shown.get(i)) turn = 0; pick = shown.get(i); msg = ""; fetchPicture(pick); if (dbl) get(); return true; }
+        if (side() && pick != null && e.x() >= pvX() && e.x() < pvX() + pvW() && e.y() >= listTop() - 2 && e.y() < listBottom()) { turn = (turn + 1) % 4; return true; }   // click the picture to turn it
         return false;
     }
     @Override public boolean mouseScrolled(double x, double y, double dx, double dy) {
@@ -175,30 +209,33 @@ public class TemplatesScreen extends Screen {
 
     private void draw(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
         if (all != null && shown.isEmpty() && search.getValue().isEmpty() && kind.isEmpty()) refill();
+        if (autoPick && pick == null && !shown.isEmpty()) { autoPick = false; pick = shown.get(0); fetchPicture(pick); }
         int x = px(), w = pw(), top = listTop(), bot = listBottom();
         UiKit.panel(g, x - 6, 4, w + 12, height - 8, UiKit.GREEN);
         g.text(font, Tr.t("Get free builds"), x, 10, UiKit.GOLD, true);
         String sub = all == null ? "" : all.size() + " free builds from the Minecraft community";
         g.text(font, Tr.t(sub), x, 22, UiKit.MUTED, false);
-        g.fill(x, top - 2, x + w, bot, 0xFF15151C);
-        if (all == null) UiKit.center(g, font, loadError != null ? loadError : "Loading the list...", x + w / 2, top + 20, loadError != null ? UiKit.ORANGE : UiKit.MUTED);
+        int lw = lw();
+        g.fill(x, top - 2, x + lw, bot, 0xFF15151C);
+        if (side()) drawPicture(g, pvX(), top - 2, pvW(), bot - top + 2);
+        if (all == null) UiKit.center(g, font, loadError != null ? loadError : "Loading the list...", x + lw / 2, top + 20, loadError != null ? UiKit.ORANGE : UiKit.MUTED);
         T hover = null;
         int rows = visRows(), y = top;
         for (int i = scroll; i < Math.min(shown.size(), scroll + rows); i++, y += rowH()) {
             T t = shown.get(i);
-            boolean sel = t == pick, hov = mouseX >= x && mouseX < x + w - 6 && mouseY >= y && mouseY < y + rowH();
+            boolean sel = t == pick, hov = mouseX >= x && mouseX < x + lw - 6 && mouseY >= y && mouseY < y + rowH();
             if (hov) hover = t;
-            if (sel || hov) g.fill(x, y, x + w - 6, y + rowH() - 1, sel ? 0xFF2F4A2A : 0xFF2A2A38);
+            if (sel || hov) g.fill(x, y, x + lw - 6, y + rowH() - 1, sel ? 0xFF2F4A2A : 0xFF2A2A38);
             String right = t.size + "  ·  " + t.blocks + " blocks";
-            g.text(font, Tr.t(UiKit.fit(font, t.name, w - 30 - font.width(Tr.t(right)) - 90)), x + 4, y + 3, sel ? UiKit.WHITE : UiKit.TEXT, false);
-            g.text(font, Tr.t(UiKit.fit(font, t.cat, 84)), x + w - 14 - font.width(Tr.t(right)) - 90, y + 3, 0xFF8C7CC8, false);
-            g.text(font, Tr.t(right), x + w - 10 - font.width(Tr.t(right)), y + 3, UiKit.MUTED, false);
+            g.text(font, Tr.t(UiKit.fit(font, t.name, lw - 30 - font.width(Tr.t(right)) - 90)), x + 4, y + 3, sel ? UiKit.WHITE : UiKit.TEXT, false);
+            g.text(font, Tr.t(UiKit.fit(font, t.cat, 84)), x + lw - 14 - font.width(Tr.t(right)) - 90, y + 3, 0xFF8C7CC8, false);
+            g.text(font, Tr.t(right), x + lw - 10 - font.width(Tr.t(right)), y + 3, UiKit.MUTED, false);
         }
-        if (all != null && shown.isEmpty()) UiKit.center(g, font, "No build matches.", x + w / 2, top + 20, UiKit.MUTED);
+        if (all != null && shown.isEmpty()) UiKit.center(g, font, "No build matches.", x + lw / 2, top + 20, UiKit.MUTED);
         if (shown.size() > rows) {   // scroll bar
             int track = bot - top - 2, sh = Math.max(12, track * rows / shown.size()), sy = top + (track - sh) * scroll / Math.max(1, shown.size() - rows);
-            g.fill(x + w - 4, top, x + w - 1, bot - 2, 0xFF22222C);
-            g.fill(x + w - 4, sy, x + w - 1, sy + sh, 0xFFAAAAAA);
+            g.fill(x + lw - 4, top, x + lw - 1, bot - 2, 0xFF22222C);
+            g.fill(x + lw - 4, sy, x + lw - 1, sy + sh, 0xFFAAAAAA);
         }
         // the picked build: who made it and its license
         int iy = bot + 6;
@@ -217,5 +254,17 @@ public class TemplatesScreen extends Screen {
             if (!hover.link.isEmpty()) tip.add(Component.literal(Tr.t(hover.link)));
             g.setComponentTooltipForNextFrame(font, tip, mouseX, mouseY);
         }
+    }
+
+    private void drawPicture(GuiGraphicsExtractor g, int bx, int by, int bw, int bh) {
+        g.fill(bx, by, bx + bw, by + bh, 0xFF101016);
+        int cx = bx + bw / 2, cy = by + bh / 2 - 4;
+        if (!Settings.preview3d) { UiKit.center(g, font, UiKit.fit(font, "Build picture is off (Settings > More)", bw - 8), cx, cy, UiKit.MUTED); return; }
+        if (pick == null) { UiKit.center(g, font, UiKit.fit(font, "Click a build to see it here", bw - 8), cx, cy, UiKit.MUTED); return; }
+        Got got = GOT.get(pick.file);
+        if (got == null) { fetchPicture(pick); got = GOT.get(pick.file); }
+        if (got == null || got.bp == null) { UiKit.center(g, font, UiKit.fit(font, got == null ? "Couldn't load the picture." : "Loading the picture...", bw - 8), cx, cy, got == null ? UiKit.ORANGE : UiKit.MUTED); return; }
+        pic.draw(g, got.bp, turn, 0, 1f, 0, 0, bx + 2, by + 2, bw - 4, bh - 16);
+        UiKit.center(g, font, UiKit.fit(font, "Click the picture to turn it", bw - 8), cx, by + bh - 11, UiKit.MUTED);
     }
 }

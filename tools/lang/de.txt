@@ -374,6 +374,10 @@ Herunterladen
 von {0}  ·  Lizenz {1}
 Klick einen Bau an, dann Holen  ·  Doppelklick holt ihn sofort
 Von {0} ({1})
+Klicke auf ein Bauwerk, um es hier zu sehen
+Das Bild konnte nicht geladen werden.
+Bild wird geladen...
+Klicke auf das Bild, um es zu drehen
 Falsch herum: dieser {0} {1}  ·  abbauen und neu setzen
 Alles repariert! Nichts mehr falsch im Bau.
 Repariert! Noch {0}  ·  {1}

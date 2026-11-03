@@ -341,7 +341,7 @@ public final class UiTest {
                 Stats.completeAt = System.currentTimeMillis(); Stats.completeBlocks = Materials.totalBlocks(); Stats.completeMs = 754000; Stats.completePerMin = 23;
                 Mc.setScreen(null);
             }
-            case "templates" -> Mc.setScreen(new TemplatesScreen(null));
+            case "templates" -> Mc.setScreen(new TemplatesScreen(null).autoPick());
             case "remove" -> {   // take the least used block out of the build, show the list, then put it back
                 Materials.refresh();
                 var rows = Materials.rows();

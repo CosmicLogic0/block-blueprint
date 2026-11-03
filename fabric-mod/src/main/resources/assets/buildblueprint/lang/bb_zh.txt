@@ -375,6 +375,10 @@ Download	下载
 by {0}  ·  {1} license	作者 {0}  ·  {1} 许可证
 Click a build, then Get it  ·  double-click gets it right away	点击一个建筑，然后点“获取”  ·  双击立即获取
 By {0} ({1})	作者 {0}（{1}）
+Click a build to see it here	点击一个建筑即可在这里看到它
+Couldn't load the picture.	无法加载图片。
+Loading the picture...	正在加载图片...
+Click the picture to turn it	点击图片可以旋转它
 Wrong way round: this {0} {1}  ·  break it and place it again	方向放反了：这个{0}{1}  ·  打掉重新放
 All fixed! Nothing wrong in the build any more.	全部修正！建筑里没有错误了。
 Fixed! {0} left  ·  {1}	已修正！还剩 {0} 处  ·  {1}
