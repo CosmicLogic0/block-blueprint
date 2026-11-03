@@ -374,6 +374,10 @@ Descargar
 por {0}  ·  licencia {1}
 Haz clic en una construcción y luego en Conseguir  ·  doble clic la descarga al momento
 Por {0} ({1})
+Haz clic en una construcción para verla aquí
+No se pudo cargar la imagen.
+Cargando la imagen...
+Haz clic en la imagen para girarla
 Al revés: este {0} {1}  ·  rómpelo y colócalo otra vez
 ¡Todo arreglado! Ya no hay nada mal en la construcción.
 ¡Arreglado! Quedan {0}  ·  {1}

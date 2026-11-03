@@ -1,3 +1,7 @@
+## 1.3.2
+- **Fixed: lag with big builds in the world**, when loading one and when moving it around. The mod used to check every block of the build against the world all at once each time it moved; now it's done a little each frame and the ghosts move with the build straight away. Drawing the ghost blocks does much less work each frame (ghosts behind you, or covered on every side, are skipped), and the block list counts big builds about 3-6 times faster.
+- **Get free builds shows a picture** of the build you click, next to the list (click the picture to turn it). Get it then saves that build without downloading it again.
+
 ## 1.3.1
 - **Fixed: Saved builds got slower and slower with big builds** (until Minecraft had to be restarted). The build picture is now worked out once instead of every frame, and only the last few builds stay in memory. New setting: Settings > More > **Build picture** on/off.
 - **App: Save for Bedrock.** Any build (yours or one of the free ones) can be saved as a Minecraft Bedrock file. Open it and Bedrock adds it; then type /structure load blueprint:<name> ~ ~ ~ in your world (the app shows the exact line). Tested in the real Bedrock server.

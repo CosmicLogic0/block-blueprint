@@ -375,6 +375,10 @@ Download	Descargar
 by {0}  ·  {1} license	por {0}  ·  licencia {1}
 Click a build, then Get it  ·  double-click gets it right away	Haz clic en una construcción y luego en Conseguir  ·  doble clic la descarga al momento
 By {0} ({1})	Por {0} ({1})
+Click a build to see it here	Haz clic en una construcción para verla aquí
+Couldn't load the picture.	No se pudo cargar la imagen.
+Loading the picture...	Cargando la imagen...
+Click the picture to turn it	Haz clic en la imagen para girarla
 Wrong way round: this {0} {1}  ·  break it and place it again	Al revés: este {0} {1}  ·  rómpelo y colócalo otra vez
 All fixed! Nothing wrong in the build any more.	¡Todo arreglado! Ya no hay nada mal en la construcción.
 Fixed! {0} left  ·  {1}	¡Arreglado! Quedan {0}  ·  {1}

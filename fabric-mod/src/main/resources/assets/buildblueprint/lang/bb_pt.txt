@@ -375,6 +375,10 @@ Download	Baixar
 by {0}  ·  {1} license	por {0}  ·  licença {1}
 Click a build, then Get it  ·  double-click gets it right away	Clique numa construção e depois em Pegar  ·  clique duplo baixa na hora
 By {0} ({1})	Por {0} ({1})
+Click a build to see it here	Clique numa construção para vê-la aqui
+Couldn't load the picture.	Não foi possível carregar a imagem.
+Loading the picture...	Carregando a imagem...
+Click the picture to turn it	Clique na imagem para girá-la
 Wrong way round: this {0} {1}  ·  break it and place it again	Virado errado: este {0} {1}  ·  quebre e coloque de novo
 All fixed! Nothing wrong in the build any more.	Tudo corrigido! Não tem mais nada errado na construção.
 Fixed! {0} left  ·  {1}	Corrigido! Faltam {0}  ·  {1}

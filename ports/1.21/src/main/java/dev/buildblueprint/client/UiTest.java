@@ -24,7 +24,7 @@ public final class UiTest {
     private static final String[] SHOWCASE = {"sc-ghost", "sc-menu", "sc-placed", "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e",
             "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j", "sc-layer-k", "sc-done", "done"};
     private static boolean showcase;
-    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "saved", "world-special", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "saved", "world-perf", "world-special", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -57,12 +57,28 @@ public final class UiTest {
             step = 0; tick = 0; open(steps[0]);
             return;
         }
+        if ("world-perf".equals(steps[step])) perfTick();
         if (++tick == 40) pressF2();                                              // Minecraft's own screenshot, once the screen has settled
         if (tick == 70) System.out.println("BBUITEST shot " + steps[step]);     // the test picks up the newest screenshot now
         if (tick < 110) return;
         tick = 0;
         if (++step >= steps.length) return;
         open(steps[step]);
+    }
+
+    /** The big build: moved one block every other tick for a while (like holding an arrow key), then left still. */
+    private static void perfTick() {
+        var s = BuildBlueprintClient.SESSION;
+        if (!s.loaded()) return;
+        if (tick == 2) { System.out.println("BBUITEST perf first frames: " + Perf.report()); Perf.reset(); }
+        if (tick > 2 && tick <= 32 && tick % 2 == 0) s.ox += 1;
+        if (tick == 34) { System.out.println("BBUITEST perf moving: " + Perf.report()); Perf.reset(); }
+        if (tick == 100) {
+            System.out.println("BBUITEST perf still: " + Perf.report());
+            long t = System.nanoTime();
+            for (int i = 0; i < 3; i++) Materials.refresh();
+            System.out.println("BBUITEST perf block list: " + (System.nanoTime() - t) / 3000000 + " ms each time");
+        }
     }
 
     /** Presses F2 through Minecraft's keyboard handler. Only works in the developer setup (names are scrambled in the real game). */
@@ -237,6 +253,18 @@ public final class UiTest {
                 for (String st : pal) sb.append(dev.buildblueprint.core.MaterialMap.blockId(st)).append(" -> ").append(String.join("/", dev.buildblueprint.core.Standin.of(dev.buildblueprint.core.MaterialMap.blockId(st)))).append("; ");
                 System.out.println("BBUITEST stand-ins: " + sb);
             }
+            case "world-perf" -> {   // a big build (240,000 blocks): how long the ghost preview and the block list take
+                Mc.setScreen(null);
+                String[] pal = {"minecraft:stone_bricks", "minecraft:oak_planks", "minecraft:glass", "minecraft:grass_block[snowy=false]",
+                        "minecraft:oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]", "minecraft:oak_leaves[distance=7,persistent=true]"};
+                int sx = 100, sy = 40, sz = 100, n = 0;
+                int[] cells = new int[sx * sy * sz];
+                for (int y = 0; y < sy; y++) for (int z = 0; z < sz; z++) for (int x = 0; x < sx; x++)
+                    if ((x * 7 + y * 13 + z * 3) % 5 < 3) { cells[(y * sz + z) * sx + x] = 1 + (x + y + z) % pal.length; n++; }
+                BuildBlueprintClient.SESSION.load(new dev.buildblueprint.core.Blueprint("Perf test", sx, sy, sz, pal, cells), PlayerInfo.x(), PlayerInfo.y(), PlayerInfo.z(), PlayerInfo.yaw());
+                Perf.reset();
+                System.out.println("BBUITEST perf loaded " + n + " blocks");
+            }
             case "world-copy" -> {
                 Mc.setScreen(null);
                 BuildBlueprintClient.setLocked(false); BuildBlueprintClient.SESSION.clear();
@@ -313,7 +341,7 @@ public final class UiTest {
                 Stats.completeAt = System.currentTimeMillis(); Stats.completeBlocks = Materials.totalBlocks(); Stats.completeMs = 754000; Stats.completePerMin = 23;
                 Mc.setScreen(null);
             }
-            case "templates" -> Mc.setScreen(new TemplatesScreen(null));
+            case "templates" -> Mc.setScreen(new TemplatesScreen(null).autoPick());
             case "remove" -> {   // take the least used block out of the build, show the list, then put it back
                 Materials.refresh();
                 var rows = Materials.rows();

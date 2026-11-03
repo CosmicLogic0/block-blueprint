@@ -374,6 +374,10 @@ Download
 by {0}  ·  {1} license
 Click a build, then Get it  ·  double-click gets it right away
 By {0} ({1})
+Click a build to see it here
+Couldn't load the picture.
+Loading the picture...
+Click the picture to turn it
 Wrong way round: this {0} {1}  ·  break it and place it again
 All fixed! Nothing wrong in the build any more.
 Fixed! {0} left  ·  {1}

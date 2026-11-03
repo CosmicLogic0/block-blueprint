@@ -375,6 +375,10 @@ Download	Скачать
 by {0}  ·  {1} license	автор: {0}  ·  лицензия {1}
 Click a build, then Get it  ·  double-click gets it right away	Нажми на постройку, затем Получить  ·  двойной клик скачивает сразу
 By {0} ({1})	Автор: {0} ({1})
+Click a build to see it here	Нажмите на постройку, чтобы увидеть её здесь
+Couldn't load the picture.	Не удалось загрузить картинку.
+Loading the picture...	Загрузка картинки...
+Click the picture to turn it	Нажмите на картинку, чтобы повернуть её
 Wrong way round: this {0} {1}  ·  break it and place it again	Не той стороной: этот {0} {1}  ·  сломай и поставь заново
 All fixed! Nothing wrong in the build any more.	Всё исправлено! В постройке больше нет ошибок.
 Fixed! {0} left  ·  {1}	Исправлено! Осталось {0}  ·  {1}

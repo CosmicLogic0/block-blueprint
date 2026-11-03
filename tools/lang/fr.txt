@@ -374,6 +374,10 @@ Télécharger
 par {0}  ·  licence {1}
 Clique sur une construction, puis sur Obtenir  ·  double-clic pour l'obtenir tout de suite
 Par {0} ({1})
+Clique sur une construction pour la voir ici
+Impossible de charger l'image.
+Chargement de l'image...
+Clique sur l'image pour la tourner
 Dans le mauvais sens : ce {0} {1}  ·  casse-le et repose-le
 Tout est corrigé ! Plus rien de faux dans la construction.
 Corrigé ! Encore {0}  ·  {1}
