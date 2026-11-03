@@ -89,6 +89,14 @@ public final class Materials {
     /** Is there something solid in the world here to place a block against? */
     private static boolean solid(net.minecraft.world.level.block.state.BlockState b) { return !b.isAir() && b.getFluidState().isEmpty() && !V.replaceable(b); }
 
+    private static Blueprint palFor;
+    private static MaterialMap.Req[] palReq;
+    private static String[] palId;
+    private static boolean[] palProps;
+    private static byte[] statusBuf = new byte[0];
+    private static final Map<net.minecraft.world.level.block.Block, String> IDS = new java.util.IdentityHashMap<>();
+    private static String idOf(net.minecraft.world.level.block.Block b) { return IDS.computeIfAbsent(b, k -> V.blockId(k)); }
+
     /** Recount now (also called when the menu opens). */
     public static void refresh() {
         Session s = BuildBlueprintClient.SESSION;
@@ -99,46 +107,63 @@ public final class Materials {
             return;
         }
         Blueprint bp = s.blueprint();
-        Map<String, int[]> per = new LinkedHashMap<>();          // item -> {left, total}
-        Map<String, MaterialMap.Req> reqCache = new HashMap<>();
+        if (palFor != bp) {   // what each kind of block in the build needs: worked out once per build, not for every block every second
+            int n = bp.palette.length + 1;
+            palReq = new MaterialMap.Req[n]; palId = new String[n]; palProps = new boolean[n];
+            for (int i = 1; i < n; i++) {
+                String st = bp.palette[i - 1];
+                if (st == null) continue;
+                palReq[i] = MaterialMap.of(st); palId[i] = MaterialMap.blockId(st); palProps[i] = st.indexOf('[') >= 0;
+            }
+            palFor = bp;
+        }
+        int n = palReq.length;
+        int[] tot = new int[n], left = new int[n], order = new int[n];
+        int kinds = 0;
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
         int done = 0, all = 0;
         Map<Long, String[]> wrong = new HashMap<>();
+        List<Integer> wrongAt = new ArrayList<>();
         List<Mistakes.Mistake> mistakes = new ArrayList<>();
         int[] perLayer = new int[bp.sy], totLayer = new int[bp.sy];
-        byte[] status = new byte[bp.sx * bp.sy * bp.sz];   // 1 to place, 2 done, 3 wrong
-        List<Map<String, int[]>> perItemLayer = new ArrayList<>();
-        for (int y = 0; y < bp.sy; y++) perItemLayer.add(new LinkedHashMap<>());
+        int vol = bp.sx * bp.sy * bp.sz;
+        if (statusBuf.length != vol) statusBuf = new byte[vol]; else java.util.Arrays.fill(statusBuf, (byte) 0);
+        byte[] status = statusBuf;   // 1 to place, 2 done, 3 wrong (4 = there but the wrong way round, until the end)
         for (int y = 0; y < bp.sy; y++)
-            for (int z = 0; z < bp.sz; z++)
+            for (int z = 0; z < bp.sz; z++) {
+                int row = bp.index(0, y, z);
                 for (int x = 0; x < bp.sx; x++) {
-                    String st = bp.stateAt(x, y, z);
-                    if (st == null || !Coop.mine(bp, x, z)) continue;   // co-op: only my part of the build
-                    MaterialMap.Req r = reqCache.computeIfAbsent(st, MaterialMap::of);
-                    if (r == null) continue;
+                    int idx = row + x, c = bp.cells[idx];
+                    if (c == 0 || palReq[c] == null || !Coop.mine(bp, x, z)) continue;   // co-op: only my part of the build
+                    MaterialMap.Req r = palReq[c];
+                    String st = bp.palette[c - 1];
                     all++;
-                    int[] c = per.computeIfAbsent(r.itemId(), k -> new int[2]);
-                    c[1] += r.count();
-                    int[] cl = perItemLayer.get(y).computeIfAbsent(r.itemId(), k -> new int[2]);
-                    cl[1] += r.count(); totLayer[y]++;
+                    if (tot[c]++ == 0) order[kinds++] = c;
+                    totLayer[y]++;
                     pos.set(s.ox + x, s.oy + y, s.oz + z);
                     net.minecraft.world.level.block.state.BlockState hs = mc.level.getBlockState(pos);
-                    net.minecraft.world.level.block.Block hb = hs.getBlock();
-                    String have = V.blockId(hb);
-                    int idx = bp.index(x, y, z);
-                    if (have.equals(MaterialMap.blockId(st))) {
-                        if (st.indexOf('[') < 0 || Orient.ok(st, hs.toString())) { done++; status[idx] = 2; }
+                    String have = idOf(hs.getBlock());
+                    if (have.equals(palId[c])) {
+                        if (!palProps[c] || Orient.ok(st, hs.toString())) { done++; status[idx] = 2; }
                         else {   // there, but the wrong way round
-                            perLayer[y]++; status[idx] = 3;
+                            perLayer[y]++; status[idx] = 4; wrongAt.add(idx);
                             wrong.put(pos.asLong(), new String[]{st, hs.toString(), r.itemId()});
                             mistakes.add(Mistakes.make(pos.asLong(), st, hs.toString(), r.itemId(), true));
                         }
                     } else {
-                        c[0] += r.count(); cl[0] += r.count(); perLayer[y]++;
+                        left[c]++; perLayer[y]++;
                         if (solid(hs)) { status[idx] = 3; mistakes.add(Mistakes.make(pos.asLong(), st, "Block{" + have + "}", r.itemId(), false)); }
                         else status[idx] = 1;
                     }
                 }
+            }
+        Map<String, int[]> per = new LinkedHashMap<>();          // item -> {left, total}, in the order they first turn up
+        for (int k = 0; k < kinds; k++) {
+            int c = order[k];
+            MaterialMap.Req r = palReq[c];
+            int[] e = per.computeIfAbsent(r.itemId(), q -> new int[2]);
+            e[0] += left[c] * r.count(); e[1] += tot[c] * r.count();
+        }
         Map<String, Integer> inv = PlayerInfo.inventoryCounts();
         rows = toRows(per, inv);
         Layers.auto(perLayer);
@@ -146,7 +171,18 @@ public final class Materials {
         if (L < 0) { L = 0; for (int y = 0; y < bp.sy; y++) if (perLayer[y] > 0) { L = y; break; } }
         L = Math.max(0, Math.min(bp.sy - 1, L));
         layer = L; layerTotal = totLayer[L]; layerPlaced = totLayer[L] - perLayer[L];
-        layerRows = toRows(perItemLayer.get(L), inv);
+        Map<String, int[]> perL = new LinkedHashMap<>();
+        for (int z = 0; z < bp.sz; z++)
+            for (int x = 0; x < bp.sx; x++) {
+                int idx = bp.index(x, L, z), c = bp.cells[idx];
+                if (c == 0 || status[idx] == 0) continue;
+                MaterialMap.Req r = palReq[c];
+                int[] e = perL.computeIfAbsent(r.itemId(), q -> new int[2]);
+                e[1] += r.count();
+                if (status[idx] == 1 || status[idx] == 3) e[0] += r.count();
+            }
+        for (int idx : wrongAt) status[idx] = 3;
+        layerRows = toRows(perL, inv);
         placed = done;
         sayWrong(wrong, mc);
         Mistakes.update(mistakes);

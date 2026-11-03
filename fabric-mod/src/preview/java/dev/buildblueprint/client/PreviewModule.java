@@ -50,22 +50,30 @@ public final class PreviewModule {
     private static final Map<BlockState, List<BakedQuad>[]> QUADS = new HashMap<>();
     private static final Direction[] DIRS = Direction.values();
 
-    private record Ghost(int x, int y, int z, BlockState state, int lx, int ly, int lz) {}
+    private static final class Ghost {
+        int x, y, z;   // where it is in the world (moves with the build)
+        final BlockState state;
+        final int lx, ly, lz;   // where it is in the build
+        int hide, tintI = -1, tintC = 0xFFFFFF;   // faces not drawn (one bit each), the colour worked out last
+        List<BakedQuad>[] q;   // what it looks like (worked out the first time it's drawn)
+        float[] box;
+        boolean ready;
+        Ghost(int x, int y, int z, BlockState state, int lx, int ly, int lz) { this.x = x; this.y = y; this.z = z; this.state = state; this.lx = lx; this.ly = ly; this.lz = lz; }
+    }
     private record Red(int x, int y, int z) {}
-    private static final List<Ghost> ghosts = new ArrayList<>();
-    private static final List<Red> reds = new ArrayList<>();
-    private static final java.util.Set<Long> ghostAt = new java.util.HashSet<>();
+    private static List<Ghost> ghosts = new ArrayList<>();
+    private static List<Red> reds = new ArrayList<>();
 
     public static void init() {
         LevelRenderEvents.COLLECT_SUBMITS.register(ctx -> Safe.run("the ghost preview", () -> {
             long perfT = System.nanoTime();
-        if (needScan()) { scan(); pickHint(Minecraft.getInstance()); sorted = false; }
+            update(Minecraft.getInstance());
             if (ghosts.isEmpty()) return;
             Vec3 cam = ctx.levelState().cameraRenderState.pos;
             final double cx = cam.x, cy = cam.y, cz = cam.z;
             // far first so see-through blocks blend correctly (re-sorted when the camera has moved a bit)
-            if (!sorted || Math.abs(cx - sortX) + Math.abs(cy - sortY) + Math.abs(cz - sortZ) > 1.5) {
-                ghosts.sort((a, b2) -> Double.compare(d2(b2, cx, cy, cz), d2(a, cx, cy, cz)));
+            if (!sorted || Math.abs(cx - sortX) + Math.abs(cy - sortY) + Math.abs(cz - sortZ) > 2.0) {
+                sortGhosts(cx, cy, cz);
                 sorted = true; sortX = cx; sortY = cy; sortZ = cz;
             }
             Perf.scan(System.nanoTime() - perfT); Perf.ghosts = ghosts.size();
@@ -103,54 +111,239 @@ public final class PreviewModule {
         }));
     }
 
-    // Big builds: checking every cell against the world each frame is slow, so it's done every few frames,
-    // or straight away when the blueprint moves, turns, swaps or changes layer.
-    private static int frame = 0;
-    private static String lastKey = "";
-    private static boolean sorted = false;
+    // Which blocks to draw. Checking every cell of a big build against the world takes a while, so it's done a few
+    // milliseconds at a time over several frames instead of freezing the game. Moving the build moves the ghosts
+    // already worked out straight away. Between full checks only the ghosts, the red boxes and the cells around you
+    // are looked at again (that's where blocks get placed and broken).
+    private static final long FIRST_NS = 8_000_000L, BUDGET_NS = 3_000_000L, FULL_EVERY_MS = 2500;
+    private static String lastBuild = "";
+    private static int lastOx, lastOy, lastOz, frame = 0;
+    private static long lastFull = 0;
+    private static boolean sorted = false, wasShown = false;
     private static double sortX, sortY, sortZ;
-    private static boolean needScan() {
+    private static Scan job, view;   // the check in progress, and the one the ghosts on screen came from
+
+    private static void update(Minecraft mc) {
         Session s = BuildBlueprintClient.SESSION;
-        Minecraft mc = Minecraft.getInstance();
-        String key = s.loaded() && mc.player != null ? System.identityHashCode(s.blueprint()) + ":" + s.ox + "," + s.oy + "," + s.oz + ":" + s.layer + ":" + s.visible + ":" + Settings.range + ":" + Hide.version()
-                + ":" + ((int) mc.player.getX() >> 2) + "," + ((int) mc.player.getY() >> 2) + "," + ((int) mc.player.getZ() >> 2) : "none";
-        boolean changed = !key.equals(lastKey);
-        lastKey = key;
-        return changed || ++frame % 8 == 0;
+        frame++;
+        if (!s.loaded() || !s.visible || mc.level == null || mc.player == null) {
+            job = null; view = null; lastBuild = "";
+            if (!ghosts.isEmpty() || !reds.isEmpty()) { ghosts = new ArrayList<>(); reds = new ArrayList<>(); }
+            if (wasShown || frame % 8 == 0) { Hint.clear(); pickHint(mc); }
+            wasShown = false;
+            return;
+        }
+        wasShown = true;
+        Blueprint bp = s.blueprint();
+        String build = System.identityHashCode(bp) + ":" + s.layer + ":" + Settings.range + ":" + Hide.version() + ":" + Coop.parts + "/" + Coop.me;
+        double px = mc.player.getX(), py = mc.player.getY(), pz = mc.player.getZ();
+        long now = System.currentTimeMillis(), t0 = System.nanoTime();
+        if (!build.equals(lastBuild)) {   // another build, layer, distance or hidden blocks: start again
+            lastBuild = build; lastOx = s.ox; lastOy = s.oy; lastOz = s.oz;
+            ghosts = new ArrayList<>(); reds = new ArrayList<>(); view = null;
+            job = new Scan(s, bp, px, py, pz); lastFull = now;
+            run(mc, s, t0 + FIRST_NS);
+        } else if (s.ox != lastOx || s.oy != lastOy || s.oz != lastOz) {   // moved: the ghosts go with it now, then it's checked again
+            int dx = s.ox - lastOx, dy = s.oy - lastOy, dz = s.oz - lastOz;
+            for (Ghost g : ghosts) { g.x += dx; g.y += dy; g.z += dz; }
+            if (view != null) { view.ox += dx; view.oy += dy; view.oz += dz; }
+            reds = new ArrayList<>();
+            if (view != null) view.redAt.clear();
+            lastOx = s.ox; lastOy = s.oy; lastOz = s.oz;
+            job = new Scan(s, bp, px, py, pz); lastFull = now;
+            run(mc, s, t0 + FIRST_NS);
+        } else if (job != null) {
+            run(mc, s, t0 + BUDGET_NS);
+        } else if (now - lastFull > FULL_EVERY_MS || view == null || view.far(px, py, pz)) {   // now and then, and when you've walked a fair way
+            job = new Scan(s, bp, px, py, pz); lastFull = now;
+            run(mc, s, t0 + BUDGET_NS);
+        } else if (frame % 8 == 0) {
+            refresh(mc, s);
+            pickHint(mc);
+        }
     }
 
-    /** Works out which blocks to draw. */
-    private static void scan() {
-        ghosts.clear();
-        reds.clear();
-        ghostAt.clear();
-        Session s = BuildBlueprintClient.SESSION;
-        Minecraft mc = Minecraft.getInstance();
-        if (!s.loaded() || !s.visible || mc.level == null || mc.player == null) { Hint.clear(); return; }
-        Blueprint bp = s.blueprint();
-        double px = mc.player.getX(), py = mc.player.getY(), pz = mc.player.getZ();
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-        for (int y = 0; y < bp.sy; y++) {
-            if (!s.layerShown(y)) continue;
-            for (int z = 0; z < bp.sz; z++)
-                for (int x = 0; x < bp.sx; x++) {
-                    String st = bp.stateAt(x, y, z);
-                    if (st == null || Hide.state(st) || !Coop.mine(bp, x, z)) continue;     // hidden with the eye in the build menu, or a friend's part (co-op)
-                    int wx = s.ox + x, wy = s.oy + y, wz = s.oz + z;
-                    double dx = wx + 0.5 - px, dy = wy + 0.5 - py, dz = wz + 0.5 - pz;
-                    if (dx * dx + dy * dy + dz * dz > (double) Settings.range * Settings.range) continue;
-                    pos.set(wx, wy, wz);
-                    BlockState here = mc.level.getBlockState(pos);
-                    String have = BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString();
-                    if (have.equals(MaterialMap.blockId(st)) && (st.indexOf('[') < 0 || dev.buildblueprint.core.Orient.ok(st, here.toString()))) continue;     // already built, the right way round (the wrong way round gets a red box)
-                    if (here.isAir() || !here.getFluidState().isEmpty() || here.canBeReplaced()) {
-                        BlockState want = parse(st);
-                        if (want != null && ghosts.size() < MAX_GHOSTS) { ghosts.add(new Ghost(wx, wy, wz, want, x, y, z)); ghostAt.add(((long) x << 40) | ((long) y << 20) | z); }
-                    } else if (reds.size() < MAX_RED) {
-                        reds.add(new Red(wx, wy, wz));
-                    }
-                }
+    private static void run(Minecraft mc, Session s, long until) {
+        if (!job.step(mc, s, until)) return;
+        view = job; job = null;
+        ghosts = view.g; reds = view.r;
+        faces();
+        sorted = false;
+        pickHint(mc);
+    }
+
+    /** What each block of a build needs, worked out once per build. Index 0 = air. */
+    private static final class Pal {
+        final Blueprint bp;
+        final BlockState[] want;
+        final String[] id, item;
+        final boolean[] props, full;
+        Pal(Blueprint bp) {
+            this.bp = bp;
+            int n = bp.palette.length + 1;
+            want = new BlockState[n]; id = new String[n]; item = new String[n]; props = new boolean[n]; full = new boolean[n];
+            for (int i = 1; i < n; i++) {
+                String st = bp.palette[i - 1];
+                if (st == null) continue;
+                want[i] = parse(st);
+                id[i] = MaterialMap.blockId(st);
+                props[i] = st.indexOf('[') >= 0;
+                full[i] = want[i] != null && full(want[i]);
+                MaterialMap.Req r = MaterialMap.of(st);
+                item[i] = r == null ? null : r.itemId();
+            }
         }
+    }
+    private static Pal pal;
+    private static Pal pal(Blueprint bp) { if (pal == null || pal.bp != bp) pal = new Pal(bp); return pal; }
+
+    private static final Map<net.minecraft.world.level.block.Block, String> IDS = new java.util.IdentityHashMap<>();
+    private static String idOf(BlockState b) { return IDS.computeIfAbsent(b.getBlock(), k -> BuiltInRegistries.BLOCK.getKey(k).toString()); }
+
+    /** 0 = nothing to draw (already built the right way round), 1 = a ghost block, 2 = a red box (another block is in the way). */
+    private static int check(Minecraft mc, Pal p, int c, int wx, int wy, int wz, BlockPos.MutableBlockPos pos) {
+        BlockState here = mc.level.getBlockState(pos.set(wx, wy, wz));
+        if (idOf(here).equals(p.id[c]) && (!p.props[c] || dev.buildblueprint.core.Orient.ok(p.bp.palette[c - 1], here.toString()))) return 0;   // the wrong way round gets a red box
+        if (here.isAir() || !here.getFluidState().isEmpty() || here.canBeReplaced()) return p.want[c] != null ? 1 : 0;
+        return 2;
+    }
+
+    /** One check of the build against the world, done a bit at a time. */
+    private static final class Scan {
+        final Blueprint bp;
+        final Pal p;
+        final boolean[] hid;
+        int ox, oy, oz;
+        final double px, py, pz, r2;
+        final int x0, x1, y0, y1, z0, z1;
+        int y, z;
+        final List<Ghost> g = new ArrayList<>();
+        final List<Red> r = new ArrayList<>();
+        final java.util.BitSet at = new java.util.BitSet(), redAt = new java.util.BitSet();
+
+        Scan(Session s, Blueprint bp, double px, double py, double pz) {
+            this.bp = bp; p = pal(bp); ox = s.ox; oy = s.oy; oz = s.oz; this.px = px; this.py = py; this.pz = pz;
+            double range = Settings.range;
+            r2 = range * range;
+            hid = new boolean[bp.palette.length + 1];
+            if (Hide.any()) for (int i = 0; i < bp.palette.length; i++) hid[i + 1] = bp.palette[i] != null && Hide.state(bp.palette[i]);   // hidden with the eye in the build menu
+            x0 = Math.max(0, (int) Math.floor(px - range) - ox); x1 = Math.min(bp.sx - 1, (int) Math.ceil(px + range) - ox);   // only the part that's close enough
+            y0 = Math.max(0, (int) Math.floor(py - range) - oy); y1 = Math.min(bp.sy - 1, (int) Math.ceil(py + range) - oy);
+            z0 = Math.max(0, (int) Math.floor(pz - range) - oz); z1 = Math.min(bp.sz - 1, (int) Math.ceil(pz + range) - oz);
+            y = y0; z = z0;
+        }
+
+        /** Drawn at all? A block on a layer that's shown, not hidden, in my part (co-op) and close enough. */
+        boolean in(Session s, int c, int x, int y, int z) {
+            if (c == 0 || hid[c] || !s.layerShown(y) || !Coop.mine(bp, x, z)) return false;
+            double dx = ox + x + 0.5 - px, dy = oy + y + 0.5 - py, dz = oz + z + 0.5 - pz;
+            return dx * dx + dy * dy + dz * dz <= r2;
+        }
+
+        boolean far(double x, double y, double z) { return Math.abs(x - px) + Math.abs(y - py) + Math.abs(z - pz) > 8; }
+
+        /** Works through the build a row at a time until the time is up. True once it's all done. */
+        boolean step(Minecraft mc, Session s, long until) {
+            BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+            while (y <= y1 && x0 <= x1 && z0 <= z1) {
+                if (s.layerShown(y)) {
+                    int base = (y * bp.sz + z) * bp.sx;
+                    for (int x = x0; x <= x1; x++) {
+                        int c = bp.cells[base + x];
+                        if (c != 0 && in(s, c, x, y, z)) add(mc, c, x, y, z, pos);
+                    }
+                } else z = z1;   // a layer that isn't shown: skip all of it
+                if (++z > z1) { z = z0; y++; }
+                if (System.nanoTime() > until) break;
+            }
+            return y > y1 || x0 > x1 || z0 > z1;
+        }
+
+        void add(Minecraft mc, int c, int x, int y, int z, BlockPos.MutableBlockPos pos) {
+            int k = check(mc, p, c, ox + x, oy + y, oz + z, pos);
+            if (k == 1 && g.size() < MAX_GHOSTS) { g.add(new Ghost(ox + x, oy + y, oz + z, p.want[c], x, y, z)); at.set(bp.index(x, y, z)); }
+            else if (k == 2 && r.size() < MAX_RED) { r.add(new Red(ox + x, oy + y, oz + z)); redAt.set(bp.index(x, y, z)); }
+        }
+    }
+
+    /** Between full checks: are the ghosts and red boxes still right, and has anything changed right around you? */
+    private static void refresh(Minecraft mc, Session s) {
+        Scan v = view;
+        if (v == null || v.bp != s.blueprint()) return;
+        Blueprint bp = v.bp;
+        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+        List<Ghost> ng = new ArrayList<>(ghosts.size());
+        List<Red> nr = new ArrayList<>(reds.size());
+        boolean changed = false, added = false;
+        for (Ghost g : ghosts) {
+            int i = bp.index(g.lx, g.ly, g.lz), k = check(mc, v.p, bp.cells[i], g.x, g.y, g.z, pos);
+            if (k == 1) { ng.add(g); continue; }
+            changed = true; v.at.clear(i);
+            if (k == 2 && nr.size() < MAX_RED) { nr.add(new Red(g.x, g.y, g.z)); v.redAt.set(i); }
+        }
+        for (Red r : reds) {
+            int lx = r.x - v.ox, ly = r.y - v.oy, lz = r.z - v.oz;
+            if (lx < 0 || ly < 0 || lz < 0 || lx >= bp.sx || ly >= bp.sy || lz >= bp.sz) { changed = true; continue; }
+            int i = bp.index(lx, ly, lz), c = bp.cells[i], k = check(mc, v.p, c, r.x, r.y, r.z, pos);
+            if (k == 2) { nr.add(r); continue; }
+            changed = true; v.redAt.clear(i);
+            if (k == 1 && ng.size() < MAX_GHOSTS) { ng.add(new Ghost(r.x, r.y, r.z, v.p.want[c], lx, ly, lz)); v.at.set(i); added = true; }
+        }
+        int cx = (int) Math.floor(mc.player.getX()) - v.ox, cy = (int) Math.floor(mc.player.getY()) - v.oy, cz = (int) Math.floor(mc.player.getZ()) - v.oz;
+        for (int y = Math.max(0, cy - 6); y <= Math.min(bp.sy - 1, cy + 7); y++)
+            for (int z = Math.max(0, cz - 6); z <= Math.min(bp.sz - 1, cz + 6); z++)
+                for (int x = Math.max(0, cx - 6); x <= Math.min(bp.sx - 1, cx + 6); x++) {
+                    int i = bp.index(x, y, z), c = bp.cells[i];
+                    if (c == 0 || v.at.get(i) || v.redAt.get(i) || !v.in(s, c, x, y, z)) continue;
+                    int k = check(mc, v.p, c, v.ox + x, v.oy + y, v.oz + z, pos);
+                    if (k == 1 && ng.size() < MAX_GHOSTS) { ng.add(new Ghost(v.ox + x, v.oy + y, v.oz + z, v.p.want[c], x, y, z)); v.at.set(i); changed = added = true; }
+                    else if (k == 2 && nr.size() < MAX_RED) { nr.add(new Red(v.ox + x, v.oy + y, v.oz + z)); v.redAt.set(i); changed = true; }
+                }
+        if (!changed) return;
+        ghosts = ng; reds = nr;
+        faces();
+        if (added) sorted = false;
+    }
+
+    /** Faces pressed against another solid ghost block can't be seen, so they aren't drawn. */
+    private static void faces() {
+        Scan v = view;
+        if (v == null) return;
+        Blueprint bp = v.bp;
+        Session s = BuildBlueprintClient.SESSION;
+        for (Ghost g : ghosts) {
+            int m = 0;
+            if (v.p.full[bp.cells[bp.index(g.lx, g.ly, g.lz)]])
+                for (int i = 0; i < 6; i++) {
+                    Direction d = DIRS[i];
+                    int nx = g.lx + d.getStepX(), ny = g.ly + d.getStepY(), nz = g.lz + d.getStepZ();
+                    if (nx < 0 || ny < 0 || nz < 0 || nx >= bp.sx || ny >= bp.sy || nz >= bp.sz || !s.layerShown(ny)) continue;
+                    int n = bp.index(nx, ny, nz);
+                    if (v.at.get(n) && v.p.full[bp.cells[n]]) m |= 1 << i;
+                }
+            g.hide = m;
+        }
+    }
+
+    /** Far ones first, so see-through blocks blend the right way. Sorts plain numbers, which is quick even for 60,000 blocks. */
+    private static void sortGhosts(double cx, double cy, double cz) {
+        int n = ghosts.size();
+        long[] keys = new long[n];
+        for (int i = 0; i < n; i++) {
+            long q = (long) Math.min(d2(ghosts.get(i), cx, cy, cz) * 4, (double) ((1L << 45) - 1));
+            keys[i] = (((1L << 45) - 1 - q) << 17) | i;
+        }
+        java.util.Arrays.sort(keys);
+        List<Ghost> out = new ArrayList<>(n);
+        for (long k : keys) out.add(ghosts.get((int) (k & 0x1FFFF)));
+        ghosts = out;
+    }
+
+    /** The item for a ghost block (for the next block helper). */
+    private static String itemOf(Ghost g) {
+        Scan v = view;
+        if (v == null) return null;
+        return v.p.item[v.bp.cells[v.bp.index(g.lx, g.ly, g.lz)]];
     }
 
     /** Next block helper: lowest unfinished layer first, then the block you're holding, then the closest. */
@@ -164,8 +357,8 @@ public final class PreviewModule {
         Ghost best = null; double bd = 0; boolean bestHeld = false;
         for (Ghost g : ghosts) {
             if (g.ly != low) continue;
-            MaterialMap.Req r = MaterialMap.of(BuildBlueprintClient.SESSION.blueprint().stateAt(g.lx, g.ly, g.lz));
-            boolean h = r != null && r.itemId().equals(held);
+            String it = itemOf(g);
+            boolean h = it != null && it.equals(held);
             double d = d2(g, px, py, pz);
             if (best == null || (h && !bestHeld) || (h == bestHeld && d < bd)) { best = g; bd = d; bestHeld = h; }
         }
@@ -226,19 +419,24 @@ public final class PreviewModule {
         qi.setLightCoords(LightCoordsUtil.FULL_BRIGHT);
         qi.setOverlayCoords(OverlayTexture.NO_OVERLAY);
         for (Ghost g : ghosts) {
-            List<BakedQuad>[] q = quads(g.state);
-            float[] box = null;
-            if (empty(q)) {   // chests, signs, beds...: no normal model, so draw a look-alike block at the real block's size
-                Object[] sb = standin(g.state);
-                if (sb == null) continue;
-                q = quads((BlockState) sb[0]); box = (float[]) sb[1];
+            if (!g.ready) {
+                g.ready = true;
+                g.q = quads(g.state);
+                if (empty(g.q)) {   // chests, signs, beds...: no normal model, so draw a look-alike block at the real block's size
+                    Object[] sb = standin(g.state);
+                    g.q = sb == null ? null : quads((BlockState) sb[0]);
+                    g.box = sb == null ? null : (float[]) sb[1];
+                }
             }
+            List<BakedQuad>[] q = g.q;
+            float[] box = g.box;
+            if (q == null) continue;
             ps.pushPose();
             ps.translate(g.x, g.y, g.z);
             if (box != null) { ps.translate(box[0], box[1], box[2]); ps.scale(box[3], box[4], box[5]); }
             PoseStack.Pose p = ps.last();
             for (int i = 0; i < 7; i++) {
-                if (i < 6 && hidden(bp, g, DIRS[i])) continue;   // skip faces pressed against another ghost
+                if (i < 6 && (g.hide >> i & 1) != 0) continue;   // skip faces pressed against another ghost
                 for (BakedQuad quad : q[i]) {
                     int rgb = 0xFFFFFF;
                     var info = quad.materialInfo();
@@ -285,15 +483,4 @@ public final class PreviewModule {
     /** a full, solid, non-see-through cube (stairs, slabs, glass, leaves... are not) */
     private static boolean full(BlockState st) { return FULL.computeIfAbsent(st, b -> b.isSolidRender() && b.canOcclude()); }
 
-    /** True when the neighbouring cell is another solid ghost block, so this face can't be seen anyway. */
-    private static boolean hidden(Blueprint bp, Ghost g, Direction d) {
-        int nx = g.lx + d.getStepX(), ny = g.ly + d.getStepY(), nz = g.lz + d.getStepZ();
-        if (nx < 0 || ny < 0 || nz < 0 || nx >= bp.sx || ny >= bp.sy || nz >= bp.sz) return false;
-        if (!BuildBlueprintClient.SESSION.layerShown(ny)) return false; // that neighbour isn't drawn: show this face
-        if (!ghostAt.contains(((long) nx << 40) | ((long) ny << 20) | nz)) return false; // neighbour already built (or blocked): show this face
-        String n = bp.stateAt(nx, ny, nz);
-        if (n == null) return false;
-        BlockState ns = parse(n);
-        return ns != null && full(ns) && full(g.state);
-    }
 }
