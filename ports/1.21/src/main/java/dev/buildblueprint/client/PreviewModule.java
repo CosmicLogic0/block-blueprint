@@ -74,6 +74,7 @@ public final class PreviewModule {
                 sortGhosts(cx, cy, cz);
                 sorted = true; sortX = cx; sortY = cy; sortZ = cz;
             }
+            aim(Minecraft.getInstance(), cx, cy, cz);
             Perf.scan(System.nanoTime() - perfT); Perf.ghosts = ghosts.size();
             RenderType ghostType = Draw.ghostType();
             Safe.run("drawing ghost blocks", () -> drawGhosts(pose, buf.getBuffer(ghostType)));
@@ -352,6 +353,21 @@ public final class PreviewModule {
         ghosts = out;
     }
 
+    // Ghosts behind the camera aren't drawn. Worked out from where the player looks (the same in every Minecraft
+    // version); in the front view (F5 twice) the camera looks back at you, and when the camera is far from the
+    // player (spectating, free camera mods) nothing is skipped.
+    private static double camX, camY, camZ, lookX, lookY, lookZ;
+    private static boolean cull;
+    private static void aim(Minecraft mc, double cx, double cy, double cz) {
+        camX = cx; camY = cy; camZ = cz; cull = false;
+        if (mc.player == null) return;
+        Vec3 v = mc.player.getViewVector(1f);
+        double ex = cx - mc.player.getX(), ey = cy - mc.player.getEyeY(), ez = cz - mc.player.getZ();
+        if (ex * ex + ey * ey + ez * ez > 36) return;
+        double s = ex * v.x + ey * v.y + ez * v.z > 0.5 ? -1 : 1;
+        lookX = v.x * s; lookY = v.y * s; lookZ = v.z * s; cull = true;
+    }
+
     /** The item for a ghost block (for the next block helper). */
     private static String itemOf(Ghost g) {
         Scan v = view;
@@ -434,6 +450,8 @@ public final class PreviewModule {
             List<BakedQuad>[] q = g.q;
             float[] box = g.box;
             if (q == null) continue;
+            if ((g.hide & 63) == 63 && q[6].isEmpty()) continue;   // covered by other ghosts on every side
+            if (cull && (g.x + 0.5 - camX) * lookX + (g.y + 0.5 - camY) * lookY + (g.z + 0.5 - camZ) * lookZ < -2) continue;   // behind the camera
             ps.pushPose();
             ps.translate(g.x, g.y, g.z);
             if (box != null) { ps.translate(box[0], box[1], box[2]); ps.scale(box[3], box[4], box[5]); }
