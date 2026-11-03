@@ -52,6 +52,7 @@ public final class PreviewModule {
 
     private static void render(WorldRenderContext ctx) {
         Minecraft mc = Minecraft.getInstance();
+        long perfT = System.nanoTime();
         if (needScan()) { scan(); pickHint(mc); sorted = false; }
         Vec3 cam = ctx.camera().getPosition();
         final double cx = cam.x, cy = cam.y, cz = cam.z;
@@ -65,6 +66,7 @@ public final class PreviewModule {
                 ghosts.sort((a, b2) -> Double.compare(d2(b2, cx, cy, cz), d2(a, cx, cy, cz)));
                 sorted = true; sortX = cx; sortY = cy; sortZ = cz;
             }
+            Perf.scan(System.nanoTime() - perfT); Perf.ghosts = ghosts.size();
             RenderType ghostType = Draw.ghostType();
             Safe.run("drawing ghost blocks", () -> drawGhosts(pose, buf.getBuffer(ghostType)));
             buf.endBatch(ghostType);
@@ -221,6 +223,8 @@ public final class PreviewModule {
 
     private static void drawGhosts(PoseStack ps, VertexConsumer vc) {
         Minecraft mc = Minecraft.getInstance();
+        long perfD = System.nanoTime();
+        try {
         Blueprint bp = BuildBlueprintClient.SESSION.blueprint();
         if (bp == null) return;
         float alpha = Settings.ghostAlpha / 100f;
@@ -250,6 +254,7 @@ public final class PreviewModule {
             }
             ps.popPose();
         }
+        } finally { Perf.draw(System.nanoTime() - perfD); }
     }
 
     private static final Map<BlockState, Object[]> STANDIN = new HashMap<>();

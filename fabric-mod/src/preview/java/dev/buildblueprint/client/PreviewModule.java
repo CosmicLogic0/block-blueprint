@@ -58,7 +58,8 @@ public final class PreviewModule {
 
     public static void init() {
         LevelRenderEvents.COLLECT_SUBMITS.register(ctx -> Safe.run("the ghost preview", () -> {
-            if (needScan()) { scan(); pickHint(Minecraft.getInstance()); sorted = false; }
+            long perfT = System.nanoTime();
+        if (needScan()) { scan(); pickHint(Minecraft.getInstance()); sorted = false; }
             if (ghosts.isEmpty()) return;
             Vec3 cam = ctx.levelState().cameraRenderState.pos;
             final double cx = cam.x, cy = cam.y, cz = cam.z;
@@ -67,6 +68,7 @@ public final class PreviewModule {
                 ghosts.sort((a, b2) -> Double.compare(d2(b2, cx, cy, cz), d2(a, cx, cy, cz)));
                 sorted = true; sortX = cx; sortY = cy; sortZ = cz;
             }
+            Perf.scan(System.nanoTime() - perfT); Perf.ghosts = ghosts.size();
             PoseStack pose = ctx.poseStack();
             pose.pushPose();
             pose.translate(-cam.x, -cam.y, -cam.z);
@@ -213,6 +215,8 @@ public final class PreviewModule {
 
     private static void drawGhosts(PoseStack.Pose base, VertexConsumer vc) {
         Minecraft mc = Minecraft.getInstance();
+        long perfD = System.nanoTime();
+        try {
         Blueprint bp = BuildBlueprintClient.SESSION.blueprint();
         if (bp == null) return;
         PoseStack ps = new PoseStack();
@@ -250,6 +254,7 @@ public final class PreviewModule {
             }
             ps.popPose();
         }
+        } finally { Perf.draw(System.nanoTime() - perfD); }
     }
 
     private static final Map<BlockState, Object[]> STANDIN = new HashMap<>();
