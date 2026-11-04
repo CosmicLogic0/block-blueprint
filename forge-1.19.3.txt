@@ -1,0 +1,21 @@
+PASS forge-1.19.3
+[00:32:42] [_stdout_] [INFO] BBUITEST waiting on TitleScreen
+[00:32:51] [_stdout_] [INFO] BBUITEST joining 127.0.0.1:25565
+[00:32:53] [_stdout_] [INFO] BBUITEST in world
+[00:33:08] [_stdout_] [INFO] BBUITEST loaded 284 blocks
+[00:33:08] [_stdout_] [INFO] BBUITEST direction check: Block{minecraft:oak_stairs}[facing=south,half=top,shape=straight,waterlogged=false] -> right way false (should face north, be the right way up (bottom half)), same way true
+[00:33:08] [_stdout_] [INFO] BBUITEST renamed blocks: chain -> minecraft:chain[axis=y], iron_chain -> minecraft:chain[axis=y], grass -> minecraft:grass
+[00:33:11] [_stdout_] [INFO] BBUITEST shot world-ghost
+[00:33:13] [_stdout_] [INFO] BBUITEST placed, layer 1
+[00:33:17] [_stdout_] [INFO] BBUITEST shot world-placed
+[00:33:19] [_stdout_] [INFO] BBUITEST showing only minecraft:cobblestone, 9 hidden
+[00:33:22] [_stdout_] [INFO] BBUITEST shot world-only
+[00:33:28] [_stdout_] [INFO] BBUITEST shot build-hidden
+[00:33:33] [_stdout_] [INFO] BBUITEST shot build
+[00:33:35] [_stdout_] [INFO] BBUITEST swap options 810 similar 339
+[00:33:39] [_stdout_] [INFO] BBUITEST shot swap
+[00:33:41] [_stdout_] [INFO] BBUITEST swap options 810 similar 339
+[00:33:44] [_stdout_] [INFO] BBUITEST shot swap-search
+[00:33:46] [_stdout_] [INFO] BBUITEST removed 1 blocks (284 -> 283), undo true -> 284
+[00:33:50] [_stdout_] [INFO] BBUITEST shot remove
+[00:33:52] [_stdout_] [INFO] BBUITEST bug report: **What happened?** (please write what you did and what went wrong) |  |  |  | --- | Build Blueprint: 1.3.2 | Minecraft: 1.19.3 (Forge) | Java: 17.0.15 | System: Linux 7.0.0-1017-azure amd64 | Build loaded: 9 x 8 x 9, 284 blocks, placed, layer 1 | Last problem: none |
