@@ -19,6 +19,7 @@ Copied! Send it to your friends.	Скопировано! Отправь друз
    builders, and a different builder number.	   строителей и разные номера строителя.
 You build {0}. You only see your part.	Ты строишь {0}. Ты видишь только свою часть.
 Everyone sees the whole build.	Все видят всю постройку.
+Copied	Скопировано
 Copy build	Скопировать постройку
 Name	Название
 Leave out the dirt, grass and natural stone the build stands on.	Не брать землю, траву и камень, на которых стоит постройка.
@@ -144,6 +145,8 @@ Puts back what was there before the last auto-build.	Возвращает то, 
 Co-op {0}/{1}	Совместно {0}/{1}
 Co-op	Совместно
 Build this with friends: send them a code that puts it in this exact spot, and split it so everyone builds their own part.	Строй с друзьями: отправь им код, который ставит постройку точно на это место, и разделите её, чтобы каждый строил свою часть.
+Shopping list	Список покупок
+What you still have to get, after what you carry and the chests you've opened nearby, in stacks. Copy it to paste or print.	Что ещё нужно добыть с учётом того, что у вас с собой, и открытых сундуков рядом, в стаках. Скопируйте, чтобы вставить или распечатать.
 Remove	Убрать
 Take this build out of your world view. It stays in Saved builds, so you can load it again.	Убирает эту постройку из твоего мира. Она остаётся в Сохранённых постройках, её можно загрузить снова.
 Whole build	Вся постройка
@@ -278,6 +281,8 @@ Layer map: {0}	Карта слоя: {0}
 A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.	Маленькая карта слоя, на котором ты сейчас, вид сверху, под списком в углу. Цвета = ещё поставить, тёмно-зелёный = готово, красный = неправильно, белая точка = ты.
 Scaffold hints: {0}	Подсказки лесов: {0}
 Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.	Части слоя, висящие в воздухе (выступы, крыши), получают голубой столб, показывающий, где поставить временные блоки, чтобы до них дотянуться.
+Nearby layers only: {0}	Только ближние слои: {0}
+Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.	Пока постройка не размещена, рисуются только слои рядом с вашей высотой (от 3 ниже ног до 4 выше), а не вся она. Легче для больших построек, и видно, что внутри.
 Ghost blocks: {0}% solid	Блоки-призраки: {0}% плотности
 How see-through the preview blocks are.	Насколько прозрачны блоки предпросмотра.
 Show preview: {0}	Показывать предпросмотр: {0}
@@ -324,11 +329,35 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics	Основное
 More	Ещё
 Extras	Дополнительно
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints.	Дополнительные помощники, выключены, пока не включишь: сырьё, карта слоя, подсказки лесов.
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.	Дополнительные помощники, выключены, пока вы их не включите: сырьё, карта слоя, подсказки лесов, только ближние слои.
 Key binds...	Клавиши...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	Смени клавиши (Настройки > Управление > Назначение клавиш > Build Blueprint).
 A short guide to everything the mod does.	Короткое руководство по всему, что умеет мод.
+Report a bug	Сообщить об ошибке
+Page opened	Страница открыта
+The details are filled in on the GitHub page (and copied). Add what happened, then press Create.	Данные уже заполнены на странице GitHub (и скопированы). Опишите, что случилось, и нажмите Create.
+Copied the details. Paste them at github.com/CosmicLogic0/block-blueprint/issues	Данные скопированы. Вставьте их на github.com/CosmicLogic0/block-blueprint/issues
+Opens a bug report on GitHub with your Minecraft version, mod version and the last problem already filled in. Nothing is sent until you press Create on the page.	Открывает отчёт об ошибке на GitHub, где уже указаны версия Minecraft, версия мода и последняя проблема. Ничего не отправляется, пока вы не нажмёте Create на странице.
 Hover a button to see what it does.	Наведи на кнопку, чтобы узнать, что она делает.
+Copy list	Копировать список
+Copy the list as text, to paste in a chat or a note, or to print.	Копирует список текстом, чтобы вставить в чат или заметку или распечатать.
+Back	Назад
+1 stack + {0}	1 стак + {0}
+1 stack	1 стак
+{0} stacks + {1}	{0} стаков + {1}
+{0} stacks	{0} стаков
+To get:	Нужно добыть:
+Already got (carried or in chests):	Уже есть (с собой или в сундуках):
+Nothing left to get!	Больше ничего не нужно!
+Copied - paste it anywhere (Ctrl+V)	Скопировано — вставьте куда угодно (Ctrl+V)
+What you still have to get, after what you carry and the chests you've opened nearby.	Что ещё нужно добыть с учётом того, что у вас с собой, и открытых сундуков рядом.
+Layer {0}	Слой {0}
+in chests	в сундуках
+got it	есть
+{0} in 1 chest near you	{0} в 1 сундуке рядом
+{0} in {1} chests near you	{0} в {1} сундуках рядом
+Open your chests once so their blocks are counted.	Откройте сундуки один раз, чтобы их блоки посчитались.
+Chests within 48 blocks are counted.	Учитываются сундуки в пределах 48 блоков.
 Swap blocks	Заменить блоки
 How swapping works	Как работает замена
 Remove from build	Убрать из постройки
@@ -343,7 +372,6 @@ Blocks added by the other mods you have installed.	Блоки из других 
 Swap	Заменить
 Swap every block of this kind in the build (Enter).	Заменяет все блоки этого вида в постройке (Enter).
 Undo last swap	Отменить последнюю замену
-Back	Назад
 Last swap undone.	Последняя замена отменена.
 Pick a block from the list first.	Сначала выбери блок в списке.
 Nothing to change.	Нечего менять.
@@ -359,8 +387,18 @@ Click a block to pick it  ·  double-click swaps right away	Нажми на бл
 Double-click to swap to this	Двойной клик, чтобы заменить на этот
 Search by name or creator...	Поиск по названию или автору...
 Show one kind of build: houses, towers, ships...	Показывает один вид построек: дома, башни, корабли...
+Show only small, medium or big builds (by how many blocks they have).	Показывать только маленькие, средние или большие постройки (по числу блоков).
+Random build	Случайная
+Pick a random build from the list, to find something new.	Выбирает случайную постройку из списка, чтобы найти что-то новое.
 Get it	Получить
 Download it into Saved builds.	Скачать в Сохранённые постройки.
+Small (under 500)	Маленькие (до 500)
+Medium (500 to 3,000)	Средние (500–3000)
+Big (3,000+)	Большие (3000+)
+Any size	Любой размер
+Sort: fewest blocks	Сортировка: меньше блоков
+Sort: most blocks	Сортировка: больше блоков
+Sort: A to Z	Сортировка: А–Я
 All kinds	Все виды
 Couldn't reach the build list - check your internet connection.	Не удалось загрузить список - проверь подключение к интернету.
 Downloading {0}...	Скачивание {0}...

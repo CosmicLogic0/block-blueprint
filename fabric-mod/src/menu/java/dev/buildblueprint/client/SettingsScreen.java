@@ -45,6 +45,8 @@ public class SettingsScreen extends Screen {
                     "A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.");
             opt(() -> "Scaffold hints: " + onOff(Settings.scaffold), () -> { Settings.scaffold = !Settings.scaffold; Materials.refresh(); },
                     "Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.");
+            opt(() -> "Nearby layers only: " + onOff(Settings.nearLayers), () -> Settings.nearLayers = !Settings.nearLayers,
+                    "Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.");
         } else if (!more) {
             opt(() -> "Ghost blocks: " + Settings.ghostAlpha + "% solid", () -> Settings.ghostAlpha = next(Settings.ghostAlpha, 25, 40, 55, 70, 85), "How see-through the preview blocks are.");
             opt(() -> "Show preview: " + onOff(BuildBlueprintClient.SESSION.visible), () -> BuildBlueprintClient.SESSION.visible = !BuildBlueprintClient.SESSION.visible, "Hide or show the ghost blocks.");
@@ -85,18 +87,26 @@ public class SettingsScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Basics", tw - 8)), b -> { more = false; extras = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[0], 30, tw, 20).build()).active = more || extras;
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "More", tw - 8)), b -> { more = true; extras = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[1], 30, tw, 20).build()).active = !more || extras;
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Extras", tw - 8)), b -> { extras = true; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[2], 30, tw, 20)
-                .tooltip(Tooltip.create(Component.literal(Tr.t("Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints.")))).build()).active = !extras;
+                .tooltip(Tooltip.create(Component.literal(Tr.t("Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.")))).build()).active = !extras;
         // bottom
         Minecraft mc = Minecraft.getInstance();
         int by = height - 26;
-        int bw = Math.min(110, (width - 24) / 3);
-        int[] bx = UiKit.row(width / 2, 3, bw, 4);
+        int bw = Math.min(104, (width - 28) / 4);
+        int[] bx = UiKit.row(width / 2, 4, bw, 4);
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Key binds...", bw - 8)), b -> Mc.setScreen(new KeyBindsScreen(this, mc.options))).bounds(bx[0], by, bw, 20)
                 .tooltip(Tooltip.create(Component.literal(Tr.t("Change the keys (Options > Controls > Key Binds > Build Blueprint).")))).build());
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "How it works", bw - 8)), b -> Mc.setScreen(new HelpScreen(this, 0))).bounds(bx[1], by, bw, 20)
                 .tooltip(Tooltip.create(Component.literal(Tr.t("A short guide to everything the mod does.")))).build());
-        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Done", bw - 8)), b -> onClose()).bounds(bx[2], by, bw, 20).build());
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Report a bug", bw - 8)), b -> {
+                    boolean opened = BugReport.send();
+                    b.setMessage(Component.literal(UiKit.fit(font, opened ? "Page opened" : "Copied", bw - 8)));
+                    reported = opened ? Tr.t("The details are filled in on the GitHub page (and copied). Add what happened, then press Create.") : Tr.t("Copied the details. Paste them at github.com/CosmicLogic0/block-blueprint/issues");
+                }).bounds(bx[2], by, bw, 20)
+                .tooltip(Tooltip.create(Component.literal(Tr.t("Opens a bug report on GitHub with your Minecraft version, mod version and the last problem already filled in. Nothing is sent until you press Create on the page.")))).build());
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Done", bw - 8)), b -> onClose()).bounds(bx[3], by, bw, 20).build());
     }
+
+    private String reported;
 
     @Override public void onClose() { Settings.save(); Mc.setScreen(parent); }
 
@@ -109,6 +119,7 @@ public class SettingsScreen extends Screen {
         int w = cols * cw + (cols - 1) * 6 + 12;
         UiKit.panel(g, width / 2 - w / 2, top() - 6, w, rows * 24 + 8, extras ? UiKit.GREEN : more ? UiKit.BLUE : UiKit.GOLD);
         super.extractRenderState(g, mouseX, mouseY, delta);
-        UiKit.center(g, font, "Hover a button to see what it does.", width / 2, height - 40, UiKit.DIM);
+        if (reported != null) UiKit.center(g, font, UiKit.fit(font, reported, width - 16), width / 2, height - 40, UiKit.GREEN);
+        else UiKit.center(g, font, "Hover a button to see what it does.", width / 2, height - 40, UiKit.DIM);
     }
 }

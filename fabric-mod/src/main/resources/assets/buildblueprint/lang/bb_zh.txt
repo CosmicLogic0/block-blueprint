@@ -19,6 +19,7 @@ Copied! Send it to your friends.	已复制！发给你的朋友吧。
    builders, and a different builder number.	   人数，以及不同的建造者编号。
 You build {0}. You only see your part.	你负责建造{0}。你只能看到自己的部分。
 Everyone sees the whole build.	所有人都能看到整个建筑。
+Copied	已复制
 Copy build	复制建筑
 Name	名称
 Leave out the dirt, grass and natural stone the build stands on.	不包括建筑下面的泥土、草和天然石头。
@@ -144,6 +145,8 @@ Puts back what was there before the last auto-build.	恢复上一次自动建造
 Co-op {0}/{1}	合作 {0}/{1}
 Co-op	合作
 Build this with friends: send them a code that puts it in this exact spot, and split it so everyone builds their own part.	和朋友一起建造：发给他们一个代码，把建筑放在这个位置，再分工让每个人建自己的部分。
+Shopping list	购物清单
+What you still have to get, after what you carry and the chests you've opened nearby, in stacks. Copy it to paste or print.	还需要获取的东西（已扣除你携带的和附近打开过的箱子里的），按组计算。可复制后粘贴或打印。
 Remove	移除
 Take this build out of your world view. It stays in Saved builds, so you can load it again.	把这个建筑从你的世界视图中移除。它仍在“已保存的建筑”里，可以再次加载。
 Whole build	整个建筑
@@ -278,6 +281,8 @@ Layer map: {0}	本层地图：{0}
 A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.	在角落列表下面显示你所在层的俯视小地图。彩色 = 待放置，深绿 = 已完成，红色 = 错误，白点 = 你。
 Scaffold hints: {0}	脚手架提示：{0}
 Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.	一层中悬空的部分（悬挑、屋顶）会显示一根浅蓝色柱子，告诉你在哪里放临时方块才能够到。
+Nearby layers only: {0}	只显示附近的层：{0}
+Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.	放置建筑之前，只绘制你所在高度附近的层（脚下3层到上方4层），而不是全部。大型建筑更流畅，还能看到内部。
 Ghost blocks: {0}% solid	幽灵方块：{0}% 不透明
 How see-through the preview blocks are.	预览方块的透明程度。
 Show preview: {0}	显示预览：{0}
@@ -324,11 +329,35 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics	基础
 More	更多
 Extras	附加
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints.	额外的辅助功能，默认关闭，需要你自己打开：原材料、本层地图、脚手架提示。
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.	额外辅助功能，开启前默认关闭：原材料、层地图、脚手架提示、只显示附近的层。
 Key binds...	按键绑定...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	修改按键（选项 > 控制 > 按键绑定 > Build Blueprint）。
 A short guide to everything the mod does.	模组所有功能的简短指南。
+Report a bug	报告问题
+Page opened	已打开页面
+The details are filled in on the GitHub page (and copied). Add what happened, then press Create.	详细信息已填在 GitHub 页面上（并已复制）。写下发生了什么，然后点 Create。
+Copied the details. Paste them at github.com/CosmicLogic0/block-blueprint/issues	已复制详细信息。请粘贴到 github.com/CosmicLogic0/block-blueprint/issues
+Opens a bug report on GitHub with your Minecraft version, mod version and the last problem already filled in. Nothing is sent until you press Create on the page.	在 GitHub 上打开问题报告，你的 Minecraft 版本、模组版本和最近的问题都已填好。在页面上点 Create 之前不会发送任何内容。
 Hover a button to see what it does.	把鼠标移到按钮上可以看到它的作用。
+Copy list	复制清单
+Copy the list as text, to paste in a chat or a note, or to print.	把清单复制为文本，可以粘贴到聊天或笔记里，或者打印。
+Back	返回
+1 stack + {0}	1 组 + {0}
+1 stack	1 组
+{0} stacks + {1}	{0} 组 + {1}
+{0} stacks	{0} 组
+To get:	还需获取：
+Already got (carried or in chests):	已经有了（随身或在箱子里）：
+Nothing left to get!	都齐了！
+Copied - paste it anywhere (Ctrl+V)	已复制——可粘贴到任何地方（Ctrl+V）
+What you still have to get, after what you carry and the chests you've opened nearby.	还需要获取的东西（已扣除你携带的和附近打开过的箱子里的）。
+Layer {0}	第 {0} 层
+in chests	箱子里
+got it	已有
+{0} in 1 chest near you	附近 1 个箱子里有 {0}
+{0} in {1} chests near you	附近 {1} 个箱子里有 {0}
+Open your chests once so their blocks are counted.	把你的箱子打开一次，里面的方块就会被计入。
+Chests within 48 blocks are counted.	会计入 48 格以内的箱子。
 Swap blocks	替换方块
 How swapping works	替换是怎么工作的
 Remove from build	从建筑中移除
@@ -343,7 +372,6 @@ Blocks added by the other mods you have installed.	你安装的其他模组添�
 Swap	替换
 Swap every block of this kind in the build (Enter).	替换建筑中所有这种方块（Enter）。
 Undo last swap	撤销上次替换
-Back	返回
 Last swap undone.	已撤销上次替换。
 Pick a block from the list first.	请先从列表中选一个方块。
 Nothing to change.	没有要改的。
@@ -359,8 +387,18 @@ Click a block to pick it  ·  double-click swaps right away	点击方块来选�
 Double-click to swap to this	双击替换成这个
 Search by name or creator...	按名称或作者搜索...
 Show one kind of build: houses, towers, ships...	只显示一种建筑：房子、塔、船……
+Show only small, medium or big builds (by how many blocks they have).	只显示小型、中型或大型建筑（按方块数量）。
+Random build	随机建筑
+Pick a random build from the list, to find something new.	从列表中随机挑一个建筑，发现新东西。
 Get it	获取
 Download it into Saved builds.	下载到“已保存的建筑”。
+Small (under 500)	小型（500 以下）
+Medium (500 to 3,000)	中型（500 到 3,000）
+Big (3,000+)	大型（3,000+）
+Any size	任意大小
+Sort: fewest blocks	排序：方块最少
+Sort: most blocks	排序：方块最多
+Sort: A to Z	排序：A 到 Z
 All kinds	所有种类
 Couldn't reach the build list - check your internet connection.	无法加载建筑列表 - 请检查网络连接。
 Downloading {0}...	正在下载 {0}...

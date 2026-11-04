@@ -1,3 +1,9 @@
+## 1.3.3
+- **Shopping list** (build menu): what you still have to get, after what you carry and the chests you've opened nearby, in stacks. **Copy list** to paste it in a chat or a note, or to print it.
+- **Nearby layers only** (Settings > Extras, off unless you turn it on): before you place a build, only the layers around your height are drawn (3 below your feet to 4 above). Lighter for big builds, and you can see inside.
+- **Report a bug** (Settings): opens a bug report on GitHub with your Minecraft version, mod version and the last problem already filled in. Nothing is sent until you press Create.
+- **Get free builds:** show only small, medium or big builds, sort by name or number of blocks, and a **Random build** button.
+
 ## 1.3.2
 - **Fixed: lag with big builds in the world**, when loading one and when moving it around. The mod used to check every block of the build against the world all at once each time it moved; now it's done a little each frame and the ghosts move with the build straight away. Drawing the ghost blocks does much less work each frame (ghosts behind you, or covered on every side, are skipped), and the block list counts big builds about 3-6 times faster.
 - **Get free builds shows a picture** of the build you click, next to the list (click the picture to turn it). Get it then saves that build without downloading it again.
