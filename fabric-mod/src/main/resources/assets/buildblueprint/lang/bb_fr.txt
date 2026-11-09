@@ -88,7 +88,7 @@ hold the block of the ghost you look at	prendre le bloc du fantôme que tu regar
 Settings lets you change how see-through the ghosts are, the corner list and more.	Les Paramètres te permettent de changer la transparence des fantômes, la liste du coin et plus.
 Every key can be changed in Settings -> Key binds.	Chaque touche peut être changée dans Paramètres -> Commandes.
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Construire entre amis : Coop dans le menu de construction te donne un code pour tes amis. La construction apparaît au même endroit chez eux, et chacun construit sa partie.
-Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.	Quelque chose de mal posé ? Le menu de construction affiche en haut combien il y a à corriger. Clique dessus pour les voir un par un.
+Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one, and click Stop fixing to stop.	Quelque chose de mal placé ? Le menu de construction indique en haut combien il y a à corriger. Clique dessus pour qu'on te montre chacun, et sur Arrêter de corriger pour arrêter.
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	Constructions sauvegardées > Constructions gratuites propose plus de 1 300 constructions gratuites de la communauté Minecraft.
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Paramètres > Extras propose d'autres aides à activer : matières premières, une carte de la couche où tu es, et l'aide échafaudage.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	Le mod suit la langue de ton jeu : anglais, espagnol, portugais, allemand, français, russe et chinois.
@@ -174,6 +174,7 @@ Copied the list - paste it anywhere (Ctrl+V)	Liste copiée - colle-la où tu veu
 Layer {0} of {1}	Couche {0} sur {1}
 No build loaded	Aucune construction chargée
 not placed yet	pas encore placée
+Stop fixing	Arrêter de corriger
 {0} to fix	{0} à corriger
 {0} / {1} placed	{0} / {1} posés
 Raw materials	Matières premières
@@ -317,7 +318,7 @@ The small reminder of the keys under the corner list.	Le petit rappel des touche
 Draw distance: {0}	Distance d'affichage : {0}
 How far away ghost blocks are still drawn. Lower = faster.	Jusqu'à quelle distance les blocs fantômes sont dessinés. Moins = plus rapide.
 Red boxes: {0}	Boîtes rouges : {0}
-Red outline on blocks that are in the way of the build, or placed the wrong way round.	Contour rouge sur les blocs qui gênent la construction, ou posés dans le mauvais sens.
+Red outline on blocks that are in the way of the build, or placed the wrong way round, and the "to fix" count in the build menu.	Contour rouge sur les blocs qui gênent la construction ou sont posés à l'envers, et le nombre « à corriger » dans le menu de construction.
 Check direction: {0}	Vérifier le sens : {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Les blocs ne comptent comme faits que s'ils sont dans le bon sens : escaliers, dalles (haut ou bas), bûches, portes, boutons... Un bloc posé dans le mauvais sens reçoit une boîte rouge.
 Pick from ghost: {0}	Prendre du fantôme : {0}
@@ -422,6 +423,7 @@ All fixed! Nothing wrong in the build any more.	Tout est corrigé ! Plus rien de
 Fixed! {0} left  ·  {1}	Corrigé ! Encore {0}  ·  {1}
 Nothing to fix - every placed block is right.	Rien à corriger - tous les blocs posés sont bons.
 Mistake 1 of {0}: {1}	Erreur 1 sur {0} : {1}
+Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.	Les erreurs ne sont plus montrées. Les cadres rouges restent - désactive-les dans Réglages > Plus.
 this {0} {1}	ce {0} {1}
 a {0} is where {1} goes - break it	un {0} est là où va {1} - casse-le
 Fix: {0}	Corriger : {0}

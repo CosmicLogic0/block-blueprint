@@ -1,3 +1,7 @@
+## 1.3.4
+- **Fixed: no way to stop the mistake finder.** After clicking "to fix" in the build menu, the same spot now says **Stop fixing**. Turning **Red boxes** off (Settings > More) also hides the "to fix" count and stops it.
+- **Dirt counts for grass.** Where a build has grass (or a path, farmland, podzol or mycelium), plain dirt now counts as right instead of a mistake - grass needs Silk Touch, and turns into dirt when a block is on top. The block list asks for dirt for these.
+
 ## 1.3.3
 - **Shopping list** (build menu): what you still have to get, after what you carry and the chests you've opened nearby, in stacks. **Copy list** to paste it in a chat or a note, or to print it.
 - **Nearby layers only** (Settings > Extras, off unless you turn it on): before you place a build, only the layers around your height are drawn (3 below your feet to 4 above). Lighter for big builds, and you can see inside.

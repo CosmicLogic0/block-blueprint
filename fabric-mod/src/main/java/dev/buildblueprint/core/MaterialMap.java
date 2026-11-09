@@ -42,6 +42,20 @@ public final class MaterialMap {
         RENAME.put("weeping_vines_plant", "weeping_vines");
         RENAME.put("twisting_vines_plant", "twisting_vines");
         RENAME.put("powder_snow", "powder_snow_bucket");
+        RENAME.put("grass_block", "dirt");   // grass needs Silk Touch; dirt placed next to grass turns into grass by itself
+        RENAME.put("farmland", "dirt");      // made from dirt with a hoe
+        RENAME.put("dirt_path", "dirt");     // made from dirt with a shovel
+    }
+
+    private static final java.util.Set<String> SOIL = new java.util.HashSet<>(java.util.Arrays.asList(
+            "minecraft:grass_block", "minecraft:dirt", "minecraft:podzol", "minecraft:mycelium", "minecraft:dirt_path", "minecraft:farmland"));
+
+    /**
+     * Is the block in the world right for the build? The same block - or plain dirt or grass where the build has
+     * grass, dirt, podzol, mycelium, a path or farmland (grass needs Silk Touch, and grass under a block turns to dirt).
+     */
+    public static boolean sameBlock(String have, String want) {
+        return have.equals(want) || (SOIL.contains(want) && (have.equals("minecraft:dirt") || have.equals("minecraft:grass_block")));
     }
 
     /** Properties whose value is the number of items the block represents. */

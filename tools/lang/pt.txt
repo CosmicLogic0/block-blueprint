@@ -87,7 +87,7 @@ pegar o bloco do fantasma que você olha
 Em Configurações você muda a transparência dos fantasmas, a lista do canto e mais.
 Todas as teclas podem ser mudadas em Configurações -> Controles.
 Construir com amigos: Co-op no menu de construção te dá um código para seus amigos. A construção aparece no mesmo lugar para eles, e cada um constrói a sua parte.
-Algo colocado errado? O menu de construção mostra lá em cima quantos faltam corrigir. Clique para ver cada um.
+Algo colocado errado? O menu da construção mostra no topo quantos há para consertar. Clique para ver cada um, e em Parar de consertar para parar.
 Construções salvas > Construções grátis tem mais de 1.300 construções grátis da comunidade do Minecraft.
 Configurações > Extras tem mais ajudas que você pode ligar: matérias-primas, um mapa da camada em que você está e dicas de andaime.
 O mod segue o idioma do seu jogo: inglês, espanhol, português, alemão, francês, russo e chinês.
@@ -173,6 +173,7 @@ Lista copiada - cole onde quiser (Ctrl+V)
 Camada {0} de {1}
 Nenhuma construção carregada
 ainda não colocada
+Parar de consertar
 {0} para corrigir
 {0} / {1} colocados
 Matérias-primas
@@ -316,7 +317,7 @@ O pequeno lembrete das teclas embaixo da lista do canto.
 Distância de desenho: {0}
 Até que distância os blocos fantasma são desenhados. Menos = mais rápido.
 Caixas vermelhas: {0}
-Contorno vermelho nos blocos que estão no caminho da construção, ou colocados virados errado.
+Contorno vermelho nos blocos que atrapalham a construção ou estão colocados ao contrário, e a contagem "para consertar" no menu da construção.
 Checar direção: {0}
 Os blocos só contam como prontos quando estão virados certo: escadas, lajes (em cima ou embaixo), troncos, portas, botões... Um bloco virado errado ganha uma caixa vermelha.
 Pegar do fantasma: {0}
@@ -421,6 +422,7 @@ Tudo corrigido! Não tem mais nada errado na construção.
 Corrigido! Faltam {0}  ·  {1}
 Nada para corrigir - todos os blocos colocados estão certos.
 Erro 1 de {0}: {1}
+Parou de mostrar os erros. As caixas vermelhas continuam; desligue em Configurações > Mais.
 este {0} {1}
 tem {0} onde vai {1} - quebre
 Corrigir: {0}

@@ -204,7 +204,8 @@ public final class PreviewModule {
     /** 0 = nothing to draw (already built the right way round), 1 = a ghost block, 2 = a red box (another block is in the way). */
     private static int check(Minecraft mc, Pal p, int c, int wx, int wy, int wz, BlockPos.MutableBlockPos pos) {
         BlockState here = mc.level.getBlockState(pos.set(wx, wy, wz));
-        if (idOf(here).equals(p.id[c]) && (!p.props[c] || dev.buildblueprint.core.Orient.ok(p.bp.palette[c - 1], here.toString()))) return 0;   // the wrong way round gets a red box
+        String have = idOf(here);
+        if (MaterialMap.sameBlock(have, p.id[c]) && (!p.props[c] || !have.equals(p.id[c]) || dev.buildblueprint.core.Orient.ok(p.bp.palette[c - 1], here.toString()))) return 0;   // (dirt counts for grass)   // the wrong way round gets a red box
         if (here.isAir() || !here.getFluidState().isEmpty() || here.canBeReplaced()) return p.want[c] != null ? 1 : 0;
         return 2;
     }

@@ -56,7 +56,7 @@ public final class GhostPick {
             String st = bp.stateAt(bx, by, bz);
             if (st == null) continue;
             BlockState here = mc.level.getBlockState(p.set(x, y, z));
-            if (BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString().equals(MaterialMap.blockId(st))) continue; // built already
+            if (MaterialMap.sameBlock(BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString(), MaterialMap.blockId(st))) continue; // built already
             if (!(here.isAir() || here.canBeReplaced())) continue;
             return new Target(p.immutable(), st);
         }

@@ -87,7 +87,7 @@ hold the block of the ghost you look at
 Settings lets you change how see-through the ghosts are, the corner list and more.
 Every key can be changed in Settings -> Key binds.
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.
-Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.
+Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one, and click Stop fixing to stop.
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.
@@ -173,6 +173,7 @@ Copied the list - paste it anywhere (Ctrl+V)
 Layer {0} of {1}
 No build loaded
 not placed yet
+Stop fixing
 {0} to fix
 {0} / {1} placed
 Raw materials
@@ -316,7 +317,7 @@ The small reminder of the keys under the corner list.
 Draw distance: {0}
 How far away ghost blocks are still drawn. Lower = faster.
 Red boxes: {0}
-Red outline on blocks that are in the way of the build, or placed the wrong way round.
+Red outline on blocks that are in the way of the build, or placed the wrong way round, and the "to fix" count in the build menu.
 Check direction: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.
 Pick from ghost: {0}
@@ -421,6 +422,7 @@ All fixed! Nothing wrong in the build any more.
 Fixed! {0} left  ·  {1}
 Nothing to fix - every placed block is right.
 Mistake 1 of {0}: {1}
+Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.
 this {0} {1}
 a {0} is where {1} goes - break it
 Fix: {0}

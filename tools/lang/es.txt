@@ -87,7 +87,7 @@ coger el bloque del fantasma que miras
 En Ajustes cambias lo transparentes que son los fantasmas, la lista de la esquina y más.
 Todas las teclas se pueden cambiar en Ajustes -> Controles.
 Construir con amigos: Co-op en el menú de construcción te da un código para tus amigos. La construcción aparece en el mismo sitio para ellos y cada uno construye su parte.
-¿Algo mal colocado? El menú de construcción muestra arriba cuántos hay que arreglar. Haz clic para ver cada uno.
+¿Algo mal colocado? El menú de construcción muestra arriba cuántos hay que arreglar. Haz clic para que te muestre cada uno, y en Dejar de arreglar para parar.
 Construcciones guardadas > Construcciones gratis tiene más de 1.300 construcciones gratis de la comunidad de Minecraft.
 Ajustes > Extras tiene más ayudas que puedes encender: materias primas, un mapa de la capa en la que estás y ayuda de andamios.
 El mod usa el idioma de tu juego: inglés, español, portugués, alemán, francés, ruso y chino.
@@ -173,6 +173,7 @@ Lista copiada: pégala donde quieras (Ctrl+V)
 Capa {0} de {1}
 Ninguna construcción cargada
 aún no colocada
+Dejar de arreglar
 {0} por arreglar
 {0} / {1} colocados
 Materias primas
@@ -316,7 +317,7 @@ El pequeño recordatorio de teclas bajo la lista de la esquina.
 Distancia de dibujo: {0}
 Hasta qué distancia se dibujan los bloques fantasma. Menos = más rápido.
 Cajas rojas: {0}
-Borde rojo en los bloques que estorban a la construcción o que están al revés.
+Contorno rojo en los bloques que estorban la construcción o están colocados al revés, y el recuento "por arreglar" en el menú de construcción.
 Comprobar dirección: {0}
 Los bloques solo cuentan como hechos si miran hacia el lado correcto: escaleras, losas (arriba o abajo), troncos, puertas, botones... Un bloque al revés recibe una caja roja.
 Coger del fantasma: {0}
@@ -421,6 +422,7 @@ Al revés: este {0} {1}  ·  rómpelo y colócalo otra vez
 ¡Arreglado! Quedan {0}  ·  {1}
 Nada que arreglar: todos los bloques colocados están bien.
 Error 1 de {0}: {1}
+Ya no se muestran los errores. Los recuadros rojos siguen; desactívalos en Ajustes > Más.
 este {0} {1}
 hay {0} donde va {1}: rómpelo
 Arreglar: {0}

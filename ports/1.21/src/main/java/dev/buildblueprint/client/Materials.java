@@ -143,8 +143,8 @@ public final class Materials {
                     pos.set(s.ox + x, s.oy + y, s.oz + z);
                     net.minecraft.world.level.block.state.BlockState hs = mc.level.getBlockState(pos);
                     String have = idOf(hs.getBlock());
-                    if (have.equals(palId[c])) {
-                        if (!palProps[c] || Orient.ok(st, hs.toString())) { done++; status[idx] = 2; }
+                    if (MaterialMap.sameBlock(have, palId[c])) {   // (dirt counts for grass)
+                        if (!palProps[c] || !have.equals(palId[c]) || Orient.ok(st, hs.toString())) { done++; status[idx] = 2; }
                         else {   // there, but the wrong way round
                             perLayer[y]++; status[idx] = 4; wrongAt.add(idx);
                             wrong.put(pos.asLong(), new String[]{st, hs.toString(), r.itemId()});

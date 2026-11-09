@@ -345,7 +345,7 @@ public final class UiTest {
                 Mc.setScreen(new MaterialsScreen(false));
             }
             case "world-extras" -> { MaterialsScreen.testRaw(false); Mc.setScreen(null); if (Mistakes.count() > 0) Mistakes.show(); }
-            case "world-coop" -> { Mistakes.stop(); Coop.set(2, 1); Materials.refresh(); System.out.println("BBUITEST co-op: " + Coop.where(BuildBlueprintClient.SESSION.blueprint()) + ", my blocks " + Materials.totalBlocks()); Mc.setScreen(null); }
+            case "world-coop" -> { boolean was = Mistakes.showing(); Mistakes.stop(); System.out.println("BBUITEST mistakes: were showing " + was + ", after Stop fixing " + Mistakes.showing()); System.out.println("BBUITEST dirt counts for grass: " + dev.buildblueprint.core.MaterialMap.sameBlock("minecraft:dirt", "minecraft:grass_block") + ", stone for grass: " + dev.buildblueprint.core.MaterialMap.sameBlock("minecraft:stone", "minecraft:grass_block")); Coop.set(2, 1); Materials.refresh(); System.out.println("BBUITEST co-op: " + Coop.where(BuildBlueprintClient.SESSION.blueprint()) + ", my blocks " + Materials.totalBlocks()); Mc.setScreen(null); }
             case "done-card" -> {
                 Coop.off(); Settings.rawMats = false; Settings.layerMap = false; Settings.scaffold = false; Materials.refresh();
                 Stats.completeAt = System.currentTimeMillis(); Stats.completeBlocks = Materials.totalBlocks(); Stats.completeMs = 754000; Stats.completePerMin = 23;

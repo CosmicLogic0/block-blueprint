@@ -88,7 +88,7 @@ hold the block of the ghost you look at	взять в руку блок приз
 Settings lets you change how see-through the ghosts are, the corner list and more.	В настройках можно изменить прозрачность призраков, список в углу и другое.
 Every key can be changed in Settings -> Key binds.	Любую клавишу можно сменить в Настройки -> Управление.
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Стройка с друзьями: кнопка Совместно в меню постройки даёт код для друзей. Постройка появится у них на том же месте, и каждый строит свою часть.
-Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.	Что-то поставлено неправильно? Меню постройки показывает сверху, сколько исправить. Нажми, чтобы увидеть каждую ошибку.
+Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one, and click Stop fixing to stop.	Что-то поставлено не так? Меню постройки вверху показывает, сколько нужно исправить. Нажмите, чтобы вам показали каждую ошибку, и «Хватит исправлять», чтобы остановиться.
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	Сохранённые постройки > Бесплатные постройки: больше 1300 бесплатных построек от сообщества Minecraft.
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Настройки > Дополнительно: ещё помощники, которые можно включить: сырьё, карта слоя и подсказки лесов.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	Мод использует язык игры: английский, испанский, португальский, немецкий, французский, русский и китайский.
@@ -174,6 +174,7 @@ Copied the list - paste it anywhere (Ctrl+V)	Список скопирован -
 Layer {0} of {1}	Слой {0} из {1}
 No build loaded	Постройка не загружена
 not placed yet	ещё не закреплена
+Stop fixing	Хватит исправлять
 {0} to fix	исправить: {0}
 {0} / {1} placed	поставлено {0} / {1}
 Raw materials	Сырьё
@@ -317,7 +318,7 @@ The small reminder of the keys under the corner list.	Маленькая под�
 Draw distance: {0}	Дальность отрисовки: {0}
 How far away ghost blocks are still drawn. Lower = faster.	Как далеко ещё рисуются блоки-призраки. Меньше = быстрее.
 Red boxes: {0}	Красные рамки: {0}
-Red outline on blocks that are in the way of the build, or placed the wrong way round.	Красная рамка у блоков, которые мешают постройке или стоят не той стороной.
+Red outline on blocks that are in the way of the build, or placed the wrong way round, and the "to fix" count in the build menu.	Красная рамка вокруг блоков, которые мешают постройке или стоят не той стороной, и счётчик «исправить» в меню постройки.
 Check direction: {0}	Проверять направление: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Блоки засчитываются, только если стоят правильной стороной: ступеньки, плиты (верх или низ), брёвна, двери, кнопки... Блок, стоящий не той стороной, получает красную рамку.
 Pick from ghost: {0}	Брать из призрака: {0}
@@ -422,6 +423,7 @@ All fixed! Nothing wrong in the build any more.	Всё исправлено! В 
 Fixed! {0} left  ·  {1}	Исправлено! Осталось {0}  ·  {1}
 Nothing to fix - every placed block is right.	Нечего исправлять - все поставленные блоки верны.
 Mistake 1 of {0}: {1}	Ошибка 1 из {0}: {1}
+Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.	Ошибки больше не показываются. Красные рамки остаются - отключите их в Настройках > Ещё.
 this {0} {1}	этот {0} {1}
 a {0} is where {1} goes - break it	{0} стоит там, где должен быть {1} - сломай
 Fix: {0}	Исправить: {0}

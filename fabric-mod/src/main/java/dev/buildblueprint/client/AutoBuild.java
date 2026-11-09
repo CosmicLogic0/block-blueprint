@@ -80,7 +80,7 @@ public final class AutoBuild {
                 if (want == null) continue;
                 p.set(s.ox + x, s.oy + y, s.oz + z);
                 BlockState here = mc.level.getBlockState(p);
-                if (BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString().equals(MaterialMap.blockId(st)) && (st.indexOf('[') < 0 || dev.buildblueprint.core.Orient.ok(st, here.toString()))) continue; // already right (and the right way round)
+                if (MaterialMap.sameBlock(BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString(), MaterialMap.blockId(st)) && (st.indexOf('[') < 0 || !BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString().equals(MaterialMap.blockId(st)) || dev.buildblueprint.core.Orient.ok(st, here.toString()))) continue; // already right (and the right way round)
                 if (here.hasBlockEntity()) { kept++; continue; }   // don't wipe out chests, furnaces...
                 BlockPos at = p.immutable();
                 jobs.add(new Job(at, want, BlockStateParser.serialize(want)));

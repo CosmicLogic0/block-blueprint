@@ -87,7 +87,7 @@ prendre le bloc du fantôme que tu regardes
 Les Paramètres te permettent de changer la transparence des fantômes, la liste du coin et plus.
 Chaque touche peut être changée dans Paramètres -> Commandes.
 Construire entre amis : Coop dans le menu de construction te donne un code pour tes amis. La construction apparaît au même endroit chez eux, et chacun construit sa partie.
-Quelque chose de mal posé ? Le menu de construction affiche en haut combien il y a à corriger. Clique dessus pour les voir un par un.
+Quelque chose de mal placé ? Le menu de construction indique en haut combien il y a à corriger. Clique dessus pour qu'on te montre chacun, et sur Arrêter de corriger pour arrêter.
 Constructions sauvegardées > Constructions gratuites propose plus de 1 300 constructions gratuites de la communauté Minecraft.
 Paramètres > Extras propose d'autres aides à activer : matières premières, une carte de la couche où tu es, et l'aide échafaudage.
 Le mod suit la langue de ton jeu : anglais, espagnol, portugais, allemand, français, russe et chinois.
@@ -173,6 +173,7 @@ Liste copiée - colle-la où tu veux (Ctrl+V)
 Couche {0} sur {1}
 Aucune construction chargée
 pas encore placée
+Arrêter de corriger
 {0} à corriger
 {0} / {1} posés
 Matières premières
@@ -316,7 +317,7 @@ Le petit rappel des touches sous la liste du coin.
 Distance d'affichage : {0}
 Jusqu'à quelle distance les blocs fantômes sont dessinés. Moins = plus rapide.
 Boîtes rouges : {0}
-Contour rouge sur les blocs qui gênent la construction, ou posés dans le mauvais sens.
+Contour rouge sur les blocs qui gênent la construction ou sont posés à l'envers, et le nombre « à corriger » dans le menu de construction.
 Vérifier le sens : {0}
 Les blocs ne comptent comme faits que s'ils sont dans le bon sens : escaliers, dalles (haut ou bas), bûches, portes, boutons... Un bloc posé dans le mauvais sens reçoit une boîte rouge.
 Prendre du fantôme : {0}
@@ -421,6 +422,7 @@ Tout est corrigé ! Plus rien de faux dans la construction.
 Corrigé ! Encore {0}  ·  {1}
 Rien à corriger - tous les blocs posés sont bons.
 Erreur 1 sur {0} : {1}
+Les erreurs ne sont plus montrées. Les cadres rouges restent - désactive-les dans Réglages > Plus.
 ce {0} {1}
 un {0} est là où va {1} - casse-le
 Corriger : {0}

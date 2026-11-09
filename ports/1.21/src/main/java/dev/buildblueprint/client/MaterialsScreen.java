@@ -226,7 +226,10 @@ public class MaterialsScreen extends BBScreen {
             String st = s.locked ? "placed" : "not placed yet";
             g.drawString(font, Tr.t(st), x + w - 22 - font.width(Tr.t(st)), 8, s.locked ? UiKit.GREEN : UiKit.ORANGE, true);
             int bad = Mistakes.count();
-            if (bad > 0) {   // mistake finder: point at the wrong blocks one by one
+            if (Mistakes.showing()) {   // pointing at mistakes now: click to stop
+                String fx = "Stop fixing";
+                link(g, fx, x + w - 22 - font.width(Tr.t(st)) - 10 - font.width(Tr.t(fx)), 8, UiKit.ORANGE, mouseX, mouseY, Mistakes::stop);
+            } else if (bad > 0 && Settings.redOutline) {   // mistake finder: point at the wrong blocks one by one
                 String fx = bad + " to fix";
                 link(g, fx, x + w - 22 - font.width(Tr.t(st)) - 10 - font.width(Tr.t(fx)), 8, UiKit.RED, mouseX, mouseY, () -> { Mistakes.show(); onClose(); });
             }

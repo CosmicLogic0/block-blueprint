@@ -87,7 +87,7 @@ den Block des Geistes nehmen, den du ansiehst
 In den Einstellungen änderst du, wie durchsichtig die Geister sind, die Eckliste und mehr.
 Jede Taste lässt sich unter Einstellungen -> Steuerung ändern.
 Mit Freunden bauen: Koop im Bau-Menü gibt dir einen Code für deine Freunde. Der Bau erscheint bei ihnen an derselben Stelle, und jeder baut seinen eigenen Teil.
-Etwas falsch gesetzt? Das Bau-Menü zeigt oben, wie viele zu reparieren sind. Klick darauf, um jeden einzeln zu sehen.
+Etwas falsch platziert? Das Baumenü zeigt oben, wie viele zu reparieren sind. Klick darauf, um jeden einzeln gezeigt zu bekommen, und auf Reparieren beenden, um aufzuhören.
 Gespeicherte Bauten > Kostenlose Bauten hat über 1.300 kostenlose Bauten aus der Minecraft-Community.
 Einstellungen > Extras hat weitere Helfer zum Einschalten: Rohstoffe, eine Karte deiner Schicht und Gerüst-Hinweise.
 Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, Französisch, Russisch und Chinesisch.
@@ -173,6 +173,7 @@ Liste kopiert - füg sie überall ein (Strg+V)
 Schicht {0} von {1}
 Kein Bau geladen
 noch nicht platziert
+Reparieren beenden
 {0} zu reparieren
 {0} / {1} gesetzt
 Rohstoffe
@@ -316,7 +317,7 @@ Die kleine Tasten-Erinnerung unter der Eckliste.
 Sichtweite: {0}
 Wie weit weg Geisterblöcke noch gezeichnet werden. Weniger = schneller.
 Rote Boxen: {0}
-Roter Rahmen um Blöcke, die dem Bau im Weg sind oder falsch herum gesetzt wurden.
+Roter Rahmen um Blöcke, die dem Bauwerk im Weg sind oder falsch herum stehen, und die Anzahl „zu reparieren" im Baumenü.
 Richtung prüfen: {0}
 Blöcke zählen nur als fertig, wenn sie richtig herum stehen: Treppen, Stufen (oben oder unten), Stämme, Türen, Knöpfe... Ein falsch herum gesetzter Block bekommt eine rote Box.
 Aus dem Geist nehmen: {0}
@@ -421,6 +422,7 @@ Alles repariert! Nichts mehr falsch im Bau.
 Repariert! Noch {0}  ·  {1}
 Nichts zu reparieren - jeder gesetzte Block stimmt.
 Fehler 1 von {0}: {1}
+Fehler werden nicht mehr gezeigt. Die roten Rahmen bleiben - schalte sie unter Einstellungen > Mehr aus.
 dieser {0} {1}
 ein {0} ist da, wo {1} hingehört - abbauen
 Reparieren: {0}

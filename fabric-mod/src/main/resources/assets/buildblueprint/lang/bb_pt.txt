@@ -88,7 +88,7 @@ hold the block of the ghost you look at	pegar o bloco do fantasma que você olha
 Settings lets you change how see-through the ghosts are, the corner list and more.	Em Configurações você muda a transparência dos fantasmas, a lista do canto e mais.
 Every key can be changed in Settings -> Key binds.	Todas as teclas podem ser mudadas em Configurações -> Controles.
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Construir com amigos: Co-op no menu de construção te dá um código para seus amigos. A construção aparece no mesmo lugar para eles, e cada um constrói a sua parte.
-Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.	Algo colocado errado? O menu de construção mostra lá em cima quantos faltam corrigir. Clique para ver cada um.
+Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one, and click Stop fixing to stop.	Algo colocado errado? O menu da construção mostra no topo quantos há para consertar. Clique para ver cada um, e em Parar de consertar para parar.
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	Construções salvas > Construções grátis tem mais de 1.300 construções grátis da comunidade do Minecraft.
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Configurações > Extras tem mais ajudas que você pode ligar: matérias-primas, um mapa da camada em que você está e dicas de andaime.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	O mod segue o idioma do seu jogo: inglês, espanhol, português, alemão, francês, russo e chinês.
@@ -174,6 +174,7 @@ Copied the list - paste it anywhere (Ctrl+V)	Lista copiada - cole onde quiser (C
 Layer {0} of {1}	Camada {0} de {1}
 No build loaded	Nenhuma construção carregada
 not placed yet	ainda não colocada
+Stop fixing	Parar de consertar
 {0} to fix	{0} para corrigir
 {0} / {1} placed	{0} / {1} colocados
 Raw materials	Matérias-primas
@@ -317,7 +318,7 @@ The small reminder of the keys under the corner list.	O pequeno lembrete das tec
 Draw distance: {0}	Distância de desenho: {0}
 How far away ghost blocks are still drawn. Lower = faster.	Até que distância os blocos fantasma são desenhados. Menos = mais rápido.
 Red boxes: {0}	Caixas vermelhas: {0}
-Red outline on blocks that are in the way of the build, or placed the wrong way round.	Contorno vermelho nos blocos que estão no caminho da construção, ou colocados virados errado.
+Red outline on blocks that are in the way of the build, or placed the wrong way round, and the "to fix" count in the build menu.	Contorno vermelho nos blocos que atrapalham a construção ou estão colocados ao contrário, e a contagem "para consertar" no menu da construção.
 Check direction: {0}	Checar direção: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Os blocos só contam como prontos quando estão virados certo: escadas, lajes (em cima ou embaixo), troncos, portas, botões... Um bloco virado errado ganha uma caixa vermelha.
 Pick from ghost: {0}	Pegar do fantasma: {0}
@@ -422,6 +423,7 @@ All fixed! Nothing wrong in the build any more.	Tudo corrigido! Não tem mais na
 Fixed! {0} left  ·  {1}	Corrigido! Faltam {0}  ·  {1}
 Nothing to fix - every placed block is right.	Nada para corrigir - todos os blocos colocados estão certos.
 Mistake 1 of {0}: {1}	Erro 1 de {0}: {1}
+Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.	Parou de mostrar os erros. As caixas vermelhas continuam; desligue em Configurações > Mais.
 this {0} {1}	este {0} {1}
 a {0} is where {1} goes - break it	tem {0} onde vai {1} - quebre
 Fix: {0}	Corrigir: {0}

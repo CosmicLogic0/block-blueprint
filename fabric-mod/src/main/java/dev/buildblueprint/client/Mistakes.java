@@ -48,7 +48,12 @@ public final class Mistakes {
         pick();
         Chat.bar("Mistake 1 of " + list.size() + ": " + describe(current()));
     }
-    public static void stop() { focus = null; }
+    /** Stop pointing at mistakes ("Stop fixing" in the build menu). */
+    public static void stop() {
+        if (focus == null) return;
+        focus = null;
+        Chat.bar("Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.");
+    }
 
     private static void pick() {
         Minecraft mc = Minecraft.getInstance();
@@ -85,6 +90,7 @@ public final class Mistakes {
      * Returns true when it filled in Hint.
      */
     public static boolean aim(Minecraft mc) {
+        if (focus != null && (!Settings.redOutline || !BuildBlueprintClient.SESSION.loaded())) focus = null;   // red boxes turned off, or the build is gone: stop
         if (focus == null || mc.player == null) return false;
         Mistake m = current();
         if (m == null) return false;

@@ -88,7 +88,7 @@ hold the block of the ghost you look at	den Block des Geistes nehmen, den du ans
 Settings lets you change how see-through the ghosts are, the corner list and more.	In den Einstellungen änderst du, wie durchsichtig die Geister sind, die Eckliste und mehr.
 Every key can be changed in Settings -> Key binds.	Jede Taste lässt sich unter Einstellungen -> Steuerung ändern.
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Mit Freunden bauen: Koop im Bau-Menü gibt dir einen Code für deine Freunde. Der Bau erscheint bei ihnen an derselben Stelle, und jeder baut seinen eigenen Teil.
-Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one.	Etwas falsch gesetzt? Das Bau-Menü zeigt oben, wie viele zu reparieren sind. Klick darauf, um jeden einzeln zu sehen.
+Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one, and click Stop fixing to stop.	Etwas falsch platziert? Das Baumenü zeigt oben, wie viele zu reparieren sind. Klick darauf, um jeden einzeln gezeigt zu bekommen, und auf Reparieren beenden, um aufzuhören.
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	Gespeicherte Bauten > Kostenlose Bauten hat über 1.300 kostenlose Bauten aus der Minecraft-Community.
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Einstellungen > Extras hat weitere Helfer zum Einschalten: Rohstoffe, eine Karte deiner Schicht und Gerüst-Hinweise.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, Französisch, Russisch und Chinesisch.
@@ -174,6 +174,7 @@ Copied the list - paste it anywhere (Ctrl+V)	Liste kopiert - füg sie überall e
 Layer {0} of {1}	Schicht {0} von {1}
 No build loaded	Kein Bau geladen
 not placed yet	noch nicht platziert
+Stop fixing	Reparieren beenden
 {0} to fix	{0} zu reparieren
 {0} / {1} placed	{0} / {1} gesetzt
 Raw materials	Rohstoffe
@@ -317,7 +318,7 @@ The small reminder of the keys under the corner list.	Die kleine Tasten-Erinneru
 Draw distance: {0}	Sichtweite: {0}
 How far away ghost blocks are still drawn. Lower = faster.	Wie weit weg Geisterblöcke noch gezeichnet werden. Weniger = schneller.
 Red boxes: {0}	Rote Boxen: {0}
-Red outline on blocks that are in the way of the build, or placed the wrong way round.	Roter Rahmen um Blöcke, die dem Bau im Weg sind oder falsch herum gesetzt wurden.
+Red outline on blocks that are in the way of the build, or placed the wrong way round, and the "to fix" count in the build menu.	Roter Rahmen um Blöcke, die dem Bauwerk im Weg sind oder falsch herum stehen, und die Anzahl „zu reparieren" im Baumenü.
 Check direction: {0}	Richtung prüfen: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Blöcke zählen nur als fertig, wenn sie richtig herum stehen: Treppen, Stufen (oben oder unten), Stämme, Türen, Knöpfe... Ein falsch herum gesetzter Block bekommt eine rote Box.
 Pick from ghost: {0}	Aus dem Geist nehmen: {0}
@@ -422,6 +423,7 @@ All fixed! Nothing wrong in the build any more.	Alles repariert! Nichts mehr fal
 Fixed! {0} left  ·  {1}	Repariert! Noch {0}  ·  {1}
 Nothing to fix - every placed block is right.	Nichts zu reparieren - jeder gesetzte Block stimmt.
 Mistake 1 of {0}: {1}	Fehler 1 von {0}: {1}
+Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.	Fehler werden nicht mehr gezeigt. Die roten Rahmen bleiben - schalte sie unter Einstellungen > Mehr aus.
 this {0} {1}	dieser {0} {1}
 a {0} is where {1} goes - break it	ein {0} ist da, wo {1} hingehört - abbauen
 Fix: {0}	Reparieren: {0}
