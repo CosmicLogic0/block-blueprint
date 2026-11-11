@@ -305,6 +305,9 @@ Chest finder: {0}	Поиск сундуков: {0}
 Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.	Зелёные рамки на сундуках, где есть нужные тебе блоки. Открой сундук один раз, чтобы мод знал, что внутри.
 Sounds: {0}	Звуки: {0}
 A little ding when you finish a layer, and a level-up sound when the build is done.	Короткий звон, когда закончишь слой, и звук нового уровня, когда постройка готова.
+Auto-build speed: {0}	Скорость автопостройки: {0}
+very fast	очень быстро
+How fast Auto-build (Creative) places blocks. Faster can make the game - or the server - lag while it builds. Slow is kinder to small servers.	Как быстро автопостройка (Творческий) ставит блоки. Быстрее - и игра или сервер могут подтормаживать во время постройки. Медленно - бережнее к небольшим серверам.
 List shows: {0}	Список показывает: {0}
 this layer	этот слой
 Auto: the layer you're on while building layer by layer, otherwise the whole build.	Авто: слой, на котором ты, при стройке по слоям, иначе всю постройку.

@@ -304,6 +304,9 @@ Localizador de baús: {0}
 Caixas verdes nos baús que têm blocos que você ainda precisa. Abra um baú uma vez para o mod saber o que tem dentro.
 Sons: {0}
 Um plim quando você termina uma camada, e o som de subir de nível quando a construção fica pronta.
+Velocidade da construção automática: {0}
+muito rápida
+A rapidez com que a construção automática (Criativo) coloca blocos. Mais rápido pode deixar o jogo, ou o servidor, lento enquanto constrói. Lenta é melhor para servidores pequenos.
 A lista mostra: {0}
 esta camada
 Auto: a camada em que você está ao construir camada por camada; senão, a construção inteira.

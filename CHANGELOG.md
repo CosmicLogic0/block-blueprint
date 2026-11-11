@@ -1,3 +1,6 @@
+## 1.3.8
+- **Auto-build speed** setting (Settings, first page): slow, normal (the default), fast, very fast or max. Faster places more blocks every tick - it can make the game or the server lag while it builds. Slow is kinder to small servers.
+
 ## 1.3.7
 - **Much faster Auto-build** (Creative). On a server, blocks of the same kind next to each other on a layer now go in one /fill (up to 32,768 blocks at a time) instead of one /setblock each, and more go per second - a build of millions of blocks takes minutes instead of hours. In singleplayer it places as many blocks per tick as the game keeps up with, instead of a fixed 400. Undo is just as fast.
 

@@ -304,6 +304,9 @@ Truhen-Finder: {0}
 Grüne Boxen auf Truhen, die Blöcke enthalten, die du noch brauchst. Öffne eine Truhe einmal, damit der Mod weiß, was drin ist.
 Töne: {0}
 Ein kleines Klingeln, wenn du eine Schicht fertig hast, und ein Level-up-Ton, wenn der Bau fertig ist.
+Auto-Bau-Tempo: {0}
+sehr schnell
+Wie schnell der Auto-Bau (Kreativ) Blöcke setzt. Schneller kann das Spiel - oder den Server - beim Bauen ruckeln lassen. Langsam schont kleine Server.
 Liste zeigt: {0}
 diese Schicht
 Auto: die Schicht, auf der du bist, beim schichtweisen Bauen, sonst den ganzen Bau.

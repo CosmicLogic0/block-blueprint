@@ -304,6 +304,9 @@ Buscador de cofres: {0}
 Cajas verdes en los cofres que tienen bloques que aún necesitas. Abre un cofre una vez para que el mod sepa qué hay dentro.
 Sonidos: {0}
 Un pequeño sonido al terminar una capa, y el sonido de subir de nivel al terminar la construcción.
+Velocidad de autoconstrucción: {0}
+muy rápida
+Lo rápido que la autoconstrucción (Creativo) coloca bloques. Más rápido puede hacer que el juego, o el servidor, vaya lento mientras construye. Lenta es mejor para servidores pequeños.
 La lista muestra: {0}
 esta capa
 Auto: la capa en la que estás al construir capa por capa; si no, toda la construcción.

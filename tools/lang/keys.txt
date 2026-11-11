@@ -304,6 +304,9 @@ Chest finder: {0}
 Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.
 Sounds: {0}
 A little ding when you finish a layer, and a level-up sound when the build is done.
+Auto-build speed: {0}
+very fast
+How fast Auto-build (Creative) places blocks. Faster can make the game - or the server - lag while it builds. Slow is kinder to small servers.
 List shows: {0}
 this layer
 Auto: the layer you're on while building layer by layer, otherwise the whole build.

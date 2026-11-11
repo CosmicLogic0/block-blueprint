@@ -30,7 +30,9 @@ public final class AutoBuild {
 
     private record Cmd(String text, int blocks) {}
 
-    private static final int CMDS_PER_TICK = 60, BLOCKS_PER_TICK_SERVER = 12_000, FILL_MAX = 32_768;
+    private static final int CMDS_PER_TICK = 60, BLOCKS_PER_TICK_SERVER = 12_000, FILL_MAX = 32_768;   // at Normal speed
+    private static final double[] SPEED = {0.25, 1, 2, 4, 8};   // Settings > Auto-build speed: slow, normal, fast, very fast, max
+    private static double speed() { return SPEED[Math.max(0, Math.min(SPEED.length - 1, Settings.autoSpeed))]; }
     private static int perTickLocal = 400;                 // grows or shrinks so a batch takes about 25 ms of the game's time
     private static volatile boolean batchPending = false;  // singleplayer: the game hasn't placed the last batch yet
     private static volatile long lastBatchNs = 0;
@@ -175,8 +177,8 @@ public final class AutoBuild {
         if (mc.hasSingleplayerServer() && mc.getSingleplayerServer() != null) {
             if (batchPending) return;   // the game is still placing the last batch
             if (lastBatchNs > 0) {      // aim for about 25 ms of the game's time per batch
-                double f = Math.max(0.5, Math.min(2.0, 25_000_000.0 / lastBatchNs));
-                perTickLocal = (int) Math.max(100, Math.min(50_000, perTickLocal * f));
+                double f = Math.max(0.5, Math.min(2.0, Math.min(200_000_000.0, 25_000_000.0 * speed()) / lastBatchNs));
+                perTickLocal = (int) Math.max(25, Math.min(50_000 * speed(), perTickLocal * f));
             }
             var server = mc.getSingleplayerServer();
             var dim = mc.level.dimension();
@@ -196,7 +198,8 @@ public final class AutoBuild {
         } else {
             if (cmds == null) { cmds = commands(queue.subList(next, queue.size())); nextCmd = 0; }
             int sent = 0, blocks = 0;
-            while (nextCmd < cmds.size() && sent < CMDS_PER_TICK && blocks < BLOCKS_PER_TICK_SERVER) {
+            int maxCmds = (int) Math.max(5, CMDS_PER_TICK * speed()), maxBlocks = (int) (BLOCKS_PER_TICK_SERVER * speed());
+            while (nextCmd < cmds.size() && sent < maxCmds && blocks < maxBlocks) {
                 Cmd c = cmds.get(nextCmd++);
                 mc.player.connection.sendCommand(c.text);
                 sent++; blocks += c.blocks; next += c.blocks;

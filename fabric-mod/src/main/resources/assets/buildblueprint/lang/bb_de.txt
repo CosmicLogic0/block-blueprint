@@ -305,6 +305,9 @@ Chest finder: {0}	Truhen-Finder: {0}
 Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.	Grüne Boxen auf Truhen, die Blöcke enthalten, die du noch brauchst. Öffne eine Truhe einmal, damit der Mod weiß, was drin ist.
 Sounds: {0}	Töne: {0}
 A little ding when you finish a layer, and a level-up sound when the build is done.	Ein kleines Klingeln, wenn du eine Schicht fertig hast, und ein Level-up-Ton, wenn der Bau fertig ist.
+Auto-build speed: {0}	Auto-Bau-Tempo: {0}
+very fast	sehr schnell
+How fast Auto-build (Creative) places blocks. Faster can make the game - or the server - lag while it builds. Slow is kinder to small servers.	Wie schnell der Auto-Bau (Kreativ) Blöcke setzt. Schneller kann das Spiel - oder den Server - beim Bauen ruckeln lassen. Langsam schont kleine Server.
 List shows: {0}	Liste zeigt: {0}
 this layer	diese Schicht
 Auto: the layer you're on while building layer by layer, otherwise the whole build.	Auto: die Schicht, auf der du bist, beim schichtweisen Bauen, sonst den ganzen Bau.

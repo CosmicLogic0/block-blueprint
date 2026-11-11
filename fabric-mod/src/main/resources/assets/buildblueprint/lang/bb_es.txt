@@ -305,6 +305,9 @@ Chest finder: {0}	Buscador de cofres: {0}
 Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.	Cajas verdes en los cofres que tienen bloques que aún necesitas. Abre un cofre una vez para que el mod sepa qué hay dentro.
 Sounds: {0}	Sonidos: {0}
 A little ding when you finish a layer, and a level-up sound when the build is done.	Un pequeño sonido al terminar una capa, y el sonido de subir de nivel al terminar la construcción.
+Auto-build speed: {0}	Velocidad de autoconstrucción: {0}
+very fast	muy rápida
+How fast Auto-build (Creative) places blocks. Faster can make the game - or the server - lag while it builds. Slow is kinder to small servers.	Lo rápido que la autoconstrucción (Creativo) coloca bloques. Más rápido puede hacer que el juego, o el servidor, vaya lento mientras construye. Lenta es mejor para servidores pequeños.
 List shows: {0}	La lista muestra: {0}
 this layer	esta capa
 Auto: the layer you're on while building layer by layer, otherwise the whole build.	Auto: la capa en la que estás al construir capa por capa; si no, toda la construcción.

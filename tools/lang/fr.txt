@@ -304,6 +304,9 @@ Détecteur de coffres : {0}
 Des boîtes vertes sur les coffres qui contiennent des blocs qu'il te faut encore. Ouvre un coffre une fois pour que le mod sache ce qu'il contient.
 Sons : {0}
 Un petit « ding » quand tu finis une couche, et le son de montée de niveau quand la construction est finie.
+Vitesse de construction auto : {0}
+très rapide
+La vitesse à laquelle la construction auto (Créatif) pose les blocs. Plus vite peut faire ramer le jeu - ou le serveur - pendant la construction. Lente ménage les petits serveurs.
 La liste montre : {0}
 cette couche
 Auto : la couche où tu es quand tu construis couche par couche, sinon toute la construction.

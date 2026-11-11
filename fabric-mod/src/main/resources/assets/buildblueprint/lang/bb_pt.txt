@@ -305,6 +305,9 @@ Chest finder: {0}	Localizador de baús: {0}
 Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.	Caixas verdes nos baús que têm blocos que você ainda precisa. Abra um baú uma vez para o mod saber o que tem dentro.
 Sounds: {0}	Sons: {0}
 A little ding when you finish a layer, and a level-up sound when the build is done.	Um plim quando você termina uma camada, e o som de subir de nível quando a construção fica pronta.
+Auto-build speed: {0}	Velocidade da construção automática: {0}
+very fast	muito rápida
+How fast Auto-build (Creative) places blocks. Faster can make the game - or the server - lag while it builds. Slow is kinder to small servers.	A rapidez com que a construção automática (Criativo) coloca blocos. Mais rápido pode deixar o jogo, ou o servidor, lento enquanto constrói. Lenta é melhor para servidores pequenos.
 List shows: {0}	A lista mostra: {0}
 this layer	esta camada
 Auto: the layer you're on while building layer by layer, otherwise the whole build.	Auto: a camada em que você está ao construir camada por camada; senão, a construção inteira.

@@ -57,6 +57,8 @@ public class SettingsScreen extends Screen {
             opt(() -> "Auto next layer: " + onOff(Settings.autoLayer), () -> Settings.autoLayer = !Settings.autoLayer, "When you finish a layer, go to the next one by itself.");
             opt(() -> "Chest finder: " + onOff(Settings.chestFinder), () -> Settings.chestFinder = !Settings.chestFinder, "Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.");
             opt(() -> "Sounds: " + onOff(Settings.sounds), () -> Settings.sounds = !Settings.sounds, "A little ding when you finish a layer, and a level-up sound when the build is done.");
+            opt(() -> "Auto-build speed: " + new String[]{"slow", "normal", "fast", "very fast", "max"}[Math.max(0, Math.min(4, Settings.autoSpeed))], () -> Settings.autoSpeed = (Settings.autoSpeed + 1) % 5,
+                    "How fast Auto-build (Creative) places blocks. Faster can make the game - or the server - lag while it builds. Slow is kinder to small servers.");
         } else {
             opt(() -> "List shows: " + switch (Settings.matMode) { case "layer" -> "this layer"; case "all" -> "whole build"; default -> "auto"; },
                     () -> Settings.matMode = switch (Settings.matMode) { case "auto" -> "layer"; case "layer" -> "all"; default -> "auto"; },
