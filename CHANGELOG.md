@@ -1,3 +1,7 @@
+## 1.3.9
+- **Auto-build picks up where it left off.** Parts of a big build that are too far away (not loaded yet) aren't sent anymore - they used to be sent and fail, or be sent again next time. They're built by themselves as you come closer. Blocks that are already placed are always skipped, so starting Auto-build again after leaving the game only does what's left.
+- Auto-build starts much quicker on huge builds (it works out each kind of block once, not for every block).
+
 ## 1.3.8
 - **Auto-build speed** setting (Settings, first page): slow, normal (the default), fast, very fast or max. Faster places more blocks every tick - it can make the game or the server lag while it builds. Slow is kinder to small servers.
 

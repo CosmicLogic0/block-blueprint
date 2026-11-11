@@ -495,8 +495,10 @@ OK  {0}	OK  {0}
 NEED {0} more  {1}	FALTAM mais {0}  {1}
 You have everything.	Você tem tudo.
 Auto-build only works in Creative mode.	Construir tudo só funciona no modo Criativo.
+Auto-build finished the far parts too!	A construção automática também terminou as partes distantes!
 Load a blueprint first.	Carregue uma construção primeiro.
 Already building - /buildblueprint autobuild stop to stop.	Já está construindo - /buildblueprint autobuild stop para parar.
+{0} blocks are too far away to place yet (that part of the world isn't loaded). Auto-build carries on by itself as you get closer.	{0} blocos estão longe demais para colocar ainda (essa parte do mundo não está carregada). A construção automática continua sozinha quando você chega perto.
 Nothing to place ({0} spots have chests or similar in the way).	Nada para colocar ({0} lugares têm baús ou parecidos no caminho).
 Nothing to place - it's all built already!	Nada para colocar - já está tudo construído!
 On a server this uses /setblock, so you need to be an operator.	Num servidor isto usa /setblock, então você precisa ser operador.

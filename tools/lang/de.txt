@@ -494,8 +494,10 @@ OK  {0}
 FEHLT {0} mehr  {1}
 Du hast alles.
 Automatisch bauen geht nur im Kreativmodus.
+Der Auto-Bau hat auch die entfernten Teile fertig!
 Lade zuerst einen Bau.
 Baut schon - /buildblueprint autobuild stop zum Anhalten.
+{0} Blöcke sind noch zu weit weg (dieser Teil der Welt ist nicht geladen). Der Auto-Bau macht von selbst weiter, wenn du näher kommst.
 Nichts zu setzen ({0} Stellen haben Truhen o. Ä. im Weg).
 Nichts zu setzen - alles ist schon gebaut!
 Auf einem Server nutzt das /setblock, du musst also Operator sein.

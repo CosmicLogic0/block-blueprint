@@ -494,8 +494,10 @@ OK  {0}
 FALTAM mais {0}  {1}
 Você tem tudo.
 Construir tudo só funciona no modo Criativo.
+A construção automática também terminou as partes distantes!
 Carregue uma construção primeiro.
 Já está construindo - /buildblueprint autobuild stop para parar.
+{0} blocos estão longe demais para colocar ainda (essa parte do mundo não está carregada). A construção automática continua sozinha quando você chega perto.
 Nada para colocar ({0} lugares têm baús ou parecidos no caminho).
 Nada para colocar - já está tudo construído!
 Num servidor isto usa /setblock, então você precisa ser operador.

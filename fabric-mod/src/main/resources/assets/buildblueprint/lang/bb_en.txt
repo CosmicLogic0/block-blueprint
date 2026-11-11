@@ -540,8 +540,10 @@ OK  {0}
 NEED {0} more  {1}
 You have everything.
 Auto-build only works in Creative mode.
+Auto-build finished the far parts too!
 Load a blueprint first.
 Already building - /buildblueprint autobuild stop to stop.
+{0} blocks are too far away to place yet (that part of the world isn't loaded). Auto-build carries on by itself as you get closer.
 Nothing to place ({0} spots have chests or similar in the way).
 Nothing to place - it's all built already!
 On a server this uses /setblock, so you need to be an operator.

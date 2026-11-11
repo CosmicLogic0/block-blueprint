@@ -495,8 +495,10 @@ OK  {0}	OK  {0}
 NEED {0} more  {1}	还需要 {0} 个  {1}
 You have everything.	你全都有了。
 Auto-build only works in Creative mode.	自动建造只能在创造模式下使用。
+Auto-build finished the far parts too!	自动建造也完成了远处的部分！
 Load a blueprint first.	请先加载一个建筑。
 Already building - /buildblueprint autobuild stop to stop.	正在建造 - 用 /buildblueprint autobuild stop 停止。
+{0} blocks are too far away to place yet (that part of the world isn't loaded). Auto-build carries on by itself as you get closer.	有 {0} 个方块还太远，暂时放不了（那部分世界还没加载）。你走近时自动建造会自己继续。
 Nothing to place ({0} spots have chests or similar in the way).	没有要放的（有 {0} 处被箱子等挡住）。
 Nothing to place - it's all built already!	没有要放的 - 已经全部建好了！
 On a server this uses /setblock, so you need to be an operator.	在服务器上这会使用 /setblock，所以你需要是管理员。

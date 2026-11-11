@@ -68,9 +68,20 @@ public final class AutoBuild {
     }
 
     /** onlyLayer = -1 for the whole build, else one layer (0-based). */
-    public static void start(int onlyLayer) { secondPass = false; start(onlyLayer, false); }
+    public static void start(int onlyLayer) { secondPass = false; farChunks = new java.util.HashSet<>(); start(onlyLayer, false, null); }
 
-    private static void start(int onlyLayer, boolean quiet) {
+    // Parts of the build in chunks the game hasn't loaded can't be checked or placed yet: they wait here, and get built
+    // as you come closer (and the chunks load). Blocks already placed are always skipped, so starting again is quick.
+    private static java.util.Set<Long> farChunks = new java.util.HashSet<>();
+    private static Blueprint farBp;
+    private static int farOx, farOy, farOz, farTick = 0;
+    private static boolean hadFar = false;
+    private static void farDone() { if (hadFar && farChunks.isEmpty() && !running()) { hadFar = false; Chat.ok("Auto-build finished the far parts too!"); } }
+    private static long chunkKey(int cx, int cz) { return ((long) cx << 32) ^ (cz & 0xFFFFFFFFL); }
+
+    private static void start(int onlyLayer, boolean quiet) { start(onlyLayer, quiet, null); }
+
+    private static void start(int onlyLayer, boolean quiet, java.util.Set<Long> only) {
         Session s = BuildBlueprintClient.SESSION;
         Minecraft mc = Minecraft.getInstance();
         if (!PlayerInfo.inWorld()) return;
@@ -78,30 +89,57 @@ public final class AutoBuild {
         if (running()) { Chat.warn("Already building - /buildblueprint autobuild stop to stop."); return; }
         if (!creative()) return;
         Blueprint bp = s.blueprint();
-        Map<String, BlockState> parsed = new HashMap<>();
+        int n = bp.palette.length + 1;   // what each kind of block in the build is, worked out once (not for every block)
+        BlockState[] wantP = new BlockState[n];
+        String[] idP = new String[n], textP = new String[n];
+        boolean[] propsP = new boolean[n];
+        for (int i = 1; i < n; i++) {
+            String st = bp.palette[i - 1];
+            if (st == null || (wantP[i] = parse(st)) == null) continue;
+            idP[i] = MaterialMap.blockId(st); propsP[i] = st.indexOf('[') >= 0; textP[i] = BlockStateParser.serialize(wantP[i]);
+        }
+        int cx0 = s.ox >> 4, cz0 = s.oz >> 4, cx1 = (s.ox + bp.sx - 1) >> 4, cz1 = (s.oz + bp.sz - 1) >> 4;
+        boolean[][] loaded = new boolean[cx1 - cx0 + 1][cz1 - cz0 + 1];
+        for (int cx = cx0; cx <= cx1; cx++) for (int cz = cz0; cz <= cz1; cz++)
+            loaded[cx - cx0][cz - cz0] = (only == null || only.contains(chunkKey(cx, cz))) && mc.level.getChunkSource().hasChunk(cx, cz);
+        java.util.Set<Long> far = new java.util.HashSet<>();
+        Map<Block, String> ids = new java.util.IdentityHashMap<>();
         List<Job> jobs = new ArrayList<>(), before = new ArrayList<>();
-        int kept = 0;
+        int kept = 0, farBlocks = 0;
         BlockPos.MutableBlockPos p = new BlockPos.MutableBlockPos();
         for (int y = 0; y < bp.sy; y++) {
             if (onlyLayer >= 0 && y != onlyLayer) continue;
             for (int z = 0; z < bp.sz; z++) for (int x = 0; x < bp.sx; x++) {
-                String st = bp.stateAt(x, y, z);
-                if (st == null) continue;
-                BlockState want = parsed.computeIfAbsent(st, AutoBuild::parse);
-                if (want == null) continue;
-                p.set(s.ox + x, s.oy + y, s.oz + z);
+                int c = bp.cells[bp.index(x, y, z)];
+                if (c == 0 || wantP[c] == null) continue;
+                int wx = s.ox + x, wz = s.oz + z;
+                if (!loaded[(wx >> 4) - cx0][(wz >> 4) - cz0]) {   // not loaded: later
+                    if (only == null) { far.add(chunkKey(wx >> 4, wz >> 4)); farBlocks++; }
+                    continue;
+                }
+                p.set(wx, s.oy + y, wz);
                 BlockState here = mc.level.getBlockState(p);
-                if (MaterialMap.sameBlock(BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString(), MaterialMap.blockId(st)) && (st.indexOf('[') < 0 || !BuiltInRegistries.BLOCK.getKey(here.getBlock()).toString().equals(MaterialMap.blockId(st)) || dev.buildblueprint.core.Orient.ok(st, here.toString()))) continue; // already right (and the right way round)
+                String have = ids.computeIfAbsent(here.getBlock(), b -> BuiltInRegistries.BLOCK.getKey(b).toString());
+                if (MaterialMap.sameBlock(have, idP[c]) && (!propsP[c] || !have.equals(idP[c]) || dev.buildblueprint.core.Orient.ok(bp.palette[c - 1], here.toString()))) continue; // already right (and the right way round)
                 if (here.hasBlockEntity()) { kept++; continue; }   // don't wipe out chests, furnaces...
                 BlockPos at = p.immutable();
-                jobs.add(new Job(at, want, BlockStateParser.serialize(want)));
+                jobs.add(new Job(at, wantP[c], textP[c]));
                 before.add(new Job(at, here, BlockStateParser.serialize(here)));
             }
         }
-        if (jobs.isEmpty()) { if (quiet) return; Chat.ok(kept > 0 ? "Nothing to place (" + kept + " spots have chests or similar in the way)." : "Nothing to place - it's all built already!"); return; }
+        if (only == null) { farChunks = far; farBp = bp; farOx = s.ox; farOy = s.oy; farOz = s.oz; hadFar = farBlocks > 0; }
+        else farChunks.removeAll(only);
+        if (only == null && farBlocks > 0 && !quiet)
+            Chat.warn(farBlocks + " blocks are too far away to place yet (that part of the world isn't loaded). Auto-build carries on by itself as you get closer.");
+        if (jobs.isEmpty()) {
+            if (quiet) return;
+            if (farBlocks > 0) return;   // the "too far away" message says it all
+            Chat.ok(kept > 0 ? "Nothing to place (" + kept + " spots have chests or similar in the way)." : "Nothing to place - it's all built already!");
+            return;
+        }
         if (!quiet && !mc.hasSingleplayerServer()) Chat.warn("On a server this uses /setblock, so you need to be an operator.");
         if (quiet) before.addAll(undo);   // the second pass: undo still takes everything back (what was there first goes back last, so it wins)
-        queue = jobs; next = 0; total = jobs.size(); undo = before; undoing = false; lastLayer = onlyLayer; cmds = null; batchPending = false;
+        queue = jobs; next = 0; total = jobs.size(); undo = before; undoing = false; if (only == null) lastLayer = onlyLayer; cmds = null; batchPending = false;
         if (quiet) return;
         Chat.ok("Auto-building " + total + " blocks" + (onlyLayer >= 0 ? " on layer " + (onlyLayer + 1) : "") + "..."
                 + (kept > 0 ? " (skipping " + kept + " spots with chests or similar in the way)" : ""));
@@ -112,6 +150,7 @@ public final class AutoBuild {
         if (undo.isEmpty()) { Chat.warn("Nothing to undo."); return; }
         if (!creative()) return;
         queue = new ArrayList<>(undo); next = 0; total = queue.size(); undo = new ArrayList<>(); undoing = true; cmds = null; batchPending = false;
+        farChunks = new java.util.HashSet<>();
         Chat.ok("Undoing the last auto-build (" + total + " blocks)...");
     }
 
@@ -120,6 +159,7 @@ public final class AutoBuild {
         Chat.ok("Stopped after " + next + " of " + total + " blocks.");
         queue = new ArrayList<>(queue.subList(0, next));
         cmds = null;
+        farChunks = new java.util.HashSet<>();
     }
 
     /** On a server: blocks of the same kind side by side on a layer become one /fill, so big builds need far fewer commands. */
@@ -172,8 +212,20 @@ public final class AutoBuild {
 
     private static void tick(Minecraft mc) {
         if (recheckIn > 0 && --recheckIn == 0 && !running()) { secondPass = true; start(lastLayer, true); return; }
+        if (mc.player == null || mc.level == null) { queue = new ArrayList<>(); next = 0; farChunks = new java.util.HashSet<>(); return; }
+        if (!running() && recheckIn == 0 && !farChunks.isEmpty() && ++farTick % 40 == 0) {   // parts that were too far: built once their chunks load
+            Session s = BuildBlueprintClient.SESSION;
+            if (!s.loaded() || s.blueprint() != farBp || s.ox != farOx || s.oy != farOy || s.oz != farOz || !mc.player.isCreative()) { farChunks = new java.util.HashSet<>(); return; }
+            java.util.Set<Long> now = new java.util.HashSet<>();
+            for (long k : farChunks) if (mc.level.getChunkSource().hasChunk((int) (k >> 32), (int) k)) now.add(k);
+            if (!now.isEmpty()) {
+                secondPass = true;
+                start(lastLayer, true, now);
+                farDone();
+            }
+            return;
+        }
         if (!running()) return;
-        if (mc.player == null || mc.level == null) { queue = new ArrayList<>(); next = 0; return; }
         if (mc.hasSingleplayerServer() && mc.getSingleplayerServer() != null) {
             if (batchPending) return;   // the game is still placing the last batch
             if (lastBatchNs > 0) {      // aim for about 25 ms of the game's time per batch
@@ -212,6 +264,7 @@ public final class AutoBuild {
             if (undoing || !secondPass) Chat.ok(undoing ? "Undo finished." : "Auto-build finished! " + total + " blocks placed. Use Undo in the Page Up menu (or /buildblueprint autobuild undo) to take it back.");
             if (!undoing) BuildBlueprintClient.SESSION.locked = true;   // it's built now: don't let it slide away
             if (!undoing && !secondPass) recheckIn = mc.hasSingleplayerServer() ? 5 : 100;
+            if (!undoing && secondPass) farDone();
             cmds = null;
             undoing = false;
             Materials.refresh();

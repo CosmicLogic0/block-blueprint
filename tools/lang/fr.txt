@@ -494,8 +494,10 @@ OK  {0}
 MANQUE encore {0}  {1}
 Tu as tout.
 La construction auto ne marche qu'en mode Créatif.
+La construction auto a aussi fini les parties éloignées !
 Charge d'abord une construction.
 Construction déjà en cours - /buildblueprint autobuild stop pour l'arrêter.
+{0} blocs sont trop loin pour être posés (cette partie du monde n'est pas chargée). La construction auto continue toute seule quand tu t'approches.
 Rien à poser ({0} emplacements ont des coffres ou autres qui gênent).
 Rien à poser - tout est déjà construit !
 Sur un serveur, ceci utilise /setblock, il faut donc être opérateur.

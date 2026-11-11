@@ -494,8 +494,10 @@ OK  {0}
 FALTAN {0} más  {1}
 Lo tienes todo.
 La autoconstrucción solo funciona en modo Creativo.
+¡La autoconstrucción también terminó las partes lejanas!
 Primero carga una construcción.
 Ya está construyendo: /buildblueprint autobuild stop para pararla.
+{0} bloques están demasiado lejos para colocarlos aún (esa parte del mundo no está cargada). La autoconstrucción sigue sola cuando te acercas.
 Nada que colocar ({0} sitios tienen cofres o similares en medio).
 Nada que colocar: ¡ya está todo construido!
 En un servidor esto usa /setblock, así que necesitas ser operador.

@@ -495,8 +495,10 @@ OK  {0}	OK  {0}
 NEED {0} more  {1}	НУЖНО ещё {0}  {1}
 You have everything.	У тебя всё есть.
 Auto-build only works in Creative mode.	Автостройка работает только в творческом режиме.
+Auto-build finished the far parts too!	Автопостройка закончила и дальние части!
 Load a blueprint first.	Сначала загрузи постройку.
 Already building - /buildblueprint autobuild stop to stop.	Уже строится - /buildblueprint autobuild stop, чтобы остановить.
+{0} blocks are too far away to place yet (that part of the world isn't loaded). Auto-build carries on by itself as you get closer.	{0} блоков пока слишком далеко (эта часть мира не загружена). Автопостройка продолжит сама, когда вы подойдёте ближе.
 Nothing to place ({0} spots have chests or similar in the way).	Нечего ставить (мест, где мешают сундуки и т. п.: {0}).
 Nothing to place - it's all built already!	Нечего ставить - всё уже построено!
 On a server this uses /setblock, so you need to be an operator.	На сервере это использует /setblock, поэтому нужны права оператора.
