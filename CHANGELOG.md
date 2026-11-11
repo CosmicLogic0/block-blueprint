@@ -1,3 +1,6 @@
+## 1.3.7
+- **Much faster Auto-build** (Creative). On a server, blocks of the same kind next to each other on a layer now go in one /fill (up to 32,768 blocks at a time) instead of one /setblock each, and more go per second - a build of millions of blocks takes minutes instead of hours. In singleplayer it places as many blocks per tick as the game keeps up with, instead of a fixed 400. Undo is just as fast.
+
 ## 1.3.6
 - **No more size limit on builds.** Schematic files (.schem, .litematic, .nbt) and saved builds of any size now load - before, builds over 512 blocks across or 8 million blocks were turned away. Huge builds take a moment and can make the game slower, so **Nearby layers only** (Settings > Extras) or a shorter **Distance** (Settings > More) helps. If a build is too big for the memory Minecraft has, the mod says so instead of crashing.
 - Up to 500,000 ghost blocks are drawn at once (was 60,000), so big builds show in full.

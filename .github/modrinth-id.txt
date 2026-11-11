@@ -1,3 +1,3 @@
 # The Modrinth project id (or slug) for Build Blueprint. Empty = no Modrinth uploads.
 # The upload token is the GitHub secret MODRINTH_TOKEN.
-wU60B9lk
+# wU60B9lk   (paused for 1.3.7: Modrinth daily upload limit; turned back on the next day)
