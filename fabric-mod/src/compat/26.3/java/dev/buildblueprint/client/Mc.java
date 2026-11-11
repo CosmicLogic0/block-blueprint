@@ -10,4 +10,6 @@ public final class Mc {
     public static Screen screen() { return Minecraft.getInstance().gui.screen(); }
     public static void setScreen(Screen s) { Minecraft.getInstance().gui.setScreen(s); }
     public static InputConstants.Type keyboard() { return InputConstants.Type.KEYBOARD; }
+    /** Is this keyboard key held down right now? (26.3 asks with just the key.) */
+    public static boolean keyDown(int key) { return InputConstants.isKeyDown(key); }
 }

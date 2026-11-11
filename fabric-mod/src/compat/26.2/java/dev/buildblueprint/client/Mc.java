@@ -11,4 +11,6 @@ public final class Mc {
     public static void setScreen(Screen s) { Minecraft.getInstance().gui.setScreen(s); }
     /** the keyboard input type (called KEYSYM before 26.3) */
     public static InputConstants.Type keyboard() { return InputConstants.Type.values()[0]; }
+    /** Is this keyboard key held down right now? */
+    public static boolean keyDown(int key) { return InputConstants.isKeyDown(Minecraft.getInstance().getWindow(), key); }
 }

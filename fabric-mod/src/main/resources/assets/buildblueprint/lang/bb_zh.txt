@@ -79,6 +79,7 @@ See a build you like in your world? Copy it and build it again anywhere.	在世�
 Insert	Insert
 start a copy box on the block you look at	在你看着的方块上开始一个复制范围框
 make the box bigger (Alt + arrows: smaller)	扩大范围框（Alt + 方向键：缩小）
+make the box taller or shorter	把框变高或变矮
 stretch the box to the block you look at	把范围框拉伸到你看着的方块
 save it (again)	保存（再按一次）
 Copies go to Saved builds, and into the app too.	复制的建筑会保存到“已保存的建筑”，也会进入应用。
@@ -86,7 +87,7 @@ In Creative mode, Auto-build places the whole build for you and Build layer plac
 Middle-click	鼠标中键
 hold the block of the ghost you look at	拿起你看着的幽灵方块
 Settings lets you change how see-through the ghosts are, the corner list and more.	在设置里可以调整幽灵方块的透明度、角落列表等。
-Every key can be changed in Settings -> Key binds.	所有按键都可以在“设置 -> 按键绑定”中更改。
+Every key can be changed in Settings -> Key binds (or Options > Controls > Key Binds > Build Blueprint).	所有按键都可以在 设置 -> 按键 中修改（或 选项 > 控制 > 按键绑定 > Build Blueprint）。
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	和朋友一起建造：建筑菜单里的“合作”会给你一个代码发给朋友。建筑会出现在他们那边的同一个位置，每个人建自己的部分。
 Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one, and click Stop fixing to stop.	有方块放错了？建筑菜单顶部会显示要修正的数量。点击它会逐个指给你看，点击“停止修正”即可停止。
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	“已保存的建筑 > 免费建筑”里有来自 Minecraft 社区的 1300 多个免费建筑。
@@ -436,7 +437,7 @@ fence gate	栅栏门
 pressure plate	压力板
 hanging sign	悬挂式告示牌
 Copy box started on the block you're looking at. Make it as big as your build:	复制范围框已从你看着的方块开始。把它调到和你的建筑一样大：
-Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.	方向键扩大，Alt + 方向键缩小，Ctrl + 上/下 调整顶部/底部，Shift = 5 格。Page Down 拉伸到你看着的方块。
+Arrows grow it, Alt + arrows shrink it, = and - for the top and bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.	方向键扩大，Alt + 方向键缩小，= 和 - 调整顶部和底部，Shift = 5 格。Page Down 把框拉到你看着的方块。
 Press Insert again to save it, Delete to cancel.	再按 Insert 保存，按 Delete 取消。
 Too far - a copy can be up to {0} blocks per side	太远了 - 复制范围每边最多 {0} 格
 Stretched to that block  ·  box {0} x {1} x {2}  ·  Insert = save, Delete = cancel	已拉伸到那个方块  ·  范围框 {0} x {1} x {2}  ·  Insert = 保存，Delete = 取消
@@ -462,7 +463,7 @@ Got part {0} of {1}. Keep pasting the rest.	已收到第 {0} 部分，共 {1} �
 Got part {0} of {1}.	已收到第 {0} 部分，共 {1} 部分。
 Loaded "{0}": {1} blocks, {2} x {3} x {4}.	已加载“{0}”：{1} 个方块，{2} x {3} x {4}。
 It's shown in front of you, fully built. Move it into place, then press Delete (or Page Up > Place it) to start building layer by layer.	它完整地显示在你面前。把它移到位置上，然后按 Delete（或 Page Up > 放置）开始逐层建造。
-Keys: arrows move it (Up = forward, Down = back, Ctrl+Up/Down = up/down), Page Down rotates, Page Up opens the materials menu.	按键：方向键移动（上 = 前，下 = 后，Ctrl+上/下 = 升/降），Page Down 旋转，Page Up 打开材料菜单。
+Keys: arrows move it (Up = forward, Down = back), = and - move it up and down, Page Down rotates, Page Up opens the build menu. Change keys in Options > Controls > Key Binds.	按键：方向键移动（上 = 向前，下 = 向后），= 和 - 上下移动，Page Down 旋转，Page Up 打开建筑菜单。可在 选项 > 控制 > 按键绑定 中修改按键。
 The blueprint is placed (locked). Unlock it first: Page Up > Unlock, or /buildblueprint unlock.	建筑已放置（锁定）。请先解锁：Page Up > 解锁，或 /buildblueprint unlock。
 Placed! {0}	已放置！{0}
 Layer {0} of {1} - Home/End to change layer	第 {0} 层，共 {1} 层 - 用 Home/End 换层
@@ -485,7 +486,7 @@ Showing layer {0} of {1} only.	只显示第 {0} 层，共 {1} 层。
 "{0}": {1} blocks, {2} x {3} x {4}, rotated {5} degrees.	“{0}”：{1} 个方块，{2} x {3} x {4}，旋转 {5} 度。
 Corner at {0}, {1}, {2}; far corner at {3}, {4}, {5}.	角落在 {0}, {1}, {2}；对角在 {3}, {4}, {5}。
 .schem, .litematic and .nbt files in <home>/BlockBlueprint/builds (or your WorldEdit / Litematica schematics folder) show up in Saved builds.	<home>/BlockBlueprint/builds（或你的 WorldEdit / Litematica 原理图文件夹）中的 .schem、.litematic 和 .nbt 文件会显示在“已保存的建筑”里。
-Keys: Up = forward, Down = back, Left/Right, Ctrl+Up/Down = up/down, Page Down = rotate, Page Up = materials menu.	按键：上 = 前，下 = 后，左/右，Ctrl+上/下 = 升/降，Page Down = 旋转，Page Up = 材料菜单。
+Keys: Up = forward, Down = back, Left/Right, = and - = up/down, Page Down = rotate, Page Up = build menu. Change keys in Options > Controls > Key Binds.	按键：上 = 向前，下 = 向后，左/右，= 和 - = 上/下，Page Down = 旋转，Page Up = 建筑菜单。可在 选项 > 控制 > 按键绑定 中修改按键。
 --- {0}: you have / you need ---	--- {0}：你有 / 你需要 ---
 OK  {0}	OK  {0}
 NEED {0} more  {1}	还需要 {0} 个  {1}

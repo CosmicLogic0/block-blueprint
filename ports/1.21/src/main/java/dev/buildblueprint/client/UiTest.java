@@ -272,6 +272,10 @@ public final class UiTest {
             case "shopping" -> {
                 Mc.setScreen(new ShoppingScreen(null, false));
                 System.out.println("BBUITEST bug report: " + BugReport.text().replace("\n", " | "));
+                StringBuilder kb = new StringBuilder();
+                for (net.minecraft.client.KeyMapping k : net.minecraft.client.Minecraft.getInstance().options.keyMappings)
+                    if (k.getName().startsWith("key.buildblueprint")) kb.append(k.getName().substring(19)).append('=').append(k.saveString().replace("key.keyboard.", "")).append(' ');
+                System.out.println("BBUITEST keybinds: " + kb + "| hints: up " + KeyNames.up + ", down " + KeyNames.down + ", fast " + KeyNames.fast + ", shrink " + KeyNames.shrink + ", rotate " + KeyNames.rotate);
             }
             case "world-copy" -> {
                 Mc.setScreen(null);

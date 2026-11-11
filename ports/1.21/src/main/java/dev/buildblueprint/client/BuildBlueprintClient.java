@@ -126,7 +126,7 @@ public class BuildBlueprintClient implements ClientModInitializer {
             SESSION.load(bp, PlayerInfo.x(), PlayerInfo.y(), PlayerInfo.z(), PlayerInfo.yaw());
             Chat.ok("Loaded \"" + bp.name + "\": " + bp.blockCount() + " blocks, " + bp.sx + " x " + bp.sy + " x " + bp.sz + ".");
             Chat.say("It's shown in front of you, fully built. Move it into place, then press Delete (or Page Up > Place it) to start building layer by layer.");
-            if (Modules.keysActive) Chat.say("Keys: arrows move it (Up = forward, Down = back, Ctrl+Up/Down = up/down), Page Down rotates, Page Up opens the materials menu.");
+            if (Modules.keysActive) Chat.say("Keys: arrows move it (Up = forward, Down = back), = and - move it up and down, Page Down rotates, Page Up opens the build menu. Change keys in Options > Controls > Key Binds.");
             return 1;
         } catch (BlueprintException e) {
             ASSEMBLER.reset();
@@ -250,7 +250,7 @@ public class BuildBlueprintClient implements ClientModInitializer {
         Chat.say("/buildblueprint place | unlock  - lock the blueprint where it is so keys can't move it");
         Chat.say("/buildblueprint autobuild [layer|stop|undo]  - Creative only: places the blueprint for you");
         Chat.say("/buildblueprint copy  - copy a build from your world (or look at it and press Insert; arrows resize the box)");
-        if (Modules.keysActive) Chat.say("Keys: Up = forward, Down = back, Left/Right, Ctrl+Up/Down = up/down, Page Down = rotate, Page Up = materials menu.");
+        if (Modules.keysActive) Chat.say("Keys: Up = forward, Down = back, Left/Right, = and - = up/down, Page Down = rotate, Page Up = build menu. Change keys in Options > Controls > Key Binds.");
     }
 
     static void openMenuOrList() {

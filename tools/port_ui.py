@@ -14,13 +14,15 @@ FILES = [(SRC, n) for n in ['MaterialsScreen', 'SettingsScreen', 'CopyScreen', '
         [(MOD / 'keys/java/dev/buildblueprint/client', 'KeysModule'), (MOD / 'main/java/dev/buildblueprint/client', 'Copier'),
          (MOD / 'main/java/dev/buildblueprint/client', 'Swapper')] + \
         [(MOD / 'main/java/dev/buildblueprint/client', n) for n in ['Materials', 'Settings', 'Coop', 'Mistakes', 'Hide', 'Stats', 'Tr', 'Hint', 'Chat']]
-GLFW = {'LCONTROL': 'LEFT_CONTROL', 'RCONTROL': 'RIGHT_CONTROL', 'LSHIFT': 'LEFT_SHIFT', 'PAGEDOWN': 'PAGE_DOWN', 'PAGEUP': 'PAGE_UP', 'LALT': 'LEFT_ALT'}
+GLFW = {'LCONTROL': 'LEFT_CONTROL', 'RCONTROL': 'RIGHT_CONTROL', 'LSHIFT': 'LEFT_SHIFT', 'RSHIFT': 'RIGHT_SHIFT', 'PAGEDOWN': 'PAGE_DOWN', 'PAGEUP': 'PAGE_UP', 'LALT': 'LEFT_ALT', 'RALT': 'RIGHT_ALT', 'EQUALS': 'EQUAL'}
 
 SUBS = [
     # keys
     (r'import net\.fabricmc\.fabric\.api\.client\.keymapping\.v1\.KeyMappingHelper;', 'import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;'),
     (r'private static final KeyMapping\.Category CATEGORY = KeyMapping\.Category\.register\([^;]*\);', 'private static final String CATEGORY = "key.category.buildblueprint.main";'),
     (r'KeyMappingHelper\.registerKeyMapping\(new KeyMapping\(("[^"]*" \+ \w+), Mc\.keyboard\(\), (\w+), CATEGORY\)\)', r'KeyBindingHelper.registerKeyBinding(V.key(\1, \2))'),
+    (r'return Mc\.keyDown\(key\);', 'long w = org.lwjgl.glfw.GLFW.glfwGetCurrentContext(); return w != 0L && org.lwjgl.glfw.GLFW.glfwGetKey(w, key) == org.lwjgl.glfw.GLFW.GLFW_PRESS;'),
+    (r'KeyMappingHelper\.registerKeyMapping\(new KeyMapping\(("[^"]*" \+ \w+), InputConstants\.UNKNOWN\.getType\(\), InputConstants\.UNKNOWN\.getValue\(\), CATEGORY\)\)', r'KeyBindingHelper.registerKeyBinding(V.key(\1, -1))'),
     (r'\bmc\.hasShiftDown\(\)', 'V.shift()'), (r'\bmc\.hasAltDown\(\)', 'V.alt()'), (r'\bmc\.hasControlDown\(\)', 'V.ctrl()'),
     # copier (world reading)
     (r'BlockPos\.containing\(mc\.player\.getX\(\), mc\.player\.getY\(\), mc\.player\.getZ\(\)\)', 'new BlockPos((int) Math.floor(mc.player.getX()), (int) Math.floor(mc.player.getY()), (int) Math.floor(mc.player.getZ()))'),

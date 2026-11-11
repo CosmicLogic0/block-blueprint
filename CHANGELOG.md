@@ -1,3 +1,8 @@
+## 1.3.5
+- **Every key can be changed.** New keys **Move up** (=) and **Move down** (-) move the build - or the copy box - up and down without holding anything (Ctrl + Up/Down still works). The keys you hold (Ctrl for up/down, Shift for 5 blocks, Alt to shrink the copy box) can be set to other keys too, in Options > Controls > Key Binds > Build Blueprint.
+- **Fixed: Ctrl + Up/Down sometimes did nothing**, because Minecraft also uses Ctrl for sprinting and in some versions only one of the two got the key. Held keys are now read straight from the keyboard.
+- The key hints on screen (copying a build, How it works) show your own keys if you changed them.
+
 ## 1.3.4
 - **Fixed: no way to stop the mistake finder.** After clicking "to fix" in the build menu, the same spot now says **Stop fixing**. Turning **Red boxes** off (Settings > More) also hides the "to fix" count and stops it.
 - **Dirt counts for grass.** Where a build has grass (or a path, farmland, podzol or mycelium), plain dirt now counts as right instead of a mistake - grass needs Silk Touch, and turns into dirt when a block is on top. The block list asks for dirt for these.

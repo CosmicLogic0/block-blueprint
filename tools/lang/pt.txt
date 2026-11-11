@@ -78,6 +78,7 @@ Viu uma construção que gostou no seu mundo? Copie e construa de novo em qualqu
 Insert
 começar uma caixa de cópia no bloco que você olha
 aumentar a caixa (Alt + setas: diminuir)
+deixar a caixa mais alta ou mais baixa
 esticar a caixa até o bloco que você olha
 salvar (de novo)
 As cópias vão para Construções salvas, e para o app também.
@@ -85,7 +86,7 @@ No modo Criativo, Construir tudo coloca a construção inteira para você e Cons
 Clique do meio
 pegar o bloco do fantasma que você olha
 Em Configurações você muda a transparência dos fantasmas, a lista do canto e mais.
-Todas as teclas podem ser mudadas em Configurações -> Controles.
+Todas as teclas podem ser mudadas em Configurações -> Teclas (ou Opções > Controles > Atalhos > Build Blueprint).
 Construir com amigos: Co-op no menu de construção te dá um código para seus amigos. A construção aparece no mesmo lugar para eles, e cada um constrói a sua parte.
 Algo colocado errado? O menu da construção mostra no topo quantos há para consertar. Clique para ver cada um, e em Parar de consertar para parar.
 Construções salvas > Construções grátis tem mais de 1.300 construções grátis da comunidade do Minecraft.
@@ -435,7 +436,7 @@ portão de cerca
 placa de pressão
 placa pendurada
 Caixa de cópia começada no bloco que você olha. Deixe do tamanho da sua construção:
-As setas aumentam, Alt + setas diminuem, Ctrl + Cima/Baixo para cima/baixo, Shift = 5 blocos. Page Down estica até o bloco que você olha.
+As setas aumentam, Alt + setas diminuem, = e - para o topo e a base, Shift = 5 blocos. Page Down estica até o bloco que você olha.
 Aperte Insert de novo para salvar, Delete para cancelar.
 Longe demais - uma cópia pode ter até {0} blocos por lado
 Esticada até esse bloco  ·  caixa {0} x {1} x {2}  ·  Insert = salvar, Delete = cancelar
@@ -461,7 +462,7 @@ Recebida a parte {0} de {1}. Continue colando o resto.
 Recebida a parte {0} de {1}.
 "{0}" carregada: {1} blocos, {2} x {3} x {4}.
 Ela aparece na sua frente, completa. Coloque no lugar, depois aperte Delete (ou Page Up > Colocar) para construir camada por camada.
-Teclas: as setas movem (Cima = frente, Baixo = trás, Ctrl+Cima/Baixo = subir/descer), Page Down gira, Page Up abre o menu de materiais.
+Teclas: as setas movem (Cima = frente, Baixo = trás), = e - sobem e descem, Page Down gira, Page Up abre o menu. Mude as teclas em Opções > Controles > Atalhos.
 A construção está colocada (travada). Destrave primeiro: Page Up > Destravar, ou /buildblueprint unlock.
 Colocada! {0}
 Camada {0} de {1} - Home/End para mudar de camada
@@ -484,7 +485,7 @@ Mostrando só a camada {0} de {1}.
 "{0}": {1} blocos, {2} x {3} x {4}, girada {5} graus.
 Canto em {0}, {1}, {2}; canto oposto em {3}, {4}, {5}.
 Arquivos .schem, .litematic e .nbt em <home>/BlockBlueprint/builds (ou na sua pasta de esquemas do WorldEdit / Litematica) aparecem em Construções salvas.
-Teclas: Cima = frente, Baixo = trás, Esquerda/Direita, Ctrl+Cima/Baixo = subir/descer, Page Down = girar, Page Up = menu de materiais.
+Teclas: Cima = frente, Baixo = trás, Esquerda/Direita, = e - = subir/descer, Page Down = girar, Page Up = menu. Mude as teclas em Opções > Controles > Atalhos.
 --- {0}: você tem / você precisa ---
 OK  {0}
 FALTAM mais {0}  {1}

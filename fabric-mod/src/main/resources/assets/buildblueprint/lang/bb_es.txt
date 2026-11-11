@@ -79,6 +79,7 @@ See a build you like in your world? Copy it and build it again anywhere.	¿Ves u
 Insert	Insert
 start a copy box on the block you look at	empezar una caja de copia en el bloque que miras
 make the box bigger (Alt + arrows: smaller)	agrandar la caja (Alt + flechas: más pequeña)
+make the box taller or shorter	hacer la caja más alta o más baja
 stretch the box to the block you look at	estirar la caja hasta el bloque que miras
 save it (again)	guardarla (otra vez)
 Copies go to Saved builds, and into the app too.	Las copias van a Construcciones guardadas y también a la app.
@@ -86,7 +87,7 @@ In Creative mode, Auto-build places the whole build for you and Build layer plac
 Middle-click	Clic central
 hold the block of the ghost you look at	coger el bloque del fantasma que miras
 Settings lets you change how see-through the ghosts are, the corner list and more.	En Ajustes cambias lo transparentes que son los fantasmas, la lista de la esquina y más.
-Every key can be changed in Settings -> Key binds.	Todas las teclas se pueden cambiar en Ajustes -> Controles.
+Every key can be changed in Settings -> Key binds (or Options > Controls > Key Binds > Build Blueprint).	Puedes cambiar todas las teclas en Ajustes -> Teclas (o Opciones > Controles > Asignación de teclas > Build Blueprint).
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Construir con amigos: Co-op en el menú de construcción te da un código para tus amigos. La construcción aparece en el mismo sitio para ellos y cada uno construye su parte.
 Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one, and click Stop fixing to stop.	¿Algo mal colocado? El menú de construcción muestra arriba cuántos hay que arreglar. Haz clic para que te muestre cada uno, y en Dejar de arreglar para parar.
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	Construcciones guardadas > Construcciones gratis tiene más de 1.300 construcciones gratis de la comunidad de Minecraft.
@@ -436,7 +437,7 @@ fence gate	puerta de valla
 pressure plate	placa de presión
 hanging sign	cartel colgante
 Copy box started on the block you're looking at. Make it as big as your build:	Caja de copia empezada en el bloque que miras. Hazla tan grande como tu construcción:
-Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.	Las flechas la agrandan, Alt + flechas la encogen, Ctrl + Arriba/Abajo para arriba/abajo, Mayús = 5 bloques. Av Pág la estira hasta el bloque que miras.
+Arrows grow it, Alt + arrows shrink it, = and - for the top and bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.	Las flechas la agrandan, Alt + flechas la encogen, = y - para arriba y abajo, Shift = 5 bloques. Av Pág la estira hasta el bloque que miras.
 Press Insert again to save it, Delete to cancel.	Pulsa Insert otra vez para guardarla, Supr para cancelar.
 Too far - a copy can be up to {0} blocks per side	Demasiado lejos: una copia puede tener hasta {0} bloques por lado
 Stretched to that block  ·  box {0} x {1} x {2}  ·  Insert = save, Delete = cancel	Estirada hasta ese bloque  ·  caja {0} x {1} x {2}  ·  Insert = guardar, Supr = cancelar
@@ -462,7 +463,7 @@ Got part {0} of {1}. Keep pasting the rest.	Recibida la parte {0} de {1}. Sigue 
 Got part {0} of {1}.	Recibida la parte {0} de {1}.
 Loaded "{0}": {1} blocks, {2} x {3} x {4}.	"{0}" cargada: {1} bloques, {2} x {3} x {4}.
 It's shown in front of you, fully built. Move it into place, then press Delete (or Page Up > Place it) to start building layer by layer.	Se ve delante de ti, completa. Ponla en su sitio y pulsa Supr (o Re Pág > Colocarla) para construir capa por capa.
-Keys: arrows move it (Up = forward, Down = back, Ctrl+Up/Down = up/down), Page Down rotates, Page Up opens the materials menu.	Teclas: las flechas la mueven (Arriba = adelante, Abajo = atrás, Ctrl+Arriba/Abajo = subir/bajar), Av Pág la gira, Re Pág abre el menú de materiales.
+Keys: arrows move it (Up = forward, Down = back), = and - move it up and down, Page Down rotates, Page Up opens the build menu. Change keys in Options > Controls > Key Binds.	Teclas: las flechas la mueven (Arriba = adelante, Abajo = atrás), = y - la suben y bajan, Av Pág la gira, Re Pág abre el menú. Cambia las teclas en Opciones > Controles > Asignación de teclas.
 The blueprint is placed (locked). Unlock it first: Page Up > Unlock, or /buildblueprint unlock.	La construcción está colocada (fija). Suéltala primero: Re Pág > Soltar, o /buildblueprint unlock.
 Placed! {0}	¡Colocada! {0}
 Layer {0} of {1} - Home/End to change layer	Capa {0} de {1}: Inicio/Fin para cambiar de capa
@@ -485,7 +486,7 @@ Showing layer {0} of {1} only.	Mostrando solo la capa {0} de {1}.
 "{0}": {1} blocks, {2} x {3} x {4}, rotated {5} degrees.	"{0}": {1} bloques, {2} x {3} x {4}, girada {5} grados.
 Corner at {0}, {1}, {2}; far corner at {3}, {4}, {5}.	Esquina en {0}, {1}, {2}; esquina opuesta en {3}, {4}, {5}.
 .schem, .litematic and .nbt files in <home>/BlockBlueprint/builds (or your WorldEdit / Litematica schematics folder) show up in Saved builds.	Los archivos .schem, .litematic y .nbt en <home>/BlockBlueprint/builds (o en tu carpeta de esquemas de WorldEdit / Litematica) aparecen en Construcciones guardadas.
-Keys: Up = forward, Down = back, Left/Right, Ctrl+Up/Down = up/down, Page Down = rotate, Page Up = materials menu.	Teclas: Arriba = adelante, Abajo = atrás, Izquierda/Derecha, Ctrl+Arriba/Abajo = subir/bajar, Av Pág = girar, Re Pág = menú de materiales.
+Keys: Up = forward, Down = back, Left/Right, = and - = up/down, Page Down = rotate, Page Up = build menu. Change keys in Options > Controls > Key Binds.	Teclas: Arriba = adelante, Abajo = atrás, Izquierda/Derecha, = y - = subir/bajar, Av Pág = girar, Re Pág = menú. Cambia las teclas en Opciones > Controles > Asignación de teclas.
 --- {0}: you have / you need ---	--- {0}: tienes / necesitas ---
 OK  {0}	OK  {0}
 NEED {0} more  {1}	FALTAN {0} más  {1}

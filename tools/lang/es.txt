@@ -78,6 +78,7 @@ El ojo junto a un bloque oculta sus bloques fantasma (clic otra vez para mostrar
 Insert
 empezar una caja de copia en el bloque que miras
 agrandar la caja (Alt + flechas: más pequeña)
+hacer la caja más alta o más baja
 estirar la caja hasta el bloque que miras
 guardarla (otra vez)
 Las copias van a Construcciones guardadas y también a la app.
@@ -85,7 +86,7 @@ En modo Creativo, Autoconstruir coloca toda la construcción por ti y Construir 
 Clic central
 coger el bloque del fantasma que miras
 En Ajustes cambias lo transparentes que son los fantasmas, la lista de la esquina y más.
-Todas las teclas se pueden cambiar en Ajustes -> Controles.
+Puedes cambiar todas las teclas en Ajustes -> Teclas (o Opciones > Controles > Asignación de teclas > Build Blueprint).
 Construir con amigos: Co-op en el menú de construcción te da un código para tus amigos. La construcción aparece en el mismo sitio para ellos y cada uno construye su parte.
 ¿Algo mal colocado? El menú de construcción muestra arriba cuántos hay que arreglar. Haz clic para que te muestre cada uno, y en Dejar de arreglar para parar.
 Construcciones guardadas > Construcciones gratis tiene más de 1.300 construcciones gratis de la comunidad de Minecraft.
@@ -435,7 +436,7 @@ puerta de valla
 placa de presión
 cartel colgante
 Caja de copia empezada en el bloque que miras. Hazla tan grande como tu construcción:
-Las flechas la agrandan, Alt + flechas la encogen, Ctrl + Arriba/Abajo para arriba/abajo, Mayús = 5 bloques. Av Pág la estira hasta el bloque que miras.
+Las flechas la agrandan, Alt + flechas la encogen, = y - para arriba y abajo, Shift = 5 bloques. Av Pág la estira hasta el bloque que miras.
 Pulsa Insert otra vez para guardarla, Supr para cancelar.
 Demasiado lejos: una copia puede tener hasta {0} bloques por lado
 Estirada hasta ese bloque  ·  caja {0} x {1} x {2}  ·  Insert = guardar, Supr = cancelar
@@ -461,7 +462,7 @@ Recibida la parte {0} de {1}. Sigue pegando el resto.
 Recibida la parte {0} de {1}.
 "{0}" cargada: {1} bloques, {2} x {3} x {4}.
 Se ve delante de ti, completa. Ponla en su sitio y pulsa Supr (o Re Pág > Colocarla) para construir capa por capa.
-Teclas: las flechas la mueven (Arriba = adelante, Abajo = atrás, Ctrl+Arriba/Abajo = subir/bajar), Av Pág la gira, Re Pág abre el menú de materiales.
+Teclas: las flechas la mueven (Arriba = adelante, Abajo = atrás), = y - la suben y bajan, Av Pág la gira, Re Pág abre el menú. Cambia las teclas en Opciones > Controles > Asignación de teclas.
 La construcción está colocada (fija). Suéltala primero: Re Pág > Soltar, o /buildblueprint unlock.
 ¡Colocada! {0}
 Capa {0} de {1}: Inicio/Fin para cambiar de capa
@@ -484,7 +485,7 @@ Mostrando solo la capa {0} de {1}.
 "{0}": {1} bloques, {2} x {3} x {4}, girada {5} grados.
 Esquina en {0}, {1}, {2}; esquina opuesta en {3}, {4}, {5}.
 Los archivos .schem, .litematic y .nbt en <home>/BlockBlueprint/builds (o en tu carpeta de esquemas de WorldEdit / Litematica) aparecen en Construcciones guardadas.
-Teclas: Arriba = adelante, Abajo = atrás, Izquierda/Derecha, Ctrl+Arriba/Abajo = subir/bajar, Av Pág = girar, Re Pág = menú de materiales.
+Teclas: Arriba = adelante, Abajo = atrás, Izquierda/Derecha, = y - = subir/bajar, Av Pág = girar, Re Pág = menú. Cambia las teclas en Opciones > Controles > Asignación de teclas.
 --- {0}: tienes / necesitas ---
 OK  {0}
 FALTAN {0} más  {1}

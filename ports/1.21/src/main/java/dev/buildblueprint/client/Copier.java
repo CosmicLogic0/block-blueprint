@@ -55,7 +55,7 @@ public final class Copier {
         c1 = t; c2 = t;
         active = true; lastCount = -1; countTick = 0;
         Chat.ok("Copy box started on the block you're looking at. Make it as big as your build:");
-        Chat.say("Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.");
+        Chat.say("Arrows grow it, Alt + arrows shrink it, = and - for the top and bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.");
         Chat.say("Press Insert again to save it, Delete to cancel.");
     }
 

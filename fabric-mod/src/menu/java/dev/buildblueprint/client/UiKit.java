@@ -70,7 +70,7 @@ public final class UiKit {
 
     /** A little key cap like [Insert] followed by what it does. Returns the x after it. */
     public static int key(GuiGraphicsExtractor g, Font font, int x, int y, String key, String what) {
-        key = Tr.t(key); what = Tr.t(what);
+        key = Tr.t(KeyNames.live(key)); what = Tr.t(what);   // the player's own keys if they changed them
         int kw = font.width(Tr.t(key)) + 6;
         g.fill(x, y - 1, x + kw, y + 9, 0xFF3A3A44);
         g.fill(x, y + 9, x + kw, y + 10, 0xFF1A1A20);

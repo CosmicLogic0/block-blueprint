@@ -78,6 +78,7 @@ Siehst du in deiner Welt einen Bau, der dir gefällt? Kopier ihn und bau ihn woa
 Einfg
 eine Kopier-Box auf dem Block starten, den du ansiehst
 die Box vergrößern (Alt + Pfeiltasten: verkleinern)
+die Box höher oder niedriger machen
 die Box bis zum Block ziehen, den du ansiehst
 speichern (nochmal)
 Kopien landen in Gespeicherte Bauten und auch in der App.
@@ -85,7 +86,7 @@ Im Kreativmodus setzt Automatisch bauen den ganzen Bau für dich und Schicht bau
 Mittelklick
 den Block des Geistes nehmen, den du ansiehst
 In den Einstellungen änderst du, wie durchsichtig die Geister sind, die Eckliste und mehr.
-Jede Taste lässt sich unter Einstellungen -> Steuerung ändern.
+Jede Taste lässt sich unter Einstellungen -> Tastenbelegung ändern (oder Optionen > Steuerung > Tastenbelegung > Build Blueprint).
 Mit Freunden bauen: Koop im Bau-Menü gibt dir einen Code für deine Freunde. Der Bau erscheint bei ihnen an derselben Stelle, und jeder baut seinen eigenen Teil.
 Etwas falsch platziert? Das Baumenü zeigt oben, wie viele zu reparieren sind. Klick darauf, um jeden einzeln gezeigt zu bekommen, und auf Reparieren beenden, um aufzuhören.
 Gespeicherte Bauten > Kostenlose Bauten hat über 1.300 kostenlose Bauten aus der Minecraft-Community.
@@ -435,7 +436,7 @@ Zauntor
 Druckplatte
 Hängeschild
 Kopier-Box auf dem Block gestartet, den du ansiehst. Mach sie so groß wie deinen Bau:
-Pfeile vergrößern sie, Alt + Pfeile verkleinern sie, Strg + Hoch/Runter für oben/unten, Umschalt = 5 Blöcke. Bild ab zieht sie bis zum Block, den du ansiehst.
+Pfeile vergrößern sie, Alt + Pfeile verkleinern sie, = und - für oben und unten, Umschalt = 5 Blöcke. Bild ab zieht sie bis zum Block, den du ansiehst.
 Drück nochmal Einfg zum Speichern, Entf zum Abbrechen.
 Zu weit - eine Kopie darf bis zu {0} Blöcke pro Seite haben
 Bis zu diesem Block gezogen  ·  Box {0} x {1} x {2}  ·  Einfg = speichern, Entf = abbrechen
@@ -461,7 +462,7 @@ Teil {0} von {1} erhalten. Füg den Rest weiter ein.
 Teil {0} von {1} erhalten.
 "{0}" geladen: {1} Blöcke, {2} x {3} x {4}.
 Er wird vor dir gezeigt, komplett gebaut. Beweg ihn an seinen Platz, dann drück Entf (oder Bild auf > Platzieren), um Schicht für Schicht zu bauen.
-Tasten: Pfeile bewegen ihn (Hoch = vor, Runter = zurück, Strg+Hoch/Runter = hoch/runter), Bild ab dreht, Bild auf öffnet das Materialmenü.
+Tasten: Pfeile bewegen es (Hoch = vor, Runter = zurück), = und - nach oben und unten, Bild ab dreht, Bild auf öffnet das Baumenü. Tasten ändern unter Optionen > Steuerung > Tastenbelegung.
 Der Bau ist platziert (fixiert). Löse ihn zuerst: Bild auf > Lösen, oder /buildblueprint unlock.
 Platziert! {0}
 Schicht {0} von {1} - Pos1/Ende zum Schichtwechsel
@@ -484,7 +485,7 @@ Nur Schicht {0} von {1} wird gezeigt.
 "{0}": {1} Blöcke, {2} x {3} x {4}, um {5} Grad gedreht.
 Ecke bei {0}, {1}, {2}; gegenüberliegende Ecke bei {3}, {4}, {5}.
 .schem-, .litematic- und .nbt-Dateien in <home>/BlockBlueprint/builds (oder deinem WorldEdit- / Litematica-Schematic-Ordner) erscheinen in Gespeicherte Bauten.
-Tasten: Hoch = vor, Runter = zurück, Links/Rechts, Strg+Hoch/Runter = hoch/runter, Bild ab = drehen, Bild auf = Materialmenü.
+Tasten: Hoch = vor, Runter = zurück, Links/Rechts, = und - = hoch/runter, Bild ab = drehen, Bild auf = Baumenü. Tasten ändern unter Optionen > Steuerung > Tastenbelegung.
 --- {0}: du hast / du brauchst ---
 OK  {0}
 FEHLT {0} mehr  {1}

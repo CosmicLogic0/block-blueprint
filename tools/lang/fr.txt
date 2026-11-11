@@ -78,6 +78,7 @@ Tu vois une construction qui te plaît dans ton monde ? Copie-la et reconstruis-
 Inser
 commencer une boîte de copie sur le bloc que tu regardes
 agrandir la boîte (Alt + flèches : plus petite)
+rendre la boîte plus haute ou plus basse
 étirer la boîte jusqu'au bloc que tu regardes
 la sauvegarder (encore)
 Les copies vont dans Constructions sauvegardées, et dans l'appli aussi.
@@ -85,7 +86,7 @@ En mode Créatif, Construction auto pose toute la construction pour toi et Const
 Clic molette
 prendre le bloc du fantôme que tu regardes
 Les Paramètres te permettent de changer la transparence des fantômes, la liste du coin et plus.
-Chaque touche peut être changée dans Paramètres -> Commandes.
+Toutes les touches se changent dans Réglages -> Touches (ou Options > Commandes > Touches > Build Blueprint).
 Construire entre amis : Coop dans le menu de construction te donne un code pour tes amis. La construction apparaît au même endroit chez eux, et chacun construit sa partie.
 Quelque chose de mal placé ? Le menu de construction indique en haut combien il y a à corriger. Clique dessus pour qu'on te montre chacun, et sur Arrêter de corriger pour arrêter.
 Constructions sauvegardées > Constructions gratuites propose plus de 1 300 constructions gratuites de la communauté Minecraft.
@@ -435,7 +436,7 @@ portillon
 plaque de pression
 pancarte suspendue
 Boîte de copie commencée sur le bloc que tu regardes. Agrandis-la à la taille de ta construction :
-Les flèches l'agrandissent, Alt + flèches la rétrécissent, Ctrl + Haut/Bas pour le haut/bas, Maj = 5 blocs. Pg suiv l'étire jusqu'au bloc que tu regardes.
+Les flèches l'agrandissent, Alt + flèches la réduisent, = et - pour le haut et le bas, Maj = 5 blocs. Page suivante l'étire jusqu'au bloc que tu regardes.
 Appuie encore sur Inser pour sauvegarder, Suppr pour annuler.
 Trop loin - une copie peut faire jusqu'à {0} blocs de côté
 Étirée jusqu'à ce bloc  ·  boîte {0} x {1} x {2}  ·  Inser = sauvegarder, Suppr = annuler
@@ -461,7 +462,7 @@ Partie {0} sur {1} reçue. Continue de coller le reste.
 Partie {0} sur {1} reçue.
 « {0} » chargée : {1} blocs, {2} x {3} x {4}.
 Elle s'affiche devant toi, entièrement construite. Mets-la en place, puis appuie sur Suppr (ou Pg préc > La placer) pour construire couche par couche.
-Touches : les flèches la déplacent (Haut = avant, Bas = arrière, Ctrl+Haut/Bas = monter/descendre), Pg suiv la tourne, Pg préc ouvre le menu des matériaux.
+Touches : les flèches la déplacent (Haut = avant, Bas = arrière), = et - la montent et la descendent, Page suivante la tourne, Page précédente ouvre le menu. Change les touches dans Options > Commandes > Touches.
 La construction est placée (verrouillée). Déverrouille-la d'abord : Pg préc > Déverrouiller, ou /buildblueprint unlock.
 Placée ! {0}
 Couche {0} sur {1} - Début/Fin pour changer de couche
@@ -484,7 +485,7 @@ Seule la couche {0} sur {1} est affichée.
 « {0} » : {1} blocs, {2} x {3} x {4}, tournée de {5} degrés.
 Coin en {0}, {1}, {2} ; coin opposé en {3}, {4}, {5}.
 Les fichiers .schem, .litematic et .nbt dans <home>/BlockBlueprint/builds (ou ton dossier de schématiques WorldEdit / Litematica) apparaissent dans Constructions sauvegardées.
-Touches : Haut = avant, Bas = arrière, Gauche/Droite, Ctrl+Haut/Bas = monter/descendre, Pg suiv = tourner, Pg préc = menu des matériaux.
+Touches : Haut = avant, Bas = arrière, Gauche/Droite, = et - = monter/descendre, Page suivante = tourner, Page précédente = menu. Change les touches dans Options > Commandes > Touches.
 --- {0} : tu as / il te faut ---
 OK  {0}
 MANQUE encore {0}  {1}

@@ -88,6 +88,7 @@ See a build you like in your world? Copy it and build it again anywhere.
 Insert
 start a copy box on the block you look at
 make the box bigger (Alt + arrows: smaller)
+make the box taller or shorter
 stretch the box to the block you look at
 save it (again)
 Copies go to Saved builds, and into the app too.
@@ -95,7 +96,7 @@ In Creative mode, Auto-build places the whole build for you and Build layer plac
 Middle-click
 hold the block of the ghost you look at
 Settings lets you change how see-through the ghosts are, the corner list and more.
-Every key can be changed in Settings -> Key binds.
+Every key can be changed in Settings -> Key binds (or Options > Controls > Key Binds > Build Blueprint).
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.
 Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one, and click Stop fixing to stop.
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.
@@ -476,7 +477,7 @@ fence gate
 pressure plate
 hanging sign
 Copy box started on the block you're looking at. Make it as big as your build:
-Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.
+Arrows grow it, Alt + arrows shrink it, = and - for the top and bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.
 Press Insert again to save it, Delete to cancel.
 Too far - a copy can be up to {0} blocks per side
 Stretched to that block  ·  box {0} x {1} x {2}  ·  Insert = save, Delete = cancel
@@ -507,7 +508,7 @@ Got part {0} of {1}. Keep pasting the rest.
 Got part {0} of {1}.
 Loaded "{0}": {1} blocks, {2} x {3} x {4}.
 It's shown in front of you, fully built. Move it into place, then press Delete (or Page Up > Place it) to start building layer by layer.
-Keys: arrows move it (Up = forward, Down = back, Ctrl+Up/Down = up/down), Page Down rotates, Page Up opens the materials menu.
+Keys: arrows move it (Up = forward, Down = back), = and - move it up and down, Page Down rotates, Page Up opens the build menu. Change keys in Options > Controls > Key Binds.
 The blueprint is placed (locked). Unlock it first: Page Up > Unlock, or /buildblueprint unlock.
 Placed! {0}
 Layer {0} of {1} - Home/End to change layer
@@ -530,7 +531,7 @@ Showing layer {0} of {1} only.
 "{0}": {1} blocks, {2} x {3} x {4}, rotated {5} degrees.
 Corner at {0}, {1}, {2}; far corner at {3}, {4}, {5}.
 .schem, .litematic and .nbt files in <home>/BlockBlueprint/builds (or your WorldEdit / Litematica schematics folder) show up in Saved builds.
-Keys: Up = forward, Down = back, Left/Right, Ctrl+Up/Down = up/down, Page Down = rotate, Page Up = materials menu.
+Keys: Up = forward, Down = back, Left/Right, = and - = up/down, Page Down = rotate, Page Up = build menu. Change keys in Options > Controls > Key Binds.
 --- {0}: you have / you need ---
 OK  {0}
 NEED {0} more  {1}

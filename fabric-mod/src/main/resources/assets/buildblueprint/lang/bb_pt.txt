@@ -79,6 +79,7 @@ See a build you like in your world? Copy it and build it again anywhere.	Viu uma
 Insert	Insert
 start a copy box on the block you look at	começar uma caixa de cópia no bloco que você olha
 make the box bigger (Alt + arrows: smaller)	aumentar a caixa (Alt + setas: diminuir)
+make the box taller or shorter	deixar a caixa mais alta ou mais baixa
 stretch the box to the block you look at	esticar a caixa até o bloco que você olha
 save it (again)	salvar (de novo)
 Copies go to Saved builds, and into the app too.	As cópias vão para Construções salvas, e para o app também.
@@ -86,7 +87,7 @@ In Creative mode, Auto-build places the whole build for you and Build layer plac
 Middle-click	Clique do meio
 hold the block of the ghost you look at	pegar o bloco do fantasma que você olha
 Settings lets you change how see-through the ghosts are, the corner list and more.	Em Configurações você muda a transparência dos fantasmas, a lista do canto e mais.
-Every key can be changed in Settings -> Key binds.	Todas as teclas podem ser mudadas em Configurações -> Controles.
+Every key can be changed in Settings -> Key binds (or Options > Controls > Key Binds > Build Blueprint).	Todas as teclas podem ser mudadas em Configurações -> Teclas (ou Opções > Controles > Atalhos > Build Blueprint).
 Build with friends: Co-op in the build menu gives you a code for your friends. The build appears in the same spot for them, and each of you builds your own part.	Construir com amigos: Co-op no menu de construção te dá um código para seus amigos. A construção aparece no mesmo lugar para eles, e cada um constrói a sua parte.
 Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one, and click Stop fixing to stop.	Algo colocado errado? O menu da construção mostra no topo quantos há para consertar. Clique para ver cada um, e em Parar de consertar para parar.
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	Construções salvas > Construções grátis tem mais de 1.300 construções grátis da comunidade do Minecraft.
@@ -436,7 +437,7 @@ fence gate	portão de cerca
 pressure plate	placa de pressão
 hanging sign	placa pendurada
 Copy box started on the block you're looking at. Make it as big as your build:	Caixa de cópia começada no bloco que você olha. Deixe do tamanho da sua construção:
-Arrows grow it, Alt + arrows shrink it, Ctrl + Up/Down for top/bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.	As setas aumentam, Alt + setas diminuem, Ctrl + Cima/Baixo para cima/baixo, Shift = 5 blocos. Page Down estica até o bloco que você olha.
+Arrows grow it, Alt + arrows shrink it, = and - for the top and bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.	As setas aumentam, Alt + setas diminuem, = e - para o topo e a base, Shift = 5 blocos. Page Down estica até o bloco que você olha.
 Press Insert again to save it, Delete to cancel.	Aperte Insert de novo para salvar, Delete para cancelar.
 Too far - a copy can be up to {0} blocks per side	Longe demais - uma cópia pode ter até {0} blocos por lado
 Stretched to that block  ·  box {0} x {1} x {2}  ·  Insert = save, Delete = cancel	Esticada até esse bloco  ·  caixa {0} x {1} x {2}  ·  Insert = salvar, Delete = cancelar
@@ -462,7 +463,7 @@ Got part {0} of {1}. Keep pasting the rest.	Recebida a parte {0} de {1}. Continu
 Got part {0} of {1}.	Recebida a parte {0} de {1}.
 Loaded "{0}": {1} blocks, {2} x {3} x {4}.	"{0}" carregada: {1} blocos, {2} x {3} x {4}.
 It's shown in front of you, fully built. Move it into place, then press Delete (or Page Up > Place it) to start building layer by layer.	Ela aparece na sua frente, completa. Coloque no lugar, depois aperte Delete (ou Page Up > Colocar) para construir camada por camada.
-Keys: arrows move it (Up = forward, Down = back, Ctrl+Up/Down = up/down), Page Down rotates, Page Up opens the materials menu.	Teclas: as setas movem (Cima = frente, Baixo = trás, Ctrl+Cima/Baixo = subir/descer), Page Down gira, Page Up abre o menu de materiais.
+Keys: arrows move it (Up = forward, Down = back), = and - move it up and down, Page Down rotates, Page Up opens the build menu. Change keys in Options > Controls > Key Binds.	Teclas: as setas movem (Cima = frente, Baixo = trás), = e - sobem e descem, Page Down gira, Page Up abre o menu. Mude as teclas em Opções > Controles > Atalhos.
 The blueprint is placed (locked). Unlock it first: Page Up > Unlock, or /buildblueprint unlock.	A construção está colocada (travada). Destrave primeiro: Page Up > Destravar, ou /buildblueprint unlock.
 Placed! {0}	Colocada! {0}
 Layer {0} of {1} - Home/End to change layer	Camada {0} de {1} - Home/End para mudar de camada
@@ -485,7 +486,7 @@ Showing layer {0} of {1} only.	Mostrando só a camada {0} de {1}.
 "{0}": {1} blocks, {2} x {3} x {4}, rotated {5} degrees.	"{0}": {1} blocos, {2} x {3} x {4}, girada {5} graus.
 Corner at {0}, {1}, {2}; far corner at {3}, {4}, {5}.	Canto em {0}, {1}, {2}; canto oposto em {3}, {4}, {5}.
 .schem, .litematic and .nbt files in <home>/BlockBlueprint/builds (or your WorldEdit / Litematica schematics folder) show up in Saved builds.	Arquivos .schem, .litematic e .nbt em <home>/BlockBlueprint/builds (ou na sua pasta de esquemas do WorldEdit / Litematica) aparecem em Construções salvas.
-Keys: Up = forward, Down = back, Left/Right, Ctrl+Up/Down = up/down, Page Down = rotate, Page Up = materials menu.	Teclas: Cima = frente, Baixo = trás, Esquerda/Direita, Ctrl+Cima/Baixo = subir/descer, Page Down = girar, Page Up = menu de materiais.
+Keys: Up = forward, Down = back, Left/Right, = and - = up/down, Page Down = rotate, Page Up = build menu. Change keys in Options > Controls > Key Binds.	Teclas: Cima = frente, Baixo = trás, Esquerda/Direita, = e - = subir/descer, Page Down = girar, Page Up = menu. Mude as teclas em Opções > Controles > Atalhos.
 --- {0}: you have / you need ---	--- {0}: você tem / você precisa ---
 OK  {0}	OK  {0}
 NEED {0} more  {1}	FALTAM mais {0}  {1}
