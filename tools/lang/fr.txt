@@ -525,6 +525,7 @@ partie {0} sur {1} ({2})
 juste ici
 Ce fichier schématique est trop gros.
 Impossible de lire {0}.
+Cette construction est trop grande pour la mémoire de Minecraft. Donne plus de mémoire (RAM) à Minecraft dans ton launcher, puis réessaie.
 Rien à coller. Copie un code de construction (BB1:...) ou les lignes Export > « Copy all » de l'appli, puis colle-les ici.
 Seulement {0} parties sur {1} ont été collées. Utilise « Copy all » dans l'appli.
 Ce n'est pas un code de construction.

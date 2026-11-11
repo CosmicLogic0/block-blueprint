@@ -119,7 +119,7 @@ public final class SavedBuilds {
     private static Blueprint readSchematic(Entry e) throws BlueprintException {
         Path p = pathOf(e);
         try {
-            if (Files.size(p) > 50_000_000) throw new BlueprintException("That schematic file is too big.");
+            if (Files.size(p) > 2_000_000_000L) throw new BlueprintException("That schematic file is too big.");   // what Java can read in one go
             return SchemCodec.read(Files.readAllBytes(p), e.name());
         } catch (IOException ex) {
             throw new BlueprintException("Couldn't read " + p.getFileName() + ".");
@@ -141,7 +141,14 @@ public final class SavedBuilds {
     public static Blueprint blueprint(Entry e) throws BlueprintException {
         String key = isFile(e) ? e.data() + "@" + e.modified() : e.data();
         Blueprint bp = CACHE.get(key);
-        if (bp == null) { bp = isFile(e) ? readSchematic(e) : BlueprintCodec.decode(e.data()); CACHE.put(key, bp); }
+        if (bp == null) {
+            try { bp = isFile(e) ? readSchematic(e) : BlueprintCodec.decode(e.data()); }
+            catch (OutOfMemoryError oom) {   // a really big build: say what to do instead of crashing
+                CACHE.clear();
+                throw new BlueprintException("That build is too big for the memory Minecraft has. Give Minecraft more memory (RAM) in your launcher, then try again.");
+            }
+            CACHE.put(key, bp);
+        }
         return bp;
     }
 
@@ -183,7 +190,7 @@ public final class SavedBuilds {
             inf.setInput(z);
             java.io.ByteArrayOutputStream o = new java.io.ByteArrayOutputStream();
             byte[] buf = new byte[8192];
-            while (!inf.finished()) { int n = inf.inflate(buf); if (n == 0 && inf.needsInput()) break; o.write(buf, 0, n); if (o.size() > 60_000_000) throw new BlueprintException("That build is too big."); }
+            while (!inf.finished()) { int n = inf.inflate(buf); if (n == 0 && inf.needsInput()) break; o.write(buf, 0, n); if (o.size() > 2_000_000_000) throw new BlueprintException("That build is too big."); }
             inf.end();
             json = o.toString(StandardCharsets.UTF_8);
         } catch (BlueprintException e) { throw e; } catch (Exception e) { throw new BlueprintException("That build code is broken - copy it again."); }
@@ -205,7 +212,7 @@ public final class SavedBuilds {
                 for (int i = 0; i < 3; i++) { mn[i] = Math.min(mn[i], p[i]); mx[i] = Math.max(mx[i], p[i]); }
             }
             int sx = mx[0] - mn[0] + 1, sy = mx[1] - mn[1] + 1, sz = mx[2] - mn[2] + 1;
-            if (sx > 512 || sy > 512 || sz > 512 || (long) sx * sy * sz > 8_000_000) throw new BlueprintException("That build is too big.");
+            if ((long) sx * sy * sz > 2_000_000_000L) throw new BlueprintException("That build is too big.");
             Map<String, Integer> idx = new HashMap<>(); List<String> pal = new ArrayList<>();
             int[] cells = new int[sx * sy * sz];
             for (int i = 0; i < pos.size(); i++) {

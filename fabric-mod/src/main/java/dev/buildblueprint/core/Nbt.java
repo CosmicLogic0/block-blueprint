@@ -22,7 +22,7 @@ public final class Nbt {
     private Nbt() {}
 
     private static final int MAX_DEPTH = 64;
-    private static final int MAX_ARRAY = 64_000_000;
+    private static final int MAX_ARRAY = 2_000_000_000;   // big builds are fine; this only stops a broken file
 
     /** A typed value for writing (so a short stays a short and a list knows its element type). */
     public static final class Tag {

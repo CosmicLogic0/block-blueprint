@@ -14,9 +14,10 @@ import java.util.zip.Inflater;
 public final class BlueprintCodec {
     private BlueprintCodec() {}
 
-    private static final int MAX_DIM = 512;
-    private static final int MAX_CELLS = 8_000_000;
-    private static final int MAX_BYTES = 40_000_000;
+    // No real size limit any more: a big build just takes a while and lots of memory.
+    private static final int MAX_DIM = 1_000_000;
+    private static final long MAX_CELLS = 2_000_000_000L;
+    private static final int MAX_BYTES = 2_000_000_000;
 
     private static final class Reader {
         final byte[] b; int p;
@@ -67,7 +68,7 @@ public final class BlueprintCodec {
             throw new BlueprintException("Blueprint size is out of range.");
         String name = r.str();
         int pc = r.varint();
-        if (pc < 0 || pc > 100_000) throw new BlueprintException("Blueprint data is corrupted (palette).");
+        if (pc < 0 || pc > 10_000_000) throw new BlueprintException("Blueprint data is corrupted (palette).");
         String[] palette = new String[pc];
         for (int i = 0; i < pc; i++) palette[i] = r.str();
 

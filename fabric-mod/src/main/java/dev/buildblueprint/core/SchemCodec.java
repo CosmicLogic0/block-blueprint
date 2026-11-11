@@ -22,8 +22,9 @@ import java.util.TreeMap;
 public final class SchemCodec {
     private SchemCodec() {}
 
-    private static final int MAX_DIM = 512;
-    private static final int MAX_CELLS = 8_000_000;
+    // No real size limit any more: a big build just takes a while and lots of memory (the player chose to load it).
+    private static final int MAX_DIM = 1_000_000;
+    private static final long MAX_CELLS = 2_000_000_000L;   // what one Java array can hold
 
     /** File endings this class can read. */
     public static final String[] EXTENSIONS = {".schem", ".litematic", ".nbt", ".schematic"};
@@ -292,7 +293,7 @@ public final class SchemCodec {
     private static void checkSize(int x, int y, int z) throws BlueprintException {
         if (x <= 0 || y <= 0 || z <= 0) throw new BlueprintException("That schematic is empty.");
         if (x > MAX_DIM || y > MAX_DIM || z > MAX_DIM || (long) x * y * z > MAX_CELLS)
-            throw new BlueprintException("That schematic is too big (" + x + " x " + y + " x " + z + "). Up to 512 blocks each way and 8 million blocks in total.");
+            throw new BlueprintException("That schematic is too big to load (" + x + " x " + y + " x " + z + ").");
     }
 
     private static String clean(String name, String fallback) {

@@ -525,6 +525,7 @@ parte {0} de {1} ({2})
 bem aqui
 Esse arquivo de esquema é grande demais.
 Não deu para ler {0}.
+Essa construção é grande demais para a memória do Minecraft. Dê mais memória (RAM) ao Minecraft no seu launcher e tente de novo.
 Nada para colar. Copie um código de construção (BB1:...) ou as linhas de Export > "Copy all" do app, depois cole aqui.
 Só {0} de {1} partes foram coladas. Use "Copy all" no app.
 Isso não é um código de construção.

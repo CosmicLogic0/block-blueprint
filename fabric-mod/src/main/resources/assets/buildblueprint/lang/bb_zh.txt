@@ -526,6 +526,7 @@ part {0} of {1} ({2})	第 {0} 部分，共 {1} 部分（{2}）
 right here	就在这里
 That schematic file is too big.	这个原理图文件太大了。
 Couldn't read {0}.	无法读取 {0}。
+That build is too big for the memory Minecraft has. Give Minecraft more memory (RAM) in your launcher, then try again.	这个建筑太大了，Minecraft 的内存不够。请在启动器里给 Minecraft 分配更多内存（RAM），然后再试一次。
 Nothing to paste. Copy a build code (BB1:...) or the app's Export > "Copy all" lines, then paste here.	没有可粘贴的。复制一个建筑代码（BB1:...）或应用里 Export > “Copy all” 的内容，然后粘贴到这里。
 Only {0} of {1} parts were pasted. Use "Copy all" in the app.	只粘贴了 {1} 部分中的 {0} 部分。请在应用里使用“Copy all”。
 That isn't a build code.	这不是建筑代码。

@@ -526,6 +526,7 @@ part {0} of {1} ({2})	parte {0} de {1} ({2})
 right here	aquí mismo
 That schematic file is too big.	Ese archivo de esquema es demasiado grande.
 Couldn't read {0}.	No se pudo leer {0}.
+That build is too big for the memory Minecraft has. Give Minecraft more memory (RAM) in your launcher, then try again.	Esa construcción es demasiado grande para la memoria que tiene Minecraft. Dale más memoria (RAM) a Minecraft en tu launcher y vuelve a intentarlo.
 Nothing to paste. Copy a build code (BB1:...) or the app's Export > "Copy all" lines, then paste here.	Nada que pegar. Copia un código de construcción (BB1:...) o las líneas de Export > "Copy all" de la app y pégalo aquí.
 Only {0} of {1} parts were pasted. Use "Copy all" in the app.	Solo se pegaron {0} de {1} partes. Usa "Copy all" en la app.
 That isn't a build code.	Eso no es un código de construcción.

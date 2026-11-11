@@ -36,7 +36,7 @@ import net.minecraft.world.phys.Vec3;
 public final class PreviewModule {
     private PreviewModule() {}
 
-    private static final int MAX_GHOSTS = 60000, MAX_RED = 3000;
+    private static final int MAX_GHOSTS = 500_000, MAX_RED = 3000;   // big builds show (and lag); "Nearby layers only" or a shorter distance makes them lighter
     private static final double RANGE = 64;
     private static final GizmoStyle RED = GizmoStyle.stroke(0xFFFF2020, 6f);
     private static final GizmoStyle SCAFFOLD = GizmoStyle.stroke(0xFF60C8FF, 2f);
@@ -334,17 +334,17 @@ public final class PreviewModule {
         }
     }
 
-    /** Far ones first, so see-through blocks blend the right way. Sorts plain numbers, which is quick even for 60,000 blocks. */
+    /** Far ones first, so see-through blocks blend the right way. Sorts plain numbers, which is quick even for lots of blocks. */
     private static void sortGhosts(double cx, double cy, double cz) {
         int n = ghosts.size();
         long[] keys = new long[n];
         for (int i = 0; i < n; i++) {
-            long q = (long) Math.min(d2(ghosts.get(i), cx, cy, cz) * 4, (double) ((1L << 45) - 1));
-            keys[i] = (((1L << 45) - 1 - q) << 17) | i;
+            long q = (long) Math.min(d2(ghosts.get(i), cx, cy, cz) * 4, (double) ((1L << 43) - 1));
+            keys[i] = (((1L << 43) - 1 - q) << 20) | i;
         }
         java.util.Arrays.sort(keys);
         List<Ghost> out = new ArrayList<>(n);
-        for (long k : keys) out.add(ghosts.get((int) (k & 0x1FFFF)));
+        for (long k : keys) out.add(ghosts.get((int) (k & 0xFFFFF)));
         ghosts = out;
     }
 

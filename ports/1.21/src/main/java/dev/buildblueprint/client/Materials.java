@@ -49,7 +49,13 @@ public final class Materials {
     }
 
     static void init() {
-        ClientTickEvents.END_CLIENT_TICK.register(mc -> { if (++tick % 20 == 0) Safe.run("materials list", Materials::refresh); });
+        ClientTickEvents.END_CLIENT_TICK.register(mc -> {   // about once a second; less often for huge builds, so counting them never takes over the game
+            if (++tick < nextTick) return;
+            long t0 = System.nanoTime();
+            Safe.run("materials list", Materials::refresh);
+            long ms = (System.nanoTime() - t0) / 1_000_000;
+            nextTick = tick + (int) Math.max(20, Math.min(1200, ms / 5));
+        });
     }
 
     public static ItemStack stackFor(String id) {
@@ -96,6 +102,9 @@ public final class Materials {
     private static byte[] statusBuf = new byte[0];
     private static final Map<net.minecraft.world.level.block.Block, String> IDS = new java.util.IdentityHashMap<>();
     private static String idOf(net.minecraft.world.level.block.Block b) { return IDS.computeIfAbsent(b, k -> V.blockId(k)); }
+
+    private static int nextTick = 20;
+    private static final int MAX_MISTAKES = 50_000;   // a huge build sunk in the ground could have millions
 
     /** Recount now (also called when the menu opens). */
     public static void refresh() {
@@ -147,12 +156,12 @@ public final class Materials {
                         if (!palProps[c] || !have.equals(palId[c]) || Orient.ok(st, hs.toString())) { done++; status[idx] = 2; }
                         else {   // there, but the wrong way round
                             perLayer[y]++; status[idx] = 4; wrongAt.add(idx);
-                            wrong.put(pos.asLong(), new String[]{st, hs.toString(), r.itemId()});
-                            mistakes.add(Mistakes.make(pos.asLong(), st, hs.toString(), r.itemId(), true));
+                            if (wrong.size() < MAX_MISTAKES) wrong.put(pos.asLong(), new String[]{st, hs.toString(), r.itemId()});
+                            if (mistakes.size() < MAX_MISTAKES) mistakes.add(Mistakes.make(pos.asLong(), st, hs.toString(), r.itemId(), true));
                         }
                     } else {
                         left[c]++; perLayer[y]++;
-                        if (solid(hs)) { status[idx] = 3; mistakes.add(Mistakes.make(pos.asLong(), st, "Block{" + have + "}", r.itemId(), false)); }
+                        if (solid(hs)) { status[idx] = 3; if (mistakes.size() < MAX_MISTAKES) mistakes.add(Mistakes.make(pos.asLong(), st, "Block{" + have + "}", r.itemId(), false)); }
                         else status[idx] = 1;
                     }
                 }

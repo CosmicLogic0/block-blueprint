@@ -525,6 +525,7 @@ Teil {0} von {1} ({2})
 genau hier
 Diese Schematic-Datei ist zu groß.
 {0} konnte nicht gelesen werden.
+Dieses Bauwerk ist zu groß für den Speicher, den Minecraft hat. Gib Minecraft im Launcher mehr Arbeitsspeicher (RAM) und versuch es noch einmal.
 Nichts zum Einfügen. Kopier einen Bau-Code (BB1:...) oder die Zeilen von Export > "Copy all" in der App, dann füg sie hier ein.
 Nur {0} von {1} Teilen wurden eingefügt. Nutze "Copy all" in der App.
 Das ist kein Bau-Code.

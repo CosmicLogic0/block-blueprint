@@ -1,3 +1,8 @@
+## 1.3.6
+- **No more size limit on builds.** Schematic files (.schem, .litematic, .nbt) and saved builds of any size now load - before, builds over 512 blocks across or 8 million blocks were turned away. Huge builds take a moment and can make the game slower, so **Nearby layers only** (Settings > Extras) or a shorter **Distance** (Settings > More) helps. If a build is too big for the memory Minecraft has, the mod says so instead of crashing.
+- Up to 500,000 ghost blocks are drawn at once (was 60,000), so big builds show in full.
+- The block list counts huge builds less often, so counting never takes over the game.
+
 ## 1.3.5
 - **Every key can be changed.** New keys **Move up** (=) and **Move down** (-) move the build - or the copy box - up and down without holding anything (Ctrl + Up/Down still works). The keys you hold (Ctrl for up/down, Shift for 5 blocks, Alt to shrink the copy box) can be set to other keys too, in Options > Controls > Key Binds > Build Blueprint.
 - **Fixed: Ctrl + Up/Down sometimes did nothing**, because Minecraft also uses Ctrl for sprinting and in some versions only one of the two got the key. Held keys are now read straight from the keyboard.
