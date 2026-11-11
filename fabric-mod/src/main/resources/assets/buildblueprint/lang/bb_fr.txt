@@ -283,6 +283,8 @@ Layer map: {0}	Carte de la couche : {0}
 A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.	Une petite carte de la couche où tu es, vue de dessus, sous la liste du coin. Couleurs = à poser, vert foncé = fait, rouge = faux, point blanc = toi.
 Scaffold hints: {0}	Aide échafaudage : {0}
 Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.	Les parties d'une couche qui flottent dans les airs (avancées, toits) reçoivent une colonne bleu clair qui montre où poser des blocs temporaires pour les atteindre.
+Blank world: {0}	Monde vide : {0}
+For building in an empty world: anything inside the build's area that shouldn't be there - stray blocks, water - gets a red box and counts as a mistake to fix, and Auto-build clears it.	Pour construire dans un monde vide : tout ce qui ne devrait pas être dans la zone de la construction - blocs en trop, eau - a un cadre rouge et compte comme une erreur à corriger, et la construction auto l'enlève.
 Nearby layers only: {0}	Couches proches seulement : {0}
 Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.	Avant de placer une construction, seules les couches autour de ta hauteur sont dessinées (3 sous tes pieds à 4 au-dessus) au lieu de tout. Plus léger pour les grosses constructions, et tu vois l'intérieur.
 Ghost blocks: {0}% solid	Blocs fantômes : {0} % opaques
@@ -334,7 +336,7 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics	Bases
 More	Plus
 Extras	Extras
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.	Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de couche, aides d'échafaudage, couches proches seulement.
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de couche, aides d'échafaudage, monde vide, couches proches seulement.
 Key binds...	Touches...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	Change les touches (Options > Commandes > Touches > Build Blueprint).
 A short guide to everything the mod does.	Un petit guide de tout ce que fait le mod.
@@ -429,6 +431,7 @@ Nothing to fix - every placed block is right.	Rien à corriger - tous les blocs 
 Mistake 1 of {0}: {1}	Erreur 1 sur {0} : {1}
 Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.	Les erreurs ne sont plus montrées. Les cadres rouges restent - désactive-les dans Réglages > Plus.
 this {0} {1}	ce {0} {1}
+a {0} shouldn't be here - break it	un(e) {0} ne devrait pas être ici - casse-le
 a {0} is where {1} goes - break it	un {0} est là où va {1} - casse-le
 Fix: {0}	Corriger : {0}
 Showing all layers	Toutes les couches affichées

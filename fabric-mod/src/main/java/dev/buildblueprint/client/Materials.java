@@ -171,6 +171,13 @@ public final class Materials {
                 for (int x = 0; x < bp.sx; x++) {
                     int idx = row + x, c = bp.cells[idx];
                     boolean here = loaded[((s.ox + x) >> 4) - cx0][((s.oz + z) >> 4) - cz0];
+                    if (c == 0 && here && Settings.blankWorld && Coop.mine(bp, x, z)) {   // blank world: anything here that shouldn't be is a mistake
+                        status[idx] = 0;
+                        pos.set(s.ox + x, s.oy + y, s.oz + z);
+                        net.minecraft.world.level.block.state.BlockState hs = mc.level.getBlockState(pos);
+                        if (!hs.isAir() && mistakes.size() < MAX_MISTAKES) mistakes.add(Mistakes.make(pos.asLong(), "minecraft:air", "Block{" + idOf(hs.getBlock()) + "}", null, false));
+                        continue;
+                    }
                     if (c == 0 || palReq[c] == null || !Coop.mine(bp, x, z)) { if (here) status[idx] = 0; continue; }   // co-op: only my part of the build
                     MaterialMap.Req r = palReq[c];
                     String st = bp.palette[c - 1];

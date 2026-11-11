@@ -23,6 +23,7 @@ public final class Settings {
     public static int range = 96;              // preview distance in blocks
     public static boolean nearLayers = false;  // before placing: only the layers around your height (lighter for big builds)
     public static int autoSpeed = 1;           // Auto-build: 0 slow, 1 normal, 2 fast, 3 very fast, 4 max
+    public static boolean blankWorld = false;  // building in an empty world: anything in the build area that shouldn\'t be there is a mistake
     public static boolean redOutline = true;   // red boxes on blocks in the way
     public static boolean checkFacing = true;  // blocks only count when they face the right way (stairs, logs, slabs...)
     public static boolean autoLayer = true;    // move to the next layer when one is finished
@@ -47,7 +48,7 @@ public final class Settings {
         hudShow = b(p, "hudShow", hudShow); hudRight = b(p, "hudRight", hudRight); hudScale = i(p, "hudScale", hudScale);
         if (p.getProperty("settingsVersion") == null && hudScale == 100) hudScale = 50;   // 1.2.8: the old default of 100% was too big
         hudLines = i(p, "hudLines", hudLines); hudBar = b(p, "hudBar", hudBar); hudHints = b(p, "hudHints", hudHints);
-        matMode = p.getProperty("matMode", matMode); ghostAlpha = i(p, "ghostAlpha", ghostAlpha); range = i(p, "range", range); nearLayers = b(p, "nearLayers", nearLayers); autoSpeed = Math.max(0, Math.min(4, i(p, "autoSpeed", autoSpeed)));
+        matMode = p.getProperty("matMode", matMode); ghostAlpha = i(p, "ghostAlpha", ghostAlpha); range = i(p, "range", range); nearLayers = b(p, "nearLayers", nearLayers); autoSpeed = Math.max(0, Math.min(4, i(p, "autoSpeed", autoSpeed))); blankWorld = b(p, "blankWorld", blankWorld);
         redOutline = b(p, "redOutline", redOutline); autoLayer = b(p, "autoLayer", autoLayer); startLayer1 = b(p, "startLayer1", startLayer1);
         nextHint = b(p, "nextHint", nextHint); ghostPick = b(p, "ghostPick", ghostPick); preview3d = b(p, "preview3d", preview3d); chestFinder = b(p, "chestFinder", chestFinder); checkFacing = b(p, "checkFacing", checkFacing); dev.buildblueprint.core.Orient.on = checkFacing; hudStats = b(p, "hudStats", hudStats); sounds = b(p, "sounds", sounds);
         rawMats = b(p, "rawMats", rawMats); layerMap = b(p, "layerMap", layerMap); scaffold = b(p, "scaffold", scaffold);
@@ -58,7 +59,7 @@ public final class Settings {
         p.setProperty("settingsVersion", "2");
         p.setProperty("hudShow", "" + hudShow); p.setProperty("hudRight", "" + hudRight); p.setProperty("hudScale", "" + hudScale);
         p.setProperty("hudLines", "" + hudLines); p.setProperty("hudBar", "" + hudBar); p.setProperty("hudHints", "" + hudHints);
-        p.setProperty("matMode", matMode); p.setProperty("ghostAlpha", "" + ghostAlpha); p.setProperty("range", "" + range); p.setProperty("nearLayers", "" + nearLayers); p.setProperty("autoSpeed", "" + autoSpeed);
+        p.setProperty("matMode", matMode); p.setProperty("ghostAlpha", "" + ghostAlpha); p.setProperty("range", "" + range); p.setProperty("nearLayers", "" + nearLayers); p.setProperty("autoSpeed", "" + autoSpeed); p.setProperty("blankWorld", "" + blankWorld);
         p.setProperty("redOutline", "" + redOutline); p.setProperty("autoLayer", "" + autoLayer); p.setProperty("startLayer1", "" + startLayer1);
         p.setProperty("nextHint", "" + nextHint); p.setProperty("ghostPick", "" + ghostPick); p.setProperty("preview3d", "" + preview3d); p.setProperty("chestFinder", "" + chestFinder); p.setProperty("checkFacing", "" + checkFacing); p.setProperty("hudStats", "" + hudStats); p.setProperty("sounds", "" + sounds);
         p.setProperty("rawMats", "" + rawMats); p.setProperty("layerMap", "" + layerMap); p.setProperty("scaffold", "" + scaffold);

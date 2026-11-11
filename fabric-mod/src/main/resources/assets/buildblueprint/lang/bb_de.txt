@@ -283,6 +283,8 @@ Layer map: {0}	Schichtkarte: {0}
 A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.	Eine kleine Karte der Schicht, auf der du bist, von oben gesehen, unter der Eckliste. Farben = noch zu setzen, dunkelgrün = fertig, rot = falsch, weißer Punkt = du.
 Scaffold hints: {0}	Gerüst-Hinweise: {0}
 Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.	Teile einer Schicht, die in der Luft schweben (Überhänge, Dächer), bekommen eine hellblaue Säule, die zeigt, wo du vorübergehende Blöcke setzen kannst, um sie zu erreichen.
+Blank world: {0}	Leere Welt: {0}
+For building in an empty world: anything inside the build's area that shouldn't be there - stray blocks, water - gets a red box and counts as a mistake to fix, and Auto-build clears it.	Zum Bauen in einer leeren Welt: Alles im Bereich des Bauwerks, was dort nicht hingehört - einzelne Blöcke, Wasser - bekommt einen roten Rahmen und zählt als Fehler, und der Auto-Bau räumt es weg.
 Nearby layers only: {0}	Nur nahe Schichten: {0}
 Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.	Bevor du ein Bauwerk platzierst, werden nur die Schichten um deine Höhe gezeichnet (3 unter deinen Füßen bis 4 darüber) statt allem. Leichter für große Bauwerke, und du siehst hinein.
 Ghost blocks: {0}% solid	Geisterblöcke: {0}% fest
@@ -334,7 +336,7 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics	Grundlagen
 More	Mehr
 Extras	Extras
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.	Extra-Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise, nur nahe Schichten.
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	Extra-Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise, leere Welt, nur nahe Schichten.
 Key binds...	Tastenbelegung...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	Ändere die Tasten (Optionen > Steuerung > Tastenbelegung > Build Blueprint).
 A short guide to everything the mod does.	Eine kurze Anleitung zu allem, was der Mod kann.
@@ -429,6 +431,7 @@ Nothing to fix - every placed block is right.	Nichts zu reparieren - jeder geset
 Mistake 1 of {0}: {1}	Fehler 1 von {0}: {1}
 Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.	Fehler werden nicht mehr gezeigt. Die roten Rahmen bleiben - schalte sie unter Einstellungen > Mehr aus.
 this {0} {1}	dieser {0} {1}
+a {0} shouldn't be here - break it	hier gehört kein {0} hin - abbauen
 a {0} is where {1} goes - break it	ein {0} ist da, wo {1} hingehört - abbauen
 Fix: {0}	Reparieren: {0}
 Showing all layers	Alle Schichten werden gezeigt

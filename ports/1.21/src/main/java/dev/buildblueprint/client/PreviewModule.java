@@ -150,7 +150,7 @@ public final class PreviewModule {
         }
         wasShown = true;
         Blueprint bp = s.blueprint();
-        String build = System.identityHashCode(bp) + ":" + s.layer + ":" + Settings.range + ":" + Hide.version() + ":" + Coop.parts + "/" + Coop.me + ":" + Settings.nearLayers;
+        String build = System.identityHashCode(bp) + ":" + s.layer + ":" + Settings.range + ":" + Hide.version() + ":" + Coop.parts + "/" + Coop.me + ":" + Settings.nearLayers + ":" + Settings.blankWorld;
         double px = mc.player.getX(), py = mc.player.getY(), pz = mc.player.getZ();
         String near = Settings.nearLayers && s.layer < 0 ? "" + (int) Math.floor(py) : "";   // nearby layers only: which height you're at
         long now = System.currentTimeMillis(), t0 = System.nanoTime();
@@ -220,6 +220,7 @@ public final class PreviewModule {
     /** 0 = nothing to draw (already built the right way round), 1 = a ghost block, 2 = a red box (another block is in the way). */
     private static int check(Minecraft mc, Pal p, int c, int wx, int wy, int wz, BlockPos.MutableBlockPos pos) {
         BlockState here = mc.level.getBlockState(pos.set(wx, wy, wz));
+        if (c == 0) return here.isAir() ? 0 : 2;   // blank world: should be empty
         String have = idOf(here);
         if (p.fluid[c] && MaterialMap.sameBlock(have, p.id[c]) && !dev.buildblueprint.core.Orient.fluidOk(p.bp.palette[c - 1], here.toString())) return p.want[c] != null ? 1 : 0;   // flowing water / missing water: still a ghost
         if (MaterialMap.sameBlock(have, p.id[c]) && (!p.props[c] || !have.equals(p.id[c]) || dev.buildblueprint.core.Orient.ok(p.bp.palette[c - 1], here.toString()))) return 0;   // (dirt counts for grass)   // the wrong way round gets a red box
@@ -235,7 +236,7 @@ public final class PreviewModule {
         int ox, oy, oz;
         final double px, py, pz, r2;
         final int x0, x1, y0, y1, z0, z1, feet;
-        final boolean near;
+        final boolean near, blank = Settings.blankWorld;
         int y, z;
         final List<Ghost> g = new ArrayList<>();
         final List<Red> r = new ArrayList<>();
@@ -264,6 +265,13 @@ public final class PreviewModule {
             return dx * dx + dy * dy + dz * dz <= r2;
         }
 
+        /** Blank world: an empty spot of the build that's checked (shown layer, my part, close enough). */
+        boolean inAir(Session s, int x, int y, int z) {
+            if (!blank || !shown(s, y) || !Coop.mine(bp, x, z)) return false;
+            double dx = ox + x + 0.5 - px, dy = oy + y + 0.5 - py, dz = oz + z + 0.5 - pz;
+            return dx * dx + dy * dy + dz * dz <= r2;
+        }
+
         boolean far(double x, double y, double z) { return Math.abs(x - px) + Math.abs(y - py) + Math.abs(z - pz) > 8; }
 
         /** Works through the build a row at a time until the time is up. True once it's all done. */
@@ -274,7 +282,7 @@ public final class PreviewModule {
                     int base = (y * bp.sz + z) * bp.sx;
                     for (int x = x0; x <= x1; x++) {
                         int c = bp.cells[base + x];
-                        if (c != 0 && in(s, c, x, y, z)) add(mc, c, x, y, z, pos);
+                        if (c != 0 ? in(s, c, x, y, z) : inAir(s, x, y, z)) add(mc, c, x, y, z, pos);
                     }
                 } else z = z1;   // a layer that isn't shown: skip all of it
                 if (++z > z1) { z = z0; y++; }
@@ -318,7 +326,7 @@ public final class PreviewModule {
             for (int z = Math.max(0, cz - 6); z <= Math.min(bp.sz - 1, cz + 6); z++)
                 for (int x = Math.max(0, cx - 6); x <= Math.min(bp.sx - 1, cx + 6); x++) {
                     int i = bp.index(x, y, z), c = bp.cells[i];
-                    if (c == 0 || v.at.get(i) || v.redAt.get(i) || !v.in(s, c, x, y, z)) continue;
+                    if (v.at.get(i) || v.redAt.get(i) || !(c == 0 ? v.inAir(s, x, y, z) : v.in(s, c, x, y, z))) continue;
                     int k = check(mc, v.p, c, v.ox + x, v.oy + y, v.oz + z, pos);
                     if (k == 1 && ng.size() < MAX_GHOSTS) { ng.add(new Ghost(v.ox + x, v.oy + y, v.oz + z, v.p.want[c], x, y, z)); v.at.set(i); changed = added = true; }
                     else if (k == 2 && nr.size() < MAX_RED) { nr.add(new Red(v.ox + x, v.oy + y, v.oz + z)); v.redAt.set(i); changed = true; }

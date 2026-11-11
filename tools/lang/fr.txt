@@ -282,6 +282,8 @@ Carte de la couche : {0}
 Une petite carte de la couche où tu es, vue de dessus, sous la liste du coin. Couleurs = à poser, vert foncé = fait, rouge = faux, point blanc = toi.
 Aide échafaudage : {0}
 Les parties d'une couche qui flottent dans les airs (avancées, toits) reçoivent une colonne bleu clair qui montre où poser des blocs temporaires pour les atteindre.
+Monde vide : {0}
+Pour construire dans un monde vide : tout ce qui ne devrait pas être dans la zone de la construction - blocs en trop, eau - a un cadre rouge et compte comme une erreur à corriger, et la construction auto l'enlève.
 Couches proches seulement : {0}
 Avant de placer une construction, seules les couches autour de ta hauteur sont dessinées (3 sous tes pieds à 4 au-dessus) au lieu de tout. Plus léger pour les grosses constructions, et tu vois l'intérieur.
 Blocs fantômes : {0} % opaques
@@ -333,7 +335,7 @@ Une nouvelle construction s'affiche entière pour que tu puisses la déplacer. Q
 Bases
 Plus
 Extras
-Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de couche, aides d'échafaudage, couches proches seulement.
+Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de couche, aides d'échafaudage, monde vide, couches proches seulement.
 Touches...
 Change les touches (Options > Commandes > Touches > Build Blueprint).
 Un petit guide de tout ce que fait le mod.
@@ -428,6 +430,7 @@ Rien à corriger - tous les blocs posés sont bons.
 Erreur 1 sur {0} : {1}
 Les erreurs ne sont plus montrées. Les cadres rouges restent - désactive-les dans Réglages > Plus.
 ce {0} {1}
+un(e) {0} ne devrait pas être ici - casse-le
 un {0} est là où va {1} - casse-le
 Corriger : {0}
 Toutes les couches affichées

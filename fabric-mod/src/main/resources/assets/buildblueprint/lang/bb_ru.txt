@@ -283,6 +283,8 @@ Layer map: {0}	Карта слоя: {0}
 A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.	Маленькая карта слоя, на котором ты сейчас, вид сверху, под списком в углу. Цвета = ещё поставить, тёмно-зелёный = готово, красный = неправильно, белая точка = ты.
 Scaffold hints: {0}	Подсказки лесов: {0}
 Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.	Части слоя, висящие в воздухе (выступы, крыши), получают голубой столб, показывающий, где поставить временные блоки, чтобы до них дотянуться.
+Blank world: {0}	Пустой мир: {0}
+For building in an empty world: anything inside the build's area that shouldn't be there - stray blocks, water - gets a red box and counts as a mistake to fix, and Auto-build clears it.	Для строительства в пустом мире: всё, чего не должно быть в зоне постройки, - лишние блоки, вода - получает красную рамку и считается ошибкой, а автопостройка это убирает.
 Nearby layers only: {0}	Только ближние слои: {0}
 Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.	Пока постройка не размещена, рисуются только слои рядом с вашей высотой (от 3 ниже ног до 4 выше), а не вся она. Легче для больших построек, и видно, что внутри.
 Ghost blocks: {0}% solid	Блоки-призраки: {0}% плотности
@@ -334,7 +336,7 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics	Основное
 More	Ещё
 Extras	Дополнительно
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.	Дополнительные помощники, выключены, пока вы их не включите: сырьё, карта слоя, подсказки лесов, только ближние слои.
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	Дополнительные помощники, выключены, пока вы их не включите: сырьё, карта слоя, подсказки лесов, пустой мир, только ближние слои.
 Key binds...	Клавиши...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	Смени клавиши (Настройки > Управление > Назначение клавиш > Build Blueprint).
 A short guide to everything the mod does.	Короткое руководство по всему, что умеет мод.
@@ -429,6 +431,7 @@ Nothing to fix - every placed block is right.	Нечего исправлять 
 Mistake 1 of {0}: {1}	Ошибка 1 из {0}: {1}
 Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.	Ошибки больше не показываются. Красные рамки остаются - отключите их в Настройках > Ещё.
 this {0} {1}	этот {0} {1}
+a {0} shouldn't be here - break it	здесь не должно быть {0} - сломайте
 a {0} is where {1} goes - break it	{0} стоит там, где должен быть {1} - сломай
 Fix: {0}	Исправить: {0}
 Showing all layers	Показаны все слои

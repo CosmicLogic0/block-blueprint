@@ -78,6 +78,7 @@ public final class Mistakes {
         if (m == null) return "";
         String want = name(m.itemId, m.want);
         if (m.wrongWay) return "this " + want + " " + dev.buildblueprint.core.Orient.fix(m.want, m.have);
+        if ("minecraft:air".equals(m.want)) return "a " + PlayerInfo.pretty(dev.buildblueprint.core.MaterialMap.blockId(m.have.replaceFirst("^Block\\{([^}]*)\\}.*$", "$1"))) + " shouldn't be here - break it";   // blank world
         return "a " + PlayerInfo.pretty(dev.buildblueprint.core.MaterialMap.blockId(m.have.replaceFirst("^Block\\{([^}]*)\\}.*$", "$1"))) + " is where " + want + " goes - break it";
     }
     private static String name(String itemId, String state) {

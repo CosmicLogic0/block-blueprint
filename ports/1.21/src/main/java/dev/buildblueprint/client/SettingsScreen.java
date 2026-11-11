@@ -44,6 +44,8 @@ public class SettingsScreen extends BBScreen {
                     "A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.");
             opt(() -> "Scaffold hints: " + onOff(Settings.scaffold), () -> { Settings.scaffold = !Settings.scaffold; Materials.refresh(); },
                     "Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.");
+            opt(() -> "Blank world: " + onOff(Settings.blankWorld), () -> { Settings.blankWorld = !Settings.blankWorld; Materials.refresh(); },
+                    "For building in an empty world: anything inside the build's area that shouldn't be there - stray blocks, water - gets a red box and counts as a mistake to fix, and Auto-build clears it.");
             opt(() -> "Nearby layers only: " + onOff(Settings.nearLayers), () -> Settings.nearLayers = !Settings.nearLayers,
                     "Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.");
         } else if (!more) {
@@ -88,7 +90,7 @@ public class SettingsScreen extends BBScreen {
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Basics", tw - 8)), b -> { more = false; extras = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[0], 30, tw, 20).build()).active = more || extras;
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "More", tw - 8)), b -> { more = true; extras = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[1], 30, tw, 20).build()).active = !more || extras;
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Extras", tw - 8)), b -> { extras = true; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[2], 30, tw, 20)
-                .tooltip(Tooltip.create(Component.literal(Tr.t("Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.")))).build()).active = !extras;
+                .tooltip(Tooltip.create(Component.literal(Tr.t("Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.")))).build()).active = !extras;
         // bottom
         Minecraft mc = Minecraft.getInstance();
         int by = height - 26;

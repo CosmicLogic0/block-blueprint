@@ -282,6 +282,8 @@ Schichtkarte: {0}
 Eine kleine Karte der Schicht, auf der du bist, von oben gesehen, unter der Eckliste. Farben = noch zu setzen, dunkelgrün = fertig, rot = falsch, weißer Punkt = du.
 Gerüst-Hinweise: {0}
 Teile einer Schicht, die in der Luft schweben (Überhänge, Dächer), bekommen eine hellblaue Säule, die zeigt, wo du vorübergehende Blöcke setzen kannst, um sie zu erreichen.
+Leere Welt: {0}
+Zum Bauen in einer leeren Welt: Alles im Bereich des Bauwerks, was dort nicht hingehört - einzelne Blöcke, Wasser - bekommt einen roten Rahmen und zählt als Fehler, und der Auto-Bau räumt es weg.
 Nur nahe Schichten: {0}
 Bevor du ein Bauwerk platzierst, werden nur die Schichten um deine Höhe gezeichnet (3 unter deinen Füßen bis 4 darüber) statt allem. Leichter für große Bauwerke, und du siehst hinein.
 Geisterblöcke: {0}% fest
@@ -333,7 +335,7 @@ Ein neuer Bau wird komplett gezeigt, damit du ihn bewegen kannst. Beim Platziere
 Grundlagen
 Mehr
 Extras
-Extra-Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise, nur nahe Schichten.
+Extra-Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise, leere Welt, nur nahe Schichten.
 Tastenbelegung...
 Ändere die Tasten (Optionen > Steuerung > Tastenbelegung > Build Blueprint).
 Eine kurze Anleitung zu allem, was der Mod kann.
@@ -428,6 +430,7 @@ Nichts zu reparieren - jeder gesetzte Block stimmt.
 Fehler 1 von {0}: {1}
 Fehler werden nicht mehr gezeigt. Die roten Rahmen bleiben - schalte sie unter Einstellungen > Mehr aus.
 dieser {0} {1}
+hier gehört kein {0} hin - abbauen
 ein {0} ist da, wo {1} hingehört - abbauen
 Reparieren: {0}
 Alle Schichten werden gezeigt

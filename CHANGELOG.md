@@ -1,3 +1,6 @@
+## 1.4.1
+- **Blank world** (Settings > Extras, off unless you turn it on): for building in an empty world. Anything inside the build's area that shouldn't be there - stray blocks, spilled water - gets a red box and counts as a mistake to fix ("a Stone shouldn't be here - break it"), and Auto-build clears it (chests and the like are left alone).
+
 ## 1.4.0
 - **Progress you can trust on big builds.** The mod remembers every block of the build it has seen. Parts that are too far away to see (not loaded) keep what they were last seen as, so the progress %, the block list (have / need) and the layer counts no longer drop when you walk or fly away. It's saved with the world, so it's still right after you leave and come back.
 - **Water has to be a full source.** Flowing water no longer counts as placed where the build has water, and a block that should have water in it (waterlogged) only counts once it does. Ghost blocks, the block list, the progress and Auto-build all go by this.

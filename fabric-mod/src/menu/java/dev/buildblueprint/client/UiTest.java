@@ -183,6 +183,22 @@ public final class UiTest {
         try { net.minecraft.client.Minecraft.getInstance().options.languageCode = code; } catch (Throwable t) { System.out.println("BBUITEST language failed: " + t); }
     }
 
+    /** Blank world test: puts a stone (on this side only) in the first spot of the build that should be empty, so the setting has something to find. */
+    private static net.minecraft.core.BlockPos strayBlock() {
+        try {
+            var s = BuildBlueprintClient.SESSION;
+            if (!s.loaded()) return null;
+            dev.buildblueprint.core.Blueprint bp = s.blueprint();
+            for (int i = 0; i < bp.cells.length; i++) if (bp.cells[i] == 0) {
+                int x = i % bp.sx, z = (i / bp.sx) % bp.sz, y = i / (bp.sx * bp.sz);
+                net.minecraft.core.BlockPos p = new net.minecraft.core.BlockPos(s.ox + x, s.oy + y, s.oz + z);
+                net.minecraft.client.Minecraft.getInstance().level.setBlock(p, net.minecraft.world.level.block.Blocks.STONE.defaultBlockState(), 3);
+                return p;
+            }
+        } catch (Throwable t) { System.out.println("BBUITEST stray block failed: " + t); }
+        return null;
+    }
+
     /** Showcase only (runs on 26.x, where names are readable): a chat command, and flying so the camera stays put. By name, so it compiles everywhere. */
     private static void cmd(String c) {
         try {
@@ -349,7 +365,7 @@ public final class UiTest {
                 Mc.setScreen(new MaterialsScreen(false));
             }
             case "world-extras" -> { MaterialsScreen.testRaw(false); Mc.setScreen(null); if (Mistakes.count() > 0) Mistakes.show(); }
-            case "world-coop" -> { boolean was = Mistakes.showing(); Mistakes.stop(); System.out.println("BBUITEST mistakes: were showing " + was + ", after Stop fixing " + Mistakes.showing()); System.out.println("BBUITEST dirt counts for grass: " + dev.buildblueprint.core.MaterialMap.sameBlock("minecraft:dirt", "minecraft:grass_block") + ", stone for grass: " + dev.buildblueprint.core.MaterialMap.sameBlock("minecraft:stone", "minecraft:grass_block")); Coop.set(2, 1); Materials.refresh(); System.out.println("BBUITEST co-op: " + Coop.where(BuildBlueprintClient.SESSION.blueprint()) + ", my blocks " + Materials.totalBlocks()); Mc.setScreen(null); }
+            case "world-coop" -> { boolean was = Mistakes.showing(); Mistakes.stop(); System.out.println("BBUITEST mistakes: were showing " + was + ", after Stop fixing " + Mistakes.showing()); int m0 = Mistakes.count(); net.minecraft.core.BlockPos stray = strayBlock(); Settings.blankWorld = true; Materials.refresh(); int m1 = Mistakes.count(); Settings.blankWorld = false; Materials.refresh(); if (stray != null) net.minecraft.client.Minecraft.getInstance().level.setBlock(stray, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), 3); System.out.println("BBUITEST blank world: mistakes " + m0 + " -> " + m1 + " -> " + Mistakes.count()); System.out.println("BBUITEST dirt counts for grass: " + dev.buildblueprint.core.MaterialMap.sameBlock("minecraft:dirt", "minecraft:grass_block") + ", stone for grass: " + dev.buildblueprint.core.MaterialMap.sameBlock("minecraft:stone", "minecraft:grass_block")); Coop.set(2, 1); Materials.refresh(); System.out.println("BBUITEST co-op: " + Coop.where(BuildBlueprintClient.SESSION.blueprint()) + ", my blocks " + Materials.totalBlocks()); Mc.setScreen(null); }
             case "done-card" -> {
                 Coop.off(); Settings.rawMats = false; Settings.layerMap = false; Settings.scaffold = false; Materials.refresh();
                 Stats.completeAt = System.currentTimeMillis(); Stats.completeBlocks = Materials.totalBlocks(); Stats.completeMs = 754000; Stats.completePerMin = 23;

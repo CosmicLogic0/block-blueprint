@@ -283,6 +283,8 @@ Layer map: {0}	Mapa de capa: {0}
 A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.	Un mapa pequeño de la capa en la que estás, visto desde arriba, bajo la lista de la esquina. Colores = por colocar, verde oscuro = hecho, rojo = mal, punto blanco = tú.
 Scaffold hints: {0}	Ayuda de andamios: {0}
 Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.	Las partes de una capa que flotan en el aire (voladizos, tejados) muestran una columna azul claro donde poner bloques temporales para alcanzarlas.
+Blank world: {0}	Mundo vacío: {0}
+For building in an empty world: anything inside the build's area that shouldn't be there - stray blocks, water - gets a red box and counts as a mistake to fix, and Auto-build clears it.	Para construir en un mundo vacío: todo lo que no debería estar dentro de la zona de la construcción (bloques sueltos, agua) se marca en rojo y cuenta como error por arreglar, y la autoconstrucción lo quita.
 Nearby layers only: {0}	Solo capas cercanas: {0}
 Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.	Antes de colocar una construcción, dibuja solo las capas cerca de tu altura (3 bajo tus pies a 4 encima) en vez de todo. Más ligero para construcciones grandes, y puedes ver el interior.
 Ghost blocks: {0}% solid	Bloques fantasma: {0}% sólidos
@@ -334,7 +336,7 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics	Básico
 More	Más
 Extras	Extras
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.	Ayudas extra, apagadas hasta que las actives: materias primas, mapa de capa, pistas de andamio, solo capas cercanas.
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	Ayudas extra, apagadas hasta que las actives: materias primas, mapa de capa, pistas de andamio, mundo vacío, solo capas cercanas.
 Key binds...	Controles...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	Cambia las teclas (Opciones > Controles > Asignación de teclas > Build Blueprint).
 A short guide to everything the mod does.	Una guía corta de todo lo que hace el mod.
@@ -429,6 +431,7 @@ Nothing to fix - every placed block is right.	Nada que arreglar: todos los bloqu
 Mistake 1 of {0}: {1}	Error 1 de {0}: {1}
 Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.	Ya no se muestran los errores. Los recuadros rojos siguen; desactívalos en Ajustes > Más.
 this {0} {1}	este {0} {1}
+a {0} shouldn't be here - break it	aquí no debería haber {0}: rómpelo
 a {0} is where {1} goes - break it	hay {0} donde va {1}: rómpelo
 Fix: {0}	Arreglar: {0}
 Showing all layers	Mostrando todas las capas

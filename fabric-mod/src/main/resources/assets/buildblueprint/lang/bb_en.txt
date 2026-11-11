@@ -307,6 +307,8 @@ Layer map: {0}
 A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.
 Scaffold hints: {0}
 Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.
+Blank world: {0}
+For building in an empty world: anything inside the build's area that shouldn't be there - stray blocks, water - gets a red box and counts as a mistake to fix, and Auto-build clears it.
 Nearby layers only: {0}
 Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.
 Ghost blocks: {0}% solid
@@ -358,7 +360,7 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics
 More
 Extras
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.
 Key binds...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).
 A short guide to everything the mod does.
@@ -469,6 +471,7 @@ Nothing to fix - every placed block is right.
 Mistake 1 of {0}: {1}
 Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.
 this {0} {1}
+a {0} shouldn't be here - break it
 a {0} is where {1} goes - break it
 Fix: {0}
 Showing all layers

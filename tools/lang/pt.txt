@@ -282,6 +282,8 @@ Mapa da camada: {0}
 Um mapinha da camada em que você está, visto de cima, embaixo da lista do canto. Cores = falta colocar, verde escuro = pronto, vermelho = errado, ponto branco = você.
 Dicas de andaime: {0}
 Partes de uma camada que flutuam no ar (beirais, telhados) ganham uma coluna azul-clara mostrando onde pôr blocos temporários para alcançá-las.
+Mundo vazio: {0}
+Para construir num mundo vazio: tudo o que não deveria estar dentro da área da construção (blocos soltos, água) ganha uma caixa vermelha e conta como erro a consertar, e a construção automática remove.
 Só camadas próximas: {0}
 Antes de posicionar uma construção, desenha só as camadas perto da sua altura (3 abaixo dos pés a 4 acima) em vez de tudo. Mais leve para construções grandes, e dá para ver por dentro.
 Blocos fantasma: {0}% sólidos
@@ -333,7 +335,7 @@ Uma construção nova aparece completa para você poder mover. Quando você colo
 Básico
 Mais
 Extras
-Ajudas extras, desligadas até você ligar: matérias-primas, mapa da camada, dicas de andaime, só camadas próximas.
+Ajudas extras, desligadas até você ligar: matérias-primas, mapa da camada, dicas de andaime, mundo vazio, só camadas próximas.
 Controles...
 Mude as teclas (Opções > Controles > Atalhos do teclado > Build Blueprint).
 Um guia curto de tudo o que o mod faz.
@@ -428,6 +430,7 @@ Nada para corrigir - todos os blocos colocados estão certos.
 Erro 1 de {0}: {1}
 Parou de mostrar os erros. As caixas vermelhas continuam; desligue em Configurações > Mais.
 este {0} {1}
+aqui não deveria ter {0}: quebre
 tem {0} onde vai {1} - quebre
 Corrigir: {0}
 Mostrando todas as camadas

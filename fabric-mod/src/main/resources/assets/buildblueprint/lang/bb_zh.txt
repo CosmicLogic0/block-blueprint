@@ -283,6 +283,8 @@ Layer map: {0}	本层地图：{0}
 A small map of the layer you're on, seen from above, under the corner list. Colours = still to place, dark green = done, red = wrong, white dot = you.	在角落列表下面显示你所在层的俯视小地图。彩色 = 待放置，深绿 = 已完成，红色 = 错误，白点 = 你。
 Scaffold hints: {0}	脚手架提示：{0}
 Parts of a layer that float in the air (overhangs, roofs) get a light blue column showing where to put temporary blocks to reach them.	一层中悬空的部分（悬挑、屋顶）会显示一根浅蓝色柱子，告诉你在哪里放临时方块才能够到。
+Blank world: {0}	空白世界：{0}
+For building in an empty world: anything inside the build's area that shouldn't be there - stray blocks, water - gets a red box and counts as a mistake to fix, and Auto-build clears it.	适合在空白世界里建造：建筑范围内不该有的东西（多余的方块、水）会有红框并算作要修正的错误，自动建造会把它清除。
 Nearby layers only: {0}	只显示附近的层：{0}
 Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.	放置建筑之前，只绘制你所在高度附近的层（脚下3层到上方4层），而不是全部。大型建筑更流畅，还能看到内部。
 Ghost blocks: {0}% solid	幽灵方块：{0}% 不透明
@@ -334,7 +336,7 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics	基础
 More	更多
 Extras	附加
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, nearby layers only.	额外辅助功能，开启前默认关闭：原材料、层地图、脚手架提示、只显示附近的层。
+Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	额外辅助功能，开启前默认关闭：原材料、层地图、脚手架提示、空白世界、只显示附近的层。
 Key binds...	按键绑定...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	修改按键（选项 > 控制 > 按键绑定 > Build Blueprint）。
 A short guide to everything the mod does.	模组所有功能的简短指南。
@@ -429,6 +431,7 @@ Nothing to fix - every placed block is right.	没有要修正的 - 所有放置�
 Mistake 1 of {0}: {1}	错误 1 / {0}：{1}
 Stopped showing mistakes. The red boxes stay - turn them off in Settings > More.	已停止显示错误。红色边框仍会保留——可在 设置 > 更多 中关闭。
 this {0} {1}	这个{0}{1}
+a {0} shouldn't be here - break it	这里不该有{0}——把它打掉
 a {0} is where {1} goes - break it	{0} 放在了 {1} 的位置 - 打掉它
 Fix: {0}	修正：{0}
 Showing all layers	显示所有层

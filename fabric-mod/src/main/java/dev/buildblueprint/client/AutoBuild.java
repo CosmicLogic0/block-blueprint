@@ -30,6 +30,8 @@ public final class AutoBuild {
 
     private record Cmd(String text, int blocks) {}
 
+    private static final BlockState AIR = net.minecraft.world.level.block.Blocks.AIR.defaultBlockState();
+
     private static final int CMDS_PER_TICK = 60, BLOCKS_PER_TICK_SERVER = 12_000, FILL_MAX = 32_768;   // at Normal speed
     private static final double[] SPEED = {0.25, 1, 2, 4, 8};   // Settings > Auto-build speed: slow, normal, fast, very fast, max
     private static double speed() { return SPEED[Math.max(0, Math.min(SPEED.length - 1, Settings.autoSpeed))]; }
@@ -89,6 +91,7 @@ public final class AutoBuild {
         if (running()) { Chat.warn("Already building - /buildblueprint autobuild stop to stop."); return; }
         if (!creative()) return;
         Blueprint bp = s.blueprint();
+        boolean blank = Settings.blankWorld;
         int n = bp.palette.length + 1;   // what each kind of block in the build is, worked out once (not for every block)
         BlockState[] wantP = new BlockState[n];
         String[] idP = new String[n], textP = new String[n];
@@ -111,7 +114,7 @@ public final class AutoBuild {
             if (onlyLayer >= 0 && y != onlyLayer) continue;
             for (int z = 0; z < bp.sz; z++) for (int x = 0; x < bp.sx; x++) {
                 int c = bp.cells[bp.index(x, y, z)];
-                if (c == 0 || wantP[c] == null) continue;
+                if (c == 0 ? !blank : wantP[c] == null) continue;
                 int wx = s.ox + x, wz = s.oz + z;
                 if (!loaded[(wx >> 4) - cx0][(wz >> 4) - cz0]) {   // not loaded: later
                     if (only == null) { far.add(chunkKey(wx >> 4, wz >> 4)); farBlocks++; }
@@ -119,6 +122,13 @@ public final class AutoBuild {
                 }
                 p.set(wx, s.oy + y, wz);
                 BlockState here = mc.level.getBlockState(p);
+                if (c == 0) {   // blank world: clear what shouldn't be there (not chests and the like)
+                    if (here.isAir() || here.hasBlockEntity() || !Coop.mine(bp, x, z)) continue;
+                    BlockPos at = p.immutable();
+                    jobs.add(new Job(at, AIR, "minecraft:air"));
+                    before.add(new Job(at, here, BlockStateParser.serialize(here)));
+                    continue;
+                }
                 String have = ids.computeIfAbsent(here.getBlock(), b -> BuiltInRegistries.BLOCK.getKey(b).toString());
                 if (MaterialMap.sameBlock(have, idP[c]) && (!fluidP[c] || dev.buildblueprint.core.Orient.fluidOk(bp.palette[c - 1], here.toString())) && (!propsP[c] || !have.equals(idP[c]) || dev.buildblueprint.core.Orient.ok(bp.palette[c - 1], here.toString()))) continue; // already right (and the right way round)
                 if (here.hasBlockEntity()) { kept++; continue; }   // don't wipe out chests, furnaces...
