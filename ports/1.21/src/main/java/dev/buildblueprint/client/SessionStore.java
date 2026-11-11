@@ -56,19 +56,49 @@ public final class SessionStore {
         if (lastKey == null || ++tick % 100 != 0) return;                         // every 5 seconds
         String print = s.loaded() ? System.identityHashCode(s.blueprint()) + ":" + s.ox + "," + s.oy + "," + s.oz + ":" + s.layer + ":" + s.locked : "none";
         if (dirty || !print.equals(lastPrint)) { save(lastKey); lastPrint = print; dirty = false; }
+        else if (tick % 1200 == 0 && Materials.progressChanged()) saveProgress(lastKey);   // the progress, once a minute when it changed
+    }
+
+    private static Path progressFile(String key) { Path f = file(key); return f.resolveSibling(f.getFileName().toString().replace(".properties", ".progress")); }
+
+    /** How far the build got, block by block (squeezed small), so the progress is right even for parts out of sight. */
+    private static void saveProgress(String key) {
+        try {
+            byte[] st = Materials.progress();
+            Path f = progressFile(key);
+            if (st == null) { Files.deleteIfExists(f); return; }
+            java.io.ByteArrayOutputStream o = new java.io.ByteArrayOutputStream();
+            try (java.util.zip.DeflaterOutputStream d = new java.util.zip.DeflaterOutputStream(o)) { d.write(st); }
+            Files.write(f, o.toByteArray());
+        } catch (Exception ignored) {}
+    }
+
+    private static byte[] loadProgress(String key) {
+        try {
+            Path f = progressFile(key);
+            if (!Files.exists(f)) return null;
+            try (java.util.zip.InflaterInputStream in = new java.util.zip.InflaterInputStream(Files.newInputStream(f))) {
+                java.io.ByteArrayOutputStream o = new java.io.ByteArrayOutputStream();
+                byte[] buf = new byte[65536];
+                int n;
+                while ((n = in.read(buf)) > 0) o.write(buf, 0, n);
+                return o.toByteArray();
+            }
+        } catch (Exception e) { return null; }
     }
 
     private static void save(String key) {
         Session s = BuildBlueprintClient.SESSION;
         try {
             Path f = file(key);
-            if (!s.loaded()) { Files.deleteIfExists(f); return; }
+            if (!s.loaded()) { Files.deleteIfExists(f); Files.deleteIfExists(progressFile(key)); return; }
             Properties p = new Properties();
             p.setProperty("data", BlueprintCodec.encode(s.blueprint()));
             p.setProperty("x", "" + s.ox); p.setProperty("y", "" + s.oy); p.setProperty("z", "" + s.oz);
             p.setProperty("layer", "" + s.layer); p.setProperty("locked", "" + s.locked);
             try (Writer w = Files.newBufferedWriter(f)) { p.store(w, "Build Blueprint: the blueprint you were building here"); }
         } catch (Exception ignored) {}
+        saveProgress(key);
     }
 
     private static void restore(String key) {
@@ -80,6 +110,7 @@ public final class SessionStore {
             Blueprint bp = BlueprintCodec.decode(p.getProperty("data"));
             BuildBlueprintClient.SESSION.restore(bp, Integer.parseInt(p.getProperty("x")), Integer.parseInt(p.getProperty("y")), Integer.parseInt(p.getProperty("z")),
                     Integer.parseInt(p.getProperty("layer", "-1")), Boolean.parseBoolean(p.getProperty("locked", "false")));
+            Materials.restoreProgress(loadProgress(key));
             Materials.refresh();
             Chat.ok("Welcome back! Your blueprint \"" + bp.name + "\" is still here" + (BuildBlueprintClient.SESSION.locked ? " (placed)." : " - move it, then Place it.") + " Page Up for the menu.");
         } catch (Exception e) {

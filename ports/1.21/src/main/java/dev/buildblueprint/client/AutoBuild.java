@@ -90,11 +90,11 @@ public final class AutoBuild {
         int n = bp.palette.length + 1;   // what each kind of block in the build is, worked out once (not for every block)
         BlockState[] wantP = new BlockState[n];
         String[] idP = new String[n], textP = new String[n];
-        boolean[] propsP = new boolean[n];
+        boolean[] propsP = new boolean[n], fluidP = new boolean[n];
         for (int i = 1; i < n; i++) {
             String st = bp.palette[i - 1];
             if (st == null || (wantP[i] = parse(st)) == null) continue;
-            idP[i] = MaterialMap.blockId(st); propsP[i] = st.indexOf('[') >= 0; textP[i] = V.stateString(wantP[i]);
+            idP[i] = MaterialMap.blockId(st); propsP[i] = st.indexOf('[') >= 0; fluidP[i] = dev.buildblueprint.core.Orient.fluid(st); textP[i] = V.stateString(wantP[i]);
         }
         int cx0 = s.ox >> 4, cz0 = s.oz >> 4, cx1 = (s.ox + bp.sx - 1) >> 4, cz1 = (s.oz + bp.sz - 1) >> 4;
         boolean[][] loaded = new boolean[cx1 - cx0 + 1][cz1 - cz0 + 1];
@@ -118,7 +118,7 @@ public final class AutoBuild {
                 p.set(wx, s.oy + y, wz);
                 BlockState here = mc.level.getBlockState(p);
                 String have = ids.computeIfAbsent(here.getBlock(), b -> V.blockId(b));
-                if (MaterialMap.sameBlock(have, idP[c]) && (!propsP[c] || !have.equals(idP[c]) || dev.buildblueprint.core.Orient.ok(bp.palette[c - 1], here.toString()))) continue; // already right (and the right way round)
+                if (MaterialMap.sameBlock(have, idP[c]) && (!fluidP[c] || dev.buildblueprint.core.Orient.fluidOk(bp.palette[c - 1], here.toString())) && (!propsP[c] || !have.equals(idP[c]) || dev.buildblueprint.core.Orient.ok(bp.palette[c - 1], here.toString()))) continue; // already right (and the right way round)
                 if (V.hasBE(here)) { kept++; continue; }   // don't wipe out chests, furnaces...
                 BlockPos at = p.immutable();
                 jobs.add(new Job(at, wantP[c], textP[c]));

@@ -198,17 +198,18 @@ public final class PreviewModule {
         final Blueprint bp;
         final BlockState[] want;
         final String[] id, item;
-        final boolean[] props, full;
+        final boolean[] props, full, fluid;
         Pal(Blueprint bp) {
             this.bp = bp;
             int n = bp.palette.length + 1;
-            want = new BlockState[n]; id = new String[n]; item = new String[n]; props = new boolean[n]; full = new boolean[n];
+            want = new BlockState[n]; id = new String[n]; item = new String[n]; props = new boolean[n]; full = new boolean[n]; fluid = new boolean[n];
             for (int i = 1; i < n; i++) {
                 String st = bp.palette[i - 1];
                 if (st == null) continue;
                 want[i] = parse(st);
                 id[i] = MaterialMap.blockId(st);
                 props[i] = st.indexOf('[') >= 0;
+                fluid[i] = dev.buildblueprint.core.Orient.fluid(st);
                 full[i] = want[i] != null && full(want[i]);
                 MaterialMap.Req r = MaterialMap.of(st);
                 item[i] = r == null ? null : r.itemId();
@@ -225,6 +226,7 @@ public final class PreviewModule {
     private static int check(Minecraft mc, Pal p, int c, int wx, int wy, int wz, BlockPos.MutableBlockPos pos) {
         BlockState here = mc.level.getBlockState(pos.set(wx, wy, wz));
         String have = idOf(here);
+        if (p.fluid[c] && MaterialMap.sameBlock(have, p.id[c]) && !dev.buildblueprint.core.Orient.fluidOk(p.bp.palette[c - 1], here.toString())) return p.want[c] != null ? 1 : 0;   // flowing water / missing water: still a ghost
         if (MaterialMap.sameBlock(have, p.id[c]) && (!p.props[c] || !have.equals(p.id[c]) || dev.buildblueprint.core.Orient.ok(p.bp.palette[c - 1], here.toString()))) return 0;   // (dirt counts for grass)   // the wrong way round gets a red box
         if (here.isAir() || !here.getFluidState().isEmpty() || here.canBeReplaced()) return p.want[c] != null ? 1 : 0;
         return 2;

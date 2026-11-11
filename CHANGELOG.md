@@ -1,3 +1,8 @@
+## 1.4.0
+- **Progress you can trust on big builds.** The mod remembers every block of the build it has seen. Parts that are too far away to see (not loaded) keep what they were last seen as, so the progress %, the block list (have / need) and the layer counts no longer drop when you walk or fly away. It's saved with the world, so it's still right after you leave and come back.
+- **Water has to be a full source.** Flowing water no longer counts as placed where the build has water, and a block that should have water in it (waterlogged) only counts once it does. Ghost blocks, the block list, the progress and Auto-build all go by this.
+- Auto-build keeps building the new parts that load as you fly around a big build.
+
 ## 1.3.9
 - **Auto-build picks up where it left off.** Parts of a big build that are too far away (not loaded yet) aren't sent anymore - they used to be sent and fail, or be sent again next time. They're built by themselves as you come closer. Blocks that are already placed are always skipped, so starting Auto-build again after leaving the game only does what's left.
 - Auto-build starts much quicker on huge builds (it works out each kind of block once, not for every block).

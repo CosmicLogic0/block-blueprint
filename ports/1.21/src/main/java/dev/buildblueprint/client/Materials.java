@@ -98,8 +98,31 @@ public final class Materials {
     private static Blueprint palFor;
     private static MaterialMap.Req[] palReq;
     private static String[] palId;
-    private static boolean[] palProps;
+    private static boolean[] palProps, palFluid;
     private static byte[] statusBuf = new byte[0];
+    // What every block of the build was last seen as. Parts of the world that aren't loaded (too far away) keep what
+    // they were last seen as, so the progress and the block list stay right when you walk away. Saved with the world.
+    private static String statusKey = "";
+    private static boolean statusChanged = false;
+    private static String keyOf(Blueprint bp, Session s) { return System.identityHashCode(bp) + "@" + s.ox + "," + s.oy + "," + s.oz; }
+
+    /** The progress to save (null if none): what each block of the build was last seen as. */
+    public static byte[] progress() {
+        Session s = BuildBlueprintClient.SESSION;
+        if (!s.loaded() || !statusKey.equals(keyOf(s.blueprint(), s))) return null;
+        statusChanged = false;
+        return statusBuf.clone();
+    }
+    public static boolean progressChanged() { return statusChanged; }
+
+    /** Brings back saved progress for the build that was just restored. */
+    public static void restoreProgress(byte[] saved) {
+        Session s = BuildBlueprintClient.SESSION;
+        if (!s.loaded() || saved == null) return;
+        Blueprint bp = s.blueprint();
+        if (saved.length != bp.sx * bp.sy * bp.sz) return;
+        statusBuf = saved; statusKey = keyOf(bp, s);
+    }
     private static final Map<net.minecraft.world.level.block.Block, String> IDS = new java.util.IdentityHashMap<>();
     private static String idOf(net.minecraft.world.level.block.Block b) { return IDS.computeIfAbsent(b, k -> V.blockId(k)); }
 
@@ -118,11 +141,11 @@ public final class Materials {
         Blueprint bp = s.blueprint();
         if (palFor != bp) {   // what each kind of block in the build needs: worked out once per build, not for every block every second
             int n = bp.palette.length + 1;
-            palReq = new MaterialMap.Req[n]; palId = new String[n]; palProps = new boolean[n];
+            palReq = new MaterialMap.Req[n]; palId = new String[n]; palProps = new boolean[n]; palFluid = new boolean[n];
             for (int i = 1; i < n; i++) {
                 String st = bp.palette[i - 1];
                 if (st == null) continue;
-                palReq[i] = MaterialMap.of(st); palId[i] = MaterialMap.blockId(st); palProps[i] = st.indexOf('[') >= 0;
+                palReq[i] = MaterialMap.of(st); palId[i] = MaterialMap.blockId(st); palProps[i] = st.indexOf('[') >= 0; palFluid[i] = Orient.fluid(st);
             }
             palFor = bp;
         }
@@ -132,30 +155,43 @@ public final class Materials {
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
         int done = 0, all = 0;
         Map<Long, String[]> wrong = new HashMap<>();
-        List<Integer> wrongAt = new ArrayList<>();
         List<Mistakes.Mistake> mistakes = new ArrayList<>();
         int[] perLayer = new int[bp.sy], totLayer = new int[bp.sy];
         int vol = bp.sx * bp.sy * bp.sz;
-        if (statusBuf.length != vol) statusBuf = new byte[vol]; else java.util.Arrays.fill(statusBuf, (byte) 0);
-        byte[] status = statusBuf;   // 1 to place, 2 done, 3 wrong (4 = there but the wrong way round, until the end)
+        String key = keyOf(bp, s);
+        if (!key.equals(statusKey) || statusBuf.length != vol) { statusBuf = new byte[vol]; statusKey = key; }   // another build, or moved: start fresh
+        byte[] status = statusBuf;   // 0 not seen yet, 1 to place, 2 done, 3 something else in the way, 4 there but the wrong way round
+        int cx0 = s.ox >> 4, cz0 = s.oz >> 4;
+        boolean[][] loaded = new boolean[((s.ox + bp.sx - 1) >> 4) - cx0 + 1][((s.oz + bp.sz - 1) >> 4) - cz0 + 1];
+        for (int a = 0; a < loaded.length; a++) for (int b = 0; b < loaded[a].length; b++) loaded[a][b] = mc.level.getChunkSource().hasChunk(cx0 + a, cz0 + b);
         for (int y = 0; y < bp.sy; y++)
             for (int z = 0; z < bp.sz; z++) {
                 int row = bp.index(0, y, z);
                 for (int x = 0; x < bp.sx; x++) {
                     int idx = row + x, c = bp.cells[idx];
-                    if (c == 0 || palReq[c] == null || !Coop.mine(bp, x, z)) continue;   // co-op: only my part of the build
+                    boolean here = loaded[((s.ox + x) >> 4) - cx0][((s.oz + z) >> 4) - cz0];
+                    if (c == 0 || palReq[c] == null || !Coop.mine(bp, x, z)) { if (here) status[idx] = 0; continue; }   // co-op: only my part of the build
                     MaterialMap.Req r = palReq[c];
                     String st = bp.palette[c - 1];
                     all++;
                     if (tot[c]++ == 0) order[kinds++] = c;
                     totLayer[y]++;
+                    if (!here) {   // too far away to see: what it was last time
+                        byte was = status[idx];
+                        if (was == 2) done++;
+                        else if (was == 4) perLayer[y]++;
+                        else { left[c]++; perLayer[y]++; if (was == 0) status[idx] = 1; }
+                        continue;
+                    }
+                    byte before = status[idx];
                     pos.set(s.ox + x, s.oy + y, s.oz + z);
                     net.minecraft.world.level.block.state.BlockState hs = mc.level.getBlockState(pos);
                     String have = idOf(hs.getBlock());
-                    if (MaterialMap.sameBlock(have, palId[c])) {   // (dirt counts for grass)
+                    if (palFluid[c] && MaterialMap.sameBlock(have, palId[c]) && !Orient.fluidOk(st, hs.toString())) { left[c]++; perLayer[y]++; status[idx] = 1; }   // flowing water, or a block still missing its water
+                    else if (MaterialMap.sameBlock(have, palId[c])) {   // (dirt counts for grass)
                         if (!palProps[c] || !have.equals(palId[c]) || Orient.ok(st, hs.toString())) { done++; status[idx] = 2; }
                         else {   // there, but the wrong way round
-                            perLayer[y]++; status[idx] = 4; wrongAt.add(idx);
+                            perLayer[y]++; status[idx] = 4;
                             if (wrong.size() < MAX_MISTAKES) wrong.put(pos.asLong(), new String[]{st, hs.toString(), r.itemId()});
                             if (mistakes.size() < MAX_MISTAKES) mistakes.add(Mistakes.make(pos.asLong(), st, hs.toString(), r.itemId(), true));
                         }
@@ -164,6 +200,7 @@ public final class Materials {
                         if (solid(hs)) { status[idx] = 3; if (mistakes.size() < MAX_MISTAKES) mistakes.add(Mistakes.make(pos.asLong(), st, "Block{" + have + "}", r.itemId(), false)); }
                         else status[idx] = 1;
                     }
+                    if (status[idx] != before) statusChanged = true;
                 }
             }
         Map<String, int[]> per = new LinkedHashMap<>();          // item -> {left, total}, in the order they first turn up
@@ -190,7 +227,6 @@ public final class Materials {
                 e[1] += r.count();
                 if (status[idx] == 1 || status[idx] == 3) e[0] += r.count();
             }
-        for (int idx : wrongAt) status[idx] = 3;
         layerRows = toRows(perL, inv);
         placed = done;
         sayWrong(wrong, mc);
@@ -202,7 +238,7 @@ public final class Materials {
         for (int z = 0; z < bp.sz; z++)
             for (int x = 0; x < bp.sx; x++) {
                 int i = bp.index(x, L, z), v = bp.cells[i];
-                cells[z * bp.sx + x] = v == 0 || status[i] == 0 ? -1 : (status[i] << 24) | (v - 1);
+                cells[z * bp.sx + x] = v == 0 || status[i] == 0 ? -1 : (Math.min(3, (int) status[i]) << 24) | (v - 1);
             }
         layerCells = cells; mapW = bp.sx; mapD = bp.sz; mapLayer = L;
         scaffold = Settings.scaffold ? findScaffold(bp, s, mc, status, L) : java.util.Collections.<BlockPos>emptyList();
@@ -223,7 +259,7 @@ public final class Materials {
             for (int x = 0; x < W; x++) {
                 int i = bp.index(x, L, z);
                 if (bp.cells[i] == 0 || status[i] == 0) continue;
-                boolean ok = status[i] == 2 || status[i] == 3;   // already a block there
+                boolean ok = status[i] >= 2;   // already a block there
                 for (int[] d : six) {
                     if (ok) break;
                     p.set(s.ox + x + d[0], s.oy + L + d[1], s.oz + z + d[2]);

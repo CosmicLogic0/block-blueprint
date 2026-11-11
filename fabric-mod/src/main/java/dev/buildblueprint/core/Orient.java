@@ -39,6 +39,26 @@ public final class Orient {
         return true;
     }
 
+    /** Does this block need its water checked? Water or lava (a full source), or a block meant to have water in it. */
+    public static boolean fluid(String want) {
+        if (want == null) return false;
+        return want.startsWith("minecraft:water") || want.startsWith("minecraft:lava") || want.contains("waterlogged=true");
+    }
+
+    /**
+     * Water and lava only count when they're a full source block (flowing water doesn't), and a block meant to be
+     * waterlogged has to have water in it. Checked even when "Check direction" is off.
+     */
+    public static boolean fluidOk(String want, String have) {
+        if (!fluid(want) || have == null) return true;
+        Map<String, String> w = props(want), h = props(have);
+        if (want.startsWith("minecraft:water") || want.startsWith("minecraft:lava")) {
+            String wl = w.get("level");
+            if (wl == null || wl.equals("0")) { String hl = h.get("level"); if (hl != null && !hl.equals("0")) return false; }
+        }
+        return !"true".equals(w.get("waterlogged")) || "true".equals(h.get("waterlogged"));
+    }
+
     /** What's wrong, in words: "should face north, upside down". Empty when it's fine. */
     public static String fix(String want, String have) {
         if (ok(want, have)) return "";
