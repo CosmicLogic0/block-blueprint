@@ -125,6 +125,7 @@ Maj = 5 blocs · Suppr = placer
 Couche {0}/{1}
 Temps {0}
 {0} blocs/min
+Encore environ {0} à ton rythme
 Suivant : {0}
   (en main)
 Construction terminée !
@@ -341,6 +342,8 @@ Barres de progression : {0}
 Barre verte = toute la construction, barre bleue = la couche où tu es.
 Chrono : {0}
 Depuis combien de temps tu construis et combien de blocs par minute.
+Temps restant : {0}
+Sous le chrono : une estimation du temps qu'il faudra pour finir à ton rythme. S'affiche après une minute de construction.
 Aide des touches : {0}
 Le petit rappel des touches sous la liste du coin.
 Distance d'affichage : {0}

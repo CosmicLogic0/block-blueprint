@@ -126,6 +126,7 @@ Shift = 5 blocks · Delete = place	Umschalt = 5 Blöcke · Entf = platzieren
 Layer {0}/{1}	Schicht {0}/{1}
 Time {0}	Zeit {0}
 {0} blocks/min	{0} Blöcke/Min
+About {0} left at your speed	Noch etwa {0} bei deinem Tempo
 Next: {0}	Nächster: {0}
   (in hand)	  (in der Hand)
 Build complete!	Bau fertig!
@@ -342,6 +343,8 @@ Progress bars: {0}	Fortschrittsbalken: {0}
 Green bar = whole build, blue bar = the layer you're on.	Grüner Balken = ganzer Bau, blauer Balken = die Schicht, auf der du bist.
 Build timer: {0}	Bau-Timer: {0}
 How long you've been building and how many blocks a minute.	Wie lange du schon baust und wie viele Blöcke pro Minute.
+Time left: {0}	Restzeit: {0}
+Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.	Unter dem Bau-Timer: eine Schätzung, wie lange der Rest des Baus bei deinem Tempo dauert. Erscheint nach einer Minute Bauen.
 Key hints: {0}	Tasten-Hinweise: {0}
 The small reminder of the keys under the corner list.	Die kleine Tasten-Erinnerung unter der Eckliste.
 Draw distance: {0}	Sichtweite: {0}

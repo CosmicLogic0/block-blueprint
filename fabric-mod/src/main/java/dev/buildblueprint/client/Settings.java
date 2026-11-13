@@ -47,6 +47,8 @@ public final class Settings {
     public static boolean autoSwap = true;
     // a line in the corner list with an arrow pointing back to the build when you're more than 32 blocks from it
     public static boolean buildArrow = true;
+    // "About 2h 10m left at your speed" under the build timer
+    public static boolean timeLeft = true;
     // the Logic Survival server was put in the Multiplayer list once (on first start) - never again after that
     public static boolean serverOffered = false;
 
@@ -65,7 +67,7 @@ public final class Settings {
         rawMats = b(p, "rawMats", rawMats); layerMap = b(p, "layerMap", layerMap); scaffold = b(p, "scaffold", scaffold);
         ghostColor = Colors.fix(i(p, "ghostColor", ghostColor), true); redColor = Colors.fix(i(p, "redColor", redColor), false); hintColor = Colors.fix(i(p, "hintColor", hintColor), false);
         chestColor = Colors.fix(i(p, "chestColor", chestColor), false); scaffoldColor = Colors.fix(i(p, "scaffoldColor", scaffoldColor), false);
-        spotColor = Colors.fix(i(p, "spotColor", spotColor), false); heldSpots = b(p, "heldSpots", heldSpots); autoSwap = b(p, "autoSwap", autoSwap); buildArrow = b(p, "buildArrow", buildArrow); serverOffered = b(p, "serverOffered", serverOffered);
+        spotColor = Colors.fix(i(p, "spotColor", spotColor), false); heldSpots = b(p, "heldSpots", heldSpots); autoSwap = b(p, "autoSwap", autoSwap); buildArrow = b(p, "buildArrow", buildArrow); timeLeft = b(p, "timeLeft", timeLeft); serverOffered = b(p, "serverOffered", serverOffered);
     }
 
     public static void save() {
@@ -78,7 +80,7 @@ public final class Settings {
         p.setProperty("nextHint", "" + nextHint); p.setProperty("ghostPick", "" + ghostPick); p.setProperty("preview3d", "" + preview3d); p.setProperty("chestFinder", "" + chestFinder); p.setProperty("checkFacing", "" + checkFacing); p.setProperty("hudStats", "" + hudStats); p.setProperty("sounds", "" + sounds);
         p.setProperty("rawMats", "" + rawMats); p.setProperty("layerMap", "" + layerMap); p.setProperty("scaffold", "" + scaffold);
         p.setProperty("ghostColor", "" + ghostColor); p.setProperty("redColor", "" + redColor); p.setProperty("hintColor", "" + hintColor); p.setProperty("chestColor", "" + chestColor); p.setProperty("scaffoldColor", "" + scaffoldColor);
-        p.setProperty("spotColor", "" + spotColor); p.setProperty("heldSpots", "" + heldSpots); p.setProperty("autoSwap", "" + autoSwap); p.setProperty("buildArrow", "" + buildArrow); p.setProperty("serverOffered", "" + serverOffered);
+        p.setProperty("spotColor", "" + spotColor); p.setProperty("heldSpots", "" + heldSpots); p.setProperty("autoSwap", "" + autoSwap); p.setProperty("buildArrow", "" + buildArrow); p.setProperty("timeLeft", "" + timeLeft); p.setProperty("serverOffered", "" + serverOffered);
         try { Files.createDirectories(file().getParent()); try (Writer w = Files.newBufferedWriter(file())) { p.store(w, "Build Blueprint settings"); } } catch (IOException ignored) {}
     }
 

@@ -125,6 +125,7 @@ Mayús = 5 bloques · Supr = colocar
 Capa {0}/{1}
 Tiempo {0}
 {0} bloques/min
+Quedan unos {0} a tu ritmo
 Siguiente: {0}
   (en la mano)
 ¡Construcción terminada!
@@ -341,6 +342,8 @@ Barras de progreso: {0}
 Barra verde = toda la construcción, barra azul = la capa en la que estás.
 Cronómetro: {0}
 Cuánto tiempo llevas construyendo y cuántos bloques por minuto.
+Tiempo restante: {0}
+Debajo del cronómetro: una estimación de cuánto tardará el resto de la construcción a tu ritmo. Aparece tras construir un minuto.
 Ayuda de teclas: {0}
 El pequeño recordatorio de teclas bajo la lista de la esquina.
 Distancia de dibujo: {0}

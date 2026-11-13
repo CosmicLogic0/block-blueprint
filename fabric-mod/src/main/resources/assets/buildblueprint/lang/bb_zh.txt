@@ -126,6 +126,7 @@ Shift = 5 blocks · Delete = place	Shift = 5 格 · Delete = 放置
 Layer {0}/{1}	第 {0}/{1} 层
 Time {0}	时间 {0}
 {0} blocks/min	{0} 个方块/分钟
+About {0} left at your speed	按你的速度大约还要 {0}
 Next: {0}	下一个：{0}
   (in hand)	  （手中）
 Build complete!	建筑完成！
@@ -342,6 +343,8 @@ Progress bars: {0}	进度条：{0}
 Green bar = whole build, blue bar = the layer you're on.	绿色条 = 整个建筑，蓝色条 = 你所在的层。
 Build timer: {0}	建造计时：{0}
 How long you've been building and how many blocks a minute.	你已经建造了多久，以及每分钟放了多少方块。
+Time left: {0}	剩余时间：{0}
+Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.	在建造计时下方：按你的速度估计剩下的部分还要多久。建造一分钟后显示。
 Key hints: {0}	按键提示：{0}
 The small reminder of the keys under the corner list.	角落列表下方的小按键提示。
 Draw distance: {0}	绘制距离：{0}

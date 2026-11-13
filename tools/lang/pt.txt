@@ -125,6 +125,7 @@ Shift = 5 blocos · Delete = colocar
 Camada {0}/{1}
 Tempo {0}
 {0} blocos/min
+Faltam cerca de {0} no seu ritmo
 Próximo: {0}
   (na mão)
 Construção completa!
@@ -341,6 +342,8 @@ Barras de progresso: {0}
 Barra verde = construção inteira, barra azul = a camada em que você está.
 Cronômetro: {0}
 Há quanto tempo você está construindo e quantos blocos por minuto.
+Tempo restante: {0}
+Abaixo do cronômetro: uma estimativa de quanto tempo o resto da construção vai levar no seu ritmo. Aparece depois de construir por um minuto.
 Dicas de teclas: {0}
 O pequeno lembrete das teclas embaixo da lista do canto.
 Distância de desenho: {0}

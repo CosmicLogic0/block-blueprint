@@ -126,6 +126,7 @@ Shift = 5 blocks · Delete = place	Maj = 5 blocs · Suppr = placer
 Layer {0}/{1}	Couche {0}/{1}
 Time {0}	Temps {0}
 {0} blocks/min	{0} blocs/min
+About {0} left at your speed	Encore environ {0} à ton rythme
 Next: {0}	Suivant : {0}
   (in hand)	  (en main)
 Build complete!	Construction terminée !
@@ -342,6 +343,8 @@ Progress bars: {0}	Barres de progression : {0}
 Green bar = whole build, blue bar = the layer you're on.	Barre verte = toute la construction, barre bleue = la couche où tu es.
 Build timer: {0}	Chrono : {0}
 How long you've been building and how many blocks a minute.	Depuis combien de temps tu construis et combien de blocs par minute.
+Time left: {0}	Temps restant : {0}
+Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.	Sous le chrono : une estimation du temps qu'il faudra pour finir à ton rythme. S'affiche après une minute de construction.
 Key hints: {0}	Aide des touches : {0}
 The small reminder of the keys under the corner list.	Le petit rappel des touches sous la liste du coin.
 Draw distance: {0}	Distance d'affichage : {0}

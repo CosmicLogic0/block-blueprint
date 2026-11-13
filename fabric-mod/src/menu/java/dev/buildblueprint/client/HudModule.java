@@ -87,6 +87,14 @@ public final class HudModule {
         return (int) Math.round(dist);
     }
 
+    /** Blocks still to place / your blocks a minute, in milliseconds; -1 until you've built for a little while. */
+    private static long timeLeft() {
+        double pm = Stats.perMinute();
+        int left = Materials.totalBlocks() - Materials.placed();
+        if (pm < 1 || left <= 0 || Stats.activeMs() < 60_000) return -1;
+        return (long) (left / pm * 60_000);
+    }
+
     /** Draws the corner list; returns where it ends. */
     private static int draw(GuiGraphicsExtractor g, Minecraft mc, int x, int y) {
         var s = BuildBlueprintClient.SESSION;
@@ -98,11 +106,13 @@ public final class HudModule {
         boolean complete = Materials.placed() >= Materials.totalBlocks() && Materials.totalBlocks() > 0;
 
         boolean stats = Settings.hudStats && Stats.started();
+        long leftMs = timeLeft();   // guess of how long the rest of the build takes at your speed (-1 = not known yet)
+        boolean eta = stats && leftMs > 0 && Settings.timeLeft;
         boolean hint = Settings.nextHint && Hint.pos != null && !complete;
         boolean notPlaced = !s.locked;
         boolean coop = Coop.on();
         int far = Settings.buildArrow ? farAway(mc) : -1;   // arrow back to the build when you're far from it
-        int h = 14 + (coop ? 11 : 0) + (far >= 0 ? 11 : 0) + (notPlaced ? 32 : 0) + (Settings.hudBar ? 26 : 0) + (stats ? 11 : 0) + (hint ? 22 : 0) + 12 + lines * 18 + (shown > lines ? 10 : 0) + (shown == 0 ? 10 : 0) + (Settings.hudHints ? 11 : 0);
+        int h = 14 + (coop ? 11 : 0) + (far >= 0 ? 11 : 0) + (notPlaced ? 32 : 0) + (Settings.hudBar ? 26 : 0) + (stats ? 11 : 0) + (eta ? 11 : 0) + (hint ? 22 : 0) + 12 + lines * 18 + (shown > lines ? 10 : 0) + (shown == 0 ? 10 : 0) + (Settings.hudHints ? 11 : 0);
         // panel: dark glass with a 1px light edge, like vanilla tooltips
         g.fill(x - 3, y - 3, x + W + 3, y + h, 0xD0100A18);
         g.fill(x - 3, y - 3, x + W + 3, y - 2, 0xFF5A3FA0);
@@ -142,6 +152,7 @@ public final class HudModule {
             g.text(font, Tr.t(a), x, ly, 0xFFBBBBBB, true);
             g.text(font, Tr.t(b), x + W - font.width(Tr.t(b)), ly, 0xFFBBBBBB, true);
             ly += 11;
+            if (eta) { g.text(font, Tr.t("About " + Stats.time(leftMs) + " left at your speed"), x, ly, 0xFF9FD0FF, true); ly += 11; }
         }
         if (hint) {
             // "Next" card: icon, block name and where it is from you

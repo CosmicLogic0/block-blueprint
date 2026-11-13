@@ -125,6 +125,7 @@ Umschalt = 5 Blöcke · Entf = platzieren
 Schicht {0}/{1}
 Zeit {0}
 {0} Blöcke/Min
+Noch etwa {0} bei deinem Tempo
 Nächster: {0}
   (in der Hand)
 Bau fertig!
@@ -341,6 +342,8 @@ Fortschrittsbalken: {0}
 Grüner Balken = ganzer Bau, blauer Balken = die Schicht, auf der du bist.
 Bau-Timer: {0}
 Wie lange du schon baust und wie viele Blöcke pro Minute.
+Restzeit: {0}
+Unter dem Bau-Timer: eine Schätzung, wie lange der Rest des Baus bei deinem Tempo dauert. Erscheint nach einer Minute Bauen.
 Tasten-Hinweise: {0}
 Die kleine Tasten-Erinnerung unter der Eckliste.
 Sichtweite: {0}

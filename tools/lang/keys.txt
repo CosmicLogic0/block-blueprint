@@ -125,6 +125,7 @@ Shift = 5 blocks · Delete = place
 Layer {0}/{1}
 Time {0}
 {0} blocks/min
+About {0} left at your speed
 Next: {0}
   (in hand)
 Build complete!
@@ -341,6 +342,8 @@ Progress bars: {0}
 Green bar = whole build, blue bar = the layer you're on.
 Build timer: {0}
 How long you've been building and how many blocks a minute.
+Time left: {0}
+Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.
 Key hints: {0}
 The small reminder of the keys under the corner list.
 Draw distance: {0}

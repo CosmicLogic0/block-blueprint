@@ -86,6 +86,8 @@ public class SettingsScreen extends Screen {
             opt(() -> "Blocks in list: " + Settings.hudLines, () -> Settings.hudLines = next(Settings.hudLines, 3, 5, 8, 12, 16), "How many block types the corner list shows before \"+ more\".");
             opt(() -> "Progress bars: " + onOff(Settings.hudBar), () -> Settings.hudBar = !Settings.hudBar, "Green bar = whole build, blue bar = the layer you're on.");
             opt(() -> "Build timer: " + onOff(Settings.hudStats), () -> Settings.hudStats = !Settings.hudStats, "How long you've been building and how many blocks a minute.");
+            opt(() -> "Time left: " + onOff(Settings.timeLeft), () -> Settings.timeLeft = !Settings.timeLeft,
+                    "Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.");
             opt(() -> "Key hints: " + onOff(Settings.hudHints), () -> Settings.hudHints = !Settings.hudHints, "The small reminder of the keys under the corner list.");
             opt(() -> "Draw distance: " + Settings.range, () -> Settings.range = next(Settings.range, 32, 48, 64, 96, 128, 192), "How far away ghost blocks are still drawn. Lower = faster.");
             opt(() -> "Red boxes: " + onOff(Settings.redOutline), () -> Settings.redOutline = !Settings.redOutline, "Red outline on blocks that are in the way of the build, or placed the wrong way round, and the \"to fix\" count in the build menu.");

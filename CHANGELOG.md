@@ -1,3 +1,6 @@
+## 1.4.7 (beta)
+- **Time left:** under the build timer, the corner list now guesses how long the rest of the build will take at your speed ("About 2h 10m left at your speed"). It shows after you've built for a minute (Settings > More: Time left).
+
 ## 1.4.6 (beta)
 - **Arrow to your build:** when you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far away it is. On by default (Settings > More).
 
