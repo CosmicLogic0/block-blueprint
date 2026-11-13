@@ -297,6 +297,12 @@ Scaffold columns: {0}	Gerüstsäulen: {0}
 The color of the scaffold hint columns (Settings > Extras).	Die Farbe der Gerüst-Hinweissäulen (Einstellungen > Extras).
 Held block spots: {0}	Stellen für gehaltenen Block: {0}
 The color of the boxes on the spots that still need the block in your hand.	Die Farbe der Rahmen an den Stellen, die den Block in deiner Hand noch brauchen.
+Layer done sound: {0}	Ton Schicht fertig: {0}
+The sound when you finish a layer. Click to hear it.	Der Ton, wenn du eine Schicht fertig hast. Klicke zum Anhören.
+Build done sound: {0}	Ton Bau fertig: {0}
+The sound when the whole build is done. Click to hear it.	Der Ton, wenn der ganze Bau fertig ist. Klicke zum Anhören.
+Sound volume: {0}%	Lautstärke: {0}%
+How loud the mod's sounds are. Turn them all off with Sounds in Basics.	Wie laut die Töne des Mods sind. Alle aus: Töne unter Grundlagen.
 Reset colors	Farben zurücksetzen
 Back to the mod's usual colors.	Zurück zu den üblichen Farben des Mods.
 Raw materials: {0}	Rohstoffe: {0}
@@ -367,8 +373,8 @@ Basics	Grundlagen
 More	Mehr
 Extras	Extras
 Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	Extra-Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise, leere Welt, nur nahe Schichten.
-Colors	Farben
-Pick the colors of the ghost blocks and the boxes the mod draws.	Wähle die Farben der Geisterblöcke und der Rahmen, die der Mod zeichnet.
+Style	Stil
+Pick the colors of the ghost blocks and the boxes the mod draws, and its sounds.	Wähle die Farben der Geisterblöcke und der Rahmen, die der Mod zeichnet, und seine Töne.
 Key binds...	Tastenbelegung...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	Ändere die Tasten (Optionen > Steuerung > Tastenbelegung > Build Blueprint).
 A short guide to everything the mod does.	Eine kurze Anleitung zu allem, was der Mod kann.
@@ -456,6 +462,12 @@ Click a build to see it here	Klicke auf ein Bauwerk, um es hier zu sehen
 Couldn't load the picture.	Das Bild konnte nicht geladen werden.
 Loading the picture...	Bild wird geladen...
 Click the picture to turn it	Klicke auf das Bild, um es zu drehen
+Orb	Kugel
+Bell	Glocke
+Sparkle	Funkeln
+Off	Aus
+Level up	Level-Up
+Challenge	Herausforderung
 Wrong way round: this {0} {1}  ·  break it and place it again	Falsch herum: dieser {0} {1}  ·  abbauen und neu setzen
 All fixed! Nothing wrong in the build any more.	Alles repariert! Nichts mehr falsch im Bau.
 Fixed! {0} left  ·  {1}	Repariert! Noch {0}  ·  {1}

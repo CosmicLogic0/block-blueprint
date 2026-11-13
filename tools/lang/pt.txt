@@ -296,6 +296,12 @@ Colunas de andaime: {0}
 A cor das colunas de dica de andaime (Configurações > Extras).
 Lugares do bloco na mão: {0}
 A cor das caixas nos lugares que ainda precisam do bloco na sua mão.
+Som de camada pronta: {0}
+O som ao terminar uma camada. Clique para ouvir.
+Som de construção pronta: {0}
+O som quando a construção inteira fica pronta. Clique para ouvir.
+Volume: {0}%
+O volume dos sons do mod. Desligue todos em Sons, no Básico.
 Redefinir cores
 Volta às cores normais do mod.
 Matérias-primas: {0}
@@ -366,8 +372,8 @@ Básico
 Mais
 Extras
 Ajudas extras, desligadas até você ligar: matérias-primas, mapa da camada, dicas de andaime, mundo vazio, só camadas próximas.
-Cores
-Escolha as cores dos blocos fantasma e das caixas que o mod desenha.
+Estilo
+Escolha as cores dos blocos fantasma e das caixas que o mod desenha, e os sons.
 Controles...
 Mude as teclas (Opções > Controles > Atalhos do teclado > Build Blueprint).
 Um guia curto de tudo o que o mod faz.
@@ -455,6 +461,12 @@ Clique numa construção para vê-la aqui
 Não foi possível carregar a imagem.
 Carregando a imagem...
 Clique na imagem para girá-la
+Orbe
+Sino
+Brilho
+Desligado
+Subir de nível
+Desafio
 Virado errado: este {0} {1}  ·  quebre e coloque de novo
 Tudo corrigido! Não tem mais nada errado na construção.
 Corrigido! Faltam {0}  ·  {1}

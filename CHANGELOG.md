@@ -1,3 +1,6 @@
+## 1.4.8 (beta)
+- **Sound choices:** Settings > Style (the Colors page, renamed) lets you pick the sound for a finished layer (Orb, Bell, Sparkle or Off) and for a finished build (Level up, Challenge, Bell, Sparkle or Off), and how loud they are. Click a choice to hear it.
+
 ## 1.4.7 (beta)
 - **Time left:** under the build timer, the corner list now guesses how long the rest of the build will take at your speed ("About 2h 10m left at your speed"). It shows after you've built for a minute (Settings > More: Time left).
 

@@ -297,6 +297,12 @@ Scaffold columns: {0}	Colonnes d'échafaudage : {0}
 The color of the scaffold hint columns (Settings > Extras).	La couleur des colonnes d'aide d'échafaudage (Paramètres > Extras).
 Held block spots: {0}	Emplacements du bloc en main : {0}
 The color of the boxes on the spots that still need the block in your hand.	La couleur des cadres sur les emplacements qui ont encore besoin du bloc dans ta main.
+Layer done sound: {0}	Son couche finie : {0}
+The sound when you finish a layer. Click to hear it.	Le son quand tu finis une couche. Clique pour l'écouter.
+Build done sound: {0}	Son construction finie : {0}
+The sound when the whole build is done. Click to hear it.	Le son quand toute la construction est finie. Clique pour l'écouter.
+Sound volume: {0}%	Volume : {0}%
+How loud the mod's sounds are. Turn them all off with Sounds in Basics.	Le volume des sons du mod. Coupe-les tous avec Sons dans Bases.
 Reset colors	Réinitialiser les couleurs
 Back to the mod's usual colors.	Revenir aux couleurs habituelles du mod.
 Raw materials: {0}	Matières premières : {0}
@@ -367,8 +373,8 @@ Basics	Bases
 More	Plus
 Extras	Extras
 Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de couche, aides d'échafaudage, monde vide, couches proches seulement.
-Colors	Couleurs
-Pick the colors of the ghost blocks and the boxes the mod draws.	Choisis les couleurs des blocs fantômes et des cadres que dessine le mod.
+Style	Style
+Pick the colors of the ghost blocks and the boxes the mod draws, and its sounds.	Choisis les couleurs des blocs fantômes et des cadres que dessine le mod, et ses sons.
 Key binds...	Touches...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	Change les touches (Options > Commandes > Touches > Build Blueprint).
 A short guide to everything the mod does.	Un petit guide de tout ce que fait le mod.
@@ -456,6 +462,12 @@ Click a build to see it here	Clique sur une construction pour la voir ici
 Couldn't load the picture.	Impossible de charger l'image.
 Loading the picture...	Chargement de l'image...
 Click the picture to turn it	Clique sur l'image pour la tourner
+Orb	Orbe
+Bell	Cloche
+Sparkle	Étincelle
+Off	Désactivé
+Level up	Niveau supérieur
+Challenge	Défi
 Wrong way round: this {0} {1}  ·  break it and place it again	Dans le mauvais sens : ce {0} {1}  ·  casse-le et repose-le
 All fixed! Nothing wrong in the build any more.	Tout est corrigé ! Plus rien de faux dans la construction.
 Fixed! {0} left  ·  {1}	Corrigé ! Encore {0}  ·  {1}

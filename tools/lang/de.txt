@@ -296,6 +296,12 @@ Gerüstsäulen: {0}
 Die Farbe der Gerüst-Hinweissäulen (Einstellungen > Extras).
 Stellen für gehaltenen Block: {0}
 Die Farbe der Rahmen an den Stellen, die den Block in deiner Hand noch brauchen.
+Ton Schicht fertig: {0}
+Der Ton, wenn du eine Schicht fertig hast. Klicke zum Anhören.
+Ton Bau fertig: {0}
+Der Ton, wenn der ganze Bau fertig ist. Klicke zum Anhören.
+Lautstärke: {0}%
+Wie laut die Töne des Mods sind. Alle aus: Töne unter Grundlagen.
 Farben zurücksetzen
 Zurück zu den üblichen Farben des Mods.
 Rohstoffe: {0}
@@ -366,8 +372,8 @@ Grundlagen
 Mehr
 Extras
 Extra-Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise, leere Welt, nur nahe Schichten.
-Farben
-Wähle die Farben der Geisterblöcke und der Rahmen, die der Mod zeichnet.
+Stil
+Wähle die Farben der Geisterblöcke und der Rahmen, die der Mod zeichnet, und seine Töne.
 Tastenbelegung...
 Ändere die Tasten (Optionen > Steuerung > Tastenbelegung > Build Blueprint).
 Eine kurze Anleitung zu allem, was der Mod kann.
@@ -455,6 +461,12 @@ Klicke auf ein Bauwerk, um es hier zu sehen
 Das Bild konnte nicht geladen werden.
 Bild wird geladen...
 Klicke auf das Bild, um es zu drehen
+Kugel
+Glocke
+Funkeln
+Aus
+Level-Up
+Herausforderung
 Falsch herum: dieser {0} {1}  ·  abbauen und neu setzen
 Alles repariert! Nichts mehr falsch im Bau.
 Repariert! Noch {0}  ·  {1}

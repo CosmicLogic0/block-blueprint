@@ -296,6 +296,12 @@ Columnas de andamio: {0}
 El color de las columnas de ayuda de andamio (Ajustes > Extras).
 Lugares del bloque en mano: {0}
 El color de las cajas en los lugares que aún necesitan el bloque que tienes en la mano.
+Sonido de capa hecha: {0}
+El sonido al terminar una capa. Haz clic para oírlo.
+Sonido de construcción hecha: {0}
+El sonido cuando toda la construcción está hecha. Haz clic para oírlo.
+Volumen: {0}%
+Qué tan fuertes son los sonidos del mod. Apágalos todos con Sonidos en Básico.
 Restablecer colores
 Vuelve a los colores habituales del mod.
 Materias primas: {0}
@@ -366,8 +372,8 @@ Básico
 Más
 Extras
 Ayudas extra, apagadas hasta que las actives: materias primas, mapa de capa, pistas de andamio, mundo vacío, solo capas cercanas.
-Colores
-Elige los colores de los bloques fantasma y de las cajas que dibuja el mod.
+Estilo
+Elige los colores de los bloques fantasma y de las cajas que dibuja el mod, y sus sonidos.
 Controles...
 Cambia las teclas (Opciones > Controles > Asignación de teclas > Build Blueprint).
 Una guía corta de todo lo que hace el mod.
@@ -455,6 +461,12 @@ Haz clic en una construcción para verla aquí
 No se pudo cargar la imagen.
 Cargando la imagen...
 Haz clic en la imagen para girarla
+Orbe
+Campana
+Destello
+Apagado
+Subir de nivel
+Desafío
 Al revés: este {0} {1}  ·  rómpelo y colócalo otra vez
 ¡Todo arreglado! Ya no hay nada mal en la construcción.
 ¡Arreglado! Quedan {0}  ·  {1}

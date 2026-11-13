@@ -52,6 +52,12 @@ public class SettingsScreen extends Screen {
                     "The color of the scaffold hint columns (Settings > Extras).");
             opt(() -> "Held block spots: " + Colors.name(Settings.spotColor), () -> Settings.spotColor = Colors.next(Settings.spotColor, false),
                     "The color of the boxes on the spots that still need the block in your hand.");
+            opt(() -> "Layer done sound: " + Chat.LAYER_SOUNDS[Settings.layerSound], () -> { Settings.layerSound = (Settings.layerSound + 1) % Chat.LAYER_SOUNDS.length; Chat.play(false, Settings.layerSound); },
+                    "The sound when you finish a layer. Click to hear it.");
+            opt(() -> "Build done sound: " + Chat.BUILD_SOUNDS[Settings.buildSound], () -> { Settings.buildSound = (Settings.buildSound + 1) % Chat.BUILD_SOUNDS.length; Chat.play(true, Settings.buildSound); },
+                    "The sound when the whole build is done. Click to hear it.");
+            opt(() -> "Sound volume: " + Settings.soundVolume + "%", () -> { Settings.soundVolume = next(Settings.soundVolume, 20, 40, 60, 80, 100); Chat.play(false, Settings.layerSound); },
+                    "How loud the mod's sounds are. Turn them all off with Sounds in Basics.");
             opt(() -> "Reset colors", () -> { Settings.ghostColor = -1; Settings.redColor = 0; Settings.hintColor = 2; Settings.chestColor = 3; Settings.scaffoldColor = 5; Settings.spotColor = 4; Mc.setScreen(new SettingsScreen(parent)); },
                     "Back to the mod's usual colors.");
         } else if (extras) {
@@ -116,8 +122,8 @@ public class SettingsScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "More", tw - 8)), b -> { more = true; extras = false; colors = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[1], 30, tw, 20).build()).active = !more || extras || colors;
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Extras", tw - 8)), b -> { extras = true; colors = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[2], 30, tw, 20)
                 .tooltip(Tooltip.create(Component.literal(Tr.t("Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.")))).build()).active = !extras || colors;
-        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Colors", tw - 8)), b -> { colors = true; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[3], 30, tw, 20)
-                .tooltip(Tooltip.create(Component.literal(Tr.t("Pick the colors of the ghost blocks and the boxes the mod draws.")))).build()).active = !colors;
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Style", tw - 8)), b -> { colors = true; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[3], 30, tw, 20)
+                .tooltip(Tooltip.create(Component.literal(Tr.t("Pick the colors of the ghost blocks and the boxes the mod draws, and its sounds.")))).build()).active = !colors;
         // bottom
         Minecraft mc = Minecraft.getInstance();
         int by = height - 26;

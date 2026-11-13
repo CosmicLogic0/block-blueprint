@@ -297,6 +297,12 @@ Scaffold columns: {0}	Colunas de andaime: {0}
 The color of the scaffold hint columns (Settings > Extras).	A cor das colunas de dica de andaime (Configurações > Extras).
 Held block spots: {0}	Lugares do bloco na mão: {0}
 The color of the boxes on the spots that still need the block in your hand.	A cor das caixas nos lugares que ainda precisam do bloco na sua mão.
+Layer done sound: {0}	Som de camada pronta: {0}
+The sound when you finish a layer. Click to hear it.	O som ao terminar uma camada. Clique para ouvir.
+Build done sound: {0}	Som de construção pronta: {0}
+The sound when the whole build is done. Click to hear it.	O som quando a construção inteira fica pronta. Clique para ouvir.
+Sound volume: {0}%	Volume: {0}%
+How loud the mod's sounds are. Turn them all off with Sounds in Basics.	O volume dos sons do mod. Desligue todos em Sons, no Básico.
 Reset colors	Redefinir cores
 Back to the mod's usual colors.	Volta às cores normais do mod.
 Raw materials: {0}	Matérias-primas: {0}
@@ -367,8 +373,8 @@ Basics	Básico
 More	Mais
 Extras	Extras
 Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	Ajudas extras, desligadas até você ligar: matérias-primas, mapa da camada, dicas de andaime, mundo vazio, só camadas próximas.
-Colors	Cores
-Pick the colors of the ghost blocks and the boxes the mod draws.	Escolha as cores dos blocos fantasma e das caixas que o mod desenha.
+Style	Estilo
+Pick the colors of the ghost blocks and the boxes the mod draws, and its sounds.	Escolha as cores dos blocos fantasma e das caixas que o mod desenha, e os sons.
 Key binds...	Controles...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	Mude as teclas (Opções > Controles > Atalhos do teclado > Build Blueprint).
 A short guide to everything the mod does.	Um guia curto de tudo o que o mod faz.
@@ -456,6 +462,12 @@ Click a build to see it here	Clique numa construção para vê-la aqui
 Couldn't load the picture.	Não foi possível carregar a imagem.
 Loading the picture...	Carregando a imagem...
 Click the picture to turn it	Clique na imagem para girá-la
+Orb	Orbe
+Bell	Sino
+Sparkle	Brilho
+Off	Desligado
+Level up	Subir de nível
+Challenge	Desafio
 Wrong way round: this {0} {1}  ·  break it and place it again	Virado errado: este {0} {1}  ·  quebre e coloque de novo
 All fixed! Nothing wrong in the build any more.	Tudo corrigido! Não tem mais nada errado na construção.
 Fixed! {0} left  ·  {1}	Corrigido! Faltam {0}  ·  {1}

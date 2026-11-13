@@ -297,6 +297,12 @@ Scaffold columns: {0}	Столбы лесов: {0}
 The color of the scaffold hint columns (Settings > Extras).	Цвет столбов-подсказок для лесов (Настройки > Дополнительно).
 Held block spots: {0}	Места для блока в руке: {0}
 The color of the boxes on the spots that still need the block in your hand.	Цвет рамок на местах, где ещё нужен блок из твоей руки.
+Layer done sound: {0}	Звук слоя: {0}
+The sound when you finish a layer. Click to hear it.	Звук, когда ты заканчиваешь слой. Нажми, чтобы послушать.
+Build done sound: {0}	Звук постройки: {0}
+The sound when the whole build is done. Click to hear it.	Звук, когда вся постройка готова. Нажми, чтобы послушать.
+Sound volume: {0}%	Громкость: {0}%
+How loud the mod's sounds are. Turn them all off with Sounds in Basics.	Насколько громкие звуки мода. Выключить все — «Звуки» в разделе «Основное».
 Reset colors	Сбросить цвета
 Back to the mod's usual colors.	Вернуть обычные цвета мода.
 Raw materials: {0}	Сырьё: {0}
@@ -367,8 +373,8 @@ Basics	Основное
 More	Ещё
 Extras	Дополнительно
 Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	Дополнительные помощники, выключены, пока вы их не включите: сырьё, карта слоя, подсказки лесов, пустой мир, только ближние слои.
-Colors	Цвета
-Pick the colors of the ghost blocks and the boxes the mod draws.	Выбери цвета блоков-призраков и рамок, которые рисует мод.
+Style	Стиль
+Pick the colors of the ghost blocks and the boxes the mod draws, and its sounds.	Выбери цвета блоков-призраков и рамок, которые рисует мод, и его звуки.
 Key binds...	Клавиши...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	Смени клавиши (Настройки > Управление > Назначение клавиш > Build Blueprint).
 A short guide to everything the mod does.	Короткое руководство по всему, что умеет мод.
@@ -456,6 +462,12 @@ Click a build to see it here	Нажмите на постройку, чтобы 
 Couldn't load the picture.	Не удалось загрузить картинку.
 Loading the picture...	Загрузка картинки...
 Click the picture to turn it	Нажмите на картинку, чтобы повернуть её
+Orb	Сфера опыта
+Bell	Колокол
+Sparkle	Искры
+Off	Выкл
+Level up	Новый уровень
+Challenge	Испытание
 Wrong way round: this {0} {1}  ·  break it and place it again	Не той стороной: этот {0} {1}  ·  сломай и поставь заново
 All fixed! Nothing wrong in the build any more.	Всё исправлено! В постройке больше нет ошибок.
 Fixed! {0} left  ·  {1}	Исправлено! Осталось {0}  ·  {1}
