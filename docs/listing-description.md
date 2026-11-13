@@ -23,6 +23,7 @@ The build is saved to your **Saved builds**, ready to place as a blueprint in an
 - **Next block helper**: highlights the next block to place and tells you where it is.
 - **Pick from ghost**: middle-click a ghost block to grab that block from your inventory.
 - **Chest finder**: chests you've opened that hold blocks you still need are outlined in green.
+- **Colors**: pick the colors of the ghost blocks and the boxes the mod draws (Settings → Colors).
 - **Remembers your blueprint** in every world and server, so it's still there when you come back.
 - **Progress stats**: time spent and blocks per minute.
 - **Schematic files**: .schem (WorldEdit / Sponge), .litematic (Litematica) and .nbt (structure blocks) show up in Saved builds, and `/buildblueprint export` saves any build as a .schem.
@@ -51,3 +52,8 @@ Every file is tested before it's uploaded: the real game is started with it, joi
 - App download, source and bug reports: https://github.com/CosmicLogic0/block-blueprint
 
 *Please respect other players' work: ask before copying someone's build, and give credit when you share it.*
+
+
+## 🎮 Play on the creator's server
+
+**Logic Survival** (`play.logicsurvival.fyi`) is the survival server run by the maker of this mod. The mod has an optional button for it in **How it works → More helpers → Add Logic Survival to my servers**. It's only added to your Multiplayer list if you press it, and you can delete it there any time.

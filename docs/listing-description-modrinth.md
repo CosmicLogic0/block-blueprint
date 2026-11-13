@@ -38,6 +38,9 @@ Look at a corner of a build and press **Insert**. A box starts on that block: ma
 **⚡ Creative mode extras**<br>
 In Creative mode the mod can build it for you. **Auto-build** places the whole build at once, **Build layer** places just the layer you're on, and **Undo build** takes it all back if you change your mind. On servers this needs operator rights.
 
+**🌈 Pick your colors**<br>
+Settings → Colors lets you choose the color of the ghost blocks and of the boxes the mod draws: mistakes, the next block, chests and scaffold columns.
+
 **💾 It remembers**<br>
 Leave the world and come back, and your blueprint is still there, right where you left it.
 
@@ -89,3 +92,9 @@ Download it here: https://github.com/CosmicLogic0/block-blueprint
 <img src="https://media.forgecdn.net/attachments/description/1762212/description_2c803121-983b-433c-9063-f7d7ec380b2d.png" alt="Help keep this mod alive - donate with PayPal" width="850">
 
 Build Blueprint and the Block Blueprint app are free. Donations keep the mod up to date with fixes, new Minecraft versions and new features. Use the **Donate** link on this page - any amount helps. Thank you!
+
+---
+
+### 🎮 Play on the creator's server
+
+**Logic Survival** (`play.logicsurvival.fyi`) is the survival server run by the maker of this mod. The mod has an optional button for it in **How it works → More helpers → Add Logic Survival to my servers**. It's only added to your Multiplayer list if you press it, and you can delete it there any time.
