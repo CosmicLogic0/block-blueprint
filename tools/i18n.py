@@ -196,7 +196,9 @@ def extract():
               # kinds of free builds (renderer/templates/mod-index.tsv)
               'Community Builds', 'Houses', 'Towers', 'Ships', 'Ruins & Temples', 'Castles & Forts', 'Village Buildings', 'Decor', 'Camps & Outposts',
               # colors (Settings > Colors)
-              'Normal', 'Red', 'Orange', 'Yellow', 'Green', 'Aqua', 'Light blue', 'Blue', 'Purple', 'Pink', 'White']:
+              'Normal', 'Red', 'Orange', 'Yellow', 'Green', 'Aqua', 'Light blue', 'Blue', 'Purple', 'Pink', 'White',
+              # sounds (Settings > Style)
+              'Orb', 'Bell', 'Sparkle', 'Level up', 'Challenge']:
         if w not in keys: keys.append(w)
     LANG.mkdir(parents=True, exist_ok=True)
     (LANG / 'bb_en.txt').write_text('# Every text Build Blueprint shows. Translations: bb_<language>.txt, "English<TAB>translation".\n' + '\n'.join(keys) + '\n')

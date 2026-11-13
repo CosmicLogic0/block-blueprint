@@ -297,6 +297,12 @@ Scaffold columns: {0}	脚手架柱：{0}
 The color of the scaffold hint columns (Settings > Extras).	脚手架提示柱的颜色（设置 > 额外）。
 Held block spots: {0}	手持方块位置：{0}
 The color of the boxes on the spots that still need the block in your hand.	仍需要你手中方块的位置上框的颜色。
+Layer done sound: {0}	完成一层的声音：{0}
+The sound when you finish a layer. Click to hear it.	完成一层时的声音。点击试听。
+Build done sound: {0}	建筑完成的声音：{0}
+The sound when the whole build is done. Click to hear it.	整个建筑完成时的声音。点击试听。
+Sound volume: {0}%	音量：{0}%
+How loud the mod's sounds are. Turn them all off with Sounds in Basics.	模组声音的大小。在“基础”里的“声音”可以全部关闭。
 Reset colors	重置颜色
 Back to the mod's usual colors.	恢复模组的默认颜色。
 Raw materials: {0}	原材料：{0}
@@ -367,8 +373,8 @@ Basics	基础
 More	更多
 Extras	附加
 Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	额外辅助功能，开启前默认关闭：原材料、层地图、脚手架提示、空白世界、只显示附近的层。
-Colors	颜色
-Pick the colors of the ghost blocks and the boxes the mod draws.	选择虚影方块和模组所画方框的颜色。
+Style	样式
+Pick the colors of the ghost blocks and the boxes the mod draws, and its sounds.	选择虚影方块和模组所画方框的颜色，以及它的声音。
 Key binds...	按键绑定...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	修改按键（选项 > 控制 > 按键绑定 > Build Blueprint）。
 A short guide to everything the mod does.	模组所有功能的简短指南。
@@ -456,6 +462,12 @@ Click a build to see it here	点击一个建筑即可在这里看到它
 Couldn't load the picture.	无法加载图片。
 Loading the picture...	正在加载图片...
 Click the picture to turn it	点击图片可以旋转它
+Orb	经验球
+Bell	钟声
+Sparkle	闪烁
+Off	关
+Level up	升级
+Challenge	挑战
 Wrong way round: this {0} {1}  ·  break it and place it again	方向放反了：这个{0}{1}  ·  打掉重新放
 All fixed! Nothing wrong in the build any more.	全部修正！建筑里没有错误了。
 Fixed! {0} left  ·  {1}	已修正！还剩 {0} 处  ·  {1}

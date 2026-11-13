@@ -321,6 +321,12 @@ Scaffold columns: {0}
 The color of the scaffold hint columns (Settings > Extras).
 Held block spots: {0}
 The color of the boxes on the spots that still need the block in your hand.
+Layer done sound: {0}
+The sound when you finish a layer. Click to hear it.
+Build done sound: {0}
+The sound when the whole build is done. Click to hear it.
+Sound volume: {0}%
+How loud the mod's sounds are. Turn them all off with Sounds in Basics.
 Reset colors
 Back to the mod's usual colors.
 Raw materials: {0}
@@ -391,8 +397,8 @@ Basics
 More
 Extras
 Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.
-Colors
-Pick the colors of the ghost blocks and the boxes the mod draws.
+Style
+Pick the colors of the ghost blocks and the boxes the mod draws, and its sounds.
 Key binds...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).
 A short guide to everything the mod does.
@@ -494,6 +500,12 @@ Click a build to see it here
 Couldn't load the picture.
 Loading the picture...
 Click the picture to turn it
+Orb
+Bell
+Sparkle
+Off
+Level up
+Challenge
 materials list
 Block{{0}}
 Wrong way round: this {0} {1}  ·  break it and place it again

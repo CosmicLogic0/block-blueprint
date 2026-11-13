@@ -296,6 +296,12 @@ Colonnes d'échafaudage : {0}
 La couleur des colonnes d'aide d'échafaudage (Paramètres > Extras).
 Emplacements du bloc en main : {0}
 La couleur des cadres sur les emplacements qui ont encore besoin du bloc dans ta main.
+Son couche finie : {0}
+Le son quand tu finis une couche. Clique pour l'écouter.
+Son construction finie : {0}
+Le son quand toute la construction est finie. Clique pour l'écouter.
+Volume : {0}%
+Le volume des sons du mod. Coupe-les tous avec Sons dans Bases.
 Réinitialiser les couleurs
 Revenir aux couleurs habituelles du mod.
 Matières premières : {0}
@@ -366,8 +372,8 @@ Bases
 Plus
 Extras
 Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de couche, aides d'échafaudage, monde vide, couches proches seulement.
-Couleurs
-Choisis les couleurs des blocs fantômes et des cadres que dessine le mod.
+Style
+Choisis les couleurs des blocs fantômes et des cadres que dessine le mod, et ses sons.
 Touches...
 Change les touches (Options > Commandes > Touches > Build Blueprint).
 Un petit guide de tout ce que fait le mod.
@@ -455,6 +461,12 @@ Clique sur une construction pour la voir ici
 Impossible de charger l'image.
 Chargement de l'image...
 Clique sur l'image pour la tourner
+Orbe
+Cloche
+Étincelle
+Désactivé
+Niveau supérieur
+Défi
 Dans le mauvais sens : ce {0} {1}  ·  casse-le et repose-le
 Tout est corrigé ! Plus rien de faux dans la construction.
 Corrigé ! Encore {0}  ·  {1}
