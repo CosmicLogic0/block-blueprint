@@ -94,7 +94,7 @@ Saved builds > Get free builds has 1,300+ free builds from the Minecraft communi
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	“设置 > 附加”里还有更多可以打开的辅助功能：原材料、本层地图和脚手架提示。
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	模组会跟随游戏语言：英语、西班牙语、葡萄牙语、德语、法语、俄语和中文。
 Holding a block lights up the spots near you that still need it (Settings: Spots for held block).	手持方块时，附近仍需要它的位置会亮起来（设置：手持方块的位置）。
-Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > More).	建造时某种方块用完了？自动切换会把建筑需要的下一个方块放到你手上（设置 > 更多）。
+Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > Extras).	建造时某种方块用完了？自动切换会把建筑需要的下一个方块放到你手上（设置 > 额外）。
 Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again.	想和这个模组的作者一起玩吗？Logic Survival 是作者的生存服务器。模组第一次启动时，它被添加到了你的多人游戏列表末尾一次。不想要就在那里删除——它不会再回来。下面的按钮可以重新添加。
 How it works	使用方法
 < Back	< 返回
@@ -315,6 +315,12 @@ Blank world: {0}	空白世界：{0}
 For building in an empty world: anything inside the build's area that shouldn't be there - stray blocks, water - gets a red box and counts as a mistake to fix, and Auto-build clears it.	适合在空白世界里建造：建筑范围内不该有的东西（多余的方块、水）会有红框并算作要修正的错误，自动建造会把它清除。
 Nearby layers only: {0}	只显示附近的层：{0}
 Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.	放置建筑之前，只绘制你所在高度附近的层（脚下3层到上方4层），而不是全部。大型建筑更流畅，还能看到内部。
+Auto-swap blocks: {0}	自动切换方块：{0}
+When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	手中的方块用完时，建筑需要的下一个方块会移到你手上：先是同一种，然后是下一个要放的方块。
+Arrow to build: {0}	指向建筑的箭头：{0}
+When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.	当你离建筑超过 32 格时，角落列表会显示指向它的箭头和距离。
+Time left: {0}	剩余时间：{0}
+Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.	在建造计时下方：按你的速度估计剩下的部分还要多久。建造一分钟后显示。
 Ghost blocks: {0}% solid	幽灵方块：{0}% 不透明
 How see-through the preview blocks are.	预览方块的透明程度。
 Show preview: {0}	显示预览：{0}
@@ -349,8 +355,6 @@ Progress bars: {0}	进度条：{0}
 Green bar = whole build, blue bar = the layer you're on.	绿色条 = 整个建筑，蓝色条 = 你所在的层。
 Build timer: {0}	建造计时：{0}
 How long you've been building and how many blocks a minute.	你已经建造了多久，以及每分钟放了多少方块。
-Time left: {0}	剩余时间：{0}
-Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.	在建造计时下方：按你的速度估计剩下的部分还要多久。建造一分钟后显示。
 Key hints: {0}	按键提示：{0}
 The small reminder of the keys under the corner list.	角落列表下方的小按键提示。
 Draw distance: {0}	绘制距离：{0}
@@ -359,10 +363,6 @@ Red boxes: {0}	红色框：{0}
 Red outline on blocks that are in the way of the build, or placed the wrong way round, and the "to fix" count in the build menu.	给挡住建筑或方向放反的方块加红色边框，并在建筑菜单中显示“要修正”的数量。
 Check direction: {0}	检查方向：{0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	方块只有朝向正确才算完成：楼梯、台阶（上半或下半）、原木、门、按钮……方向放反的方块会显示红色框。
-Auto-swap blocks: {0}	自动切换方块：{0}
-When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	手中的方块用完时，建筑需要的下一个方块会移到你手上：先是同一种，然后是下一个要放的方块。
-Arrow to build: {0}	指向建筑的箭头：{0}
-When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.	当你离建筑超过 32 格时，角落列表会显示指向它的箭头和距离。
 Pick from ghost: {0}	从幽灵拿取：{0}
 Middle-click a ghost block to put that block in your hand.	用鼠标中键点击幽灵方块，就能把这个方块拿到手上。
 Build picture: {0}	建筑预览图：{0}
@@ -372,7 +372,7 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics	基础
 More	更多
 Extras	附加
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	额外辅助功能，开启前默认关闭：原材料、层地图、脚手架提示、空白世界、只显示附近的层。
+More helpers: raw materials, layer map, scaffold hints, blank world, nearby layers only, auto-swap, arrow to build, time left.	更多帮手：原材料、层地图、脚手架提示、空白世界、只显示附近的层、自动切换、指向建筑的箭头、剩余时间。
 Style	样式
 Pick the colors of the ghost blocks and the boxes the mod draws, and its sounds.	选择虚影方块和模组所画方框的颜色，以及它的声音。
 Key binds...	按键绑定...

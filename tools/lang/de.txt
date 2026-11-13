@@ -93,7 +93,7 @@ Gespeicherte Bauten > Kostenlose Bauten hat über 1.300 kostenlose Bauten aus de
 Einstellungen > Extras hat weitere Helfer zum Einschalten: Rohstoffe, eine Karte deiner Schicht und Gerüst-Hinweise.
 Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, Französisch, Russisch und Chinesisch.
 Hältst du einen Block, leuchten die Stellen in deiner Nähe auf, die ihn noch brauchen (Einstellungen: Stellen für gehaltenen Block).
-Geht dir beim Bauen ein Block aus? Auto-Tausch legt dir den nächsten Block, den der Bau braucht, in die Hand (Einstellungen > Mehr).
+Geht dir beim Bauen ein Block aus? Auto-Tausch legt dir den nächsten Block, den der Bau braucht, in die Hand (Einstellungen > Extras).
 Willst du mit dem Macher dieses Mods spielen? Logic Survival ist sein Survival-Server. Er wurde beim ersten Start des Mods einmal ans Ende deiner Mehrspieler-Liste gesetzt. Lösch ihn dort, wenn du ihn nicht willst - er kommt nicht wieder. Der Knopf unten fügt ihn wieder hinzu.
 So funktioniert's
 < Zurück
@@ -314,6 +314,12 @@ Leere Welt: {0}
 Zum Bauen in einer leeren Welt: Alles im Bereich des Bauwerks, was dort nicht hingehört - einzelne Blöcke, Wasser - bekommt einen roten Rahmen und zählt als Fehler, und der Auto-Bau räumt es weg.
 Nur nahe Schichten: {0}
 Bevor du ein Bauwerk platzierst, werden nur die Schichten um deine Höhe gezeichnet (3 unter deinen Füßen bis 4 darüber) statt allem. Leichter für große Bauwerke, und du siehst hinein.
+Auto-Tausch: {0}
+Wenn der Stapel in deiner Hand leer ist, kommt der nächste Block, den der Bau braucht, in deine Hand: erst mehr vom gleichen, dann der nächste zu setzende Block.
+Pfeil zum Bau: {0}
+Bist du mehr als 32 Blöcke von deinem Bau entfernt, zeigt die Eckliste einen Pfeil dorthin und wie weit er weg ist.
+Restzeit: {0}
+Unter dem Bau-Timer: eine Schätzung, wie lange der Rest des Baus bei deinem Tempo dauert. Erscheint nach einer Minute Bauen.
 Geisterblöcke: {0}% fest
 Wie durchsichtig die Vorschau-Blöcke sind.
 Vorschau zeigen: {0}
@@ -348,8 +354,6 @@ Fortschrittsbalken: {0}
 Grüner Balken = ganzer Bau, blauer Balken = die Schicht, auf der du bist.
 Bau-Timer: {0}
 Wie lange du schon baust und wie viele Blöcke pro Minute.
-Restzeit: {0}
-Unter dem Bau-Timer: eine Schätzung, wie lange der Rest des Baus bei deinem Tempo dauert. Erscheint nach einer Minute Bauen.
 Tasten-Hinweise: {0}
 Die kleine Tasten-Erinnerung unter der Eckliste.
 Sichtweite: {0}
@@ -358,10 +362,6 @@ Rote Boxen: {0}
 Roter Rahmen um Blöcke, die dem Bauwerk im Weg sind oder falsch herum stehen, und die Anzahl „zu reparieren" im Baumenü.
 Richtung prüfen: {0}
 Blöcke zählen nur als fertig, wenn sie richtig herum stehen: Treppen, Stufen (oben oder unten), Stämme, Türen, Knöpfe... Ein falsch herum gesetzter Block bekommt eine rote Box.
-Auto-Tausch: {0}
-Wenn der Stapel in deiner Hand leer ist, kommt der nächste Block, den der Bau braucht, in deine Hand: erst mehr vom gleichen, dann der nächste zu setzende Block.
-Pfeil zum Bau: {0}
-Bist du mehr als 32 Blöcke von deinem Bau entfernt, zeigt die Eckliste einen Pfeil dorthin und wie weit er weg ist.
 Aus dem Geist nehmen: {0}
 Mittelklick auf einen Geisterblock legt dir diesen Block in die Hand.
 Baubild: {0}
@@ -371,7 +371,7 @@ Ein neuer Bau wird komplett gezeigt, damit du ihn bewegen kannst. Beim Platziere
 Grundlagen
 Mehr
 Extras
-Extra-Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise, leere Welt, nur nahe Schichten.
+Weitere Helfer: Rohstoffe, Schichtkarte, Gerüst-Hinweise, leere Welt, nur nahe Schichten, Auto-Tausch, Pfeil zum Bau, Restzeit.
 Stil
 Wähle die Farben der Geisterblöcke und der Rahmen, die der Mod zeichnet, und seine Töne.
 Tastenbelegung...

@@ -93,7 +93,7 @@ Construcciones guardadas > Construcciones gratis tiene más de 1.300 construccio
 Ajustes > Extras tiene más ayudas que puedes encender: materias primas, un mapa de la capa en la que estás y ayuda de andamios.
 El mod usa el idioma de tu juego: inglés, español, portugués, alemán, francés, ruso y chino.
 Al sostener un bloque se iluminan los lugares cercanos que aún lo necesitan (Ajustes: Lugares del bloque en mano).
-¿Te quedas sin un bloque mientras construyes? El cambio automático pone en tu mano el siguiente bloque que necesita la construcción (Ajustes > Más).
+¿Te quedas sin un bloque mientras construyes? El cambio automático pone en tu mano el siguiente bloque que necesita la construcción (Ajustes > Extras).
 ¿Quieres jugar con quien hizo este mod? Logic Survival es su servidor de supervivencia. Se añadió una vez al final de tu lista de Multijugador la primera vez que se inició el mod. Bórralo allí si no lo quieres: no volverá. El botón de abajo lo añade de nuevo.
 Cómo funciona
 < Atrás
@@ -314,6 +314,12 @@ Mundo vacío: {0}
 Para construir en un mundo vacío: todo lo que no debería estar dentro de la zona de la construcción (bloques sueltos, agua) se marca en rojo y cuenta como error por arreglar, y la autoconstrucción lo quita.
 Solo capas cercanas: {0}
 Antes de colocar una construcción, dibuja solo las capas cerca de tu altura (3 bajo tus pies a 4 encima) en vez de todo. Más ligero para construcciones grandes, y puedes ver el interior.
+Cambio automático: {0}
+Cuando se acaba la pila de tu mano, el siguiente bloque que necesita la construcción pasa a tu mano: primero más del mismo, luego el siguiente bloque a colocar.
+Flecha a la construcción: {0}
+Cuando estás a más de 32 bloques de tu construcción, la lista de la esquina muestra una flecha que apunta hacia ella y a qué distancia está.
+Tiempo restante: {0}
+Debajo del cronómetro: una estimación de cuánto tardará el resto de la construcción a tu ritmo. Aparece tras construir un minuto.
 Bloques fantasma: {0}% sólidos
 Lo transparentes que son los bloques de vista previa.
 Mostrar vista previa: {0}
@@ -348,8 +354,6 @@ Barras de progreso: {0}
 Barra verde = toda la construcción, barra azul = la capa en la que estás.
 Cronómetro: {0}
 Cuánto tiempo llevas construyendo y cuántos bloques por minuto.
-Tiempo restante: {0}
-Debajo del cronómetro: una estimación de cuánto tardará el resto de la construcción a tu ritmo. Aparece tras construir un minuto.
 Ayuda de teclas: {0}
 El pequeño recordatorio de teclas bajo la lista de la esquina.
 Distancia de dibujo: {0}
@@ -358,10 +362,6 @@ Cajas rojas: {0}
 Contorno rojo en los bloques que estorban la construcción o están colocados al revés, y el recuento "por arreglar" en el menú de construcción.
 Comprobar dirección: {0}
 Los bloques solo cuentan como hechos si miran hacia el lado correcto: escaleras, losas (arriba o abajo), troncos, puertas, botones... Un bloque al revés recibe una caja roja.
-Cambio automático: {0}
-Cuando se acaba la pila de tu mano, el siguiente bloque que necesita la construcción pasa a tu mano: primero más del mismo, luego el siguiente bloque a colocar.
-Flecha a la construcción: {0}
-Cuando estás a más de 32 bloques de tu construcción, la lista de la esquina muestra una flecha que apunta hacia ella y a qué distancia está.
 Coger del fantasma: {0}
 Clic central en un bloque fantasma para ponerte ese bloque en la mano.
 Imagen de la construcción: {0}
@@ -371,7 +371,7 @@ Una construcción nueva se ve completa para que puedas moverla. Al colocarla pas
 Básico
 Más
 Extras
-Ayudas extra, apagadas hasta que las actives: materias primas, mapa de capa, pistas de andamio, mundo vacío, solo capas cercanas.
+Más ayudas: materiales en bruto, mapa de capa, ayudas de andamio, mundo vacío, solo capas cercanas, cambio automático, flecha a la construcción, tiempo restante.
 Estilo
 Elige los colores de los bloques fantasma y de las cajas que dibuja el mod, y sus sonidos.
 Controles...

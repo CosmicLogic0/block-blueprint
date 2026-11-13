@@ -93,7 +93,7 @@ Construções salvas > Construções grátis tem mais de 1.300 construções gr�
 Configurações > Extras tem mais ajudas que você pode ligar: matérias-primas, um mapa da camada em que você está e dicas de andaime.
 O mod segue o idioma do seu jogo: inglês, espanhol, português, alemão, francês, russo e chinês.
 Segurar um bloco ilumina os lugares por perto que ainda precisam dele (Configurações: Lugares do bloco na mão).
-Acabou um bloco enquanto constrói? A troca automática coloca na sua mão o próximo bloco que a construção precisa (Configurações > Mais).
+Acabou um bloco enquanto constrói? A troca automática coloca na sua mão o próximo bloco que a construção precisa (Configurações > Extras).
 Quer jogar com quem fez este mod? Logic Survival é o servidor de sobrevivência dele. Ele foi adicionado uma vez ao fim da sua lista do Multijogador na primeira vez que o mod iniciou. Apague-o lá se não quiser - ele não volta. O botão abaixo o adiciona de novo.
 Como funciona
 < Voltar
@@ -314,6 +314,12 @@ Mundo vazio: {0}
 Para construir num mundo vazio: tudo o que não deveria estar dentro da área da construção (blocos soltos, água) ganha uma caixa vermelha e conta como erro a consertar, e a construção automática remove.
 Só camadas próximas: {0}
 Antes de posicionar uma construção, desenha só as camadas perto da sua altura (3 abaixo dos pés a 4 acima) em vez de tudo. Mais leve para construções grandes, e dá para ver por dentro.
+Troca automática: {0}
+Quando a pilha na sua mão acaba, o próximo bloco que a construção precisa vai para a sua mão: primeiro mais do mesmo, depois o próximo bloco a colocar.
+Seta para a construção: {0}
+Quando você está a mais de 32 blocos da sua construção, a lista do canto mostra uma seta apontando para ela e a distância.
+Tempo restante: {0}
+Abaixo do cronômetro: uma estimativa de quanto tempo o resto da construção vai levar no seu ritmo. Aparece depois de construir por um minuto.
 Blocos fantasma: {0}% sólidos
 Quanto os blocos de prévia são transparentes.
 Mostrar prévia: {0}
@@ -348,8 +354,6 @@ Barras de progresso: {0}
 Barra verde = construção inteira, barra azul = a camada em que você está.
 Cronômetro: {0}
 Há quanto tempo você está construindo e quantos blocos por minuto.
-Tempo restante: {0}
-Abaixo do cronômetro: uma estimativa de quanto tempo o resto da construção vai levar no seu ritmo. Aparece depois de construir por um minuto.
 Dicas de teclas: {0}
 O pequeno lembrete das teclas embaixo da lista do canto.
 Distância de desenho: {0}
@@ -358,10 +362,6 @@ Caixas vermelhas: {0}
 Contorno vermelho nos blocos que atrapalham a construção ou estão colocados ao contrário, e a contagem "para consertar" no menu da construção.
 Checar direção: {0}
 Os blocos só contam como prontos quando estão virados certo: escadas, lajes (em cima ou embaixo), troncos, portas, botões... Um bloco virado errado ganha uma caixa vermelha.
-Troca automática: {0}
-Quando a pilha na sua mão acaba, o próximo bloco que a construção precisa vai para a sua mão: primeiro mais do mesmo, depois o próximo bloco a colocar.
-Seta para a construção: {0}
-Quando você está a mais de 32 blocos da sua construção, a lista do canto mostra uma seta apontando para ela e a distância.
 Pegar do fantasma: {0}
 Clique do meio num bloco fantasma para pôr esse bloco na mão.
 Imagem da construção: {0}
@@ -371,7 +371,7 @@ Uma construção nova aparece completa para você poder mover. Quando você colo
 Básico
 Mais
 Extras
-Ajudas extras, desligadas até você ligar: matérias-primas, mapa da camada, dicas de andaime, mundo vazio, só camadas próximas.
+Mais ajudas: materiais brutos, mapa da camada, dicas de andaime, mundo vazio, só camadas próximas, troca automática, seta para a construção, tempo restante.
 Estilo
 Escolha as cores dos blocos fantasma e das caixas que o mod desenha, e os sons.
 Controles...

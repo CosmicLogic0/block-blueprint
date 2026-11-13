@@ -71,6 +71,12 @@ public class SettingsScreen extends Screen {
                     "For building in an empty world: anything inside the build's area that shouldn't be there - stray blocks, water - gets a red box and counts as a mistake to fix, and Auto-build clears it.");
             opt(() -> "Nearby layers only: " + onOff(Settings.nearLayers), () -> Settings.nearLayers = !Settings.nearLayers,
                     "Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.");
+            opt(() -> "Auto-swap blocks: " + onOff(Settings.autoSwap), () -> Settings.autoSwap = !Settings.autoSwap,
+                    "When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.");
+            opt(() -> "Arrow to build: " + onOff(Settings.buildArrow), () -> Settings.buildArrow = !Settings.buildArrow,
+                    "When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.");
+            opt(() -> "Time left: " + onOff(Settings.timeLeft), () -> Settings.timeLeft = !Settings.timeLeft,
+                    "Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.");
         } else if (!more) {
             opt(() -> "Ghost blocks: " + Settings.ghostAlpha + "% solid", () -> Settings.ghostAlpha = next(Settings.ghostAlpha, 25, 40, 55, 70, 85), "How see-through the preview blocks are.");
             opt(() -> "Show preview: " + onOff(BuildBlueprintClient.SESSION.visible), () -> BuildBlueprintClient.SESSION.visible = !BuildBlueprintClient.SESSION.visible, "Hide or show the ghost blocks.");
@@ -92,17 +98,11 @@ public class SettingsScreen extends Screen {
             opt(() -> "Blocks in list: " + Settings.hudLines, () -> Settings.hudLines = next(Settings.hudLines, 3, 5, 8, 12, 16), "How many block types the corner list shows before \"+ more\".");
             opt(() -> "Progress bars: " + onOff(Settings.hudBar), () -> Settings.hudBar = !Settings.hudBar, "Green bar = whole build, blue bar = the layer you're on.");
             opt(() -> "Build timer: " + onOff(Settings.hudStats), () -> Settings.hudStats = !Settings.hudStats, "How long you've been building and how many blocks a minute.");
-            opt(() -> "Time left: " + onOff(Settings.timeLeft), () -> Settings.timeLeft = !Settings.timeLeft,
-                    "Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.");
             opt(() -> "Key hints: " + onOff(Settings.hudHints), () -> Settings.hudHints = !Settings.hudHints, "The small reminder of the keys under the corner list.");
             opt(() -> "Draw distance: " + Settings.range, () -> Settings.range = next(Settings.range, 32, 48, 64, 96, 128, 192), "How far away ghost blocks are still drawn. Lower = faster.");
             opt(() -> "Red boxes: " + onOff(Settings.redOutline), () -> Settings.redOutline = !Settings.redOutline, "Red outline on blocks that are in the way of the build, or placed the wrong way round, and the \"to fix\" count in the build menu.");
             opt(() -> "Check direction: " + onOff(Settings.checkFacing), () -> { Settings.checkFacing = !Settings.checkFacing; dev.buildblueprint.core.Orient.on = Settings.checkFacing; Materials.refresh(); },
                     "Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.");
-            opt(() -> "Auto-swap blocks: " + onOff(Settings.autoSwap), () -> Settings.autoSwap = !Settings.autoSwap,
-                    "When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.");
-            opt(() -> "Arrow to build: " + onOff(Settings.buildArrow), () -> Settings.buildArrow = !Settings.buildArrow,
-                    "When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.");
             opt(() -> "Pick from ghost: " + onOff(Settings.ghostPick), () -> Settings.ghostPick = !Settings.ghostPick, "Middle-click a ghost block to put that block in your hand.");
             opt(() -> "Build picture: " + onOff(Settings.preview3d), () -> Settings.preview3d = !Settings.preview3d, "The picture of a build in Saved builds. Turn it off if the menu gets slow.");
             opt(() -> "Placed: start at layer 1: " + onOff(Settings.startLayer1), () -> Settings.startLayer1 = !Settings.startLayer1, "A new build shows fully built so you can move it. When you place it, it switches to layer 1 so you can start building.");
@@ -121,7 +121,7 @@ public class SettingsScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Basics", tw - 8)), b -> { more = false; extras = false; colors = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[0], 30, tw, 20).build()).active = more || extras || colors;
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "More", tw - 8)), b -> { more = true; extras = false; colors = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[1], 30, tw, 20).build()).active = !more || extras || colors;
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Extras", tw - 8)), b -> { extras = true; colors = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[2], 30, tw, 20)
-                .tooltip(Tooltip.create(Component.literal(Tr.t("Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.")))).build()).active = !extras || colors;
+                .tooltip(Tooltip.create(Component.literal(Tr.t("More helpers: raw materials, layer map, scaffold hints, blank world, nearby layers only, auto-swap, arrow to build, time left.")))).build()).active = !extras || colors;
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Style", tw - 8)), b -> { colors = true; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[3], 30, tw, 20)
                 .tooltip(Tooltip.create(Component.literal(Tr.t("Pick the colors of the ghost blocks and the boxes the mod draws, and its sounds.")))).build()).active = !colors;
         // bottom

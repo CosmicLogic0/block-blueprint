@@ -1,3 +1,8 @@
+## 1.4.9
+- Everything from the 1.4.4-1.4.8 betas, now tested in-game on every supported Minecraft version and released:
+  shulker boxes and ender chest count, free builds backup download, auto-swap blocks, arrow to your build, time left, sound choices.
+- **Settings tidied:** auto-swap, arrow to build and time left moved to the Extras page so every page fits on small screens; the Colors page is now **Style** (colors and sounds).
+
 ## 1.4.8 (beta)
 - **Sound choices:** Settings > Style (the Colors page, renamed) lets you pick the sound for a finished layer (Orb, Bell, Sparkle or Off) and for a finished build (Level up, Challenge, Bell, Sparkle or Off), and how loud they are. Click a choice to hear it.
 

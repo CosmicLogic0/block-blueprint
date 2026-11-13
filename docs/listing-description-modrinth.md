@@ -39,10 +39,16 @@ Look at a corner of a build and press **Insert**. A box starts on that block: ma
 In Creative mode the mod can build it for you. **Auto-build** places the whole build at once, **Build layer** places just the layer you're on, and **Undo build** takes it all back if you change your mind. On servers this needs operator rights.
 
 **🌈 Pick your colors**<br>
-Settings → Colors lets you choose the color of the ghost blocks and of the boxes the mod draws: mistakes, the next block, chests and scaffold columns.
+Settings → Style lets you choose the color of the ghost blocks and of the boxes the mod draws (mistakes, the next block, chests and scaffold columns), and the sounds for a finished layer and a finished build.
 
 **✋ Find where a block goes**<br>
 Hold a block and every spot near you that still needs it lights up.
+
+**🎒 Counts everything you have**<br>
+Blocks in shulker boxes you carry and in your ender chest count toward what you have. When your stack runs out, **auto-swap** puts the next block the build needs in your hand.
+
+**🧭 Never lose your build**<br>
+Wander more than 32 blocks away and an arrow in the corner list points you back. The build timer also guesses how long the rest of the build will take at your speed.
 
 **💾 It remembers**<br>
 Leave the world and come back, and your blueprint is still there, right where you left it.

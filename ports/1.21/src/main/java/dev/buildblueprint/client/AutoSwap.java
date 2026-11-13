@@ -8,7 +8,7 @@ import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.item.ItemStack;
 
 /**
- * Auto-swap (Settings > More): when the stack in your hand runs out while you build, the next block the build needs
+ * Auto-swap (Settings > Extras): when the stack in your hand runs out while you build, the next block the build needs
  * moves into your hand - more of the same block first, then the next block to place, then any block still needed.
  * Only for blocks the build needs, and never while a screen is open.
  */
