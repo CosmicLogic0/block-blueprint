@@ -118,6 +118,7 @@ caja grande
 {0} bloques
 Haz la caja tan grande como tu construcción
 Co-op: {0}
+Tu construcción: a {0} bloques
 Aún no colocada
 Flechas la mueven, AvPág la gira
 Mayús = 5 bloques · Supr = colocar
@@ -350,6 +351,8 @@ Comprobar dirección: {0}
 Los bloques solo cuentan como hechos si miran hacia el lado correcto: escaleras, losas (arriba o abajo), troncos, puertas, botones... Un bloque al revés recibe una caja roja.
 Cambio automático: {0}
 Cuando se acaba la pila de tu mano, el siguiente bloque que necesita la construcción pasa a tu mano: primero más del mismo, luego el siguiente bloque a colocar.
+Flecha a la construcción: {0}
+Cuando estás a más de 32 bloques de tu construcción, la lista de la esquina muestra una flecha que apunta hacia ella y a qué distancia está.
 Coger del fantasma: {0}
 Clic central en un bloque fantasma para ponerte ese bloque en la mano.
 Imagen de la construcción: {0}

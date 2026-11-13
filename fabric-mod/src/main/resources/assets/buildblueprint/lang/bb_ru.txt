@@ -119,6 +119,7 @@ big box	большая рамка
 {0} blocks	блоков: {0}
 Make the box as big as your build	Сделай рамку размером с постройку
 Co-op: {0}	Совместно: {0}
+Your build: {0} blocks away	Твоя постройка: {0} блоков
 Not placed yet	Ещё не закреплена
 Arrows move it, PgDn turns it	Стрелки двигают, PgDn поворачивает
 Shift = 5 blocks · Delete = place	Shift = 5 блоков · Delete = закрепить
@@ -351,6 +352,8 @@ Check direction: {0}	Проверять направление: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Блоки засчитываются, только если стоят правильной стороной: ступеньки, плиты (верх или низ), брёвна, двери, кнопки... Блок, стоящий не той стороной, получает красную рамку.
 Auto-swap blocks: {0}	Автозамена блоков: {0}
 When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	Когда стак в руке заканчивается, в руку переходит следующий нужный блок: сначала такой же, затем следующий для установки.
+Arrow to build: {0}	Стрелка к постройке: {0}
+When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.	Если ты дальше 32 блоков от постройки, список в углу показывает стрелку к ней и расстояние.
 Pick from ghost: {0}	Брать из призрака: {0}
 Middle-click a ghost block to put that block in your hand.	Средняя кнопка мыши по блоку-призраку даёт этот блок в руку.
 Build picture: {0}	Картинка постройки: {0}

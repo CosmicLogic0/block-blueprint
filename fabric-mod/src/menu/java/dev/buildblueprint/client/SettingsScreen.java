@@ -93,6 +93,8 @@ public class SettingsScreen extends Screen {
                     "Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.");
             opt(() -> "Auto-swap blocks: " + onOff(Settings.autoSwap), () -> Settings.autoSwap = !Settings.autoSwap,
                     "When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.");
+            opt(() -> "Arrow to build: " + onOff(Settings.buildArrow), () -> Settings.buildArrow = !Settings.buildArrow,
+                    "When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.");
             opt(() -> "Pick from ghost: " + onOff(Settings.ghostPick), () -> Settings.ghostPick = !Settings.ghostPick, "Middle-click a ghost block to put that block in your hand.");
             opt(() -> "Build picture: " + onOff(Settings.preview3d), () -> Settings.preview3d = !Settings.preview3d, "The picture of a build in Saved builds. Turn it off if the menu gets slow.");
             opt(() -> "Placed: start at layer 1: " + onOff(Settings.startLayer1), () -> Settings.startLayer1 = !Settings.startLayer1, "A new build shows fully built so you can move it. When you place it, it switches to layer 1 so you can start building.");

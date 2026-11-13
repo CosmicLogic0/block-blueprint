@@ -118,6 +118,7 @@ große Box
 {0} Blöcke
 Mach die Box so groß wie deinen Bau
 Koop: {0}
+Dein Bau: {0} Blöcke entfernt
 Noch nicht platziert
 Pfeile bewegen, Bild ab dreht
 Umschalt = 5 Blöcke · Entf = platzieren
@@ -350,6 +351,8 @@ Richtung prüfen: {0}
 Blöcke zählen nur als fertig, wenn sie richtig herum stehen: Treppen, Stufen (oben oder unten), Stämme, Türen, Knöpfe... Ein falsch herum gesetzter Block bekommt eine rote Box.
 Auto-Tausch: {0}
 Wenn der Stapel in deiner Hand leer ist, kommt der nächste Block, den der Bau braucht, in deine Hand: erst mehr vom gleichen, dann der nächste zu setzende Block.
+Pfeil zum Bau: {0}
+Bist du mehr als 32 Blöcke von deinem Bau entfernt, zeigt die Eckliste einen Pfeil dorthin und wie weit er weg ist.
 Aus dem Geist nehmen: {0}
 Mittelklick auf einen Geisterblock legt dir diesen Block in die Hand.
 Baubild: {0}

@@ -119,7 +119,8 @@ def chain(s, j):
     return j
 
 def unescape(lit):
-    return bytes(lit[1:-1], 'utf-8').decode('unicode_escape').encode('latin-1').decode('utf-8')
+    try: return bytes(lit[1:-1], 'utf-8').decode('unicode_escape').encode('latin-1').decode('utf-8')
+    except UnicodeError: return re.sub(r'\\u([0-9a-fA-F]{4})', lambda m: chr(int(m.group(1), 16)), lit[1:-1])   # \uXXXX escapes
 
 def templates_in(s):
     """Texts the code can show: each '+' chain that has a string in it ("Layer " + n + " of " + top -> "Layer {0} of {1}"),

@@ -119,6 +119,7 @@ big box	große Box
 {0} blocks	{0} Blöcke
 Make the box as big as your build	Mach die Box so groß wie deinen Bau
 Co-op: {0}	Koop: {0}
+Your build: {0} blocks away	Dein Bau: {0} Blöcke entfernt
 Not placed yet	Noch nicht platziert
 Arrows move it, PgDn turns it	Pfeile bewegen, Bild ab dreht
 Shift = 5 blocks · Delete = place	Umschalt = 5 Blöcke · Entf = platzieren
@@ -351,6 +352,8 @@ Check direction: {0}	Richtung prüfen: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Blöcke zählen nur als fertig, wenn sie richtig herum stehen: Treppen, Stufen (oben oder unten), Stämme, Türen, Knöpfe... Ein falsch herum gesetzter Block bekommt eine rote Box.
 Auto-swap blocks: {0}	Auto-Tausch: {0}
 When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	Wenn der Stapel in deiner Hand leer ist, kommt der nächste Block, den der Bau braucht, in deine Hand: erst mehr vom gleichen, dann der nächste zu setzende Block.
+Arrow to build: {0}	Pfeil zum Bau: {0}
+When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.	Bist du mehr als 32 Blöcke von deinem Bau entfernt, zeigt die Eckliste einen Pfeil dorthin und wie weit er weg ist.
 Pick from ghost: {0}	Aus dem Geist nehmen: {0}
 Middle-click a ghost block to put that block in your hand.	Mittelklick auf einen Geisterblock legt dir diesen Block in die Hand.
 Build picture: {0}	Baubild: {0}

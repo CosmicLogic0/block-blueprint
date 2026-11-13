@@ -62,6 +62,26 @@ public final class HudModule {
         g.drawString(font, Tr.t(t), x + w / 2 - font.width(Tr.t(t)) / 2, y + 1, 0xFFFFFFFF, true);
     }
 
+    private static final String[] ARROWS = {"\u2191", "\u2197", "\u2192", "\u2198", "\u2193", "\u2199", "\u2190", "\u2196"};
+    private static final int FAR = 32;   // blocks from the edge of the build before the arrow shows
+    private static int arrowAt = 0;
+
+    /** How far (blocks) you are from the closest edge of the build, or -1 when you're near it; sets which arrow points at it. */
+    private static int farAway(Minecraft mc) {
+        var s = BuildBlueprintClient.SESSION;
+        if (mc.player == null || !s.loaded()) return -1;
+        var bp = s.blueprint();
+        double px = mc.player.getX(), pz = mc.player.getZ();
+        double tx = Math.max(s.ox, Math.min(s.ox + bp.sx, px)), tz = Math.max(s.oz, Math.min(s.oz + bp.sz, pz));
+        double dx = tx - px, dz = tz - pz, dist = Math.sqrt(dx * dx + dz * dz);
+        if (dist < FAR) return -1;
+        double cx = s.ox + bp.sx / 2.0 - px, cz = s.oz + bp.sz / 2.0 - pz;   // point at the middle of it
+        double want = Math.toDegrees(Math.atan2(-cx, cz));                    // Minecraft yaw: 0 = south, 90 = west
+        double rel = ((want - mc.player.getYRot()) % 360 + 540) % 360 - 180;   // -180..180, + = to your right
+        arrowAt = ((int) Math.round(rel / 45.0) + 8) % 8;
+        return (int) Math.round(dist);
+    }
+
     /** Draws the corner list; returns where it ends. */
     private static int draw(GuiGraphics g, Minecraft mc, int x, int y) {
         var s = BuildBlueprintClient.SESSION;
@@ -76,7 +96,8 @@ public final class HudModule {
         boolean hint = Settings.nextHint && Hint.pos != null && !complete;
         boolean notPlaced = !s.locked;
         boolean coop = Coop.on();
-        int h = 14 + (coop ? 11 : 0) + (notPlaced ? 32 : 0) + (Settings.hudBar ? 26 : 0) + (stats ? 11 : 0) + (hint ? 22 : 0) + 12 + lines * 18 + (shown > lines ? 10 : 0) + (shown == 0 ? 10 : 0) + (Settings.hudHints ? 11 : 0);
+        int far = Settings.buildArrow ? farAway(mc) : -1;   // arrow back to the build when you're far from it
+        int h = 14 + (coop ? 11 : 0) + (far >= 0 ? 11 : 0) + (notPlaced ? 32 : 0) + (Settings.hudBar ? 26 : 0) + (stats ? 11 : 0) + (hint ? 22 : 0) + 12 + lines * 18 + (shown > lines ? 10 : 0) + (shown == 0 ? 10 : 0) + (Settings.hudHints ? 11 : 0);
         // panel: dark glass with a 1px light edge, like vanilla tooltips
         g.fill(x - 3, y - 3, x + W + 3, y + h, 0xD0100A18);
         g.fill(x - 3, y - 3, x + W + 3, y - 2, 0xFF5A3FA0);
@@ -90,6 +111,12 @@ public final class HudModule {
         if (!tag.isEmpty()) g.drawString(font, Tr.t(tag), x + W - font.width(Tr.t(tag)), y, 0xFF55FF55, true);
         int ly = y + 12;
         if (coop) { g.drawString(font, Tr.t("Co-op: " + Coop.where(s.blueprint())), x, ly, UiKit.CYAN, false); ly += 11; }
+        if (far >= 0) {
+            String arrow = ARROWS[arrowAt], d = "Your build: " + far + " blocks away";
+            g.drawString(font, arrow, x, ly, 0xFFFFB050, true);
+            g.drawString(font, Tr.t(d), x + font.width(arrow) + 4, ly, 0xFFFFB050, true);
+            ly += 11;
+        }
         if (notPlaced) {   // still positioning: remind how to move and place it
             g.fill(x - 1, ly - 1, x + W + 1, ly + 30, 0x30FF9020);
             g.fill(x - 1, ly - 1, x + 1, ly + 30, 0xFFFFB050);

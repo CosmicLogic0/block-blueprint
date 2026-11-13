@@ -119,6 +119,7 @@ big box	大范围框
 {0} blocks	{0} 个方块
 Make the box as big as your build	把范围框调到和建筑一样大
 Co-op: {0}	合作：{0}
+Your build: {0} blocks away	你的建筑：{0} 格远
 Not placed yet	还没放置
 Arrows move it, PgDn turns it	方向键移动，PgDn 旋转
 Shift = 5 blocks · Delete = place	Shift = 5 格 · Delete = 放置
@@ -351,6 +352,8 @@ Check direction: {0}	检查方向：{0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	方块只有朝向正确才算完成：楼梯、台阶（上半或下半）、原木、门、按钮……方向放反的方块会显示红色框。
 Auto-swap blocks: {0}	自动切换方块：{0}
 When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	手中的方块用完时，建筑需要的下一个方块会移到你手上：先是同一种，然后是下一个要放的方块。
+Arrow to build: {0}	指向建筑的箭头：{0}
+When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.	当你离建筑超过 32 格时，角落列表会显示指向它的箭头和距离。
 Pick from ghost: {0}	从幽灵拿取：{0}
 Middle-click a ghost block to put that block in your hand.	用鼠标中键点击幽灵方块，就能把这个方块拿到手上。
 Build picture: {0}	建筑预览图：{0}

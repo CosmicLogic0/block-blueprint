@@ -119,6 +119,7 @@ big box	caixa grande
 {0} blocks	{0} blocos
 Make the box as big as your build	Faça a caixa do tamanho da sua construção
 Co-op: {0}	Co-op: {0}
+Your build: {0} blocks away	Sua construção: a {0} blocos
 Not placed yet	Ainda não colocada
 Arrows move it, PgDn turns it	Setas movem, PgDn gira
 Shift = 5 blocks · Delete = place	Shift = 5 blocos · Delete = colocar
@@ -351,6 +352,8 @@ Check direction: {0}	Checar direção: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Os blocos só contam como prontos quando estão virados certo: escadas, lajes (em cima ou embaixo), troncos, portas, botões... Um bloco virado errado ganha uma caixa vermelha.
 Auto-swap blocks: {0}	Troca automática: {0}
 When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	Quando a pilha na sua mão acaba, o próximo bloco que a construção precisa vai para a sua mão: primeiro mais do mesmo, depois o próximo bloco a colocar.
+Arrow to build: {0}	Seta para a construção: {0}
+When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.	Quando você está a mais de 32 blocos da sua construção, a lista do canto mostra uma seta apontando para ela e a distância.
 Pick from ghost: {0}	Pegar do fantasma: {0}
 Middle-click a ghost block to put that block in your hand.	Clique do meio num bloco fantasma para pôr esse bloco na mão.
 Build picture: {0}	Imagem da construção: {0}

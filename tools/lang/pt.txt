@@ -118,6 +118,7 @@ caixa grande
 {0} blocos
 Faça a caixa do tamanho da sua construção
 Co-op: {0}
+Sua construção: a {0} blocos
 Ainda não colocada
 Setas movem, PgDn gira
 Shift = 5 blocos · Delete = colocar
@@ -350,6 +351,8 @@ Checar direção: {0}
 Os blocos só contam como prontos quando estão virados certo: escadas, lajes (em cima ou embaixo), troncos, portas, botões... Um bloco virado errado ganha uma caixa vermelha.
 Troca automática: {0}
 Quando a pilha na sua mão acaba, o próximo bloco que a construção precisa vai para a sua mão: primeiro mais do mesmo, depois o próximo bloco a colocar.
+Seta para a construção: {0}
+Quando você está a mais de 32 blocos da sua construção, a lista do canto mostra uma seta apontando para ela e a distância.
 Pegar do fantasma: {0}
 Clique do meio num bloco fantasma para pôr esse bloco na mão.
 Imagem da construção: {0}

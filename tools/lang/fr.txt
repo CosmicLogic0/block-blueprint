@@ -118,6 +118,7 @@ grande boîte
 {0} blocs
 Fais la boîte aussi grande que ta construction
 Coop : {0}
+Ta construction : à {0} blocs
 Pas encore placée
 Flèches pour bouger, Pg suiv pour tourner
 Maj = 5 blocs · Suppr = placer
@@ -350,6 +351,8 @@ Vérifier le sens : {0}
 Les blocs ne comptent comme faits que s'ils sont dans le bon sens : escaliers, dalles (haut ou bas), bûches, portes, boutons... Un bloc posé dans le mauvais sens reçoit une boîte rouge.
 Échange auto : {0}
 Quand la pile dans ta main est vide, le prochain bloc dont la construction a besoin passe dans ta main : d'abord le même, puis le prochain bloc à poser.
+Flèche vers la construction : {0}
+Quand tu es à plus de 32 blocs de ta construction, la liste dans le coin montre une flèche vers elle et sa distance.
 Prendre du fantôme : {0}
 Clic molette sur un bloc fantôme pour mettre ce bloc dans ta main.
 Image de la construction : {0}

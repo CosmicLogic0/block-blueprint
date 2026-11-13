@@ -1,3 +1,6 @@
+## 1.4.6 (beta)
+- **Arrow to your build:** when you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far away it is. On by default (Settings > More).
+
 ## 1.4.5 (beta)
 - **Auto-swap blocks:** when the stack in your hand runs out while you build, the next block the build needs moves into your hand - more of the same block first, then the next block to place, then any block still needed. On by default (Settings > More).
 

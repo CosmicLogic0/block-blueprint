@@ -131,6 +131,7 @@ big box
 Make the box as big as your build
 Blueprint
 Co-op: {0}
+Your build: {0} blocks away
 Not placed yet
 Arrows move it, PgDn turns it
 Shift = 5 blocks · Delete = place
@@ -375,6 +376,8 @@ Check direction: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.
 Auto-swap blocks: {0}
 When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.
+Arrow to build: {0}
+When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.
 Pick from ghost: {0}
 Middle-click a ghost block to put that block in your hand.
 Build picture: {0}
