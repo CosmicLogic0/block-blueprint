@@ -26,7 +26,7 @@ public final class UiTest {
     private static final String[] SHOWCASE = {"sc-ghost", "sc-menu", "sc-placed", "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e",
             "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j", "sc-layer-k", "sc-done", "done"};
     private static boolean showcase;
-    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "shopping", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "saved", "world-perf", "world-near", "world-special", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "shopping", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "settings-colors", "help-server", "saved", "world-perf", "world-near", "world-special", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -312,8 +312,20 @@ public final class UiTest {
                 System.out.println("BBUITEST showing only " + rows.get(0).id() + ", " + Hide.count() + " hidden");
             }
             case "build-hidden" -> Mc.setScreen(new MaterialsScreen(false));   // the list with the closed eyes
-            case "settings" -> { SettingsScreen.more = false; SettingsScreen.extras = false; Mc.setScreen(new SettingsScreen(null)); }
+            case "settings" -> { SettingsScreen.more = false; SettingsScreen.extras = false; SettingsScreen.colors = false; Mc.setScreen(new SettingsScreen(null)); }
             case "settings-more" -> { SettingsScreen.more = true; SettingsScreen.extras = false; Mc.setScreen(new SettingsScreen(null)); }
+            case "settings-colors" -> {   // the Colors page, with a purple ghost and orange mistake boxes picked
+                Settings.ghostColor = 7; Settings.redColor = 1;
+                System.out.println("BBUITEST colors: ghost " + Colors.name(Settings.ghostColor) + " " + Integer.toHexString(Colors.ghost(0xFFFFFF)) + ", red " + Integer.toHexString(Colors.red()) + ", hint " + Integer.toHexString(Colors.hint(false)) + "/" + Integer.toHexString(Colors.hint(true)) + ", chest " + Integer.toHexString(Colors.chest()));
+                SettingsScreen.colors = true; Mc.setScreen(new SettingsScreen(null));
+            }
+            case "help-server" -> {   // the creator's server button: adds it once, never twice
+                SettingsScreen.colors = false; Settings.ghostColor = -1; Settings.redColor = 0;
+                boolean before = CreatorServer.added();
+                String m1 = CreatorServer.add(), m2 = CreatorServer.add();
+                System.out.println("BBUITEST creator server: before " + before + ", add: " + m1 + " | again: " + m2 + " | in list " + CreatorServer.added());
+                Mc.setScreen(new HelpScreen(null, 7));
+            }
             case "saved" -> {
                 Mc.setScreen(new SavedBuildsScreen());
                 try {   // a big build (80 x 50 x 80, about 200,000 blocks): the picture must be quick to work out and small to draw

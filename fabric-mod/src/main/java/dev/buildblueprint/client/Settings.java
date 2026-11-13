@@ -39,6 +39,9 @@ public final class Settings {
     public static boolean scaffold = false;    // light blue columns where temporary blocks help to reach floating parts
     public static boolean sounds = true;       // ding when a layer / the build is finished     // build timer + blocks/minute in the corner list
 
+    // Colors (Settings > Colors): numbers are places in Colors.NAMES; ghostColor -1 = the blocks' own colors
+    public static int ghostColor = -1, redColor = 0, hintColor = 2, chestColor = 3, scaffoldColor = 5;
+
     private static Path file() { return FabricLoader.getInstance().getConfigDir().resolve("buildblueprint").resolve("settings.properties"); }
 
     public static void load() {
@@ -52,6 +55,8 @@ public final class Settings {
         redOutline = b(p, "redOutline", redOutline); autoLayer = b(p, "autoLayer", autoLayer); startLayer1 = b(p, "startLayer1", startLayer1);
         nextHint = b(p, "nextHint", nextHint); ghostPick = b(p, "ghostPick", ghostPick); preview3d = b(p, "preview3d", preview3d); chestFinder = b(p, "chestFinder", chestFinder); checkFacing = b(p, "checkFacing", checkFacing); dev.buildblueprint.core.Orient.on = checkFacing; hudStats = b(p, "hudStats", hudStats); sounds = b(p, "sounds", sounds);
         rawMats = b(p, "rawMats", rawMats); layerMap = b(p, "layerMap", layerMap); scaffold = b(p, "scaffold", scaffold);
+        ghostColor = Colors.fix(i(p, "ghostColor", ghostColor), true); redColor = Colors.fix(i(p, "redColor", redColor), false); hintColor = Colors.fix(i(p, "hintColor", hintColor), false);
+        chestColor = Colors.fix(i(p, "chestColor", chestColor), false); scaffoldColor = Colors.fix(i(p, "scaffoldColor", scaffoldColor), false);
     }
 
     public static void save() {
@@ -63,6 +68,7 @@ public final class Settings {
         p.setProperty("redOutline", "" + redOutline); p.setProperty("autoLayer", "" + autoLayer); p.setProperty("startLayer1", "" + startLayer1);
         p.setProperty("nextHint", "" + nextHint); p.setProperty("ghostPick", "" + ghostPick); p.setProperty("preview3d", "" + preview3d); p.setProperty("chestFinder", "" + chestFinder); p.setProperty("checkFacing", "" + checkFacing); p.setProperty("hudStats", "" + hudStats); p.setProperty("sounds", "" + sounds);
         p.setProperty("rawMats", "" + rawMats); p.setProperty("layerMap", "" + layerMap); p.setProperty("scaffold", "" + scaffold);
+        p.setProperty("ghostColor", "" + ghostColor); p.setProperty("redColor", "" + redColor); p.setProperty("hintColor", "" + hintColor); p.setProperty("chestColor", "" + chestColor); p.setProperty("scaffoldColor", "" + scaffoldColor);
         try { Files.createDirectories(file().getParent()); try (Writer w = Files.newBufferedWriter(file())) { p.store(w, "Build Blueprint settings"); } } catch (IOException ignored) {}
     }
 

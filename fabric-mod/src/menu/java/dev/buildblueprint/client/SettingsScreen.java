@@ -20,6 +20,7 @@ public class SettingsScreen extends Screen {
     private final Screen parent;
     static boolean more = false;   // which page, remembered while the game runs
     static boolean extras = false; // the "Extras" page: helpers that are off until you turn them on
+    static boolean colors = false; // the "Colors" page
 
     public SettingsScreen(Screen parent) { super(Component.literal(Tr.t("Build Blueprint settings"))); this.parent = parent; }
 
@@ -38,7 +39,20 @@ public class SettingsScreen extends Screen {
 
     @Override protected void init() {
         opts.clear();
-        if (extras) {
+        if (colors) {
+            opt(() -> "Ghost color: " + Colors.name(Settings.ghostColor), () -> Settings.ghostColor = Colors.next(Settings.ghostColor, true),
+                    "Tint the see-through ghost blocks. Normal keeps each block's own colors.");
+            opt(() -> "Mistake boxes: " + Colors.name(Settings.redColor), () -> Settings.redColor = Colors.next(Settings.redColor, false),
+                    "The color of the boxes on blocks that are in the way or placed the wrong way round.");
+            opt(() -> "Next block box: " + Colors.name(Settings.hintColor), () -> Settings.hintColor = Colors.next(Settings.hintColor, false),
+                    "The color of the box on the next block to place. It turns green while you hold that block.");
+            opt(() -> "Chest boxes: " + Colors.name(Settings.chestColor), () -> Settings.chestColor = Colors.next(Settings.chestColor, false),
+                    "The color of the boxes on chests that hold blocks you still need (Chest finder).");
+            opt(() -> "Scaffold columns: " + Colors.name(Settings.scaffoldColor), () -> Settings.scaffoldColor = Colors.next(Settings.scaffoldColor, false),
+                    "The color of the scaffold hint columns (Settings > Extras).");
+            opt(() -> "Reset colors", () -> { Settings.ghostColor = -1; Settings.redColor = 0; Settings.hintColor = 2; Settings.chestColor = 3; Settings.scaffoldColor = 5; Mc.setScreen(new SettingsScreen(parent)); },
+                    "Back to the mod's usual colors.");
+        } else if (extras) {
             opt(() -> "Raw materials: " + onOff(Settings.rawMats), () -> Settings.rawMats = !Settings.rawMats,
                     "Adds \"Raw materials\" to the build menu: what to gather for the blocks you still need - logs for planks and stairs, sand for glass, cobblestone to smelt into stone...");
             opt(() -> "Layer map: " + onOff(Settings.layerMap), () -> Settings.layerMap = !Settings.layerMap,
@@ -86,12 +100,14 @@ public class SettingsScreen extends Screen {
                     .bounds(x0 + c * (cw + gap), top() + r * 24, cw, 20).tooltip(Tooltip.create(Component.literal(Tr.t(o.tip())))).build());
         }
         // page tabs
-        int tw = 90;
-        int[] tx = UiKit.row(width / 2, 3, tw, 4);
-        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Basics", tw - 8)), b -> { more = false; extras = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[0], 30, tw, 20).build()).active = more || extras;
-        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "More", tw - 8)), b -> { more = true; extras = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[1], 30, tw, 20).build()).active = !more || extras;
-        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Extras", tw - 8)), b -> { extras = true; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[2], 30, tw, 20)
-                .tooltip(Tooltip.create(Component.literal(Tr.t("Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.")))).build()).active = !extras;
+        int tw = Math.min(90, (width - 28) / 4);
+        int[] tx = UiKit.row(width / 2, 4, tw, 4);
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Basics", tw - 8)), b -> { more = false; extras = false; colors = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[0], 30, tw, 20).build()).active = more || extras || colors;
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "More", tw - 8)), b -> { more = true; extras = false; colors = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[1], 30, tw, 20).build()).active = !more || extras || colors;
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Extras", tw - 8)), b -> { extras = true; colors = false; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[2], 30, tw, 20)
+                .tooltip(Tooltip.create(Component.literal(Tr.t("Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.")))).build()).active = !extras || colors;
+        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Colors", tw - 8)), b -> { colors = true; Mc.setScreen(new SettingsScreen(parent)); }).bounds(tx[3], 30, tw, 20)
+                .tooltip(Tooltip.create(Component.literal(Tr.t("Pick the colors of the ghost blocks and the boxes the mod draws.")))).build()).active = !colors;
         // bottom
         Minecraft mc = Minecraft.getInstance();
         int by = height - 26;
@@ -121,7 +137,7 @@ public class SettingsScreen extends Screen {
         UiKit.center(g, font, "Build Blueprint settings", width / 2, 12, UiKit.GOLD);
         int cols = cols(), cw = cols == 2 ? colW() : Math.min(260, width - 40), rows = (opts.size() + cols - 1) / cols;
         int w = cols * cw + (cols - 1) * 6 + 12;
-        UiKit.panel(g, width / 2 - w / 2, top() - 6, w, rows * 24 + 8, extras ? UiKit.GREEN : more ? UiKit.BLUE : UiKit.GOLD);
+        UiKit.panel(g, width / 2 - w / 2, top() - 6, w, rows * 24 + 8, colors ? UiKit.CYAN : extras ? UiKit.GREEN : more ? UiKit.BLUE : UiKit.GOLD);
         super.extractRenderState(g, mouseX, mouseY, delta);
         if (reported != null) UiKit.center(g, font, UiKit.fit(font, reported, width - 16), width / 2, height - 40, UiKit.GREEN);
         else UiKit.center(g, font, "Hover a button to see what it does.", width / 2, height - 40, UiKit.DIM);

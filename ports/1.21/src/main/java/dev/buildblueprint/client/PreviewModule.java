@@ -81,23 +81,23 @@ public final class PreviewModule {
             buf.endBatch(ghostType);
         }
         VertexConsumer lines = buf.getBuffer(Draw.lineType());
-        if (Settings.redOutline) for (Red r : reds) box(pose, lines, new AABB(new BlockPos(r.x, r.y, r.z)).inflate(0.004), 0xFFFF2020);
-        if (Settings.scaffold) for (BlockPos sb : Materials.scaffold()) box(pose, lines, new AABB(sb).inflate(-0.08), 0xFF60C8FF);   // where temporary blocks help (Settings > Extras)
+        if (Settings.redOutline) for (Red r : reds) box(pose, lines, new AABB(new BlockPos(r.x, r.y, r.z)).inflate(0.004), Colors.red());
+        if (Settings.scaffold) for (BlockPos sb : Materials.scaffold()) box(pose, lines, new AABB(sb).inflate(-0.08), Colors.scaffold());   // where temporary blocks help (Settings > Extras)
         // next block to place: pulsing yellow box, and a guide line when it's far away
         if ((Settings.nextHint || Mistakes.showing()) && Hint.pos != null) {
             float pulse = 0.6f + 0.4f * (float) Math.sin(System.currentTimeMillis() / 180.0);
-            int col = Hint.inHand ? 0xFF60FF60 : 0xFFFFE040;
+            int col = Colors.hint(Hint.inHand);
             box(pose, lines, new AABB(Hint.pos).inflate(0.01 + 0.03 * pulse), col);
             var pl = mc.player;
             if (pl != null && Hint.dist > 6) {
                 Vec3 from = pl.position().add(0, 1.0, 0).add(pl.getLookAngle().multiply(1.5, 0, 1.5));
-                line(pose, lines, from, Vec3.atCenterOf(Hint.pos), 0xC0FFE040);
+                line(pose, lines, from, Vec3.atCenterOf(Hint.pos), Colors.hintLine());
             }
         }
         // chest finder: chests you've opened that hold blocks you still need
         if (Settings.chestFinder && BuildBlueprintClient.SESSION.loaded()) {
             if (++chestTick % 20 == 0) chestCache = Chests.useful(48);
-            for (BlockPos c : chestCache) box(pose, lines, new AABB(c).inflate(0.01), 0xFF40FF80);
+            for (BlockPos c : chestCache) box(pose, lines, new AABB(c).inflate(0.01), Colors.chest());
         }
         // copy mode: the box being selected (cyan), live to where you're looking until the 2nd corner is set
         if (Copier.active && Copier.c1 != null && mc.player != null) {
@@ -483,6 +483,7 @@ public final class PreviewModule {
                         try { rgb = g.tintI == tint ? g.tintC : (g.tintC = mc.getBlockColors().getColor(g.state, mc.level, new BlockPos(g.x, g.y, g.z), g.tintI = tint) & 0xFFFFFF); }
                         catch (Exception ignored) {}
                     }
+                    rgb = Colors.ghost(rgb);
                     Draw.quad(vc, p, quad, ((rgb >> 16) & 255) / 255f, ((rgb >> 8) & 255) / 255f, (rgb & 255) / 255f, alpha, 0xF000F0, OverlayTexture.NO_OVERLAY);
                 }
             }

@@ -36,9 +36,6 @@ public final class PreviewModule {
 
     private static final int MAX_GHOSTS = 500_000, MAX_RED = 3000;   // big builds show (and lag); "Nearby layers only" or a shorter distance makes them lighter
     private static final double RANGE = 64;
-    private static final GizmoStyle RED = GizmoStyle.stroke(0xFFFF2020, 6f);
-    private static final GizmoStyle SCAFFOLD = GizmoStyle.stroke(0xFF60C8FF, 2f);
-    private static final GizmoStyle CHEST = GizmoStyle.stroke(0xFF40FF80, 3f);
     private static int chestTick = 0;
     private static List<BlockPos> chestCache = new ArrayList<>();
     private static final GizmoStyle COPY = GizmoStyle.stroke(0xFF20E0FF, 4f), COPY1 = GizmoStyle.stroke(0xFFFFFF40, 4f);
@@ -83,22 +80,22 @@ public final class PreviewModule {
             pose.popPose();
         }));
         WorldRenderEvents.END_EXTRACTION.register(ctx -> Safe.run("the outlines", () -> {
-            if (Settings.redOutline) for (Red r : reds) Gizmos.cuboid(new BlockPos(r.x, r.y, r.z), RED);
-            if (Settings.scaffold) for (BlockPos sb : Materials.scaffold()) Gizmos.cuboid(sb, SCAFFOLD);   // where temporary blocks help (Settings > Extras)
+            if (Settings.redOutline) { GizmoStyle rs = GizmoStyle.stroke(Colors.red(), 6f); for (Red r : reds) Gizmos.cuboid(new BlockPos(r.x, r.y, r.z), rs); }
+            if (Settings.scaffold) { GizmoStyle ss = GizmoStyle.stroke(Colors.scaffold(), 2f); for (BlockPos sb : Materials.scaffold()) Gizmos.cuboid(sb, ss); }   // where temporary blocks help (Settings > Extras)
             // next block to place: pulsing yellow box, and a guide line when it's far away
             if ((Settings.nextHint || Mistakes.showing()) && Hint.pos != null) {
                 float pulse = 3f + 2f * (float) Math.sin(System.currentTimeMillis() / 180.0);
-                Gizmos.cuboid(Hint.pos, GizmoStyle.stroke(Hint.inHand ? 0xFF60FF60 : 0xFFFFE040, pulse));
+                Gizmos.cuboid(Hint.pos, GizmoStyle.stroke(Colors.hint(Hint.inHand), pulse));
                 var pl = Minecraft.getInstance().player;
                 if (pl != null && Hint.dist > 6) {
                     Vec3 from = pl.position().add(0, 1.0, 0).add(pl.getLookAngle().multiply(1.5, 0, 1.5));
-                    Gizmos.line(from, Vec3.atCenterOf(Hint.pos), 0xC0FFE040, 2f);
+                    Gizmos.line(from, Vec3.atCenterOf(Hint.pos), Colors.hintLine(), 2f);
                 }
             }
             // chest finder: chests you've opened that hold blocks you still need
             if (Settings.chestFinder && BuildBlueprintClient.SESSION.loaded()) {
                 if (++chestTick % 20 == 0) chestCache = Chests.useful(48);
-                for (BlockPos c : chestCache) Gizmos.cuboid(c, CHEST);
+                { GizmoStyle cs = GizmoStyle.stroke(Colors.chest(), 3f); for (BlockPos c : chestCache) Gizmos.cuboid(c, cs); }
             }
             // copy mode: the box being selected (cyan), live to where you're looking until the 2nd corner is set
             if (Copier.active && Copier.c1 != null && Minecraft.getInstance().player != null) {
@@ -474,6 +471,7 @@ public final class PreviewModule {
                         try { rgb = g.tintI == quad.tintIndex() ? g.tintC : (g.tintC = mc.getBlockColors().getColor(g.state, mc.level, new BlockPos(g.x, g.y, g.z), g.tintI = quad.tintIndex()) & 0xFFFFFF); }
                         catch (Exception ignored) {}
                     }
+                    rgb = Colors.ghost(rgb);
                     vc.putBulkData(p, quad, ((rgb >> 16) & 255) / 255f, ((rgb >> 8) & 255) / 255f, (rgb & 255) / 255f, alpha, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
                 }
             }

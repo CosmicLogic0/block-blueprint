@@ -17,7 +17,7 @@ SKIP = {'UiTest.java'}
 def files():
     out = [p for p in sorted(MENU.glob('*.java')) if p.name not in SKIP]
     out += [MAIN / n for n in ['Chat.java', 'Materials.java', 'Mistakes.java', 'Layers.java', 'Stats.java', 'Swapper.java', 'Copier.java',
-                               'BuildBlueprintClient.java', 'AutoBuild.java', 'UpdateCheck.java', 'Coop.java', 'Hint.java', 'SavedBuilds.java', 'Chests.java', 'GhostPick.java', 'SessionStore.java']]
+                               'BuildBlueprintClient.java', 'AutoBuild.java', 'UpdateCheck.java', 'Coop.java', 'Hint.java', 'SavedBuilds.java', 'Chests.java', 'GhostPick.java', 'SessionStore.java', 'CreatorServer.java']]
     out.append(ROOT / 'fabric-mod/src/main/java/dev/buildblueprint/core/Orient.java')
     return [p for p in out if p.exists()]
 
@@ -193,7 +193,9 @@ def extract():
     # single lowercase words that get filled into other texts (directions, sides)
     for w in ['north', 'south', 'east', 'west', 'north-east', 'north-west', 'south-east', 'south-west', 'left', 'right', 'kept', 'left out', 'just me', 'this layer', 'whole build', 'auto', 'top right', 'top left', 'have', 'placed', 'chest', 'free build',
               # kinds of free builds (renderer/templates/mod-index.tsv)
-              'Community Builds', 'Houses', 'Towers', 'Ships', 'Ruins & Temples', 'Castles & Forts', 'Village Buildings', 'Decor', 'Camps & Outposts']:
+              'Community Builds', 'Houses', 'Towers', 'Ships', 'Ruins & Temples', 'Castles & Forts', 'Village Buildings', 'Decor', 'Camps & Outposts',
+              # colors (Settings > Colors)
+              'Normal', 'Red', 'Orange', 'Yellow', 'Green', 'Aqua', 'Light blue', 'Blue', 'Purple', 'Pink', 'White']:
         if w not in keys: keys.append(w)
     LANG.mkdir(parents=True, exist_ok=True)
     (LANG / 'bb_en.txt').write_text('# Every text Build Blueprint shows. Translations: bb_<language>.txt, "English<TAB>translation".\n' + '\n'.join(keys) + '\n')

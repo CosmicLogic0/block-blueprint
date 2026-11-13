@@ -93,9 +93,13 @@ Something placed wrong? The build menu shows how many to fix at the top. Click i
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	Gespeicherte Bauten > Kostenlose Bauten hat über 1.300 kostenlose Bauten aus der Minecraft-Community.
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Einstellungen > Extras hat weitere Helfer zum Einschalten: Rohstoffe, eine Karte deiner Schicht und Gerüst-Hinweise.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, Französisch, Russisch und Chinesisch.
+Want to play with the person who made this mod? Logic Survival is their survival server. The button below adds it to your Multiplayer list - nothing is added unless you press it.	Willst du mit dem Macher dieses Mods spielen? Logic Survival ist sein Survival-Server. Der Knopf unten fügt ihn deiner Mehrspieler-Liste hinzu - ohne Klick wird nichts hinzugefügt.
 How it works	So funktioniert's
 < Back	< Zurück
 Next >	Weiter >
+Logic Survival is in your servers	Logic Survival ist in deinen Servern
+Add Logic Survival to my servers	Logic Survival zu meinen Servern hinzufügen
+Adds {0} to Multiplayer. You can delete it there any time.	Fügt {0} zu Mehrspieler hinzu. Du kannst ihn dort jederzeit löschen.
 How Build Blueprint works	So funktioniert Build Blueprint
 Arrows	Pfeiltasten
 grow the box that way	die Box in diese Richtung vergrößern
@@ -277,6 +281,18 @@ Paste a build to see it here	Füg einen Bau ein, um ihn hier zu sehen
 Build Blueprint settings	Build Blueprint Einstellungen
 ON	AN
 OFF	AUS
+Ghost color: {0}	Geisterfarbe: {0}
+Tint the see-through ghost blocks. Normal keeps each block's own colors.	Färbt die durchsichtigen Geisterblöcke. Normal behält die eigenen Farben jedes Blocks.
+Mistake boxes: {0}	Fehlerrahmen: {0}
+The color of the boxes on blocks that are in the way or placed the wrong way round.	Die Farbe der Rahmen um Blöcke, die im Weg sind oder falsch herum stehen.
+Next block box: {0}	Rahmen nächster Block: {0}
+The color of the box on the next block to place. It turns green while you hold that block.	Die Farbe des Rahmens um den nächsten Block. Er wird grün, während du diesen Block hältst.
+Chest boxes: {0}	Truhenrahmen: {0}
+The color of the boxes on chests that hold blocks you still need (Chest finder).	Die Farbe der Rahmen um Truhen mit Blöcken, die du noch brauchst (Truhenfinder).
+Scaffold columns: {0}	Gerüstsäulen: {0}
+The color of the scaffold hint columns (Settings > Extras).	Die Farbe der Gerüst-Hinweissäulen (Einstellungen > Extras).
+Reset colors	Farben zurücksetzen
+Back to the mod's usual colors.	Zurück zu den üblichen Farben des Mods.
 Raw materials: {0}	Rohstoffe: {0}
 Adds "Raw materials" to the build menu: what to gather for the blocks you still need - logs for planks and stairs, sand for glass, cobblestone to smelt into stone...	Fügt dem Bau-Menü "Rohstoffe" hinzu: was du für die noch fehlenden Blöcke sammeln musst - Stämme für Bretter und Treppen, Sand für Glas, Bruchstein zum Schmelzen zu Stein...
 Layer map: {0}	Schichtkarte: {0}
@@ -337,6 +353,8 @@ Basics	Grundlagen
 More	Mehr
 Extras	Extras
 Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	Extra-Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise, leere Welt, nur nahe Schichten.
+Colors	Farben
+Pick the colors of the ghost blocks and the boxes the mod draws.	Wähle die Farben der Geisterblöcke und der Rahmen, die der Mod zeichnet.
 Key binds...	Tastenbelegung...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	Ändere die Tasten (Optionen > Steuerung > Tastenbelegung > Build Blueprint).
 A short guide to everything the mod does.	Eine kurze Anleitung zu allem, was der Mod kann.
@@ -551,6 +569,10 @@ Welcome back! Your blueprint "{0}" is still here{1} Page Up for the menu.	Willko
  (placed).	 (platziert).
  - move it, then Place it.	 - beweg ihn, dann platzier ihn.
 Couldn't bring back the blueprint you had here last time.	Der Bau, den du letztes Mal hier hattest, konnte nicht wiederhergestellt werden.
+Logic Survival	Logic Survival
+Logic Survival is already in your server list.	Logic Survival ist schon in deiner Serverliste.
+Added! Open Multiplayer to join Logic Survival.	Hinzugefügt! Öffne Mehrspieler, um Logic Survival beizutreten.
+Couldn't add it - add {0} in Multiplayer > Add Server.	Konnte nicht hinzugefügt werden - füge {0} unter Mehrspieler > Server hinzufügen hinzu.
 is the wrong way round	ist falsch herum
 should {0}	sollte {0}
 face up	nach oben zeigen
@@ -596,3 +618,14 @@ Castles & Forts	Burgen und Festungen
 Village Buildings	Dorfgebäude
 Decor	Deko
 Camps & Outposts	Lager und Außenposten
+Normal	Normal
+Red	Rot
+Orange	Orange
+Yellow	Gelb
+Green	Grün
+Aqua	Türkis
+Light blue	Hellblau
+Blue	Blau
+Purple	Lila
+Pink	Rosa
+White	Weiß

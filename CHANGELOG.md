@@ -1,3 +1,7 @@
+## 1.4.2
+- **Colors** (Settings > Colors): pick the color of the ghost blocks (Normal keeps each block's own colors), the mistake boxes, the next-block box, the chest finder boxes and the scaffold columns. Reset colors puts them back.
+- **Play with the mod's maker:** How it works > More helpers has a button that adds the Logic Survival server (play.logicsurvival.fyi) to your Multiplayer list. Nothing is added unless you press it, and you can delete it there any time.
+
 ## 1.4.1
 - **Blank world** (Settings > Extras, off unless you turn it on): for building in an empty world. Anything inside the build's area that shouldn't be there - stray blocks, spilled water - gets a red box and counts as a mistake to fix ("a Stone shouldn't be here - break it"), and Auto-build clears it (chests and the like are left alone).
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.Component;
@@ -66,7 +67,11 @@ public class HelpScreen extends Screen {
          "Something placed wrong? The build menu shows how many to fix at the top. Click it to be shown each one, and click Stop fixing to stop.",
          "Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.",
          "Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.",
-         "The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese."}};
+         "The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.",
+         "Want to play with the person who made this mod? Logic Survival is their survival server. The button below adds it to your Multiplayer list - nothing is added unless you press it."}};
+    private static final int SERVER_PAGE = 7;   // the page with the "Add Logic Survival" button
+    private Button server;
+    private String serverMsg;
 
     public HelpScreen(Screen parent, int page) {
         super(Component.literal(Tr.t("How it works")));
@@ -93,6 +98,15 @@ public class HelpScreen extends Screen {
         prev = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "< Back", bw - 8)), b -> go(page - 1)).bounds(x + navW(), by, bw, 20).build());
         next = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Next >", bw - 8)), b -> go(page + 1)).bounds(x + navW() + bw + 4, by, bw, 20).build());
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Done", bw - 8)), b -> onClose()).bounds(x + w - bw, by, bw, 20).build());
+        boolean has = CreatorServer.added();
+        int sw = Math.min(230, w - navW() - 16);
+        server = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, has ? "Logic Survival is in your servers" : "Add Logic Survival to my servers", sw - 8)), b -> {
+                    serverMsg = CreatorServer.add();
+                    b.setMessage(Component.literal(UiKit.fit(font, "Logic Survival is in your servers", sw - 8)));
+                    b.active = false;
+                }).bounds(x + navW() + 8, height - 58, sw, 20)
+                .tooltip(Tooltip.create(Component.literal(Tr.t("Adds " + CreatorServer.IP + " to Multiplayer. You can delete it there any time.")))).build());
+        server.active = !has;
         go(page);
     }
 
@@ -100,6 +114,7 @@ public class HelpScreen extends Screen {
         page = Math.max(0, Math.min(TITLES.length - 1, p));
         for (int i = 0; i < tabs.size(); i++) tabs.get(i).active = i != page;
         if (prev != null) { prev.active = page > 0; next.active = page < TITLES.length - 1; }
+        if (server != null) server.visible = page == SERVER_PAGE;
     }
 
     @Override public boolean keyPressed(KeyEvent e) {
@@ -151,7 +166,7 @@ public class HelpScreen extends Screen {
         drawPicture(g, cx + cw - 70, y + 6);
         int ty = y + 40, tw = cw - 16;
         for (String line : TEXT[page]) {
-            if (ty > height - 46) break;
+            if (ty > (page == SERVER_PAGE ? height - 70 : height - 46)) break;
             if (line.startsWith("key:")) {
                 String[] k = line.split(":", 3);
                 UiKit.key(g, font, cx + 10, ty + 1, k[1], k[2]);
@@ -162,6 +177,7 @@ public class HelpScreen extends Screen {
             ty += 4;
         }
         super.extractRenderState(g, mouseX, mouseY, delta);
+        if (page == SERVER_PAGE && serverMsg != null) g.text(font, Tr.t(UiKit.fit(font, serverMsg, cw - 16)), cx + 8, height - 68, UiKit.GREEN, true);
     }
 
     /** A tiny drawing in the top right of some pages. */

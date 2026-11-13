@@ -2,7 +2,7 @@
   "name": "block-blueprint",
   "productName": "Block Blueprint",
   "desktopName": "block-blueprint.desktop",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Design Minecraft builds in 3D, then build them in your world with the Build Blueprint mod",
   "main": "main.js",
   "scripts": {

@@ -92,20 +92,20 @@ public final class PreviewModule {
 
     private static void drawLines(PoseStack.Pose p, VertexConsumer vc) {
         Minecraft mc = Minecraft.getInstance();
-        if (Settings.redOutline) for (Red r : reds) box(p, vc, new AABB(new BlockPos(r.x, r.y, r.z)).inflate(0.004), 0xFFFF2020);
-        if (Settings.scaffold) for (BlockPos sb : Materials.scaffold()) box(p, vc, new AABB(sb).inflate(-0.08), 0xFF60C8FF);   // where temporary blocks help (Settings > Extras)
+        if (Settings.redOutline) for (Red r : reds) box(p, vc, new AABB(new BlockPos(r.x, r.y, r.z)).inflate(0.004), Colors.red());
+        if (Settings.scaffold) for (BlockPos sb : Materials.scaffold()) box(p, vc, new AABB(sb).inflate(-0.08), Colors.scaffold());   // where temporary blocks help (Settings > Extras)
         // next block to place: pulsing yellow box, and a guide line when it's far away
         if ((Settings.nextHint || Mistakes.showing()) && Hint.pos != null) {
             float pulse = 0.6f + 0.4f * (float) Math.sin(System.currentTimeMillis() / 180.0);
-            box(p, vc, new AABB(Hint.pos).inflate(0.01 + 0.03 * pulse), Hint.inHand ? 0xFF60FF60 : 0xFFFFE040);
+            box(p, vc, new AABB(Hint.pos).inflate(0.01 + 0.03 * pulse), Colors.hint(Hint.inHand));
             var pl = mc.player;
             if (pl != null && Hint.dist > 6) {
                 Vec3 from = pl.position().add(0, 1.0, 0).add(pl.getLookAngle().multiply(1.5, 0, 1.5));
-                line(p, vc, from, Vec3.atCenterOf(Hint.pos), 0xC0FFE040);
+                line(p, vc, from, Vec3.atCenterOf(Hint.pos), Colors.hintLine());
             }
         }
         // chest finder: chests you've opened that hold blocks you still need
-        if (Settings.chestFinder && BuildBlueprintClient.SESSION.loaded()) for (BlockPos c : chestCache) box(p, vc, new AABB(c).inflate(0.01), 0xFF40FF80);
+        if (Settings.chestFinder && BuildBlueprintClient.SESSION.loaded()) for (BlockPos c : chestCache) box(p, vc, new AABB(c).inflate(0.01), Colors.chest());
         // copy mode: the box being selected (cyan) and its corners (yellow)
         if (Copier.active && Copier.c1 != null && mc.player != null) {
             BlockPos a = Copier.c1, b = Copier.c2 != null ? Copier.c2 : Copier.c1;
@@ -494,6 +494,7 @@ public final class PreviewModule {
                         try { rgb = g.tintI == quad.tintIndex() ? g.tintC : (g.tintC = mc.getBlockColors().getColor(g.state, mc.level, new BlockPos(g.x, g.y, g.z), g.tintI = quad.tintIndex()) & 0xFFFFFF); }
                         catch (Exception ignored) {}
                     }
+                    rgb = Colors.ghost(rgb);
                     vc.putBulkData(p, quad, ((rgb >> 16) & 255) / 255f, ((rgb >> 8) & 255) / 255f, (rgb & 255) / 255f, alpha, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
                 }
             }

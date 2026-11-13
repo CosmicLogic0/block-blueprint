@@ -92,9 +92,13 @@ Algo colocado errado? O menu da construção mostra no topo quantos há para con
 Construções salvas > Construções grátis tem mais de 1.300 construções grátis da comunidade do Minecraft.
 Configurações > Extras tem mais ajudas que você pode ligar: matérias-primas, um mapa da camada em que você está e dicas de andaime.
 O mod segue o idioma do seu jogo: inglês, espanhol, português, alemão, francês, russo e chinês.
+Quer jogar com quem fez este mod? Logic Survival é o servidor de sobrevivência dele. O botão abaixo o adiciona à sua lista do Multijogador - nada é adicionado se você não apertar.
 Como funciona
 < Voltar
 Próximo >
+Logic Survival está nos seus servidores
+Adicionar Logic Survival aos meus servidores
+Adiciona {0} ao Multijogador. Você pode apagá-lo lá quando quiser.
 Como o Build Blueprint funciona
 Setas
 aumentar a caixa para esse lado
@@ -276,6 +280,18 @@ Cole uma construção para ver aqui
 Configurações do Build Blueprint
 LIGADO
 DESLIGADO
+Cor fantasma: {0}
+Tinge os blocos fantasma transparentes. Normal mantém as cores de cada bloco.
+Caixas de erros: {0}
+A cor das caixas nos blocos que estão no caminho ou colocados virados errado.
+Caixa do próximo bloco: {0}
+A cor da caixa do próximo bloco a colocar. Fica verde enquanto você segura esse bloco.
+Caixas dos baús: {0}
+A cor das caixas nos baús com blocos que você ainda precisa (Localizador de baús).
+Colunas de andaime: {0}
+A cor das colunas de dica de andaime (Configurações > Extras).
+Redefinir cores
+Volta às cores normais do mod.
 Matérias-primas: {0}
 Adiciona "Matérias-primas" ao menu de construção: o que juntar para os blocos que ainda faltam - troncos para tábuas e escadas, areia para vidro, pedregulho para derreter em pedra...
 Mapa da camada: {0}
@@ -336,6 +352,8 @@ Básico
 Mais
 Extras
 Ajudas extras, desligadas até você ligar: matérias-primas, mapa da camada, dicas de andaime, mundo vazio, só camadas próximas.
+Cores
+Escolha as cores dos blocos fantasma e das caixas que o mod desenha.
 Controles...
 Mude as teclas (Opções > Controles > Atalhos do teclado > Build Blueprint).
 Um guia curto de tudo o que o mod faz.
@@ -550,6 +568,10 @@ Bem-vindo de volta! Sua construção "{0}" continua aqui{1} Page Up para o menu.
  (colocada).
  - mova, depois coloque.
 Não deu para trazer de volta a construção que você tinha aqui da última vez.
+Logic Survival
+Logic Survival já está na sua lista de servidores.
+Adicionado! Abra o Multijogador para entrar no Logic Survival.
+Não deu para adicionar - adicione {0} em Multijogador > Adicionar servidor.
 está virado errado
 deveria {0}
 virar para cima
@@ -595,3 +617,14 @@ Castelos e fortes
 Construções de vila
 Decoração
 Acampamentos e postos
+Normal
+Vermelho
+Laranja
+Amarelo
+Verde
+Água
+Azul-claro
+Azul
+Roxo
+Rosa
+Branco

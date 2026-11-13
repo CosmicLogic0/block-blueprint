@@ -93,9 +93,13 @@ Something placed wrong? The build menu shows how many to fix at the top. Click i
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	“已保存的建筑 > 免费建筑”里有来自 Minecraft 社区的 1300 多个免费建筑。
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	“设置 > 附加”里还有更多可以打开的辅助功能：原材料、本层地图和脚手架提示。
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	模组会跟随游戏语言：英语、西班牙语、葡萄牙语、德语、法语、俄语和中文。
+Want to play with the person who made this mod? Logic Survival is their survival server. The button below adds it to your Multiplayer list - nothing is added unless you press it.	想和这个模组的作者一起玩吗？Logic Survival 是作者的生存服务器。下面的按钮会把它加入你的多人游戏列表——不按就什么都不会添加。
 How it works	使用方法
 < Back	< 返回
 Next >	下一页 >
+Logic Survival is in your servers	Logic Survival 已在你的服务器列表中
+Add Logic Survival to my servers	把 Logic Survival 加入我的服务器
+Adds {0} to Multiplayer. You can delete it there any time.	把 {0} 加入多人游戏。你随时可以在那里删除它。
 How Build Blueprint works	Build Blueprint 使用方法
 Arrows	方向键
 grow the box that way	向那个方向扩大范围框
@@ -277,6 +281,18 @@ Paste a build to see it here	粘贴一个建筑在这里查看
 Build Blueprint settings	Build Blueprint 设置
 ON	开
 OFF	关
+Ghost color: {0}	虚影颜色：{0}
+Tint the see-through ghost blocks. Normal keeps each block's own colors.	给半透明的虚影方块上色。“普通”保留每个方块自己的颜色。
+Mistake boxes: {0}	错误框：{0}
+The color of the boxes on blocks that are in the way or placed the wrong way round.	挡路或方向放错的方块上框的颜色。
+Next block box: {0}	下一个方块框：{0}
+The color of the box on the next block to place. It turns green while you hold that block.	下一个要放的方块上框的颜色。手里拿着那个方块时会变绿。
+Chest boxes: {0}	箱子框：{0}
+The color of the boxes on chests that hold blocks you still need (Chest finder).	装有你还需要的方块的箱子上框的颜色（箱子查找）。
+Scaffold columns: {0}	脚手架柱：{0}
+The color of the scaffold hint columns (Settings > Extras).	脚手架提示柱的颜色（设置 > 额外）。
+Reset colors	重置颜色
+Back to the mod's usual colors.	恢复模组的默认颜色。
 Raw materials: {0}	原材料：{0}
 Adds "Raw materials" to the build menu: what to gather for the blocks you still need - logs for planks and stairs, sand for glass, cobblestone to smelt into stone...	在建筑菜单中加入“原材料”：还缺的方块需要收集什么 - 原木做木板和楼梯，沙子做玻璃，圆石烧成石头……
 Layer map: {0}	本层地图：{0}
@@ -337,6 +353,8 @@ Basics	基础
 More	更多
 Extras	附加
 Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	额外辅助功能，开启前默认关闭：原材料、层地图、脚手架提示、空白世界、只显示附近的层。
+Colors	颜色
+Pick the colors of the ghost blocks and the boxes the mod draws.	选择虚影方块和模组所画方框的颜色。
 Key binds...	按键绑定...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).	修改按键（选项 > 控制 > 按键绑定 > Build Blueprint）。
 A short guide to everything the mod does.	模组所有功能的简短指南。
@@ -551,6 +569,10 @@ Welcome back! Your blueprint "{0}" is still here{1} Page Up for the menu.	欢迎
  (placed).	 （已放置）。
  - move it, then Place it.	 - 移动它，然后放置。
 Couldn't bring back the blueprint you had here last time.	无法恢复你上次在这里的建筑。
+Logic Survival	Logic Survival
+Logic Survival is already in your server list.	Logic Survival 已经在你的服务器列表中了。
+Added! Open Multiplayer to join Logic Survival.	已添加！打开多人游戏即可加入 Logic Survival。
+Couldn't add it - add {0} in Multiplayer > Add Server.	添加失败——请在 多人游戏 > 添加服务器 中添加 {0}。
 is the wrong way round	方向放反了
 should {0}	应该{0}
 face up	朝上
@@ -596,3 +618,14 @@ Castles & Forts	城堡和要塞
 Village Buildings	村庄建筑
 Decor	装饰
 Camps & Outposts	营地和前哨
+Normal	普通
+Red	红色
+Orange	橙色
+Yellow	黄色
+Green	绿色
+Aqua	青色
+Light blue	淡蓝色
+Blue	蓝色
+Purple	紫色
+Pink	粉色
+White	白色

@@ -102,9 +102,13 @@ Something placed wrong? The build menu shows how many to fix at the top. Click i
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.
+Want to play with the person who made this mod? Logic Survival is their survival server. The button below adds it to your Multiplayer list - nothing is added unless you press it.
 How it works
 < Back
 Next >
+Logic Survival is in your servers
+Add Logic Survival to my servers
+Adds {0} to Multiplayer. You can delete it there any time.
 the help screen
 How Build Blueprint works
 the corner list
@@ -301,6 +305,18 @@ Paste a build to see it here
 Build Blueprint settings
 ON
 OFF
+Ghost color: {0}
+Tint the see-through ghost blocks. Normal keeps each block's own colors.
+Mistake boxes: {0}
+The color of the boxes on blocks that are in the way or placed the wrong way round.
+Next block box: {0}
+The color of the box on the next block to place. It turns green while you hold that block.
+Chest boxes: {0}
+The color of the boxes on chests that hold blocks you still need (Chest finder).
+Scaffold columns: {0}
+The color of the scaffold hint columns (Settings > Extras).
+Reset colors
+Back to the mod's usual colors.
 Raw materials: {0}
 Adds "Raw materials" to the build menu: what to gather for the blocks you still need - logs for planks and stairs, sand for glass, cobblestone to smelt into stone...
 Layer map: {0}
@@ -361,6 +377,8 @@ Basics
 More
 Extras
 Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.
+Colors
+Pick the colors of the ghost blocks and the boxes the mod draws.
 Key binds...
 Change the keys (Options > Controls > Key Binds > Build Blueprint).
 A short guide to everything the mod does.
@@ -606,6 +624,10 @@ Welcome back! Your blueprint "{0}" is still here{1} Page Up for the menu.
  (placed).
  - move it, then Place it.
 Couldn't bring back the blueprint you had here last time.
+Logic Survival
+Logic Survival is already in your server list.
+Added! Open Multiplayer to join Logic Survival.
+Couldn't add it - add {0} in Multiplayer > Add Server.
 is the wrong way round
 should {0}
 face up
@@ -651,3 +673,14 @@ Castles & Forts
 Village Buildings
 Decor
 Camps & Outposts
+Normal
+Red
+Orange
+Yellow
+Green
+Aqua
+Light blue
+Blue
+Purple
+Pink
+White

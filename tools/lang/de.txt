@@ -92,9 +92,13 @@ Etwas falsch platziert? Das Baumenü zeigt oben, wie viele zu reparieren sind. K
 Gespeicherte Bauten > Kostenlose Bauten hat über 1.300 kostenlose Bauten aus der Minecraft-Community.
 Einstellungen > Extras hat weitere Helfer zum Einschalten: Rohstoffe, eine Karte deiner Schicht und Gerüst-Hinweise.
 Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, Französisch, Russisch und Chinesisch.
+Willst du mit dem Macher dieses Mods spielen? Logic Survival ist sein Survival-Server. Der Knopf unten fügt ihn deiner Mehrspieler-Liste hinzu - ohne Klick wird nichts hinzugefügt.
 So funktioniert's
 < Zurück
 Weiter >
+Logic Survival ist in deinen Servern
+Logic Survival zu meinen Servern hinzufügen
+Fügt {0} zu Mehrspieler hinzu. Du kannst ihn dort jederzeit löschen.
 So funktioniert Build Blueprint
 Pfeiltasten
 die Box in diese Richtung vergrößern
@@ -276,6 +280,18 @@ Füg einen Bau ein, um ihn hier zu sehen
 Build Blueprint Einstellungen
 AN
 AUS
+Geisterfarbe: {0}
+Färbt die durchsichtigen Geisterblöcke. Normal behält die eigenen Farben jedes Blocks.
+Fehlerrahmen: {0}
+Die Farbe der Rahmen um Blöcke, die im Weg sind oder falsch herum stehen.
+Rahmen nächster Block: {0}
+Die Farbe des Rahmens um den nächsten Block. Er wird grün, während du diesen Block hältst.
+Truhenrahmen: {0}
+Die Farbe der Rahmen um Truhen mit Blöcken, die du noch brauchst (Truhenfinder).
+Gerüstsäulen: {0}
+Die Farbe der Gerüst-Hinweissäulen (Einstellungen > Extras).
+Farben zurücksetzen
+Zurück zu den üblichen Farben des Mods.
 Rohstoffe: {0}
 Fügt dem Bau-Menü "Rohstoffe" hinzu: was du für die noch fehlenden Blöcke sammeln musst - Stämme für Bretter und Treppen, Sand für Glas, Bruchstein zum Schmelzen zu Stein...
 Schichtkarte: {0}
@@ -336,6 +352,8 @@ Grundlagen
 Mehr
 Extras
 Extra-Helfer, aus, bis du sie einschaltest: Rohstoffe, Schichtkarte, Gerüst-Hinweise, leere Welt, nur nahe Schichten.
+Farben
+Wähle die Farben der Geisterblöcke und der Rahmen, die der Mod zeichnet.
 Tastenbelegung...
 Ändere die Tasten (Optionen > Steuerung > Tastenbelegung > Build Blueprint).
 Eine kurze Anleitung zu allem, was der Mod kann.
@@ -550,6 +568,10 @@ Willkommen zurück! Dein Bau "{0}" ist noch da{1} Bild auf für das Menü.
  (platziert).
  - beweg ihn, dann platzier ihn.
 Der Bau, den du letztes Mal hier hattest, konnte nicht wiederhergestellt werden.
+Logic Survival
+Logic Survival ist schon in deiner Serverliste.
+Hinzugefügt! Öffne Mehrspieler, um Logic Survival beizutreten.
+Konnte nicht hinzugefügt werden - füge {0} unter Mehrspieler > Server hinzufügen hinzu.
 ist falsch herum
 sollte {0}
 nach oben zeigen
@@ -595,3 +617,14 @@ Burgen und Festungen
 Dorfgebäude
 Deko
 Lager und Außenposten
+Normal
+Rot
+Orange
+Gelb
+Grün
+Türkis
+Hellblau
+Blau
+Lila
+Rosa
+Weiß

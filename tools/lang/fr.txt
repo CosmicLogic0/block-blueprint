@@ -92,9 +92,13 @@ Quelque chose de mal placé ? Le menu de construction indique en haut combien il
 Constructions sauvegardées > Constructions gratuites propose plus de 1 300 constructions gratuites de la communauté Minecraft.
 Paramètres > Extras propose d'autres aides à activer : matières premières, une carte de la couche où tu es, et l'aide échafaudage.
 Le mod suit la langue de ton jeu : anglais, espagnol, portugais, allemand, français, russe et chinois.
+Envie de jouer avec le créateur de ce mod ? Logic Survival est son serveur survie. Le bouton ci-dessous l'ajoute à ta liste Multijoueur - rien n'est ajouté si tu n'appuies pas.
 Comment ça marche
 < Retour
 Suivant >
+Logic Survival est dans tes serveurs
+Ajouter Logic Survival à mes serveurs
+Ajoute {0} au Multijoueur. Tu peux le supprimer là-bas à tout moment.
 Comment marche Build Blueprint
 Flèches
 agrandir la boîte de ce côté
@@ -276,6 +280,18 @@ Colle une construction pour la voir ici
 Paramètres de Build Blueprint
 OUI
 NON
+Couleur fantôme : {0}
+Teinte les blocs fantômes transparents. Normal garde les couleurs de chaque bloc.
+Cadres d'erreurs : {0}
+La couleur des cadres sur les blocs qui gênent ou sont posés à l'envers.
+Cadre du bloc suivant : {0}
+La couleur du cadre du prochain bloc à poser. Il devient vert quand tu tiens ce bloc.
+Cadres des coffres : {0}
+La couleur des cadres sur les coffres qui contiennent des blocs qu'il te faut encore (Détecteur de coffres).
+Colonnes d'échafaudage : {0}
+La couleur des colonnes d'aide d'échafaudage (Paramètres > Extras).
+Réinitialiser les couleurs
+Revenir aux couleurs habituelles du mod.
 Matières premières : {0}
 Ajoute « Matières premières » au menu de construction : quoi récolter pour les blocs qui te manquent - des bûches pour les planches et escaliers, du sable pour le verre, de la pierre taillée à cuire en roche...
 Carte de la couche : {0}
@@ -336,6 +352,8 @@ Bases
 Plus
 Extras
 Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de couche, aides d'échafaudage, monde vide, couches proches seulement.
+Couleurs
+Choisis les couleurs des blocs fantômes et des cadres que dessine le mod.
 Touches...
 Change les touches (Options > Commandes > Touches > Build Blueprint).
 Un petit guide de tout ce que fait le mod.
@@ -550,6 +568,10 @@ Bon retour ! Ta construction « {0} » est toujours là{1} Pg préc pour le menu
  (placée).
  - déplace-la, puis place-la.
 Impossible de récupérer la construction que tu avais ici la dernière fois.
+Logic Survival
+Logic Survival est déjà dans ta liste de serveurs.
+Ajouté ! Ouvre Multijoueur pour rejoindre Logic Survival.
+Impossible de l'ajouter - ajoute {0} dans Multijoueur > Ajouter un serveur.
 est dans le mauvais sens
 devrait {0}
 regarder vers le haut
@@ -595,3 +617,14 @@ Châteaux et forts
 Bâtiments de village
 Déco
 Camps et avant-postes
+Normal
+Rouge
+Orange
+Jaune
+Vert
+Turquoise
+Bleu clair
+Bleu
+Violet
+Rose
+Blanc
