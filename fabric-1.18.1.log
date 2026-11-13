@@ -1,0 +1,260 @@
+[  ..  ] Loading version fabric-1.18.1-0.20.1[  OK  ] Loaded version fabric-1.18.1-0.20.1
+[  ..  ] Loading version 1.18.1[  OK  ] Loaded version 1.18.1
+[  ..  ] Loading client[  OK  ] Loaded client
+[  ..  ] Loading libraries[  ..  ] Loaded 51 libraries, now verifying[  OK  ] Loaded and verified 43+8 libraries
+[  ..  ] Loading logger client-1.12.xml[  OK  ] Loaded logger client-1.12.xml
+[  ..  ] Loading assets 1.18[  ..  ] Loaded 3071 assets 1.18[  OK  ] Loaded and verified 3071 assets 1.18
+[  ..  ] Loading JVM (major version 17)[  OK  ] Loaded JVM (17.0.15)
+[  ..  ] Launching...[  OK  ] Launched
+[20:39:52] [main] [INFO] Loading Minecraft 1.18.1 with Fabric Loader 0.20.1
+[20:39:52] [main] [INFO] Fabric is preparing JARs on first launch, this may take a few seconds...
+[20:39:52] [main] [INFO] Loading 51 mods:
+	- buildblueprint 1.4.8
+	- fabric 0.46.6+1.18
+	   |-- fabric-api-base 0.4.2+d7c144a865
+	   |-- fabric-api-lookup-api-v1 1.5.3+d7c144a865
+	   |-- fabric-biome-api-v1 6.0.2+d7c144a865
+	   |-- fabric-blockrenderlayer-v1 1.1.10+3ac43d9565
+	   |-- fabric-command-api-v1 1.1.7+d7c144a865
+	   |-- fabric-commands-v0 0.2.6+b4f4f6cd65
+	   |-- fabric-containers-v0 0.1.19+d7c144a865
+	   |-- fabric-content-registries-v0 0.4.9+d7c144a865
+	   |-- fabric-crash-report-info-v1 0.1.9+3ac43d9565
+	   |-- fabric-dimensions-v1 2.1.10+a1d9bbf565
+	   |-- fabric-entity-events-v1 1.4.6+d7c144a865
+	   |-- fabric-events-interaction-v0 0.4.17+d7c144a865
+	   |-- fabric-events-lifecycle-v0 0.2.9+d7c144a865
+	   |-- fabric-game-rule-api-v1 1.0.11+d7c144a865
+	   |-- fabric-item-api-v1 1.3.1+691a79b565
+	   |-- fabric-item-groups-v0 0.3.7+3ac43d9565
+	   |-- fabric-key-binding-api-v1 1.0.9+d7c144a865
+	   |-- fabric-keybindings-v0 0.2.7+b4f4f6cd65
+	   |-- fabric-lifecycle-events-v1 1.4.13+713c266865
+	   |-- fabric-loot-tables-v1 1.0.9+d7c144a865
+	   |-- fabric-mining-level-api-v1 1.0.7+d7c144a865
+	   |-- fabric-mining-levels-v0 0.1.12+b4f4f6cd65
+	   |-- fabric-models-v0 0.3.4+d7c144a865
+	   |-- fabric-networking-api-v1 1.0.19+d7c144a865
+	   |-- fabric-networking-v0 0.3.6+b4f4f6cd65
+	   |-- fabric-object-builder-api-v1 1.11.5+737332ce65
+	   |-- fabric-object-builders-v0 0.7.13+d7c144a865
+	   |-- fabric-particles-v1 0.2.10+526dc1ac65
+	   |-- fabric-registry-sync-v0 0.9.2+ad01bfbd65
+	   |-- fabric-renderer-api-v1 0.4.11+b0b66fc365
+	   |-- fabric-renderer-indigo 0.4.15+6825030165
+	   |-- fabric-renderer-registries-v1 3.2.10+b4f4f6cd65
+	   |-- fabric-rendering-data-attachment-v1 0.3.5+d7c144a865
+	   |-- fabric-rendering-fluids-v1 0.1.19+3ac43d9565
+	   |-- fabric-rendering-v0 1.1.12+b4f4f6cd65
+	   |-- fabric-rendering-v1 1.10.6+713c266865
+	   |-- fabric-resource-conditions-api-v1 1.0.2+d7c144a865
+	   |-- fabric-resource-loader-v0 0.4.15+8906aafd65
+	   |-- fabric-screen-api-v1 1.0.8+d7c144a865
+	   |-- fabric-screen-handler-api-v1 1.1.12+d7c144a865
+	   |-- fabric-structure-api-v1 2.1.3+d7c144a865
+	   |-- fabric-tag-extensions-v0 1.2.9+d7c144a865
+	   |-- fabric-textures-v0 1.0.10+3ac43d9565
+	   |-- fabric-tool-attribute-api-v1 1.3.9+fb3b57b465
+	   \-- fabric-transfer-api-v1 1.5.10+c329913d65
+	- fabricloader 0.20.1
+	   \-- mixinextras 0.5.5
+	- java 17
+	- minecraft 1.18.1
+[20:39:52] [main] [INFO] SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/sponge-mixin-0.17.5+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[20:39:54] [main] [INFO] Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[20:40:00] [main] [WARN] @Inject(@At("INVOKE")) Shift.BY=3 on fabric-lifecycle-events-v1.mixins.json:client.WorldChunkMixin from mod fabric-lifecycle-events-v1::handler$zdg000$fabric-lifecycle-events-v1$onLoadBlockEntity exceeds the maximum allowed value: 0. Increase the value of maxShiftBy to suppress this warning.
+[20:40:02] [main] [WARN] Unrecognized user type:
+[20:40:03] [Render thread] [INFO] Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[20:40:04] [Render thread] [ERROR] com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
+	at knot//com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:56)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:132)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilUserApiService.<init>(YggdrasilUserApiService.java:44)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.createUserApiService(YggdrasilAuthenticationService.java:153)
+	at knot//net.minecraft.class_310.method_31382(class_310.java:670)
+	at knot//net.minecraft.class_310.<init>(class_310.java:424)
+	at knot//net.minecraft.client.main.Main.main(Main.java:199)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+Caused by: MinecraftClientHttpException[type=HTTP_ERROR, status=401, response=ErrorResponse[path='/player/attributes', error='null', details=null, errorMessage='null']]
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:78)
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:48)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:113)
+	... 8 more
+[20:40:04] [Render thread] [INFO] Setting user: Builder
+[20:40:04] [Render thread] [INFO] [STDOUT]: [Build Blueprint] Logic Survival server list: Added! Open Multiplayer to join Logic Survival.
+[20:40:04] [Render thread] [INFO] [Indigo] Registering Indigo renderer!
+[20:40:05] [Render thread] [INFO] Backend library: LWJGL version 3.2.2 build 10
+[20:40:08] [Render thread] [WARN] ERROR : Couldn't load Narrator library : Unable to load library 'fliteWrapper':
+libflite.so.1: cannot open shared object file: No such file or directory
+libflite.so.1: cannot open shared object file: No such file or directory
+Native library (linux-x86-64/libfliteWrapper.so) not found in resource path (/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm/9.10.1/asm-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-commons/9.10.1/asm-commons-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-tree/9.10.1/asm-tree-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/sponge-mixin-0.17.5+mixin.0.8.7.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/fabricmc/intermediary/1.18.1/intermediary-1.18.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/fabricmc/fabric-loader/0.20.1/fabric-loader-0.20.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/blocklist/1.0.6/blocklist-1.0.6.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/patchy/2.1.6/patchy-2.1.6.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/github/oshi/oshi-core/5.8.2/oshi-core-5.8.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna/5.9.0/jna-5.9.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna-platform/5.9.0/jna-platform-5.9.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/slf4j/slf4j-api/1.8.0-beta4/slf4j-api-1.8.0-beta4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-slf4j18-impl/2.14.1/log4j-slf4j18-impl-2.14.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/ibm/icu/icu4j/69.1/icu4j-69.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/javabridge/1.2.24/javabridge-1.2.24.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-all/4.1.68.Final/netty-all-4.1.68.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/brigadier/1.0.18/brigadier-1.0.18.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/datafixerupper/4.0.26/datafixerupper-4.0.26.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/code/gson/gson/2.8.8/gson-2.8.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/authlib/3.2.38/authlib-3.2.38.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-compress/1.21/commons-compress-1.21.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/httpcomponents/httpcore/4.4.14/httpcore-4.4.14.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/it/unimi/dsi/fastutil/8.5.6/fastutil-8.5.6.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-jemalloc/3.2.2/lwjgl-jemalloc-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-openal/3.2.2/lwjgl-openal-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-glfw/3.2.2/lwjgl-glfw-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-stb/3.2.2/lwjgl-stb-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-tinyfd/3.2.2/lwjgl-tinyfd-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/text2speech/1.11.3/text2speech-1.11.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/versions/fabric-1.18.1-0.20.1/fabric-1.18.1-0.20.1.jar)
+[20:40:08] [Render thread] [INFO] Reloading ResourceManager: Default, Fabric Mods (Build Blueprint, Fabric API, Fabric API Base, Fabric API Lookup API (v1), Fabric Biome API (v1), Fabric BlockRenderLayer Registration (v1), Fabric Command API (v1), Fabric Commands (v0), Fabric Containers (v0), Fabric Content Registries (v0), Fabric Crash Report Info (v1), Fabric Dimensions API (v1), Fabric Entity Events (v1), Fabric Events Interaction (v0), Fabric Events Lifecycle (v0), Fabric Game Rule API (v1), Fabric Item API (v1), Fabric Item Groups (v0), Fabric Key Binding API (v1), Fabric Key Bindings (v0), Fabric Lifecycle Events (v1), Fabric Loot Tables (v1), Fabric Mining Level API (v1), Fabric Mining Levels (v0), Fabric Models (v0), Fabric Networking API (v1), Fabric Networking (v0), Fabric Object Builder API (v1), Fabric Object Builders (v0), Fabric Particles (v1), Fabric Registry Sync (v0), Fabric Renderer API (v1), Fabric Renderer - Indigo, Fabric Renderer Registries (v1), Fabric Rendering Data Attachment (v1), Fabric Rendering Fluids (v1), Fabric Rendering (v0), Fabric Rendering (v1), Fabric Resource Conditions API (v1), Fabric Resource Loader (v0), Fabric Screen API (v1), Fabric Screen Handler API (v1), Fabric Structure API (v1), Fabric Tag Extensions (v0), Fabric Textures (v0), Fabric Tool Attribute API (v1), Fabric Transfer API (v1), Fabric Loader)
+[20:40:08] [Render thread] [INFO] [STDOUT]: BBUITEST waiting on class_442
+[20:40:08] [Realms Notification Availability checker #1] [INFO] Could not authorize you against Realms server: javax.ws.rs.BadRequestException: Invalid session
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
+[20:40:13] [Render thread] [ERROR] java.lang.IllegalStateException: Failed to open OpenAL device
+	at knot//net.minecraft.class_4225.method_38501(class_4225.java:264)
+	at knot//net.minecraft.class_4225.method_19661(class_4225.java:151)
+	at knot//net.minecraft.class_1140.method_4846(class_1140.java:112)
+	at knot//net.minecraft.class_1140.method_4837(class_1140.java:103)
+	at knot//net.minecraft.class_1144.method_18182(class_1144.java:116)
+	at knot//net.minecraft.class_1144.method_18788(class_1144.java:39)
+	at knot//net.minecraft.class_4080.method_18790(class_4080.java:13)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482)
+	at knot//net.minecraft.class_4014.method_18365(class_4014.java:71)
+	at knot//net.minecraft.class_1255.execute(class_1255.java:101)
+	at knot//net.minecraft.class_4014.method_18367(class_4014.java:70)
+	at java.base/java.util.concurrent.CompletableFuture$UniCompletion.claim(CompletableFuture.java:572)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:714)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.postFire(CompletableFuture.java:614)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:726)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482)
+	at knot//com.mojang.blaze3d.systems.RenderSystem.replayQueue(RenderSystem.java:209)
+	at knot//com.mojang.blaze3d.systems.RenderSystem.flipFrame(RenderSystem.java:196)
+	at knot//net.minecraft.class_1041.method_15998(class_1041.java:310)
+	at knot//net.minecraft.class_310.method_1523(class_310.java:1142)
+	at knot//net.minecraft.class_310.method_1514(class_310.java:733)
+	at knot//net.minecraft.client.main.Main.main(Main.java:238)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+[20:40:14] [Render thread] [INFO] Created: 1024x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[20:40:14] [Render thread] [INFO] Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
+[20:40:14] [Render thread] [INFO] Created: 1024x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[20:40:14] [Render thread] [INFO] Created: 1024x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[20:40:14] [Render thread] [INFO] Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[20:40:14] [Render thread] [INFO] Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[20:40:14] [Render thread] [INFO] Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[20:40:17] [Render thread] [INFO] Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[20:40:17] [Render thread] [INFO] Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[20:40:17] [Render thread] [INFO] Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[20:40:22] [Render thread] [INFO] [STDOUT]: BBUITEST joining 127.0.0.1:25565
+[20:40:23] [Render thread] [INFO] Connecting to 127.0.0.1, 25565
+[20:40:27] [Render thread] [INFO] Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[20:40:31] [Render thread] [INFO] Loaded 0 advancements
+[20:40:31] [Render thread] [INFO] [STDOUT]: BBUITEST in world
+[20:40:32] [Worker-Main-9] [WARN] com.mojang.authlib.exceptions.AuthenticationUnavailableException: Cannot contact authentication server
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:126)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:100)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillGameProfile(YggdrasilMinecraftSessionService.java:194)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:68)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:65)
+	at knot//com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3533)
+	at knot//com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2282)
+	at knot//com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2159)
+	at knot//com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2049)
+	at knot//com.google.common.cache.LocalCache.get(LocalCache.java:3966)
+	at knot//com.google.common.cache.LocalCache.getOrLoad(LocalCache.java:3989)
+	at knot//com.google.common.cache.LocalCache$LocalLoadingCache.get(LocalCache.java:4950)
+	at knot//com.google.common.cache.LocalCache$LocalLoadingCache.getUnchecked(LocalCache.java:4956)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillProfileProperties(YggdrasilMinecraftSessionService.java:184)
+	at knot//net.minecraft.class_310.method_1539(class_310.java:2496)
+	at knot//net.minecraft.class_1071.method_4653(class_1071.java:97)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1395)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	at knot//com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:226)
+	at knot//com.google.gson.Gson.fromJson(Gson.java:932)
+	at knot//com.google.gson.Gson.fromJson(Gson.java:897)
+	at knot//com.google.gson.Gson.fromJson(Gson.java:846)
+	at knot//com.google.gson.Gson.fromJson(Gson.java:817)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:106)
+	... 21 more
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	at knot//com.google.gson.stream.JsonReader.beginObject(JsonReader.java:384)
+	at knot//com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:215)
+	... 26 more
+[20:40:47] [Render thread] [INFO] [STDOUT]: BBUITEST loaded 284 blocks
+[20:40:47] [Render thread] [INFO] [STDOUT]: BBUITEST direction check: Block{minecraft:oak_stairs}[facing=south,half=top,shape=straight,waterlogged=false] -> right way false (should face north, be the right way up (bottom half)), same way true
+[20:40:47] [Render thread] [INFO] [STDOUT]: BBUITEST renamed blocks: chain -> minecraft:chain[axis=y], iron_chain -> minecraft:chain[axis=y], grass -> minecraft:grass
+[20:40:50] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-ghost
+[20:40:52] [Render thread] [INFO] [STDOUT]: BBUITEST placed, layer 1
+[20:40:56] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-placed
+[20:40:58] [Render thread] [INFO] [STDOUT]: BBUITEST held: Cobblestone
+[20:41:01] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-held
+[20:41:03] [Render thread] [INFO] [STDOUT]: BBUITEST held spots: 81, next block box green: true
+[20:41:07] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-held-check
+[20:41:09] [Render thread] [INFO] [STDOUT]: BBUITEST showing only minecraft:cobblestone, 9 hidden
+[20:41:12] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-only
+[20:41:18] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-hidden
+[20:41:23] [Render thread] [INFO] [STDOUT]: BBUITEST shot build
+[20:41:25] [Render thread] [INFO] [STDOUT]: BBUITEST swap options 751 similar 320
+[20:41:29] [Render thread] [INFO] [STDOUT]: BBUITEST shot swap
+[20:41:31] [Render thread] [INFO] [STDOUT]: BBUITEST swap options 751 similar 320
+[20:41:34] [Render thread] [INFO] [STDOUT]: BBUITEST shot swap-search
+[20:41:36] [Render thread] [INFO] [STDOUT]: BBUITEST removed 1 blocks (284 -> 283), undo true -> 284
+[20:41:40] [Render thread] [INFO] [STDOUT]: BBUITEST shot remove
+[20:41:42] [Render thread] [INFO] [STDOUT]: BBUITEST bug report: **What happened?** (please write what you did and what went wrong) |  |  |  | --- | Build Blueprint: 1.4.8 | Minecraft: 1.18.1 (Fabric) | Java: 17.0.15 | System: Linux 7.0.0-1019-azure amd64 | Build loaded: 9 x 8 x 9, 284 blocks, placed, layer 1 | Last problem: none |
+[20:41:42] [Render thread] [INFO] [STDOUT]: BBUITEST keybinds: a_forward=up b_back=down c_left=left d_right=right e_hold_vertical=unknown f_rotate=page.down g_menu=page.up h_layer_up=home i_layer_down=end j_copy=insert k_place=delete l_up=equal m_down=minus n_fast=unknown o_shrink=unknown | hints: up =, down -, fast Shift, shrink Alt, rotate Page Down
+[20:41:45] [Render thread] [INFO] [STDOUT]: BBUITEST shot shopping
+[20:41:47] [Render thread] [INFO] [STDOUT]: BBUITEST not in game [futureblocks:glow_brick]
+[20:41:51] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-missing
+[20:41:56] [Render thread] [INFO] [STDOUT]: BBUITEST shot help
+[20:41:58] [Render thread] [INFO] [STDOUT]: BBUITEST chest highlight hooked on class_481
+[20:42:02] [Render thread] [INFO] [STDOUT]: BBUITEST shot inventory
+[20:42:07] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings-extras
+[20:42:09] [Render thread] [INFO] [STDOUT]: BBUITEST raw materials: 81 minecraft:cobblestone; 36 minecraft:oak_log; 30 minecraft:spruce_log; 3 minecraft:sand (smelt); 1 futureblocks:glow_brick;
+[20:42:09] [Render thread] [INFO] [STDOUT]: BBUITEST mistakes 0, scaffold 0, layer map 9x9
+[20:42:13] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-raw
+[20:42:18] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-extras
+[20:42:20] [Render thread] [INFO] [STDOUT]: BBUITEST mistakes: were showing false, after Stop fixing false
+[20:42:20] [Render thread] [INFO] [STDOUT]: BBUITEST blank world: mistakes 0 -> 1 -> 0
+[20:42:20] [Render thread] [INFO] [STDOUT]: BBUITEST dirt counts for grass: true, stone for grass: false
+[20:42:20] [Render thread] [INFO] [STDOUT]: BBUITEST co-op: part 1 of 2 (the west end), my blocks 154
+[20:42:24] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-coop
+[20:42:29] [Render thread] [INFO] [STDOUT]: BBUITEST shot done-card
+[20:42:35] [Render thread] [INFO] [STDOUT]: BBUITEST shot templates
+[20:42:37] [Render thread] [INFO] [STDOUT]: BBUITEST tr es: Capa 3 de 10 | Girada 90 grados | ¡Construcción terminada! 120 bloques · 4m 10s de construcción · 30 bloques por minuto.
+[20:42:40] [Render thread] [INFO] [STDOUT]: BBUITEST shot lang-es
+[20:42:42] [Render thread] [INFO] [STDOUT]: BBUITEST tr ru: Слой 3 из 10
+[20:42:46] [Render thread] [INFO] [STDOUT]: BBUITEST shot lang-ru
+[20:42:48] [Render thread] [INFO] [STDOUT]: BBUITEST tr zh: 第 3 层，共 10 层
+[20:42:51] [Render thread] [INFO] [STDOUT]: BBUITEST shot lang-zh
+[20:42:57] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings
+[20:43:02] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings-more
+[20:43:04] [Render thread] [INFO] [STDOUT]: BBUITEST colors: ghost Purple d7afff, red ffff8c1a, hint ffffe040/ff60ff60, chest ff40ff80
+[20:43:08] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings-colors
+[20:43:10] [Render thread] [INFO] [STDOUT]: BBUITEST creator server: before true, add: Logic Survival is already in your server list. | again: Logic Survival is already in your server list. | in list true
+[20:43:10] [Render thread] [INFO] [STDOUT]: BBUITEST ItemStackTemplate: none (java.lang.ClassNotFoundException: net.minecraft.world.item.ItemStackTemplate)
+[20:43:13] [Render thread] [INFO] [STDOUT]: BBUITEST shot help-server
+[20:43:15] [Render thread] [INFO] [STDOUT]: BBUITEST big picture: grid 31 ms, picture 34 ms, 9664 rectangles
+[20:43:19] [Render thread] [INFO] [STDOUT]: BBUITEST shot saved
+[20:43:21] [Render thread] [INFO] [STDOUT]: BBUITEST perf loaded 240000 blocks
+[20:43:21] [Render thread] [INFO] [STDOUT]: BBUITEST perf first frames: 0 frames, working out 0.00 ms a frame (worst 0.0), drawing 0.00 ms a frame (worst 0.0), 283 ghost blocks
+[20:43:28] [Render thread] [INFO] [STDOUT]: BBUITEST perf moving: 4 frames, working out 37.62 ms a frame (worst 107.7), drawing 516.46 ms a frame (worst 1171.3), 206270 ghost blocks
+[20:43:32] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-perf
+[20:43:36] [Render thread] [INFO] [STDOUT]: BBUITEST perf still: 6 frames, working out 3.24 ms a frame (worst 4.4), drawing 294.18 ms a frame (worst 401.0), 206270 ghost blocks
+[20:43:36] [Render thread] [INFO] [STDOUT]: BBUITEST perf block list: 11 ms each time
+[20:43:42] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-near
+[20:43:43] [Render thread] [INFO] [STDOUT]: BBUITEST perf nearby layers only: 22 frames, working out 2.43 ms a frame (worst 12.5), drawing 42.26 ms a frame (worst 123.9), 26274 ghost blocks
+[20:43:44] [Render thread] [INFO] [STDOUT]: BBUITEST stand-ins: minecraft:chest -> minecraft:oak_planks; minecraft:ender_chest -> minecraft:obsidian; minecraft:oak_sign -> minecraft:oak_planks/minecraft:oak_planks; minecraft:red_bed -> minecraft:red_wool/minecraft:white_wool; minecraft:white_banner -> minecraft:white_wool/minecraft:white_wool; minecraft:skeleton_skull -> minecraft:bone_block; minecraft:shulker_box -> minecraft:purpur_block; minecraft:trapped_chest -> minecraft:oak_planks;
+[20:43:47] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-special
+[20:43:49] [Render thread] [INFO] [CHAT] Copy box started on the block you're looking at. Make it as big as your build:
+[20:43:49] [Render thread] [INFO] [CHAT] Arrows grow it, Alt + arrows shrink it, = and - for the top and bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.
+[20:43:49] [Render thread] [INFO] [CHAT] Press Insert again to save it, Delete to cancel.
+[20:43:52] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-copy
+[20:43:54] [Render thread] [INFO] [STDOUT]: BBUITEST done

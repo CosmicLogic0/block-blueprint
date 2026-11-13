@@ -1,0 +1,21 @@
+PASS fabric-26.3
+[20:31:56] [Render thread] [INFO] [STDOUT]: BBUITEST waiting on GenericMessageScreen
+[20:32:06] [Render thread] [INFO] [STDOUT]: BBUITEST joining 127.0.0.1:25565
+[20:32:09] [Render thread] [INFO] [STDOUT]: BBUITEST in world
+[20:32:24] [Render thread] [INFO] [STDOUT]: BBUITEST loaded 284 blocks
+[20:32:24] [Render thread] [INFO] [STDOUT]: BBUITEST direction check: Block{minecraft:oak_stairs}[facing=south,half=top,shape=straight,waterlogged=false] -> right way false (should face north, be the right way up (bottom half)), same way true
+[20:32:24] [Render thread] [INFO] [STDOUT]: BBUITEST renamed blocks: chain -> minecraft:iron_chain[axis=y], iron_chain -> minecraft:iron_chain[axis=y], grass -> minecraft:short_grass
+[20:32:27] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-ghost
+[20:32:29] [Render thread] [INFO] [STDOUT]: BBUITEST placed, layer 1
+[20:32:33] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-placed
+[20:32:35] [Render thread] [INFO] [STDOUT]: BBUITEST held: Cobblestone
+[20:32:38] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-held
+[20:32:40] [Render thread] [INFO] [STDOUT]: BBUITEST held spots: 81, next block box green: true
+[20:32:44] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-held-check
+[20:32:46] [Render thread] [INFO] [STDOUT]: BBUITEST showing only minecraft:cobblestone, 9 hidden
+[20:32:49] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-only
+[20:32:55] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-hidden
+[20:33:00] [Render thread] [INFO] [STDOUT]: BBUITEST shot build
+[20:33:02] [Render thread] [INFO] [STDOUT]: BBUITEST swap options 1104 similar 396
+[20:33:06] [Render thread] [INFO] [STDOUT]: BBUITEST shot swap
+[20:33:08] [Render thread] [INFO] [STDOUT]: BBUITEST swap options 1104 similar 396

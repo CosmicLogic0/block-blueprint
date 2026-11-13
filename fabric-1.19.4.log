@@ -1,0 +1,256 @@
+[  ..  ] Loading version fabric-1.19.4-0.20.1[  OK  ] Loaded version fabric-1.19.4-0.20.1
+[  ..  ] Loading version 1.19.4[  OK  ] Loaded version 1.19.4
+[  ..  ] Loading client[  OK  ] Loaded client
+[  ..  ] Loading libraries[  ..  ] Loaded 60 libraries, now verifying[  OK  ] Loaded and verified 60+0 libraries
+[  ..  ] Loading logger client-1.12.xml[  OK  ] Loaded logger client-1.12.xml
+[  ..  ] Loading assets 3[  ..  ] Loaded 3587 assets 3[  OK  ] Loaded and verified 3587 assets 3
+[  ..  ] Loading JVM (major version 17)[  OK  ] Loaded JVM (17.0.15)
+[  ..  ] Launching...[  OK  ] Launched
+[20:38:13] [main] [INFO] Loading Minecraft 1.19.4 with Fabric Loader 0.20.1
+[20:38:13] [main] [INFO] Fabric is preparing JARs on first launch, this may take a few seconds...
+[20:38:13] [main] [INFO] Loading 56 mods:
+	- buildblueprint 1.4.8
+	- fabric-api 0.87.2+1.19.4
+	   |-- fabric-api-base 0.4.28+737a6ee8f4
+	   |-- fabric-api-lookup-api-v1 1.6.29+504944c8f4
+	   |-- fabric-biome-api-v1 13.0.10+6b242079f4
+	   |-- fabric-block-api-v1 1.0.8+e022e5d1f4
+	   |-- fabric-blockrenderlayer-v1 1.1.38+10ce000ff4
+	   |-- fabric-client-tags-api-v1 1.1.1+0eee1254f4
+	   |-- fabric-command-api-v1 1.2.31+f71b366ff4
+	   |-- fabric-command-api-v2 2.2.10+10ce000ff4
+	   |-- fabric-commands-v0 0.2.48+df3654b3f4
+	   |-- fabric-containers-v0 0.1.59+df3654b3f4
+	   |-- fabric-content-registries-v0 3.5.14+10ce000ff4
+	   |-- fabric-convention-tags-v1 1.5.3+6d727b51f4
+	   |-- fabric-crash-report-info-v1 0.2.17+aeb40ebef4
+	   |-- fabric-data-generation-api-v1 11.5.2+26f09d40f4
+	   |-- fabric-dimensions-v1 2.1.50+44c9c860f4
+	   |-- fabric-entity-events-v1 1.5.17+10ce000ff4
+	   |-- fabric-events-interaction-v0 0.6.1+4b6b93f0f4
+	   |-- fabric-events-lifecycle-v0 0.2.56+df3654b3f4
+	   |-- fabric-game-rule-api-v1 1.0.36+3f657af2f4
+	   |-- fabric-item-api-v1 2.1.21+10ce000ff4
+	   |-- fabric-item-group-api-v1 3.0.10+8400c67ef4
+	   |-- fabric-key-binding-api-v1 1.0.35+504944c8f4
+	   |-- fabric-keybindings-v0 0.2.33+df3654b3f4
+	   |-- fabric-lifecycle-events-v1 2.2.19+10ce000ff4
+	   |-- fabric-loot-api-v2 1.1.32+10ce000ff4
+	   |-- fabric-loot-tables-v1 1.1.36+9e7660c6f4
+	   |-- fabric-message-api-v1 5.1.5+53c11dadf4
+	   |-- fabric-mining-level-api-v1 2.1.44+10ce000ff4
+	   |-- fabric-model-loading-api-v1 1.0.2+3a1ea2f1f4
+	   |-- fabric-models-v0 0.4.1+a0255436f4
+	   |-- fabric-networking-api-v1 1.3.6+ae9c4c6af4
+	   |-- fabric-networking-v0 0.3.46+df3654b3f4
+	   |-- fabric-object-builder-api-v1 7.1.1+d63b52eaf4
+	   |-- fabric-particles-v1 1.1.1+86d48884f4
+	   |-- fabric-recipe-api-v1 1.0.13+10ce000ff4
+	   |-- fabric-registry-sync-v0 2.3.2+95ae8716f4
+	   |-- fabric-renderer-api-v1 2.4.2+90110d8df4
+	   |-- fabric-renderer-indigo 1.4.2+90110d8df4
+	   |-- fabric-renderer-registries-v1 3.2.42+df3654b3f4
+	   |-- fabric-rendering-data-attachment-v1 0.3.32+10ce000ff4
+	   |-- fabric-rendering-fluids-v1 3.0.25+10ce000ff4
+	   |-- fabric-rendering-v0 1.1.45+df3654b3f4
+	   |-- fabric-rendering-v1 2.1.5+10ce000ff4
+	   |-- fabric-resource-conditions-api-v1 2.3.3+10ce000ff4
+	   |-- fabric-resource-loader-v0 0.11.7+8400c67ef4
+	   |-- fabric-screen-api-v1 1.0.49+10ce000ff4
+	   |-- fabric-screen-handler-api-v1 1.3.25+10ce000ff4
+	   |-- fabric-sound-api-v1 1.0.11+10ce000ff4
+	   |-- fabric-transfer-api-v1 3.3.1+602c17c7f4
+	   \-- fabric-transitive-access-wideners-v1 3.3.0+1b5f819af4
+	- fabricloader 0.20.1
+	   \-- mixinextras 0.5.5
+	- java 17
+	- minecraft 1.19.4
+[20:38:13] [main] [INFO] SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/sponge-mixin-0.17.5+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[20:38:14] [main] [INFO] Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[20:38:16] [Datafixer Bootstrap] [INFO] 180 Datafixer optimizations took 154 milliseconds
+[20:38:18] [main] [WARN] Unrecognized user type:
+[20:38:18] [Render thread] [INFO] Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[20:38:18] [Render thread] [ERROR] com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
+	at knot//com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:56)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:156)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilUserApiService.<init>(YggdrasilUserApiService.java:55)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.createUserApiService(YggdrasilAuthenticationService.java:161)
+	at knot//net.minecraft.class_310.method_31382(class_310.java:732)
+	at knot//net.minecraft.class_310.<init>(class_310.java:440)
+	at knot//net.minecraft.client.main.Main.main(Main.java:198)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+Caused by: MinecraftClientHttpException[type=HTTP_ERROR, status=401, response=ErrorResponse[path='/player/attributes', error='null', details=null, errorMessage='null']]
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:85)
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:48)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:129)
+	... 8 more
+[20:38:18] [Render thread] [INFO] Setting user: Builder
+[20:38:18] [Render thread] [INFO] [STDOUT]: [Build Blueprint] Logic Survival server list: Added! Open Multiplayer to join Logic Survival.
+[20:38:18] [Render thread] [INFO] [Indigo] Registering Indigo renderer!
+[20:38:19] [Render thread] [INFO] Backend library: LWJGL version 3.3.1 SNAPSHOT
+[ALSOFT] (EE) Failed to set real-time priority for thread: Operation not permitted (1)
+[20:38:20] [Render thread] [ERROR] com.mojang.text2speech.Narrator$InitializeException: Failed to load library flite
+	at knot//com.mojang.text2speech.NarratorLinux$FliteLibrary.loadNative(NarratorLinux.java:69)
+	at knot//com.mojang.text2speech.NarratorLinux.<init>(NarratorLinux.java:18)
+	at knot//com.mojang.text2speech.Narrator.getNarrator(Narrator.java:41)
+	at knot//net.minecraft.class_333.<init>(class_333.java:17)
+	at knot//net.minecraft.class_310.<init>(class_310.java:647)
+	at knot//net.minecraft.client.main.Main.main(Main.java:198)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+Caused by: java.lang.UnsatisfiedLinkError: Unable to load library 'flite':
+libflite.so: cannot open shared object file: No such file or directory
+libflite.so: cannot open shared object file: No such file or directory
+Native library (linux-x86-64/libflite.so) not found in resource path (/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm/9.10.1/asm-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-commons/9.10.1/asm-commons-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-tree/9.10.1/asm-tree-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/sponge-mixin-0.17.5+mixin.0.8.7.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/fabricmc/intermediary/1.19.4/intermediary-1.19.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/fabricmc/fabric-loader/0.20.1/fabric-loader-0.20.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/github/oshi/oshi-core/6.2.2/oshi-core-6.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/code/gson/gson/2.10/gson-2.10.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/guava/guava/31.1-jre/guava-31.1-jre.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/ibm/icu/icu4j/71.1/icu4j-71.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/authlib/3.18.38/authlib-3.18.38.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/brigadier/1.0.18/brigadier-1.0.18.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/datafixerupper/6.0.6/datafixerupper-6.0.6.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/logging/1.1.1/logging-1.1.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/text2speech/1.16.7/text2speech-1.16.7.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-buffer/4.1.82.Final/netty-buffer-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-common/4.1.82.Final/netty-common-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-handler/4.1.82.Final/netty-handler-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-resolver/4.1.82.Final/netty-resolver-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-classes-epoll/4.1.82.Final/netty-transport-classes-epoll-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-epoll/4.1.82.Final/netty-transport-native-epoll-4.1.82.Final-linux-aarch_64.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-epoll/4.1.82.Final/netty-transport-native-epoll-4.1.82.Final-linux-x86_64.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-unix-common/4.1.82.Final/netty-transport-native-unix-common-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport/4.1.82.Final/netty-transport-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/it/unimi/dsi/fastutil/8.5.9/fastutil-8.5.9.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna-platform/5.12.1/jna-platform-5.12.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna/5.12.1/jna-5.12.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-compress/1.21/commons-compress-1.21.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/httpcomponents/httpcore/4.4.15/httpcore-4.4.15.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-api/2.19.0/log4j-api-2.19.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-core/2.19.0/log4j-core-2.19.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.19.0/log4j-slf4j2-impl-2.19.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/joml/joml/1.10.5/joml-1.10.5.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-glfw/3.3.1/lwjgl-glfw-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-glfw/3.3.1/lwjgl-glfw-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-jemalloc/3.3.1/lwjgl-jemalloc-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-jemalloc/3.3.1/lwjgl-jemalloc-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-openal/3.3.1/lwjgl-openal-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-openal/3.3.1/lwjgl-openal-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-stb/3.3.1/lwjgl-stb-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-stb/3.3.1/lwjgl-stb-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-tinyfd/3.3.1/lwjgl-tinyfd-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-tinyfd/3.3.1/lwjgl-tinyfd-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/slf4j/slf4j-api/2.0.1/slf4j-api-2.0.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/versions/fabric-1.19.4-0.20.1/fabric-1.19.4-0.20.1.jar)
+	at knot//com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:307)
+	at knot//com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:467)
+	at knot//com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:409)
+	at knot//com.mojang.text2speech.NarratorLinux$FliteLibrary.loadNative(NarratorLinux.java:67)
+	... 8 more
+	Suppressed: java.lang.UnsatisfiedLinkError: libflite.so: cannot open shared object file: No such file or directory
+		at knot//com.sun.jna.Native.open(Native Method)
+		at knot//com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:197)
+		... 11 more
+	Suppressed: java.lang.UnsatisfiedLinkError: libflite.so: cannot open shared object file: No such file or directory
+		at knot//com.sun.jna.Native.open(Native Method)
+		at knot//com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:210)
+		... 11 more
+	Suppressed: java.io.IOException: Native library (linux-x86-64/libflite.so) not found in resource path (/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm/9.10.1/asm-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-commons/9.10.1/asm-commons-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-tree/9.10.1/asm-tree-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/sponge-mixin-0.17.5+mixin.0.8.7.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/fabricmc/intermediary/1.19.4/intermediary-1.19.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/fabricmc/fabric-loader/0.20.1/fabric-loader-0.20.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/github/oshi/oshi-core/6.2.2/oshi-core-6.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/code/gson/gson/2.10/gson-2.10.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/guava/guava/31.1-jre/guava-31.1-jre.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/ibm/icu/icu4j/71.1/icu4j-71.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/authlib/3.18.38/authlib-3.18.38.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/brigadier/1.0.18/brigadier-1.0.18.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/datafixerupper/6.0.6/datafixerupper-6.0.6.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/logging/1.1.1/logging-1.1.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/text2speech/1.16.7/text2speech-1.16.7.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-buffer/4.1.82.Final/netty-buffer-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-common/4.1.82.Final/netty-common-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-handler/4.1.82.Final/netty-handler-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-resolver/4.1.82.Final/netty-resolver-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-classes-epoll/4.1.82.Final/netty-transport-classes-epoll-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-epoll/4.1.82.Final/netty-transport-native-epoll-4.1.82.Final-linux-aarch_64.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-epoll/4.1.82.Final/netty-transport-native-epoll-4.1.82.Final-linux-x86_64.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-unix-common/4.1.82.Final/netty-transport-native-unix-common-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport/4.1.82.Final/netty-transport-4.1.82.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/it/unimi/dsi/fastutil/8.5.9/fastutil-8.5.9.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna-platform/5.12.1/jna-platform-5.12.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna/5.12.1/jna-5.12.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-compress/1.21/commons-compress-1.21.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/httpcomponents/httpcore/4.4.15/httpcore-4.4.15.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-api/2.19.0/log4j-api-2.19.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-core/2.19.0/log4j-core-2.19.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.19.0/log4j-slf4j2-impl-2.19.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/joml/joml/1.10.5/joml-1.10.5.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-glfw/3.3.1/lwjgl-glfw-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-glfw/3.3.1/lwjgl-glfw-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-jemalloc/3.3.1/lwjgl-jemalloc-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-jemalloc/3.3.1/lwjgl-jemalloc-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-openal/3.3.1/lwjgl-openal-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-openal/3.3.1/lwjgl-openal-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-stb/3.3.1/lwjgl-stb-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-stb/3.3.1/lwjgl-stb-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-tinyfd/3.3.1/lwjgl-tinyfd-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-tinyfd/3.3.1/lwjgl-tinyfd-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/slf4j/slf4j-api/2.0.1/slf4j-api-2.0.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/versions/fabric-1.19.4-0.20.1/fabric-1.19.4-0.20.1.jar)
+		at knot//com.sun.jna.Native.extractFromResourcePath(Native.java:1145)
+		at knot//com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:281)
+		... 11 more
+[20:38:20] [Render thread] [INFO] Reloading ResourceManager: vanilla, fabric (buildblueprint, fabric-api, fabric-api-base, fabric-api-lookup-api-v1, fabric-biome-api-v1, fabric-block-api-v1, fabric-blockrenderlayer-v1, fabric-client-tags-api-v1, fabric-command-api-v1, fabric-command-api-v2, fabric-commands-v0, fabric-containers-v0, fabric-content-registries-v0, fabric-convention-tags-v1, fabric-crash-report-info-v1, fabric-data-generation-api-v1, fabric-dimensions-v1, fabric-entity-events-v1, fabric-events-interaction-v0, fabric-events-lifecycle-v0, fabric-game-rule-api-v1, fabric-item-api-v1, fabric-item-group-api-v1, fabric-key-binding-api-v1, fabric-keybindings-v0, fabric-lifecycle-events-v1, fabric-loot-api-v2, fabric-loot-tables-v1, fabric-message-api-v1, fabric-mining-level-api-v1, fabric-model-loading-api-v1, fabric-models-v0, fabric-networking-api-v1, fabric-networking-v0, fabric-object-builder-api-v1, fabric-particles-v1, fabric-recipe-api-v1, fabric-registry-sync-v0, fabric-renderer-api-v1, fabric-renderer-indigo, fabric-renderer-registries-v1, fabric-rendering-data-attachment-v1, fabric-rendering-fluids-v1, fabric-rendering-v0, fabric-rendering-v1, fabric-resource-conditions-api-v1, fabric-resource-loader-v0, fabric-screen-api-v1, fabric-screen-handler-api-v1, fabric-sound-api-v1, fabric-transfer-api-v1, fabric-transitive-access-wideners-v1, fabricloader)
+[20:38:20] [Render thread] [INFO] [STDOUT]: BBUITEST waiting on class_442
+[20:38:20] [Realms Notification Availability checker #1] [INFO] Could not authorize you against Realms server: javax.ws.rs.BadRequestException: Invalid session
+[20:38:22] [Render thread] [WARN] Missing sound for event: minecraft:item.brush.brushing
+[20:38:22] [Render thread] [WARN] Missing sound for event: minecraft:item.brush.brush_sand_completed
+[20:38:22] [Render thread] [WARN] Missing sound for event: minecraft:item.goat_horn.play
+[20:38:22] [Render thread] [WARN] Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[20:38:22] [Render thread] [WARN] Missing sound for event: minecraft:music.overworld.cherry_grove
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+[20:38:22] [Render thread] [ERROR] java.lang.IllegalStateException: Failed to open OpenAL device
+	at knot//net.minecraft.class_4225.method_38501(class_4225.java:283)
+	at knot//net.minecraft.class_4225.method_19661(class_4225.java:153)
+	at knot//net.minecraft.class_1140.method_4846(class_1140.java:116)
+	at knot//net.minecraft.class_1140.method_4837(class_1140.java:106)
+	at knot//net.minecraft.class_1144.method_18182(class_1144.java:125)
+	at knot//net.minecraft.class_1144.method_18788(class_1144.java:40)
+	at knot//net.minecraft.class_4080.method_18790(class_4080.java:13)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482)
+	at knot//net.minecraft.class_4014.method_18365(class_4014.java:69)
+	at knot//net.minecraft.class_1255.method_18859(class_1255.java:156)
+	at knot//net.minecraft.class_4093.method_18859(class_4093.java:23)
+	at knot//net.minecraft.class_1255.method_16075(class_1255.java:130)
+	at knot//net.minecraft.class_1255.method_5383(class_1255.java:115)
+	at knot//net.minecraft.class_310.method_1523(class_310.java:1174)
+	at knot//net.minecraft.class_310.method_1514(class_310.java:801)
+	at knot//net.minecraft.client.main.Main.main(Main.java:237)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+[20:38:22] [Render thread] [INFO] Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[20:38:22] [Render thread] [INFO] Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[20:38:22] [Render thread] [INFO] Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[20:38:22] [Render thread] [INFO] Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[20:38:22] [Render thread] [INFO] Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[20:38:22] [Render thread] [INFO] Created: 64x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[20:38:22] [Render thread] [INFO] Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[20:38:22] [Render thread] [INFO] Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[20:38:22] [Render thread] [INFO] Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[20:38:22] [Render thread] [WARN] Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[20:38:22] [Render thread] [INFO] Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[20:38:22] [Render thread] [INFO] Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[20:38:22] [Render thread] [INFO] Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[20:38:29] [Render thread] [INFO] [STDOUT]: BBUITEST joining 127.0.0.1:25565
+[20:38:29] [Render thread] [INFO] Connecting to 127.0.0.1, 25565
+[20:38:31] [Render thread] [INFO] Loaded 2 advancements
+[20:38:31] [Render thread] [INFO] [STDOUT]: BBUITEST in world
+[20:38:46] [Render thread] [INFO] [STDOUT]: BBUITEST loaded 284 blocks
+[20:38:46] [Render thread] [INFO] [STDOUT]: BBUITEST direction check: Block{minecraft:oak_stairs}[facing=south,half=top,shape=straight,waterlogged=false] -> right way false (should face north, be the right way up (bottom half)), same way true
+[20:38:46] [Render thread] [INFO] [STDOUT]: BBUITEST renamed blocks: chain -> minecraft:chain[axis=y], iron_chain -> minecraft:chain[axis=y], grass -> minecraft:grass
+[20:38:50] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-ghost
+[20:38:52] [Render thread] [INFO] [STDOUT]: BBUITEST placed, layer 1
+[20:38:55] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-placed
+[20:38:57] [Render thread] [INFO] [STDOUT]: BBUITEST held: Cobblestone
+[20:39:01] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-held
+[20:39:03] [Render thread] [INFO] [STDOUT]: BBUITEST held spots: 81, next block box green: true
+[20:39:06] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-held-check
+[20:39:08] [Render thread] [INFO] [STDOUT]: BBUITEST showing only minecraft:cobblestone, 9 hidden
+[20:39:12] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-only
+[20:39:17] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-hidden
+[20:39:23] [Render thread] [INFO] [STDOUT]: BBUITEST shot build
+[20:39:25] [Render thread] [INFO] [STDOUT]: BBUITEST swap options 831 similar 345
+[20:39:28] [Render thread] [INFO] [STDOUT]: BBUITEST shot swap
+[20:39:30] [Render thread] [INFO] [STDOUT]: BBUITEST swap options 831 similar 345
+[20:39:34] [Render thread] [INFO] [STDOUT]: BBUITEST shot swap-search
+[20:39:36] [Render thread] [INFO] [STDOUT]: BBUITEST removed 1 blocks (284 -> 283), undo true -> 284
+[20:39:39] [Render thread] [INFO] [STDOUT]: BBUITEST shot remove
+[20:39:41] [Render thread] [INFO] [STDOUT]: BBUITEST bug report: **What happened?** (please write what you did and what went wrong) |  |  |  | --- | Build Blueprint: 1.4.8 | Minecraft: 1.19.4 (Fabric) | Java: 17.0.15 | System: Linux 7.0.0-1019-azure amd64 | Build loaded: 9 x 8 x 9, 284 blocks, placed, layer 1 | Last problem: none |
+[20:39:41] [Render thread] [INFO] [STDOUT]: BBUITEST keybinds: a_forward=up b_back=down c_left=left d_right=right e_hold_vertical=unknown f_rotate=page.down g_menu=page.up h_layer_up=home i_layer_down=end j_copy=insert k_place=delete l_up=equal m_down=minus n_fast=unknown o_shrink=unknown | hints: up =, down -, fast Shift, shrink Alt, rotate Page Down
+[20:39:45] [Render thread] [INFO] [STDOUT]: BBUITEST shot shopping
+[20:39:47] [Render thread] [INFO] [STDOUT]: BBUITEST not in game [futureblocks:glow_brick]
+[20:39:50] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-missing
+[20:39:56] [Render thread] [INFO] [STDOUT]: BBUITEST shot help
+[20:39:58] [Render thread] [INFO] [STDOUT]: BBUITEST chest highlight hooked on class_481
+[20:40:01] [Render thread] [INFO] [STDOUT]: BBUITEST shot inventory
+[20:40:07] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings-extras
+[20:40:09] [Render thread] [INFO] [STDOUT]: BBUITEST raw materials: 81 minecraft:cobblestone; 36 minecraft:oak_log; 30 minecraft:spruce_log; 3 minecraft:sand (smelt); 1 futureblocks:glow_brick;
+[20:40:09] [Render thread] [INFO] [STDOUT]: BBUITEST mistakes 0, scaffold 0, layer map 9x9
+[20:40:12] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-raw
+[20:40:18] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-extras
+[20:40:20] [Render thread] [INFO] [STDOUT]: BBUITEST mistakes: were showing false, after Stop fixing false
+[20:40:20] [Render thread] [INFO] [STDOUT]: BBUITEST blank world: mistakes 0 -> 1 -> 0
+[20:40:20] [Render thread] [INFO] [STDOUT]: BBUITEST dirt counts for grass: true, stone for grass: false
+[20:40:20] [Render thread] [INFO] [STDOUT]: BBUITEST co-op: part 1 of 2 (the west end), my blocks 154
+[20:40:23] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-coop
+[20:40:29] [Render thread] [INFO] [STDOUT]: BBUITEST shot done-card
+[20:40:34] [Render thread] [INFO] [STDOUT]: BBUITEST shot templates
+[20:40:36] [Render thread] [INFO] [STDOUT]: BBUITEST tr es: Capa 3 de 10 | Girada 90 grados | ¡Construcción terminada! 120 bloques · 4m 10s de construcción · 30 bloques por minuto.
+[20:40:40] [Render thread] [INFO] [STDOUT]: BBUITEST shot lang-es
+[20:40:42] [Render thread] [INFO] [STDOUT]: BBUITEST tr ru: Слой 3 из 10
+[20:40:45] [Render thread] [INFO] [STDOUT]: BBUITEST shot lang-ru
+[20:40:47] [Render thread] [INFO] [STDOUT]: BBUITEST tr zh: 第 3 层，共 10 层
+[20:40:51] [Render thread] [INFO] [STDOUT]: BBUITEST shot lang-zh
+[20:40:56] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings
+[20:41:02] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings-more
+[20:41:04] [Render thread] [INFO] [STDOUT]: BBUITEST colors: ghost Purple d7afff, red ffff8c1a, hint ffffe040/ff60ff60, chest ff40ff80
+[20:41:07] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings-colors
+[20:41:09] [Render thread] [INFO] [STDOUT]: BBUITEST creator server: before true, add: Logic Survival is already in your server list. | again: Logic Survival is already in your server list. | in list true
+[20:41:09] [Render thread] [INFO] [STDOUT]: BBUITEST ItemStackTemplate: none (java.lang.ClassNotFoundException: net.minecraft.world.item.ItemStackTemplate)
+[20:41:13] [Render thread] [INFO] [STDOUT]: BBUITEST shot help-server
+[20:41:15] [Render thread] [INFO] [STDOUT]: BBUITEST big picture: grid 24 ms, picture 26 ms, 9664 rectangles
+[20:41:18] [Render thread] [INFO] [STDOUT]: BBUITEST shot saved
+[20:41:20] [Render thread] [INFO] [STDOUT]: BBUITEST perf loaded 240000 blocks
+[20:41:22] [Render thread] [INFO] [STDOUT]: BBUITEST perf first frames: 1 frames, working out 90.77 ms a frame (worst 90.8), drawing 1013.51 ms a frame (worst 1013.5), 206270 ghost blocks
+[20:41:26] [Render thread] [INFO] [STDOUT]: BBUITEST perf moving: 3 frames, working out 11.38 ms a frame (worst 13.0), drawing 226.47 ms a frame (worst 267.8), 206270 ghost blocks
+[20:41:29] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-perf
+[20:41:33] [Render thread] [INFO] [STDOUT]: BBUITEST perf still: 6 frames, working out 9.48 ms a frame (worst 36.5), drawing 304.22 ms a frame (worst 605.6), 203012 ghost blocks
+[20:41:33] [Render thread] [INFO] [STDOUT]: BBUITEST perf block list: 10 ms each time
+[20:41:38] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-near
+[20:41:39] [Render thread] [INFO] [STDOUT]: BBUITEST perf nearby layers only: 28 frames, working out 1.87 ms a frame (worst 20.9), drawing 29.13 ms a frame (worst 73.5), 26274 ghost blocks
+[20:41:40] [Render thread] [INFO] [STDOUT]: BBUITEST stand-ins: minecraft:chest -> minecraft:oak_planks; minecraft:ender_chest -> minecraft:obsidian; minecraft:oak_sign -> minecraft:oak_planks/minecraft:oak_planks; minecraft:red_bed -> minecraft:red_wool/minecraft:white_wool; minecraft:white_banner -> minecraft:white_wool/minecraft:white_wool; minecraft:skeleton_skull -> minecraft:bone_block; minecraft:shulker_box -> minecraft:purpur_block; minecraft:trapped_chest -> minecraft:oak_planks;
+[20:41:43] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-special
+[20:41:45] [Render thread] [INFO] [System] [CHAT] Copy box started on the block you're looking at. Make it as big as your build:
+[20:41:45] [Render thread] [INFO] [System] [CHAT] Arrows grow it, Alt + arrows shrink it, = and - for the top and bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.
+[20:41:45] [Render thread] [INFO] [System] [CHAT] Press Insert again to save it, Delete to cancel.
+[20:41:49] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-copy
+[20:41:51] [Render thread] [INFO] [STDOUT]: BBUITEST done

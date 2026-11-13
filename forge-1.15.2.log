@@ -1,0 +1,219 @@
+[  ..  ] Loading version forge-1.15.2-31.2.62[  OK  ] Loaded version forge-1.15.2-31.2.62
+[  ..  ] Loading version 1.15.2[  OK  ] Loaded version 1.15.2
+[  ..  ] Loading client[  OK  ] Loaded client
+[  ..  ] Loading libraries[  ..  ] Loaded 62 libraries, now verifying[  OK  ] Loaded and verified 54+8 libraries
+[  ..  ] Loading logger client-1.12.xml[  OK  ] Loaded logger client-1.12.xml
+[  ..  ] Loading assets 1.15[  ..  ] Loaded 2102 assets 1.15[  OK  ] Loaded and verified 2102 assets 1.15
+[  ..  ] Loading JVM (major version 8)[  OK  ] Loaded JVM (8u202)
+[  ..  ] Launching...[  OK  ] Launched
+[20:50:36] [main] [INFO] ModLauncher running: args [--launchTarget, fmlclient, --fml.forgeVersion, 31.2.62, --fml.mcVersion, 1.15.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20200515.085601, --username, Builder, --version, forge-1.15.2-31.2.62, --gameDir, /home/runner/work/block-blueprint/block-blueprint/game, --assetsDir, /home/runner/work/block-blueprint/block-blueprint/game/assets, --assetIndex, 1.15, --uuid, a1b1b4de45be3659b2e15c9a1693e63b, --accessToken, ❄❄❄❄❄❄❄❄, --userType, , --versionType, release, --width, 1280, --height, 720]
+[20:50:36] [main] [INFO] ModLauncher 5.1.2+70+master.2845bb9 starting: java version 1.8.0_202 by Oracle Corporation
+[20:50:37] [main] [INFO] Added Lets Encrypt root certificates as additional trust
+[20:50:37] [main] [INFO] SpongePowered MIXIN Subsystem Version=0.8.2 Source=file:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/spongepowered/mixin/0.8.2/mixin-0.8.2.jar Service=ModLauncher Env=CLIENT
+[20:50:37] [main] [WARN] Configuration file /home/runner/work/block-blueprint/block-blueprint/game/config/fml.toml is not correct. Correcting
+[20:50:37] [main] [WARN] Incorrect key [defaultConfigPath] was corrected from null to defaultconfigs
+[20:50:42] [main] [INFO] Launching target 'fmlclient' with arguments [--version, forge-1.15.2-31.2.62, --gameDir, /home/runner/work/block-blueprint/block-blueprint/game, --assetsDir, /home/runner/work/block-blueprint/block-blueprint/game/assets, --uuid, a1b1b4de45be3659b2e15c9a1693e63b, --username, Builder, --assetIndex, 1.15, --accessToken, ❄❄❄❄❄❄❄❄, --userType, , --versionType, release, --width, 1280, --height, 720]
+[20:50:42] [Render thread] [INFO] Setting user: Builder
+[20:50:45] [Render thread] [INFO] Backend library: LWJGL version 3.2.2 build 10
+[20:50:46] [modloading-worker-3] [INFO] Forge mod loading, version 31.2.62, for MC 1.15.2 with MCP 20200515.085601
+[20:50:46] [modloading-worker-3] [INFO] MinecraftForge v31.2.62 Initialized
+[20:50:46] [modloading-worker-1] [INFO] [dev.buildblueprint.client.CreatorServer:firstStart:28]: [Build Blueprint] Logic Survival server list: Added! Open Multiplayer to join Logic Survival.
+[20:50:47] [Render thread] [WARN] ERROR : Couldn't load Narrator library : Unable to load library 'fliteWrapper': Native library (linux-x86-64/libfliteWrapper.so) not found in resource path (/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/forge/1.15.2-31.2.62/forge-1.15.2-31.2.62.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm/7.2/asm-7.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-commons/7.2/asm-commons-7.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-tree/7.2/asm-tree-7.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-util/7.2/asm-util-7.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-analysis/7.2/asm-analysis-7.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/cpw/mods/modlauncher/5.1.2/modlauncher-5.1.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/cpw/mods/grossjava9hacks/1.3.3/grossjava9hacks-1.3.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/accesstransformers/2.1.3-shadowed/accesstransformers-2.1.3-shadowed.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/eventbus/2.2.1-service/eventbus-2.2.1-service.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/forgespi/3.0.0/forgespi-3.0.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/coremods/2.0.3/coremods-2.0.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/unsafe/0.2.0/unsafe-0.2.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/spongepowered/mixin/0.8.2/mixin-0.8.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/electronwill/night-config/core/3.6.2/core-3.6.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/electronwill/night-config/toml/3.6.2/toml-3.6.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/jline/jline/3.12.1/jline-3.12.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/maven/maven-artifact/3.6.0/maven-artifact-3.6.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/jodah/typetools/0.8.3/typetools-0.8.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-api/2.15.0/log4j-api-2.15.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-core/2.15.0/log4j-core-2.15.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-slf4j18-impl/2.15.0/log4j-slf4j18-impl-2.15.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecrell/terminalconsoleappender/1.2.0/terminalconsoleappender-1.2.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/patchy/1.3.9/patchy-1.3.9.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/oshi-project/oshi-core/1.1/oshi-core-1.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna/4.4.0/jna-4.4.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/platform/3.4.0/platform-3.4.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/ibm/icu/icu4j-core-mojang/51.2/icu4j-core-mojang-51.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/javabridge/1.0.22/javabridge-1.0.22.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-all/4.1.25.Final/netty-all-4.1.25.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/guava/guava/21.0/guava-21.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-io/commons-io/2.5/commons-io-2.5.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-codec/commons-codec/1.10/commons-codec-1.10.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/jinput/jinput/2.0.5/jinput-2.0.5.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/jutils/jutils/1.0.0/jutils-1.0.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/brigadier/1.0.17/brigadier-1.0.17.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/datafixerupper/2.0.24/datafixerupper-2.0.24.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/code/gson/gson/2.8.0/gson-2.8.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/authlib/1.5.25/authlib-1.5.25.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/it/unimi/dsi/fastutil/8.2.1/fastutil-8.2.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-jemalloc/3.2.2/lwjgl-jemalloc-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-openal/3.2.2/lwjgl-openal-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-glfw/3.2.2/lwjgl-glfw-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-stb/3.2.2/lwjgl-stb-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-tinyfd/3.2.2/lwjgl-tinyfd-3.2.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/text2speech/1.11.3/text2speech-1.11.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/versions/forge-1.15.2-31.2.62/forge-1.15.2-31.2.62.jar)
+[20:50:47] [Render thread] [INFO] Reloading ResourceManager: Default, Mod Resources
+[20:50:47] [Server-Worker-3] [WARN] Configuration file /home/runner/work/block-blueprint/block-blueprint/game/config/forge-client.toml is not correct. Correcting
+[20:50:47] [Server-Worker-3] [WARN] Incorrect key client was corrected from null to SimpleCommentedConfig:{}
+[20:50:47] [Server-Worker-3] [WARN] Incorrect key client.zoomInMissingModelTextInGui was corrected from null to false
+[20:50:47] [Server-Worker-3] [WARN] Incorrect key client.forgeCloudsEnabled was corrected from null to true
+[20:50:47] [Server-Worker-3] [WARN] Incorrect key client.disableStairSlabCulling was corrected from null to false
+[20:50:47] [Server-Worker-3] [WARN] Incorrect key client.alwaysSetupTerrainOffThread was corrected from null to false
+[20:50:47] [Server-Worker-3] [WARN] Incorrect key client.forgeLightPipelineEnabled was corrected from null to true
+[20:50:47] [Server-Worker-3] [WARN] Incorrect key client.experimentalForgeLightPipelineEnabled was corrected from null to false
+[20:50:47] [Server-Worker-3] [WARN] Incorrect key client.selectiveResourceReloadEnabled was corrected from null to true
+[20:50:47] [Server-Worker-3] [WARN] Incorrect key client.showLoadWarnings was corrected from null to true
+[20:50:47] [Forge Version Check] [INFO] [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[20:50:47] [Server-Worker-3] [INFO] Dispatching synchronous work after SIDED_SETUP: 1 jobs
+[20:50:47] [Server-Worker-3] [INFO] Synchronous work queue completed in 00:00:00.311
+[20:50:47] [Forge Version Check] [INFO] [forge] Found status: AHEAD Current: 31.2.62 Target: null
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
+[20:50:55] [Render thread] [ERROR] java.lang.IllegalStateException: Failed to open OpenAL device
+	at net.minecraft.client.audio.SoundSystem.func_216406_f(SourceFile:210)
+	at net.minecraft.client.audio.SoundSystem.func_216404_a(SourceFile:135)
+	at net.minecraft.client.audio.SoundEngine.func_148608_i(SoundEngine.java:80)
+	at net.minecraft.client.audio.SoundEngine.func_148596_a(SoundEngine.java:73)
+	at net.minecraft.client.audio.SoundHandler.func_212853_a_(SoundHandler.java:119)
+	at net.minecraft.client.audio.SoundHandler.func_212853_a_(SoundHandler.java:35)
+	at net.minecraft.client.resources.ReloadListener.func_215269_a(SourceFile:13)
+	at java.util.concurrent.CompletableFuture.uniAccept(CompletableFuture.java:656)
+	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:632)
+	at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:442)
+	at net.minecraft.resources.AsyncReloader.func_219557_a(SourceFile:71)
+	at net.minecraft.util.concurrent.ThreadTaskExecutor.execute(SourceFile:94)
+	at net.minecraft.resources.AsyncReloader.func_219560_a(SourceFile:70)
+	at java.util.concurrent.CompletableFuture$UniCompletion.claim(CompletableFuture.java:529)
+	at java.util.concurrent.CompletableFuture.uniAccept(CompletableFuture.java:653)
+	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:632)
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:474)
+	at java.util.concurrent.CompletableFuture.postFire(CompletableFuture.java:561)
+	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:635)
+	at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:442)
+	at com.mojang.blaze3d.systems.RenderSystem.replayQueue(SourceFile:112)
+	at com.mojang.blaze3d.systems.RenderSystem.flipFrame(SourceFile:99)
+	at net.minecraft.client.MainWindow.func_227802_e_(MainWindow.java:296)
+	at net.minecraft.client.Minecraft.func_195542_b(Minecraft.java:946)
+	at net.minecraft.client.Minecraft.func_99999_d(Minecraft.java:553)
+	at net.minecraft.client.main.Main.main(SourceFile:204)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.fml.loading.FMLClientLaunchProvider.lambda$launchService$0(FMLClientLaunchProvider.java:37)
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:37)
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:54)
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:72)
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:81)
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:65)
+[20:50:55] [Render thread] [INFO] Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[20:50:55] [Render thread] [INFO] Created: 128x128x4 minecraft:textures/atlas/signs.png-atlas
+[20:50:55] [Render thread] [INFO] Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[20:50:55] [Render thread] [INFO] Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[20:50:55] [Render thread] [INFO] Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[20:50:55] [Render thread] [INFO] Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[20:50:55] [Render thread] [INFO] Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[20:50:56] [Render thread] [INFO] Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[20:50:56] [Render thread] [INFO] Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[20:50:56] [Render thread] [INFO] Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[20:50:56] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:44]: BBUITEST waiting on MainMenuScreen
+[20:50:56] [Realms Notification Availability checker #1] [INFO] Could not authorize you against Realms server: javax.ws.rs.BadRequestException: Invalid session
+[20:51:06] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:connect:117]: BBUITEST joining 127.0.0.1:25565
+[20:51:06] [Render thread] [INFO] Connecting to 127.0.0.1, 25565
+[20:51:06] [Netty Epoll Client IO #0] [INFO] Connected to a vanilla server. Catching up missing behaviour.
+[20:51:07] [Render thread] [INFO] Loaded 0 advancements
+[20:51:07] [Server-Worker-3] [WARN] com.mojang.authlib.exceptions.AuthenticationUnavailableException: Cannot contact authentication server
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:89)
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillGameProfile(YggdrasilMinecraftSessionService.java:180)
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:60)
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:57)
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3716)
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2424)
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2298)
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2211)
+	at com.google.common.cache.LocalCache.get(LocalCache.java:4154)
+	at com.google.common.cache.LocalCache.getOrLoad(LocalCache.java:4158)
+	at com.google.common.cache.LocalCache$LocalLoadingCache.get(LocalCache.java:5147)
+	at com.google.common.cache.LocalCache$LocalLoadingCache.getUnchecked(LocalCache.java:5153)
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillProfileProperties(YggdrasilMinecraftSessionService.java:170)
+	at net.minecraft.client.Minecraft.func_181037_M(Minecraft.java:1897)
+	at net.minecraft.client.resources.SkinManager.func_229293_a_(SourceFile:91)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:67)
+	... 19 more
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
+	... 24 more
+[20:51:07] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:49]: BBUITEST in world
+[20:51:22] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:loadTestBuild:169]: BBUITEST loaded 284 blocks
+[20:51:22] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:loadTestBuild:173]: BBUITEST direction check: Block{minecraft:oak_stairs}[facing=south,half=top,shape=straight,waterlogged=false] -> right way false (should face north, be the right way up (bottom half)), same way true
+[20:51:22] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:loadTestBuild:176]: BBUITEST renamed blocks: chain -> minecraft:chain[axis=y], iron_chain -> minecraft:iron_chain[axis=y], grass -> minecraft:grass
+[20:51:25] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot world-ghost
+[20:51:27] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:260]: BBUITEST placed, layer 1
+[20:51:31] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot world-placed
+[20:51:33] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:310]: BBUITEST held: Cobblestone
+[20:51:36] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot world-held
+[20:51:38] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:312]: BBUITEST held spots: 81, next block box green: true
+[20:51:42] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot world-held-check
+[20:51:44] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:322]: BBUITEST showing only minecraft:cobblestone, 9 hidden
+[20:51:47] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot world-only
+[20:51:53] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot build-hidden
+[20:51:58] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot build
+[20:52:00] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:364]: BBUITEST swap options 572 similar 243
+[20:52:04] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot swap
+[20:52:06] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:364]: BBUITEST swap options 572 similar 243
+[20:52:09] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot swap-search
+[20:52:11] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:410]: BBUITEST removed 1 blocks (284 -> 283), undo true -> 284
+[20:52:15] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot remove
+[20:52:17] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:291]: BBUITEST bug report: **What happened?** (please write what you did and what went wrong) |  |  |  | --- | Build Blueprint: 1.4.8 | Minecraft: 1.15.2 (Forge) | Java: 1.8.0_202 | System: Linux 7.0.0-1019-azure amd64 | Build loaded: 9 x 8 x 9, 284 blocks, placed, layer 1 | Last problem: none |
+[20:52:17] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:295]: BBUITEST keybinds: a_forward=up b_back=down c_left=left d_right=right e_hold_vertical=unknown f_rotate=page.down g_menu=page.up h_layer_up=home i_layer_down=end j_copy=insert k_place=delete l_up=equal m_down=minus n_fast=unknown o_shrink=unknown | hints: up =, down -, fast Shift, shrink Alt, rotate Page Down
+[20:52:20] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot shopping
+[20:52:22] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:373]: BBUITEST not in game [futureblocks:glow_brick]
+[20:52:26] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot build-missing
+[20:52:31] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot help
+[20:52:37] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot inventory
+[20:52:42] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot settings-extras
+[20:52:44] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:389]: BBUITEST raw materials: 81 minecraft:cobblestone; 36 minecraft:oak_log; 30 minecraft:spruce_log; 3 minecraft:sand (smelt); 1 futureblocks:glow_brick;
+[20:52:44] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:390]: BBUITEST mistakes 0, scaffold 0, layer map 9x9
+[20:52:48] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot build-raw
+[20:52:53] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot world-extras
+[20:52:55] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:395]: BBUITEST mistakes: were showing false, after Stop fixing false
+[20:52:55] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:395]: BBUITEST blank world: mistakes 0 -> 1 -> 0
+[20:52:55] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:395]: BBUITEST dirt counts for grass: true, stone for grass: false
+[20:52:55] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:395]: BBUITEST co-op: part 1 of 2 (the west end), my blocks 154
+[20:52:59] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot world-coop
+[20:53:04] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot done-card
+[20:53:10] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot templates
+[20:53:12] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:255]: BBUITEST tr es: Capa 3 de 10 | Girada 90 grados | ¡Construcción terminada! 120 bloques · 4m 10s de construcción · 30 bloques por minuto.
+[20:53:15] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot lang-es
+[20:53:17] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:257]: BBUITEST tr ru: Слой 3 из 10
+[20:53:21] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot lang-ru
+[20:53:23] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:258]: BBUITEST tr zh: 第 3 层，共 10 层
+[20:53:26] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot lang-zh
+[20:53:32] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot settings
+[20:53:37] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot settings-more
+[20:53:39] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:329]: BBUITEST colors: ghost Purple d7afff, red ffff8c1a, hint ffffe040/ff60ff60, chest ff40ff80
+[20:53:43] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot settings-colors
+[20:53:45] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:336]: BBUITEST creator server: before true, add: Logic Survival is already in your server list. | again: Logic Survival is already in your server list. | in list true
+[20:53:45] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:341]: BBUITEST ItemStackTemplate: none (java.lang.ClassNotFoundException: net.minecraft.world.item.ItemStackTemplate)
+[20:53:48] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot help-server
+[20:53:50] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:350]: BBUITEST big picture: grid 7 ms, picture 22 ms, 9664 rectangles
+[20:53:54] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot saved
+[20:53:56] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:284]: BBUITEST perf loaded 240000 blocks
+[20:53:56] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:perfTick:75]: BBUITEST perf first frames: 0 frames, working out 0.00 ms a frame (worst 0.0), drawing 0.00 ms a frame (worst 0.0), 283 ghost blocks
+[20:54:06] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:perfTick:77]: BBUITEST perf moving: 4 frames, working out 24.20 ms a frame (worst 60.4), drawing 1636.99 ms a frame (worst 5887.6), 206270 ghost blocks
+[20:54:10] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot world-perf
+[20:54:13] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:perfTick:79]: BBUITEST perf still: 6 frames, working out 7.87 ms a frame (worst 32.1), drawing 208.97 ms a frame (worst 225.7), 203012 ghost blocks
+[20:54:13] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:perfTick:82]: BBUITEST perf block list: 8 ms each time
+[20:54:17] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot world-near
+[20:54:19] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:62]: BBUITEST perf nearby layers only: 27 frames, working out 1.76 ms a frame (worst 20.0), drawing 28.85 ms a frame (worst 37.5), 26274 ghost blocks
+[20:54:19] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:272]: BBUITEST stand-ins: minecraft:chest -> minecraft:oak_planks; minecraft:ender_chest -> minecraft:obsidian; minecraft:oak_sign -> minecraft:oak_planks/minecraft:oak_planks; minecraft:red_bed -> minecraft:red_wool/minecraft:white_wool; minecraft:white_banner -> minecraft:white_wool/minecraft:white_wool; minecraft:skeleton_skull -> minecraft:bone_block; minecraft:shulker_box -> minecraft:purpur_block; minecraft:trapped_chest -> minecraft:oak_planks;
+[20:54:23] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot world-special
+[20:54:25] [Render thread] [INFO] [CHAT] Copy box started on the block you're looking at. Make it as big as your build:
+[20:54:25] [Render thread] [INFO] [CHAT] Arrows grow it, Alt + arrows shrink it, = and - for the top and bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.
+[20:54:25] [Render thread] [INFO] [CHAT] Press Insert again to save it, Delete to cancel.
+[20:54:28] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:tick:64]: BBUITEST shot world-copy
+[20:54:30] [Render thread] [INFO] [dev.buildblueprint.client.UiTest:open:418]: BBUITEST done

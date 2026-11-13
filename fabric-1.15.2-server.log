@@ -1,0 +1,33 @@
+[20:40:43] [main/WARN]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[20:40:43] [main/WARN]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[20:40:43] [main/WARN]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[20:40:43] [main/WARN]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[20:40:43] [main/WARN]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[20:40:43] [Server thread/INFO]: Starting minecraft server version 1.15.2
+[20:40:43] [Server thread/INFO]: Loading properties
+[20:40:43] [Server thread/INFO]: Default game type: CREATIVE
+[20:40:43] [Server thread/INFO]: Generating keypair
+[20:40:43] [Server thread/INFO]: Starting Minecraft server on *:25565
+[20:40:43] [Server thread/INFO]: Using epoll channel type
+[20:40:44] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[20:40:44] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[20:40:44] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[20:40:44] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[20:40:44] [Server thread/INFO]: Preparing level "world"
+[20:40:44] [Server thread/INFO]: Found new data pack vanilla, loading it automatically
+[20:40:44] [Server thread/INFO]: Reloading ResourceManager: Default
+[20:40:44] [Server thread/INFO]: Loaded 6 recipes
+[20:40:44] [Server thread/INFO]: Loaded 825 advancements
+[20:40:49] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[20:40:49] [Server-Worker-3/INFO]: Preparing spawn area: 0%
+[20:40:50] [Server-Worker-3/INFO]: Preparing spawn area: 0%
+[20:40:50] [Server-Worker-3/INFO]: Preparing spawn area: 18%
+[20:40:51] [Server-Worker-3/INFO]: Preparing spawn area: 31%
+[20:40:52] [Server-Worker-2/INFO]: Preparing spawn area: 35%
+[20:40:52] [Server-Worker-2/INFO]: Preparing spawn area: 35%
+[20:40:52] [Server-Worker-1/INFO]: Preparing spawn area: 82%
+[20:40:52] [Server thread/INFO]: Time elapsed: 3122 ms
+[20:40:52] [Server thread/INFO]: Done (8.946s)! For help, type "help"
+[20:41:24] [Server thread/INFO]: Builder[/127.0.0.1:60160] logged in with entity id 1 at (-55.5, 4.0, 179.5)
+[20:41:24] [Server thread/INFO]: Builder joined the game
+2026-11-13 20:44:51,159 Server thread WARN Unable to register Log4j shutdown hook because JVM is shutting down. Using SimpleLogger

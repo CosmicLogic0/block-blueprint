@@ -1,0 +1,21 @@
+PASS forge-26.1.1
+[20:57:48] [_stdout_] [INFO] BBUITEST waiting on GenericMessageScreen
+[20:57:58] [_stdout_] [INFO] BBUITEST joining 127.0.0.1:25565
+[20:58:03] [_stdout_] [INFO] BBUITEST in world
+[20:58:18] [_stdout_] [INFO] BBUITEST loaded 284 blocks
+[20:58:18] [_stdout_] [INFO] BBUITEST direction check: Block{minecraft:oak_stairs}[facing=south,half=top,shape=straight,waterlogged=false] -> right way false (should face north, be the right way up (bottom half)), same way true
+[20:58:18] [_stdout_] [INFO] BBUITEST renamed blocks: chain -> minecraft:iron_chain[axis=y], iron_chain -> minecraft:iron_chain[axis=y], grass -> minecraft:short_grass
+[20:58:22] [_stdout_] [INFO] BBUITEST shot world-ghost
+[20:58:24] [_stdout_] [INFO] BBUITEST placed, layer 1
+[20:58:27] [_stdout_] [INFO] BBUITEST shot world-placed
+[20:58:29] [_stdout_] [INFO] BBUITEST held: Cobblestone
+[20:58:33] [_stdout_] [INFO] BBUITEST shot world-held
+[20:58:35] [_stdout_] [INFO] BBUITEST held spots: 81, next block box green: true
+[20:58:38] [_stdout_] [INFO] BBUITEST shot world-held-check
+[20:58:40] [_stdout_] [INFO] BBUITEST showing only minecraft:cobblestone, 9 hidden
+[20:58:44] [_stdout_] [INFO] BBUITEST shot world-only
+[20:58:49] [_stdout_] [INFO] BBUITEST shot build-hidden
+[20:58:55] [_stdout_] [INFO] BBUITEST shot build
+[20:58:57] [_stdout_] [INFO] BBUITEST swap options 989 similar 382
+[20:59:00] [_stdout_] [INFO] BBUITEST shot swap
+[20:59:02] [_stdout_] [INFO] BBUITEST swap options 989 similar 382

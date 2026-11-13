@@ -1,0 +1,446 @@
+[  ..  ] Loading version forge-26.3-66.1.8[  OK  ] Loaded version forge-26.3-66.1.8
+[  ..  ] Loading version 26.3[  OK  ] Loaded version 26.3
+[  ..  ] Loading client[  OK  ] Loaded client
+[  ..  ] Loading libraries[  ..  ] Loaded 103 libraries, now verifying[  OK  ] Loaded and verified 103+0 libraries
+[  ..  ] Loading logger client-1.21.2.xml[  OK  ] Loaded logger client-1.21.2.xml
+[  ..  ] Loading assets 34[  ..  ] Loaded 5149 assets 34[  OK  ] Loaded and verified 5149 assets 34
+[  ..  ] Loading JVM (major version 25)[  OK  ] Loaded JVM (25.0.1)
+[  ..  ] Launching...[  OK  ] Launched
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by net.minecraftforge.unsafe.UnsafeHacks (file:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/unsafe/0.9.2/unsafe-0.9.2.jar)
+WARNING: Please consider reporting this to the maintainers of class net.minecraftforge.unsafe.UnsafeHacks
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+Ignoring duplicate module on SecureModuleFinder: jtracy: Jar[jar:file:///home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-linux.jar!/]
+[20:57:00] [main] [INFO] ModLauncher running: args [--launchTarget, forge_client, --username, Builder, --version, forge-26.3-66.1.8, --gameDir, /home/runner/work/block-blueprint/block-blueprint/game, --assetsDir, /home/runner/work/block-blueprint/block-blueprint/game/assets, --assetIndex, 34, --uuid, a1b1b4de45be3659b2e15c9a1693e63b, --accessToken, **********, --clientId, , --xuid, , --versionType, release, --width, 1280, --height, 720]
+[20:57:00] [main] [INFO] JVM identified as Microsoft OpenJDK 64-Bit Server VM 25.0.1+8-LTS
+[20:57:00] [main] [INFO] ModLauncher 10.2.6 starting: java version 25.0.1 by Microsoft; OS Linux arch amd64 version 7.0.0-1019-azure
+[20:57:00] [main] [WARN] Configuration file /home/runner/work/block-blueprint/block-blueprint/game/config/fml.toml is not correct. Correcting
+[20:57:00] [main] [INFO] Incorrect key [earlyWindowSkipGLVersions] was corrected from null to []
+[20:57:00] [main] [INFO] Incorrect key [earlyWindowLogHelpMessage] was corrected from null to true
+[20:57:00] [main] [INFO] Incorrect key [earlyWindowSquir] was corrected from null to false
+[20:57:00] [main] [INFO] Incorrect key [earlyWindowShowCPU] was corrected from null to false
+[20:57:00] [main] [INFO] Loading ImmediateWindowProvider fmlearlywindow
+[20:57:00] [main] [INFO] ImmediateWindowProvider fmlearlywindow does not support default, switching to dummyprovider
+[20:57:00] [main] [INFO] SpongePowered MIXIN Subsystem Version=0.8.7 Source=jar:file:///home/runner/work/block-blueprint/block-blueprint/game/libraries/org/spongepowered/mixin/0.8.7/mixin-0.8.7.jar!/ Service=ModLauncher Env=CLIENT
+[20:57:00] [main] [INFO] Found mod file buildblueprint-1.4.8+forge-26.3.jar of type MOD with provider {mods folder locator at /home/runner/work/block-blueprint/block-blueprint/game/mods}
+[20:57:00] [main] [INFO] Found mod file forge-26.3-66.1.8-client.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@51745f40
+[20:57:00] [main] [INFO] Found mod file javafmllanguage-26.3-66.1.8.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6dd91637
+[20:57:00] [main] [INFO] Found mod file forge-26.3-66.1.8-universal.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6dd91637
+[20:57:00] [main] [INFO] Found mod file mclanguage-26.3-66.1.8.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6dd91637
+[20:57:00] [main] [INFO] Found mod file lowcodelanguage-26.3-66.1.8.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6dd91637
+[20:57:00] [main] [INFO] Found mod file fmlcore-26.3-66.1.8.jar of type LIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6dd91637
+[20:57:00] [main] [INFO] Found 2 dependencies adding them to mods collection
+[20:57:00] [main] [INFO] Found mod file mixinextras-forge-0.5.4.jar of type GAMELIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator@4390f46e
+[20:57:00] [main] [INFO] Found mod file /MixinExtras-0.5.4.jar of type GAMELIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator@4390f46e
+[20:57:00] [main] [INFO] Compatibility level set to JAVA_21
+[20:57:00] [main] [INFO] Launching target 'forge_client' with arguments [--version, forge-26.3-66.1.8, --gameDir, /home/runner/work/block-blueprint/block-blueprint/game, --assetsDir, /home/runner/work/block-blueprint/block-blueprint/game/assets, --uuid, a1b1b4de45be3659b2e15c9a1693e63b, --username, Builder, --assetIndex, 34, --accessToken, **********, --clientId, , --xuid, , --versionType, release, --width, 1280, --height, 720]
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.lwjgl.system.Library$$Lambda/0x00000000bd4db000 in module org.lwjgl (jar:file:///home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3.jar!/)
+WARNING: Use --enable-native-access=org.lwjgl to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.lwjgl.opengl.GL$$Lambda/0x00000000bd525000 in module org.lwjgl.opengl (jar:file:///home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3.jar!/)
+WARNING: Use --enable-native-access=org.lwjgl.opengl to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.lwjgl.util.vma.LibVma$$Lambda/0x00000000bd531600 in module org.lwjgl.vma (jar:file:///home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3.jar!/)
+WARNING: Use --enable-native-access=org.lwjgl.vma to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.lwjgl.stb.LibSTB$$Lambda/0x00000000bd534800 in module org.lwjgl.stb (jar:file:///home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3.jar!/)
+WARNING: Use --enable-native-access=org.lwjgl.stb to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.sun.jna.Native in module com.sun.jna (jar:file:///home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar!/)
+WARNING: Use --enable-native-access=com.sun.jna to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+[20:57:02] [Datafixer Bootstrap #0] [INFO] 307 Datafixer optimizations took 496 milliseconds
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:root
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:sound_event
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:fluid
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:particle_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:attribute
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:mob_effect
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:block
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:entity_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:context_key_set
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:enchantment_effect_component_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:data_component_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:item
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:game_event
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:debug_subscription
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:potion
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:block_entity_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:stat_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:custom_stat
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:chunk_status
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:rule_test
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:rule_block_entity_modifier
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:pos_rule_test
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:menu
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:recipe_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:recipe_serializer
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:position_source_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:command_argument_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:villager_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:villager_profession
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:point_of_interest_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:memory_module_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:sensor_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:activity
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:loot_pool_entry_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:map_decoration_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:loot_function_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:attribute_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:environment_attribute
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:loot_condition_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:context_float_provider_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:context_int_provider_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:loot_nbt_provider_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:loot_score_provider_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:float_provider_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:int_provider_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:height_provider_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:block_predicate_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/carver_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/feature_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/structure_placement
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/structure_piece
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/structure_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/placement_modifier_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/block_state_provider_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/foliage_placer_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/trunk_placer_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/root_placer_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/tree_decorator_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/feature_size_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/biome_source
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/chunk_generator
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/material_condition_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/material_rule_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/density_function_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/structure_processor
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/structure_pool_element
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:worldgen/pool_alias_binding
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:creative_mode_tab
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:trigger_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:number_format_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:game_rule
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:entity_sub_predicate_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:data_component_predicate_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:enchantment_level_based_value_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:enchantment_entity_effect_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:enchantment_location_based_effect_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:enchantment_value_effect_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:enchantment_provider_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:consume_effect_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:recipe_display
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:slot_display
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:recipe_book_category
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:ticket_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:incoming_rpc_methods
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:outgoing_rpc_methods
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:test_environment_definition_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:test_instance_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:spawn_condition_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:dialog_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:dialog_action_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:input_control_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:dialog_body_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:permission_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:permission_check_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:slot_source_type
+[20:57:05] [pool-4-thread-1] [INFO] minecraft:test_function
+[20:57:05] [Render thread] [INFO] Environment: Environment[discoveryUrl=https://discovery.minecraftservices.com/minecraft/client, name=PROD]
+[20:57:05] [Render thread] [INFO] Setting user: Builder
+[20:57:05] [Render thread] [INFO] Backend library: LWJGL version 3.4.3+4
+[20:57:05] [Render thread] [INFO] SDL [SYSTEM]: App name: Minecraft
+[20:57:05] [Render thread] [INFO] SDL [SYSTEM]: App version: 26.3
+[20:57:05] [Render thread] [INFO] SDL [SYSTEM]: App ID: com.mojang.minecraft
+[20:57:05] [Render thread] [INFO] SDL [SYSTEM]: SDL revision: SDL-3.4.14--128-NOTFOUND
+[20:57:06] [Download-2] [ERROR] com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
+	at SECURE-BOOTSTRAP/authlib@10.0.77/com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:70)
+	at SECURE-BOOTSTRAP/authlib@10.0.77/com.mojang.authlib.services.MinecraftServicesUserApiService.fetchProperties(MinecraftServicesUserApiService.java:168)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.Minecraft.lambda$new$1(Minecraft.java:416)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1789)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: MinecraftClientHttpException[type=HTTP_ERROR, status=401, response=ErrorResponse[path=/player/attributes, error=null, errorMessage=null, details=null]]
+	at SECURE-BOOTSTRAP/authlib@10.0.77/com.mojang.authlib.minecraft.client.MinecraftClient.buildHttpException(MinecraftClient.java:170)
+	at SECURE-BOOTSTRAP/authlib@10.0.77/com.mojang.authlib.minecraft.client.MinecraftClient.readServiceResponse(MinecraftClient.java:147)
+	at SECURE-BOOTSTRAP/authlib@10.0.77/com.mojang.authlib.minecraft.client.MinecraftClient.getWithEtag(MinecraftClient.java:81)
+	at SECURE-BOOTSTRAP/authlib@10.0.77/com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:65)
+	at SECURE-BOOTSTRAP/authlib@10.0.77/com.mojang.authlib.services.MinecraftServicesUserApiService.fetchProperties(MinecraftServicesUserApiService.java:118)
+	... 5 more
+[20:57:08] [Render thread] [ERROR] com.mojang.renderpearl.api.device.BackendCreationException: Failed to create window for OpenGL context: Couldn't find matching GLX visual
+	at TRANSFORMER/minecraft@26.3/com.mojang.renderpearl.backend.opengl.GlDevice.<init>(GlDevice.java:77)
+	at TRANSFORMER/minecraft@26.3/com.mojang.renderpearl.backend.opengl.GlBackend.createDevice(GlBackend.java:76)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.Minecraft.<init>(Minecraft.java:491)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.main.Main.main(Main.java:272)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@26.3-66.1.8/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:96)
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@26.3-66.1.8/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$makeService$0(CommonLaunchHandler.java:79)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:84)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:104)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.Launcher.run(Launcher.java:151)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.Launcher.main(Launcher.java:110)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.BootstrapEntry.main(BootstrapEntry.java:17)
+	at net.minecraftforge.bootstrap@2.1.7/net.minecraftforge.bootstrap.Bootstrap.moduleMain(Bootstrap.java:188)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at net.minecraftforge.bootstrap.Bootstrap.bootstrapMain(Bootstrap.java:133)
+	at net.minecraftforge.bootstrap.Bootstrap.start(Bootstrap.java:53)
+	at net.minecraftforge.bootstrap.ForgeBootstrap.main(ForgeBootstrap.java:19)
+[20:57:08] [Render thread] [INFO] Enabling optional FeatureSet [EXT MultiDraw]
+[20:57:08] [Render thread] [INFO] Enabling optional FeatureSet [Wireframe]
+[20:57:08] [Render thread] [INFO] Optional FeatureSet [NV Diagnostic Checkpoint] not supported
+[20:57:08] [Render thread] [INFO] Enabling optional FeatureSet [Calibrated Timestamps]
+[20:57:08] [Render thread] [INFO] Optional FeatureSet [AMD Buffer Marker] not supported
+[20:57:08] [Render thread] [INFO] Using graphics backend Vulkan, using drivers: 1.4.335 llvmpipe Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)
+[20:57:08] [Render thread] [INFO] Using graphics device: llvmpipe (LLVM 21.1.8, 256 bits) (0x10005)
+[20:57:08] [Render thread] [INFO] Using graphics device extensions: VK_EXT_calibrated_timestamps (D), VK_KHR_synchronization2 (D), VK_EXT_multi_draw (D), VK_EXT_vertex_attribute_divisor (D), VK_KHR_swapchain (D), VK_KHR_surface (I), VK_KHR_push_descriptor (D), VK_KHR_xlib_surface (I), VK_EXT_debug_utils (I), VK_KHR_dynamic_rendering (D)
+[20:57:08] [Render thread] [INFO] Created window using SDL video driver: x11
+[20:57:08] [modloading-worker-0] [INFO] Forge mod loading, version 66.1.8, for MC 26.3 with MCP 20260918.230105
+[20:57:08] [modloading-worker-0] [INFO] MinecraftForge v66.1.8 Initialized
+[20:57:08] [modloading-worker-0] [INFO] Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
+[20:57:08] [_stdout_] [INFO] [Build Blueprint] Logic Survival server list: Added! Open Multiplayer to join Logic Survival.
+[W][20:57:08.681251] pw.conf      | [          conf.c: 1182 try_load_conf()] can't load config client.conf: No such file or directory
+[E][20:57:08.681343] pw.conf      | [          conf.c: 1215 pw_conf_load_conf_for_context()] can't load config client.conf: No such file or directory
+[ALSOFT] (EE) Failed to create PipeWire event context (errno: 2)
+[20:57:08] [Render thread] [INFO] Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.4).
+[20:57:09] [Download-2] [INFO] Could not authorize you against Realms server: javax.ws.rs.BadRequestException: Invalid session
+[20:57:09] [Download-2] [ERROR] com.mojang.realmsclient.exception.RealmsServiceException: Realms authentication error with message 'javax.ws.rs.BadRequestException: Invalid session'
+	at TRANSFORMER/minecraft@26.3/com.mojang.realmsclient.client.RealmsClient.execute(RealmsClient.java:625)
+	at TRANSFORMER/minecraft@26.3/com.mojang.realmsclient.client.RealmsClient.fetchFeatureFlags(RealmsClient.java:204)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1789)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+[20:57:09] [Render thread] [ERROR] com.mojang.text2speech.Narrator$InitializeException: Failed to load library flite
+	at SECURE-BOOTSTRAP/text2speech@1.19.12/com.mojang.text2speech.NarratorLinux$FliteLibrary.loadNative(NarratorLinux.java:82)
+	at SECURE-BOOTSTRAP/text2speech@1.19.12/com.mojang.text2speech.NarratorLinux.<init>(NarratorLinux.java:19)
+	at SECURE-BOOTSTRAP/text2speech@1.19.12/com.mojang.text2speech.Narrator.getNarrator(Narrator.java:41)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.GameNarrator.<init>(GameNarrator.java:20)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.Minecraft.<init>(Minecraft.java:713)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.main.Main.main(Main.java:272)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@26.3-66.1.8/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:96)
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@26.3-66.1.8/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$makeService$0(CommonLaunchHandler.java:79)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:84)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:104)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.Launcher.run(Launcher.java:151)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.Launcher.main(Launcher.java:110)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.BootstrapEntry.main(BootstrapEntry.java:17)
+	at net.minecraftforge.bootstrap@2.1.7/net.minecraftforge.bootstrap.Bootstrap.moduleMain(Bootstrap.java:188)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at net.minecraftforge.bootstrap.Bootstrap.bootstrapMain(Bootstrap.java:133)
+	at net.minecraftforge.bootstrap.Bootstrap.start(Bootstrap.java:53)
+	at net.minecraftforge.bootstrap.ForgeBootstrap.main(ForgeBootstrap.java:19)
+Caused by: java.lang.UnsatisfiedLinkError: Unable to load library 'flite':
+libflite.so: cannot open shared object file: No such file or directory
+libflite.so: cannot open shared object file: No such file or directory
+Native library (linux-x86-64/libflite.so) not found in resource path (/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/forge/26.3-66.1.8/forge-26.3-66.1.8-universal.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/forge/26.3-66.1.8/forge-26.3-66.1.8-client.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/JarJarFileSystems/0.4.2/JarJarFileSystems-0.4.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/roimfs/1.0.0/roimfs-1.0.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/securemodules/2.2.24/securemodules-2.2.24.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/unsafe/0.9.2/unsafe-0.9.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm/9.10.1/asm-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-tree/9.10.1/asm-tree-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-commons/9.10.1/asm-commons-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/bootstrap/2.1.8/bootstrap-2.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/bootstrap-api/2.1.8/bootstrap-api-2.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/accesstransformers/8.2.17/accesstransformers-8.2.17.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/eventbus/7.0.6/eventbus-7.0.6.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/jspecify/jspecify/1.0.1/jspecify-1.0.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/forgespi/8.0.0/forgespi-8.0.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/coremods-api/5.3.1/coremods-api-5.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/modlauncher/10.2.6/modlauncher-10.2.6.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/mergetool-api/1.0/mergetool-api-1.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/electronwill/night-config/toml/3.7.4/toml-3.7.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/electronwill/night-config/core/3.7.4/core-3.7.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/maven/maven-artifact/3.8.8/maven-artifact-3.8.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecrell/terminalconsoleappender/1.2.0/terminalconsoleappender-1.2.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/jline/jline-reader/3.25.1/jline-reader-3.25.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/jline/jline-terminal/3.25.1/jline-terminal-3.25.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/jline/jline-terminal-jna/3.25.1/jline-terminal-jna-3.25.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/spongepowered/mixin/0.8.7/mixin-0.8.7.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/github/llamalad7/mixinextras-forge/0.5.4/mixinextras-forge-0.5.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/JarJarSelector/0.4.2/JarJarSelector-0.4.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/JarJarMetadata/0.4.2/JarJarMetadata-0.4.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/fmlcore/26.3-66.1.8/fmlcore-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/fmlloader/26.3-66.1.8/fmlloader-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/fmlearlydisplay/26.3-66.1.8/fmlearlydisplay-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/javafmllanguage/26.3-66.1.8/javafmllanguage-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/lowcodelanguage/26.3-66.1.8/lowcodelanguage-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/mclanguage/26.3-66.1.8/mclanguage-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/forge-transformers/26.3-66.1.8/forge-transformers-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/ibm/icu/icu4j/78.3/icu4j-78.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/text2speech/1.19.12/text2speech-1.19.12.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-codec/commons-codec/1.22.0/commons-codec-1.22.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar:/home/runner/work/block-blueprint/block-blueprint/game/versions/forge-26.3-66.1.8/forge-26.3-66.1.8.jar)
+	at SECURE-BOOTSTRAP/com.sun.jna@5.17.0/com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:325)
+	at SECURE-BOOTSTRAP/com.sun.jna@5.17.0/com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:481)
+	at SECURE-BOOTSTRAP/com.sun.jna@5.17.0/com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:423)
+	at SECURE-BOOTSTRAP/text2speech@1.19.12/com.mojang.text2speech.NarratorLinux$FliteLibrary.loadNative(NarratorLinux.java:80)
+	... 20 more
+	Suppressed: java.lang.UnsatisfiedLinkError: libflite.so: cannot open shared object file: No such file or directory
+		at SECURE-BOOTSTRAP/com.sun.jna@5.17.0/com.sun.jna.Native.open(Native Method)
+		at SECURE-BOOTSTRAP/com.sun.jna@5.17.0/com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:213)
+		... 23 more
+	Suppressed: java.lang.UnsatisfiedLinkError: libflite.so: cannot open shared object file: No such file or directory
+		at SECURE-BOOTSTRAP/com.sun.jna@5.17.0/com.sun.jna.Native.open(Native Method)
+		at SECURE-BOOTSTRAP/com.sun.jna@5.17.0/com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:226)
+		... 23 more
+	Suppressed: java.io.IOException: Native library (linux-x86-64/libflite.so) not found in resource path (/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/forge/26.3-66.1.8/forge-26.3-66.1.8-universal.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/forge/26.3-66.1.8/forge-26.3-66.1.8-client.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/JarJarFileSystems/0.4.2/JarJarFileSystems-0.4.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/roimfs/1.0.0/roimfs-1.0.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/securemodules/2.2.24/securemodules-2.2.24.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/unsafe/0.9.2/unsafe-0.9.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm/9.10.1/asm-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-tree/9.10.1/asm-tree-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-commons/9.10.1/asm-commons-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/bootstrap/2.1.8/bootstrap-2.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/bootstrap-api/2.1.8/bootstrap-api-2.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/accesstransformers/8.2.17/accesstransformers-8.2.17.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/eventbus/7.0.6/eventbus-7.0.6.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/jspecify/jspecify/1.0.1/jspecify-1.0.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/forgespi/8.0.0/forgespi-8.0.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/coremods-api/5.3.1/coremods-api-5.3.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/modlauncher/10.2.6/modlauncher-10.2.6.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/mergetool-api/1.0/mergetool-api-1.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/electronwill/night-config/toml/3.7.4/toml-3.7.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/electronwill/night-config/core/3.7.4/core-3.7.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/maven/maven-artifact/3.8.8/maven-artifact-3.8.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecrell/terminalconsoleappender/1.2.0/terminalconsoleappender-1.2.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/jline/jline-reader/3.25.1/jline-reader-3.25.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/jline/jline-terminal/3.25.1/jline-terminal-3.25.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/jline/jline-terminal-jna/3.25.1/jline-terminal-jna-3.25.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/spongepowered/mixin/0.8.7/mixin-0.8.7.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/github/llamalad7/mixinextras-forge/0.5.4/mixinextras-forge-0.5.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/JarJarSelector/0.4.2/JarJarSelector-0.4.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/JarJarMetadata/0.4.2/JarJarMetadata-0.4.2.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/fmlcore/26.3-66.1.8/fmlcore-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/fmlloader/26.3-66.1.8/fmlloader-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/fmlearlydisplay/26.3-66.1.8/fmlearlydisplay-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/javafmllanguage/26.3-66.1.8/javafmllanguage-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/lowcodelanguage/26.3-66.1.8/lowcodelanguage-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/mclanguage/26.3-66.1.8/mclanguage-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/minecraftforge/forge-transformers/26.3-66.1.8/forge-transformers-26.3-66.1.8.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/ibm/icu/icu4j/78.3/icu4j-78.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/com/mojang/text2speech/1.19.12/text2speech-1.19.12.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-codec/commons-codec/1.22.0/commons-codec-1.22.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-linux.jar:/home/runner/work/block-blueprint/block-blueprint/game/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar:/home/runner/work/block-blueprint/block-blueprint/game/versions/forge-26.3-66.1.8/forge-26.3-66.1.8.jar)
+		at SECURE-BOOTSTRAP/com.sun.jna@5.17.0/com.sun.jna.Native.extractFromResourcePath(Native.java:1141)
+		at SECURE-BOOTSTRAP/com.sun.jna@5.17.0/com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:297)
+		... 23 more
+[20:57:09] [Render thread] [INFO] Reloading ResourceManager: vanilla, vanilla, mod:buildblueprint, mod:forge
+[20:57:09] [modloading-worker-0] [WARN] Configuration file /home/runner/work/block-blueprint/block-blueprint/game/config/forge-client.toml is not correct. Correcting
+[20:57:09] [modloading-worker-0] [WARN] Incorrect key client was corrected from null to its default, SynchronizedConfig{DataHolder:{}}.
+[20:57:09] [modloading-worker-0] [WARN] Incorrect key client.showLoadWarnings was corrected from null to its default, true.
+[20:57:09] [modloading-worker-0] [WARN] Incorrect key client.allowMipmapLowering was corrected from null to its default, false.
+[20:57:09] [modloading-worker-0] [WARN] Configuration file /home/runner/work/block-blueprint/block-blueprint/game/config/forge-common.toml is not correct. Correcting
+[20:57:09] [modloading-worker-0] [WARN] Incorrect key general was corrected from null to its default, SynchronizedConfig{DataHolder:{}}.
+[20:57:09] [modloading-worker-0] [WARN] Incorrect key general.logLegacyTagWarnings was corrected from null to its default, OFF.
+[20:57:09] [modloading-worker-0] [WARN] Incorrect key general.channelListLimit was corrected from null to its default, 1024.
+[20:57:09] [Forge Version Check] [INFO] [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[20:57:09] [Worker-Main-1] [INFO] Found unifont_all_no_pua-17.0.01.hex, loading
+[20:57:09] [Worker-Main-3] [INFO] Found unifont_pua-17.0.01.hex, loading
+[20:57:09] [Forge Version Check] [INFO] [forge] Found status: UP_TO_DATE Current: 66.1.8 Target: null
+[20:57:09] [Worker-Main-1] [INFO] Found unifont_jp_patch-17.0.01.hex, loading
+[20:57:11] [_stdout_] [INFO] BBUITEST waiting on GenericMessageScreen
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+[20:57:13] [Render thread] [ERROR] java.lang.IllegalStateException: Failed to open OpenAL device
+	at TRANSFORMER/minecraft@26.3/com.mojang.blaze3d.audio.Library.openDeviceOrFallback(Library.java:274)
+	at TRANSFORMER/minecraft@26.3/com.mojang.blaze3d.audio.Library.init(Library.java:149)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.sounds.SoundEngine.loadLibrary(SoundEngine.java:112)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.sounds.SoundEngine.reload(SoundEngine.java:103)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:122)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:41)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.server.packs.resources.SimplePreparableReloadListener.lambda$reload$1(SimplePreparableReloadListener.java:15)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:739)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:503)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.server.packs.resources.SimpleReloadInstance.lambda$prepareTasks$3(SimpleReloadInstance.java:59)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:173)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:23)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:147)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:127)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.Minecraft.runTick(Minecraft.java:1190)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.Minecraft.run(Minecraft.java:928)
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.main.Main.main(Main.java:286)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@26.3-66.1.8/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:96)
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@26.3-66.1.8/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$makeService$0(CommonLaunchHandler.java:79)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:84)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:104)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.Launcher.run(Launcher.java:151)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.Launcher.main(Launcher.java:110)
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.6/cpw.mods.modlauncher.BootstrapEntry.main(BootstrapEntry.java:17)
+	at net.minecraftforge.bootstrap@2.1.7/net.minecraftforge.bootstrap.Bootstrap.moduleMain(Bootstrap.java:188)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at net.minecraftforge.bootstrap.Bootstrap.bootstrapMain(Bootstrap.java:133)
+	at net.minecraftforge.bootstrap.Bootstrap.start(Bootstrap.java:53)
+	at net.minecraftforge.bootstrap.ForgeBootstrap.main(ForgeBootstrap.java:19)
+[20:57:13] [Render thread] [INFO] Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[20:57:13] [Render thread] [INFO] Created: 256x128x0 minecraft:textures/atlas/celestials.png-atlas
+[20:57:13] [Render thread] [INFO] Created: 128x128x0 minecraft:textures/atlas/decorated_pot.png-atlas
+[20:57:13] [Render thread] [INFO] Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[20:57:13] [Render thread] [INFO] Created: 1024x512x0 minecraft:textures/atlas/shield_patterns.png-atlas
+[20:57:13] [Render thread] [INFO] Created: 1024x512x0 minecraft:textures/atlas/banner_patterns.png-atlas
+[20:57:13] [Render thread] [INFO] Created: 2048x2048x4 minecraft:textures/atlas/blocks.png-atlas
+[20:57:13] [Render thread] [INFO] Created: 1024x512x0 minecraft:textures/atlas/items.png-atlas
+[20:57:13] [Render thread] [INFO] Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
+[20:57:13] [Render thread] [INFO] Created: 128x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[20:57:13] [Render thread] [INFO] Created: 512x512x0 minecraft:textures/atlas/chest.png-atlas
+[20:57:13] [Render thread] [INFO] Created: 512x512x0 minecraft:textures/atlas/shulker_boxes.png-atlas
+[20:57:14] [Download-2] [INFO] Could not authorize you against Realms server: javax.ws.rs.BadRequestException: Invalid session
+[20:57:14] [Download-2] [ERROR] com.mojang.realmsclient.exception.RealmsServiceException: Realms authentication error with message 'javax.ws.rs.BadRequestException: Invalid session'
+	at TRANSFORMER/minecraft@26.3/com.mojang.realmsclient.client.RealmsClient.execute(RealmsClient.java:625)
+	at TRANSFORMER/minecraft@26.3/com.mojang.realmsclient.client.RealmsClient.clientCompatible(RealmsClient.java:354)
+	at TRANSFORMER/minecraft@26.3/com.mojang.realmsclient.RealmsAvailability.lambda$check$0(RealmsAvailability.java:48)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1789)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+[20:57:21] [_stdout_] [INFO] BBUITEST joining 127.0.0.1:25565
+[20:57:21] [Render thread] [INFO] Connecting to 127.0.0.1, 25565
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::loadLibrary has been called by io.netty.util.internal.NativeLibraryUtil in module io.netty.common (jar:file:///home/runner/work/block-blueprint/block-blueprint/game/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar!/)
+WARNING: Use --enable-native-access=io.netty.common to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+[20:57:24] [Render thread] [INFO] Loaded 2 advancements
+[20:57:25] [_stdout_] [INFO] BBUITEST in world
+[20:57:25] [Render thread] [WARN] Requested post effect does not exist: minecraft:end_of_frame
+[20:57:25] [Render thread] [INFO] Resizing Dynamic Transforms UBO, capacity limit of 2 reached during a single frame. New capacity will be 4.
+[20:57:25] [Render thread] [INFO] Resizing Dynamic Transforms UBO, capacity limit of 4 reached during a single frame. New capacity will be 8.
+[20:57:25] [Render thread] [INFO] Resizing Chunk Sections Command Buffer, capacity limit of 2 reached during a single frame. New capacity will be 8.
+[20:57:25] [Render thread] [INFO] Resizing Chunk Sections Instanced, capacity limit of 2 reached during a single frame. New capacity will be 8.
+[20:57:25] [Render thread] [INFO] Resizing Chunk Sections Command Buffer, capacity limit of 8 reached during a single frame. New capacity will be 16.
+[20:57:25] [Render thread] [INFO] Resizing Chunk Sections Instanced, capacity limit of 8 reached during a single frame. New capacity will be 16.
+[20:57:26] [Render thread] [INFO] Resizing Chunk Sections Command Buffer, capacity limit of 16 reached during a single frame. New capacity will be 32.
+[20:57:26] [Render thread] [INFO] Resizing Chunk Sections Instanced, capacity limit of 16 reached during a single frame. New capacity will be 32.
+[20:57:26] [Render thread] [INFO] Resizing Chunk Sections Command Buffer, capacity limit of 32 reached during a single frame. New capacity will be 64.
+[20:57:26] [Render thread] [INFO] Resizing Chunk Sections Instanced, capacity limit of 32 reached during a single frame. New capacity will be 64.
+[20:57:26] [Render thread] [INFO] Resizing Chunk Sections Command Buffer, capacity limit of 64 reached during a single frame. New capacity will be 128.
+[20:57:26] [Render thread] [INFO] Resizing Chunk Sections Instanced, capacity limit of 64 reached during a single frame. New capacity will be 128.
+[20:57:39] [_stdout_] [INFO] BBUITEST loaded 284 blocks
+[20:57:39] [_stdout_] [INFO] BBUITEST direction check: Block{minecraft:oak_stairs}[facing=south,half=top,shape=straight,waterlogged=false] -> right way false (should face north, be the right way up (bottom half)), same way true
+[20:57:39] [_stdout_] [INFO] BBUITEST renamed blocks: chain -> minecraft:iron_chain[axis=y], iron_chain -> minecraft:iron_chain[axis=y], grass -> minecraft:short_grass
+[20:57:43] [_stdout_] [INFO] BBUITEST shot world-ghost
+[20:57:45] [_stdout_] [INFO] BBUITEST placed, layer 1
+[20:57:48] [_stdout_] [INFO] BBUITEST shot world-placed
+[20:57:50] [_stdout_] [INFO] BBUITEST held: Cobblestone
+[20:57:54] [_stdout_] [INFO] BBUITEST shot world-held
+[20:57:56] [_stdout_] [INFO] BBUITEST held spots: 81, next block box green: true
+[20:57:59] [_stdout_] [INFO] BBUITEST shot world-held-check
+[20:58:01] [_stdout_] [INFO] BBUITEST showing only minecraft:cobblestone, 9 hidden
+[20:58:05] [_stdout_] [INFO] BBUITEST shot world-only
+[20:58:10] [_stdout_] [INFO] BBUITEST shot build-hidden
+[20:58:16] [_stdout_] [INFO] BBUITEST shot build
+[20:58:18] [_stdout_] [INFO] BBUITEST swap options 1104 similar 396
+[20:58:21] [_stdout_] [INFO] BBUITEST shot swap
+[20:58:23] [_stdout_] [INFO] BBUITEST swap options 1104 similar 396
+[20:58:27] [_stdout_] [INFO] BBUITEST shot swap-search
+[20:58:29] [_stdout_] [INFO] BBUITEST removed 1 blocks (284 -> 283), undo true -> 284
+[20:58:32] [_stdout_] [INFO] BBUITEST shot remove
+[20:58:34] [_stdout_] [INFO] BBUITEST bug report: **What happened?** (please write what you did and what went wrong) |  |  |  | --- | Build Blueprint: 1.4.8 | Minecraft: 26.3 (Forge) | Java: 25.0.1 | System: Linux 7.0.0-1019-azure amd64 | Build loaded: 9 x 8 x 9, 284 blocks, placed, layer 1 | Last problem: none |
+[20:58:34] [_stdout_] [INFO] BBUITEST keybinds: a_forward=up b_back=down c_left=left d_right=right e_hold_vertical=unknown f_rotate=page.down g_menu=page.up h_layer_up=home i_layer_down=end j_copy=insert k_place=delete l_up=equal m_down=minus n_fast=unknown o_shrink=unknown | hints: up =, down -, fast Shift, shrink Alt, rotate Page Down
+[20:58:38] [_stdout_] [INFO] BBUITEST shot shopping
+[20:58:40] [_stdout_] [INFO] BBUITEST not in game [futureblocks:glow_brick]
+[20:58:43] [_stdout_] [INFO] BBUITEST shot build-missing
+[20:58:49] [_stdout_] [INFO] BBUITEST shot help
+[20:58:51] [_stdout_] [INFO] BBUITEST chest highlight hooked on CreativeModeInventoryScreen
+[20:58:54] [_stdout_] [INFO] BBUITEST shot inventory
+[20:59:00] [_stdout_] [INFO] BBUITEST shot settings-extras
+[20:59:02] [_stdout_] [INFO] BBUITEST raw materials: 81 minecraft:cobblestone; 36 minecraft:oak_log; 30 minecraft:spruce_log; 3 minecraft:sand (smelt); 1 futureblocks:glow_brick;
+[20:59:02] [_stdout_] [INFO] BBUITEST mistakes 0, scaffold 0, layer map 9x9
+[20:59:05] [_stdout_] [INFO] BBUITEST shot build-raw
+[20:59:11] [_stdout_] [INFO] BBUITEST shot world-extras
+[20:59:13] [_stdout_] [INFO] BBUITEST mistakes: were showing false, after Stop fixing false
+[20:59:13] [_stdout_] [INFO] BBUITEST blank world: mistakes 0 -> 1 -> 0
+[20:59:13] [_stdout_] [INFO] BBUITEST dirt counts for grass: true, stone for grass: false
+[20:59:13] [_stdout_] [INFO] BBUITEST co-op: part 1 of 2 (the west end), my blocks 154
+[20:59:16] [_stdout_] [INFO] BBUITEST shot world-coop
+[20:59:22] [_stdout_] [INFO] BBUITEST shot done-card
+[20:59:27] [_stdout_] [INFO] BBUITEST shot templates
+[20:59:29] [_stdout_] [INFO] BBUITEST tr es: Capa 3 de 10 | Girada 90 grados | ¡Construcción terminada! 120 bloques · 4m 10s de construcción · 30 bloques por minuto.
+[20:59:33] [_stdout_] [INFO] BBUITEST shot lang-es
+[20:59:35] [_stdout_] [INFO] BBUITEST tr ru: Слой 3 из 10
+[20:59:38] [_stdout_] [INFO] BBUITEST shot lang-ru
+[20:59:40] [_stdout_] [INFO] BBUITEST tr zh: 第 3 层，共 10 层
+[20:59:44] [_stdout_] [INFO] BBUITEST shot lang-zh
+[20:59:49] [_stdout_] [INFO] BBUITEST shot settings
+[20:59:55] [_stdout_] [INFO] BBUITEST shot settings-more
+[20:59:57] [_stdout_] [INFO] BBUITEST colors: ghost Purple d7afff, red ffff8c1a, hint ffffe040/ff60ff60, chest ff40ff80
+[21:00:00] [_stdout_] [INFO] BBUITEST shot settings-colors
+[21:00:02] [_stdout_] [INFO] BBUITEST creator server: before true, add: Logic Survival is already in your server list. | again: Logic Survival is already in your server list. | in list true
+[21:00:02] [_stdout_] [INFO] BBUITEST ItemStackTemplate: typeHolder:Holder item:Holder components:DataComponentPatch toString:String hashCode:int count:int create:ItemStack getClass:Class notify:void notifyAll:void wait:void getMaxStackSize:int tags:Stream
+[21:00:06] [_stdout_] [INFO] BBUITEST shot help-server
+[21:00:08] [_stdout_] [INFO] BBUITEST big picture: grid 8 ms, picture 19 ms, 9664 rectangles
+[21:00:11] [_stdout_] [INFO] BBUITEST shot saved
+[21:00:13] [_stdout_] [INFO] BBUITEST perf loaded 240000 blocks
+[21:00:13] [_stdout_] [INFO] BBUITEST perf first frames: 0 frames, working out 0.00 ms a frame (worst 0.0), drawing 0.00 ms a frame (worst 0.0), 283 ghost blocks
+[21:00:18] [_stdout_] [INFO] BBUITEST perf moving: 4 frames, working out 22.59 ms a frame (worst 65.9), drawing 173.17 ms a frame (worst 381.5), 206270 ghost blocks
+[21:00:21] [_stdout_] [INFO] BBUITEST shot world-perf
+[21:00:24] [_stdout_] [INFO] BBUITEST perf still: 6 frames, working out 11.50 ms a frame (worst 31.1), drawing 106.95 ms a frame (worst 140.1), 203012 ghost blocks
+[21:00:24] [_stdout_] [INFO] BBUITEST perf block list: 9 ms each time
+[21:00:29] [_stdout_] [INFO] BBUITEST shot world-near
+[21:00:30] [_stdout_] [INFO] BBUITEST perf nearby layers only: 26 frames, working out 1.56 ms a frame (worst 19.9), drawing 13.44 ms a frame (worst 17.9), 26274 ghost blocks
+[21:00:31] [_stdout_] [INFO] BBUITEST stand-ins: minecraft:chest -> minecraft:oak_planks; minecraft:ender_chest -> minecraft:obsidian; minecraft:oak_sign -> minecraft:oak_planks/minecraft:oak_planks; minecraft:red_bed -> minecraft:red_wool/minecraft:white_wool; minecraft:white_banner -> minecraft:white_wool/minecraft:white_wool; minecraft:skeleton_skull -> minecraft:bone_block; minecraft:shulker_box -> minecraft:purpur_block; minecraft:trapped_chest -> minecraft:oak_planks;
+[21:00:31] [Render thread] [INFO] Resizing Dynamic Transforms UBO, capacity limit of 8 reached during a single frame. New capacity will be 16.
+[21:00:34] [_stdout_] [INFO] BBUITEST shot world-special
+[21:00:36] [Render thread] [INFO] [System] [CHAT] Copy box started on the block you're looking at. Make it as big as your build:
+[21:00:36] [Render thread] [INFO] [System] [CHAT] Arrows grow it, Alt + arrows shrink it, = and - for the top and bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.
+[21:00:36] [Render thread] [INFO] [System] [CHAT] Press Insert again to save it, Delete to cancel.
+[21:00:40] [_stdout_] [INFO] BBUITEST shot world-copy
+[21:00:42] [_stdout_] [INFO] BBUITEST done

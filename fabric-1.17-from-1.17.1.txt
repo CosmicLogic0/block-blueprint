@@ -1,0 +1,124 @@
+FAIL fabric-1.17-from-1.17.1: the mod reported errors: [20:42:49] [Render thread] [INFO] [STDOUT]: BBUITEST ItemStackTemplate: none (java.lang.ClassNotFoundException: net.minecraft.world.item.ItemStackTemplate)
+
+	- buildblueprint 1.4.8
+	   |-- fabric-crash-report-info-v1 0.1.5+be9da3103d
+Caused by: MinecraftClientHttpException[type=HTTP_ERROR, status=401, response=ErrorResponse[path='/privileges', error='null', details=null, errorMessage='null']]
+[20:39:56] [Render thread] [INFO] Reloading ResourceManager: Default, Fabric Mods (Build Blueprint, Fabric API, Fabric API Base, Fabric API Lookup API (v1), Fabric Biome API (v1), Fabric BlockRenderLayer Registration (v1), Fabric Command API (v1), Fabric Commands (v0), Fabric Containers (v0), Fabric Content Registries (v0), Fabric Crash Report Info (v1), Fabric Dimensions API (v1), Fabric Entity Events (v1), Fabric Events Interaction (v0), Fabric Events Lifecycle (v0), Fabric Game Rule API (v1), Fabric Item API (v1), Fabric Item Groups (v0), Fabric Key Binding API (v1), Fabric Key Bindings (v0), Fabric Lifecycle Events (v1), Fabric Loot Tables (v1), Fabric Mining Levels (v0), Fabric Models (v0), Fabric Networking API (v1), Fabric Networking Block Entity (v0), Fabric Networking (v0), Fabric Object Builder API (v1), Fabric Object Builders (v0), Fabric Particles (v1), Fabric Registry Sync (v0), Fabric Renderer API (v1), Fabric Renderer - Indigo, Fabric Renderer Registries (v1), Fabric Rendering Data Attachment (v1), Fabric Rendering Fluids (v1), Fabric Rendering (v0), Fabric Rendering (v1), Fabric Resource Loader (v0), Fabric Screen API (v1), Fabric Screen Handler API (v1), Fabric Structure API (v1), Fabric Tag Extensions (v0), Fabric Textures (v0), Fabric Tool Attribute API (v1), Fabric Loader)
+[20:39:56] [Render thread] [INFO] [STDOUT]: BBUITEST waiting on class_442
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+[20:40:02] [Render thread] [ERROR] java.lang.IllegalStateException: Failed to open OpenAL device
+[20:40:07] [Render thread] [INFO] [STDOUT]: BBUITEST joining 127.0.0.1:25565
+[20:40:11] [Render thread] [INFO] [STDOUT]: BBUITEST in world
+[20:40:26] [Render thread] [INFO] [STDOUT]: BBUITEST loaded 284 blocks
+[20:40:26] [Render thread] [INFO] [STDOUT]: BBUITEST direction check: Block{minecraft:oak_stairs}[facing=south,half=top,shape=straight,waterlogged=false] -> right way false (should face north, be the right way up (bottom half)), same way true
+[20:40:26] [Render thread] [INFO] [STDOUT]: BBUITEST renamed blocks: chain -> minecraft:chain[axis=y], iron_chain -> minecraft:chain[axis=y], grass -> minecraft:grass
+[20:40:30] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-ghost
+[20:40:32] [Render thread] [INFO] [STDOUT]: BBUITEST placed, layer 1
+[20:40:35] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-placed
+[20:40:37] [Render thread] [INFO] [STDOUT]: BBUITEST held: Cobblestone
+[20:40:41] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-held
+[20:40:43] [Render thread] [INFO] [STDOUT]: BBUITEST held spots: 81, next block box green: true
+[20:40:46] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-held-check
+[20:40:48] [Render thread] [INFO] [STDOUT]: BBUITEST showing only minecraft:cobblestone, 9 hidden
+[20:40:52] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-only
+[20:40:57] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-hidden
+[20:41:03] [Render thread] [INFO] [STDOUT]: BBUITEST shot build
+[20:41:05] [Render thread] [INFO] [STDOUT]: BBUITEST swap options 751 similar 320
+[20:41:08] [Render thread] [INFO] [STDOUT]: BBUITEST shot swap
+[20:41:10] [Render thread] [INFO] [STDOUT]: BBUITEST swap options 751 similar 320
+[20:41:14] [Render thread] [INFO] [STDOUT]: BBUITEST shot swap-search
+[20:41:16] [Render thread] [INFO] [STDOUT]: BBUITEST removed 1 blocks (284 -> 283), undo true -> 284
+[20:41:19] [Render thread] [INFO] [STDOUT]: BBUITEST shot remove
+[20:41:21] [Render thread] [INFO] [STDOUT]: BBUITEST bug report: **What happened?** (please write what you did and what went wrong) |  |  |  | --- | Build Blueprint: 1.4.8 | Minecraft: 1.17.1 (Fabric) | Java: 16.0.1 | System: Linux 7.0.0-1019-azure amd64 | Build loaded: 9 x 8 x 9, 284 blocks, placed, layer 1 | Last problem: none |
+[20:41:21] [Render thread] [INFO] [STDOUT]: BBUITEST keybinds: a_forward=up b_back=down c_left=left d_right=right e_hold_vertical=unknown f_rotate=page.down g_menu=page.up h_layer_up=home i_layer_down=end j_copy=insert k_place=delete l_up=equal m_down=minus n_fast=unknown o_shrink=unknown | hints: up =, down -, fast Shift, shrink Alt, rotate Page Down
+[20:41:25] [Render thread] [INFO] [STDOUT]: BBUITEST shot shopping
+[20:41:27] [Render thread] [INFO] [STDOUT]: BBUITEST not in game [futureblocks:glow_brick]
+[20:41:30] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-missing
+[20:41:36] [Render thread] [INFO] [STDOUT]: BBUITEST shot help
+[20:41:38] [Render thread] [INFO] [STDOUT]: BBUITEST chest highlight hooked on class_481
+[20:41:41] [Render thread] [INFO] [STDOUT]: BBUITEST shot inventory
+
+--- end of log ---
+[20:40:48] [Render thread] [INFO] [STDOUT]: BBUITEST showing only minecraft:cobblestone, 9 hidden
+[20:40:52] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-only
+[20:40:57] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-hidden
+[20:41:03] [Render thread] [INFO] [STDOUT]: BBUITEST shot build
+[20:41:05] [Render thread] [INFO] [STDOUT]: BBUITEST swap options 751 similar 320
+[20:41:08] [Render thread] [INFO] [STDOUT]: BBUITEST shot swap
+[20:41:10] [Render thread] [INFO] [STDOUT]: BBUITEST swap options 751 similar 320
+[20:41:14] [Render thread] [INFO] [STDOUT]: BBUITEST shot swap-search
+[20:41:16] [Render thread] [INFO] [STDOUT]: BBUITEST removed 1 blocks (284 -> 283), undo true -> 284
+[20:41:19] [Render thread] [INFO] [STDOUT]: BBUITEST shot remove
+[20:41:21] [Render thread] [INFO] [STDOUT]: BBUITEST bug report: **What happened?** (please write what you did and what went wrong) |  |  |  | --- | Build Blueprint: 1.4.8 | Minecraft: 1.17.1 (Fabric) | Java: 16.0.1 | System: Linux 7.0.0-1019-azure amd64 | Build loaded: 9 x 8 x 9, 284 blocks, placed, layer 1 | Last problem: none |
+[20:41:21] [Render thread] [INFO] [STDOUT]: BBUITEST keybinds: a_forward=up b_back=down c_left=left d_right=right e_hold_vertical=unknown f_rotate=page.down g_menu=page.up h_layer_up=home i_layer_down=end j_copy=insert k_place=delete l_up=equal m_down=minus n_fast=unknown o_shrink=unknown | hints: up =, down -, fast Shift, shrink Alt, rotate Page Down
+[20:41:25] [Render thread] [INFO] [STDOUT]: BBUITEST shot shopping
+[20:41:27] [Render thread] [INFO] [STDOUT]: BBUITEST not in game [futureblocks:glow_brick]
+[20:41:30] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-missing
+[20:41:36] [Render thread] [INFO] [STDOUT]: BBUITEST shot help
+[20:41:38] [Render thread] [INFO] [STDOUT]: BBUITEST chest highlight hooked on class_481
+[20:41:41] [Render thread] [INFO] [STDOUT]: BBUITEST shot inventory
+[20:41:47] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings-extras
+[20:41:49] [Render thread] [INFO] [STDOUT]: BBUITEST raw materials: 81 minecraft:cobblestone; 36 minecraft:oak_log; 30 minecraft:spruce_log; 3 minecraft:sand (smelt); 1 futureblocks:glow_brick;
+[20:41:49] [Render thread] [INFO] [STDOUT]: BBUITEST mistakes 0, scaffold 0, layer map 9x9
+[20:41:52] [Render thread] [INFO] [STDOUT]: BBUITEST shot build-raw
+[20:41:58] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-extras
+[20:42:00] [Render thread] [INFO] [STDOUT]: BBUITEST mistakes: were showing false, after Stop fixing false
+[20:42:00] [Render thread] [INFO] [STDOUT]: BBUITEST blank world: mistakes 0 -> 1 -> 0
+[20:42:00] [Render thread] [INFO] [STDOUT]: BBUITEST dirt counts for grass: true, stone for grass: false
+[20:42:00] [Render thread] [INFO] [STDOUT]: BBUITEST co-op: part 1 of 2 (the west end), my blocks 154
+[20:42:03] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-coop
+[20:42:09] [Render thread] [INFO] [STDOUT]: BBUITEST shot done-card
+[20:42:14] [Render thread] [INFO] [STDOUT]: BBUITEST shot templates
+[20:42:16] [Render thread] [INFO] [STDOUT]: BBUITEST tr es: Capa 3 de 10 | Girada 90 grados | ¡Construcción terminada! 120 bloques · 4m 10s de construcción · 30 bloques por minuto.
+[20:42:20] [Render thread] [INFO] [STDOUT]: BBUITEST shot lang-es
+[20:42:22] [Render thread] [INFO] [STDOUT]: BBUITEST tr ru: Слой 3 из 10
+[20:42:25] [Render thread] [INFO] [STDOUT]: BBUITEST shot lang-ru
+[20:42:27] [Render thread] [INFO] [STDOUT]: BBUITEST tr zh: 第 3 层，共 10 层
+[20:42:31] [Render thread] [INFO] [STDOUT]: BBUITEST shot lang-zh
+[20:42:36] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings
+[20:42:42] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings-more
+[20:42:44] [Render thread] [INFO] [STDOUT]: BBUITEST colors: ghost Purple d7afff, red ffff8c1a, hint ffffe040/ff60ff60, chest ff40ff80
+[20:42:47] [Render thread] [INFO] [STDOUT]: BBUITEST shot settings-colors
+[20:42:49] [Render thread] [INFO] [STDOUT]: BBUITEST creator server: before true, add: Logic Survival is already in your server list. | again: Logic Survival is already in your server list. | in list true
+[20:42:49] [Render thread] [INFO] [STDOUT]: BBUITEST ItemStackTemplate: none (java.lang.ClassNotFoundException: net.minecraft.world.item.ItemStackTemplate)
+[20:42:53] [Render thread] [INFO] [STDOUT]: BBUITEST shot help-server
+[20:42:55] [Render thread] [INFO] [STDOUT]: BBUITEST big picture: grid 6 ms, picture 22 ms, 9664 rectangles
+[20:42:58] [Render thread] [INFO] [STDOUT]: BBUITEST shot saved
+[20:43:00] [Render thread] [INFO] [STDOUT]: BBUITEST perf loaded 240000 blocks
+[20:43:06] [Render thread] [INFO] [STDOUT]: BBUITEST perf first frames: 1 frames, working out 64.88 ms a frame (worst 64.9), drawing 5054.29 ms a frame (worst 5054.3), 206270 ghost blocks
+[20:43:09] [Render thread] [INFO] [STDOUT]: BBUITEST perf moving: 3 frames, working out 12.22 ms a frame (worst 15.9), drawing 202.22 ms a frame (worst 229.0), 206270 ghost blocks
+[20:43:12] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-perf
+[20:43:15] [Render thread] [INFO] [STDOUT]: BBUITEST perf still: 6 frames, working out 15.70 ms a frame (worst 73.6), drawing 215.95 ms a frame (worst 240.3), 203012 ghost blocks
+[20:43:15] [Render thread] [INFO] [STDOUT]: BBUITEST perf block list: 6 ms each time
+[20:43:20] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-near
+[20:43:21] [Render thread] [INFO] [STDOUT]: BBUITEST perf nearby layers only: 34 frames, working out 1.93 ms a frame (worst 22.2), drawing 26.27 ms a frame (worst 37.4), 26274 ghost blocks
+[20:43:22] [Render thread] [INFO] [STDOUT]: BBUITEST stand-ins: minecraft:chest -> minecraft:oak_planks; minecraft:ender_chest -> minecraft:obsidian; minecraft:oak_sign -> minecraft:oak_planks/minecraft:oak_planks; minecraft:red_bed -> minecraft:red_wool/minecraft:white_wool; minecraft:white_banner -> minecraft:white_wool/minecraft:white_wool; minecraft:skeleton_skull -> minecraft:bone_block; minecraft:shulker_box -> minecraft:purpur_block; minecraft:trapped_chest -> minecraft:oak_planks;
+[20:43:25] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-special
+[20:43:27] [Render thread] [INFO] [CHAT] Copy box started on the block you're looking at. Make it as big as your build:
+[20:43:27] [Render thread] [INFO] [CHAT] Arrows grow it, Alt + arrows shrink it, = and - for the top and bottom, Shift = 5 blocks. Page Down stretches it to the block you look at.
+[20:43:27] [Render thread] [INFO] [CHAT] Press Insert again to save it, Delete to cancel.
+[20:43:31] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-copy
+[20:43:33] [Render thread] [INFO] [STDOUT]: BBUITEST done
