@@ -336,6 +336,11 @@ public final class UiTest {
                 boolean before = CreatorServer.added();   // true: the mod put it in the list on first start
                 String m1 = CreatorServer.add(), m2 = CreatorServer.add();
                 System.out.println("BBUITEST creator server: before " + before + ", add: " + m1 + " | again: " + m2 + " | in list " + CreatorServer.added());
+                try {   // shulker box contents on 26.x come as ItemStackTemplate: which methods it has
+                    StringBuilder ms = new StringBuilder();
+                    for (java.lang.reflect.Method m : Class.forName("net.minecraft.world.item.ItemStackTemplate").getMethods()) if (m.getParameterCount() == 0) ms.append(m.getName()).append(':').append(m.getReturnType().getSimpleName()).append(' ');
+                    System.out.println("BBUITEST ItemStackTemplate: " + ms);
+                } catch (Throwable e) { System.out.println("BBUITEST ItemStackTemplate: none (" + e + ")"); }
                 Mc.setScreen(new HelpScreen(null, 7));
             }
             case "saved" -> {

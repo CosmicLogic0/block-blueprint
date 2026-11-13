@@ -58,4 +58,15 @@ public final class V {
     public static boolean hasBE(BlockState s) { return s.hasBlockEntity(); }
     public static net.minecraft.client.KeyMapping key(String id, int key) { return new net.minecraft.client.KeyMapping(id, Mc.keyboard(), key, "key.category.buildblueprint.main"); }
     public static boolean keyMatches(net.minecraft.client.KeyMapping k, int key, int scancode) { return k.matches(key, scancode); }
+
+    /** Blocks inside a shulker box (or another box item) you carry: they count as yours. */
+    public static void containerItems(net.minecraft.world.item.ItemStack st, java.util.function.BiConsumer<String, Integer> out) {
+        net.minecraft.nbt.CompoundTag t = st.getTag();
+        if (t == null || !t.contains("BlockEntityTag", 10)) return;
+        net.minecraft.nbt.ListTag l = t.getCompound("BlockEntityTag").getList("Items", 10);
+        for (int i = 0; i < l.size(); i++) {
+            net.minecraft.world.item.ItemStack in = net.minecraft.world.item.ItemStack.of(l.getCompound(i));
+            if (!in.isEmpty()) out.accept(itemId(in.getItem()), in.getCount());
+        }
+    }
 }

@@ -156,9 +156,26 @@ public class TemplatesScreen extends BBScreen {
         th.setDaemon(true); th.start();
     }
 
+    // the same files through jsDelivr: for places where GitHub is blocked or very slow (mainland China and others)
+    private static final String[] MIRRORS = {BASE, "https://cdn.jsdelivr.net/gh/CosmicLogic0/block-blueprint@main/renderer/templates/",
+            "https://fastly.jsdelivr.net/gh/CosmicLogic0/block-blueprint@main/renderer/templates/", "https://gcore.jsdelivr.net/gh/CosmicLogic0/block-blueprint@main/renderer/templates/"};
+    private static volatile int good = 0;   // the one that worked last, tried first
+
+    /** Downloads one file of the free builds, trying the backup addresses when the first doesn't answer. */
     private static byte[] fetch(String url) throws Exception {
+        if (!url.startsWith(BASE)) return fetchOne(url);
+        String rest = url.substring(BASE.length());
+        Exception last = null;
+        for (int k = 0; k < MIRRORS.length; k++) {
+            int i = (good + k) % MIRRORS.length;
+            try { byte[] b = fetchOne(MIRRORS[i] + rest); good = i; return b; } catch (Exception e) { last = e; }
+        }
+        throw last;
+    }
+
+    private static byte[] fetchOne(String url) throws Exception {
         HttpURLConnection c = (HttpURLConnection) new URL(url).openConnection();
-        c.setConnectTimeout(8000); c.setReadTimeout(20000);
+        c.setConnectTimeout(6000); c.setReadTimeout(15000);
         c.setRequestProperty("User-Agent", "build-blueprint-mod");
         if (c.getResponseCode() != 200) throw new Exception("HTTP " + c.getResponseCode());
         try (InputStream in = c.getInputStream()) {

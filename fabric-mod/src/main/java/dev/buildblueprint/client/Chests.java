@@ -25,6 +25,9 @@ public final class Chests {
 
     /** chest position -> item id -> count, as last seen. */
     private static final Map<BlockPos, Map<String, Integer>> SEEN = new LinkedHashMap<>();
+    /** Your ender chest, as last opened (the same in every ender chest, so it counts wherever you are). */
+    private static Map<String, Integer> ENDER = new HashMap<>();
+    public static Map<String, Integer> ender() { return ENDER; }
     private static BlockPos opening;           // what you were looking at when the chest screen opened
     private static Object lastScreen;
     private static Object level;
@@ -32,7 +35,7 @@ public final class Chests {
     static void init() { ClientTickEvents.END_CLIENT_TICK.register(mc -> Safe.run("chest finder", () -> tick(mc))); }
 
     private static void tick(Minecraft mc) {
-        if (mc.level != level) { SEEN.clear(); level = mc.level; }   // new world / server
+        if (mc.level != level) { SEEN.clear(); if (mc.level == null) ENDER = new HashMap<>(); level = mc.level; }   // new world / server
         var sc = Mc.screen();
         if (sc != lastScreen) {
             lastScreen = sc;
@@ -49,6 +52,7 @@ public final class Chests {
             if (st.isEmpty()) continue;
             c.merge(BuiltInRegistries.ITEM.getKey(st.getItem()).toString(), st.getCount(), Integer::sum);
         }
+        if (mc.level.getBlockState(opening).getBlock() == net.minecraft.world.level.block.Blocks.ENDER_CHEST) { ENDER = c; return; }
         SEEN.put(opening.immutable(), c);
     }
 

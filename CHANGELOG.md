@@ -1,3 +1,7 @@
+## 1.4.4 (beta)
+- **Shulker boxes and ender chest count:** blocks inside shulker boxes you carry, and in your ender chest (open it once so the mod knows what's inside), now count toward "have" in the block list and the shopping list.
+- **Free builds in China:** when GitHub can't be reached (it's blocked or very slow in some places, like mainland China), Get free builds now downloads through a backup address instead of saying it can't connect.
+
 ## 1.4.3
 - **Spots for held block:** holding a block lights up the spots near you that still need it (the closest 400). On by default - turn it off in Settings, and pick its color in Settings > Colors.
 - **Fixed:** on Fabric 1.16.2 and 1.16.3 the ghost blocks didn't show (the newest Fabric API for those versions is missing the event the mod drew them with). They draw now.

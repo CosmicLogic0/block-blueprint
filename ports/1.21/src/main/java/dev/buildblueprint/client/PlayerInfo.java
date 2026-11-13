@@ -16,7 +16,15 @@ public final class PlayerInfo {
     public static float yaw() { return Minecraft.getInstance().player.getYRot(); }
 
     /** item id (e.g. "minecraft:oak_planks") -> how many you carry (hotbar, main inventory, off-hand). */
+    /** What you have: your inventory, what's inside shulker boxes you carry, and your ender chest (as last opened). */
     public static Map<String, Integer> inventoryCounts() {
+        Map<String, Integer> out = carried();
+        for (Map.Entry<String, Integer> e : Chests.ender().entrySet()) out.merge(e.getKey(), e.getValue(), Integer::sum);
+        return out;
+    }
+
+    /** Your inventory, plus what's inside shulker boxes in it. */
+    public static Map<String, Integer> carried() {
         Map<String, Integer> out = new HashMap<>();
         var player = Minecraft.getInstance().player;
         if (player == null) return out;
@@ -25,6 +33,7 @@ public final class PlayerInfo {
             ItemStack st = inv.getItem(i);
             if (st.isEmpty()) continue;
             out.merge(V.itemId(st.getItem()), st.getCount(), Integer::sum);
+            try { V.containerItems(st, (id, n) -> out.merge(id, n, Integer::sum)); } catch (Throwable ignored) {}
         }
         return out;
     }

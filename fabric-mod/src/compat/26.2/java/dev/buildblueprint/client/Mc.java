@@ -13,4 +13,28 @@ public final class Mc {
     public static InputConstants.Type keyboard() { return InputConstants.Type.values()[0]; }
     /** Is this keyboard key held down right now? */
     public static boolean keyDown(int key) { return InputConstants.isKeyDown(Minecraft.getInstance().getWindow(), key); }
+
+    /** Blocks inside a shulker box (or another box item) you carry: they count as yours. */
+    public static void containerItems(net.minecraft.world.item.ItemStack st, java.util.function.BiConsumer<String, Integer> out) {
+        net.minecraft.world.item.component.ItemContainerContents c = st.get(net.minecraft.core.component.DataComponents.CONTAINER);
+        if (c == null) return;
+        for (Object o : c.nonEmptyItems()) {   // 26.x: ItemStackTemplate (the game isn't obfuscated, so its methods can be looked up by name)
+            net.minecraft.world.item.ItemStack in = stackOf(o);
+            if (!in.isEmpty()) out.accept(net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(in.getItem()).toString(), in.getCount());
+        }
+    }
+
+    private static net.minecraft.world.item.ItemStack stackOf(Object o) {
+        if (o instanceof net.minecraft.world.item.ItemStack s) return s;
+        for (String m : new String[]{"create", "toStack", "asStack", "copy"}) {
+            try { Object r = o.getClass().getMethod(m).invoke(o); if (r instanceof net.minecraft.world.item.ItemStack s) return s; } catch (ReflectiveOperationException | RuntimeException ignored) {}
+        }
+        try {   // a record of (item, count, ...)
+            Object item = o.getClass().getMethod("item").invoke(o);
+            if (item instanceof net.minecraft.core.Holder<?> h) item = h.value();
+            int n = ((Number) o.getClass().getMethod("count").invoke(o)).intValue();
+            if (item instanceof net.minecraft.world.item.Item it) return new net.minecraft.world.item.ItemStack(it, n);
+        } catch (ReflectiveOperationException | RuntimeException ignored) {}
+        return net.minecraft.world.item.ItemStack.EMPTY;
+    }
 }
