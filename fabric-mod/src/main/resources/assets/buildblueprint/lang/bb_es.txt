@@ -94,6 +94,7 @@ Saved builds > Get free builds has 1,300+ free builds from the Minecraft communi
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Ajustes > Extras tiene más ayudas que puedes encender: materias primas, un mapa de la capa en la que estás y ayuda de andamios.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	El mod usa el idioma de tu juego: inglés, español, portugués, alemán, francés, ruso y chino.
 Holding a block lights up the spots near you that still need it (Settings: Spots for held block).	Al sostener un bloque se iluminan los lugares cercanos que aún lo necesitan (Ajustes: Lugares del bloque en mano).
+Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > More).	¿Te quedas sin un bloque mientras construyes? El cambio automático pone en tu mano el siguiente bloque que necesita la construcción (Ajustes > Más).
 Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again.	¿Quieres jugar con quien hizo este mod? Logic Survival es su servidor de supervivencia. Se añadió una vez al final de tu lista de Multijugador la primera vez que se inició el mod. Bórralo allí si no lo quieres: no volverá. El botón de abajo lo añade de nuevo.
 How it works	Cómo funciona
 < Back	< Atrás
@@ -348,6 +349,8 @@ Red boxes: {0}	Cajas rojas: {0}
 Red outline on blocks that are in the way of the build, or placed the wrong way round, and the "to fix" count in the build menu.	Contorno rojo en los bloques que estorban la construcción o están colocados al revés, y el recuento "por arreglar" en el menú de construcción.
 Check direction: {0}	Comprobar dirección: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Los bloques solo cuentan como hechos si miran hacia el lado correcto: escaleras, losas (arriba o abajo), troncos, puertas, botones... Un bloque al revés recibe una caja roja.
+Auto-swap blocks: {0}	Cambio automático: {0}
+When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	Cuando se acaba la pila de tu mano, el siguiente bloque que necesita la construcción pasa a tu mano: primero más del mismo, luego el siguiente bloque a colocar.
 Pick from ghost: {0}	Coger del fantasma: {0}
 Middle-click a ghost block to put that block in your hand.	Clic central en un bloque fantasma para ponerte ese bloque en la mano.
 Build picture: {0}	Imagen de la construcción: {0}
@@ -578,6 +581,7 @@ Logic Survival	Logic Survival
 Logic Survival is already in your server list.	Logic Survival ya está en tu lista de servidores.
 Added! Open Multiplayer to join Logic Survival.	¡Añadido! Abre Multijugador para entrar a Logic Survival.
 Couldn't add it - add {0} in Multiplayer > Add Server.	No se pudo añadir: añade {0} en Multijugador > Añadir servidor.
+Auto-swap: holding {0}	Cambio automático: sostienes {0}
 is the wrong way round	está al revés
 should {0}	debería {0}
 face up	mirar hacia arriba

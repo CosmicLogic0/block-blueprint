@@ -93,6 +93,7 @@ Constructions sauvegardées > Constructions gratuites propose plus de 1 300 cons
 Paramètres > Extras propose d'autres aides à activer : matières premières, une carte de la couche où tu es, et l'aide échafaudage.
 Le mod suit la langue de ton jeu : anglais, espagnol, portugais, allemand, français, russe et chinois.
 Tenir un bloc illumine les emplacements proches qui en ont encore besoin (Paramètres : Emplacements du bloc en main).
+Plus de blocs pendant que tu construis ? L'échange auto met dans ta main le prochain bloc dont la construction a besoin (Paramètres > Plus).
 Envie de jouer avec le créateur de ce mod ? Logic Survival est son serveur survie. Il a été ajouté une fois à la fin de ta liste Multijoueur au premier lancement du mod. Supprime-le là-bas si tu n'en veux pas - il ne reviendra pas. Le bouton ci-dessous le rajoute.
 Comment ça marche
 < Retour
@@ -347,6 +348,8 @@ Boîtes rouges : {0}
 Contour rouge sur les blocs qui gênent la construction ou sont posés à l'envers, et le nombre « à corriger » dans le menu de construction.
 Vérifier le sens : {0}
 Les blocs ne comptent comme faits que s'ils sont dans le bon sens : escaliers, dalles (haut ou bas), bûches, portes, boutons... Un bloc posé dans le mauvais sens reçoit une boîte rouge.
+Échange auto : {0}
+Quand la pile dans ta main est vide, le prochain bloc dont la construction a besoin passe dans ta main : d'abord le même, puis le prochain bloc à poser.
 Prendre du fantôme : {0}
 Clic molette sur un bloc fantôme pour mettre ce bloc dans ta main.
 Image de la construction : {0}
@@ -577,6 +580,7 @@ Logic Survival
 Logic Survival est déjà dans ta liste de serveurs.
 Ajouté ! Ouvre Multijoueur pour rejoindre Logic Survival.
 Impossible de l'ajouter - ajoute {0} dans Multijoueur > Ajouter un serveur.
+Échange auto : tu tiens {0}
 est dans le mauvais sens
 devrait {0}
 regarder vers le haut

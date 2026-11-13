@@ -68,6 +68,7 @@ public class HelpScreen extends BBScreen {
          "Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.",
          "The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.",
          "Holding a block lights up the spots near you that still need it (Settings: Spots for held block).",
+         "Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > More).",
          "Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again."}};
     private static final int SERVER_PAGE = 7;   // the page with the "Add Logic Survival" button
     private Button server;

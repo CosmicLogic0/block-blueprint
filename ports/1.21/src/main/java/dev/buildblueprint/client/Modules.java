@@ -32,6 +32,7 @@ final class Modules {
         Materials.init();
         AutoBuild.init();
         GhostPick.init();
+        AutoSwap.init();
         Chests.init();
         SessionStore.init();
         UpdateCheck.init();

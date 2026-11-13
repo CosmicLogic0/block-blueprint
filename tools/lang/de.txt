@@ -93,6 +93,7 @@ Gespeicherte Bauten > Kostenlose Bauten hat über 1.300 kostenlose Bauten aus de
 Einstellungen > Extras hat weitere Helfer zum Einschalten: Rohstoffe, eine Karte deiner Schicht und Gerüst-Hinweise.
 Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, Französisch, Russisch und Chinesisch.
 Hältst du einen Block, leuchten die Stellen in deiner Nähe auf, die ihn noch brauchen (Einstellungen: Stellen für gehaltenen Block).
+Geht dir beim Bauen ein Block aus? Auto-Tausch legt dir den nächsten Block, den der Bau braucht, in die Hand (Einstellungen > Mehr).
 Willst du mit dem Macher dieses Mods spielen? Logic Survival ist sein Survival-Server. Er wurde beim ersten Start des Mods einmal ans Ende deiner Mehrspieler-Liste gesetzt. Lösch ihn dort, wenn du ihn nicht willst - er kommt nicht wieder. Der Knopf unten fügt ihn wieder hinzu.
 So funktioniert's
 < Zurück
@@ -347,6 +348,8 @@ Rote Boxen: {0}
 Roter Rahmen um Blöcke, die dem Bauwerk im Weg sind oder falsch herum stehen, und die Anzahl „zu reparieren" im Baumenü.
 Richtung prüfen: {0}
 Blöcke zählen nur als fertig, wenn sie richtig herum stehen: Treppen, Stufen (oben oder unten), Stämme, Türen, Knöpfe... Ein falsch herum gesetzter Block bekommt eine rote Box.
+Auto-Tausch: {0}
+Wenn der Stapel in deiner Hand leer ist, kommt der nächste Block, den der Bau braucht, in deine Hand: erst mehr vom gleichen, dann der nächste zu setzende Block.
 Aus dem Geist nehmen: {0}
 Mittelklick auf einen Geisterblock legt dir diesen Block in die Hand.
 Baubild: {0}
@@ -577,6 +580,7 @@ Logic Survival
 Logic Survival ist schon in deiner Serverliste.
 Hinzugefügt! Öffne Mehrspieler, um Logic Survival beizutreten.
 Konnte nicht hinzugefügt werden - füge {0} unter Mehrspieler > Server hinzufügen hinzu.
+Auto-Tausch: du hältst {0}
 ist falsch herum
 sollte {0}
 nach oben zeigen

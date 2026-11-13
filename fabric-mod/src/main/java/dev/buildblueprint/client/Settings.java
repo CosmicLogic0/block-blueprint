@@ -43,6 +43,8 @@ public final class Settings {
     public static int ghostColor = -1, redColor = 0, hintColor = 2, chestColor = 3, scaffoldColor = 5, spotColor = 4;
     // "Show spots for held block": boxes on every spot (nearest 400) that still needs the block in your hand
     public static boolean heldSpots = true;
+    // auto-swap: when your stack runs out, the next block the build needs moves into your hand
+    public static boolean autoSwap = true;
     // the Logic Survival server was put in the Multiplayer list once (on first start) - never again after that
     public static boolean serverOffered = false;
 
@@ -61,7 +63,7 @@ public final class Settings {
         rawMats = b(p, "rawMats", rawMats); layerMap = b(p, "layerMap", layerMap); scaffold = b(p, "scaffold", scaffold);
         ghostColor = Colors.fix(i(p, "ghostColor", ghostColor), true); redColor = Colors.fix(i(p, "redColor", redColor), false); hintColor = Colors.fix(i(p, "hintColor", hintColor), false);
         chestColor = Colors.fix(i(p, "chestColor", chestColor), false); scaffoldColor = Colors.fix(i(p, "scaffoldColor", scaffoldColor), false);
-        spotColor = Colors.fix(i(p, "spotColor", spotColor), false); heldSpots = b(p, "heldSpots", heldSpots); serverOffered = b(p, "serverOffered", serverOffered);
+        spotColor = Colors.fix(i(p, "spotColor", spotColor), false); heldSpots = b(p, "heldSpots", heldSpots); autoSwap = b(p, "autoSwap", autoSwap); serverOffered = b(p, "serverOffered", serverOffered);
     }
 
     public static void save() {
@@ -74,7 +76,7 @@ public final class Settings {
         p.setProperty("nextHint", "" + nextHint); p.setProperty("ghostPick", "" + ghostPick); p.setProperty("preview3d", "" + preview3d); p.setProperty("chestFinder", "" + chestFinder); p.setProperty("checkFacing", "" + checkFacing); p.setProperty("hudStats", "" + hudStats); p.setProperty("sounds", "" + sounds);
         p.setProperty("rawMats", "" + rawMats); p.setProperty("layerMap", "" + layerMap); p.setProperty("scaffold", "" + scaffold);
         p.setProperty("ghostColor", "" + ghostColor); p.setProperty("redColor", "" + redColor); p.setProperty("hintColor", "" + hintColor); p.setProperty("chestColor", "" + chestColor); p.setProperty("scaffoldColor", "" + scaffoldColor);
-        p.setProperty("spotColor", "" + spotColor); p.setProperty("heldSpots", "" + heldSpots); p.setProperty("serverOffered", "" + serverOffered);
+        p.setProperty("spotColor", "" + spotColor); p.setProperty("heldSpots", "" + heldSpots); p.setProperty("autoSwap", "" + autoSwap); p.setProperty("serverOffered", "" + serverOffered);
         try { Files.createDirectories(file().getParent()); try (Writer w = Files.newBufferedWriter(file())) { p.store(w, "Build Blueprint settings"); } } catch (IOException ignored) {}
     }
 

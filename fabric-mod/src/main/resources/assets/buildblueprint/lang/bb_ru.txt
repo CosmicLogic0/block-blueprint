@@ -94,6 +94,7 @@ Saved builds > Get free builds has 1,300+ free builds from the Minecraft communi
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Настройки > Дополнительно: ещё помощники, которые можно включить: сырьё, карта слоя и подсказки лесов.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	Мод использует язык игры: английский, испанский, португальский, немецкий, французский, русский и китайский.
 Holding a block lights up the spots near you that still need it (Settings: Spots for held block).	Если держать блок, подсвечиваются ближайшие места, где он ещё нужен (Настройки: Места для блока в руке).
+Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > More).	Закончился блок во время стройки? Автозамена положит в руку следующий нужный постройке блок (Настройки > Ещё).
 Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again.	Хочешь поиграть с автором этого мода? Logic Survival — его сервер на выживание. Он был один раз добавлен в конец списка «Сетевая игра» при первом запуске мода. Удали его там, если он не нужен, — он не вернётся. Кнопка ниже добавит его снова.
 How it works	Как это работает
 < Back	< Назад
@@ -348,6 +349,8 @@ Red boxes: {0}	Красные рамки: {0}
 Red outline on blocks that are in the way of the build, or placed the wrong way round, and the "to fix" count in the build menu.	Красная рамка вокруг блоков, которые мешают постройке или стоят не той стороной, и счётчик «исправить» в меню постройки.
 Check direction: {0}	Проверять направление: {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Блоки засчитываются, только если стоят правильной стороной: ступеньки, плиты (верх или низ), брёвна, двери, кнопки... Блок, стоящий не той стороной, получает красную рамку.
+Auto-swap blocks: {0}	Автозамена блоков: {0}
+When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	Когда стак в руке заканчивается, в руку переходит следующий нужный блок: сначала такой же, затем следующий для установки.
 Pick from ghost: {0}	Брать из призрака: {0}
 Middle-click a ghost block to put that block in your hand.	Средняя кнопка мыши по блоку-призраку даёт этот блок в руку.
 Build picture: {0}	Картинка постройки: {0}
@@ -578,6 +581,7 @@ Logic Survival	Logic Survival
 Logic Survival is already in your server list.	Logic Survival уже есть в твоём списке серверов.
 Added! Open Multiplayer to join Logic Survival.	Добавлено! Открой «Сетевую игру», чтобы зайти на Logic Survival.
 Couldn't add it - add {0} in Multiplayer > Add Server.	Не получилось добавить — добавь {0} в «Сетевая игра» > «Добавить».
+Auto-swap: holding {0}	Автозамена: в руке {0}
 is the wrong way round	стоит не той стороной
 should {0}	должен {0}
 face up	смотреть вверх

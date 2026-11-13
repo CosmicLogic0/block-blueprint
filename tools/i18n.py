@@ -17,7 +17,7 @@ SKIP = {'UiTest.java'}
 def files():
     out = [p for p in sorted(MENU.glob('*.java')) if p.name not in SKIP]
     out += [MAIN / n for n in ['Chat.java', 'Materials.java', 'Mistakes.java', 'Layers.java', 'Stats.java', 'Swapper.java', 'Copier.java',
-                               'BuildBlueprintClient.java', 'AutoBuild.java', 'UpdateCheck.java', 'Coop.java', 'Hint.java', 'SavedBuilds.java', 'Chests.java', 'GhostPick.java', 'SessionStore.java', 'CreatorServer.java']]
+                               'BuildBlueprintClient.java', 'AutoBuild.java', 'UpdateCheck.java', 'Coop.java', 'Hint.java', 'SavedBuilds.java', 'Chests.java', 'GhostPick.java', 'SessionStore.java', 'CreatorServer.java', 'AutoSwap.java']]
     out.append(ROOT / 'fabric-mod/src/main/java/dev/buildblueprint/core/Orient.java')
     return [p for p in out if p.exists()]
 

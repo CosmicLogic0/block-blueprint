@@ -93,6 +93,7 @@ Construcciones guardadas > Construcciones gratis tiene más de 1.300 construccio
 Ajustes > Extras tiene más ayudas que puedes encender: materias primas, un mapa de la capa en la que estás y ayuda de andamios.
 El mod usa el idioma de tu juego: inglés, español, portugués, alemán, francés, ruso y chino.
 Al sostener un bloque se iluminan los lugares cercanos que aún lo necesitan (Ajustes: Lugares del bloque en mano).
+¿Te quedas sin un bloque mientras construyes? El cambio automático pone en tu mano el siguiente bloque que necesita la construcción (Ajustes > Más).
 ¿Quieres jugar con quien hizo este mod? Logic Survival es su servidor de supervivencia. Se añadió una vez al final de tu lista de Multijugador la primera vez que se inició el mod. Bórralo allí si no lo quieres: no volverá. El botón de abajo lo añade de nuevo.
 Cómo funciona
 < Atrás
@@ -347,6 +348,8 @@ Cajas rojas: {0}
 Contorno rojo en los bloques que estorban la construcción o están colocados al revés, y el recuento "por arreglar" en el menú de construcción.
 Comprobar dirección: {0}
 Los bloques solo cuentan como hechos si miran hacia el lado correcto: escaleras, losas (arriba o abajo), troncos, puertas, botones... Un bloque al revés recibe una caja roja.
+Cambio automático: {0}
+Cuando se acaba la pila de tu mano, el siguiente bloque que necesita la construcción pasa a tu mano: primero más del mismo, luego el siguiente bloque a colocar.
 Coger del fantasma: {0}
 Clic central en un bloque fantasma para ponerte ese bloque en la mano.
 Imagen de la construcción: {0}
@@ -577,6 +580,7 @@ Logic Survival
 Logic Survival ya está en tu lista de servidores.
 ¡Añadido! Abre Multijugador para entrar a Logic Survival.
 No se pudo añadir: añade {0} en Multijugador > Añadir servidor.
+Cambio automático: sostienes {0}
 está al revés
 debería {0}
 mirar hacia arriba

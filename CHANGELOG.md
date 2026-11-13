@@ -1,3 +1,6 @@
+## 1.4.5 (beta)
+- **Auto-swap blocks:** when the stack in your hand runs out while you build, the next block the build needs moves into your hand - more of the same block first, then the next block to place, then any block still needed. On by default (Settings > More).
+
 ## 1.4.4 (beta)
 - **Shulker boxes and ender chest count:** blocks inside shulker boxes you carry, and in your ender chest (open it once so the mod knows what's inside), now count toward "have" in the block list and the shopping list.
 - **Free builds in China:** when GitHub can't be reached (it's blocked or very slow in some places, like mainland China), Get free builds now downloads through a backup address instead of saying it can't connect.
