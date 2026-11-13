@@ -1,3 +1,8 @@
+## 1.4.3
+- **Spots for held block:** holding a block lights up the spots near you that still need it (the closest 400). On by default - turn it off in Settings, and pick its color in Settings > Colors.
+- **Fixed:** on Fabric 1.16.2 and 1.16.3 the ghost blocks didn't show (the newest Fabric API for those versions is missing the event the mod drew them with). They draw now.
+- **Logic Survival:** the mod now adds the Logic Survival server (play.logicsurvival.fyi) to the end of your Multiplayer list once, the first time it starts. Delete it there if you don't want it - it won't come back by itself. How it works > More helpers can add it again.
+
 ## 1.4.2
 - **Colors** (Settings > Colors): pick the color of the ghost blocks (Normal keeps each block's own colors), the mistake boxes, the next-block box, the chest finder boxes and the scaffold columns. Reset colors puts them back.
 - **Play with the mod's maker:** How it works > More helpers has a button that adds the Logic Survival server (play.logicsurvival.fyi) to your Multiplayer list. Nothing is added unless you press it, and you can delete it there any time.

@@ -68,7 +68,8 @@ public class HelpScreen extends Screen {
          "Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.",
          "Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.",
          "The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.",
-         "Want to play with the person who made this mod? Logic Survival is their survival server. The button below adds it to your Multiplayer list - nothing is added unless you press it."}};
+         "Holding a block lights up the spots near you that still need it (Settings: Spots for held block).",
+         "Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again."}};
     private static final int SERVER_PAGE = 7;   // the page with the "Add Logic Survival" button
     private Button server;
     private String serverMsg;

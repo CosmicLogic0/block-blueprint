@@ -50,7 +50,9 @@ public class SettingsScreen extends Screen {
                     "The color of the boxes on chests that hold blocks you still need (Chest finder).");
             opt(() -> "Scaffold columns: " + Colors.name(Settings.scaffoldColor), () -> Settings.scaffoldColor = Colors.next(Settings.scaffoldColor, false),
                     "The color of the scaffold hint columns (Settings > Extras).");
-            opt(() -> "Reset colors", () -> { Settings.ghostColor = -1; Settings.redColor = 0; Settings.hintColor = 2; Settings.chestColor = 3; Settings.scaffoldColor = 5; Mc.setScreen(new SettingsScreen(parent)); },
+            opt(() -> "Held block spots: " + Colors.name(Settings.spotColor), () -> Settings.spotColor = Colors.next(Settings.spotColor, false),
+                    "The color of the boxes on the spots that still need the block in your hand.");
+            opt(() -> "Reset colors", () -> { Settings.ghostColor = -1; Settings.redColor = 0; Settings.hintColor = 2; Settings.chestColor = 3; Settings.scaffoldColor = 5; Settings.spotColor = 4; Mc.setScreen(new SettingsScreen(parent)); },
                     "Back to the mod's usual colors.");
         } else if (extras) {
             opt(() -> "Raw materials: " + onOff(Settings.rawMats), () -> Settings.rawMats = !Settings.rawMats,
@@ -70,6 +72,8 @@ public class SettingsScreen extends Screen {
             opt(() -> "Corner: " + (Settings.hudRight ? "top right" : "top left"), () -> Settings.hudRight = !Settings.hudRight, "Which top corner of the screen the list sits in.");
             opt(() -> "List size: " + Settings.hudScale + "%", () -> Settings.hudScale = next(Settings.hudScale, 50, 75, 100, 125, 150), "Make the corner list smaller or bigger.");
             opt(() -> "Next block: " + onOff(Settings.nextHint), () -> Settings.nextHint = !Settings.nextHint, "A yellow box shows which block to place next (bottom layer first, closest first).");
+            opt(() -> "Spots for held block: " + onOff(Settings.heldSpots), () -> Settings.heldSpots = !Settings.heldSpots,
+                    "Holding a block lights up the spots near you that still need it (the closest 400).");
             opt(() -> "Auto next layer: " + onOff(Settings.autoLayer), () -> Settings.autoLayer = !Settings.autoLayer, "When you finish a layer, go to the next one by itself.");
             opt(() -> "Chest finder: " + onOff(Settings.chestFinder), () -> Settings.chestFinder = !Settings.chestFinder, "Green boxes on chests that hold blocks you still need. Open a chest once so the mod knows what's inside.");
             opt(() -> "Sounds: " + onOff(Settings.sounds), () -> Settings.sounds = !Settings.sounds, "A little ding when you finish a layer, and a level-up sound when the build is done.");

@@ -7,8 +7,9 @@ import java.nio.file.StandardCopyOption;
 import net.fabricmc.loader.api.FabricLoader;
 
 /**
- * The mod maker's own server, Logic Survival. It is only added to the multiplayer list when the player presses
- * "Add to my servers" (How it works > More helpers) - never by itself, and never again after they delete it.
+ * The mod maker's own server, Logic Survival. It is put at the end of the Multiplayer list once, the first time the
+ * mod starts (the mod pages say so). If the player deletes it, it never comes back by itself; the button in
+ * How it works > More helpers adds it again.
  */
 public final class CreatorServer {
     private CreatorServer() {}
@@ -17,6 +18,15 @@ public final class CreatorServer {
     public static final String IP = "play.logicsurvival.fyi";
 
     private static Path file() { return FabricLoader.getInstance().getConfigDir().getParent().resolve("servers.dat"); }
+
+    /** First start of this mod (or of a version that has this): add it once. */
+    public static void firstStart() {
+        if (Settings.serverOffered) return;
+        Settings.serverOffered = true;
+        Settings.save();
+        String m = add();
+        System.out.println("[Build Blueprint] Logic Survival server list: " + m);
+    }
 
     /** Already in the player's multiplayer list? */
     public static boolean added() {

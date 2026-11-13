@@ -19,6 +19,7 @@ public final class Colors {
     /** Full-alpha ARGB for boxes and lines. */
     public static int red() { return 0xFF000000 | RGB[fix(Settings.redColor, false)]; }
     public static int chest() { return 0xFF000000 | RGB[fix(Settings.chestColor, false)]; }
+    public static int spots() { return 0xFF000000 | RGB[fix(Settings.spotColor, false)]; }
     public static int scaffold() { return 0xFF000000 | RGB[fix(Settings.scaffoldColor, false)]; }
     /** The next-block box: the chosen color, or green once you hold that block (yellow when green is the chosen color). */
     public static int hint(boolean inHand) {

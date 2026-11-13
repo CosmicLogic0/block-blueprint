@@ -26,7 +26,7 @@ public final class UiTest {
     private static final String[] SHOWCASE = {"sc-ghost", "sc-menu", "sc-placed", "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e",
             "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j", "sc-layer-k", "sc-done", "done"};
     private static boolean showcase;
-    private static final String[] WORLD = {"world-ghost", "world-placed", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "shopping", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "settings-colors", "help-server", "saved", "world-perf", "world-near", "world-special", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "world-held", "world-held-check", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "shopping", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "settings-colors", "help-server", "saved", "world-perf", "world-near", "world-special", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -59,6 +59,7 @@ public final class UiTest {
             step = 0; tick = 0; open(steps[0]);
             return;
         }
+        if (step >= steps.length) return;   // all steps done
         if ("world-perf".equals(steps[step])) perfTick();
         if ("world-near".equals(steps[step]) && tick == 100) System.out.println("BBUITEST perf nearby layers only: " + Perf.report());
         if (++tick == 40) pressF2();                                              // Minecraft's own screenshot, once the screen has settled
@@ -301,7 +302,18 @@ public final class UiTest {
                 Copier.start();
                 if (Copier.c1 != null) Copier.c2 = Copier.c1.offset(6, 4, 6);
             }
+            case "world-held" -> {   // spots for held block: hold the next block's item
+                Mc.setScreen(null);
+                String st = Hint.state;
+                dev.buildblueprint.core.MaterialMap.Req r = st == null ? null : dev.buildblueprint.core.MaterialMap.of(st);
+                net.minecraft.world.item.ItemStack hold = r != null ? Materials.stackFor(r.itemId()) : net.minecraft.world.item.ItemStack.EMPTY;
+                if (hold.isEmpty()) for (Materials.Row row : Materials.rows()) if (row.left() > 0 && !row.icon().isEmpty()) { hold = row.icon(); break; }   // no next block yet: any block still needed
+                if (!hold.isEmpty()) net.minecraft.client.Minecraft.getInstance().player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, hold.copy());
+                System.out.println("BBUITEST held: " + (hold.isEmpty() ? "nothing (no block still needed)" : hold.getHoverName().getString()));
+            }
+            case "world-held-check" -> System.out.println("BBUITEST held spots: " + PreviewModule.spotCount() + ", next block box green: " + Hint.inHand);
             case "world-only" -> {   // the eye: shift-click shows only one block's ghosts
+                net.minecraft.client.Minecraft.getInstance().player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, net.minecraft.world.item.ItemStack.EMPTY);
                 Mc.setScreen(null);
                 Materials.refresh();
                 var rows = Materials.rows();
@@ -321,7 +333,7 @@ public final class UiTest {
             }
             case "help-server" -> {   // the creator's server button: adds it once, never twice
                 SettingsScreen.colors = false; Settings.ghostColor = -1; Settings.redColor = 0;
-                boolean before = CreatorServer.added();
+                boolean before = CreatorServer.added();   // true: the mod put it in the list on first start
                 String m1 = CreatorServer.add(), m2 = CreatorServer.add();
                 System.out.println("BBUITEST creator server: before " + before + ", add: " + m1 + " | again: " + m2 + " | in list " + CreatorServer.added());
                 Mc.setScreen(new HelpScreen(null, 7));

@@ -92,7 +92,8 @@ Construir con amigos: Co-op en el menú de construcción te da un código para t
 Construcciones guardadas > Construcciones gratis tiene más de 1.300 construcciones gratis de la comunidad de Minecraft.
 Ajustes > Extras tiene más ayudas que puedes encender: materias primas, un mapa de la capa en la que estás y ayuda de andamios.
 El mod usa el idioma de tu juego: inglés, español, portugués, alemán, francés, ruso y chino.
-¿Quieres jugar con quien hizo este mod? Logic Survival es su servidor de supervivencia. El botón de abajo lo añade a tu lista de Multijugador; no se añade nada si no lo pulsas.
+Al sostener un bloque se iluminan los lugares cercanos que aún lo necesitan (Ajustes: Lugares del bloque en mano).
+¿Quieres jugar con quien hizo este mod? Logic Survival es su servidor de supervivencia. Se añadió una vez al final de tu lista de Multijugador la primera vez que se inició el mod. Bórralo allí si no lo quieres: no volverá. El botón de abajo lo añade de nuevo.
 Cómo funciona
 < Atrás
 Siguiente >
@@ -290,6 +291,8 @@ Cajas de cofres: {0}
 El color de las cajas en cofres con bloques que aún necesitas (Buscador de cofres).
 Columnas de andamio: {0}
 El color de las columnas de ayuda de andamio (Ajustes > Extras).
+Lugares del bloque en mano: {0}
+El color de las cajas en los lugares que aún necesitan el bloque que tienes en la mano.
 Restablecer colores
 Vuelve a los colores habituales del mod.
 Materias primas: {0}
@@ -316,6 +319,8 @@ Tamaño de la lista: {0}%
 Haz la lista de la esquina más pequeña o más grande.
 Siguiente bloque: {0}
 Una caja amarilla muestra qué bloque colocar después (primero la capa de abajo, primero lo más cercano).
+Lugares del bloque en mano: {0}
+Al sostener un bloque se iluminan los lugares cercanos que aún lo necesitan (los 400 más cercanos).
 Siguiente capa automática: {0}
 Al terminar una capa, pasa sola a la siguiente.
 Buscador de cofres: {0}

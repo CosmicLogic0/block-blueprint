@@ -93,7 +93,8 @@ Something placed wrong? The build menu shows how many to fix at the top. Click i
 Saved builds > Get free builds has 1,300+ free builds from the Minecraft community.	Constructions sauvegardées > Constructions gratuites propose plus de 1 300 constructions gratuites de la communauté Minecraft.
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Paramètres > Extras propose d'autres aides à activer : matières premières, une carte de la couche où tu es, et l'aide échafaudage.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	Le mod suit la langue de ton jeu : anglais, espagnol, portugais, allemand, français, russe et chinois.
-Want to play with the person who made this mod? Logic Survival is their survival server. The button below adds it to your Multiplayer list - nothing is added unless you press it.	Envie de jouer avec le créateur de ce mod ? Logic Survival est son serveur survie. Le bouton ci-dessous l'ajoute à ta liste Multijoueur - rien n'est ajouté si tu n'appuies pas.
+Holding a block lights up the spots near you that still need it (Settings: Spots for held block).	Tenir un bloc illumine les emplacements proches qui en ont encore besoin (Paramètres : Emplacements du bloc en main).
+Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again.	Envie de jouer avec le créateur de ce mod ? Logic Survival est son serveur survie. Il a été ajouté une fois à la fin de ta liste Multijoueur au premier lancement du mod. Supprime-le là-bas si tu n'en veux pas - il ne reviendra pas. Le bouton ci-dessous le rajoute.
 How it works	Comment ça marche
 < Back	< Retour
 Next >	Suivant >
@@ -291,6 +292,8 @@ Chest boxes: {0}	Cadres des coffres : {0}
 The color of the boxes on chests that hold blocks you still need (Chest finder).	La couleur des cadres sur les coffres qui contiennent des blocs qu'il te faut encore (Détecteur de coffres).
 Scaffold columns: {0}	Colonnes d'échafaudage : {0}
 The color of the scaffold hint columns (Settings > Extras).	La couleur des colonnes d'aide d'échafaudage (Paramètres > Extras).
+Held block spots: {0}	Emplacements du bloc en main : {0}
+The color of the boxes on the spots that still need the block in your hand.	La couleur des cadres sur les emplacements qui ont encore besoin du bloc dans ta main.
 Reset colors	Réinitialiser les couleurs
 Back to the mod's usual colors.	Revenir aux couleurs habituelles du mod.
 Raw materials: {0}	Matières premières : {0}
@@ -317,6 +320,8 @@ List size: {0}%	Taille de la liste : {0} %
 Make the corner list smaller or bigger.	Rend la liste du coin plus petite ou plus grande.
 Next block: {0}	Prochain bloc : {0}
 A yellow box shows which block to place next (bottom layer first, closest first).	Une boîte jaune montre quel bloc poser ensuite (couche du bas d'abord, le plus proche d'abord).
+Spots for held block: {0}	Emplacements du bloc en main : {0}
+Holding a block lights up the spots near you that still need it (the closest 400).	Tenir un bloc illumine les emplacements proches qui en ont encore besoin (les 400 plus proches).
 Auto next layer: {0}	Couche suivante auto : {0}
 When you finish a layer, go to the next one by itself.	Quand tu finis une couche, passe tout seul à la suivante.
 Chest finder: {0}	Détecteur de coffres : {0}

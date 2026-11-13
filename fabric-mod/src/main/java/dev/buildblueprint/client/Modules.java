@@ -28,6 +28,7 @@ final class Modules {
 
     static void init() {
         Settings.load();
+        CreatorServer.firstStart();
         Materials.init();
         AutoBuild.init();
         GhostPick.init();

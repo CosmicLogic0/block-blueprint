@@ -24,6 +24,7 @@ The build is saved to your **Saved builds**, ready to place as a blueprint in an
 - **Pick from ghost**: middle-click a ghost block to grab that block from your inventory.
 - **Chest finder**: chests you've opened that hold blocks you still need are outlined in green.
 - **Colors**: pick the colors of the ghost blocks and the boxes the mod draws (Settings → Colors).
+- **Spots for held block**: hold a block and every spot near you that still needs it lights up.
 - **Remembers your blueprint** in every world and server, so it's still there when you come back.
 - **Progress stats**: time spent and blocks per minute.
 - **Schematic files**: .schem (WorldEdit / Sponge), .litematic (Litematica) and .nbt (structure blocks) show up in Saved builds, and `/buildblueprint export` saves any build as a .schem.
@@ -56,4 +57,4 @@ Every file is tested before it's uploaded: the real game is started with it, joi
 
 ## 🎮 Play on the creator's server
 
-**Logic Survival** (`play.logicsurvival.fyi`) is the survival server run by the maker of this mod. The mod has an optional button for it in **How it works → More helpers → Add Logic Survival to my servers**. It's only added to your Multiplayer list if you press it, and you can delete it there any time.
+**Logic Survival** (`play.logicsurvival.fyi`) is the survival server run by the maker of this mod. **Heads up:** the mod adds Logic Survival to the end of your Multiplayer server list once, the first time it starts. If you don't want it, just delete it there - it won't come back by itself (How it works → More helpers can add it again).

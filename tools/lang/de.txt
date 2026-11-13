@@ -92,7 +92,8 @@ Etwas falsch platziert? Das Baumenü zeigt oben, wie viele zu reparieren sind. K
 Gespeicherte Bauten > Kostenlose Bauten hat über 1.300 kostenlose Bauten aus der Minecraft-Community.
 Einstellungen > Extras hat weitere Helfer zum Einschalten: Rohstoffe, eine Karte deiner Schicht und Gerüst-Hinweise.
 Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, Französisch, Russisch und Chinesisch.
-Willst du mit dem Macher dieses Mods spielen? Logic Survival ist sein Survival-Server. Der Knopf unten fügt ihn deiner Mehrspieler-Liste hinzu - ohne Klick wird nichts hinzugefügt.
+Hältst du einen Block, leuchten die Stellen in deiner Nähe auf, die ihn noch brauchen (Einstellungen: Stellen für gehaltenen Block).
+Willst du mit dem Macher dieses Mods spielen? Logic Survival ist sein Survival-Server. Er wurde beim ersten Start des Mods einmal ans Ende deiner Mehrspieler-Liste gesetzt. Lösch ihn dort, wenn du ihn nicht willst - er kommt nicht wieder. Der Knopf unten fügt ihn wieder hinzu.
 So funktioniert's
 < Zurück
 Weiter >
@@ -290,6 +291,8 @@ Truhenrahmen: {0}
 Die Farbe der Rahmen um Truhen mit Blöcken, die du noch brauchst (Truhenfinder).
 Gerüstsäulen: {0}
 Die Farbe der Gerüst-Hinweissäulen (Einstellungen > Extras).
+Stellen für gehaltenen Block: {0}
+Die Farbe der Rahmen an den Stellen, die den Block in deiner Hand noch brauchen.
 Farben zurücksetzen
 Zurück zu den üblichen Farben des Mods.
 Rohstoffe: {0}
@@ -316,6 +319,8 @@ Listengröße: {0}%
 Macht die Eckliste kleiner oder größer.
 Nächster Block: {0}
 Eine gelbe Box zeigt, welchen Block du als Nächstes setzt (unterste Schicht zuerst, nächster zuerst).
+Stellen für gehaltenen Block: {0}
+Hältst du einen Block, leuchten die Stellen in deiner Nähe auf, die ihn noch brauchen (die nächsten 400).
 Automatisch nächste Schicht: {0}
 Wenn du eine Schicht fertig hast, geht es von selbst zur nächsten.
 Truhen-Finder: {0}

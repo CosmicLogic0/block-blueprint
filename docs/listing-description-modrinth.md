@@ -41,6 +41,9 @@ In Creative mode the mod can build it for you. **Auto-build** places the whole b
 **🌈 Pick your colors**<br>
 Settings → Colors lets you choose the color of the ghost blocks and of the boxes the mod draws: mistakes, the next block, chests and scaffold columns.
 
+**✋ Find where a block goes**<br>
+Hold a block and every spot near you that still needs it lights up.
+
 **💾 It remembers**<br>
 Leave the world and come back, and your blueprint is still there, right where you left it.
 
@@ -97,4 +100,4 @@ Build Blueprint and the Block Blueprint app are free. Donations keep the mod up 
 
 ### 🎮 Play on the creator's server
 
-**Logic Survival** (`play.logicsurvival.fyi`) is the survival server run by the maker of this mod. The mod has an optional button for it in **How it works → More helpers → Add Logic Survival to my servers**. It's only added to your Multiplayer list if you press it, and you can delete it there any time.
+**Logic Survival** (`play.logicsurvival.fyi`) is the survival server run by the maker of this mod. **Heads up:** the mod adds Logic Survival to the end of your Multiplayer server list once, the first time it starts. If you don't want it, just delete it there - it won't come back by itself (How it works → More helpers can add it again).

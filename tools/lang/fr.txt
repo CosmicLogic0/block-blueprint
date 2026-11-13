@@ -92,7 +92,8 @@ Quelque chose de mal placé ? Le menu de construction indique en haut combien il
 Constructions sauvegardées > Constructions gratuites propose plus de 1 300 constructions gratuites de la communauté Minecraft.
 Paramètres > Extras propose d'autres aides à activer : matières premières, une carte de la couche où tu es, et l'aide échafaudage.
 Le mod suit la langue de ton jeu : anglais, espagnol, portugais, allemand, français, russe et chinois.
-Envie de jouer avec le créateur de ce mod ? Logic Survival est son serveur survie. Le bouton ci-dessous l'ajoute à ta liste Multijoueur - rien n'est ajouté si tu n'appuies pas.
+Tenir un bloc illumine les emplacements proches qui en ont encore besoin (Paramètres : Emplacements du bloc en main).
+Envie de jouer avec le créateur de ce mod ? Logic Survival est son serveur survie. Il a été ajouté une fois à la fin de ta liste Multijoueur au premier lancement du mod. Supprime-le là-bas si tu n'en veux pas - il ne reviendra pas. Le bouton ci-dessous le rajoute.
 Comment ça marche
 < Retour
 Suivant >
@@ -290,6 +291,8 @@ Cadres des coffres : {0}
 La couleur des cadres sur les coffres qui contiennent des blocs qu'il te faut encore (Détecteur de coffres).
 Colonnes d'échafaudage : {0}
 La couleur des colonnes d'aide d'échafaudage (Paramètres > Extras).
+Emplacements du bloc en main : {0}
+La couleur des cadres sur les emplacements qui ont encore besoin du bloc dans ta main.
 Réinitialiser les couleurs
 Revenir aux couleurs habituelles du mod.
 Matières premières : {0}
@@ -316,6 +319,8 @@ Taille de la liste : {0} %
 Rend la liste du coin plus petite ou plus grande.
 Prochain bloc : {0}
 Une boîte jaune montre quel bloc poser ensuite (couche du bas d'abord, le plus proche d'abord).
+Emplacements du bloc en main : {0}
+Tenir un bloc illumine les emplacements proches qui en ont encore besoin (les 400 plus proches).
 Couche suivante auto : {0}
 Quand tu finis une couche, passe tout seul à la suivante.
 Détecteur de coffres : {0}

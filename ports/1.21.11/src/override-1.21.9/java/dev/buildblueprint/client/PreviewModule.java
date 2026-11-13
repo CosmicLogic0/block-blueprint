@@ -106,6 +106,7 @@ public final class PreviewModule {
         }
         // chest finder: chests you've opened that hold blocks you still need
         if (Settings.chestFinder && BuildBlueprintClient.SESSION.loaded()) for (BlockPos c : chestCache) box(p, vc, new AABB(c).inflate(0.01), Colors.chest());
+        for (BlockPos sp : SPOTS) box(p, vc, new AABB(sp).inflate(0.02), Colors.spots());   // show spots for held block
         // copy mode: the box being selected (cyan) and its corners (yellow)
         if (Copier.active && Copier.c1 != null && mc.player != null) {
             BlockPos a = Copier.c1, b = Copier.c2 != null ? Copier.c2 : Copier.c1;
@@ -398,8 +399,30 @@ public final class PreviewModule {
         return v.p.item[v.bp.cells[v.bp.index(g.lx, g.ly, g.lz)]];
     }
 
+    /** "Show spots for held block": the nearest spots (up to 400) that still need the block in your hand. */
+    private static final int SPOT_MAX = 400;
+    private static final List<BlockPos> SPOTS = new ArrayList<>();
+    public static int spotCount() { return SPOTS.size(); }
+    private static void heldSpots(Minecraft mc) {
+        SPOTS.clear();
+        if (!Settings.heldSpots || ghosts.isEmpty() || mc.player == null || mc.player.getMainHandItem().isEmpty()) return;
+        String held = BuiltInRegistries.ITEM.getKey(mc.player.getMainHandItem().getItem()).toString();
+        double px = mc.player.getX(), py = mc.player.getEyeY() - 1, pz = mc.player.getZ();
+        java.util.PriorityQueue<double[]> near = new java.util.PriorityQueue<>(SPOT_MAX + 1, (a, b) -> Double.compare(b[0], a[0]));
+        for (int i = 0; i < ghosts.size(); i++) {
+            Ghost g = ghosts.get(i);
+            String it = itemOf(g);
+            if (it == null || !it.equals(held)) continue;
+            double d = d2(g, px, py, pz);
+            if (near.size() < SPOT_MAX) near.add(new double[]{d, i});
+            else if (d < near.peek()[0]) { near.poll(); near.add(new double[]{d, i}); }
+        }
+        for (double[] e : near) { Ghost g = ghosts.get((int) e[1]); SPOTS.add(new BlockPos(g.x, g.y, g.z)); }
+    }
+
     /** Next block helper: lowest unfinished layer first, then the block you're holding, then the closest. */
     private static void pickHint(Minecraft mc) {
+        heldSpots(mc);
         if (Mistakes.aim(mc)) return;   // showing mistakes: the guide points at the one to fix
         if (!Settings.nextHint || ghosts.isEmpty() || mc.player == null) { Hint.clear(); return; }
         int low = Integer.MAX_VALUE;

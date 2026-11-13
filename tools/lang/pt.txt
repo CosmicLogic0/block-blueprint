@@ -92,7 +92,8 @@ Algo colocado errado? O menu da construção mostra no topo quantos há para con
 Construções salvas > Construções grátis tem mais de 1.300 construções grátis da comunidade do Minecraft.
 Configurações > Extras tem mais ajudas que você pode ligar: matérias-primas, um mapa da camada em que você está e dicas de andaime.
 O mod segue o idioma do seu jogo: inglês, espanhol, português, alemão, francês, russo e chinês.
-Quer jogar com quem fez este mod? Logic Survival é o servidor de sobrevivência dele. O botão abaixo o adiciona à sua lista do Multijogador - nada é adicionado se você não apertar.
+Segurar um bloco ilumina os lugares por perto que ainda precisam dele (Configurações: Lugares do bloco na mão).
+Quer jogar com quem fez este mod? Logic Survival é o servidor de sobrevivência dele. Ele foi adicionado uma vez ao fim da sua lista do Multijogador na primeira vez que o mod iniciou. Apague-o lá se não quiser - ele não volta. O botão abaixo o adiciona de novo.
 Como funciona
 < Voltar
 Próximo >
@@ -290,6 +291,8 @@ Caixas dos baús: {0}
 A cor das caixas nos baús com blocos que você ainda precisa (Localizador de baús).
 Colunas de andaime: {0}
 A cor das colunas de dica de andaime (Configurações > Extras).
+Lugares do bloco na mão: {0}
+A cor das caixas nos lugares que ainda precisam do bloco na sua mão.
 Redefinir cores
 Volta às cores normais do mod.
 Matérias-primas: {0}
@@ -316,6 +319,8 @@ Tamanho da lista: {0}%
 Deixa a lista do canto menor ou maior.
 Próximo bloco: {0}
 Uma caixa amarela mostra qual bloco colocar depois (camada de baixo primeiro, mais perto primeiro).
+Lugares do bloco na mão: {0}
+Segurar um bloco ilumina os lugares por perto que ainda precisam dele (os 400 mais próximos).
 Próxima camada automática: {0}
 Quando você termina uma camada, vai para a próxima sozinho.
 Localizador de baús: {0}
