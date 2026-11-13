@@ -94,7 +94,7 @@ Saved builds > Get free builds has 1,300+ free builds from the Minecraft communi
 Settings > Extras has more helpers you can turn on: raw materials, a map of the layer you're on, and scaffold hints.	Paramètres > Extras propose d'autres aides à activer : matières premières, une carte de la couche où tu es, et l'aide échafaudage.
 The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.	Le mod suit la langue de ton jeu : anglais, espagnol, portugais, allemand, français, russe et chinois.
 Holding a block lights up the spots near you that still need it (Settings: Spots for held block).	Tenir un bloc illumine les emplacements proches qui en ont encore besoin (Paramètres : Emplacements du bloc en main).
-Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > More).	Plus de blocs pendant que tu construis ? L'échange auto met dans ta main le prochain bloc dont la construction a besoin (Paramètres > Plus).
+Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > Extras).	Plus de blocs pendant que tu construis ? L'échange auto met dans ta main le prochain bloc dont la construction a besoin (Paramètres > Extras).
 Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again.	Envie de jouer avec le créateur de ce mod ? Logic Survival est son serveur survie. Il a été ajouté une fois à la fin de ta liste Multijoueur au premier lancement du mod. Supprime-le là-bas si tu n'en veux pas - il ne reviendra pas. Le bouton ci-dessous le rajoute.
 How it works	Comment ça marche
 < Back	< Retour
@@ -315,6 +315,12 @@ Blank world: {0}	Monde vide : {0}
 For building in an empty world: anything inside the build's area that shouldn't be there - stray blocks, water - gets a red box and counts as a mistake to fix, and Auto-build clears it.	Pour construire dans un monde vide : tout ce qui ne devrait pas être dans la zone de la construction - blocs en trop, eau - a un cadre rouge et compte comme une erreur à corriger, et la construction auto l'enlève.
 Nearby layers only: {0}	Couches proches seulement : {0}
 Before you place a build, only draw the layers around your height (3 below your feet to 4 above) instead of all of it. Lighter for big builds, and you can see inside.	Avant de placer une construction, seules les couches autour de ta hauteur sont dessinées (3 sous tes pieds à 4 au-dessus) au lieu de tout. Plus léger pour les grosses constructions, et tu vois l'intérieur.
+Auto-swap blocks: {0}	Échange auto : {0}
+When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	Quand la pile dans ta main est vide, le prochain bloc dont la construction a besoin passe dans ta main : d'abord le même, puis le prochain bloc à poser.
+Arrow to build: {0}	Flèche vers la construction : {0}
+When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.	Quand tu es à plus de 32 blocs de ta construction, la liste dans le coin montre une flèche vers elle et sa distance.
+Time left: {0}	Temps restant : {0}
+Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.	Sous le chrono : une estimation du temps qu'il faudra pour finir à ton rythme. S'affiche après une minute de construction.
 Ghost blocks: {0}% solid	Blocs fantômes : {0} % opaques
 How see-through the preview blocks are.	La transparence des blocs d'aperçu.
 Show preview: {0}	Afficher l'aperçu : {0}
@@ -349,8 +355,6 @@ Progress bars: {0}	Barres de progression : {0}
 Green bar = whole build, blue bar = the layer you're on.	Barre verte = toute la construction, barre bleue = la couche où tu es.
 Build timer: {0}	Chrono : {0}
 How long you've been building and how many blocks a minute.	Depuis combien de temps tu construis et combien de blocs par minute.
-Time left: {0}	Temps restant : {0}
-Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.	Sous le chrono : une estimation du temps qu'il faudra pour finir à ton rythme. S'affiche après une minute de construction.
 Key hints: {0}	Aide des touches : {0}
 The small reminder of the keys under the corner list.	Le petit rappel des touches sous la liste du coin.
 Draw distance: {0}	Distance d'affichage : {0}
@@ -359,10 +363,6 @@ Red boxes: {0}	Boîtes rouges : {0}
 Red outline on blocks that are in the way of the build, or placed the wrong way round, and the "to fix" count in the build menu.	Contour rouge sur les blocs qui gênent la construction ou sont posés à l'envers, et le nombre « à corriger » dans le menu de construction.
 Check direction: {0}	Vérifier le sens : {0}
 Blocks only count as done when they face the right way: stairs, slabs (top or bottom), logs, doors, buttons... A block placed the wrong way round gets a red box.	Les blocs ne comptent comme faits que s'ils sont dans le bon sens : escaliers, dalles (haut ou bas), bûches, portes, boutons... Un bloc posé dans le mauvais sens reçoit une boîte rouge.
-Auto-swap blocks: {0}	Échange auto : {0}
-When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	Quand la pile dans ta main est vide, le prochain bloc dont la construction a besoin passe dans ta main : d'abord le même, puis le prochain bloc à poser.
-Arrow to build: {0}	Flèche vers la construction : {0}
-When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.	Quand tu es à plus de 32 blocs de ta construction, la liste dans le coin montre une flèche vers elle et sa distance.
 Pick from ghost: {0}	Prendre du fantôme : {0}
 Middle-click a ghost block to put that block in your hand.	Clic molette sur un bloc fantôme pour mettre ce bloc dans ta main.
 Build picture: {0}	Image de la construction : {0}
@@ -372,7 +372,7 @@ A new build shows fully built so you can move it. When you place it, it switches
 Basics	Bases
 More	Plus
 Extras	Extras
-Extra helpers, off until you turn them on: raw materials, layer map, scaffold hints, blank world, nearby layers only.	Aides en plus, désactivées tant que tu ne les actives pas : matières premières, carte de couche, aides d'échafaudage, monde vide, couches proches seulement.
+More helpers: raw materials, layer map, scaffold hints, blank world, nearby layers only, auto-swap, arrow to build, time left.	Plus d'aides : matières premières, carte de la couche, aides d'échafaudage, monde vide, couches proches seulement, échange auto, flèche vers la construction, temps restant.
 Style	Style
 Pick the colors of the ghost blocks and the boxes the mod draws, and its sounds.	Choisis les couleurs des blocs fantômes et des cadres que dessine le mod, et ses sons.
 Key binds...	Touches...

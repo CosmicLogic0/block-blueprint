@@ -23,7 +23,9 @@ The build is saved to your **Saved builds**, ready to place as a blueprint in an
 - **Next block helper**: highlights the next block to place and tells you where it is.
 - **Pick from ghost**: middle-click a ghost block to grab that block from your inventory.
 - **Chest finder**: chests you've opened that hold blocks you still need are outlined in green.
-- **Colors**: pick the colors of the ghost blocks and the boxes the mod draws (Settings → Colors).
+- **Style**: pick the colors of the ghost blocks and the boxes the mod draws, and the sounds for a finished layer and build (Settings → Style).
+- **Counts shulker boxes and your ender chest**, and **auto-swap** puts the next needed block in your hand when a stack runs out.
+- **Arrow back to your build** when you wander off, and a **time left** guess at your building speed.
 - **Spots for held block**: hold a block and every spot near you that still needs it lights up.
 - **Remembers your blueprint** in every world and server, so it's still there when you come back.
 - **Progress stats**: time spent and blocks per minute.
