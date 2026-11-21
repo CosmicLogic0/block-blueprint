@@ -59,7 +59,7 @@ Leave the world and come back, and your blueprint is still there, right where yo
 
 | Key | What it does |
 |---|---|
-| **Page Up** | Open the menu |
+| **B** | Open the menu (Page Up if you installed before 1.4.10; change it in Options > Controls > Key Binds > Build Blueprint) |
 | **Arrow keys** | Move the build (hold Shift for 5 blocks) |
 | **Page Down** | Turn it |
 | **Delete** | Place it and start building |

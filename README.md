@@ -14,7 +14,7 @@ Works on **Minecraft Java 1.17 to 26.3** with Fabric, plus Forge and NeoForge.
 ## In Minecraft (default keys, change them in Options > Controls > Key Binds)
 | Key | What it does |
 |---|---|
-| Page Up | Menu: saved builds, materials, settings |
+| B | Menu: saved builds, materials, settings (Page Up if you installed before 1.4.10) |
 | Arrow keys | Move the blueprint (Shift = 5 blocks, Ctrl + Up/Down = up/down) |
 | Page Down | Turn it 90 degrees |
 | Delete | Place it (then build layer by layer) / unlock |

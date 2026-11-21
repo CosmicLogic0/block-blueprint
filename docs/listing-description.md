@@ -34,7 +34,7 @@ The build is saved to your **Saved builds**, ready to place as a blueprint in an
 ## Keys (all rebindable in Controls → Build Blueprint)
 | Key | Does |
 |---|---|
-| Page Up | Menu: materials, layers, swaps, saved builds, settings |
+| B | Menu: materials, layers, swaps, saved builds, settings (Page Up if you installed before 1.4.10) |
 | Arrow keys | Move the blueprint (Shift = 5 blocks, Ctrl = up/down) |
 | Page Down | Turn 90° |
 | Delete | Place / unlock |

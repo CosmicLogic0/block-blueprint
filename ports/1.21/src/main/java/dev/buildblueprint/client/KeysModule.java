@@ -45,7 +45,7 @@ public final class KeysModule {
         right = reg("d_right", org.lwjgl.glfw.GLFW.GLFW_KEY_RIGHT);
         vertical = regNone("e_hold_vertical");   // not set = Ctrl (a new id, so the old Ctrl binding that clashed with Sprint is gone)
         rotate = reg("f_rotate", org.lwjgl.glfw.GLFW.GLFW_KEY_PAGE_DOWN);
-        menu = reg("g_menu", org.lwjgl.glfw.GLFW.GLFW_KEY_PAGE_UP);
+        menu = reg("g_menu", org.lwjgl.glfw.GLFW.GLFW_KEY_B);   // B for Blueprint: every keyboard has it (laptops often have no Page Up). Players who set it before keep theirs
         layerUp = reg("h_layer_up", org.lwjgl.glfw.GLFW.GLFW_KEY_HOME);
         layerDown = reg("i_layer_down", org.lwjgl.glfw.GLFW.GLFW_KEY_END);
         copy = reg("j_copy", org.lwjgl.glfw.GLFW.GLFW_KEY_INSERT);

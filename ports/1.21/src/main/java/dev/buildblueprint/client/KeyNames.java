@@ -8,7 +8,7 @@ public final class KeyNames {
     private KeyNames() {}
 
     public static volatile String forward = "Up", back = "Down", left = "Left", right = "Right", up = "=", down = "-",
-            vertical = "Ctrl", rotate = "Page Down", menu = "Page Up", layerUp = "Home", layerDown = "End",
+            vertical = "Ctrl", rotate = "Page Down", menu = "B", layerUp = "Home", layerDown = "End",
             copy = "Insert", place = "Delete", fast = "Shift", shrink = "Alt";
 
     /** The four move keys, or null while they're still the arrow keys. */

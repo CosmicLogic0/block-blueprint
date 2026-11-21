@@ -43,14 +43,23 @@ public final class Tr {
     public static String t(String s) {
         if (s == null || s.isEmpty()) return s;
         String code = lang();
-        if (code.equals("en")) return s;
+        if (code.equals("en")) return menuKey(s, s);
         if (!code.equals(loaded)) load(code);
         String c = CACHE.get(s);
-        if (c != null) return c;
+        if (c != null) return menuKey(s, c);
         String out = translate(s);
         if (CACHE.size() > 6000) CACHE.clear();
         CACHE.put(s, out);
-        return out;
+        return menuKey(s, out);
+    }
+
+    /** Hints were written for the old menu key (Page Up); show the key it's set to now (B for new players). */
+    private static String menuKey(String en, String out) {
+        String k = KeyNames.menu;
+        if ("Page Up".equals(k) || !(en.contains("Page Up") || en.contains("PgUp"))) return out;
+        String r = out.replace("Page Up", k).replace("PgUp", k);
+        String tr = lang().equals("en") ? null : exact.get("Page Up");
+        return tr != null && !tr.isEmpty() ? r.replace(tr, k) : r;
     }
 
     private static String translate(String s) { return translate(s, 0); }

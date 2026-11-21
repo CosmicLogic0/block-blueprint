@@ -1,3 +1,6 @@
+## 1.4.10
+- **Menu key is now B** for new installs: every keyboard has it (many laptops have no Page Up). If you had the mod before, your key stays as it was. All the on-screen hints show the key you actually use. Change it any time in Options > Controls > Key Binds > Build Blueprint.
+
 ## 1.4.9
 - Everything from the 1.4.4-1.4.8 betas, now tested in-game on every supported Minecraft version and released:
   shulker boxes and ender chest count, free builds backup download, auto-swap blocks, arrow to your build, time left, sound choices.

@@ -45,7 +45,7 @@ public final class KeysModule {
         right = reg("d_right", InputConstants.KEY_RIGHT);
         vertical = regNone("e_hold_vertical");   // not set = Ctrl (a new id, so the old Ctrl binding that clashed with Sprint is gone)
         rotate = reg("f_rotate", InputConstants.KEY_PAGEDOWN);
-        menu = reg("g_menu", InputConstants.KEY_PAGEUP);
+        menu = reg("g_menu", InputConstants.KEY_B);   // B for Blueprint: every keyboard has it (laptops often have no Page Up). Players who set it before keep theirs
         layerUp = reg("h_layer_up", InputConstants.KEY_HOME);
         layerDown = reg("i_layer_down", InputConstants.KEY_END);
         copy = reg("j_copy", InputConstants.KEY_INSERT);
