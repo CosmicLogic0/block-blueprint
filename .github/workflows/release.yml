@@ -397,27 +397,35 @@ jobs:
         env: { CF_TOKEN: "${{ secrets.CURSEFORGE_TOKEN }}", V: "${{ needs.check.outputs.version }}" }
         run: |
           J=$(ls server-plugin/build/libs/buildblueprint-server-*.jar | head -1)
-          curl -s -H "X-Api-Token: $CF_TOKEN" https://minecraft.curseforge.com/api/game/version-types > types.json
-          curl -s -H "X-Api-Token: $CF_TOKEN" https://minecraft.curseforge.com/api/game/versions > versions.json
-          python3 - <<'PY' > meta.json
+          : > plugin-log.txt
+          # Bukkit plugins have their own upload address; the same CurseForge key works there. Try it first.
+          for H in https://dev.bukkit.org https://minecraft.curseforge.com; do
+            curl -s -H "X-Api-Token: $CF_TOKEN" $H/api/game/version-types > types.json
+            curl -s -H "X-Api-Token: $CF_TOKEN" $H/api/game/versions > versions.json
+            python3 - <<'PY' > meta.json
           import json, os
-          types = json.load(open('types.json')); vers = json.load(open('versions.json'))
-          bukkit = {t['id'] for t in types if 'bukkit' in t['slug'].lower()}
+          try:
+              types = json.load(open('types.json')); vers = json.load(open('versions.json'))
+          except Exception:
+              types, vers = [], []
+          bukkit = {t['id'] for t in types if 'bukkit' in t['slug'].lower()} or {t['id'] for t in types}
           def ok(n):
-              p = n.replace('CB ', '').split('.')
-              try: p = [int(x) for x in p if x.isdigit()]
-              except ValueError: return False
+              p = [x for x in n.replace('CB ', '').replace('-', '.').split('.') if x.isdigit()]
+              p = [int(x) for x in p]
               return len(p) >= 2 and (p[0] > 1 or p[1] >= 15)
-          ids = [v['id'] for v in vers if v['gameVersionTypeID'] in bukkit and ok(v['name'])]
+          ids = [v['id'] for v in vers if v.get('gameVersionTypeID') in bukkit and ok(v['name'])]
           print(json.dumps({'changelog': open('CHANGELOG.md').read().split('\n## ')[0][:4000], 'changelogType': 'markdown',
                             'displayName': f"Build Blueprint Server {os.environ['V']}", 'gameVersions': ids, 'releaseType': 'release'}))
           PY
-          python3 -c "import json; m=json.load(open('meta.json')); print('versions:', len(m['gameVersions']))"
-          python3 -c "import json; m=json.load(open('meta.json')); print('versions:', len(m['gameVersions']))" > plugin-log.txt
-          head -c 600 types.json >> plugin-log.txt; echo >> plugin-log.txt
+            n=$(python3 -c "import json; print(len(json.load(open('meta.json'))['gameVersions']))")
+            { echo "== $H: $n versions"; python3 -c "import json; print([t['slug'] for t in json.load(open('types.json'))][:40])" 2>&1 | head -c 1500; echo; } >> plugin-log.txt
+            [ "$n" -gt 0 ] && break
+          done
+          cat plugin-log.txt
+          [ "$n" -gt 0 ] || { echo "no game versions found" >> plugin-log.txt; exit 1; }
           if grep -q dry-run .github/plugin-upload.txt; then echo "dry run: not uploading" >> plugin-log.txt; exit 0; fi
-          code=$(curl -s -o cf-response.txt -w '%{http_code}' -H "X-Api-Token: $CF_TOKEN" -F "metadata=<meta.json" -F "file=@$J" https://minecraft.curseforge.com/api/projects/1822593/upload-file)
-          { echo "upload HTTP $code"; cat cf-response.txt; } >> plugin-log.txt; cat plugin-log.txt
+          code=$(curl -s -o cf-response.txt -w '%{http_code}' -H "X-Api-Token: $CF_TOKEN" -F "metadata=<meta.json" -F "file=@$J" $H/api/projects/1822593/upload-file)
+          { echo "upload to $H: HTTP $code"; cat cf-response.txt; } >> plugin-log.txt; cat plugin-log.txt
           [ "$code" = 200 ]
       - name: Keep the plugin upload log (branch ci-plugin-log)
         if: always()
