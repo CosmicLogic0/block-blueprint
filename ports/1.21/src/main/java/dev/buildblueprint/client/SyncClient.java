@@ -84,7 +84,7 @@ public final class SyncClient {
     }
 
     /** Asks the server who else has the mod (the answer comes a moment later). */
-    public static void askPlayers() { if (available) send(Proto.playersReq()); }
+    public static void askPlayers() { if (available && !"demo".equals(kind)) send(Proto.playersReq()); }
 
     /** Invites a player to your placed build. Returns a message for the screen. */
     public static String invite(String name) {
@@ -144,6 +144,18 @@ public final class SyncClient {
             }
             default: break;
         }
+    }
+
+    /** Screenshot tour only (UiTest): example players, builds and an invite, so the pictures show what the screens look like on a busy server. */
+    static void demo(boolean on) {
+        if (!on) { reset(); return; }
+        available = true; kind = "demo";
+        players = new ArrayList<>(java.util.Arrays.asList("Alex", "Steve", "Sam"));
+        OTHERS.clear();
+        OTHERS.put("Alex/a", new Other("Alex", "a", "", "Castle Keep", 120, 64, -40, 31, 24, 31, 2));
+        OTHERS.put("Sam/b", new Other("Sam", "b", "", "Treehouse", -60, 70, 200, 15, 20, 15, 1));
+        INVITES.clear();
+        INVITES.add(new String[]{"Alex", "a"});
     }
 
     /** The other players' builds you're standing in or next to (for the corner list). */

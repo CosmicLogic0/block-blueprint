@@ -24,7 +24,7 @@ public final class UiTest {
     private static final String[] SHOWCASE = {"sc-ghost", "sc-menu", "sc-placed", "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e",
             "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j", "sc-layer-k", "sc-done", "done"};
     private static boolean showcase;
-    private static final String[] WORLD = {"world-ghost", "world-placed", "world-held", "world-held-check", "world-sync", "world-sync-check", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "shopping", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "settings-colors", "help-server", "saved", "world-perf", "world-near", "world-special", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "world-held", "world-held-check", "world-sync", "world-sync-check", "world-sync-demo", "world-coop-demo", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "shopping", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "settings-colors", "help-server", "saved", "world-perf", "world-near", "world-special", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -318,7 +318,10 @@ public final class UiTest {
                 System.out.println("BBUITEST sync check: invites " + SyncClient.invites().size());
                 if (SyncClient.available()) Mc.setScreen(new ServerScreen(null));
             }
+            case "world-sync-demo" -> { SyncClient.demo(true); Mc.setScreen(new ServerScreen(null)); }   // pictures: a busy server
+            case "world-coop-demo" -> Mc.setScreen(new CoopScreen(null));
             case "world-only" -> {   // the eye: shift-click shows only one block's ghosts
+                SyncClient.demo(false);
                 net.minecraft.client.Minecraft.getInstance().player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, net.minecraft.world.item.ItemStack.EMPTY);
                 Mc.setScreen(null);
                 Materials.refresh();
