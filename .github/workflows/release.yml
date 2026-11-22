@@ -25,6 +25,7 @@ jobs:
       ready: ${{ steps.v.outputs.ready }}
       mr: ${{ steps.v.outputs.mr }}
       mronly: ${{ steps.v.outputs.mronly }}
+      plugin: ${{ steps.v.outputs.plugin }}
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 2 }
@@ -43,6 +44,8 @@ jobs:
           MRONLY=""
           if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qx .github/modrinth-retry.txt; then MRONLY=" $(grep -v '^#' .github/modrinth-retry.txt | tr '\n' ' ') "; fi
           echo "mronly=$MRONLY" >> "$GITHUB_OUTPUT"; echo "Modrinth-only uploads: [$MRONLY]"
+          # the server plugin alone (CurseForge "Build Blueprint Server"): when .github/plugin-upload.txt changes in this push
+          if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qx .github/plugin-upload.txt; then echo "plugin=true" >> "$GITHUB_OUTPUT"; fi
           # versions that passed the player-style launch test (realtest.yml) on every game version they're listed for go up as Release, the rest as Beta
           READY=""; [ -f .github/release-ready.txt ] && READY=" $(grep -v '^#' .github/release-ready.txt | tr '\n' ' ') "
           echo "ready=$READY" >> "$GITHUB_OUTPUT"; echo "Release (not beta): [$READY]"
@@ -363,7 +366,7 @@ jobs:
   # and to Modrinth (the same project, as a plugin file) with each new release.
   plugin:
     needs: check
-    if: needs.check.outputs.new == 'true'
+    if: needs.check.outputs.new == 'true' || needs.check.outputs.plugin == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -385,12 +388,34 @@ jobs:
           print('list<<EOF'); print('\n'.join(vs)); print('EOF')
           PY
       - name: Put it on the release page
+        if: needs.check.outputs.new == 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ needs.check.outputs.version }}
           files: server-plugin/build/libs/buildblueprint-server-*.jar
+      - name: Upload to CurseForge (Build Blueprint Server, a Bukkit plugin project)
+        env: { CF_TOKEN: "${{ secrets.CURSEFORGE_TOKEN }}", V: "${{ needs.check.outputs.version }}" }
+        run: |
+          J=$(ls server-plugin/build/libs/buildblueprint-server-*.jar | head -1)
+          curl -s -H "X-Api-Token: $CF_TOKEN" https://minecraft.curseforge.com/api/game/version-types > types.json
+          curl -s -H "X-Api-Token: $CF_TOKEN" https://minecraft.curseforge.com/api/game/versions > versions.json
+          python3 - <<'PY' > meta.json
+          import json, os
+          types = json.load(open('types.json')); vers = json.load(open('versions.json'))
+          bukkit = {t['id'] for t in types if 'bukkit' in t['slug'].lower()}
+          def ok(n):
+              p = n.replace('CB ', '').split('.')
+              try: p = [int(x) for x in p if x.isdigit()]
+              except ValueError: return False
+              return len(p) >= 2 and (p[0] > 1 or p[1] >= 15)
+          ids = [v['id'] for v in vers if v['gameVersionTypeID'] in bukkit and ok(v['name'])]
+          print(json.dumps({'changelog': open('CHANGELOG.md').read().split('\n## ')[0][:4000], 'changelogType': 'markdown',
+                            'displayName': f"Build Blueprint Server {os.environ['V']}", 'gameVersions': ids, 'releaseType': 'release'}))
+          PY
+          python3 -c "import json; m=json.load(open('meta.json')); print('versions:', len(m['gameVersions']))"
+          curl -sf -H "X-Api-Token: $CF_TOKEN" -F "metadata=<meta.json" -F "file=@$J" https://minecraft.curseforge.com/api/projects/1822593/upload-file
       - name: Upload to Modrinth
-        if: needs.check.outputs.mr != ''
+        if: needs.check.outputs.mr != '' && needs.check.outputs.new == 'true'
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: ${{ needs.check.outputs.mr }}

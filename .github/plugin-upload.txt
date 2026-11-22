@@ -1,0 +1,2 @@
+# Change this file (and push) to upload the server plugin to CurseForge (project 1822593) without a new release.
+# 1.5.0: first upload
