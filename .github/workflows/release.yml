@@ -413,7 +413,18 @@ jobs:
                             'displayName': f"Build Blueprint Server {os.environ['V']}", 'gameVersions': ids, 'releaseType': 'release'}))
           PY
           python3 -c "import json; m=json.load(open('meta.json')); print('versions:', len(m['gameVersions']))"
-          curl -sf -H "X-Api-Token: $CF_TOKEN" -F "metadata=<meta.json" -F "file=@$J" https://minecraft.curseforge.com/api/projects/1822593/upload-file
+          python3 -c "import json; m=json.load(open('meta.json')); print('versions:', len(m['gameVersions']))" > plugin-log.txt
+          head -c 600 types.json >> plugin-log.txt; echo >> plugin-log.txt
+          if grep -q dry-run .github/plugin-upload.txt; then echo "dry run: not uploading" >> plugin-log.txt; exit 0; fi
+          code=$(curl -s -o cf-response.txt -w '%{http_code}' -H "X-Api-Token: $CF_TOKEN" -F "metadata=<meta.json" -F "file=@$J" https://minecraft.curseforge.com/api/projects/1822593/upload-file)
+          { echo "upload HTTP $code"; cat cf-response.txt; } >> plugin-log.txt; cat plugin-log.txt
+          [ "$code" = 200 ]
+      - name: Keep the plugin upload log (branch ci-plugin-log)
+        if: always()
+        run: |
+          mkdir -p logout && cp plugin-log.txt logout/ 2>/dev/null || echo "no log (failed before the upload step)" > logout/plugin-log.txt
+          cd logout && git init -q -b ci-plugin-log && git config user.name ci && git config user.email ci@example.com
+          git add -A && git commit -qm "plugin upload log ${GITHUB_SHA}" && git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" ci-plugin-log
       - name: Upload to Modrinth
         if: needs.check.outputs.mr != '' && needs.check.outputs.new == 'true'
         uses: Kir-Antipov/mc-publish@v3.3
