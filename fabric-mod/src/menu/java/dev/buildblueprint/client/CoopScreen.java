@@ -88,7 +88,7 @@ public class CoopScreen extends Screen {
 
     private void draw(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
         int x = px(), w = pw(), y = 50;
-        UiKit.panel(g, x - 8, 14, w + 16, SyncClient.available() ? 196 : 168, UiKit.CYAN);
+        UiKit.panel(g, x - 8, 14, w + 16, SyncClient.available() ? 206 : 168, UiKit.CYAN);
         g.text(font, Tr.t("Build with friends"), x, 22, UiKit.GOLD, true);
         g.text(font, Tr.t("1. Send them the build. It appears in this exact spot."), x, y + 8, UiKit.TEXT, false);
         g.text(font, Tr.t("2. Split the work. Everyone picks the same number of"), x, y + 52, UiKit.TEXT, false);

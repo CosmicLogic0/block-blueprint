@@ -115,7 +115,7 @@ public final class SyncClient {
                 available = true; kind = m.a;
                 System.out.println("[Build Blueprint] this server has the Build Blueprint server part (" + m.a + ")");
                 break;
-            case Proto.PLAYERS: players = m.names; break;
+            case Proto.PLAYERS: if (!"demo".equals(kind)) players = m.names; break;
             case Proto.BUILD: {
                 String key = m.a + "/" + m.b;
                 try {
