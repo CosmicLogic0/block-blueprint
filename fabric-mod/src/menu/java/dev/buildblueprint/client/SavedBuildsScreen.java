@@ -144,18 +144,7 @@ public class SavedBuildsScreen extends Screen {
             String clip = Minecraft.getInstance().keyboardHandler.getClipboard();
             int[] coop = CoopScreen.parseHeader(clip);
             String data = SavedBuilds.parsePasted(clip);
-            if (coop != null) {   // a friend's co-op code: put the build in their exact spot, placed, then pick your part
-                Blueprint cb = BlueprintCodec.decode(data);
-                boolean known = false;
-                for (SavedBuilds.Entry be : builds) if (be.data().equals(data)) known = true;
-                if (!known) SavedBuilds.save(cb.name == null || cb.name.isBlank() ? "Co-op build" : cb.name, data);
-                BuildBlueprintClient.SESSION.restore(cb, coop[0], coop[1], coop[2], 0, true);
-                Coop.set(coop[3], 1);
-                Materials.refresh(); SessionStore.dirty();
-                Chat.ok("Co-op build placed where your friend has it. Pick which builder you are.");
-                Mc.setScreen(new CoopScreen(null));
-                return;
-            }
+            if (coop != null) { CoopScreen.joinCoop(clip); return; }   // a friend's co-op code: their exact spot, placed
             for (int i = 0; i < builds.size(); i++) if (builds.get(i).data().equals(data)) { sel = i; msg = "You already saved this build."; return; }
             Blueprint bp = BlueprintCodec.decode(data);
             SavedBuilds.save(bp.name == null || bp.name.isBlank() ? "My build" : bp.name, data);

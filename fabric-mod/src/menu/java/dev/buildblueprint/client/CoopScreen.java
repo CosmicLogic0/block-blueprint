@@ -31,6 +31,11 @@ public class CoopScreen extends Screen {
                 .bounds(x, y + 82, half, 20).tooltip(Tooltip.create(Component.literal(Tr.t("How many people build it. Everyone should pick the same number.")))).build());
         me = addRenderableWidget(Button.builder(Component.literal(Tr.t("")), b -> { Coop.set(Coop.parts, Coop.me >= Coop.parts ? 1 : Coop.me + 1); after(); })
                 .bounds(x + half + 4, y + 82, w - half - 4, 20).tooltip(Tooltip.create(Component.literal(Tr.t("Which builder you are. Each friend picks a different number.")))).build());
+        if (SyncClient.available()) {   // the server has the Build Blueprint server part: invite and join in game
+            int n = SyncClient.invites().size() + SyncClient.others().size();
+            addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, n > 0 ? "Invite & join on this server (" + n + ")" : "Invite & join on this server", w - 8)), b -> Mc.setScreen(new ServerScreen(this))).bounds(x, y + 140, w, 20)
+                    .tooltip(Tooltip.create(Component.literal(Tr.t("Invite players on this server to your build, or join theirs - no code to send.")))).build());
+        }
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Done", 100 - 8)), b -> onClose()).bounds(width / 2 - 50, height - 28, 100, 20).build());
         labels();
     }
@@ -51,6 +56,23 @@ public class CoopScreen extends Screen {
         msg = "Copied! Send it to your friends.";
     }
 
+    /** Puts a friend's co-op build in their exact spot, placed, then opens this screen to pick your part. */
+    static void joinCoop(String code) {
+        try {
+            int[] coop = parseHeader(code);
+            String data = SavedBuilds.parsePasted(code);
+            dev.buildblueprint.core.Blueprint cb = dev.buildblueprint.core.BlueprintCodec.decode(data);
+            boolean known = false;
+            for (SavedBuilds.Entry be : SavedBuilds.list()) if (be.data().equals(data)) known = true;
+            if (!known) SavedBuilds.save(cb.name == null || cb.name.isBlank() ? "Co-op build" : cb.name, data);
+            BuildBlueprintClient.SESSION.restore(cb, coop[0], coop[1], coop[2], 0, true);
+            Coop.set(coop[3], 1);
+            Materials.refresh(); SessionStore.dirty();
+            Chat.ok("Co-op build placed where your friend has it. Pick which builder you are.");
+            Mc.setScreen(new CoopScreen(null));
+        } catch (Exception e) { Chat.err("Couldn't load that build: " + e.getMessage()); }
+    }
+
     /** Paste side: "BBCOOP:x,y,z,parts BB1:..." -> {x, y, z, parts}, or null if it isn't a co-op code. */
     static int[] parseHeader(String text) {
         if (text == null) return null;
@@ -66,7 +88,7 @@ public class CoopScreen extends Screen {
 
     private void draw(GuiGraphicsExtractor g, int mouseX, int mouseY, float delta) {
         int x = px(), w = pw(), y = 50;
-        UiKit.panel(g, x - 8, 14, w + 16, 168, UiKit.CYAN);
+        UiKit.panel(g, x - 8, 14, w + 16, SyncClient.available() ? 196 : 168, UiKit.CYAN);
         g.text(font, Tr.t("Build with friends"), x, 22, UiKit.GOLD, true);
         g.text(font, Tr.t("1. Send them the build. It appears in this exact spot."), x, y + 8, UiKit.TEXT, false);
         g.text(font, Tr.t("2. Split the work. Everyone picks the same number of"), x, y + 52, UiKit.TEXT, false);

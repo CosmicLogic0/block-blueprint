@@ -358,3 +358,48 @@ jobs:
           java: ${{ matrix.target }}
           dependencies: ${{ (matrix.loader || 'fabric') == 'fabric' && 'fabric-api(required)' || '' }}
           changelog-file: CHANGELOG.md
+
+  # The server plugin (Paper / Spigot / Purpur, Minecraft 1.15+): one file for every version. Goes on the release page
+  # and to Modrinth (the same project, as a plugin file) with each new release.
+  plugin:
+    needs: check
+    if: needs.check.outputs.new == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "17" }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: "8.10" }
+      - name: Build the plugin
+        working-directory: server-plugin
+        run: gradle build -Pmod_version="${{ needs.check.outputs.version }}" --no-daemon -q && ls build/libs
+      - name: Game versions it runs on
+        id: gv
+        run: |
+          pip install -q pyyaml
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import yaml
+          rows = yaml.safe_load(open('.github/workflows/release.yml'))['jobs']['mod']['strategy']['matrix']['include']
+          vs = sorted({v for r in rows for v in str(r['gv']).split()}, key=lambda s: [int(x) for x in s.split('.')])
+          print('list<<EOF'); print('\n'.join(vs)); print('EOF')
+          PY
+      - name: Put it on the release page
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.check.outputs.version }}
+          files: server-plugin/build/libs/buildblueprint-server-*.jar
+      - name: Upload to Modrinth
+        if: needs.check.outputs.mr != ''
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: ${{ needs.check.outputs.mr }}
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          files: server-plugin/build/libs/buildblueprint-server-*.jar
+          name: Build Blueprint ${{ needs.check.outputs.version }} server plugin (Paper/Spigot/Purpur)
+          version: ${{ needs.check.outputs.version }}+server
+          version-type: release
+          loaders: paper spigot purpur bukkit
+          game-versions: ${{ steps.gv.outputs.list }}
+          java: 8
+          changelog-file: CHANGELOG.md

@@ -24,6 +24,7 @@ public final class HudModule {
             var s = BuildBlueprintClient.SESSION;
             if (mc.player != null && Copier.active && Mc.screen() == null) { copyPanel(g, mc); return; }
             if (mc.player != null && Mc.screen() == null && Stats.completeAt > 0 && System.currentTimeMillis() - Stats.completeAt < 9000) doneCard(g, mc);
+            if (mc.player != null && Mc.screen() == null && Settings.hudShow && !s.loaded()) { SyncClient.Other o = SyncClient.near(mc); if (o != null) nearCard(g, mc, o); }
             if (!Settings.hudShow || !s.loaded() || !s.visible || mc.player == null) return;
             if (Mc.screen() instanceof MaterialsScreen || Mc.screen() instanceof SavedBuildsScreen || Mc.screen() instanceof SettingsScreen) return;
             float sc = Settings.hudScale / 100f;
@@ -35,6 +36,16 @@ public final class HudModule {
             if (Settings.layerMap) layerMap(g, mc, hx, bottom + 8);
             g.pose().popMatrix();
         }));
+    }
+
+    /** Standing at another player's shared build (and no build of your own loaded): who is building what, and how to join. */
+    private static void nearCard(GuiGraphicsExtractor g, Minecraft mc, SyncClient.Other o) {
+        var font = mc.font;
+        String l1 = Tr.t(o.owner + " is building \"" + o.name + "\" here"), l2 = Tr.t("Menu > Build with friends to join");
+        int w = Math.max(font.width(l1), font.width(l2)) + 4;
+        UiKit.panel(g, 3, 3, w + 6, 30, UiKit.CYAN);
+        g.text(font, l1, 6, 6, UiKit.CYAN, true);
+        g.text(font, l2, 6, 18, UiKit.MUTED, true);
     }
 
     /** While copying a build: box size, block count and the keys. */

@@ -22,6 +22,9 @@ Works on **Minecraft Java 1.17 to 26.3** with Fabric, plus Forge and NeoForge.
 | Insert | Copy a build from your world (press again to save) |
 | Middle-click a ghost | Hold that block |
 
+## Server part (optional)
+Lets players invite each other to builds in game. Paper/Spigot/Purpur: put `buildblueprint-server-<version>.jar` (from the release page) in `plugins`. Fabric/Forge/NeoForge: put the mod jar in the server's `mods` folder.
+
 ## Making a release (for the maintainer)
 Raise the version in `package.json` and push: GitHub Actions builds the app installer and puts it on the Releases page.
 To also publish the mod, list the versions in `.github/curseforge-upload.txt` in the same push (only new versions or real changes -

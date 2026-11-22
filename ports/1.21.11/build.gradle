@@ -25,7 +25,7 @@ def ov = mcv == '1.21.11' ? 'src/override' : mcv == '1.21.9' ? 'src/override-1.2
 def oldIds = mcv != '1.21.11'                                          // Identifier was called ResourceLocation before 1.21.11
 def overrides = file("${ov}/java/dev/buildblueprint/client").list() as List
 tasks.register('bbMakeSources', Sync) {
-    ['main', 'menu', 'preview', 'keys'].each { from("${mod}/${it}/java") { exclude overrides.collect { "**/client/" + it } } }
+    ['main', 'menu', 'preview', 'keys', 'net', 'netfabric'].each { from("${mod}/${it}/java") { exclude overrides.collect { "**/client/" + it } } }
     into gen
     inputs.file('build.gradle')
     filter { String l -> l
@@ -41,6 +41,7 @@ tasks.register('bbMakeSources', Sync) {
         .replace('ScreenEvents.afterExtract(', 'ScreenEvents.afterRender(')
         .replace('extractRenderState(', 'render(')
         .replace('g.text(', 'g.drawString(').replace('g.item(', 'g.renderItem(')
+        .replace('PayloadTypeRegistry.serverboundPlay()', 'PayloadTypeRegistry.playC2S()').replace('PayloadTypeRegistry.clientboundPlay()', 'PayloadTypeRegistry.playS2C()')
     }
     if (oldIds) filter { String l -> l.replace('net.minecraft.resources.Identifier', 'net.minecraft.resources.ResourceLocation').replaceAll(/\bIdentifier\b/, 'ResourceLocation') }
 }
@@ -59,6 +60,11 @@ processResources {
         expand 'version': project.version, 'mcdep': mcdep, 'java': 21
         // versions with a mixin (1.21.9): add it to fabric.mod.json
         if (file("${ov}/res/buildblueprint.mixins.json").exists()) filter { String l -> l.contains('"environment"') ? l + '\n  "mixins": ["buildblueprint.mixins.json"],' : l }
+        // the server part: also loads on servers (and inside singleplayer/LAN worlds)
+        filter { String l ->
+            l.contains('"environment": "client"') ? l.replace('"client"', '"*"') :
+            l.contains('"client": [') ? '    "main": ["dev.buildblueprint.net.NetInit"],\n' + l :
+            l.contains('"dev.buildblueprint.client.BuildBlueprintClient"') ? l + ',\n      "dev.buildblueprint.net.NetClient"' : l }
     }
 }
 tasks.withType(JavaCompile).configureEach { options.release = 21 }

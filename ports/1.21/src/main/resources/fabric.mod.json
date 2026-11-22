@@ -3,16 +3,17 @@
   "id": "buildblueprint",
   "version": "${version}",
   "name": "Build Blueprint",
-  "description": "See any build as see-through ghost blocks in your world: a materials list with what you still need, layer-by-layer building, block swapping, copying builds from your world and auto-building in Creative. Works with the free Block Blueprint app. Client-side only.",
+  "description": "See any build as see-through ghost blocks in your world: a materials list with what you still need, layer-by-layer building, block swapping, copying builds from your world and auto-building in Creative. Works with the free Block Blueprint app. Install it on a server too for in-game invites.",
   "authors": [
     "CosmicLogic"
   ],
   "license": "All-Rights-Reserved",
-  "environment": "client",
+  "environment": "${env}",
   "mixins": [${mixins}],
   "entrypoints": {
+    "main": [${netMain}],
     "client": [
-      "dev.buildblueprint.client.BuildBlueprintClient"
+      "dev.buildblueprint.client.BuildBlueprintClient"${netClient}
     ]
   },
   "depends": {

@@ -40,6 +40,7 @@ final class Modules {
         run("HudModule");
         run("ChestHighlight");   // green frames on the slots you need, inside chests
         keysActive = run("KeysModule");
+        run("SyncClient");   // builds on the server: invite / join in game (when the server has the server part)
         run("UiTest");   // screenshot tour, only in the automatic launch test
     }
 

@@ -12,6 +12,9 @@ Copy co-op code
 Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.
 How many people build it. Everyone should pick the same number.
 Which builder you are. Each friend picks a different number.
+Invite & join on this server ({0})
+Invite & join on this server
+Invite players on this server to your build, or join theirs - no code to send.
 Done
 Builders: {0}
 just me
@@ -20,6 +23,9 @@ I'm builder -
 Load a build first.
 Place the build first (Delete), so friends get it in the same spot.
 Copied! Send it to your friends.
+Co-op build
+Co-op build placed where your friend has it. Pick which builder you are.
+Couldn't load that build: {0}
 the co-op screen
 1. Send them the build. It appears in this exact spot.
 2. Split the work. Everyone picks the same number of
@@ -114,6 +120,8 @@ Adds {0} to Multiplayer. You can delete it there any time.
 the help screen
 How Build Blueprint works
 the corner list
+{0} is building "{1}" here
+Menu > Build with friends to join
 Arrows
 grow the box that way
 Alt + arrows
@@ -271,8 +279,6 @@ free build
 View: 3D
 View: Top
 View: Front
-Co-op build
-Co-op build placed where your friend has it. Pick which builder you are.
 You already saved this build.
 My build
 Saved "{0}" on this computer.
@@ -306,6 +312,18 @@ in your user folder.
 drag to move · scroll to zoom
 Can't read this build: {0}
 Paste a build to see it here
+On this server
+Invite {0}
+They get a message and can join your placed build in one click.
+Join {0}'s {1}
+Puts {0}'s build in their spot, placed, so you can build it together.
+Back
+the server screen
+Players with Build Blueprint
+Builds you can join
+Nobody else here has the mod yet.
+No shared builds yet.
+Invited
 Build Blueprint settings
 ON
 OFF
@@ -343,6 +361,8 @@ Auto-swap blocks: {0}
 When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.
 Arrow to build: {0}
 When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.
+Share my build: {0}
+On a server with the Build Blueprint server part, other players with the mod can see and join your placed build.
 Time left: {0}
 Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.
 Ghost blocks: {0}% solid
@@ -411,7 +431,6 @@ the settings menu
 Hover a button to see what it does.
 Copy list
 Copy the list as text, to paste in a chat or a note, or to print.
-Back
 1 stack + {0}
 1 stack
 {0} stacks + {1}
@@ -460,6 +479,17 @@ No block matches "{0}".
 Click a block to pick it  ·  double-click swaps right away
 Minecraft
 Double-click to swap to this
+server builds
+[Build Blueprint] couldn't send to the server: {0}
+This server doesn't have the Build Blueprint server part.
+Place your build first (Delete), then invite.
+Turn on Share my build (Settings > Extras) to invite.
+Couldn't share your build.
+Invited {0}!
+[Build Blueprint] this server has the Build Blueprint server part ({0})
+a build
+[Build Blueprint] couldn't read {0}'s build: {1}
+{0} invited you to build together! Open the menu > Build with friends to join.
 Search by name or creator...
 Show one kind of build: houses, towers, ships...
 Show only small, medium or big builds (by how many blocks they have).

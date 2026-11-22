@@ -5,6 +5,9 @@ Copiar código co-op
 Mande este código para seus amigos. Eles colam em Construções salvas > Colar, e a construção aparece neste mesmo lugar para eles.
 Quantas pessoas vão construir. Todos devem escolher o mesmo número.
 Qual construtor você é. Cada amigo escolhe um número diferente.
+Convidar e entrar neste servidor ({0})
+Convidar e entrar neste servidor
+Convide jogadores deste servidor para sua construção ou entre nas deles - sem enviar códigos.
 Pronto
 Construtores: {0}
 só eu
@@ -13,6 +16,8 @@ Sou o construtor -
 Carregue uma construção primeiro.
 Coloque a construção primeiro (Delete), para os amigos a terem no mesmo lugar.
 Copiado! Mande para seus amigos.
+Construção co-op colocada onde seu amigo a tem. Escolha qual construtor você é.
+Não deu para carregar essa construção: {0}
 1. Mande a construção para eles. Ela aparece neste mesmo lugar.
 2. Dividam o trabalho. Todos escolhem o mesmo número de
    construtores e um número de construtor diferente.
@@ -102,6 +107,8 @@ Logic Survival está nos seus servidores
 Adicionar Logic Survival aos meus servidores
 Adiciona {0} ao Multijogador. Você pode apagá-lo lá quando quiser.
 Como o Build Blueprint funciona
+{0} está construindo "{1}" aqui
+Menu > Construir com amigos para entrar
 Setas
 aumentar a caixa para esse lado
 Alt + setas
@@ -249,7 +256,6 @@ grátis
 Vista: 3D
 Vista: cima
 Vista: frente
-Construção co-op colocada onde seu amigo a tem. Escolha qual construtor você é.
 Você já salvou esta construção.
 "{0}" salva neste computador.
 Não deu para ler a área de transferência.
@@ -281,6 +287,16 @@ na sua pasta de usuário.
 arraste para mover · role para dar zoom
 Não dá para ler esta construção: {0}
 Cole uma construção para ver aqui
+Neste servidor
+Convidar {0}
+A pessoa recebe uma mensagem e pode entrar na sua construção colocada com um clique.
+Entrar em {1} de {0}
+Coloca a construção de {0} no lugar dela, já colocada, para construírem juntos.
+Voltar
+Jogadores com Build Blueprint
+Construções em que você pode entrar
+Ninguém mais aqui tem o mod ainda.
+Nenhuma construção compartilhada ainda.
 Configurações do Build Blueprint
 LIGADO
 DESLIGADO
@@ -318,6 +334,8 @@ Troca automática: {0}
 Quando a pilha na sua mão acaba, o próximo bloco que a construção precisa vai para a sua mão: primeiro mais do mesmo, depois o próximo bloco a colocar.
 Seta para a construção: {0}
 Quando você está a mais de 32 blocos da sua construção, a lista do canto mostra uma seta apontando para ela e a distância.
+Compartilhar minha construção: {0}
+Num servidor com a parte de servidor do Build Blueprint, outros jogadores com o mod podem ver e entrar na sua construção colocada.
 Tempo restante: {0}
 Abaixo do cronômetro: uma estimativa de quanto tempo o resto da construção vai levar no seu ritmo. Aparece depois de construir por um minuto.
 Blocos fantasma: {0}% sólidos
@@ -385,7 +403,6 @@ Abre um relato de erro no GitHub com sua versão do Minecraft, a do mod e o últ
 Passe o mouse num botão para ver o que ele faz.
 Copiar lista
 Copia a lista como texto, para colar num chat ou nota, ou imprimir.
-Voltar
 1 pilha + {0}
 1 pilha
 {0} pilhas + {1}
@@ -429,6 +446,13 @@ Nada aqui.
 Nenhum bloco combina com "{0}".
 Clique num bloco para escolher  ·  clique duplo troca na hora
 Clique duplo para trocar por este
+Este servidor não tem a parte de servidor do Build Blueprint.
+Coloque sua construção primeiro (Delete) e depois convide.
+Ative Compartilhar minha construção (Configurações > Extras) para convidar.
+Não deu para compartilhar sua construção.
+Convidou {0}!
+uma construção
+{0} convidou você para construir junto! Abra o menu > Construir com amigos para entrar.
 Pesquise por nome ou criador...
 Mostra um tipo de construção: casas, torres, navios...
 Mostra só construções pequenas, médias ou grandes (pelo número de blocos).

@@ -102,6 +102,14 @@ Download it here: https://github.com/CosmicLogic0/block-blueprint
 
 Build Blueprint and the Block Blueprint app are free. Donations keep the mod up to date with fixes, new Minecraft versions and new features. Use the **Donate** link on this page - any amount helps. Thank you!
 
+### 🤝 Invite friends in game (server part)
+
+Put Build Blueprint on the server too and players can invite each other in game - no codes to send. Open the menu > **Build with friends** > **Invite & join on this server**: invite anyone on the server who has the mod, and they join your placed build in one click. Builds other players share show up there too.
+
+- **Paper / Spigot / Purpur servers:** add the Build Blueprint server plugin (`buildblueprint-server-<version>.jar`, Minecraft 1.15 and newer) to the plugins folder.
+- **Fabric, Forge and NeoForge servers:** put this same mod file in the server's mods folder.
+- It never changes the world, and players without the mod notice nothing. Don't want your build shared? Settings > Extras > Share my build: OFF.
+
 ---
 
 ### 🎮 Play on the creator's server

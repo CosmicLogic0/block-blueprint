@@ -6,6 +6,9 @@ Copy co-op code	Скопировать код совместной стройк�
 Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.	Отправь этот код друзьям. Они вставят его в Сохранённые постройки > Вставить, и постройка появится у них на этом же месте.
 How many people build it. Everyone should pick the same number.	Сколько человек строит. Все должны выбрать одно и то же число.
 Which builder you are. Each friend picks a different number.	Какой ты строитель. Каждый друг выбирает свой номер.
+Invite & join on this server ({0})	Пригласить и присоединиться на сервере ({0})
+Invite & join on this server	Пригласить и присоединиться на сервере
+Invite players on this server to your build, or join theirs - no code to send.	Приглашай игроков на этом сервере к своей постройке или присоединяйся к их - без кодов.
 Done	Готово
 Builders: {0}	Строителей: {0}
 just me	только я
@@ -14,6 +17,8 @@ I'm builder -	Я строитель -
 Load a build first.	Сначала загрузи постройку.
 Place the build first (Delete), so friends get it in the same spot.	Сначала закрепи постройку (Delete), чтобы у друзей она была на том же месте.
 Copied! Send it to your friends.	Скопировано! Отправь друзьям.
+Co-op build placed where your friend has it. Pick which builder you are.	Совместная постройка поставлена там же, где у друга. Выбери, какой ты строитель.
+Couldn't load that build: {0}	Не удалось загрузить постройку: {0}
 1. Send them the build. It appears in this exact spot.	1. Отправь им постройку. Она появится на этом же месте.
 2. Split the work. Everyone picks the same number of	2. Поделите работу. Все выбирают одинаковое число
    builders, and a different builder number.	   строителей и разные номера строителя.
@@ -103,6 +108,8 @@ Logic Survival is in your servers	Logic Survival уже в твоих серве
 Add Logic Survival to my servers	Добавить Logic Survival в мои серверы
 Adds {0} to Multiplayer. You can delete it there any time.	Добавляет {0} в «Сетевую игру». Его можно удалить там в любой момент.
 How Build Blueprint works	Как работает Build Blueprint
+{0} is building "{1}" here	{0} строит здесь «{1}»
+Menu > Build with friends to join	Меню > Строить с друзьями, чтобы присоединиться
 Arrows	Стрелки
 grow the box that way	увеличить рамку в эту сторону
 Alt + arrows	Alt + стрелки
@@ -250,7 +257,6 @@ free build	бесплатная
 View: 3D	Вид: 3D
 View: Top	Вид: сверху
 View: Front	Вид: спереди
-Co-op build placed where your friend has it. Pick which builder you are.	Совместная постройка поставлена там же, где у друга. Выбери, какой ты строитель.
 You already saved this build.	Ты уже сохранил эту постройку.
 Saved "{0}" on this computer.	«{0}» сохранена на этом компьютере.
 Could not read the clipboard.	Не удалось прочитать буфер обмена.
@@ -282,6 +288,16 @@ in your user folder.	в твоей папке пользователя.
 drag to move · scroll to zoom	перетаскивай - сдвиг · колесо - масштаб
 Can't read this build: {0}	Не удаётся прочитать постройку: {0}
 Paste a build to see it here	Вставь постройку, чтобы увидеть её здесь
+On this server	На этом сервере
+Invite {0}	Пригласить {0}
+They get a message and can join your placed build in one click.	Игрок получит сообщение и сможет присоединиться к твоей постройке в один клик.
+Join {0}'s {1}	Присоединиться: {1} ({0})
+Puts {0}'s build in their spot, placed, so you can build it together.	Ставит постройку {0} на её место, чтобы строить вместе.
+Back	Назад
+Players with Build Blueprint	Игроки с Build Blueprint
+Builds you can join	Постройки, к которым можно присоединиться
+Nobody else here has the mod yet.	Больше ни у кого здесь нет мода.
+No shared builds yet.	Пока нет общих построек.
 Build Blueprint settings	Настройки Build Blueprint
 ON	ВКЛ
 OFF	ВЫКЛ
@@ -319,6 +335,8 @@ Auto-swap blocks: {0}	Автозамена блоков: {0}
 When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	Когда стак в руке заканчивается, в руку переходит следующий нужный блок: сначала такой же, затем следующий для установки.
 Arrow to build: {0}	Стрелка к постройке: {0}
 When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.	Если ты дальше 32 блоков от постройки, список в углу показывает стрелку к ней и расстояние.
+Share my build: {0}	Делиться постройкой: {0}
+On a server with the Build Blueprint server part, other players with the mod can see and join your placed build.	На сервере с серверной частью Build Blueprint другие игроки с модом могут видеть твою постройку и присоединяться.
 Time left: {0}	Оставшееся время: {0}
 Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.	Под таймером: примерная оценка, сколько займёт остаток постройки в твоём темпе. Появляется после минуты стройки.
 Ghost blocks: {0}% solid	Блоки-призраки: {0}% плотности
@@ -386,7 +404,6 @@ Opens a bug report on GitHub with your Minecraft version, mod version and the la
 Hover a button to see what it does.	Наведи на кнопку, чтобы узнать, что она делает.
 Copy list	Копировать список
 Copy the list as text, to paste in a chat or a note, or to print.	Копирует список текстом, чтобы вставить в чат или заметку или распечатать.
-Back	Назад
 1 stack + {0}	1 стак + {0}
 1 stack	1 стак
 {0} stacks + {1}	{0} стаков + {1}
@@ -430,6 +447,13 @@ Nothing here.	Здесь ничего нет.
 No block matches "{0}".	Нет блоков по запросу «{0}».
 Click a block to pick it  ·  double-click swaps right away	Нажми на блок, чтобы выбрать  ·  двойной клик сразу заменяет
 Double-click to swap to this	Двойной клик, чтобы заменить на этот
+This server doesn't have the Build Blueprint server part.	На этом сервере нет серверной части Build Blueprint.
+Place your build first (Delete), then invite.	Сначала поставь постройку (Delete), потом приглашай.
+Turn on Share my build (Settings > Extras) to invite.	Включи «Делиться постройкой» (Настройки > Дополнительно), чтобы приглашать.
+Couldn't share your build.	Не удалось поделиться постройкой.
+Invited {0}!	{0} приглашён!
+a build	постройку
+{0} invited you to build together! Open the menu > Build with friends to join.	{0} приглашает тебя строить вместе! Открой меню > Строить с друзьями, чтобы присоединиться.
 Search by name or creator...	Поиск по названию или автору...
 Show one kind of build: houses, towers, ships...	Показывает один вид построек: дома, башни, корабли...
 Show only small, medium or big builds (by how many blocks they have).	Показывать только маленькие, средние или большие постройки (по числу блоков).

@@ -1,3 +1,6 @@
+## 1.5.0
+- **Invite friends in game (server part):** when the server has the Build Blueprint server part (a plugin for Paper/Spigot/Purpur, or this same mod on a Fabric server), Build with friends gets **Invite & join on this server**: invite players who have the mod to your placed build - they get a message and join in one click, no code to send. Builds other players share show up there too, and walking up to one tells you whose it is. Turn sharing off with Settings > Extras > Share my build.
+
 ## 1.4.10
 - **Menu key is now B** for new installs: every keyboard has it (many laptops have no Page Up). If you had the mod before, your key stays as it was. All the on-screen hints show the key you actually use. Change it any time in Options > Controls > Key Binds > Build Blueprint.
 

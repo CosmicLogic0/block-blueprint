@@ -6,6 +6,9 @@ Copy co-op code	复制合作代码
 Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.	把这个代码发给朋友。他们在“已保存的建筑 > 粘贴”里粘贴后，建筑也会出现在他们那边的同一个位置。
 How many people build it. Everyone should pick the same number.	有几个人一起建造。每个人都要选同一个数字。
 Which builder you are. Each friend picks a different number.	你是第几个建造者。每个朋友选不同的数字。
+Invite & join on this server ({0})	在此服务器邀请和加入（{0}）
+Invite & join on this server	在此服务器邀请和加入
+Invite players on this server to your build, or join theirs - no code to send.	邀请此服务器上的玩家来建你的建筑，或加入他们的——无需发送代码。
 Done	完成
 Builders: {0}	建造者：{0}
 just me	只有我
@@ -14,6 +17,8 @@ I'm builder -	我是建造者 -
 Load a build first.	请先加载一个建筑。
 Place the build first (Delete), so friends get it in the same spot.	请先放置建筑（Delete），这样朋友们会在同一个位置得到它。
 Copied! Send it to your friends.	已复制！发给你的朋友吧。
+Co-op build placed where your friend has it. Pick which builder you are.	合作建筑已放在你朋友那边的位置。选择你是第几个建造者。
+Couldn't load that build: {0}	无法加载这个建筑：{0}
 1. Send them the build. It appears in this exact spot.	1. 把建筑发给他们。它会出现在这个位置。
 2. Split the work. Everyone picks the same number of	2. 分配工作。每个人选同样的建造者
    builders, and a different builder number.	   人数，以及不同的建造者编号。
@@ -103,6 +108,8 @@ Logic Survival is in your servers	Logic Survival 已在你的服务器列表中
 Add Logic Survival to my servers	把 Logic Survival 加入我的服务器
 Adds {0} to Multiplayer. You can delete it there any time.	把 {0} 加入多人游戏。你随时可以在那里删除它。
 How Build Blueprint works	Build Blueprint 使用方法
+{0} is building "{1}" here	{0} 正在这里建造“{1}”
+Menu > Build with friends to join	菜单 > 和朋友一起建造 即可加入
 Arrows	方向键
 grow the box that way	向那个方向扩大范围框
 Alt + arrows	Alt + 方向键
@@ -250,7 +257,6 @@ free build	免费
 View: 3D	视图：3D
 View: Top	视图：顶部
 View: Front	视图：正面
-Co-op build placed where your friend has it. Pick which builder you are.	合作建筑已放在你朋友那边的位置。选择你是第几个建造者。
 You already saved this build.	你已经保存过这个建筑了。
 Saved "{0}" on this computer.	已在这台电脑上保存“{0}”。
 Could not read the clipboard.	无法读取剪贴板。
@@ -282,6 +288,16 @@ in your user folder.	BlockBlueprint/builds。
 drag to move · scroll to zoom	拖动移动 · 滚轮缩放
 Can't read this build: {0}	无法读取这个建筑：{0}
 Paste a build to see it here	粘贴一个建筑在这里查看
+On this server	在此服务器
+Invite {0}	邀请 {0}
+They get a message and can join your placed build in one click.	对方会收到消息，一键就能加入你放好的建筑。
+Join {0}'s {1}	加入 {0} 的 {1}
+Puts {0}'s build in their spot, placed, so you can build it together.	把 {0} 的建筑放在原处并固定，你们就能一起建造。
+Back	返回
+Players with Build Blueprint	装有 Build Blueprint 的玩家
+Builds you can join	可以加入的建筑
+Nobody else here has the mod yet.	这里还没有其他人装这个模组。
+No shared builds yet.	还没有共享的建筑。
 Build Blueprint settings	Build Blueprint 设置
 ON	开
 OFF	关
@@ -319,6 +335,8 @@ Auto-swap blocks: {0}	自动切换方块：{0}
 When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	手中的方块用完时，建筑需要的下一个方块会移到你手上：先是同一种，然后是下一个要放的方块。
 Arrow to build: {0}	指向建筑的箭头：{0}
 When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.	当你离建筑超过 32 格时，角落列表会显示指向它的箭头和距离。
+Share my build: {0}	共享我的建筑：{0}
+On a server with the Build Blueprint server part, other players with the mod can see and join your placed build.	在装有 Build Blueprint 服务器部分的服务器上，其他装了模组的玩家可以看到并加入你放好的建筑。
 Time left: {0}	剩余时间：{0}
 Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.	在建造计时下方：按你的速度估计剩下的部分还要多久。建造一分钟后显示。
 Ghost blocks: {0}% solid	幽灵方块：{0}% 不透明
@@ -386,7 +404,6 @@ Opens a bug report on GitHub with your Minecraft version, mod version and the la
 Hover a button to see what it does.	把鼠标移到按钮上可以看到它的作用。
 Copy list	复制清单
 Copy the list as text, to paste in a chat or a note, or to print.	把清单复制为文本，可以粘贴到聊天或笔记里，或者打印。
-Back	返回
 1 stack + {0}	1 组 + {0}
 1 stack	1 组
 {0} stacks + {1}	{0} 组 + {1}
@@ -430,6 +447,13 @@ Nothing here.	这里什么都没有。
 No block matches "{0}".	没有方块符合“{0}”。
 Click a block to pick it  ·  double-click swaps right away	点击方块来选择  ·  双击立即替换
 Double-click to swap to this	双击替换成这个
+This server doesn't have the Build Blueprint server part.	这个服务器没有 Build Blueprint 服务器部分。
+Place your build first (Delete), then invite.	先放好你的建筑（Delete），再邀请。
+Turn on Share my build (Settings > Extras) to invite.	要邀请，请打开“共享我的建筑”（设置 > 额外）。
+Couldn't share your build.	无法共享你的建筑。
+Invited {0}!	已邀请 {0}！
+a build	一个建筑
+{0} invited you to build together! Open the menu > Build with friends to join.	{0} 邀请你一起建造！打开菜单 > 和朋友一起建造 即可加入。
 Search by name or creator...	按名称或作者搜索...
 Show one kind of build: houses, towers, ships...	只显示一种建筑：房子、塔、船……
 Show only small, medium or big builds (by how many blocks they have).	只显示小型、中型或大型建筑（按方块数量）。

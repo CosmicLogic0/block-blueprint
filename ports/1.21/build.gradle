@@ -53,13 +53,25 @@ tasks.register('bbMakeSources', Sync) {
     inputs.property 'compat', compat
     filter { String l -> def o = bbFilter(l, flags); oldFabric ? o.replace('net.fabricmc.fabric.api.client.rendering.v1.WorldRender', 'dev.buildblueprint.oldfabric.WorldRender') : o }
 }
-compileJava.dependsOn bbMakeSources, bbCompat
-sourceSets.main.java.srcDirs = [genMain, compatSrc, shared] + (oldFabric ? ['src/oldfabric/java'] : [])
+// the server part (shared builds / invites): 1.20.5+ uses the same code as 26.x (payload records), older the old Fabric API calls
+def mcNum = mcv.tokenize('.').collect { it as int } + [0, 0]
+def modernNet = mcNum[1] > 20 || (mcNum[1] == 20 && mcNum[2] >= 5)
+def netSrc = layout.buildDirectory.dir('net-src')
+tasks.register('bbNet', Sync) {
+    if (modernNet) { from('../../fabric-mod/src/net/java'); from('../../fabric-mod/src/netfabric/java') } else if (!oldFabric) from('src/net-legacy/java')   // 1.16.3 and older: no Fabric networking API
+    into netSrc
+    inputs.property 'modern', modernNet
+    filter { String l -> l.replace('PayloadTypeRegistry.serverboundPlay()', 'PayloadTypeRegistry.playC2S()').replace('PayloadTypeRegistry.clientboundPlay()', 'PayloadTypeRegistry.playS2C()')
+        .replace('net.minecraft.resources.Identifier', 'net.minecraft.resources.ResourceLocation')
+        .replace('Identifier.parse(Proto.CHANNEL)', mcNum[1] >= 21 ? 'ResourceLocation.parse(Proto.CHANNEL)' : 'new ResourceLocation(Proto.CHANNEL)') }
+}
+compileJava.dependsOn bbMakeSources, bbCompat, bbNet
+sourceSets.main.java.srcDirs = [genMain, compatSrc, shared, netSrc] + (oldFabric ? ['src/oldfabric/java'] : [])
 sourceSets.main.resources.srcDir(sharedRes)
 if (oldFabric) sourceSets.main.resources.srcDir('src/oldfabric/res')
 compileJava.dependsOn copyShared
 processResources.dependsOn copySharedRes
-tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn copyShared, copySharedRes, bbMakeSources, bbCompat }
+tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn copyShared, copySharedRes, bbMakeSources, bbCompat, bbNet }
 
 def javaVer = (project.findProperty('java_version') ?: (java8 ? '8' : '21')) as int
 // which Minecraft versions each jar may load on (the ones that share its code)
@@ -76,7 +88,9 @@ processResources {
     inputs.property 'java', javaVer
     inputs.property 'fapi', fapi
     inputs.property 'oldFabric', oldFabric
-    filesMatching('fabric.mod.json') { expand 'version': project.mod_version, 'mcdep': mcdep, 'java': javaVer, 'fapi': fapi, 'mixins': oldFabric ? '"buildblueprint.mixins.json"' : '' }
+    inputs.property 'net', !oldFabric
+    filesMatching('fabric.mod.json') { expand 'version': project.mod_version, 'mcdep': mcdep, 'java': javaVer, 'fapi': fapi, 'mixins': oldFabric ? '"buildblueprint.mixins.json"' : '',
+        'env': oldFabric ? 'client' : '*', 'netMain': oldFabric ? '' : '"dev.buildblueprint.net.NetInit"', 'netClient': oldFabric ? '' : ',\n      "dev.buildblueprint.net.NetClient"' }
 }
 
 tasks.withType(JavaCompile).configureEach {

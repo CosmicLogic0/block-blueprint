@@ -37,6 +37,7 @@ tasks.register('bbSources', Sync) {
     from("${fab}/preview/java")
     from("${fab}/keys/java")
     from("${fab}/compat/${compat}/java")
+    from("${fab}/net/java")   // the server part's message (plain Minecraft classes); Forge's own wiring is in src/java/dev/buildblueprint/net
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE   // the first copy of a file wins: 26.1.x versions go before the newer ones
     if (mcv.startsWith('26.1')) from('src/java-26.1')
     from('src/java')

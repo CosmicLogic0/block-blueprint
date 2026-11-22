@@ -5,6 +5,9 @@ Koop-Code kopieren
 Schick diesen Code deinen Freunden. Sie fügen ihn unter Gespeicherte Bauten > Einfügen ein, und der Bau erscheint auch bei ihnen genau an dieser Stelle.
 Wie viele Leute daran bauen. Alle sollten dieselbe Zahl wählen.
 Welcher Bauer du bist. Jeder Freund wählt eine andere Zahl.
+Einladen & beitreten auf diesem Server ({0})
+Einladen & beitreten auf diesem Server
+Lade Spieler auf diesem Server zu deinem Bau ein oder tritt ihrem bei - ohne Code zu schicken.
 Fertig
 Bauer: {0}
 nur ich
@@ -13,6 +16,8 @@ Ich bin Bauer -
 Lade zuerst einen Bau.
 Platziere den Bau zuerst (Entf), damit deine Freunde ihn an derselben Stelle bekommen.
 Kopiert! Schick ihn deinen Freunden.
+Koop-Bau dort platziert, wo dein Freund ihn hat. Wähl, welcher Bauer du bist.
+Konnte diesen Bau nicht laden: {0}
 1. Schick ihnen den Bau. Er erscheint genau an dieser Stelle.
 2. Teilt die Arbeit auf. Alle wählen dieselbe Anzahl
    Bauer und eine andere Bauer-Nummer.
@@ -102,6 +107,8 @@ Logic Survival ist in deinen Servern
 Logic Survival zu meinen Servern hinzufügen
 Fügt {0} zu Mehrspieler hinzu. Du kannst ihn dort jederzeit löschen.
 So funktioniert Build Blueprint
+{0} baut hier "{1}"
+Menü > Mit Freunden bauen, um mitzumachen
 Pfeiltasten
 die Box in diese Richtung vergrößern
 Alt + Pfeiltasten
@@ -249,7 +256,6 @@ kostenlos
 Ansicht: 3D
 Ansicht: oben
 Ansicht: vorne
-Koop-Bau dort platziert, wo dein Freund ihn hat. Wähl, welcher Bauer du bist.
 Diesen Bau hast du schon gespeichert.
 "{0}" auf diesem Computer gespeichert.
 Die Zwischenablage konnte nicht gelesen werden.
@@ -281,6 +287,16 @@ in deinem Benutzerordner.
 ziehen zum Bewegen · Mausrad zum Zoomen
 Dieser Bau kann nicht gelesen werden: {0}
 Füg einen Bau ein, um ihn hier zu sehen
+Auf diesem Server
+{0} einladen
+Sie bekommen eine Nachricht und können deinem platzierten Bau mit einem Klick beitreten.
+{0}s {1} beitreten
+Setzt {0}s Bau an seine Stelle, platziert, damit ihr ihn zusammen baut.
+Zurück
+Spieler mit Build Blueprint
+Bauten zum Mitmachen
+Sonst hat hier noch niemand den Mod.
+Noch keine geteilten Bauten.
 Build Blueprint Einstellungen
 AN
 AUS
@@ -318,6 +334,8 @@ Auto-Tausch: {0}
 Wenn der Stapel in deiner Hand leer ist, kommt der nächste Block, den der Bau braucht, in deine Hand: erst mehr vom gleichen, dann der nächste zu setzende Block.
 Pfeil zum Bau: {0}
 Bist du mehr als 32 Blöcke von deinem Bau entfernt, zeigt die Eckliste einen Pfeil dorthin und wie weit er weg ist.
+Meinen Bau teilen: {0}
+Auf einem Server mit dem Build-Blueprint-Serverteil können andere Spieler mit dem Mod deinen platzierten Bau sehen und beitreten.
 Restzeit: {0}
 Unter dem Bau-Timer: eine Schätzung, wie lange der Rest des Baus bei deinem Tempo dauert. Erscheint nach einer Minute Bauen.
 Geisterblöcke: {0}% fest
@@ -385,7 +403,6 @@ Angaben kopiert. Füge sie ein auf github.com/CosmicLogic0/block-blueprint/issue
 Fahr mit der Maus über einen Knopf, um zu sehen, was er tut.
 Liste kopieren
 Kopiert die Liste als Text, zum Einfügen in einen Chat oder eine Notiz, oder zum Drucken.
-Zurück
 1 Stapel + {0}
 1 Stapel
 {0} Stapel + {1}
@@ -429,6 +446,13 @@ Hier ist nichts.
 Kein Block passt zu "{0}".
 Klick einen Block an, um ihn zu wählen  ·  Doppelklick tauscht sofort
 Doppelklick, um hierzu zu tauschen
+Dieser Server hat den Build-Blueprint-Serverteil nicht.
+Platziere zuerst deinen Bau (Entf), dann lade ein.
+Schalte Meinen Bau teilen ein (Einstellungen > Extras), um einzuladen.
+Dein Bau konnte nicht geteilt werden.
+{0} eingeladen!
+einen Bau
+{0} hat dich zum gemeinsamen Bauen eingeladen! Öffne das Menü > Mit Freunden bauen, um mitzumachen.
 Nach Name oder Ersteller suchen...
 Zeigt eine Art von Bau: Häuser, Türme, Schiffe...
 Zeigt nur kleine, mittlere oder große Bauwerke (nach Anzahl der Blöcke).

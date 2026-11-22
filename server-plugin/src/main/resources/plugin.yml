@@ -1,0 +1,7 @@
+name: BuildBlueprint
+version: '${version}'
+main: dev.buildblueprint.plugin.BuildBlueprintPlugin
+api-version: '1.13'
+author: CosmicLogic
+description: Lets players with the Build Blueprint mod share builds and invite each other in game.
+website: https://github.com/CosmicLogic0/block-blueprint

@@ -57,6 +57,14 @@ Every file is tested before it's uploaded: the real game is started with it, joi
 *Please respect other players' work: ask before copying someone's build, and give credit when you share it.*
 
 
+## 🤝 Invite friends in game (server part)
+
+Put Build Blueprint on the server too and players can invite each other in game - no codes to send. Open the menu > **Build with friends** > **Invite & join on this server**: invite anyone on the server who has the mod, and they join your placed build in one click. Builds other players share show up there too.
+
+- **Paper / Spigot / Purpur servers:** add the Build Blueprint server plugin (`buildblueprint-server-<version>.jar`, Minecraft 1.15 and newer) to the plugins folder.
+- **Fabric, Forge and NeoForge servers:** put this same mod file in the server's mods folder.
+- It never changes the world, and players without the mod notice nothing. Don't want your build shared? Settings > Extras > Share my build: OFF.
+
 ## 🎮 Play on the creator's server
 
 **Logic Survival** (`play.logicsurvival.fyi`) is the survival server run by the maker of this mod. **Heads up:** the mod adds Logic Survival to the end of your Multiplayer server list once, the first time it starts. If you don't want it, just delete it there - it won't come back by itself (How it works → More helpers can add it again).

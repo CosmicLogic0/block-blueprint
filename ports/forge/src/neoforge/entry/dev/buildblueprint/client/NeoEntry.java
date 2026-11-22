@@ -3,13 +3,18 @@ package dev.buildblueprint.client;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLEnvironment;
 
-/** NeoForge's way in. Client-side only, so NeoForge only loads it on the client. */
-@Mod(value = "buildblueprint", dist = Dist.CLIENT)
+/** NeoForge's way in. On a server it only runs the server part (shared builds / invites); the rest is client-side. */
+@Mod("buildblueprint")
 public class NeoEntry {
     public static IEventBus modBus;
     public NeoEntry(IEventBus bus) {
         modBus = bus;
-        new BuildBlueprintClient().onInitializeClient();
+        dev.buildblueprint.net.ServerNet.init(bus);
+        if (FMLEnvironment.dist == Dist.CLIENT) ClientStart.run(bus);
+    }
+    static final class ClientStart {   // its own class so servers never load client code
+        static void run(IEventBus bus) { new BuildBlueprintClient().onInitializeClient(); dev.buildblueprint.net.ServerNetClient.init(bus); }
     }
 }

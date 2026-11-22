@@ -1,0 +1,27 @@
+// Build Blueprint server plugin for Paper, Spigot and Purpur (Minecraft 1.15 and newer): passes shared builds and
+// invites between players who have the Build Blueprint mod. Uses only the plain Bukkit API, so one file fits every version.
+plugins { id 'java' }
+
+group = 'dev.buildblueprint'
+version = project.findProperty('mod_version') ?: '1.0.0'
+base { archivesName = 'buildblueprint-server' }
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
+}
+
+dependencies {
+    compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'   // only old, plain Bukkit calls are used, so it runs on 1.15+
+}
+
+sourceSets.main.java.srcDir '../fabric-mod/src/main/java'
+sourceSets.main.java { include 'dev/buildblueprint/plugin/**'; include 'dev/buildblueprint/core/sync/**' }
+
+java { toolchain { languageVersion = JavaLanguageVersion.of(17) } }
+tasks.withType(JavaCompile).configureEach { options.release = 8; options.encoding = 'UTF-8' }
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('plugin.yml') { expand 'version': project.version }
+}

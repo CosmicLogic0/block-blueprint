@@ -5,6 +5,9 @@ Copier le code coop
 Envoie ce code à tes amis. Ils le collent dans Constructions sauvegardées > Coller, et la construction apparaît au même endroit chez eux aussi.
 Combien de personnes la construisent. Tout le monde doit choisir le même nombre.
 Quel constructeur tu es. Chaque ami choisit un numéro différent.
+Inviter et rejoindre sur ce serveur ({0})
+Inviter et rejoindre sur ce serveur
+Invite des joueurs de ce serveur à ta construction ou rejoins les leurs - sans code à envoyer.
 Terminé
 Constructeurs : {0}
 juste moi
@@ -13,6 +16,8 @@ Je suis le constructeur -
 Charge d'abord une construction.
 Place d'abord la construction (Suppr), pour que tes amis l'aient au même endroit.
 Copié ! Envoie-le à tes amis.
+Construction coop placée là où ton ami l'a. Choisis quel constructeur tu es.
+Impossible de charger cette construction : {0}
 1. Envoie-leur la construction. Elle apparaît exactement ici.
 2. Partagez le travail. Tout le monde choisit le même nombre de
    constructeurs, et un numéro de constructeur différent.
@@ -102,6 +107,8 @@ Logic Survival est dans tes serveurs
 Ajouter Logic Survival à mes serveurs
 Ajoute {0} au Multijoueur. Tu peux le supprimer là-bas à tout moment.
 Comment marche Build Blueprint
+{0} construit "{1}" ici
+Menu > Construire avec des amis pour rejoindre
 Flèches
 agrandir la boîte de ce côté
 Alt + flèches
@@ -249,7 +256,6 @@ gratuite
 Vue : 3D
 Vue : dessus
 Vue : face
-Construction coop placée là où ton ami l'a. Choisis quel constructeur tu es.
 Tu as déjà sauvegardé cette construction.
 « {0} » sauvegardée sur cet ordinateur.
 Impossible de lire le presse-papiers.
@@ -281,6 +287,16 @@ de ton dossier utilisateur.
 glisser pour déplacer · molette pour zoomer
 Impossible de lire cette construction : {0}
 Colle une construction pour la voir ici
+Sur ce serveur
+Inviter {0}
+Ils reçoivent un message et peuvent rejoindre ta construction posée en un clic.
+Rejoindre {1} de {0}
+Place la construction de {0} à son endroit, posée, pour la construire ensemble.
+Retour
+Joueurs avec Build Blueprint
+Constructions à rejoindre
+Personne d'autre ici n'a encore le mod.
+Aucune construction partagée pour l'instant.
 Paramètres de Build Blueprint
 OUI
 NON
@@ -318,6 +334,8 @@ Avant de placer une construction, seules les couches autour de ta hauteur sont d
 Quand la pile dans ta main est vide, le prochain bloc dont la construction a besoin passe dans ta main : d'abord le même, puis le prochain bloc à poser.
 Flèche vers la construction : {0}
 Quand tu es à plus de 32 blocs de ta construction, la liste dans le coin montre une flèche vers elle et sa distance.
+Partager ma construction : {0}
+Sur un serveur avec la partie serveur de Build Blueprint, les autres joueurs avec le mod peuvent voir et rejoindre ta construction posée.
 Temps restant : {0}
 Sous le chrono : une estimation du temps qu'il faudra pour finir à ton rythme. S'affiche après une minute de construction.
 Blocs fantômes : {0} % opaques
@@ -385,7 +403,6 @@ Ouvre un rapport de bug sur GitHub avec ta version de Minecraft, celle du mod et
 Survole un bouton pour voir ce qu'il fait.
 Copier la liste
 Copie la liste en texte, pour la coller dans un chat ou une note, ou l'imprimer.
-Retour
 1 pile + {0}
 1 pile
 {0} piles + {1}
@@ -429,6 +446,13 @@ Rien ici.
 Aucun bloc ne correspond à « {0} ».
 Clique sur un bloc pour le choisir  ·  double-clic pour échanger tout de suite
 Double-clic pour échanger contre celui-ci
+Ce serveur n'a pas la partie serveur de Build Blueprint.
+Pose d'abord ta construction (Suppr), puis invite.
+Active Partager ma construction (Paramètres > Extras) pour inviter.
+Impossible de partager ta construction.
+{0} invité !
+une construction
+{0} t'invite à construire ensemble ! Ouvre le menu > Construire avec des amis pour rejoindre.
 Cherche par nom ou par créateur...
 Affiche un type de construction : maisons, tours, bateaux...
 Affiche seulement les petites, moyennes ou grandes constructions (selon leur nombre de blocs).

@@ -49,6 +49,30 @@ ok=0; for i in 1 2 3; do portablemc --main-dir "$G" start --dry --jvm-policy moj
 S="$PWD/server"; mkdir -p "$S"
 surl=$(curl -s https://piston-meta.mojang.com/mc/game/version_manifest_v2.json | python3 -c "import json,sys,urllib.request; m=json.load(sys.stdin); v=[x for x in m['versions'] if x['id']=='$gv'][0]; print(json.load(urllib.request.urlopen(v['url']))['downloads']['server']['url'])")
 curl -sL "$surl" -o "$S/server.jar"
+# SERVER_KIND=paper: a Paper server with the Build Blueprint plugin; fabric: a Fabric server with the mod (+ Fabric API)
+case "${SERVER_KIND:-}" in
+  paper)
+    pj=$(curl -s -H "User-Agent: block-blueprint-ci" "https://fill.papermc.io/v3/projects/paper/versions/$gv/builds/latest" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d["downloads"]["server:default"]["url"])' 2>/dev/null)
+    if [ -z "$pj" ]; then
+      b=$(curl -s "https://api.papermc.io/v2/projects/paper/versions/$gv/builds" | python3 -c 'import json,sys; d=json.load(sys.stdin)["builds"][-1]; print(str(d["build"])+" "+d["downloads"]["application"]["name"])' 2>/dev/null)
+      [ -n "$b" ] && pj="https://api.papermc.io/v2/projects/paper/versions/$gv/builds/${b%% *}/downloads/${b#* }"
+    fi
+    [ -z "$pj" ] && fail "no Paper server for $gv"
+    curl -sL "$pj" -o "$S/server.jar"; mkdir -p "$S/plugins"; cp plugin/*.jar "$S/plugins/" || fail "the server plugin did not build: $(grep -E 'error:|What went wrong|\.java:[0-9]+' -A2 plugin/build.log 2>/dev/null | head -10 | tr '\n' ' ')"
+    echo "Paper: $pj" ;;
+  fabric)
+    FL=$(curl -s "https://meta.fabricmc.net/v2/versions/loader/$gv" | python3 -c 'import json,sys; print(json.load(sys.stdin)[0]["loader"]["version"])')
+    FI=$(curl -s "https://meta.fabricmc.net/v2/versions/installer" | python3 -c 'import json,sys; print(json.load(sys.stdin)[0]["version"])')
+    curl -sL "https://meta.fabricmc.net/v2/versions/loader/$gv/$FL/$FI/server/jar" -o "$S/server.jar"
+    mkdir -p "$S/mods"; cp "$G"/mods/*.jar "$S/mods/"; echo "Fabric server: loader $FL" ;;
+  modserver)   # a Forge / NeoForge server (same loader version as the game) with the mod in it
+    case "$loader" in
+      neoforge) iu="https://maven.neoforged.net/releases/net/neoforged/neoforge/$F/neoforge-$F-installer.jar" ;;
+      forge) iu="https://maven.minecraftforge.net/net/minecraftforge/forge/$F/forge-$F-installer.jar" ;;
+      *) fail "no mod server for $loader" ;;
+    esac
+    curl -sL "$iu" -o "$S/installer.jar" ;;
+esac
 minor=$(echo "$gv" | cut -d. -f2); major=$(echo "$gv" | cut -d. -f1); patch=$(echo "$gv" | cut -d. -f3); patch=${patch:-0}
 if [ "$major" != 1 ]; then SJ="${JAVA_HOME_25_X64:-}"; lt="minecraft\\:flat"
 elif [ "$minor" -le 16 ]; then SJ="${JAVA_HOME_8_X64:-}"; lt=flat
@@ -61,7 +85,15 @@ if [ "$mode" = showcase ]; then
   python3 -c "import hashlib,uuid,json; h=bytearray(hashlib.md5(b'OfflinePlayer:Builder').digest()); h[6]=h[6]&0x0f|0x30; h[8]=h[8]&0x3f|0x80; print(json.dumps([{'uuid':str(uuid.UUID(bytes=bytes(h))),'name':'Builder','level':4,'bypassesPlayerLimit':False}]))" > "$S/ops.json"
   printf 'pvp=false\n' >> "$S/server.properties"
 fi
-(cd "$S" && timeout 1200 "$SJ/bin/java" -Xmx2G -jar server.jar nogui > server.log 2>&1 &)
+if [ "${SERVER_KIND:-}" = modserver ]; then
+  (cd "$S" && "$SJ/bin/java" -jar installer.jar --installServer > install-server.log 2>&1) || { cp "$S/install-server.log" game.log; fail "the $loader server did not install"; }
+  mkdir -p "$S/mods"; cp "$jar" "$S/mods/"
+  echo "-Xmx2G" > "$S/user_jvm_args.txt"
+  if [ -f "$S/run.sh" ]; then (cd "$S" && PATH="$SJ/bin:$PATH" timeout 1200 bash run.sh nogui > server.log 2>&1 &)
+  else fj=$(cd "$S" && ls forge-*.jar 2>/dev/null | grep -v installer | head -1); (cd "$S" && timeout 1200 "$SJ/bin/java" -Xmx2G -jar "$fj" nogui > server.log 2>&1 &); fi   # Forge 1.16 and older: no run script
+else
+  (cd "$S" && timeout 1200 "$SJ/bin/java" -Xmx2G -jar server.jar nogui > server.log 2>&1 &)
+fi
 for i in $(seq 1 90); do sleep 4; grep -q 'Done (' "$S/server.log" && break; done
 grep -q 'Done (' "$S/server.log" || { cp "$S/server.log" game.log; fail "the test server for $gv did not start"; }
 echo "server up"
@@ -108,6 +140,10 @@ if [ "$started" != 1 ]; then
 fi
 grep -q "BBUITEST done" game.log || fail "the mod's screens did not all open"
 grep -E "BBUITEST.*(failed|Exception)|\[Build Blueprint\] problem" game.log | head -5 > errs.txt
+if [ -n "${SERVER_KIND:-}" ]; then   # the in-game invite must have gone to the server and back
+  grep -q "BBUITEST sync: available=true" game.log || fail "the mod didn't find the Build Blueprint server part on the $SERVER_KIND server: $(grep -o 'BBUITEST sync:.*' game.log | head -1)"
+  grep -q "BBUITEST sync check: invites 1" game.log || fail "the invite didn't come back from the $SERVER_KIND server: $(grep -o 'BBUITEST sync check:.*' game.log | head -1)"
+fi
 if [ -s errs.txt ]; then fail "the mod reported errors: $(head -1 errs.txt)"; fi
 grep -q "BBUITEST loaded [1-9]" game.log || fail "the test build did not load in the world"
 { echo "PASS $name"; grep -E "BBUITEST" game.log | head -20; } > "$R"; cat "$R"

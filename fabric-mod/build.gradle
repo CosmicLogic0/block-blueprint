@@ -25,6 +25,8 @@ sourceSets {
             if (project.findProperty('enableKeys') == 'true') srcDir 'src/keys/java'
             // version-specific bits: src/compat/<group>/java (the newest group that is not newer than this Minecraft)
             srcDir "src/compat/${project.findProperty('compat') ?: project.minecraft_version}/java"
+            // the server part (shared builds / invites) and its network messages, client and server
+            if (project.findProperty('enableNet') != 'false') { srcDir 'src/net/java'; srcDir 'src/netfabric/java' }
         }
     }
 }
@@ -33,7 +35,14 @@ def mcdep = project.findProperty('mc_dep') ?: "~${project.minecraft_version}"
 processResources {
     inputs.property 'version', project.version
     inputs.property 'mcdep', mcdep
-    filesMatching('fabric.mod.json') { expand 'version': project.version, 'mcdep': mcdep, 'java': 25 }
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version, 'mcdep': mcdep, 'java': 25
+        // with the server part: also loads on servers (and inside singleplayer/LAN worlds)
+        if (project.findProperty('enableNet') != 'false') filter { String l ->
+            l.contains('"environment": "client"') ? l.replace('"client"', '"*"') :
+            l.contains('"client": [') ? '    "main": ["dev.buildblueprint.net.NetInit"],\n' + l :
+            l.contains('"dev.buildblueprint.client.BuildBlueprintClient"') ? l + ',\n      "dev.buildblueprint.net.NetClient"' : l }
+    }
 }
 
 tasks.withType(JavaCompile).configureEach { options.release = 25 }

@@ -6,6 +6,9 @@ Copy co-op code	Copier le code coop
 Send this code to your friends. They paste it in Saved builds > Paste, and the build appears in this exact spot for them too.	Envoie ce code à tes amis. Ils le collent dans Constructions sauvegardées > Coller, et la construction apparaît au même endroit chez eux aussi.
 How many people build it. Everyone should pick the same number.	Combien de personnes la construisent. Tout le monde doit choisir le même nombre.
 Which builder you are. Each friend picks a different number.	Quel constructeur tu es. Chaque ami choisit un numéro différent.
+Invite & join on this server ({0})	Inviter et rejoindre sur ce serveur ({0})
+Invite & join on this server	Inviter et rejoindre sur ce serveur
+Invite players on this server to your build, or join theirs - no code to send.	Invite des joueurs de ce serveur à ta construction ou rejoins les leurs - sans code à envoyer.
 Done	Terminé
 Builders: {0}	Constructeurs : {0}
 just me	juste moi
@@ -14,6 +17,8 @@ I'm builder -	Je suis le constructeur -
 Load a build first.	Charge d'abord une construction.
 Place the build first (Delete), so friends get it in the same spot.	Place d'abord la construction (Suppr), pour que tes amis l'aient au même endroit.
 Copied! Send it to your friends.	Copié ! Envoie-le à tes amis.
+Co-op build placed where your friend has it. Pick which builder you are.	Construction coop placée là où ton ami l'a. Choisis quel constructeur tu es.
+Couldn't load that build: {0}	Impossible de charger cette construction : {0}
 1. Send them the build. It appears in this exact spot.	1. Envoie-leur la construction. Elle apparaît exactement ici.
 2. Split the work. Everyone picks the same number of	2. Partagez le travail. Tout le monde choisit le même nombre de
    builders, and a different builder number.	   constructeurs, et un numéro de constructeur différent.
@@ -103,6 +108,8 @@ Logic Survival is in your servers	Logic Survival est dans tes serveurs
 Add Logic Survival to my servers	Ajouter Logic Survival à mes serveurs
 Adds {0} to Multiplayer. You can delete it there any time.	Ajoute {0} au Multijoueur. Tu peux le supprimer là-bas à tout moment.
 How Build Blueprint works	Comment marche Build Blueprint
+{0} is building "{1}" here	{0} construit "{1}" ici
+Menu > Build with friends to join	Menu > Construire avec des amis pour rejoindre
 Arrows	Flèches
 grow the box that way	agrandir la boîte de ce côté
 Alt + arrows	Alt + flèches
@@ -250,7 +257,6 @@ free build	gratuite
 View: 3D	Vue : 3D
 View: Top	Vue : dessus
 View: Front	Vue : face
-Co-op build placed where your friend has it. Pick which builder you are.	Construction coop placée là où ton ami l'a. Choisis quel constructeur tu es.
 You already saved this build.	Tu as déjà sauvegardé cette construction.
 Saved "{0}" on this computer.	« {0} » sauvegardée sur cet ordinateur.
 Could not read the clipboard.	Impossible de lire le presse-papiers.
@@ -282,6 +288,16 @@ in your user folder.	de ton dossier utilisateur.
 drag to move · scroll to zoom	glisser pour déplacer · molette pour zoomer
 Can't read this build: {0}	Impossible de lire cette construction : {0}
 Paste a build to see it here	Colle une construction pour la voir ici
+On this server	Sur ce serveur
+Invite {0}	Inviter {0}
+They get a message and can join your placed build in one click.	Ils reçoivent un message et peuvent rejoindre ta construction posée en un clic.
+Join {0}'s {1}	Rejoindre {1} de {0}
+Puts {0}'s build in their spot, placed, so you can build it together.	Place la construction de {0} à son endroit, posée, pour la construire ensemble.
+Back	Retour
+Players with Build Blueprint	Joueurs avec Build Blueprint
+Builds you can join	Constructions à rejoindre
+Nobody else here has the mod yet.	Personne d'autre ici n'a encore le mod.
+No shared builds yet.	Aucune construction partagée pour l'instant.
 Build Blueprint settings	Paramètres de Build Blueprint
 ON	OUI
 OFF	NON
@@ -319,6 +335,8 @@ Auto-swap blocks: {0}	Échange auto : {0}
 When the stack in your hand runs out, the next block the build needs moves into your hand: more of the same first, then the next block to place.	Quand la pile dans ta main est vide, le prochain bloc dont la construction a besoin passe dans ta main : d'abord le même, puis le prochain bloc à poser.
 Arrow to build: {0}	Flèche vers la construction : {0}
 When you're more than 32 blocks from your build, the corner list shows an arrow pointing back to it and how far it is.	Quand tu es à plus de 32 blocs de ta construction, la liste dans le coin montre une flèche vers elle et sa distance.
+Share my build: {0}	Partager ma construction : {0}
+On a server with the Build Blueprint server part, other players with the mod can see and join your placed build.	Sur un serveur avec la partie serveur de Build Blueprint, les autres joueurs avec le mod peuvent voir et rejoindre ta construction posée.
 Time left: {0}	Temps restant : {0}
 Under the build timer: a guess of how long the rest of the build will take at your speed. Shows after you've built for a minute.	Sous le chrono : une estimation du temps qu'il faudra pour finir à ton rythme. S'affiche après une minute de construction.
 Ghost blocks: {0}% solid	Blocs fantômes : {0} % opaques
@@ -386,7 +404,6 @@ Opens a bug report on GitHub with your Minecraft version, mod version and the la
 Hover a button to see what it does.	Survole un bouton pour voir ce qu'il fait.
 Copy list	Copier la liste
 Copy the list as text, to paste in a chat or a note, or to print.	Copie la liste en texte, pour la coller dans un chat ou une note, ou l'imprimer.
-Back	Retour
 1 stack + {0}	1 pile + {0}
 1 stack	1 pile
 {0} stacks + {1}	{0} piles + {1}
@@ -430,6 +447,13 @@ Nothing here.	Rien ici.
 No block matches "{0}".	Aucun bloc ne correspond à « {0} ».
 Click a block to pick it  ·  double-click swaps right away	Clique sur un bloc pour le choisir  ·  double-clic pour échanger tout de suite
 Double-click to swap to this	Double-clic pour échanger contre celui-ci
+This server doesn't have the Build Blueprint server part.	Ce serveur n'a pas la partie serveur de Build Blueprint.
+Place your build first (Delete), then invite.	Pose d'abord ta construction (Suppr), puis invite.
+Turn on Share my build (Settings > Extras) to invite.	Active Partager ma construction (Paramètres > Extras) pour inviter.
+Couldn't share your build.	Impossible de partager ta construction.
+Invited {0}!	{0} invité !
+a build	une construction
+{0} invited you to build together! Open the menu > Build with friends to join.	{0} t'invite à construire ensemble ! Ouvre le menu > Construire avec des amis pour rejoindre.
 Search by name or creator...	Cherche par nom ou par créateur...
 Show one kind of build: houses, towers, ships...	Affiche un type de construction : maisons, tours, bateaux...
 Show only small, medium or big builds (by how many blocks they have).	Affiche seulement les petites, moyennes ou grandes constructions (selon leur nombre de blocs).
