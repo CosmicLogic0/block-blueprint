@@ -398,31 +398,14 @@ jobs:
         run: |
           J=$(ls server-plugin/build/libs/buildblueprint-server-*.jar | head -1)
           : > plugin-log.txt
-          # Bukkit plugins have their own upload address; the same CurseForge key works there. Try it first.
-          for H in https://dev.bukkit.org https://minecraft.curseforge.com; do
-            curl -s -H "X-Api-Token: $CF_TOKEN" $H/api/game/version-types > types.json
-            curl -s -H "X-Api-Token: $CF_TOKEN" $H/api/game/versions > versions.json
-            python3 - <<'PY' > meta.json
+          H=https://minecraft.curseforge.com
+          python3 - <<'PY' > meta.json
           import json, os
-          try:
-              types = json.load(open('types.json')); vers = json.load(open('versions.json'))
-          except Exception:
-              types, vers = [], []
-          bukkit = {t['id'] for t in types if 'bukkit' in t['slug'].lower()} or {t['id'] for t in types}
-          def ok(n):
-              p = [x for x in n.replace('CB ', '').replace('-', '.').split('.') if x.isdigit()]
-              p = [int(x) for x in p]
-              return len(p) >= 2 and (p[0] > 1 or p[1] >= 15)
-          ids = [v['id'] for v in vers if v.get('gameVersionTypeID') in bukkit and ok(v['name'])]
+          ids = [int(x) for l in open('.github/plugin-bukkit-versions.txt') if not l.startswith('#') for x in l.split()]
           print(json.dumps({'changelog': open('CHANGELOG.md').read().split('\n## ')[0][:4000], 'changelogType': 'markdown',
                             'displayName': f"Build Blueprint Server {os.environ['V']}", 'gameVersions': ids, 'releaseType': 'release'}))
           PY
-            n=$(python3 -c "import json; print(len(json.load(open('meta.json'))['gameVersions']))")
-            { echo "== $H: $n versions"; python3 -c "import json; print([t['slug'] for t in json.load(open('types.json'))][:40])" 2>&1 | head -c 1500; echo; } >> plugin-log.txt
-            [ "$n" -gt 0 ] && break
-          done
-          cat plugin-log.txt
-          [ "$n" -gt 0 ] || { echo "no game versions found" >> plugin-log.txt; exit 1; }
+          n=$(python3 -c "import json; print(len(json.load(open('meta.json'))['gameVersions']))"); echo "Bukkit versions: $n" >> plugin-log.txt
           if grep -q dry-run .github/plugin-upload.txt; then echo "dry run: not uploading" >> plugin-log.txt; exit 0; fi
           code=$(curl -s -o cf-response.txt -w '%{http_code}' -H "X-Api-Token: $CF_TOKEN" -F "metadata=<meta.json" -F "file=@$J" $H/api/projects/1822593/upload-file)
           { echo "upload to $H: HTTP $code"; cat cf-response.txt; } >> plugin-log.txt; cat plugin-log.txt

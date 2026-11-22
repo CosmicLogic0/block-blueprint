@@ -1,0 +1,5 @@
+# CurseForge "Bukkit" game version ids for the server plugin (from the author site; the upload API doesn't list them).
+# When a new Minecraft version comes out, add its id here (look at a manually uploaded file's versions).
+17046 16500 16083 16084 16085
+14417 13966 13933 13683 13574 13473 12988 12735 12736 12737 12738 11515
+11307 11306 10742 10741 10326 9994 9974 9973 9561 9560 9261 9190 9016 8897 8849 8503 7915 7667
