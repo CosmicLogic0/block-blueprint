@@ -16,7 +16,8 @@ import java.util.TreeMap;
  *   .schem      Sponge schematic v1, v2 and v3 (WorldEdit, FAWE, Axiom, Amulet...)  - read and write
  *   .litematic  Litematica                                                          - read
  *   .nbt        Minecraft structure block files                                     - read
- * Old MCEdit ".schematic" files (before Minecraft 1.13, numeric block ids) are recognised but not supported yet.
+ *   .schematic  old MCEdit / WorldEdit files (before Minecraft 1.13, numeric block ids)  - read
+ *   .mcstructure Bedrock Edition structure files (blocks turned into their Java Edition names) - read
  * Plain Java with no Minecraft classes, so it works the same on every Minecraft version.
  */
 public final class SchemCodec {
@@ -27,7 +28,7 @@ public final class SchemCodec {
     private static final long MAX_CELLS = 2_000_000_000L;   // what one Java array can hold
 
     /** File endings this class can read. */
-    public static final String[] EXTENSIONS = {".schem", ".litematic", ".nbt", ".schematic"};
+    public static final String[] EXTENSIONS = {".schem", ".litematic", ".nbt", ".schematic", ".mcstructure"};
 
     public static boolean isSchematicFile(String fileName) {
         String f = fileName.toLowerCase(java.util.Locale.ROOT);
@@ -40,14 +41,21 @@ public final class SchemCodec {
     /** Reads any supported schematic file. fallbackName is used when the file has no name inside. */
     @SuppressWarnings("unchecked")
     public static Blueprint read(byte[] file, String fallbackName) throws BlueprintException {
-        Map<String, Object> root = Nbt.read(file);
+        Map<String, Object> root;
+        try {
+            root = Nbt.read(file);
+        } catch (BlueprintException e) {   // not Java Edition NBT: maybe a Bedrock .mcstructure (little-endian)
+            Map<String, Object> le;
+            try { le = Nbt.readLittleEndian(file); } catch (BlueprintException e2) { throw e; }
+            if (le.get("structure") instanceof Map) return mcstructure(le, fallbackName);
+            throw e;
+        }
         // Sponge v3 (and some v2 writers) keep everything inside a "Schematic" compound
         if (root.get("Schematic") instanceof Map) root = (Map<String, Object>) root.get("Schematic");
         if (root.get("Regions") instanceof Map) return litematic(root, fallbackName);
         if (root.get("size") instanceof List && (root.get("palette") instanceof List || root.get("palettes") instanceof List)) return structure(root, fallbackName);
         if (root.get("Blocks") instanceof Map || root.get("Palette") instanceof Map || root.get("BlockData") instanceof byte[]) return sponge(root, fallbackName);
-        if (root.get("Blocks") instanceof byte[] || root.containsKey("Materials"))
-            throw new BlueprintException("That's an old .schematic file (from before Minecraft 1.13). Open it in WorldEdit on a newer version and save it as .schem, then try again.");
+        if (root.get("Blocks") instanceof byte[]) return mcedit(root, fallbackName);
         throw new BlueprintException("That file isn't a schematic Build Blueprint knows.");
     }
 
@@ -160,6 +168,155 @@ public final class SchemCodec {
             cells[(y * sz + z) * sx + x] = map[st];
         }
         return new Blueprint(clean(fallbackName, "Structure"), sx, sy, sz, pal.toArray(), cells);
+    }
+
+    // ------------------------------------------------------------------ old MCEdit .schematic
+
+    private static Map<String, String> legacy;
+    /** "id:data" -> block state, for blocks from before Minecraft 1.13 (from PrismarineJS minecraft-data, MIT). */
+    private static synchronized Map<String, String> legacy() throws BlueprintException {
+        if (legacy == null) legacy = table("legacy-blocks.txt.gz", '=');
+        return legacy;
+    }
+
+    /** A gzipped "key<sep>value" table from the mod's data folder. */
+    private static Map<String, String> table(String file, char sep) throws BlueprintException {
+        Map<String, String> m = new HashMap<>();
+        try (java.io.InputStream raw = SchemCodec.class.getResourceAsStream("/assets/buildblueprint/tables/" + file)) {
+            if (raw == null) throw new BlueprintException("Build Blueprint is missing its " + file + " table - reinstall the mod.");
+            java.io.BufferedReader r = new java.io.BufferedReader(new java.io.InputStreamReader(new java.util.zip.GZIPInputStream(raw), java.nio.charset.StandardCharsets.UTF_8));
+            for (String line; (line = r.readLine()) != null; ) {
+                if (line.isEmpty() || line.charAt(0) == '#') continue;
+                int i = line.indexOf(sep);
+                if (i > 0) m.putIfAbsent(line.substring(0, i), line.substring(i + 1));
+            }
+        } catch (IOException e) {
+            throw new BlueprintException("Build Blueprint couldn't read its " + file + " table.");
+        }
+        return m;
+    }
+
+    /** Old .schematic: Width/Height/Length, Blocks (+ AddBlocks for ids over 255) and Data, in y-z-x order like ours. */
+    private static Blueprint mcedit(Map<String, Object> s, String fallbackName) throws BlueprintException {
+        int w = u16(s.get("Width")), h = u16(s.get("Height")), l = u16(s.get("Length"));
+        checkSize(w, h, l);
+        byte[] blocks = (byte[]) s.get("Blocks");
+        byte[] data = s.get("Data") instanceof byte[] ? (byte[]) s.get("Data") : new byte[0];
+        byte[] add = s.get("AddBlocks") instanceof byte[] ? (byte[]) s.get("AddBlocks") : null;
+        int n = w * h * l;
+        if (blocks.length < n) throw new BlueprintException("That .schematic file ended early.");
+        Map<String, String> table = legacy();
+        Map<Integer, Integer> seen = new HashMap<>();
+        Pal pal = new Pal();
+        int[] cells = new int[n];
+        int unknown = 0;
+        for (int i = 0; i < n; i++) {
+            int id = blocks[i] & 0xff;
+            if (add != null && (i >> 1) < add.length) id |= ((i & 1) == 0 ? (add[i >> 1] & 0x0F) << 8 : (add[i >> 1] & 0xF0) << 4);
+            if (id == 0) continue;
+            int meta = i < data.length ? data[i] & 0x0f : 0, key = id << 4 | meta;
+            Integer c = seen.get(key);
+            if (c == null) {
+                String st = table.get(id + ":" + meta);
+                if (st == null) st = table.get(id + ":0");
+                c = st == null ? 0 : pal.of(st);
+                if (st == null) unknown++;
+                seen.put(key, c);
+            }
+            cells[i] = c;
+        }
+        return new Blueprint(clean(fallbackName, "Old schematic"), w, h, l, pal.toArray(), cells);
+    }
+
+    // ------------------------------------------------------------------ Bedrock .mcstructure
+
+    private static Map<String, String> bedrock;
+    /** Bedrock name -> its "key=value" state lists and Java states, best first (for files with fewer states than the table). */
+    private static Map<String, List<String[]>> bedrockByName;
+    /** Bedrock block "name|key=value;..." (or "name|*" for the usual form) -> Java block state (made from GeyserMC's mappings, MIT). */
+    private static synchronized Map<String, String> bedrock() throws BlueprintException {
+        if (bedrock == null) {
+            Map<String, String> m = table("bedrock-blocks.txt.gz", '\t');
+            Map<String, List<String[]>> byName = new HashMap<>();
+            try (java.io.InputStream raw = SchemCodec.class.getResourceAsStream("/assets/buildblueprint/tables/bedrock-blocks.txt.gz")) {
+                java.io.BufferedReader r = new java.io.BufferedReader(new java.io.InputStreamReader(new java.util.zip.GZIPInputStream(raw), java.nio.charset.StandardCharsets.UTF_8));
+                for (String line; (line = r.readLine()) != null; ) {
+                    int bar = line.indexOf('|'), tab = line.indexOf('\t');
+                    if (line.startsWith("#") || bar < 0 || tab < bar || line.charAt(bar + 1) == '*') continue;
+                    byName.computeIfAbsent(line.substring(0, bar), k -> new ArrayList<>()).add(new String[]{";" + line.substring(bar + 1, tab) + ";", line.substring(tab + 1)});
+                }
+            } catch (IOException | RuntimeException e) { /* exact matches still work */ }
+            bedrockByName = byName;
+            bedrock = m;
+        }
+        return bedrock;
+    }
+
+    /** The Java Edition block for a Bedrock palette entry {name, states}, or null when there's none. */
+    @SuppressWarnings("unchecked")
+    static String fromBedrock(Map<String, Object> entry, Map<String, String> table) {
+        Object n = entry.get("name");
+        if (!(n instanceof String)) return null;
+        String name = ((String) n).indexOf(':') < 0 ? "minecraft:" + n : (String) n;
+        if (name.equals("minecraft:air") || name.equals("minecraft:structure_void")) return null;
+        StringBuilder key = new StringBuilder(name).append('|');
+        if (entry.get("states") instanceof Map) {
+            boolean first = true;
+            for (Map.Entry<String, Object> e : new TreeMap<>((Map<String, Object>) entry.get("states")).entrySet()) {
+                Object v = e.getValue();
+                if (!first) key.append(';');
+                key.append(e.getKey()).append('=').append(v instanceof Number ? String.valueOf(((Number) v).longValue()) : String.valueOf(v));
+                first = false;
+            }
+        }
+        String j = table.get(key.toString());
+        if (j != null) return j;
+        // the file has fewer (or older) states than the table: the best line that agrees with every state it has
+        List<String[]> rows = bedrockByName == null ? null : bedrockByName.get(name);
+        if (rows != null && key.length() > name.length() + 1) {
+            String[] want = key.substring(name.length() + 1).split(";");
+            for (String[] row : rows) {
+                boolean ok = true;
+                for (String kv : want) if (!row[0].contains(";" + kv + ";")) { ok = false; break; }
+                if (ok) return row[1];
+            }
+        }
+        return table.get(name + "|*");
+    }
+
+    /** Bedrock .mcstructure: size, structure.block_indices (layer 0 = blocks; layer 1 = water in them) and the palette. Order: x, then y, then z. */
+    @SuppressWarnings("unchecked")
+    private static Blueprint mcstructure(Map<String, Object> root, String fallbackName) throws BlueprintException {
+        if (!(root.get("size") instanceof List)) throw new BlueprintException("That .mcstructure file has no size.");
+        List<Object> size = (List<Object>) root.get("size");
+        int sx = num(size.get(0)), sy = num(size.get(1)), sz = num(size.get(2));
+        checkSize(sx, sy, sz);
+        Map<String, Object> st = (Map<String, Object>) root.get("structure");
+        List<Object> layers = st.get("block_indices") instanceof List ? (List<Object>) st.get("block_indices") : null;
+        Object palObj = st.get("palette") instanceof Map ? ((Map<String, Object>) st.get("palette")).get("default") : null;
+        if (layers == null || layers.isEmpty() || !(palObj instanceof Map) || !(((Map<String, Object>) palObj).get("block_palette") instanceof List))
+            throw new BlueprintException("That .mcstructure file has no blocks in it.");
+        List<Object> bp = (List<Object>) ((Map<String, Object>) palObj).get("block_palette");
+        Map<String, String> table = bedrock();
+        Pal pal = new Pal();
+        int[] map = new int[bp.size()];
+        for (int i = 0; i < map.length; i++) {
+            String j = bp.get(i) instanceof Map ? fromBedrock((Map<String, Object>) bp.get(i), table) : null;
+            map[i] = j == null ? 0 : pal.of(j);
+        }
+        Object l0 = layers.get(0);
+        int n = sx * sy * sz;
+        int[] cells = new int[n];
+        int idx = 0;
+        for (int x = 0; x < sx; x++)
+            for (int y = 0; y < sy; y++)
+                for (int z = 0; z < sz; z++, idx++) {
+                    int v;
+                    if (l0 instanceof int[]) { int[] a = (int[]) l0; v = idx < a.length ? a[idx] : -1; }
+                    else { List<Object> a = (List<Object>) l0; v = idx < a.size() ? num(a.get(idx)) : -1; }
+                    if (v >= 0 && v < map.length) cells[(y * sz + z) * sx + x] = map[v];
+                }
+        return new Blueprint(clean(fallbackName, "Bedrock structure"), sx, sy, sz, pal.toArray(), cells);
     }
 
     // ------------------------------------------------------------------ writing

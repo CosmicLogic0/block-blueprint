@@ -3,6 +3,8 @@
 Every template below is used under its creator's open license (as listed on Modrinth). Thank you to all of these builders!
 License texts: renderer/templates/licenses/<project>.txt. The **Minecraft Buildings** tab is read from the player's own game files; nothing of Mojang's is included.
 
+Builds whose id starts with `bb_` (Starter Houses, Farms, Medieval, Modern & Fun) were made for Build Blueprint itself by tools/templates/originals.py.
+
 | Project | Creator (license) | Builds | Link |
 |---|---|---|---|
 | 2525 | mooredesign13_63897 (MIT) | 20 | https://modrinth.com/mod/2525 |

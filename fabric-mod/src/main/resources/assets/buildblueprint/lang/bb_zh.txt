@@ -54,7 +54,7 @@ A build is what you want to make, shown as see-through ghost blocks in your worl
 Open the build menu, click Saved builds, pick one and press Load into world.	打开建筑菜单，点击“已保存的建筑”，选一个，然后按“加载到世界”。
 Builds come from three places:	建筑有三个来源：
 - the free Block Blueprint app: make or pick a build and press Send to Minecraft	- 免费的 Block Blueprint 应用：制作或选择一个建筑，然后按 Send to Minecraft
-- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder	- 用户文件夹中 BlockBlueprint 文件夹里的原理图文件（.schem、.litematic、.nbt）
+- schematic files (.schem, .litematic, .nbt, old .schematic, Bedrock .mcstructure): drop them on the game window in Saved builds, paste a link to one, or put them in the BlockBlueprint folder in your user folder	- 原理图文件（.schem、.litematic、.nbt、旧版 .schematic、基岩版 .mcstructure）：在“已保存的建筑”中拖到游戏窗口上、粘贴文件链接，或放进用户文件夹里的 BlockBlueprint 文件夹
 - builds you copy from your own world (see Copy a build)	- 从你自己的世界里复制的建筑（见“复制建筑”）
 Page Up	Page Up
 open the build menu	打开建筑菜单
@@ -244,12 +244,40 @@ What to gather for the blocks you still need  ·  (furnace) = smelt some of it	�
 For: {0}	用于：{0}
 Smelt some of it in a furnace first	先在熔炉里烧炼一部分
 Crafting table amounts - a stonecutter needs less for stone stairs and slabs	按工作台计算的数量 - 用切石机做石质楼梯和台阶需要的更少
+My picture	我的图片
+Build from a picture	用图片建造
+Standing up: a wall facing you. Lying flat: on the ground, like map art.	竖立：面向你的一面墙。平铺：铺在地上，像地图画。
+How many blocks across the long side of the picture is (up to 256).	图片长边有多少个方块（最多 256）。
+Wool, concrete and terracotta are easy to get and come in many colors. Every full block gives the closest colors, but uses rarer blocks.	羊毛、混凝土和陶瓦容易获得，颜色也多。所有完整方块颜色最接近，但会用到更稀有的方块。
+Saves it in Saved builds. Load it into the world from there.	保存到“已保存的建筑”。从那里加载到世界中。
+Back	返回
+Lying flat (floor)	平铺（地面）
+Standing up (wall)	竖立（墙）
+{0} x {1} blocks	{0} x {1} 个方块
+Blocks: every full block	方块：所有完整方块
+Blocks: wool, concrete...	方块：羊毛、混凝土...
+No blocks to use.	没有可用的方块。
+Couldn't read that picture.	无法读取该图片。
+Couldn't save it: {0}	无法保存：{0}
+That picture is too big.	该图片太大了。
+Drop a picture: PNG or JPG.	拖入一张图片：PNG 或 JPG。
+Copy a link to a picture first (or drop a picture on this window).	请先复制图片链接（或把图片拖到这个窗口上）。
+Downloading the picture...	正在下载图片...
+Couldn't download that link{0}	无法下载该链接{0}
+Drop a picture (PNG or JPG)	把图片（PNG 或 JPG）
+on this window,	拖到这个窗口上，
+or copy a link to a picture	或复制图片链接
+and press Ctrl+V.	然后按 Ctrl+V。
+Couldn't make blocks from it.	无法用它生成方块。
+{0} blocks, {1} kinds	{0} 个方块，{1} 种
 Search	搜索
 Search...	搜索...
 Get free builds	免费建筑
 1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	来自 Minecraft 社区的 1300 多个免费建筑：房子、塔、船、城堡……下载一个，它就会出现在“已保存的建筑”里。
+From picture	从图片
+Turn a picture into a build: pixel art standing up, or lying flat like map art.	把图片变成建筑：竖立的像素画，或像地图画一样平铺。
 + Paste build	+ 粘贴建筑
-Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.	从剪贴板粘贴建筑代码（BB1:...）或应用的导出内容。Ctrl+V 也可以。
+Paste a build code (BB1:...), the app's Export lines, or a link to a schematic file. Ctrl+V works too. You can also drop schematic files on the game window.	粘贴建筑代码（BB1:...）、应用的导出行，或原理图文件的链接。也可以按 Ctrl+V。还可以把原理图文件拖到游戏窗口上。
 Copy from world	从世界复制
 Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.	保存一个已经在你世界里的建筑：范围框从你看着的方块开始 - 用方向键把它调到和建筑一样大，然后按 Insert。
 Current build	当前建筑
@@ -275,6 +303,11 @@ View: Front	视图：正面
 You already saved this build.	你已经保存过这个建筑了。
 Saved "{0}" on this computer.	已在这台电脑上保存“{0}”。
 Could not read the clipboard.	无法读取剪贴板。
+Downloading the build...	正在下载建筑...
+{0}: couldn't read it.	{0}：无法读取。
+{0} is too big.	{0} 太大了。
+couldn't read it.	无法读取。
+Saved {0} builds on this computer.	已在这台电脑上保存 {0} 个建筑。
 Code for "{0}" copied - paste it in the app (Templates > Import code).	已复制“{0}”的代码 - 粘贴到应用里（Templates > Import code）。
 Saved {0} in BlockBlueprint/schematics (your user folder).	已将 {0} 保存到 BlockBlueprint/schematics（你的用户文件夹）。
 Couldn't save the .schem file: {0}	无法保存 .schem 文件：{0}
@@ -295,10 +328,11 @@ build code, then press	建筑代码，然后按
 + Paste build.	+ 粘贴建筑。
 From your world: press	从你的世界：按
 Copy from world.	从世界复制。
-Schematics: put .schem,	原理图：把 .schem、
-.litematic or .nbt files	.litematic 或 .nbt 文件
-in BlockBlueprint/builds	放进用户文件夹中的
-in your user folder.	BlockBlueprint/builds。
+Schematic files: drop	原理图文件：拖到
+them on this window, or	这个窗口上，或
+paste a link to one.	粘贴文件链接。
+(.schem .litematic .nbt	（.schem .litematic .nbt
+.schematic .mcstructure)	.schematic .mcstructure）
 {0} x {1} x {2} · {3} blocks · {4} layers	{0} x {1} x {2} · {3} 个方块 · {4} 层
 drag to move · scroll to zoom	拖动移动 · 滚轮缩放
 Can't read this build: {0}	无法读取这个建筑：{0}
@@ -308,7 +342,6 @@ Invite {0}	邀请 {0}
 They get a message and can join your placed build in one click.	对方会收到消息，一键就能加入你放好的建筑。
 Join {0}'s {1}	加入 {0} 的 {1}
 Puts {0}'s build in their spot, placed, so you can build it together.	把 {0} 的建筑放在原处并固定，你们就能一起建造。
-Back	返回
 Players with Build Blueprint	装有 Build Blueprint 的玩家
 Builds you can join	可以加入的建筑
 Nobody else here has the mod yet.	这里还没有其他人装这个模组。
@@ -615,6 +648,7 @@ part {0} of {1} ({2})	第 {0} 部分，共 {1} 部分（{2}）
 {0} up	上方 {0}
 {0} down	下方 {0}
 right here	就在这里
+That file has no blocks in it.	该文件里没有方块。
 That schematic file is too big.	这个原理图文件太大了。
 Couldn't read {0}.	无法读取 {0}。
 That build is too big for the memory Minecraft has. Give Minecraft more memory (RAM) in your launcher, then try again.	这个建筑太大了，Minecraft 的内存不够。请在启动器里给 Minecraft 分配更多内存（RAM），然后再试一次。

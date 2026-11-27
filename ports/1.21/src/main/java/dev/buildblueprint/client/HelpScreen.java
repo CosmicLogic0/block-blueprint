@@ -30,7 +30,7 @@ public class HelpScreen extends BBScreen {
          "Open the build menu, click Saved builds, pick one and press Load into world.",
          "Builds come from three places:",
          "- the free Block Blueprint app: make or pick a build and press Send to Minecraft",
-         "- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder",
+         "- schematic files (.schem, .litematic, .nbt, old .schematic, Bedrock .mcstructure): drop them on the game window in Saved builds, paste a link to one, or put them in the BlockBlueprint folder in your user folder",
          "- builds you copy from your own world (see Copy a build)",
          "key:Page Up:open the build menu"},
         {"The build appears in front of you. Move it to where you want to build it.",

@@ -1,3 +1,9 @@
+## 1.6.0
+- **Build from a picture:** Saved builds > From picture. Drop a PNG or JPG on the game window (or copy a link to one and press Ctrl+V) and it becomes a build, one block per pixel. Standing up like a wall or lying flat like map art, up to 256 blocks across, made of wool, concrete and terracotta - or every full block for the closest colors. See it before you save it.
+- **More file types:** old .schematic files (from before Minecraft 1.13) and Bedrock Edition .mcstructure files now load, the blocks turned into their Java Edition versions.
+- **Drop files on the game:** drop schematic files on the Saved builds window to add them. Or copy a link to a build file and press + Paste build (Ctrl+V): it downloads and is added.
+- **16 new free builds** made for Build Blueprint, in Get free builds: Starter Houses (Starter Cabin, Cozy Cottage, Survival Starter Base), Farms (Crop Farm, Animal Pens, Sugar Cane Farm, Pumpkin & Melon Farm), Medieval (Watch Tower, Castle Wall & Gate, Windmill, Blacksmith) and Modern & Fun (Modern House, Hot Air Balloon, Giant Rubber Duck, Pixel Heart, Rainbow Arch).
+
 ## 1.5.1
 - **Quick tour for new players:** the first time you open the build menu, a short step-by-step tour shows how to get a build, move it, place it and build it layer by layer. **Skip tour** is on every step, and you can take it again any time from How it works > Take the tour. Players who already had the mod don't get it by surprise.
 - **All shortcuts page:** How it works has a new page listing every Build Blueprint key, showing the keys you actually set.

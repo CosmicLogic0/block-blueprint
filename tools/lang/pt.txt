@@ -53,7 +53,7 @@ Uma construção é o que você quer fazer, mostrada como blocos fantasma transp
 Abra o menu de construção, clique em Construções salvas, escolha uma e aperte Carregar no mundo.
 As construções vêm de três lugares:
 - o app gratuito Block Blueprint: crie ou escolha uma construção e aperte Send to Minecraft
-- arquivos de esquema (.schem, .litematic, .nbt) na pasta BlockBlueprint da sua pasta de usuário
+- arquivos de esquema (.schem, .litematic, .nbt, .schematic antigo, .mcstructure do Bedrock): solte-os na janela do jogo em Construções salvas, cole um link para um ou coloque-os na pasta BlockBlueprint da sua pasta de usuário
 - construções que você copia do seu próprio mundo (veja Copiar uma construção)
 Page Up
 abrir o menu de construção
@@ -243,12 +243,40 @@ O que juntar para os blocos que ainda faltam  ·  (fornalha) = derreta uma parte
 Para: {0}
 Derreta uma parte numa fornalha primeiro
 Quantidades da bancada - o cortador de pedras usa menos para escadas e lajes de pedra
+Minha imagem
+Construir a partir de uma imagem
+Em pé: uma parede de frente para você. Deitada: no chão, como arte de mapa.
+Quantos blocos tem o lado maior da imagem (até 256).
+Lã, concreto e terracota são fáceis de conseguir e têm muitas cores. Todos os blocos inteiros dão cores mais fiéis, mas usam blocos mais raros.
+Salva em Construções salvas. Carregue no mundo a partir de lá.
+Voltar
+Deitada (chão)
+Em pé (parede)
+{0} x {1} blocos
+Blocos: todos os inteiros
+Blocos: lã, concreto...
+Não há blocos para usar.
+Não foi possível ler essa imagem.
+Não foi possível salvar: {0}
+Essa imagem é grande demais.
+Solte uma imagem: PNG ou JPG.
+Copie primeiro um link para uma imagem (ou solte uma imagem nesta janela).
+Baixando a imagem...
+Não foi possível baixar esse link{0}
+Solte uma imagem (PNG ou JPG)
+nesta janela,
+ou copie um link para uma imagem
+e aperte Ctrl+V.
+Não foi possível gerar blocos a partir dela.
+{0} blocos, {1} tipos
 Pesquisar
 Pesquisar...
 Construções grátis
 Mais de 1.300 construções grátis da comunidade do Minecraft: casas, torres, navios, castelos... Baixe uma e ela fica nas suas Construções salvas.
+De imagem
+Transforme uma imagem em construção: pixel art em pé, ou deitada como arte de mapa.
 + Colar construção
-Cole um código de construção (BB1:...) ou as linhas de Exportar do app da sua área de transferência. Ctrl+V também funciona.
+Cole um código de construção (BB1:...), as linhas de Exportar do app ou um link para um arquivo de esquema. Ctrl+V também funciona. Você também pode soltar arquivos de esquema na janela do jogo.
 Copiar do mundo
 Salve uma construção que já está no seu mundo: uma caixa começa no bloco que você olha - deixe do tamanho da construção com as setas, depois aperte Insert.
 Construção atual
@@ -274,6 +302,11 @@ Vista: frente
 Você já salvou esta construção.
 "{0}" salva neste computador.
 Não deu para ler a área de transferência.
+Baixando a construção...
+{0}: não foi possível ler.
+{0} é grande demais.
+não foi possível ler.
+{0} construções salvas neste computador.
 Código de "{0}" copiado - cole no app (Templates > Import code).
 {0} salvo em BlockBlueprint/schematics (sua pasta de usuário).
 Não deu para salvar o arquivo .schem: {0}
@@ -294,10 +327,11 @@ código de construção e aperte
 + Colar construção.
 Pelo seu mundo: aperte
 Copiar do mundo.
-Esquemas: coloque arquivos .schem,
-.litematic ou .nbt
-em BlockBlueprint/builds
-na sua pasta de usuário.
+Arquivos de esquema: solte-os
+nesta janela, ou
+cole um link para um.
+(.schem .litematic .nbt
+.schematic .mcstructure)
 {0} x {1} x {2} · {3} blocos · {4} camadas
 arraste para mover · role para dar zoom
 Não dá para ler esta construção: {0}
@@ -307,7 +341,6 @@ Convidar {0}
 A pessoa recebe uma mensagem e pode entrar na sua construção colocada com um clique.
 Entrar em {1} de {0}
 Coloca a construção de {0} no lugar dela, já colocada, para construírem juntos.
-Voltar
 Jogadores com Build Blueprint
 Construções em que você pode entrar
 Ninguém mais aqui tem o mod ainda.
@@ -614,6 +647,7 @@ parte {0} de {1} ({2})
 {0} acima
 {0} abaixo
 bem aqui
+Esse arquivo não tem blocos.
 Esse arquivo de esquema é grande demais.
 Não deu para ler {0}.
 Essa construção é grande demais para a memória do Minecraft. Dê mais memória (RAM) ao Minecraft no seu launcher e tente de novo.

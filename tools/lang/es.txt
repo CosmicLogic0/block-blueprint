@@ -53,7 +53,7 @@ Una construcción es lo que quieres hacer, mostrada como bloques fantasma transp
 Abre el menú de construcción, pulsa Construcciones guardadas, elige una y pulsa Cargar en el mundo.
 Las construcciones vienen de tres sitios:
 - la app gratuita Block Blueprint: crea o elige una construcción y pulsa Send to Minecraft
-- archivos de esquemas (.schem, .litematic, .nbt) en la carpeta BlockBlueprint de tu carpeta de usuario
+- archivos de esquema (.schem, .litematic, .nbt, .schematic antiguo, .mcstructure de Bedrock): suéltalos en la ventana del juego en Construcciones guardadas, pega un enlace a uno o ponlos en la carpeta BlockBlueprint de tu carpeta de usuario
 - construcciones que copias de tu propio mundo (ver Copiar una construcción)
 Re Pág
 abrir el menú de construcción
@@ -243,12 +243,40 @@ Qué conseguir para los bloques que aún te faltan  ·  (horno) = funde una part
 Para: {0}
 Funde una parte en un horno primero
 Cantidades de la mesa de crafteo: un cortapiedras necesita menos para escaleras y losas de piedra
+Mi imagen
+Construir desde una imagen
+De pie: una pared frente a ti. Tumbada: en el suelo, como arte de mapa.
+Cuántos bloques mide el lado largo de la imagen (hasta 256).
+La lana, el hormigón y la terracota son fáciles de conseguir y tienen muchos colores. Todos los bloques completos dan colores más fieles, pero usan bloques más raros.
+La guarda en Construcciones guardadas. Cárgala en el mundo desde allí.
+Atrás
+Tumbada (suelo)
+De pie (pared)
+{0} x {1} bloques
+Bloques: todos los completos
+Bloques: lana, hormigón...
+No hay bloques para usar.
+No se pudo leer esa imagen.
+No se pudo guardar: {0}
+Esa imagen es demasiado grande.
+Suelta una imagen: PNG o JPG.
+Copia primero un enlace a una imagen (o suelta una imagen en esta ventana).
+Descargando la imagen...
+No se pudo descargar ese enlace{0}
+Suelta una imagen (PNG o JPG)
+en esta ventana,
+o copia un enlace a una imagen
+y pulsa Ctrl+V.
+No se pudieron sacar bloques de ella.
+{0} bloques, {1} tipos
 Buscar
 Buscar...
 Construcciones gratis
 Más de 1.300 construcciones gratis de la comunidad de Minecraft: casas, torres, barcos, castillos... Descarga una y estará en tus Construcciones guardadas.
+Desde imagen
+Convierte una imagen en una construcción: pixel art de pie, o tumbado como arte de mapa.
 + Pegar construcción
-Pega un código de construcción (BB1:...) o las líneas de Exportar de la app desde tu portapapeles. Ctrl+V también funciona.
+Pega un código de construcción (BB1:...), las líneas de Exportar de la app o un enlace a un archivo de esquema. Ctrl+V también funciona. También puedes soltar archivos de esquema en la ventana del juego.
 Copiar del mundo
 Guarda una construcción que ya está en tu mundo: empieza una caja en el bloque que miras, hazla tan grande como la construcción con las flechas y pulsa Insert.
 Construcción actual
@@ -274,6 +302,11 @@ Vista: frente
 Ya guardaste esta construcción.
 "{0}" guardada en este ordenador.
 No se pudo leer el portapapeles.
+Descargando la construcción...
+{0}: no se pudo leer.
+{0} es demasiado grande.
+no se pudo leer.
+Se guardaron {0} construcciones en este ordenador.
 Código de "{0}" copiado: pégalo en la app (Templates > Import code).
 {0} guardado en BlockBlueprint/schematics (tu carpeta de usuario).
 No se pudo guardar el archivo .schem: {0}
@@ -294,10 +327,11 @@ código de construcción y pulsa
 + Pegar construcción.
 Desde tu mundo: pulsa
 Copiar del mundo.
-Esquemas: pon archivos .schem,
-.litematic o .nbt
-en BlockBlueprint/builds
-en tu carpeta de usuario.
+Archivos de esquema: suéltalos
+en esta ventana, o
+pega un enlace a uno.
+(.schem .litematic .nbt
+.schematic .mcstructure)
 {0} x {1} x {2} · {3} bloques · {4} capas
 arrastra para mover · rueda para zoom
 No se puede leer esta construcción: {0}
@@ -307,7 +341,6 @@ Invitar a {0}
 Recibe un mensaje y puede unirse a tu construcción colocada con un clic.
 Unirse a {1} de {0}
 Pone la construcción de {0} en su lugar, colocada, para construirla juntos.
-Atrás
 Jugadores con Build Blueprint
 Construcciones a las que unirte
 Nadie más aquí tiene el mod todavía.
@@ -614,6 +647,7 @@ parte {0} de {1} ({2})
 {0} arriba
 {0} abajo
 aquí mismo
+Ese archivo no tiene bloques.
 Ese archivo de esquema es demasiado grande.
 No se pudo leer {0}.
 Esa construcción es demasiado grande para la memoria que tiene Minecraft. Dale más memoria (RAM) a Minecraft en tu launcher y vuelve a intentarlo.

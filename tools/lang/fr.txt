@@ -53,7 +53,7 @@ Une construction, c'est ce que tu veux bâtir, affiché en blocs fantômes trans
 Ouvre le menu de construction, clique sur Constructions sauvegardées, choisis-en une et appuie sur Charger dans le monde.
 Les constructions viennent de trois endroits :
 - l'appli gratuite Block Blueprint : crée ou choisis une construction et appuie sur Send to Minecraft
-- les fichiers schématiques (.schem, .litematic, .nbt) dans le dossier BlockBlueprint de ton dossier utilisateur
+- fichiers schematic (.schem, .litematic, .nbt, ancien .schematic, .mcstructure de Bedrock) : déposez-les sur la fenêtre du jeu dans Constructions enregistrées, collez un lien vers l'un d'eux, ou mettez-les dans le dossier BlockBlueprint de votre dossier utilisateur
 - les constructions que tu copies de ton propre monde (voir Copier une construction)
 Pg préc
 ouvrir le menu de construction
@@ -243,12 +243,40 @@ Quoi récolter pour les blocs qui te manquent  ·  (four) = en faire cuire une p
 Pour : {0}
 Fais-en d'abord cuire une partie dans un four
 Quantités pour l'établi - un tailleur de pierre en demande moins pour les escaliers et dalles en pierre
+Mon image
+Construire depuis une image
+Debout : un mur face à vous. À plat : au sol, comme du map art.
+Combien de blocs fait le grand côté de l'image (jusqu'à 256).
+La laine, le béton et la terre cuite sont faciles à obtenir et existent en beaucoup de couleurs. Tous les blocs pleins donnent les couleurs les plus proches, mais utilisent des blocs plus rares.
+L'enregistre dans Constructions enregistrées. Chargez-la dans le monde depuis là.
+Retour
+À plat (sol)
+Debout (mur)
+{0} x {1} blocs
+Blocs : tous les pleins
+Blocs : laine, béton...
+Aucun bloc à utiliser.
+Impossible de lire cette image.
+Impossible d'enregistrer : {0}
+Cette image est trop grande.
+Déposez une image : PNG ou JPG.
+Copiez d'abord un lien vers une image (ou déposez une image sur cette fenêtre).
+Téléchargement de l'image...
+Impossible de télécharger ce lien{0}
+Déposez une image (PNG ou JPG)
+sur cette fenêtre,
+ou copiez un lien vers une image
+et appuyez sur Ctrl+V.
+Impossible d'en faire des blocs.
+{0} blocs, {1} sortes
 Rechercher
 Rechercher...
 Constructions gratuites
 Plus de 1 300 constructions gratuites de la communauté Minecraft : maisons, tours, bateaux, châteaux... Télécharges-en une et elle est dans tes Constructions sauvegardées.
+Depuis image
+Transformez une image en construction : pixel art debout, ou à plat comme du map art.
 + Coller une construction
-Colle un code de construction (BB1:...) ou les lignes d'Export de l'appli depuis ton presse-papiers. Ctrl+V marche aussi.
+Collez un code de construction (BB1:...), les lignes Exporter de l'appli ou un lien vers un fichier schematic. Ctrl+V marche aussi. Vous pouvez aussi déposer des fichiers schematic sur la fenêtre du jeu.
 Copier du monde
 Sauvegarde une construction déjà présente dans ton monde : une boîte commence sur le bloc que tu regardes - agrandis-la à la taille de la construction avec les flèches, puis appuie sur Inser.
 Construction actuelle
@@ -274,6 +302,11 @@ Vue : face
 Tu as déjà sauvegardé cette construction.
 « {0} » sauvegardée sur cet ordinateur.
 Impossible de lire le presse-papiers.
+Téléchargement de la construction...
+{0} : illisible.
+{0} est trop gros.
+illisible.
+{0} constructions enregistrées sur cet ordinateur.
 Code de « {0} » copié - colle-le dans l'appli (Templates > Import code).
 {0} sauvegardé dans BlockBlueprint/schematics (ton dossier utilisateur).
 Impossible de sauvegarder le fichier .schem : {0}
@@ -294,10 +327,11 @@ code de construction, puis appuie sur
 + Coller une construction.
 Depuis ton monde : appuie sur
 Copier du monde.
-Schématiques : mets des fichiers .schem,
-.litematic ou .nbt
-dans BlockBlueprint/builds
-de ton dossier utilisateur.
+Fichiers schematic : déposez-
+les sur cette fenêtre, ou
+collez un lien vers l'un.
+(.schem .litematic .nbt
+.schematic .mcstructure)
 {0} x {1} x {2} · {3} blocs · {4} couches
 glisser pour déplacer · molette pour zoomer
 Impossible de lire cette construction : {0}
@@ -307,7 +341,6 @@ Inviter {0}
 Ils reçoivent un message et peuvent rejoindre ta construction posée en un clic.
 Rejoindre {1} de {0}
 Place la construction de {0} à son endroit, posée, pour la construire ensemble.
-Retour
 Joueurs avec Build Blueprint
 Constructions à rejoindre
 Personne d'autre ici n'a encore le mod.
@@ -614,6 +647,7 @@ partie {0} sur {1} ({2})
 {0} au-dessus
 {0} en dessous
 juste ici
+Ce fichier ne contient aucun bloc.
 Ce fichier schématique est trop gros.
 Impossible de lire {0}.
 Cette construction est trop grande pour la mémoire de Minecraft. Donne plus de mémoire (RAM) à Minecraft dans ton launcher, puis réessaie.

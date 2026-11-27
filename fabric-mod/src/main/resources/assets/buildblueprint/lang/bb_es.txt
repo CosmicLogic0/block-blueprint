@@ -54,7 +54,7 @@ A build is what you want to make, shown as see-through ghost blocks in your worl
 Open the build menu, click Saved builds, pick one and press Load into world.	Abre el menú de construcción, pulsa Construcciones guardadas, elige una y pulsa Cargar en el mundo.
 Builds come from three places:	Las construcciones vienen de tres sitios:
 - the free Block Blueprint app: make or pick a build and press Send to Minecraft	- la app gratuita Block Blueprint: crea o elige una construcción y pulsa Send to Minecraft
-- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder	- archivos de esquemas (.schem, .litematic, .nbt) en la carpeta BlockBlueprint de tu carpeta de usuario
+- schematic files (.schem, .litematic, .nbt, old .schematic, Bedrock .mcstructure): drop them on the game window in Saved builds, paste a link to one, or put them in the BlockBlueprint folder in your user folder	- archivos de esquema (.schem, .litematic, .nbt, .schematic antiguo, .mcstructure de Bedrock): suéltalos en la ventana del juego en Construcciones guardadas, pega un enlace a uno o ponlos en la carpeta BlockBlueprint de tu carpeta de usuario
 - builds you copy from your own world (see Copy a build)	- construcciones que copias de tu propio mundo (ver Copiar una construcción)
 Page Up	Re Pág
 open the build menu	abrir el menú de construcción
@@ -244,12 +244,40 @@ What to gather for the blocks you still need  ·  (furnace) = smelt some of it	Q
 For: {0}	Para: {0}
 Smelt some of it in a furnace first	Funde una parte en un horno primero
 Crafting table amounts - a stonecutter needs less for stone stairs and slabs	Cantidades de la mesa de crafteo: un cortapiedras necesita menos para escaleras y losas de piedra
+My picture	Mi imagen
+Build from a picture	Construir desde una imagen
+Standing up: a wall facing you. Lying flat: on the ground, like map art.	De pie: una pared frente a ti. Tumbada: en el suelo, como arte de mapa.
+How many blocks across the long side of the picture is (up to 256).	Cuántos bloques mide el lado largo de la imagen (hasta 256).
+Wool, concrete and terracotta are easy to get and come in many colors. Every full block gives the closest colors, but uses rarer blocks.	La lana, el hormigón y la terracota son fáciles de conseguir y tienen muchos colores. Todos los bloques completos dan colores más fieles, pero usan bloques más raros.
+Saves it in Saved builds. Load it into the world from there.	La guarda en Construcciones guardadas. Cárgala en el mundo desde allí.
+Back	Atrás
+Lying flat (floor)	Tumbada (suelo)
+Standing up (wall)	De pie (pared)
+{0} x {1} blocks	{0} x {1} bloques
+Blocks: every full block	Bloques: todos los completos
+Blocks: wool, concrete...	Bloques: lana, hormigón...
+No blocks to use.	No hay bloques para usar.
+Couldn't read that picture.	No se pudo leer esa imagen.
+Couldn't save it: {0}	No se pudo guardar: {0}
+That picture is too big.	Esa imagen es demasiado grande.
+Drop a picture: PNG or JPG.	Suelta una imagen: PNG o JPG.
+Copy a link to a picture first (or drop a picture on this window).	Copia primero un enlace a una imagen (o suelta una imagen en esta ventana).
+Downloading the picture...	Descargando la imagen...
+Couldn't download that link{0}	No se pudo descargar ese enlace{0}
+Drop a picture (PNG or JPG)	Suelta una imagen (PNG o JPG)
+on this window,	en esta ventana,
+or copy a link to a picture	o copia un enlace a una imagen
+and press Ctrl+V.	y pulsa Ctrl+V.
+Couldn't make blocks from it.	No se pudieron sacar bloques de ella.
+{0} blocks, {1} kinds	{0} bloques, {1} tipos
 Search	Buscar
 Search...	Buscar...
 Get free builds	Construcciones gratis
 1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	Más de 1.300 construcciones gratis de la comunidad de Minecraft: casas, torres, barcos, castillos... Descarga una y estará en tus Construcciones guardadas.
+From picture	Desde imagen
+Turn a picture into a build: pixel art standing up, or lying flat like map art.	Convierte una imagen en una construcción: pixel art de pie, o tumbado como arte de mapa.
 + Paste build	+ Pegar construcción
-Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.	Pega un código de construcción (BB1:...) o las líneas de Exportar de la app desde tu portapapeles. Ctrl+V también funciona.
+Paste a build code (BB1:...), the app's Export lines, or a link to a schematic file. Ctrl+V works too. You can also drop schematic files on the game window.	Pega un código de construcción (BB1:...), las líneas de Exportar de la app o un enlace a un archivo de esquema. Ctrl+V también funciona. También puedes soltar archivos de esquema en la ventana del juego.
 Copy from world	Copiar del mundo
 Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.	Guarda una construcción que ya está en tu mundo: empieza una caja en el bloque que miras, hazla tan grande como la construcción con las flechas y pulsa Insert.
 Current build	Construcción actual
@@ -275,6 +303,11 @@ View: Front	Vista: frente
 You already saved this build.	Ya guardaste esta construcción.
 Saved "{0}" on this computer.	"{0}" guardada en este ordenador.
 Could not read the clipboard.	No se pudo leer el portapapeles.
+Downloading the build...	Descargando la construcción...
+{0}: couldn't read it.	{0}: no se pudo leer.
+{0} is too big.	{0} es demasiado grande.
+couldn't read it.	no se pudo leer.
+Saved {0} builds on this computer.	Se guardaron {0} construcciones en este ordenador.
 Code for "{0}" copied - paste it in the app (Templates > Import code).	Código de "{0}" copiado: pégalo en la app (Templates > Import code).
 Saved {0} in BlockBlueprint/schematics (your user folder).	{0} guardado en BlockBlueprint/schematics (tu carpeta de usuario).
 Couldn't save the .schem file: {0}	No se pudo guardar el archivo .schem: {0}
@@ -295,10 +328,11 @@ build code, then press	código de construcción y pulsa
 + Paste build.	+ Pegar construcción.
 From your world: press	Desde tu mundo: pulsa
 Copy from world.	Copiar del mundo.
-Schematics: put .schem,	Esquemas: pon archivos .schem,
-.litematic or .nbt files	.litematic o .nbt
-in BlockBlueprint/builds	en BlockBlueprint/builds
-in your user folder.	en tu carpeta de usuario.
+Schematic files: drop	Archivos de esquema: suéltalos
+them on this window, or	en esta ventana, o
+paste a link to one.	pega un enlace a uno.
+(.schem .litematic .nbt	(.schem .litematic .nbt
+.schematic .mcstructure)	.schematic .mcstructure)
 {0} x {1} x {2} · {3} blocks · {4} layers	{0} x {1} x {2} · {3} bloques · {4} capas
 drag to move · scroll to zoom	arrastra para mover · rueda para zoom
 Can't read this build: {0}	No se puede leer esta construcción: {0}
@@ -308,7 +342,6 @@ Invite {0}	Invitar a {0}
 They get a message and can join your placed build in one click.	Recibe un mensaje y puede unirse a tu construcción colocada con un clic.
 Join {0}'s {1}	Unirse a {1} de {0}
 Puts {0}'s build in their spot, placed, so you can build it together.	Pone la construcción de {0} en su lugar, colocada, para construirla juntos.
-Back	Atrás
 Players with Build Blueprint	Jugadores con Build Blueprint
 Builds you can join	Construcciones a las que unirte
 Nobody else here has the mod yet.	Nadie más aquí tiene el mod todavía.
@@ -615,6 +648,7 @@ part {0} of {1} ({2})	parte {0} de {1} ({2})
 {0} up	{0} arriba
 {0} down	{0} abajo
 right here	aquí mismo
+That file has no blocks in it.	Ese archivo no tiene bloques.
 That schematic file is too big.	Ese archivo de esquema es demasiado grande.
 Couldn't read {0}.	No se pudo leer {0}.
 That build is too big for the memory Minecraft has. Give Minecraft more memory (RAM) in your launcher, then try again.	Esa construcción es demasiado grande para la memoria que tiene Minecraft. Dale más memoria (RAM) a Minecraft en tu launcher y vuelve a intentarlo.

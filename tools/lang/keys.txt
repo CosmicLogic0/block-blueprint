@@ -53,7 +53,7 @@ A build is what you want to make, shown as see-through ghost blocks in your worl
 Open the build menu, click Saved builds, pick one and press Load into world.
 Builds come from three places:
 - the free Block Blueprint app: make or pick a build and press Send to Minecraft
-- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder
+- schematic files (.schem, .litematic, .nbt, old .schematic, Bedrock .mcstructure): drop them on the game window in Saved builds, paste a link to one, or put them in the BlockBlueprint folder in your user folder
 - builds you copy from your own world (see Copy a build)
 Page Up
 open the build menu
@@ -243,12 +243,40 @@ What to gather for the blocks you still need  ·  (furnace) = smelt some of it
 For: {0}
 Smelt some of it in a furnace first
 Crafting table amounts - a stonecutter needs less for stone stairs and slabs
+My picture
+Build from a picture
+Standing up: a wall facing you. Lying flat: on the ground, like map art.
+How many blocks across the long side of the picture is (up to 256).
+Wool, concrete and terracotta are easy to get and come in many colors. Every full block gives the closest colors, but uses rarer blocks.
+Saves it in Saved builds. Load it into the world from there.
+Back
+Lying flat (floor)
+Standing up (wall)
+{0} x {1} blocks
+Blocks: every full block
+Blocks: wool, concrete...
+No blocks to use.
+Couldn't read that picture.
+Couldn't save it: {0}
+That picture is too big.
+Drop a picture: PNG or JPG.
+Copy a link to a picture first (or drop a picture on this window).
+Downloading the picture...
+Couldn't download that link{0}
+Drop a picture (PNG or JPG)
+on this window,
+or copy a link to a picture
+and press Ctrl+V.
+Couldn't make blocks from it.
+{0} blocks, {1} kinds
 Search
 Search...
 Get free builds
 1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.
+From picture
+Turn a picture into a build: pixel art standing up, or lying flat like map art.
 + Paste build
-Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.
+Paste a build code (BB1:...), the app's Export lines, or a link to a schematic file. Ctrl+V works too. You can also drop schematic files on the game window.
 Copy from world
 Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.
 Current build
@@ -274,6 +302,11 @@ View: Front
 You already saved this build.
 Saved "{0}" on this computer.
 Could not read the clipboard.
+Downloading the build...
+{0}: couldn't read it.
+{0} is too big.
+couldn't read it.
+Saved {0} builds on this computer.
 Code for "{0}" copied - paste it in the app (Templates > Import code).
 Saved {0} in BlockBlueprint/schematics (your user folder).
 Couldn't save the .schem file: {0}
@@ -294,10 +327,11 @@ build code, then press
 + Paste build.
 From your world: press
 Copy from world.
-Schematics: put .schem,
-.litematic or .nbt files
-in BlockBlueprint/builds
-in your user folder.
+Schematic files: drop
+them on this window, or
+paste a link to one.
+(.schem .litematic .nbt
+.schematic .mcstructure)
 {0} x {1} x {2} · {3} blocks · {4} layers
 drag to move · scroll to zoom
 Can't read this build: {0}
@@ -307,7 +341,6 @@ Invite {0}
 They get a message and can join your placed build in one click.
 Join {0}'s {1}
 Puts {0}'s build in their spot, placed, so you can build it together.
-Back
 Players with Build Blueprint
 Builds you can join
 Nobody else here has the mod yet.
@@ -614,6 +647,7 @@ part {0} of {1} ({2})
 {0} up
 {0} down
 right here
+That file has no blocks in it.
 That schematic file is too big.
 Couldn't read {0}.
 That build is too big for the memory Minecraft has. Give Minecraft more memory (RAM) in your launcher, then try again.

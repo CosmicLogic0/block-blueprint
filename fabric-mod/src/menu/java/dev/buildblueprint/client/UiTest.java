@@ -26,7 +26,7 @@ public final class UiTest {
     private static final String[] SHOWCASE = {"sc-ghost", "sc-menu", "sc-placed", "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e",
             "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j", "sc-layer-k", "sc-done", "done"};
     private static boolean showcase;
-    private static final String[] WORLD = {"world-ghost", "world-placed", "world-held", "world-held-check", "world-sync", "world-sync-check", "world-sync-demo", "world-coop-demo", "world-only", "tour", "help-keys", "build-hidden", "build", "swap", "swap-search", "remove", "shopping", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "settings-colors", "help-server", "saved", "world-perf", "world-near", "world-special", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "world-held", "world-held-check", "world-sync", "world-sync-check", "world-sync-demo", "world-coop-demo", "world-only", "tour", "help-keys", "picture", "picture-check", "build-hidden", "build", "swap", "swap-search", "remove", "shopping", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "settings-colors", "help-server", "saved", "world-perf", "world-near", "world-special", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -385,6 +385,17 @@ public final class UiTest {
                 Mc.setScreen(new MaterialsScreen(true));
             }
             case "help" -> Mc.setScreen(new HelpScreen(null, 3));
+            case "picture" -> {   // build from a picture: a red square and a blue circle
+                java.awt.image.BufferedImage im = new java.awt.image.BufferedImage(60, 30, java.awt.image.BufferedImage.TYPE_INT_ARGB);
+                for (int y = 0; y < 30; y++) for (int x = 0; x < 60; x++) {
+                    boolean sq = x < 28, circle = (x - 44) * (x - 44) + (y - 15) * (y - 15) < 13 * 13;
+                    im.setRGB(x, y, sq ? 0xFFDC1E1E : circle ? 0xFF2850DC : 0x00000000);
+                }
+                java.io.ByteArrayOutputStream out = new java.io.ByteArrayOutputStream();
+                try { javax.imageio.ImageIO.write(im, "png", out); } catch (java.io.IOException e) { throw new RuntimeException(e); }
+                Mc.setScreen(new PictureScreen(null, "test-picture.png", out.toByteArray()));
+            }
+            case "picture-check" -> System.out.println("BBUITEST picture: " + (Mc.screen() instanceof PictureScreen ? ((PictureScreen) Mc.screen()).blocks() : -1) + " blocks");
             case "tour" -> { Settings.tourDone = false; Mc.setScreen(new MaterialsScreen()); }   // a new player's first menu: the tour opens
             case "help-keys" -> {   // the shortcut page (and: did the tour open by itself?)
                 System.out.println("BBUITEST tour: shown " + Settings.tourDone + " on " + (Mc.screen() == null ? "none" : Mc.screen().getClass().getSimpleName()));
