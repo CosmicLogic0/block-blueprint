@@ -29,12 +29,15 @@ def plain_cube(m):
     return None
 
 SKIP_WORDS = ('sand', 'gravel', 'concrete_powder', 'suspicious_', 'infested_', 'tnt', 'slime', 'honey', 'redstone_block',
-              'magma', 'spawner', 'barrier', 'structure', 'jigsaw', 'command', 'light', 'budding', 'sculk_catalyst', 'test_')
+              'magma', 'spawner', 'barrier', 'structure', 'jigsaw', 'command', 'budding', 'sculk_catalyst', 'test_')
+SKIP_BLOCKS = {'light', 'bedrock'}
 out = []
 for p in sorted(names):
     if not (p.startswith('assets/minecraft/blockstates/') and p.endswith('.json')): continue
     block = p.split('/')[-1][:-5]
-    if any(w in block for w in SKIP_WORDS): continue
+    if block in SKIP_BLOCKS or any(w in block for w in SKIP_WORDS): continue
+    if block.endswith('coral_block') and not block.startswith('dead_'): continue      # dies out of water: changes color
+    if 'copper' in block and not block.startswith('waxed_') and 'ore' not in block and block != 'raw_copper_block': continue   # turns green over time
     bs = js(p)
     v = (bs.get('variants') or {})
     if list(v.keys()) != ['']: continue                      # one plain look, no facing / axis
