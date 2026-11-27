@@ -1,3 +1,8 @@
+## 1.5.1
+- **Quick tour for new players:** the first time you open the build menu, a short step-by-step tour shows how to get a build, move it, place it and build it layer by layer. **Skip tour** is on every step, and you can take it again any time from How it works > Take the tour. Players who already had the mod don't get it by surprise.
+- **All shortcuts page:** How it works has a new page listing every Build Blueprint key, showing the keys you actually set.
+- Fixed: the Build with friends panel was a little too short on servers with the server part, cutting off the bottom of the Invite & join button.
+
 ## 1.5.0
 - **Invite friends in game (server part):** when the server has the Build Blueprint server part (a plugin for Paper/Spigot/Purpur, or this same mod on a Fabric server), Build with friends gets **Invite & join on this server**: invite players who have the mod to your placed build - they get a message and join in one click, no code to send. Builds other players share show up there too, and walking up to one tells you whose it is. Turn sharing off with Settings > Extras > Share my build.
 

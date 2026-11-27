@@ -48,6 +48,7 @@ Blocs, échanges
 Copier
 Bon à savoir
 Plus d'aides
+Tous les raccourcis
 Une construction, c'est ce que tu veux bâtir, affiché en blocs fantômes transparents dans ton monde.
 Ouvre le menu de construction, clique sur Constructions sauvegardées, choisis-en une et appuie sur Charger dans le monde.
 Les constructions viennent de trois endroits :
@@ -100,18 +101,32 @@ Le mod suit la langue de ton jeu : anglais, espagnol, portugais, allemand, fran�
 Tenir un bloc illumine les emplacements proches qui en ont encore besoin (Paramètres : Emplacements du bloc en main).
 Plus de blocs pendant que tu construis ? L'échange auto met dans ta main le prochain bloc dont la construction a besoin (Paramètres > Extras).
 Envie de jouer avec le créateur de ce mod ? Logic Survival est son serveur survie. Il a été ajouté une fois à la fin de ta liste Multijoueur au premier lancement du mod. Supprime-le là-bas si tu n'en veux pas - il ne reviendra pas. Le bouton ci-dessous le rajoute.
+Toutes les touches de Build Blueprint, telles qu'elles sont réglées :
+déplacer la construction (maintenir Maj pour 5 blocs)
+la placer / la débloquer
+commencer ou enregistrer une boîte de copie
+Alt + flèches
+réduire la boîte de copie
+Changez-les dans Options > Touches.
+Visite rapide
 Comment ça marche
 < Retour
 Suivant >
+Passer la visite
+Termine la visite. Vous pouvez la refaire à tout moment : Comment ça marche > Faire la visite.
+Faire la visite
 Logic Survival est dans tes serveurs
 Ajouter Logic Survival à mes serveurs
 Ajoute {0} au Multijoueur. Tu peux le supprimer là-bas à tout moment.
+Terminer
+Visite terminée ! Appuyez sur Page Up pour ouvrir le menu de construction. Refaites-la quand vous voulez : Comment ça marche > Faire la visite.
+Visite passée. Faites-la quand vous voulez : menu de construction > i (Comment ça marche) > Faire la visite.
+Visite rapide de Build Blueprint
 Comment marche Build Blueprint
 {0} construit "{1}" ici
 Menu > Construire avec des amis pour rejoindre
 Flèches
 agrandir la boîte de ce côté
-Alt + flèches
 la rétrécir
 Ctrl + Haut/Bas
 haut / bas

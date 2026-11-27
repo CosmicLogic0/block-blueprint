@@ -49,6 +49,7 @@ Blocks and swaps	方块和替换
 Copy a build	复制建筑
 Good to know	小提示
 More helpers	更多帮助
+All shortcuts	全部快捷键
 A build is what you want to make, shown as see-through ghost blocks in your world.	建筑就是你想建造的东西，在你的世界里显示为半透明的幽灵方块。
 Open the build menu, click Saved builds, pick one and press Load into world.	打开建筑菜单，点击“已保存的建筑”，选一个，然后按“加载到世界”。
 Builds come from three places:	建筑有三个来源：
@@ -101,18 +102,32 @@ The mod follows your game language: English, Spanish, Portuguese, German, French
 Holding a block lights up the spots near you that still need it (Settings: Spots for held block).	手持方块时，附近仍需要它的位置会亮起来（设置：手持方块的位置）。
 Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > Extras).	建造时某种方块用完了？自动切换会把建筑需要的下一个方块放到你手上（设置 > 额外）。
 Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again.	想和这个模组的作者一起玩吗？Logic Survival 是作者的生存服务器。模组第一次启动时，它被添加到了你的多人游戏列表末尾一次。不想要就在那里删除——它不会再回来。下面的按钮可以重新添加。
+Every Build Blueprint key, as they are set now:	Build Blueprint 的全部按键（当前设置）：
+move the build (hold Shift for 5 blocks)	移动建筑（按住 Shift 一次 5 格）
+place it / unlock it	放置 / 解锁
+start or save a copy box	开始或保存复制框
+Alt + arrows	Alt + 方向键
+make the copy box smaller	缩小复制框
+Change any of them in Settings > Key binds.	可在 设置 > 按键绑定 中修改。
+Quick tour	快速导览
 How it works	使用方法
 < Back	< 返回
 Next >	下一页 >
+Skip tour	跳过导览
+End the tour. You can take it again any time: How it works > Take the tour.	结束导览。随时可以重来：使用方法 > 开始导览。
+Take the tour	开始导览
 Logic Survival is in your servers	Logic Survival 已在你的服务器列表中
 Add Logic Survival to my servers	把 Logic Survival 加入我的服务器
 Adds {0} to Multiplayer. You can delete it there any time.	把 {0} 加入多人游戏。你随时可以在那里删除它。
+Finish	完成
+Tour done! Press Page Up to open the build menu. Take the tour again any time: How it works > Take the tour.	导览完成！按 Page Up 打开建造菜单。随时可以重来：使用方法 > 开始导览。
+Tour skipped. Take it any time: build menu > i (How it works) > Take the tour.	已跳过导览。随时可以开始：建造菜单 > i（使用方法）> 开始导览。
+Quick tour of Build Blueprint	Build Blueprint 快速导览
 How Build Blueprint works	Build Blueprint 使用方法
 {0} is building "{1}" here	{0} 正在这里建造“{1}”
 Menu > Build with friends to join	菜单 > 和朋友一起建造 即可加入
 Arrows	方向键
 grow the box that way	向那个方向扩大范围框
-Alt + arrows	Alt + 方向键
 shrink it	缩小
 Ctrl + Up/Down	Ctrl + 上/下
 top / bottom	顶部 / 底部

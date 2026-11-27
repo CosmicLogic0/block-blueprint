@@ -48,6 +48,7 @@ Blöcke tauschen
 Bau kopieren
 Gut zu wissen
 Mehr Helfer
+Alle Tasten
 Ein Bau ist das, was du bauen willst, gezeigt als durchsichtige Geisterblöcke in deiner Welt.
 Öffne das Bau-Menü, klick auf Gespeicherte Bauten, wähl einen aus und drück In die Welt laden.
 Bauten kommen von drei Orten:
@@ -100,18 +101,32 @@ Der Mod folgt deiner Spielsprache: Englisch, Spanisch, Portugiesisch, Deutsch, F
 Hältst du einen Block, leuchten die Stellen in deiner Nähe auf, die ihn noch brauchen (Einstellungen: Stellen für gehaltenen Block).
 Geht dir beim Bauen ein Block aus? Auto-Tausch legt dir den nächsten Block, den der Bau braucht, in die Hand (Einstellungen > Extras).
 Willst du mit dem Macher dieses Mods spielen? Logic Survival ist sein Survival-Server. Er wurde beim ersten Start des Mods einmal ans Ende deiner Mehrspieler-Liste gesetzt. Lösch ihn dort, wenn du ihn nicht willst - er kommt nicht wieder. Der Knopf unten fügt ihn wieder hinzu.
+Alle Build-Blueprint-Tasten, so wie sie gerade eingestellt sind:
+Bauwerk bewegen (Shift halten für 5 Blöcke)
+platzieren / entsperren
+Kopierbox starten oder speichern
+Alt + Pfeiltasten
+Kopierbox verkleinern
+Jede Taste lässt sich unter Optionen > Tastenbelegung ändern.
+Kurze Tour
 So funktioniert's
 < Zurück
 Weiter >
+Tour überspringen
+Beendet die Tour. Du kannst sie jederzeit wiederholen: So funktioniert's > Tour starten.
+Tour starten
 Logic Survival ist in deinen Servern
 Logic Survival zu meinen Servern hinzufügen
 Fügt {0} zu Mehrspieler hinzu. Du kannst ihn dort jederzeit löschen.
+Fertig
+Tour fertig! Drücke Page Up für das Baumenü. Wiederholen jederzeit: So funktioniert's > Tour starten.
+Tour übersprungen. Jederzeit starten: Baumenü > i (So funktioniert's) > Tour starten.
+Kurze Tour durch Build Blueprint
 So funktioniert Build Blueprint
 {0} baut hier "{1}"
 Menü > Mit Freunden bauen, um mitzumachen
 Pfeiltasten
 die Box in diese Richtung vergrößern
-Alt + Pfeiltasten
 verkleinern
 Strg + Hoch/Runter
 oben / unten

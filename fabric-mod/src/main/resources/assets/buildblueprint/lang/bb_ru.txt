@@ -49,6 +49,7 @@ Blocks and swaps	Блоки и замены
 Copy a build	Копирование
 Good to know	Полезно знать
 More helpers	Ещё помощники
+All shortcuts	Все клавиши
 A build is what you want to make, shown as see-through ghost blocks in your world.	Постройка - это то, что ты хочешь построить, показанное прозрачными блоками-призраками в твоём мире.
 Open the build menu, click Saved builds, pick one and press Load into world.	Открой меню постройки, нажми Сохранённые постройки, выбери одну и нажми Загрузить в мир.
 Builds come from three places:	Постройки берутся из трёх мест:
@@ -101,18 +102,32 @@ The mod follows your game language: English, Spanish, Portuguese, German, French
 Holding a block lights up the spots near you that still need it (Settings: Spots for held block).	Если держать блок, подсвечиваются ближайшие места, где он ещё нужен (Настройки: Места для блока в руке).
 Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > Extras).	Закончился блок во время стройки? Автозамена положит в руку следующий нужный постройке блок (Настройки > Дополнительно).
 Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again.	Хочешь поиграть с автором этого мода? Logic Survival — его сервер на выживание. Он был один раз добавлен в конец списка «Сетевая игра» при первом запуске мода. Удали его там, если он не нужен, — он не вернётся. Кнопка ниже добавит его снова.
+Every Build Blueprint key, as they are set now:	Все клавиши Build Blueprint, как они настроены сейчас:
+move the build (hold Shift for 5 blocks)	двигать постройку (с Shift — на 5 блоков)
+place it / unlock it	поставить / открепить
+start or save a copy box	начать или сохранить рамку копирования
+Alt + arrows	Alt + стрелки
+make the copy box smaller	уменьшить рамку копирования
+Change any of them in Settings > Key binds.	Любую можно сменить в Настройки > Клавиши.
+Quick tour	Быстрый обзор
 How it works	Как это работает
 < Back	< Назад
 Next >	Далее >
+Skip tour	Пропустить обзор
+End the tour. You can take it again any time: How it works > Take the tour.	Закончить обзор. Его можно пройти снова: Как это работает > Пройти обзор.
+Take the tour	Пройти обзор
 Logic Survival is in your servers	Logic Survival уже в твоих серверах
 Add Logic Survival to my servers	Добавить Logic Survival в мои серверы
 Adds {0} to Multiplayer. You can delete it there any time.	Добавляет {0} в «Сетевую игру». Его можно удалить там в любой момент.
+Finish	Готово
+Tour done! Press Page Up to open the build menu. Take the tour again any time: How it works > Take the tour.	Обзор пройден! Нажмите Page Up, чтобы открыть меню постройки. Пройти снова: Как это работает > Пройти обзор.
+Tour skipped. Take it any time: build menu > i (How it works) > Take the tour.	Обзор пропущен. Пройти можно в любой момент: меню постройки > i (Как это работает) > Пройти обзор.
+Quick tour of Build Blueprint	Быстрый обзор Build Blueprint
 How Build Blueprint works	Как работает Build Blueprint
 {0} is building "{1}" here	{0} строит здесь «{1}»
 Menu > Build with friends to join	Меню > Строить с друзьями, чтобы присоединиться
 Arrows	Стрелки
 grow the box that way	увеличить рамку в эту сторону
-Alt + arrows	Alt + стрелки
 shrink it	уменьшить её
 Ctrl + Up/Down	Ctrl + Вверх/Вниз
 top / bottom	верх / низ

@@ -49,6 +49,7 @@ Blocks and swaps	Blöcke tauschen
 Copy a build	Bau kopieren
 Good to know	Gut zu wissen
 More helpers	Mehr Helfer
+All shortcuts	Alle Tasten
 A build is what you want to make, shown as see-through ghost blocks in your world.	Ein Bau ist das, was du bauen willst, gezeigt als durchsichtige Geisterblöcke in deiner Welt.
 Open the build menu, click Saved builds, pick one and press Load into world.	Öffne das Bau-Menü, klick auf Gespeicherte Bauten, wähl einen aus und drück In die Welt laden.
 Builds come from three places:	Bauten kommen von drei Orten:
@@ -101,18 +102,32 @@ The mod follows your game language: English, Spanish, Portuguese, German, French
 Holding a block lights up the spots near you that still need it (Settings: Spots for held block).	Hältst du einen Block, leuchten die Stellen in deiner Nähe auf, die ihn noch brauchen (Einstellungen: Stellen für gehaltenen Block).
 Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > Extras).	Geht dir beim Bauen ein Block aus? Auto-Tausch legt dir den nächsten Block, den der Bau braucht, in die Hand (Einstellungen > Extras).
 Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again.	Willst du mit dem Macher dieses Mods spielen? Logic Survival ist sein Survival-Server. Er wurde beim ersten Start des Mods einmal ans Ende deiner Mehrspieler-Liste gesetzt. Lösch ihn dort, wenn du ihn nicht willst - er kommt nicht wieder. Der Knopf unten fügt ihn wieder hinzu.
+Every Build Blueprint key, as they are set now:	Alle Build-Blueprint-Tasten, so wie sie gerade eingestellt sind:
+move the build (hold Shift for 5 blocks)	Bauwerk bewegen (Shift halten für 5 Blöcke)
+place it / unlock it	platzieren / entsperren
+start or save a copy box	Kopierbox starten oder speichern
+Alt + arrows	Alt + Pfeiltasten
+make the copy box smaller	Kopierbox verkleinern
+Change any of them in Settings > Key binds.	Jede Taste lässt sich unter Optionen > Tastenbelegung ändern.
+Quick tour	Kurze Tour
 How it works	So funktioniert's
 < Back	< Zurück
 Next >	Weiter >
+Skip tour	Tour überspringen
+End the tour. You can take it again any time: How it works > Take the tour.	Beendet die Tour. Du kannst sie jederzeit wiederholen: So funktioniert's > Tour starten.
+Take the tour	Tour starten
 Logic Survival is in your servers	Logic Survival ist in deinen Servern
 Add Logic Survival to my servers	Logic Survival zu meinen Servern hinzufügen
 Adds {0} to Multiplayer. You can delete it there any time.	Fügt {0} zu Mehrspieler hinzu. Du kannst ihn dort jederzeit löschen.
+Finish	Fertig
+Tour done! Press Page Up to open the build menu. Take the tour again any time: How it works > Take the tour.	Tour fertig! Drücke Page Up für das Baumenü. Wiederholen jederzeit: So funktioniert's > Tour starten.
+Tour skipped. Take it any time: build menu > i (How it works) > Take the tour.	Tour übersprungen. Jederzeit starten: Baumenü > i (So funktioniert's) > Tour starten.
+Quick tour of Build Blueprint	Kurze Tour durch Build Blueprint
 How Build Blueprint works	So funktioniert Build Blueprint
 {0} is building "{1}" here	{0} baut hier "{1}"
 Menu > Build with friends to join	Menü > Mit Freunden bauen, um mitzumachen
 Arrows	Pfeiltasten
 grow the box that way	die Box in diese Richtung vergrößern
-Alt + arrows	Alt + Pfeiltasten
 shrink it	verkleinern
 Ctrl + Up/Down	Strg + Hoch/Runter
 top / bottom	oben / unten

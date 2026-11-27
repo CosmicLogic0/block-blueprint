@@ -120,6 +120,7 @@ public class MaterialsScreen extends BBScreen {
     private void rebuild() { Mc.setScreen(new MaterialsScreen()); }
 
     @Override public void tick() {
+        if (tick == 0 && HelpScreen.tourFirstTime(this)) return;   // first time the menu opens: the quick tour
         if (++tick % 10 == 0) Materials.refresh();
         if (!stateKey().equals(state)) rebuild();
     }

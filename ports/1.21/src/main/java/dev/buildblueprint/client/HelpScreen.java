@@ -19,11 +19,11 @@ public class HelpScreen extends BBScreen {
     private Button prev, next;
     private final List<Button> tabs = new ArrayList<>();
 
-    private static final String[] TITLES = {"Get a build", "Move and turn", "Place it", "Build layers", "Blocks and swaps", "Copy a build", "Good to know", "More helpers"};
+    private static final String[] TITLES = {"Get a build", "Move and turn", "Place it", "Build layers", "Blocks and swaps", "Copy a build", "Good to know", "More helpers", "All shortcuts"};
     private static final String[][] ICONS = {
         {"minecraft:writable_book", "minecraft:chest", "minecraft:paper"}, {"minecraft:compass"}, {"minecraft:lodestone"},
         {"minecraft:oak_planks", "minecraft:cobblestone", "minecraft:stone_bricks"}, {"minecraft:blue_terracotta", "minecraft:cyan_terracotta"},
-        {"minecraft:map"}, {"minecraft:command_block", "minecraft:clock"}, {"minecraft:bell", "minecraft:compass"}};
+        {"minecraft:map"}, {"minecraft:command_block", "minecraft:clock"}, {"minecraft:bell", "minecraft:compass"}, {"minecraft:tripwire_hook", "minecraft:oak_sign"}};
     /** Each page: lines of text; a line starting with "key:" is a key hint "key:KEY:what it does". */
     private static final String[][] TEXT = {
         {"A build is what you want to make, shown as see-through ghost blocks in your world.",
@@ -69,14 +69,42 @@ public class HelpScreen extends BBScreen {
          "The mod follows your game language: English, Spanish, Portuguese, German, French, Russian and Chinese.",
          "Holding a block lights up the spots near you that still need it (Settings: Spots for held block).",
          "Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > Extras).",
-         "Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again."}};
+         "Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again."},
+        {"Every Build Blueprint key, as they are set now:",
+         "key:Page Up:open the build menu",
+         "key:Arrow keys:move the build (hold Shift for 5 blocks)",
+         "key:Ctrl + Up / Down:move it up or down",
+         "key:Page Down:turn it",
+         "key:Delete:place it / unlock it",
+         "key:Home / End:go up or down a layer",
+         "key:Insert:start or save a copy box",
+         "key:Alt + arrows:make the copy box smaller",
+         "key:Middle-click:hold the block of the ghost you look at",
+         "Change any of them in Settings > Key binds."}};
     private static final int SERVER_PAGE = 7;   // the page with the "Add Logic Survival" button
+    /** The first-time tour: these pages one after another, with Skip tour on every step. */
+    private static final int[] TOUR = {0, 1, 2, 3, 4, 8};
+    private final boolean tour;
+    private int step;
+    private Button done, again;
     private Button server;
     private String serverMsg;
 
-    public HelpScreen(Screen parent, int page) {
-        super(Component.literal(Tr.t("How it works")));
-        this.parent = parent; this.page = Math.max(0, Math.min(TITLES.length - 1, page));
+    public HelpScreen(Screen parent, int page) { this(parent, page, false); }
+
+    /** tour = the first-time tour: a few pages in order with Skip tour, and a chat line when it ends. */
+    public HelpScreen(Screen parent, int page, boolean tour) {
+        super(Component.literal(Tr.t(tour ? "Quick tour" : "How it works")));
+        this.parent = parent; this.tour = tour; this.page = tour ? TOUR[0] : Math.max(0, Math.min(TITLES.length - 1, page));
+    }
+
+    /** Called by the build menu: the first time it opens, show the tour once. */
+    public static boolean tourFirstTime(Screen menu) {
+        if (Settings.tourDone) return false;
+        Settings.tourDone = true;
+        Settings.save();
+        Mc.setScreen(new HelpScreen(menu, 0, true));
+        return true;
     }
 
     @Override public boolean isPauseScreen() { return false; }
@@ -84,21 +112,25 @@ public class HelpScreen extends BBScreen {
     private boolean wide() { return width >= 400; }
     private int pw() { return Math.min(480, width - 16); }
     private int px() { return (width - pw()) / 2; }
-    private int navW() { return wide() ? 128 : 0; }
+    private int navW() { return wide() && !tour ? 128 : 0; }
 
     @Override protected void init() {
         tabs.clear();
         int x = px(), w = pw();
-        if (wide()) {
+        if (navW() > 0) {
             for (int i = 0; i < TITLES.length; i++) {
                 int p = i;
                 tabs.add(addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, (i + 1) + ". " + Tr.t(TITLES[i]), navW() - 14)), b -> go(p)).bounds(x, 34 + i * 22, navW() - 6, 20).build()));
             }
         }
         int by = height - 26, bw = 80;
-        prev = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "< Back", bw - 8)), b -> go(page - 1)).bounds(x + navW(), by, bw, 20).build());
-        next = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Next >", bw - 8)), b -> go(page + 1)).bounds(x + navW() + bw + 4, by, bw, 20).build());
-        addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Done", bw - 8)), b -> onClose()).bounds(x + w - bw, by, bw, 20).build());
+        prev = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "< Back", bw - 8)), b -> move(-1)).bounds(x + navW(), by, bw, 20).build());
+        next = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Next >", bw - 8)), b -> move(1)).bounds(x + navW() + bw + 4, by, bw, 20).build());
+        done = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, tour ? "Skip tour" : "Done", bw - 8)), b -> onClose()).bounds(x + w - bw, by, bw, 20)
+                .tooltip(tour ? Tooltip.create(Component.literal(Tr.t("End the tour. You can take it again any time: How it works > Take the tour."))) : null).build());
+        int tw = Math.min(160, w - navW() - 16);
+        again = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Take the tour", tw - 8)), b -> Mc.setScreen(new HelpScreen(parent, 0, true)))
+                .bounds(x + navW() + 8, height - 58, tw, 20).build());
         boolean has = CreatorServer.added();
         int sw = Math.min(230, w - navW() - 16);
         server = addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, has ? "Logic Survival is in your servers" : "Add Logic Survival to my servers", sw - 8)), b -> {
@@ -111,8 +143,23 @@ public class HelpScreen extends BBScreen {
         go(page);
     }
 
+    /** Back / Next: the next page, or in the tour the next step. */
+    private void move(int d) {
+        if (!tour) { go(page + d); return; }
+        step = Math.max(0, Math.min(TOUR.length - 1, step + d));
+        go(TOUR[step]);
+    }
+
     private void go(int p) {
         page = Math.max(0, Math.min(TITLES.length - 1, p));
+        if (tour) {
+            if (prev != null) { prev.active = step > 0; next.active = step < TOUR.length - 1; }
+            if (done != null) done.setMessage(Component.literal(UiKit.fit(font, step == TOUR.length - 1 ? "Finish" : "Skip tour", 72)));
+            if (server != null) server.visible = false;
+            if (again != null) again.visible = false;
+            return;
+        }
+        if (again != null) again.visible = page == 0;
         for (int i = 0; i < tabs.size(); i++) tabs.get(i).active = i != page;
         if (prev != null) { prev.active = page > 0; next.active = page < TITLES.length - 1; }
         if (server != null) server.visible = page == SERVER_PAGE;
@@ -120,11 +167,16 @@ public class HelpScreen extends BBScreen {
 
     @Override public boolean keyPressed(KeyEvent e) {
         if (e.key() == 256) { onClose(); return true; }
-        if (e.key() == 262) { go(page + 1); return true; }   // right arrow
-        if (e.key() == 263) { go(page - 1); return true; }   // left arrow
+        if (e.key() == 262) { move(1); return true; }   // right arrow
+        if (e.key() == 263) { move(-1); return true; }   // left arrow
         return super.keyPressed(e);
     }
-    @Override public void onClose() { Mc.setScreen(parent); }
+    @Override public void onClose() {
+        if (tour) Chat.say(net.minecraft.ChatFormatting.AQUA, step == TOUR.length - 1
+                ? Tr.t("Tour done! Press Page Up to open the build menu. Take the tour again any time: How it works > Take the tour.")
+                : Tr.t("Tour skipped. Take it any time: build menu > i (How it works) > Take the tour."));
+        Mc.setScreen(parent);
+    }
 
     /** Word wrap with this font. */
     private List<String> wrap(String s, int w) {
@@ -146,10 +198,10 @@ public class HelpScreen extends BBScreen {
     private void draw(GuiGraphics g, int mouseX, int mouseY, float delta) {
         int x = px(), w = pw();
         UiKit.panel(g, x - 6, 4, w + 12, height - 8, UiKit.CYAN);
-        g.drawString(font, Tr.t("How Build Blueprint works"), x, 12, UiKit.GOLD, true);
-        String pg = (page + 1) + " / " + TITLES.length;
+        g.drawString(font, Tr.t(tour ? "Quick tour of Build Blueprint" : "How Build Blueprint works"), x, 12, UiKit.GOLD, true);
+        String pg = tour ? (step + 1) + " / " + TOUR.length : (page + 1) + " / " + TITLES.length;
         g.drawString(font, Tr.t(pg), x + w - font.width(Tr.t(pg)), 12, UiKit.MUTED, false);
-        if (!wide()) { g.drawString(font, Tr.t(TITLES[page]), x, 24, UiKit.WHITE, true); }
+        if (navW() == 0 && !tour) { g.drawString(font, Tr.t(TITLES[page]), x, 24, UiKit.WHITE, true); }
 
         // the page
         int cx = x + navW(), cw = w - navW(), y = 34;
@@ -167,7 +219,7 @@ public class HelpScreen extends BBScreen {
         drawPicture(g, cx + cw - 70, y + 6);
         int ty = y + 40, tw = cw - 16;
         for (String line : TEXT[page]) {
-            if (ty > (page == SERVER_PAGE ? height - 70 : height - 46)) break;
+            if (ty > (page == SERVER_PAGE || (page == 0 && !tour) ? height - 70 : height - 46)) break;
             if (line.startsWith("key:")) {
                 String[] k = line.split(":", 3);
                 UiKit.key(g, font, cx + 10, ty + 1, k[1], k[2]);

@@ -48,6 +48,7 @@ Blocos e trocas
 Copiar
 Bom saber
 Mais ajudas
+Todos os atalhos
 Uma construção é o que você quer fazer, mostrada como blocos fantasma transparentes no seu mundo.
 Abra o menu de construção, clique em Construções salvas, escolha uma e aperte Carregar no mundo.
 As construções vêm de três lugares:
@@ -100,18 +101,32 @@ O mod segue o idioma do seu jogo: inglês, espanhol, português, alemão, franc�
 Segurar um bloco ilumina os lugares por perto que ainda precisam dele (Configurações: Lugares do bloco na mão).
 Acabou um bloco enquanto constrói? A troca automática coloca na sua mão o próximo bloco que a construção precisa (Configurações > Extras).
 Quer jogar com quem fez este mod? Logic Survival é o servidor de sobrevivência dele. Ele foi adicionado uma vez ao fim da sua lista do Multijogador na primeira vez que o mod iniciou. Apague-o lá se não quiser - ele não volta. O botão abaixo o adiciona de novo.
+Todas as teclas do Build Blueprint, como estão agora:
+mover a construção (segure Shift para 5 blocos)
+colocar / desbloquear
+começar ou salvar uma caixa de cópia
+Alt + setas
+diminuir a caixa de cópia
+Mude qualquer uma em Ajustes > Controles.
+Tour rápido
 Como funciona
 < Voltar
 Próximo >
+Pular tour
+Encerra o tour. Você pode refazê-lo quando quiser: Como funciona > Fazer o tour.
+Fazer o tour
 Logic Survival está nos seus servidores
 Adicionar Logic Survival aos meus servidores
 Adiciona {0} ao Multijogador. Você pode apagá-lo lá quando quiser.
+Concluir
+Tour concluído! Aperte Page Up para abrir o menu de construção. Refaça quando quiser: Como funciona > Fazer o tour.
+Tour pulado. Faça quando quiser: menu de construção > i (Como funciona) > Fazer o tour.
+Tour rápido do Build Blueprint
 Como o Build Blueprint funciona
 {0} está construindo "{1}" aqui
 Menu > Construir com amigos para entrar
 Setas
 aumentar a caixa para esse lado
-Alt + setas
 diminuir
 Ctrl + Cima/Baixo
 cima / baixo

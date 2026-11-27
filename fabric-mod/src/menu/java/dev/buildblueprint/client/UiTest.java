@@ -26,7 +26,7 @@ public final class UiTest {
     private static final String[] SHOWCASE = {"sc-ghost", "sc-menu", "sc-placed", "sc-layer-a", "sc-layer-b", "sc-layer-c", "sc-layer-d", "sc-layer-e",
             "sc-layer-f", "sc-layer-g", "sc-layer-h", "sc-layer-i", "sc-layer-j", "sc-layer-k", "sc-done", "done"};
     private static boolean showcase;
-    private static final String[] WORLD = {"world-ghost", "world-placed", "world-held", "world-held-check", "world-sync", "world-sync-check", "world-sync-demo", "world-coop-demo", "world-only", "build-hidden", "build", "swap", "swap-search", "remove", "shopping", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "settings-colors", "help-server", "saved", "world-perf", "world-near", "world-special", "world-copy", "done"};
+    private static final String[] WORLD = {"world-ghost", "world-placed", "world-held", "world-held-check", "world-sync", "world-sync-check", "world-sync-demo", "world-coop-demo", "world-only", "tour", "help-keys", "build-hidden", "build", "swap", "swap-search", "remove", "shopping", "build-missing", "help", "inventory", "settings-extras", "build-raw", "world-extras", "world-coop", "done-card", "templates", "lang-es", "lang-ru", "lang-zh", "settings", "settings-more", "settings-colors", "help-server", "saved", "world-perf", "world-near", "world-special", "world-copy", "done"};
 
     public static void init() {
         String p = System.getProperty("buildblueprint.uitest");
@@ -56,6 +56,7 @@ public final class UiTest {
                 if (++tick == 1) System.out.println("BBUITEST waiting on " + sc.getClass().getSimpleName());
                 if (tick < 200) return;
             }
+            Settings.tourDone = true;   // the tour only where a step asks for it
             step = 0; tick = 0; open(steps[0]);
             return;
         }
@@ -384,6 +385,11 @@ public final class UiTest {
                 Mc.setScreen(new MaterialsScreen(true));
             }
             case "help" -> Mc.setScreen(new HelpScreen(null, 3));
+            case "tour" -> { Settings.tourDone = false; Mc.setScreen(new MaterialsScreen()); }   // a new player's first menu: the tour opens
+            case "help-keys" -> {   // the shortcut page (and: did the tour open by itself?)
+                System.out.println("BBUITEST tour: shown " + Settings.tourDone + " on " + (Mc.screen() == null ? "none" : Mc.screen().getClass().getSimpleName()));
+                Mc.setScreen(new HelpScreen(null, 8));
+            }
             case "settings-extras" -> { SettingsScreen.more = false; SettingsScreen.extras = true; Mc.setScreen(new SettingsScreen(null)); }
             case "build-raw" -> {   // Extras on: raw materials view, layer map, scaffold hints
                 SettingsScreen.extras = false;

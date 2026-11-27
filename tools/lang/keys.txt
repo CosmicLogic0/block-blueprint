@@ -48,6 +48,7 @@ Blocks and swaps
 Copy a build
 Good to know
 More helpers
+All shortcuts
 A build is what you want to make, shown as see-through ghost blocks in your world.
 Open the build menu, click Saved builds, pick one and press Load into world.
 Builds come from three places:
@@ -100,18 +101,32 @@ The mod follows your game language: English, Spanish, Portuguese, German, French
 Holding a block lights up the spots near you that still need it (Settings: Spots for held block).
 Run out of a block while building? Auto-swap puts the next block the build needs in your hand (Settings > Extras).
 Want to play with the person who made this mod? Logic Survival is their survival server. It was added to the end of your Multiplayer list once, the first time the mod started. Delete it there if you don't want it - it won't come back. The button below adds it again.
+Every Build Blueprint key, as they are set now:
+move the build (hold Shift for 5 blocks)
+place it / unlock it
+start or save a copy box
+Alt + arrows
+make the copy box smaller
+Change any of them in Settings > Key binds.
+Quick tour
 How it works
 < Back
 Next >
+Skip tour
+End the tour. You can take it again any time: How it works > Take the tour.
+Take the tour
 Logic Survival is in your servers
 Add Logic Survival to my servers
 Adds {0} to Multiplayer. You can delete it there any time.
+Finish
+Tour done! Press Page Up to open the build menu. Take the tour again any time: How it works > Take the tour.
+Tour skipped. Take it any time: build menu > i (How it works) > Take the tour.
+Quick tour of Build Blueprint
 How Build Blueprint works
 {0} is building "{1}" here
 Menu > Build with friends to join
 Arrows
 grow the box that way
-Alt + arrows
 shrink it
 Ctrl + Up/Down
 top / bottom

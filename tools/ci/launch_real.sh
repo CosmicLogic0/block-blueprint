@@ -145,5 +145,6 @@ if [ -n "${SERVER_KIND:-}" ]; then   # the in-game invite must have gone to the 
   grep -q "BBUITEST sync check: invites 1" game.log || fail "the invite didn't come back from the $SERVER_KIND server: $(grep -o 'BBUITEST sync check:.*' game.log | head -1)"
 fi
 if [ -s errs.txt ]; then fail "the mod reported errors: $(head -1 errs.txt)"; fi
+grep -q "BBUITEST tour: shown true on HelpScreen" game.log || fail "the first-time tour did not open: $(grep -o 'BBUITEST tour:.*' game.log | head -1)"
 grep -q "BBUITEST loaded [1-9]" game.log || fail "the test build did not load in the world"
 { echo "PASS $name"; grep -E "BBUITEST" game.log | head -20; } > "$R"; cat "$R"

@@ -48,6 +48,7 @@ Cambiar bloques
 Copiar
 Bueno saber
 Más ayudas
+Todos los atajos
 Una construcción es lo que quieres hacer, mostrada como bloques fantasma transparentes en tu mundo.
 Abre el menú de construcción, pulsa Construcciones guardadas, elige una y pulsa Cargar en el mundo.
 Las construcciones vienen de tres sitios:
@@ -100,18 +101,32 @@ El mod usa el idioma de tu juego: inglés, español, portugués, alemán, franc�
 Al sostener un bloque se iluminan los lugares cercanos que aún lo necesitan (Ajustes: Lugares del bloque en mano).
 ¿Te quedas sin un bloque mientras construyes? El cambio automático pone en tu mano el siguiente bloque que necesita la construcción (Ajustes > Extras).
 ¿Quieres jugar con quien hizo este mod? Logic Survival es su servidor de supervivencia. Se añadió una vez al final de tu lista de Multijugador la primera vez que se inició el mod. Bórralo allí si no lo quieres: no volverá. El botón de abajo lo añade de nuevo.
+Todas las teclas de Build Blueprint, como están ahora:
+mover la construcción (mantén Shift para 5 bloques)
+colocarla / desbloquearla
+empezar o guardar una caja de copia
+Alt + flechas
+hacer la caja de copia más pequeña
+Cambia cualquiera en Ajustes > Controles.
+Recorrido rápido
 Cómo funciona
 < Atrás
 Siguiente >
+Saltar recorrido
+Termina el recorrido. Puedes repetirlo cuando quieras: Cómo funciona > Hacer el recorrido.
+Hacer el recorrido
 Logic Survival está en tus servidores
 Añadir Logic Survival a mis servidores
 Añade {0} a Multijugador. Puedes borrarlo allí cuando quieras.
+Terminar
+¡Recorrido terminado! Pulsa Page Up para abrir el menú de construcción. Repítelo cuando quieras: Cómo funciona > Hacer el recorrido.
+Recorrido saltado. Hazlo cuando quieras: menú de construcción > i (Cómo funciona) > Hacer el recorrido.
+Recorrido rápido de Build Blueprint
 Cómo funciona Build Blueprint
 {0} está construyendo "{1}" aquí
 Menú > Construir con amigos para unirte
 Flechas
 agrandar la caja hacia ese lado
-Alt + flechas
 encogerla
 Ctrl + Arriba/Abajo
 arriba / abajo

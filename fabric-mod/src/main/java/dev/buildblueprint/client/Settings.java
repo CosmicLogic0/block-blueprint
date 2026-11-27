@@ -55,6 +55,8 @@ public final class Settings {
     public static int layerSound = 0, buildSound = 0, soundVolume = 60;
     // the Logic Survival server was put in the Multiplayer list once (on first start) - never again after that
     public static boolean serverOffered = false;
+    // the first-time tour of the build menu was shown (or skipped). Players who had the mod before 1.5.1 count as done
+    public static boolean tourDone = false;
 
     private static Path file() { return FabricLoader.getInstance().getConfigDir().resolve("buildblueprint").resolve("settings.properties"); }
 
@@ -73,6 +75,7 @@ public final class Settings {
         chestColor = Colors.fix(i(p, "chestColor", chestColor), false); scaffoldColor = Colors.fix(i(p, "scaffoldColor", scaffoldColor), false);
         spotColor = Colors.fix(i(p, "spotColor", spotColor), false); heldSpots = b(p, "heldSpots", heldSpots); autoSwap = b(p, "autoSwap", autoSwap); buildArrow = b(p, "buildArrow", buildArrow); timeLeft = b(p, "timeLeft", timeLeft); shareBuilds = b(p, "shareBuilds", shareBuilds);
         layerSound = Math.max(0, Math.min(3, i(p, "layerSound", layerSound))); buildSound = Math.max(0, Math.min(4, i(p, "buildSound", buildSound))); soundVolume = Math.max(0, Math.min(100, i(p, "soundVolume", soundVolume))); serverOffered = b(p, "serverOffered", serverOffered);
+        tourDone = b(p, "tourDone", true);   // a settings file from before the tour: they already know the mod
     }
 
     public static void save() {
@@ -85,7 +88,7 @@ public final class Settings {
         p.setProperty("nextHint", "" + nextHint); p.setProperty("ghostPick", "" + ghostPick); p.setProperty("preview3d", "" + preview3d); p.setProperty("chestFinder", "" + chestFinder); p.setProperty("checkFacing", "" + checkFacing); p.setProperty("hudStats", "" + hudStats); p.setProperty("sounds", "" + sounds);
         p.setProperty("rawMats", "" + rawMats); p.setProperty("layerMap", "" + layerMap); p.setProperty("scaffold", "" + scaffold);
         p.setProperty("ghostColor", "" + ghostColor); p.setProperty("redColor", "" + redColor); p.setProperty("hintColor", "" + hintColor); p.setProperty("chestColor", "" + chestColor); p.setProperty("scaffoldColor", "" + scaffoldColor);
-        p.setProperty("spotColor", "" + spotColor); p.setProperty("heldSpots", "" + heldSpots); p.setProperty("autoSwap", "" + autoSwap); p.setProperty("buildArrow", "" + buildArrow); p.setProperty("timeLeft", "" + timeLeft); p.setProperty("shareBuilds", "" + shareBuilds); p.setProperty("layerSound", "" + layerSound); p.setProperty("buildSound", "" + buildSound); p.setProperty("soundVolume", "" + soundVolume); p.setProperty("serverOffered", "" + serverOffered);
+        p.setProperty("spotColor", "" + spotColor); p.setProperty("heldSpots", "" + heldSpots); p.setProperty("autoSwap", "" + autoSwap); p.setProperty("buildArrow", "" + buildArrow); p.setProperty("timeLeft", "" + timeLeft); p.setProperty("shareBuilds", "" + shareBuilds); p.setProperty("layerSound", "" + layerSound); p.setProperty("buildSound", "" + buildSound); p.setProperty("soundVolume", "" + soundVolume); p.setProperty("serverOffered", "" + serverOffered); p.setProperty("tourDone", "" + tourDone);
         try { Files.createDirectories(file().getParent()); try (Writer w = Files.newBufferedWriter(file())) { p.store(w, "Build Blueprint settings"); } } catch (IOException ignored) {}
     }
 
