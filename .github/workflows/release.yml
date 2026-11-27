@@ -406,7 +406,7 @@ jobs:
                             'displayName': f"Build Blueprint Server {os.environ['V']}", 'gameVersions': ids, 'releaseType': 'release'}))
           PY
           n=$(python3 -c "import json; print(len(json.load(open('meta.json'))['gameVersions']))"); echo "Bukkit versions: $n" >> plugin-log.txt
-          if grep -q dry-run .github/plugin-upload.txt; then echo "dry run: not uploading" >> plugin-log.txt; exit 0; fi
+          if grep -v '^#' .github/plugin-upload.txt | grep -q dry-run; then echo "dry run: not uploading" >> plugin-log.txt; exit 0; fi
           code=$(curl -s -o cf-response.txt -w '%{http_code}' -H "X-Api-Token: $CF_TOKEN" -F "metadata=<meta.json" -F "file=@$J" $H/api/projects/1822593/upload-file)
           { echo "upload to $H: HTTP $code"; cat cf-response.txt; } >> plugin-log.txt; cat plugin-log.txt
           [ "$code" = 200 ]

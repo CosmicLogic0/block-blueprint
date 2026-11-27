@@ -1,3 +1,3 @@
 # Change this file (and push) to upload the server plugin to CurseForge (project 1822593) without a new release.
-# Put the word dry-run on a line to only check (no upload).
-1.7.0 release upload
+# Put the word dry-run on its own (not a # line) to only check, no upload.
+1.7.0 upload (retry: the comment line counted as dry-run)
