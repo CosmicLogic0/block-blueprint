@@ -21,7 +21,7 @@ jobs:
       - name: Colors
         run: |
           pip install -q pillow
-          mkdir -p res && python3 tools/colors/block_colors.py client.jar res/block-colors.txt | tee res/log.txt
+          mkdir -p res && ls -la client.jar > res/log.txt; python3 tools/colors/block_colors.py client.jar res/block-colors.txt >> res/log.txt 2>&1 || true
       - name: Save
         run: |
           cd res && echo "${GITHUB_SHA}" > COMMIT
