@@ -246,18 +246,34 @@ Funde una parte en un horno primero
 Cantidades de la mesa de crafteo: un cortapiedras necesita menos para escaleras y losas de piedra
 Mi imagen
 Construir desde una imagen
-De pie: una pared frente a ti. Tumbada: en el suelo, como arte de mapa.
+De pie: una pared frente a ti. Tumbada: en el suelo. Arte de mapa: para que un mapa del lugar muestre la imagen.
 Cuántos bloques mide el lado largo de la imagen (hasta 256).
+Las alfombras son baratas y rápidas (16 colores). Todos los colores de mapa usan todos los bloques que un mapa puede mostrar (unos 60 colores), algunos raros.
 La lana, el hormigón y la terracota son fáciles de conseguir y tienen muchos colores. Todos los bloques completos dan colores más fieles, pero usan bloques más raros.
+El nivel de zoom del mapa. Los mapas alejados cubren más terreno: cada píxel del mapa es un cuadrado de bloques más grande.
+Plano es fácil de construir. Escalera sube y baja los bloques para que el mapa muestre 3 tonos de cada color: más bonito, pero más alto y difícil.
 La guarda en Construcciones guardadas. Cárgala en el mundo desde allí.
+Construir aquí (cuadrícula del mapa)
+La guarda y la pone en el mundo donde estás, alineada con la cuadrícula del mapa, para que un mapa hecho aquí muestre toda la imagen.
 Atrás
 Tumbada (suelo)
+Arte de mapa
 De pie (pared)
+Mapas: {0} x {1}
+Bloques: alfombras
+Bloques: todos los colores
+Zoom {0} ({1} bloques por mapa)
+Sombreado: escalera
+Sombreado: plano
 {0} x {1} bloques
 Bloques: todos los completos
 Bloques: lana, hormigón...
 No hay bloques para usar.
+Demasiado grande: como mucho {0} bloques de ancho. Elige menos mapas o menos zoom.
+Demasiado alta para la mayoría de mundos ({0} bloques): prueba el sombreado plano o menos zoom.
 No se pudo leer esa imagen.
+Arte de mapa colocado en la cuadrícula: {0}, {1}. Haz un mapa estando en cualquier parte de él.
+No se pudo colocar: {0}
 No se pudo guardar: {0}
 Esa imagen es demasiado grande.
 Suelta una imagen: PNG o JPG.
@@ -269,7 +285,9 @@ en esta ventana,
 o copia un enlace a una imagen
 y pulsa Ctrl+V.
 No se pudieron sacar bloques de ella.
+{0} x {1} bloques, {2} de alto
 {0} bloques, {1} tipos
+{0} bloques, {1} colores
 Buscar
 Buscar...
 Construcciones gratis

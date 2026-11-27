@@ -247,18 +247,34 @@ Smelt some of it in a furnace first	Derreta uma parte numa fornalha primeiro
 Crafting table amounts - a stonecutter needs less for stone stairs and slabs	Quantidades da bancada - o cortador de pedras usa menos para escadas e lajes de pedra
 My picture	Minha imagem
 Build from a picture	Construir a partir de uma imagem
-Standing up: a wall facing you. Lying flat: on the ground, like map art.	Em pé: uma parede de frente para você. Deitada: no chão, como arte de mapa.
+Standing up: a wall facing you. Lying flat: on the ground. Map art: so a map of the spot shows the picture.	Em pé: uma parede de frente para você. Deitada: no chão. Arte de mapa: para que um mapa do lugar mostre a imagem.
 How many blocks across the long side of the picture is (up to 256).	Quantos blocos tem o lado maior da imagem (até 256).
+Carpets are cheap and quick (16 colors). Every map color uses all the blocks a map can show (about 60 colors), some of them rare.	Tapetes são baratos e rápidos (16 cores). Todas as cores de mapa usam todos os blocos que um mapa pode mostrar (cerca de 60 cores), alguns raros.
 Wool, concrete and terracotta are easy to get and come in many colors. Every full block gives the closest colors, but uses rarer blocks.	Lã, concreto e terracota são fáceis de conseguir e têm muitas cores. Todos os blocos inteiros dão cores mais fiéis, mas usam blocos mais raros.
+The map's zoom level. Zoomed-out maps cover more ground: each map pixel is a bigger square of blocks.	O nível de zoom do mapa. Mapas afastados cobrem mais terreno: cada pixel do mapa é um quadrado de blocos maior.
+Flat is easy to build. Staircase steps the blocks up and down so the map shows 3 shades of each color - nicer, but taller and harder to build.	Plano é fácil de construir. Escada sobe e desce os blocos para o mapa mostrar 3 tons de cada cor: mais bonito, mas mais alto e difícil.
 Saves it in Saved builds. Load it into the world from there.	Salva em Construções salvas. Carregue no mundo a partir de lá.
+Build here (map grid)	Construir aqui (grade do mapa)
+Saves it and puts it in the world where you stand, lined up with the map grid, so a map made here shows the whole picture.	Salva e coloca no mundo onde você está, alinhada com a grade do mapa, para que um mapa feito aqui mostre a imagem inteira.
 Back	Voltar
 Lying flat (floor)	Deitada (chão)
+Map art	Arte de mapa
 Standing up (wall)	Em pé (parede)
+Maps: {0} x {1}	Mapas: {0} x {1}
+Blocks: carpets	Blocos: tapetes
+Blocks: every map color	Blocos: todas as cores
+Zoom {0} ({1} blocks a map)	Zoom {0} ({1} blocos por mapa)
+Shading: staircase	Sombreamento: escada
+Shading: flat	Sombreamento: plano
 {0} x {1} blocks	{0} x {1} blocos
 Blocks: every full block	Blocos: todos os inteiros
 Blocks: wool, concrete...	Blocos: lã, concreto...
 No blocks to use.	Não há blocos para usar.
+Too big: at most {0} blocks across. Pick fewer maps or a lower zoom.	Grande demais: no máximo {0} blocos de largura. Escolha menos mapas ou menos zoom.
+Too tall for most worlds ({0} blocks): try flat shading or a lower zoom.	Alta demais para a maioria dos mundos ({0} blocos): tente sombreamento plano ou menos zoom.
 Couldn't read that picture.	Não foi possível ler essa imagem.
+Map art placed on the map grid: {0}, {1}. Make a map standing anywhere on it.	Arte de mapa colocada na grade: {0}, {1}. Faça um mapa em qualquer lugar sobre ela.
+Couldn't place it: {0}	Não foi possível colocar: {0}
 Couldn't save it: {0}	Não foi possível salvar: {0}
 That picture is too big.	Essa imagem é grande demais.
 Drop a picture: PNG or JPG.	Solte uma imagem: PNG ou JPG.
@@ -270,7 +286,9 @@ on this window,	nesta janela,
 or copy a link to a picture	ou copie um link para uma imagem
 and press Ctrl+V.	e aperte Ctrl+V.
 Couldn't make blocks from it.	Não foi possível gerar blocos a partir dela.
+{0} x {1} blocks, {2} high	{0} x {1} blocos, {2} de altura
 {0} blocks, {1} kinds	{0} blocos, {1} tipos
+{0} blocks, {1} colors	{0} blocos, {1} cores
 Search	Pesquisar
 Search...	Pesquisar...
 Get free builds	Construções grátis

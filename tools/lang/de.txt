@@ -246,18 +246,34 @@ Schmilz zuerst einen Teil davon im Ofen
 Werkbank-Mengen - eine Steinsäge braucht weniger für Steintreppen und -stufen
 Mein Bild
 Aus einem Bild bauen
-Stehend: eine Wand vor dir. Liegend: auf dem Boden, wie Map-Art.
+Stehend: eine Wand vor dir. Liegend: auf dem Boden. Map-Art: damit eine Karte des Ortes das Bild zeigt.
 Wie viele Blöcke die lange Seite des Bildes hat (bis 256).
+Teppiche sind billig und schnell (16 Farben). Alle Kartenfarben nutzen alle Blöcke, die eine Karte zeigen kann (etwa 60 Farben), manche davon selten.
 Wolle, Beton und Keramik sind leicht zu bekommen und haben viele Farben. Alle vollen Blöcke geben die genauesten Farben, brauchen aber seltenere Blöcke.
+Die Zoomstufe der Karte. Herausgezoomte Karten decken mehr Fläche ab: jedes Kartenpixel ist ein größeres Quadrat aus Blöcken.
+Flach ist leicht zu bauen. Treppe setzt die Blöcke höher und tiefer, damit die Karte 3 Töne jeder Farbe zeigt - schöner, aber höher und schwerer zu bauen.
 Speichert es in Gespeicherte Bauwerke. Von dort in die Welt laden.
+Hier bauen (Kartenraster)
+Speichert es und setzt es dort in die Welt, wo du stehst, am Kartenraster ausgerichtet, damit eine hier gemachte Karte das ganze Bild zeigt.
 Zurück
 Liegend (Boden)
+Map-Art
 Stehend (Wand)
+Karten: {0} x {1}
+Blöcke: Teppiche
+Blöcke: alle Kartenfarben
+Zoom {0} ({1} Blöcke pro Karte)
+Schattierung: Treppe
+Schattierung: flach
 {0} x {1} Blöcke
 Blöcke: alle vollen
 Blöcke: Wolle, Beton...
 Keine Blöcke verfügbar.
+Zu groß: höchstens {0} Blöcke breit. Wähle weniger Karten oder weniger Zoom.
+Zu hoch für die meisten Welten ({0} Blöcke): versuch flache Schattierung oder weniger Zoom.
 Das Bild konnte nicht gelesen werden.
+Map-Art am Kartenraster gesetzt: {0}, {1}. Mach eine Karte, während du irgendwo darauf stehst.
+Konnte nicht gesetzt werden: {0}
 Konnte nicht gespeichert werden: {0}
 Das Bild ist zu groß.
 Zieh ein Bild hierher: PNG oder JPG.
@@ -269,7 +285,9 @@ auf dieses Fenster,
 oder kopiere einen Bild-Link
 und drücke Strg+V.
 Daraus ließen sich keine Blöcke machen.
+{0} x {1} Blöcke, {2} hoch
 {0} Blöcke, {1} Sorten
+{0} Blöcke, {1} Farben
 Suchen
 Suchen...
 Kostenlose Bauten

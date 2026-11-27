@@ -1,3 +1,6 @@
+## 1.8.0
+- **Picture to map art:** Saved builds > From picture > **Map art**. Any picture becomes map art for every map size: 1x1 up to 4x4 maps side by side, at every zoom level (128 to 2048 blocks a map). Carpets (cheap, 16 colors) or every map color, flat or **staircase** shading for three shades of each color. **Build here** puts it in your world lined up with the map grid, so a map made there shows the whole picture.
+
 ## 1.7.0
 - **Server builds:** servers with the Build Blueprint server part (the plugin for Paper/Spigot/Purpur, or this mod on a Fabric/Forge/NeoForge server) can have their own builds for everyone. Build with friends > Invite & join on this server > **Server builds**: click one and it's in your Saved builds. Server owners drop build files (.schem, .litematic, .nbt, .schematic, .mcstructure) in the server's gallery folder - plugins/BuildBlueprint/gallery, or config/buildblueprint/gallery on a modded server - and ops can add the build they have loaded with **+ Add my build**. Needs the 1.7.0 server part.
 - **Co-op: everyone's progress.** When you build together, the corner list shows **Everyone together: N% done** - every builder's part, counted from the blocks in the world.

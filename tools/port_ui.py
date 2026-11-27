@@ -74,6 +74,10 @@ MAPCOLOR_NEW = '''                MapColor mc = bs.getMapColor(EmptyBlockGetter.
 MAPCOLOR_OLD = '''                int col = V.mapColor(bs);
                 if (col == 0) return st.contains("glass") ? 0xFFA8D8F0 : 0xFF9A9A9A; // glass, panes, small decor
                 return col | 0xFF000000;'''
+MAPCOLOR2_NEW = '''            MapColor mc = bs.getMapColor(EmptyBlockGetter.INSTANCE, BlockPos.ZERO);
+            return mc == MapColor.NONE ? -1 : mc.col & 0xFFFFFF;'''
+MAPCOLOR2_OLD = '''            int col = V.mapColor(bs);
+            return col == 0 ? -1 : col & 0xFFFFFF;'''
 DROP_IMPORTS = ['net.minecraft.commands.arguments.blocks.BlockStateParser', 'net.minecraft.core.registries.BuiltInRegistries',
                 'net.minecraft.world.level.material.MapColor', 'net.minecraft.resources.Identifier']
 
@@ -86,7 +90,7 @@ def convert(s):
     s = re.sub(r'^import net\.fabricmc\.fabric\.api\.client\.rendering\.v1\.hud\.\w+;\n', '', s, flags=re.M)
     s = re.sub(r'g\.pose\(\)\.pushMatrix\(\);\n(\s*)g\.pose\(\)\.scale\((\w+), \2\);', r'V.hudPush(g, \2);', s)
     s = s.replace('g.pose().popMatrix();', 'V.hudPop(g);')
-    s = s.replace(MAPCOLOR_NEW, MAPCOLOR_OLD)
+    s = s.replace(MAPCOLOR_NEW, MAPCOLOR_OLD).replace(MAPCOLOR2_NEW, MAPCOLOR2_OLD)
     for a, b in SUBS: s = re.sub(a, b, s, flags=re.M)
     s = re.sub(r'InputConstants\.KEY_(\w+)', lambda m: 'org.lwjgl.glfw.GLFW.GLFW_KEY_' + GLFW.get(m.group(1), m.group(1)), s)
     for imp in DROP_IMPORTS:

@@ -246,18 +246,34 @@ Derreta uma parte numa fornalha primeiro
 Quantidades da bancada - o cortador de pedras usa menos para escadas e lajes de pedra
 Minha imagem
 Construir a partir de uma imagem
-Em pé: uma parede de frente para você. Deitada: no chão, como arte de mapa.
+Em pé: uma parede de frente para você. Deitada: no chão. Arte de mapa: para que um mapa do lugar mostre a imagem.
 Quantos blocos tem o lado maior da imagem (até 256).
+Tapetes são baratos e rápidos (16 cores). Todas as cores de mapa usam todos os blocos que um mapa pode mostrar (cerca de 60 cores), alguns raros.
 Lã, concreto e terracota são fáceis de conseguir e têm muitas cores. Todos os blocos inteiros dão cores mais fiéis, mas usam blocos mais raros.
+O nível de zoom do mapa. Mapas afastados cobrem mais terreno: cada pixel do mapa é um quadrado de blocos maior.
+Plano é fácil de construir. Escada sobe e desce os blocos para o mapa mostrar 3 tons de cada cor: mais bonito, mas mais alto e difícil.
 Salva em Construções salvas. Carregue no mundo a partir de lá.
+Construir aqui (grade do mapa)
+Salva e coloca no mundo onde você está, alinhada com a grade do mapa, para que um mapa feito aqui mostre a imagem inteira.
 Voltar
 Deitada (chão)
+Arte de mapa
 Em pé (parede)
+Mapas: {0} x {1}
+Blocos: tapetes
+Blocos: todas as cores
+Zoom {0} ({1} blocos por mapa)
+Sombreamento: escada
+Sombreamento: plano
 {0} x {1} blocos
 Blocos: todos os inteiros
 Blocos: lã, concreto...
 Não há blocos para usar.
+Grande demais: no máximo {0} blocos de largura. Escolha menos mapas ou menos zoom.
+Alta demais para a maioria dos mundos ({0} blocos): tente sombreamento plano ou menos zoom.
 Não foi possível ler essa imagem.
+Arte de mapa colocada na grade: {0}, {1}. Faça um mapa em qualquer lugar sobre ela.
+Não foi possível colocar: {0}
 Não foi possível salvar: {0}
 Essa imagem é grande demais.
 Solte uma imagem: PNG ou JPG.
@@ -269,7 +285,9 @@ nesta janela,
 ou copie um link para uma imagem
 e aperte Ctrl+V.
 Não foi possível gerar blocos a partir dela.
+{0} x {1} blocos, {2} de altura
 {0} blocos, {1} tipos
+{0} blocos, {1} cores
 Pesquisar
 Pesquisar...
 Construções grátis

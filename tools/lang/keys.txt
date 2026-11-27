@@ -246,18 +246,34 @@ Smelt some of it in a furnace first
 Crafting table amounts - a stonecutter needs less for stone stairs and slabs
 My picture
 Build from a picture
-Standing up: a wall facing you. Lying flat: on the ground, like map art.
+Standing up: a wall facing you. Lying flat: on the ground. Map art: so a map of the spot shows the picture.
 How many blocks across the long side of the picture is (up to 256).
+Carpets are cheap and quick (16 colors). Every map color uses all the blocks a map can show (about 60 colors), some of them rare.
 Wool, concrete and terracotta are easy to get and come in many colors. Every full block gives the closest colors, but uses rarer blocks.
+The map's zoom level. Zoomed-out maps cover more ground: each map pixel is a bigger square of blocks.
+Flat is easy to build. Staircase steps the blocks up and down so the map shows 3 shades of each color - nicer, but taller and harder to build.
 Saves it in Saved builds. Load it into the world from there.
+Build here (map grid)
+Saves it and puts it in the world where you stand, lined up with the map grid, so a map made here shows the whole picture.
 Back
 Lying flat (floor)
+Map art
 Standing up (wall)
+Maps: {0} x {1}
+Blocks: carpets
+Blocks: every map color
+Zoom {0} ({1} blocks a map)
+Shading: staircase
+Shading: flat
 {0} x {1} blocks
 Blocks: every full block
 Blocks: wool, concrete...
 No blocks to use.
+Too big: at most {0} blocks across. Pick fewer maps or a lower zoom.
+Too tall for most worlds ({0} blocks): try flat shading or a lower zoom.
 Couldn't read that picture.
+Map art placed on the map grid: {0}, {1}. Make a map standing anywhere on it.
+Couldn't place it: {0}
 Couldn't save it: {0}
 That picture is too big.
 Drop a picture: PNG or JPG.
@@ -269,7 +285,9 @@ on this window,
 or copy a link to a picture
 and press Ctrl+V.
 Couldn't make blocks from it.
+{0} x {1} blocks, {2} high
 {0} blocks, {1} kinds
+{0} blocks, {1} colors
 Search
 Search...
 Get free builds

@@ -150,5 +150,6 @@ fi
 if [ -s errs.txt ]; then fail "the mod reported errors: $(head -1 errs.txt)"; fi
 grep -q "BBUITEST tour: shown true on HelpScreen" game.log || fail "the first-time tour did not open: $(grep -o 'BBUITEST tour:.*' game.log | head -1)"
 grep -q "BBUITEST picture: [1-9]" game.log || fail "build from a picture made no blocks: $(grep -o 'BBUITEST picture:.*' game.log | head -1)"
+grep -q "BBUITEST map art: [1-9]" game.log || fail "map art made no blocks: $(grep -o 'BBUITEST map art:.*' game.log | head -1)"
 grep -q "BBUITEST loaded [1-9]" game.log || fail "the test build did not load in the world"
 { echo "PASS $name"; grep -E "BBUITEST" game.log | head -20; } > "$R"; cat "$R"

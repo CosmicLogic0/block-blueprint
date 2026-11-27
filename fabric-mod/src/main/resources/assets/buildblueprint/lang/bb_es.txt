@@ -247,18 +247,34 @@ Smelt some of it in a furnace first	Funde una parte en un horno primero
 Crafting table amounts - a stonecutter needs less for stone stairs and slabs	Cantidades de la mesa de crafteo: un cortapiedras necesita menos para escaleras y losas de piedra
 My picture	Mi imagen
 Build from a picture	Construir desde una imagen
-Standing up: a wall facing you. Lying flat: on the ground, like map art.	De pie: una pared frente a ti. Tumbada: en el suelo, como arte de mapa.
+Standing up: a wall facing you. Lying flat: on the ground. Map art: so a map of the spot shows the picture.	De pie: una pared frente a ti. Tumbada: en el suelo. Arte de mapa: para que un mapa del lugar muestre la imagen.
 How many blocks across the long side of the picture is (up to 256).	Cuántos bloques mide el lado largo de la imagen (hasta 256).
+Carpets are cheap and quick (16 colors). Every map color uses all the blocks a map can show (about 60 colors), some of them rare.	Las alfombras son baratas y rápidas (16 colores). Todos los colores de mapa usan todos los bloques que un mapa puede mostrar (unos 60 colores), algunos raros.
 Wool, concrete and terracotta are easy to get and come in many colors. Every full block gives the closest colors, but uses rarer blocks.	La lana, el hormigón y la terracota son fáciles de conseguir y tienen muchos colores. Todos los bloques completos dan colores más fieles, pero usan bloques más raros.
+The map's zoom level. Zoomed-out maps cover more ground: each map pixel is a bigger square of blocks.	El nivel de zoom del mapa. Los mapas alejados cubren más terreno: cada píxel del mapa es un cuadrado de bloques más grande.
+Flat is easy to build. Staircase steps the blocks up and down so the map shows 3 shades of each color - nicer, but taller and harder to build.	Plano es fácil de construir. Escalera sube y baja los bloques para que el mapa muestre 3 tonos de cada color: más bonito, pero más alto y difícil.
 Saves it in Saved builds. Load it into the world from there.	La guarda en Construcciones guardadas. Cárgala en el mundo desde allí.
+Build here (map grid)	Construir aquí (cuadrícula del mapa)
+Saves it and puts it in the world where you stand, lined up with the map grid, so a map made here shows the whole picture.	La guarda y la pone en el mundo donde estás, alineada con la cuadrícula del mapa, para que un mapa hecho aquí muestre toda la imagen.
 Back	Atrás
 Lying flat (floor)	Tumbada (suelo)
+Map art	Arte de mapa
 Standing up (wall)	De pie (pared)
+Maps: {0} x {1}	Mapas: {0} x {1}
+Blocks: carpets	Bloques: alfombras
+Blocks: every map color	Bloques: todos los colores
+Zoom {0} ({1} blocks a map)	Zoom {0} ({1} bloques por mapa)
+Shading: staircase	Sombreado: escalera
+Shading: flat	Sombreado: plano
 {0} x {1} blocks	{0} x {1} bloques
 Blocks: every full block	Bloques: todos los completos
 Blocks: wool, concrete...	Bloques: lana, hormigón...
 No blocks to use.	No hay bloques para usar.
+Too big: at most {0} blocks across. Pick fewer maps or a lower zoom.	Demasiado grande: como mucho {0} bloques de ancho. Elige menos mapas o menos zoom.
+Too tall for most worlds ({0} blocks): try flat shading or a lower zoom.	Demasiado alta para la mayoría de mundos ({0} bloques): prueba el sombreado plano o menos zoom.
 Couldn't read that picture.	No se pudo leer esa imagen.
+Map art placed on the map grid: {0}, {1}. Make a map standing anywhere on it.	Arte de mapa colocado en la cuadrícula: {0}, {1}. Haz un mapa estando en cualquier parte de él.
+Couldn't place it: {0}	No se pudo colocar: {0}
 Couldn't save it: {0}	No se pudo guardar: {0}
 That picture is too big.	Esa imagen es demasiado grande.
 Drop a picture: PNG or JPG.	Suelta una imagen: PNG o JPG.
@@ -270,7 +286,9 @@ on this window,	en esta ventana,
 or copy a link to a picture	o copia un enlace a una imagen
 and press Ctrl+V.	y pulsa Ctrl+V.
 Couldn't make blocks from it.	No se pudieron sacar bloques de ella.
+{0} x {1} blocks, {2} high	{0} x {1} bloques, {2} de alto
 {0} blocks, {1} kinds	{0} bloques, {1} tipos
+{0} blocks, {1} colors	{0} bloques, {1} colores
 Search	Buscar
 Search...	Buscar...
 Get free builds	Construcciones gratis

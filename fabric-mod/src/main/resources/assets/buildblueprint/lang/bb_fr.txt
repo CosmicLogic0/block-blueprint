@@ -247,18 +247,34 @@ Smelt some of it in a furnace first	Fais-en d'abord cuire une partie dans un fou
 Crafting table amounts - a stonecutter needs less for stone stairs and slabs	Quantités pour l'établi - un tailleur de pierre en demande moins pour les escaliers et dalles en pierre
 My picture	Mon image
 Build from a picture	Construire depuis une image
-Standing up: a wall facing you. Lying flat: on the ground, like map art.	Debout : un mur face à vous. À plat : au sol, comme du map art.
+Standing up: a wall facing you. Lying flat: on the ground. Map art: so a map of the spot shows the picture.	Debout : un mur face à vous. À plat : au sol. Map art : pour qu'une carte de l'endroit montre l'image.
 How many blocks across the long side of the picture is (up to 256).	Combien de blocs fait le grand côté de l'image (jusqu'à 256).
+Carpets are cheap and quick (16 colors). Every map color uses all the blocks a map can show (about 60 colors), some of them rare.	Les tapis sont bon marché et rapides (16 couleurs). Toutes les couleurs de carte utilisent tous les blocs qu'une carte peut montrer (environ 60 couleurs), certains rares.
 Wool, concrete and terracotta are easy to get and come in many colors. Every full block gives the closest colors, but uses rarer blocks.	La laine, le béton et la terre cuite sont faciles à obtenir et existent en beaucoup de couleurs. Tous les blocs pleins donnent les couleurs les plus proches, mais utilisent des blocs plus rares.
+The map's zoom level. Zoomed-out maps cover more ground: each map pixel is a bigger square of blocks.	Le niveau de zoom de la carte. Les cartes dézoomées couvrent plus de terrain : chaque pixel de la carte est un plus grand carré de blocs.
+Flat is easy to build. Staircase steps the blocks up and down so the map shows 3 shades of each color - nicer, but taller and harder to build.	Plat est facile à construire. Escalier monte et descend les blocs pour que la carte montre 3 nuances de chaque couleur : plus joli, mais plus haut et plus dur à construire.
 Saves it in Saved builds. Load it into the world from there.	L'enregistre dans Constructions enregistrées. Chargez-la dans le monde depuis là.
+Build here (map grid)	Construire ici (grille de carte)
+Saves it and puts it in the world where you stand, lined up with the map grid, so a map made here shows the whole picture.	L'enregistre et la place dans le monde là où vous êtes, alignée sur la grille des cartes, pour qu'une carte faite ici montre toute l'image.
 Back	Retour
 Lying flat (floor)	À plat (sol)
+Map art	Map art
 Standing up (wall)	Debout (mur)
+Maps: {0} x {1}	Cartes : {0} x {1}
+Blocks: carpets	Blocs : tapis
+Blocks: every map color	Blocs : toutes les couleurs
+Zoom {0} ({1} blocks a map)	Zoom {0} ({1} blocs par carte)
+Shading: staircase	Ombrage : escalier
+Shading: flat	Ombrage : plat
 {0} x {1} blocks	{0} x {1} blocs
 Blocks: every full block	Blocs : tous les pleins
 Blocks: wool, concrete...	Blocs : laine, béton...
 No blocks to use.	Aucun bloc à utiliser.
+Too big: at most {0} blocks across. Pick fewer maps or a lower zoom.	Trop grand : au plus {0} blocs de large. Choisissez moins de cartes ou un zoom plus faible.
+Too tall for most worlds ({0} blocks): try flat shading or a lower zoom.	Trop haute pour la plupart des mondes ({0} blocs) : essayez l'ombrage plat ou un zoom plus faible.
 Couldn't read that picture.	Impossible de lire cette image.
+Map art placed on the map grid: {0}, {1}. Make a map standing anywhere on it.	Map art placé sur la grille : {0}, {1}. Faites une carte en vous tenant n'importe où dessus.
+Couldn't place it: {0}	Impossible de la placer : {0}
 Couldn't save it: {0}	Impossible d'enregistrer : {0}
 That picture is too big.	Cette image est trop grande.
 Drop a picture: PNG or JPG.	Déposez une image : PNG ou JPG.
@@ -270,7 +286,9 @@ on this window,	sur cette fenêtre,
 or copy a link to a picture	ou copiez un lien vers une image
 and press Ctrl+V.	et appuyez sur Ctrl+V.
 Couldn't make blocks from it.	Impossible d'en faire des blocs.
+{0} x {1} blocks, {2} high	{0} x {1} blocs, {2} de haut
 {0} blocks, {1} kinds	{0} blocs, {1} sortes
+{0} blocks, {1} colors	{0} blocs, {1} couleurs
 Search	Rechercher
 Search...	Rechercher...
 Get free builds	Constructions gratuites

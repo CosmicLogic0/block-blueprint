@@ -22,6 +22,16 @@ public final class BuildPicture {
             } catch (Exception e) { return 0xFF808080; }
         });
     }
+    /** The color a map shows for a block (its base color, 0xRRGGBB), or -1 when maps don't show it. */
+    static int mapColor(String state) {
+        try {
+            BlockState bs = V.parseState(state);
+            if (bs.isAir()) return -1;
+            int col = V.mapColor(bs);
+            return col == 0 ? -1 : col & 0xFFFFFF;
+        } catch (Exception e) { return -1; }
+    }
+
     private static int shade(int c, float f) {
         int r = Math.min(255, (int) (((c >> 16) & 255) * f)), g = Math.min(255, (int) (((c >> 8) & 255) * f)), b = Math.min(255, (int) ((c & 255) * f));
         return 0xFF000000 | r << 16 | g << 8 | b;

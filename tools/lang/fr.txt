@@ -246,18 +246,34 @@ Fais-en d'abord cuire une partie dans un four
 Quantités pour l'établi - un tailleur de pierre en demande moins pour les escaliers et dalles en pierre
 Mon image
 Construire depuis une image
-Debout : un mur face à vous. À plat : au sol, comme du map art.
+Debout : un mur face à vous. À plat : au sol. Map art : pour qu'une carte de l'endroit montre l'image.
 Combien de blocs fait le grand côté de l'image (jusqu'à 256).
+Les tapis sont bon marché et rapides (16 couleurs). Toutes les couleurs de carte utilisent tous les blocs qu'une carte peut montrer (environ 60 couleurs), certains rares.
 La laine, le béton et la terre cuite sont faciles à obtenir et existent en beaucoup de couleurs. Tous les blocs pleins donnent les couleurs les plus proches, mais utilisent des blocs plus rares.
+Le niveau de zoom de la carte. Les cartes dézoomées couvrent plus de terrain : chaque pixel de la carte est un plus grand carré de blocs.
+Plat est facile à construire. Escalier monte et descend les blocs pour que la carte montre 3 nuances de chaque couleur : plus joli, mais plus haut et plus dur à construire.
 L'enregistre dans Constructions enregistrées. Chargez-la dans le monde depuis là.
+Construire ici (grille de carte)
+L'enregistre et la place dans le monde là où vous êtes, alignée sur la grille des cartes, pour qu'une carte faite ici montre toute l'image.
 Retour
 À plat (sol)
+Map art
 Debout (mur)
+Cartes : {0} x {1}
+Blocs : tapis
+Blocs : toutes les couleurs
+Zoom {0} ({1} blocs par carte)
+Ombrage : escalier
+Ombrage : plat
 {0} x {1} blocs
 Blocs : tous les pleins
 Blocs : laine, béton...
 Aucun bloc à utiliser.
+Trop grand : au plus {0} blocs de large. Choisissez moins de cartes ou un zoom plus faible.
+Trop haute pour la plupart des mondes ({0} blocs) : essayez l'ombrage plat ou un zoom plus faible.
 Impossible de lire cette image.
+Map art placé sur la grille : {0}, {1}. Faites une carte en vous tenant n'importe où dessus.
+Impossible de la placer : {0}
 Impossible d'enregistrer : {0}
 Cette image est trop grande.
 Déposez une image : PNG ou JPG.
@@ -269,7 +285,9 @@ sur cette fenêtre,
 ou copiez un lien vers une image
 et appuyez sur Ctrl+V.
 Impossible d'en faire des blocs.
+{0} x {1} blocs, {2} de haut
 {0} blocs, {1} sortes
+{0} blocs, {1} couleurs
 Rechercher
 Rechercher...
 Constructions gratuites

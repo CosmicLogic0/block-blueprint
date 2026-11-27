@@ -247,18 +247,34 @@ Smelt some of it in a furnace first	Сначала переплавь часть
 Crafting table amounts - a stonecutter needs less for stone stairs and slabs	Количество для верстака - камнерезу нужно меньше для каменных ступенек и плит
 My picture	Моя картинка
 Build from a picture	Постройка из картинки
-Standing up: a wall facing you. Lying flat: on the ground, like map art.	Стоя: стена перед вами. Лёжа: на земле, как арт для карты.
+Standing up: a wall facing you. Lying flat: on the ground. Map art: so a map of the spot shows the picture.	Стоя: стена перед вами. Лёжа: на земле. Арт для карты: чтобы карта этого места показывала картинку.
 How many blocks across the long side of the picture is (up to 256).	Сколько блоков по длинной стороне картинки (до 256).
+Carpets are cheap and quick (16 colors). Every map color uses all the blocks a map can show (about 60 colors), some of them rare.	Ковры дешёвые и быстрые (16 цветов). Все цвета карты — это все блоки, которые может показать карта (около 60 цветов), некоторые редкие.
 Wool, concrete and terracotta are easy to get and come in many colors. Every full block gives the closest colors, but uses rarer blocks.	Шерсть, бетон и терракоту легко достать, и у них много цветов. Все полные блоки дают самые точные цвета, но нужны более редкие блоки.
+The map's zoom level. Zoomed-out maps cover more ground: each map pixel is a bigger square of blocks.	Масштаб карты. Отдалённые карты охватывают больше: каждый пиксель карты — квадрат из большего числа блоков.
+Flat is easy to build. Staircase steps the blocks up and down so the map shows 3 shades of each color - nicer, but taller and harder to build.	Плоско — легко строить. Лесенка поднимает и опускает блоки, чтобы карта показывала 3 оттенка каждого цвета: красивее, но выше и сложнее.
 Saves it in Saved builds. Load it into the world from there.	Сохраняет в Сохранённые постройки. Оттуда загрузите в мир.
+Build here (map grid)	Строить здесь (сетка карты)
+Saves it and puts it in the world where you stand, lined up with the map grid, so a map made here shows the whole picture.	Сохраняет и ставит в мир там, где вы стоите, по сетке карт, чтобы сделанная здесь карта показала всю картинку.
 Back	Назад
 Lying flat (floor)	Лёжа (пол)
+Map art	Арт для карты
 Standing up (wall)	Стоя (стена)
+Maps: {0} x {1}	Карты: {0} x {1}
+Blocks: carpets	Блоки: ковры
+Blocks: every map color	Блоки: все цвета карты
+Zoom {0} ({1} blocks a map)	Масштаб {0} ({1} блоков на карту)
+Shading: staircase	Тени: лесенка
+Shading: flat	Тени: плоско
 {0} x {1} blocks	{0} x {1} блоков
 Blocks: every full block	Блоки: все полные
 Blocks: wool, concrete...	Блоки: шерсть, бетон...
 No blocks to use.	Нет блоков для использования.
+Too big: at most {0} blocks across. Pick fewer maps or a lower zoom.	Слишком большой: не больше {0} блоков в ширину. Выберите меньше карт или меньший масштаб.
+Too tall for most worlds ({0} blocks): try flat shading or a lower zoom.	Слишком высоко для большинства миров ({0} блоков): попробуйте плоские тени или меньший масштаб.
 Couldn't read that picture.	Не удалось прочитать картинку.
+Map art placed on the map grid: {0}, {1}. Make a map standing anywhere on it.	Арт для карты поставлен по сетке: {0}, {1}. Сделайте карту, стоя где угодно на нём.
+Couldn't place it: {0}	Не удалось поставить: {0}
 Couldn't save it: {0}	Не удалось сохранить: {0}
 That picture is too big.	Картинка слишком большая.
 Drop a picture: PNG or JPG.	Перетащите картинку: PNG или JPG.
@@ -270,7 +286,9 @@ on this window,	в это окно,
 or copy a link to a picture	или скопируйте ссылку на картинку
 and press Ctrl+V.	и нажмите Ctrl+V.
 Couldn't make blocks from it.	Не удалось сделать из неё блоки.
+{0} x {1} blocks, {2} high	{0} x {1} блоков, высота {2}
 {0} blocks, {1} kinds	{0} блоков, {1} видов
+{0} blocks, {1} colors	{0} блоков, {1} цветов
 Search	Поиск
 Search...	Поиск...
 Get free builds	Бесплатные постройки

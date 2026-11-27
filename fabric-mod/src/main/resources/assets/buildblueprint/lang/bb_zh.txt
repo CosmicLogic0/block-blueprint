@@ -247,18 +247,34 @@ Smelt some of it in a furnace first	先在熔炉里烧炼一部分
 Crafting table amounts - a stonecutter needs less for stone stairs and slabs	按工作台计算的数量 - 用切石机做石质楼梯和台阶需要的更少
 My picture	我的图片
 Build from a picture	用图片建造
-Standing up: a wall facing you. Lying flat: on the ground, like map art.	竖立：面向你的一面墙。平铺：铺在地上，像地图画。
+Standing up: a wall facing you. Lying flat: on the ground. Map art: so a map of the spot shows the picture.	竖立：面向你的一面墙。平铺：铺在地上。地图画：让这里的地图显示这张图片。
 How many blocks across the long side of the picture is (up to 256).	图片长边有多少个方块（最多 256）。
+Carpets are cheap and quick (16 colors). Every map color uses all the blocks a map can show (about 60 colors), some of them rare.	地毯便宜又快（16 种颜色）。所有地图颜色会用到地图能显示的全部方块（约 60 种颜色），有些很稀有。
 Wool, concrete and terracotta are easy to get and come in many colors. Every full block gives the closest colors, but uses rarer blocks.	羊毛、混凝土和陶瓦容易获得，颜色也多。所有完整方块颜色最接近，但会用到更稀有的方块。
+The map's zoom level. Zoomed-out maps cover more ground: each map pixel is a bigger square of blocks.	地图的缩放级别。缩得越小的地图覆盖范围越大：每个地图像素是更大的一块方块。
+Flat is easy to build. Staircase steps the blocks up and down so the map shows 3 shades of each color - nicer, but taller and harder to build.	平面容易建造。阶梯会让方块上下错开，地图就能显示每种颜色的 3 种深浅——更好看，但更高也更难建。
 Saves it in Saved builds. Load it into the world from there.	保存到“已保存的建筑”。从那里加载到世界中。
+Build here (map grid)	在这里建造（地图网格）
+Saves it and puts it in the world where you stand, lined up with the map grid, so a map made here shows the whole picture.	保存并放到你所在的位置，与地图网格对齐，这样在这里做的地图会显示整张图片。
 Back	返回
 Lying flat (floor)	平铺（地面）
+Map art	地图画
 Standing up (wall)	竖立（墙）
+Maps: {0} x {1}	地图：{0} x {1}
+Blocks: carpets	方块：地毯
+Blocks: every map color	方块：所有地图颜色
+Zoom {0} ({1} blocks a map)	缩放 {0}（每张地图 {1} 格）
+Shading: staircase	明暗：阶梯
+Shading: flat	明暗：平面
 {0} x {1} blocks	{0} x {1} 个方块
 Blocks: every full block	方块：所有完整方块
 Blocks: wool, concrete...	方块：羊毛、混凝土...
 No blocks to use.	没有可用的方块。
+Too big: at most {0} blocks across. Pick fewer maps or a lower zoom.	太大了：最多 {0} 格宽。请选更少的地图或更低的缩放。
+Too tall for most worlds ({0} blocks): try flat shading or a lower zoom.	对大多数世界来说太高了（{0} 格）：试试平面明暗或更低的缩放。
 Couldn't read that picture.	无法读取该图片。
+Map art placed on the map grid: {0}, {1}. Make a map standing anywhere on it.	地图画已按地图网格放置：{0}，{1}。站在它上面任意位置制作地图即可。
+Couldn't place it: {0}	无法放置：{0}
 Couldn't save it: {0}	无法保存：{0}
 That picture is too big.	该图片太大了。
 Drop a picture: PNG or JPG.	拖入一张图片：PNG 或 JPG。
@@ -270,7 +286,9 @@ on this window,	拖到这个窗口上，
 or copy a link to a picture	或复制图片链接
 and press Ctrl+V.	然后按 Ctrl+V。
 Couldn't make blocks from it.	无法用它生成方块。
+{0} x {1} blocks, {2} high	{0} x {1} 格，高 {2}
 {0} blocks, {1} kinds	{0} 个方块，{1} 种
+{0} blocks, {1} colors	{0} 个方块，{1} 种颜色
 Search	搜索
 Search...	搜索...
 Get free builds	免费建筑
