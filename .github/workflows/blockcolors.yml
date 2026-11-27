@@ -1,0 +1,30 @@
+# Makes block-colors.txt (average texture color of plain full blocks) for "Build from a picture".
+# Runs when branch "blockcolors" is pushed; the file goes to branch "blockcolors-results".
+name: Block colors
+
+on:
+  push:
+    branches: [blockcolors]
+
+permissions:
+  contents: write
+
+jobs:
+  colors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Minecraft client
+        run: |
+          url=$(curl -s https://piston-meta.mojang.com/mc/game/version_manifest_v2.json | python3 -c "import json,sys,urllib.request; m=json.load(sys.stdin); v=[x for x in m['versions'] if x['id']=='26.3'][0]; print(json.load(urllib.request.urlopen(v['url']))['downloads']['client']['url'])")
+          curl -sL "$url" -o client.jar && ls -la client.jar
+      - name: Colors
+        run: |
+          pip install -q pillow
+          mkdir -p res && python3 tools/colors/block_colors.py client.jar res/block-colors.txt | tee res/log.txt
+      - name: Save
+        run: |
+          cd res && echo "${GITHUB_SHA}" > COMMIT
+          git init -q -b blockcolors-results && git config user.name ci && git config user.email ci@example.com
+          git add -A && git commit -qm "block colors ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" blockcolors-results
