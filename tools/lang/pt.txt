@@ -53,7 +53,7 @@ Uma construção é o que você quer fazer, mostrada como blocos fantasma transp
 Abra o menu de construção, clique em Construções salvas, escolha uma e aperte Carregar no mundo.
 As construções vêm de três lugares:
 - o app gratuito Block Blueprint: crie ou escolha uma construção e aperte Send to Minecraft
-- arquivos de esquema (.schem, .litematic, .nbt) na pasta BlockBlueprint da sua pasta de usuário
+- arquivos de esquema (.schem, .litematic, .nbt, .schematic antigo, .mcstructure do Bedrock): solte-os na janela do jogo em Construções salvas, cole um link para um ou coloque-os na pasta BlockBlueprint da sua pasta de usuário
 - construções que você copia do seu próprio mundo (veja Copiar uma construção)
 Page Up
 abrir o menu de construção
@@ -248,7 +248,7 @@ Pesquisar...
 Construções grátis
 Mais de 1.300 construções grátis da comunidade do Minecraft: casas, torres, navios, castelos... Baixe uma e ela fica nas suas Construções salvas.
 + Colar construção
-Cole um código de construção (BB1:...) ou as linhas de Exportar do app da sua área de transferência. Ctrl+V também funciona.
+Cole um código de construção (BB1:...), as linhas de Exportar do app ou um link para um arquivo de esquema. Ctrl+V também funciona. Você também pode soltar arquivos de esquema na janela do jogo.
 Copiar do mundo
 Salve uma construção que já está no seu mundo: uma caixa começa no bloco que você olha - deixe do tamanho da construção com as setas, depois aperte Insert.
 Construção atual
@@ -274,6 +274,11 @@ Vista: frente
 Você já salvou esta construção.
 "{0}" salva neste computador.
 Não deu para ler a área de transferência.
+Baixando a construção...
+Não foi possível baixar esse link{0}
+{0} é grande demais.
+não foi possível ler.
+{0} construções salvas neste computador.
 Código de "{0}" copiado - cole no app (Templates > Import code).
 {0} salvo em BlockBlueprint/schematics (sua pasta de usuário).
 Não deu para salvar o arquivo .schem: {0}
@@ -294,10 +299,11 @@ código de construção e aperte
 + Colar construção.
 Pelo seu mundo: aperte
 Copiar do mundo.
-Esquemas: coloque arquivos .schem,
-.litematic ou .nbt
-em BlockBlueprint/builds
-na sua pasta de usuário.
+Arquivos de esquema: solte-os
+nesta janela, ou
+cole um link para um.
+(.schem .litematic .nbt
+.schematic .mcstructure)
 {0} x {1} x {2} · {3} blocos · {4} camadas
 arraste para mover · role para dar zoom
 Não dá para ler esta construção: {0}
@@ -614,6 +620,7 @@ parte {0} de {1} ({2})
 {0} acima
 {0} abaixo
 bem aqui
+Esse arquivo não tem blocos.
 Esse arquivo de esquema é grande demais.
 Não deu para ler {0}.
 Essa construção é grande demais para a memória do Minecraft. Dê mais memória (RAM) ao Minecraft no seu launcher e tente de novo.

@@ -54,7 +54,7 @@ A build is what you want to make, shown as see-through ghost blocks in your worl
 Open the build menu, click Saved builds, pick one and press Load into world.	Открой меню постройки, нажми Сохранённые постройки, выбери одну и нажми Загрузить в мир.
 Builds come from three places:	Постройки берутся из трёх мест:
 - the free Block Blueprint app: make or pick a build and press Send to Minecraft	- бесплатное приложение Block Blueprint: создай или выбери постройку и нажми Send to Minecraft
-- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder	- файлы схем (.schem, .litematic, .nbt) в папке BlockBlueprint в твоей папке пользователя
+- schematic files (.schem, .litematic, .nbt, old .schematic, Bedrock .mcstructure): drop them on the game window in Saved builds, paste a link to one, or put them in the BlockBlueprint folder in your user folder	- файлы схем (.schem, .litematic, .nbt, старые .schematic, .mcstructure из Bedrock): перетащите их в окно игры в Сохранённых постройках, вставьте ссылку на файл или положите в папку BlockBlueprint в папке пользователя
 - builds you copy from your own world (see Copy a build)	- постройки, которые ты копируешь из своего мира (см. Скопировать постройку)
 Page Up	Page Up
 open the build menu	открыть меню постройки
@@ -249,7 +249,7 @@ Search...	Поиск...
 Get free builds	Бесплатные постройки
 1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	Больше 1300 бесплатных построек от сообщества Minecraft: дома, башни, корабли, замки... Скачай одну, и она будет в Сохранённых постройках.
 + Paste build	+ Вставить постройку
-Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.	Вставь код постройки (BB1:...) или строки экспорта из приложения из буфера обмена. Ctrl+V тоже работает.
+Paste a build code (BB1:...), the app's Export lines, or a link to a schematic file. Ctrl+V works too. You can also drop schematic files on the game window.	Вставьте код постройки (BB1:...), строки экспорта из приложения или ссылку на файл схемы. Ctrl+V тоже работает. Файлы схем можно и перетащить в окно игры.
 Copy from world	Скопировать из мира
 Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.	Сохрани постройку, которая уже есть в мире: рамка начинается на блоке, на который смотришь - сделай её размером с постройку стрелками, затем нажми Insert.
 Current build	Текущая постройка
@@ -275,6 +275,11 @@ View: Front	Вид: спереди
 You already saved this build.	Ты уже сохранил эту постройку.
 Saved "{0}" on this computer.	«{0}» сохранена на этом компьютере.
 Could not read the clipboard.	Не удалось прочитать буфер обмена.
+Downloading the build...	Загрузка постройки...
+Couldn't download that link{0}	Не удалось скачать по ссылке{0}
+{0} is too big.	{0} слишком большой.
+couldn't read it.	не удалось прочитать.
+Saved {0} builds on this computer.	Сохранено построек на этом компьютере: {0}.
 Code for "{0}" copied - paste it in the app (Templates > Import code).	Код «{0}» скопирован - вставь его в приложение (Templates > Import code).
 Saved {0} in BlockBlueprint/schematics (your user folder).	{0} сохранён в BlockBlueprint/schematics (твоя папка пользователя).
 Couldn't save the .schem file: {0}	Не удалось сохранить файл .schem: {0}
@@ -295,10 +300,11 @@ build code, then press	код постройки, потом нажми
 + Paste build.	+ Вставить постройку.
 From your world: press	Из твоего мира: нажми
 Copy from world.	Скопировать из мира.
-Schematics: put .schem,	Схемы: положи файлы .schem,
-.litematic or .nbt files	.litematic или .nbt
-in BlockBlueprint/builds	в BlockBlueprint/builds
-in your user folder.	в твоей папке пользователя.
+Schematic files: drop	Файлы схем: перетащите
+them on this window, or	их в это окно или
+paste a link to one.	вставьте ссылку.
+(.schem .litematic .nbt	(.schem .litematic .nbt
+.schematic .mcstructure)	.schematic .mcstructure)
 {0} x {1} x {2} · {3} blocks · {4} layers	{0} x {1} x {2} · блоков: {3} · слоёв: {4}
 drag to move · scroll to zoom	перетаскивай - сдвиг · колесо - масштаб
 Can't read this build: {0}	Не удаётся прочитать постройку: {0}
@@ -615,6 +621,7 @@ part {0} of {1} ({2})	часть {0} из {1} ({2})
 {0} up	{0} выше
 {0} down	{0} ниже
 right here	прямо здесь
+That file has no blocks in it.	В этом файле нет блоков.
 That schematic file is too big.	Этот файл схемы слишком большой.
 Couldn't read {0}.	Не удалось прочитать {0}.
 That build is too big for the memory Minecraft has. Give Minecraft more memory (RAM) in your launcher, then try again.	Эта постройка слишком большая для памяти Minecraft. Выделите Minecraft больше памяти (RAM) в лаунчере и попробуйте снова.

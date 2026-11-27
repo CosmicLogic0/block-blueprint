@@ -105,6 +105,24 @@ public final class SavedBuilds {
         } catch (IOException ignored) {}
     }
 
+    /**
+     * Puts a schematic file (dropped on the game window, or downloaded from a link) into the builds folder, after checking
+     * Build Blueprint can read it. Returns the build's name.
+     */
+    public static String importFile(String fileName, byte[] data) throws BlueprintException, IOException {
+        String fn = fileName == null ? "" : fileName.replaceAll("[\\\\/:*?\"<>|]", "_").trim();
+        int q = fn.indexOf('?'); if (q >= 0) fn = fn.substring(0, q);
+        String base = fn.contains(".") ? fn.substring(0, fn.lastIndexOf('.')) : fn;
+        if (base.isBlank()) base = "Imported build";
+        String ext = SchemCodec.isSchematicFile(fn) ? fn.substring(fn.lastIndexOf('.')).toLowerCase(java.util.Locale.ROOT) : ".schem";
+        Blueprint bp = SchemCodec.read(data, pretty(base));   // throws a friendly message when it isn't a build file
+        if (bp.blockCount() == 0) throw new BlueprintException("That file has no blocks in it.");
+        Path d = dir(), p = d.resolve(base + ext);
+        for (int i = 2; Files.exists(p); i++) p = d.resolve(base + " (" + i + ")" + ext);
+        Files.write(p, data);
+        return pretty(base);
+    }
+
     /** "my_cool-house" -> "My Cool House" (schematic file names as display names). */
     static String pretty(String file) {
         StringBuilder b = new StringBuilder();

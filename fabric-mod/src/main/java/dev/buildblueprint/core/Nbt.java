@@ -55,7 +55,51 @@ public final class Nbt {
         }
     }
 
-    private static Object payload(DataInputStream d, int type, int depth) throws IOException, BlueprintException {
+    /** Reads a Bedrock Edition file (.mcstructure): little-endian NBT, not compressed. Returns the root compound. */
+    @SuppressWarnings("unchecked")
+    public static Map<String, Object> readLittleEndian(byte[] file) throws BlueprintException {
+        try {
+            LittleEndian d = new LittleEndian(file);
+            int type = d.readUnsignedByte();
+            if (type != 10) throw new BlueprintException("That file isn't a schematic (no NBT compound inside).");
+            d.readUTF();
+            return (Map<String, Object>) payload(d, 10, 0);
+        } catch (BlueprintException e) {
+            throw e;
+        } catch (IOException | RuntimeException e) {
+            throw new BlueprintException("That schematic file is broken or not a schematic.");
+        }
+    }
+
+    /** Bedrock's byte order: numbers low byte first, strings as a 2-byte length (low byte first) and UTF-8. */
+    private static final class LittleEndian implements java.io.DataInput {
+        private final byte[] b; private int p;
+        LittleEndian(byte[] b) { this.b = b; }
+        private int u() throws IOException { if (p >= b.length) throw new java.io.EOFException(); return b[p++] & 0xff; }
+        @Override public void readFully(byte[] a) throws IOException { readFully(a, 0, a.length); }
+        @Override public void readFully(byte[] a, int off, int len) throws IOException {
+            if (len > b.length - p) throw new java.io.EOFException();
+            System.arraycopy(b, p, a, off, len); p += len;
+        }
+        @Override public int skipBytes(int n) { int k = Math.min(n, b.length - p); p += k; return k; }
+        @Override public boolean readBoolean() throws IOException { return u() != 0; }
+        @Override public byte readByte() throws IOException { return (byte) u(); }
+        @Override public int readUnsignedByte() throws IOException { return u(); }
+        @Override public short readShort() throws IOException { return (short) readUnsignedShort(); }
+        @Override public int readUnsignedShort() throws IOException { int a = u(); return a | u() << 8; }
+        @Override public char readChar() throws IOException { return (char) readUnsignedShort(); }
+        @Override public int readInt() throws IOException { int a = u(), c = u(), e = u(); return a | c << 8 | e << 16 | u() << 24; }
+        @Override public long readLong() throws IOException { long lo = readInt() & 0xffffffffL; return lo | (long) readInt() << 32; }
+        @Override public float readFloat() throws IOException { return Float.intBitsToFloat(readInt()); }
+        @Override public double readDouble() throws IOException { return Double.longBitsToDouble(readLong()); }
+        @Override public String readLine() { throw new UnsupportedOperationException(); }
+        @Override public String readUTF() throws IOException {
+            int n = readUnsignedShort(); byte[] a = new byte[n]; readFully(a);
+            return new String(a, java.nio.charset.StandardCharsets.UTF_8);
+        }
+    }
+
+    private static Object payload(java.io.DataInput d, int type, int depth) throws IOException, BlueprintException {
         if (depth > MAX_DEPTH) throw new BlueprintException("That schematic file is nested too deeply.");
         switch (type) {
             case 1: return d.readByte();
@@ -88,7 +132,7 @@ public final class Nbt {
         }
     }
 
-    private static int len(DataInputStream d) throws IOException, BlueprintException {
+    private static int len(java.io.DataInput d) throws IOException, BlueprintException {
         int n = d.readInt();
         if (n < 0 || n > MAX_ARRAY) throw new BlueprintException("That schematic file is broken (bad array).");
         return n;

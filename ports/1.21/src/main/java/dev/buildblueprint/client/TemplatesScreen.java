@@ -173,7 +173,7 @@ public class TemplatesScreen extends BBScreen {
         throw last;
     }
 
-    private static byte[] fetchOne(String url) throws Exception {
+    static byte[] fetchOne(String url) throws Exception {
         HttpURLConnection c = (HttpURLConnection) new URL(url).openConnection();
         c.setConnectTimeout(6000); c.setReadTimeout(15000);
         c.setRequestProperty("User-Agent", "build-blueprint-mod");

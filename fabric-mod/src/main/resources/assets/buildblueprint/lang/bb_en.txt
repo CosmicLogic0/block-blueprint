@@ -64,7 +64,7 @@ A build is what you want to make, shown as see-through ghost blocks in your worl
 Open the build menu, click Saved builds, pick one and press Load into world.
 Builds come from three places:
 - the free Block Blueprint app: make or pick a build and press Send to Minecraft
-- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder
+- schematic files (.schem, .litematic, .nbt, old .schematic, Bedrock .mcstructure): drop them on the game window in Saved builds, paste a link to one, or put them in the BlockBlueprint folder in your user folder
 - builds you copy from your own world (see Copy a build)
 Page Up
 open the build menu
@@ -270,7 +270,7 @@ Search...
 Get free builds
 1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.
 + Paste build
-Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.
+Paste a build code (BB1:...), the app's Export lines, or a link to a schematic file. Ctrl+V works too. You can also drop schematic files on the game window.
 Copy from world
 Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.
 Current build
@@ -298,6 +298,15 @@ You already saved this build.
 My build
 Saved "{0}" on this computer.
 Could not read the clipboard.
+Downloading the build...
+UTF-8
+HTTP
+too big
+Couldn't download that link{0}
+Build Blueprint download
+{0} is too big.
+couldn't read it.
+Saved {0} builds on this computer.
 Code for "{0}" copied - paste it in the app (Templates > Import code).
 Saved {0} in BlockBlueprint/schematics (your user folder).
 Couldn't save the .schem file: {0}
@@ -319,10 +328,11 @@ build code, then press
 + Paste build.
 From your world: press
 Copy from world.
-Schematics: put .schem,
-.litematic or .nbt files
-in BlockBlueprint/builds
-in your user folder.
+Schematic files: drop
+them on this window, or
+paste a link to one.
+(.schem .litematic .nbt
+.schematic .mcstructure)
 {0} x {1} x {2} · {3} blocks · {4} layers
 drag to move · scroll to zoom
 Can't read this build: {0}
@@ -531,12 +541,10 @@ Couldn't reach the build list - check your internet connection.
 Build Blueprint templates
 User-Agent
 HTTP {0}
-too big
 Downloading {0}...
 {0} - by {1}
 Got it! "{0}" is in Saved builds.
 Download failed - check your internet connection.
-Build Blueprint download
 Build Blueprint picture
 the templates screen
 {0} free builds from the Minecraft community
@@ -677,6 +685,8 @@ part {0} of {1} ({2})
 {0} down
 right here
 BlockBlueprint
+Imported build
+That file has no blocks in it.
 Schematic
 That schematic file is too big.
 Couldn't read {0}.
@@ -686,7 +696,6 @@ Only {0} of {1} parts were pasted. Use "Copy all" in the app.
 That isn't a build code.
 That build is too big.
 That build code is broken - copy it again.
-Imported build
 That build code has no blocks in it.
 That build code couldn't be read.
 There's already a file called {0}.

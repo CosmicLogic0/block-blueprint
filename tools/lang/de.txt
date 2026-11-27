@@ -53,7 +53,7 @@ Ein Bau ist das, was du bauen willst, gezeigt als durchsichtige Geisterblöcke i
 Öffne das Bau-Menü, klick auf Gespeicherte Bauten, wähl einen aus und drück In die Welt laden.
 Bauten kommen von drei Orten:
 - die kostenlose App Block Blueprint: erstelle oder wähle einen Bau und drück Send to Minecraft
-- Schematic-Dateien (.schem, .litematic, .nbt) im Ordner BlockBlueprint in deinem Benutzerordner
+- Schematic-Dateien (.schem, .litematic, .nbt, alte .schematic, Bedrock-.mcstructure): in Gespeicherte Bauwerke aufs Spielfenster ziehen, einen Link dazu einfügen oder in den Ordner BlockBlueprint in deinem Benutzerordner legen
 - Bauten, die du aus deiner eigenen Welt kopierst (siehe Bau kopieren)
 Bild auf
 das Bau-Menü öffnen
@@ -248,7 +248,7 @@ Suchen...
 Kostenlose Bauten
 Über 1.300 kostenlose Bauten aus der Minecraft-Community: Häuser, Türme, Schiffe, Burgen... Lade einen herunter, und er ist in deinen Gespeicherten Bauten.
 + Bau einfügen
-Füg einen Bau-Code (BB1:...) oder die Export-Zeilen der App aus deiner Zwischenablage ein. Strg+V geht auch.
+Füge einen Bau-Code (BB1:...), die Export-Zeilen der App oder einen Link zu einer Schematic-Datei ein. Strg+V geht auch. Du kannst Schematic-Dateien auch aufs Spielfenster ziehen.
 Aus der Welt kopieren
 Speichere einen Bau, der schon in deiner Welt steht: eine Box startet auf dem Block, den du ansiehst - mach sie mit den Pfeiltasten so groß wie den Bau, dann drück Einfg.
 Aktueller Bau
@@ -274,6 +274,11 @@ Ansicht: vorne
 Diesen Bau hast du schon gespeichert.
 "{0}" auf diesem Computer gespeichert.
 Die Zwischenablage konnte nicht gelesen werden.
+Bauwerk wird heruntergeladen...
+Der Link konnte nicht geladen werden{0}
+{0} ist zu groß.
+konnte nicht gelesen werden.
+{0} Bauwerke auf diesem Computer gespeichert.
 Code für "{0}" kopiert - füg ihn in der App ein (Templates > Import code).
 {0} in BlockBlueprint/schematics gespeichert (dein Benutzerordner).
 Die .schem-Datei konnte nicht gespeichert werden: {0}
@@ -294,10 +299,11 @@ Bau-Code, dann drück
 + Bau einfügen.
 Aus deiner Welt: drück
 Aus der Welt kopieren.
-Schematics: leg .schem-,
-.litematic- oder .nbt-Dateien
-in BlockBlueprint/builds
-in deinem Benutzerordner.
+Schematic-Dateien: aufs
+Fenster ziehen, oder
+einen Link einfügen.
+(.schem .litematic .nbt
+.schematic .mcstructure)
 {0} x {1} x {2} · {3} Blöcke · {4} Schichten
 ziehen zum Bewegen · Mausrad zum Zoomen
 Dieser Bau kann nicht gelesen werden: {0}
@@ -614,6 +620,7 @@ Teil {0} von {1} ({2})
 {0} oben
 {0} unten
 genau hier
+Die Datei enthält keine Blöcke.
 Diese Schematic-Datei ist zu groß.
 {0} konnte nicht gelesen werden.
 Dieses Bauwerk ist zu groß für den Speicher, den Minecraft hat. Gib Minecraft im Launcher mehr Arbeitsspeicher (RAM) und versuch es noch einmal.

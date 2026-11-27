@@ -36,6 +36,7 @@ public class SavedBuildsScreen extends Screen {
     private float zoom = 1f;       // multiplier on the auto-fit size
     private int panX = 0, panY = 0;
     private String msg = "", err = "";
+    private boolean busy;   // downloading a pasted link
     private EditBox nameBox;
     private Button saveName, viewBtn;
     private boolean renaming = false;
@@ -74,7 +75,7 @@ public class SavedBuildsScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Get free builds", lw - 8)), b -> Mc.setScreen(new TemplatesScreen(this))).bounds(lx, B() - 66, lw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.")))).build());
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "+ Paste build", lw - 8)), b -> paste()).bounds(lx, B() - 44, lw, 20)
-                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.")))).build());
+                .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("Paste a build code (BB1:...), the app's Export lines, or a link to a schematic file. Ctrl+V works too. You can also drop schematic files on the game window.")))).build());
         addRenderableWidget(Button.builder(Component.literal(UiKit.fit(font, "Copy from world", lw - 8)), b -> { onClose(); Copier.start(); }).bounds(lx, B() - 22, lw, 20)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal(Tr.t("Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.")))).build());
         boolean loaded = BuildBlueprintClient.SESSION.loaded();
@@ -142,6 +143,7 @@ public class SavedBuildsScreen extends Screen {
         err = ""; msg = "";
         try {
             String clip = Minecraft.getInstance().keyboardHandler.getClipboard();
+            if (clip != null && clip.trim().matches("(?i)https?://\\S+")) { download(clip.trim()); return; }   // a link to a build file
             int[] coop = CoopScreen.parseHeader(clip);
             String data = SavedBuilds.parsePasted(clip);
             if (coop != null) { CoopScreen.joinCoop(clip); return; }   // a friend's co-op code: their exact spot, placed
@@ -153,6 +155,48 @@ public class SavedBuildsScreen extends Screen {
             msg = "Saved \"" + builds.get(0).name() + "\" on this computer.";
         } catch (Exception e) { err = e.getMessage() == null ? "Could not read the clipboard." : e.getMessage(); }
     }
+    /** A pasted link to a schematic file: download it (only when the player pastes it) and add it to Saved builds. */
+    private void download(String url) {
+        if (busy) return;
+        busy = true; msg = "Downloading the build..."; err = "";
+        Thread th = new Thread(() -> {
+            String m = null, e2 = null;
+            try {
+                byte[] data = TemplatesScreen.fetchOne(url);
+                String name = url.replaceAll("[?#].*$", "");
+                name = name.substring(name.lastIndexOf('/') + 1);
+                m = "Saved \"" + SavedBuilds.importFile(java.net.URLDecoder.decode(name, "UTF-8"), data) + "\" on this computer.";
+            } catch (Exception ex) {
+                e2 = ex.getMessage() == null || ex.getMessage().startsWith("HTTP") || ex.getMessage().equals("too big")
+                        ? "Couldn't download that link" + (ex.getMessage() == null ? "." : " (" + ex.getMessage() + ").") : ex.getMessage();
+            }
+            final String fm = m, fe = e2;
+            Minecraft.getInstance().execute(() -> { busy = false; msg = fm == null ? "" : fm; err = fe == null ? "" : fe; if (fm != null) refreshList(); });
+        }, "Build Blueprint download");
+        th.setDaemon(true);
+        th.start();
+    }
+
+    /** Files dropped on the game window: schematics are added to Saved builds. */
+    @Override
+    public void onFilesDrop(List<java.nio.file.Path> paths) {
+        int ok = 0; String last = null, bad = null;
+        for (java.nio.file.Path p : paths) {
+            try {
+                if (java.nio.file.Files.size(p) > 200_000_000L) { bad = p.getFileName() + " is too big."; continue; }
+                last = SavedBuilds.importFile(p.getFileName().toString(), java.nio.file.Files.readAllBytes(p)); ok++;
+            } catch (Exception ex) { bad = p.getFileName() + ": " + (ex.getMessage() == null ? "couldn't read it." : ex.getMessage()); }
+        }
+        msg = ok == 1 ? "Saved \"" + last + "\" on this computer." : ok > 1 ? "Saved " + ok + " builds on this computer." : "";
+        err = bad == null ? "" : bad;
+        if (ok > 0) refreshList();
+    }
+
+    private void refreshList() {
+        if (search != null) search.setValue("");
+        all = SavedBuilds.list(); filter(); sel = 0; scroll = 0; resetView();
+    }
+
     private void copyCode() {
         SavedBuilds.Entry e = cur(); if (e == null) return;
         try {
@@ -275,7 +319,7 @@ public class SavedBuildsScreen extends Screen {
         }
         if (builds.isEmpty()) {
             String[] help = !all.isEmpty() ? new String[]{"No build matches", "your search."}
-                    : new String[]{"No saved builds yet.", "", "From the app: copy a", "build code, then press", "+ Paste build.", "", "From your world: press", "Copy from world.", "", "Schematics: put .schem,", ".litematic or .nbt files", "in BlockBlueprint/builds", "in your user folder."};
+                    : new String[]{"No saved builds yet.", "", "From the app: copy a", "build code, then press", "+ Paste build.", "", "From your world: press", "Copy from world.", "", "Schematic files: drop", "them on this window, or", "paste a link to one.", "(.schem .litematic .nbt", ".schematic .mcstructure)"};
             for (int i = 0; i < help.length; i++) g.text(font, Tr.t(help[i]), lx + 5, listTop() + 4 + i * 11, 0xFFAAAAAA, false);
         }
         // preview panel

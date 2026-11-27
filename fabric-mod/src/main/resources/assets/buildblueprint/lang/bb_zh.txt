@@ -54,7 +54,7 @@ A build is what you want to make, shown as see-through ghost blocks in your worl
 Open the build menu, click Saved builds, pick one and press Load into world.	打开建筑菜单，点击“已保存的建筑”，选一个，然后按“加载到世界”。
 Builds come from three places:	建筑有三个来源：
 - the free Block Blueprint app: make or pick a build and press Send to Minecraft	- 免费的 Block Blueprint 应用：制作或选择一个建筑，然后按 Send to Minecraft
-- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder	- 用户文件夹中 BlockBlueprint 文件夹里的原理图文件（.schem、.litematic、.nbt）
+- schematic files (.schem, .litematic, .nbt, old .schematic, Bedrock .mcstructure): drop them on the game window in Saved builds, paste a link to one, or put them in the BlockBlueprint folder in your user folder	- 原理图文件（.schem、.litematic、.nbt、旧版 .schematic、基岩版 .mcstructure）：在“已保存的建筑”中拖到游戏窗口上、粘贴文件链接，或放进用户文件夹里的 BlockBlueprint 文件夹
 - builds you copy from your own world (see Copy a build)	- 从你自己的世界里复制的建筑（见“复制建筑”）
 Page Up	Page Up
 open the build menu	打开建筑菜单
@@ -249,7 +249,7 @@ Search...	搜索...
 Get free builds	免费建筑
 1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	来自 Minecraft 社区的 1300 多个免费建筑：房子、塔、船、城堡……下载一个，它就会出现在“已保存的建筑”里。
 + Paste build	+ 粘贴建筑
-Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.	从剪贴板粘贴建筑代码（BB1:...）或应用的导出内容。Ctrl+V 也可以。
+Paste a build code (BB1:...), the app's Export lines, or a link to a schematic file. Ctrl+V works too. You can also drop schematic files on the game window.	粘贴建筑代码（BB1:...）、应用的导出行，或原理图文件的链接。也可以按 Ctrl+V。还可以把原理图文件拖到游戏窗口上。
 Copy from world	从世界复制
 Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.	保存一个已经在你世界里的建筑：范围框从你看着的方块开始 - 用方向键把它调到和建筑一样大，然后按 Insert。
 Current build	当前建筑
@@ -275,6 +275,11 @@ View: Front	视图：正面
 You already saved this build.	你已经保存过这个建筑了。
 Saved "{0}" on this computer.	已在这台电脑上保存“{0}”。
 Could not read the clipboard.	无法读取剪贴板。
+Downloading the build...	正在下载建筑...
+Couldn't download that link{0}	无法下载该链接{0}
+{0} is too big.	{0} 太大了。
+couldn't read it.	无法读取。
+Saved {0} builds on this computer.	已在这台电脑上保存 {0} 个建筑。
 Code for "{0}" copied - paste it in the app (Templates > Import code).	已复制“{0}”的代码 - 粘贴到应用里（Templates > Import code）。
 Saved {0} in BlockBlueprint/schematics (your user folder).	已将 {0} 保存到 BlockBlueprint/schematics（你的用户文件夹）。
 Couldn't save the .schem file: {0}	无法保存 .schem 文件：{0}
@@ -295,10 +300,11 @@ build code, then press	建筑代码，然后按
 + Paste build.	+ 粘贴建筑。
 From your world: press	从你的世界：按
 Copy from world.	从世界复制。
-Schematics: put .schem,	原理图：把 .schem、
-.litematic or .nbt files	.litematic 或 .nbt 文件
-in BlockBlueprint/builds	放进用户文件夹中的
-in your user folder.	BlockBlueprint/builds。
+Schematic files: drop	原理图文件：拖到
+them on this window, or	这个窗口上，或
+paste a link to one.	粘贴文件链接。
+(.schem .litematic .nbt	（.schem .litematic .nbt
+.schematic .mcstructure)	.schematic .mcstructure）
 {0} x {1} x {2} · {3} blocks · {4} layers	{0} x {1} x {2} · {3} 个方块 · {4} 层
 drag to move · scroll to zoom	拖动移动 · 滚轮缩放
 Can't read this build: {0}	无法读取这个建筑：{0}
@@ -615,6 +621,7 @@ part {0} of {1} ({2})	第 {0} 部分，共 {1} 部分（{2}）
 {0} up	上方 {0}
 {0} down	下方 {0}
 right here	就在这里
+That file has no blocks in it.	该文件里没有方块。
 That schematic file is too big.	这个原理图文件太大了。
 Couldn't read {0}.	无法读取 {0}。
 That build is too big for the memory Minecraft has. Give Minecraft more memory (RAM) in your launcher, then try again.	这个建筑太大了，Minecraft 的内存不够。请在启动器里给 Minecraft 分配更多内存（RAM），然后再试一次。

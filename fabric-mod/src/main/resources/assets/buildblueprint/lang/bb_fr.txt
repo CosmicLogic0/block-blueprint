@@ -54,7 +54,7 @@ A build is what you want to make, shown as see-through ghost blocks in your worl
 Open the build menu, click Saved builds, pick one and press Load into world.	Ouvre le menu de construction, clique sur Constructions sauvegardées, choisis-en une et appuie sur Charger dans le monde.
 Builds come from three places:	Les constructions viennent de trois endroits :
 - the free Block Blueprint app: make or pick a build and press Send to Minecraft	- l'appli gratuite Block Blueprint : crée ou choisis une construction et appuie sur Send to Minecraft
-- schematic files (.schem, .litematic, .nbt) in the BlockBlueprint folder in your user folder	- les fichiers schématiques (.schem, .litematic, .nbt) dans le dossier BlockBlueprint de ton dossier utilisateur
+- schematic files (.schem, .litematic, .nbt, old .schematic, Bedrock .mcstructure): drop them on the game window in Saved builds, paste a link to one, or put them in the BlockBlueprint folder in your user folder	- fichiers schematic (.schem, .litematic, .nbt, ancien .schematic, .mcstructure de Bedrock) : déposez-les sur la fenêtre du jeu dans Constructions enregistrées, collez un lien vers l'un d'eux, ou mettez-les dans le dossier BlockBlueprint de votre dossier utilisateur
 - builds you copy from your own world (see Copy a build)	- les constructions que tu copies de ton propre monde (voir Copier une construction)
 Page Up	Pg préc
 open the build menu	ouvrir le menu de construction
@@ -249,7 +249,7 @@ Search...	Rechercher...
 Get free builds	Constructions gratuites
 1,300+ free builds from the Minecraft community: houses, towers, ships, castles... Download one and it's in your Saved builds.	Plus de 1 300 constructions gratuites de la communauté Minecraft : maisons, tours, bateaux, châteaux... Télécharges-en une et elle est dans tes Constructions sauvegardées.
 + Paste build	+ Coller une construction
-Paste a build code (BB1:...) or the app's Export lines from your clipboard. Ctrl+V works too.	Colle un code de construction (BB1:...) ou les lignes d'Export de l'appli depuis ton presse-papiers. Ctrl+V marche aussi.
+Paste a build code (BB1:...), the app's Export lines, or a link to a schematic file. Ctrl+V works too. You can also drop schematic files on the game window.	Collez un code de construction (BB1:...), les lignes Exporter de l'appli ou un lien vers un fichier schematic. Ctrl+V marche aussi. Vous pouvez aussi déposer des fichiers schematic sur la fenêtre du jeu.
 Copy from world	Copier du monde
 Save a build that's already in your world: a box starts on the block you look at - make it as big as the build with the arrow keys, then press Insert.	Sauvegarde une construction déjà présente dans ton monde : une boîte commence sur le bloc que tu regardes - agrandis-la à la taille de la construction avec les flèches, puis appuie sur Inser.
 Current build	Construction actuelle
@@ -275,6 +275,11 @@ View: Front	Vue : face
 You already saved this build.	Tu as déjà sauvegardé cette construction.
 Saved "{0}" on this computer.	« {0} » sauvegardée sur cet ordinateur.
 Could not read the clipboard.	Impossible de lire le presse-papiers.
+Downloading the build...	Téléchargement de la construction...
+Couldn't download that link{0}	Impossible de télécharger ce lien{0}
+{0} is too big.	{0} est trop gros.
+couldn't read it.	illisible.
+Saved {0} builds on this computer.	{0} constructions enregistrées sur cet ordinateur.
 Code for "{0}" copied - paste it in the app (Templates > Import code).	Code de « {0} » copié - colle-le dans l'appli (Templates > Import code).
 Saved {0} in BlockBlueprint/schematics (your user folder).	{0} sauvegardé dans BlockBlueprint/schematics (ton dossier utilisateur).
 Couldn't save the .schem file: {0}	Impossible de sauvegarder le fichier .schem : {0}
@@ -295,10 +300,11 @@ build code, then press	code de construction, puis appuie sur
 + Paste build.	+ Coller une construction.
 From your world: press	Depuis ton monde : appuie sur
 Copy from world.	Copier du monde.
-Schematics: put .schem,	Schématiques : mets des fichiers .schem,
-.litematic or .nbt files	.litematic ou .nbt
-in BlockBlueprint/builds	dans BlockBlueprint/builds
-in your user folder.	de ton dossier utilisateur.
+Schematic files: drop	Fichiers schematic : déposez-
+them on this window, or	les sur cette fenêtre, ou
+paste a link to one.	collez un lien vers l'un.
+(.schem .litematic .nbt	(.schem .litematic .nbt
+.schematic .mcstructure)	.schematic .mcstructure)
 {0} x {1} x {2} · {3} blocks · {4} layers	{0} x {1} x {2} · {3} blocs · {4} couches
 drag to move · scroll to zoom	glisser pour déplacer · molette pour zoomer
 Can't read this build: {0}	Impossible de lire cette construction : {0}
@@ -615,6 +621,7 @@ part {0} of {1} ({2})	partie {0} sur {1} ({2})
 {0} up	{0} au-dessus
 {0} down	{0} en dessous
 right here	juste ici
+That file has no blocks in it.	Ce fichier ne contient aucun bloc.
 That schematic file is too big.	Ce fichier schématique est trop gros.
 Couldn't read {0}.	Impossible de lire {0}.
 That build is too big for the memory Minecraft has. Give Minecraft more memory (RAM) in your launcher, then try again.	Cette construction est trop grande pour la mémoire de Minecraft. Donne plus de mémoire (RAM) à Minecraft dans ton launcher, puis réessaie.
