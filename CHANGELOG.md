@@ -1,3 +1,7 @@
+## 1.7.0
+- **Server builds:** servers with the Build Blueprint server part (the plugin for Paper/Spigot/Purpur, or this mod on a Fabric/Forge/NeoForge server) can have their own builds for everyone. Build with friends > Invite & join on this server > **Server builds**: click one and it's in your Saved builds. Server owners drop build files (.schem, .litematic, .nbt, .schematic, .mcstructure) in the server's gallery folder - plugins/BuildBlueprint/gallery, or config/buildblueprint/gallery on a modded server - and ops can add the build they have loaded with **+ Add my build**. Needs the 1.7.0 server part.
+- **Co-op: everyone's progress.** When you build together, the corner list shows **Everyone together: N% done** - every builder's part, counted from the blocks in the world.
+
 ## 1.6.0
 - **Build from a picture:** Saved builds > From picture. Drop a PNG or JPG on the game window (or copy a link to one and press Ctrl+V) and it becomes a build, one block per pixel. Standing up like a wall or lying flat like map art, up to 256 blocks across, made of wool, concrete and terracotta - or every full block for the closest colors. See it before you save it.
 - **More file types:** old .schematic files (from before Minecraft 1.13) and Bedrock Edition .mcstructure files now load, the blocks turned into their Java Edition versions.

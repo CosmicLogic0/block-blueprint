@@ -24,6 +24,8 @@ public final class Proto {
     public static final int MAX_BUILD = 16 * 1024 * 1024, MAX_BUILDS = 4;
 
     public static final int HELLO = 1, PLAYERS_REQ = 2, PLAYERS = 3, SHARE = 4, UNSHARE = 5, BUILD = 6, REMOVED = 7, INVITE = 8, INVITED = 9;
+    /** The server's build gallery (1.7.0): ask for the list, the list ("file|bytes" names; a = "1" when you may add), get one, one file, add one (ops), a note for the player. */
+    public static final int GALLERY_REQ = 10, GALLERY = 11, GALLERY_GET = 12, GALLERY_FILE = 13, GALLERY_ADD = 14, NOTE = 15;
 
     /** One decoded message. Fields not used by a type are left empty. */
     public static final class Msg {
@@ -44,6 +46,12 @@ public final class Proto {
     public static byte[] removed(String owner, String id) { return enc(REMOVED, w -> { w.writeUTF(owner); w.writeUTF(id); }); }
     public static byte[] invite(String target, String id) { return enc(INVITE, w -> { w.writeUTF(target); w.writeUTF(id); }); }
     public static byte[] invited(String from, String id) { return enc(INVITED, w -> { w.writeUTF(from); w.writeUTF(id); }); }
+    public static byte[] galleryReq() { return enc(GALLERY_REQ, w -> {}); }
+    public static byte[] gallery(boolean canAdd, List<String> files) { return enc(GALLERY, w -> { w.writeUTF(canAdd ? "1" : "0"); w.writeInt(files.size()); for (String n : files) w.writeUTF(n); }); }
+    public static byte[] galleryGet(String file) { return enc(GALLERY_GET, w -> w.writeUTF(file)); }
+    public static byte[] galleryFile(String file, int part, int total, byte[] data) { return enc(GALLERY_FILE, w -> { w.writeUTF(file); w.writeInt(part); w.writeInt(total); bytes(w, data); }); }
+    public static byte[] galleryAdd(String name, int part, int total, byte[] data) { return enc(GALLERY_ADD, w -> { w.writeUTF(name); w.writeInt(part); w.writeInt(total); bytes(w, data); }); }
+    public static byte[] note(String text) { return enc(NOTE, w -> w.writeUTF(text)); }
 
     public static Msg decode(byte[] raw) throws IOException {
         DataInputStream in = new DataInputStream(new ByteArrayInputStream(raw));
@@ -57,6 +65,10 @@ public final class Proto {
             case UNSHARE: m.a = in.readUTF(); break;
             case BUILD: m.a = in.readUTF(); m.b = in.readUTF(); m.part = in.readInt(); m.total = in.readInt(); m.data = readBytes(in); break;
             case REMOVED: case INVITE: case INVITED: m.a = in.readUTF(); m.b = in.readUTF(); break;
+            case GALLERY_REQ: break;
+            case GALLERY: { m.a = in.readUTF(); int n = in.readInt(); if (n < 0 || n > 10000) throw new IOException("bad list"); for (int i = 0; i < n; i++) m.names.add(in.readUTF()); break; }
+            case GALLERY_GET: case NOTE: m.a = in.readUTF(); break;
+            case GALLERY_FILE: case GALLERY_ADD: m.a = in.readUTF(); m.part = in.readInt(); m.total = in.readInt(); m.data = readBytes(in); break;
             default: throw new IOException("unknown message " + m.type);
         }
         return m;

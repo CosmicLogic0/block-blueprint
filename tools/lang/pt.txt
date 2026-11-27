@@ -140,6 +140,7 @@ caixa grande
 {0} blocos
 Faça a caixa do tamanho da sua construção
 Co-op: {0}
+Todos juntos: {0}% feito
 Sua construção: a {0} blocos
 Ainda não colocada
 Setas movem, PgDn gira
@@ -341,8 +342,14 @@ Convidar {0}
 A pessoa recebe uma mensagem e pode entrar na sua construção colocada com um clique.
 Entrar em {1} de {0}
 Coloca a construção de {0} no lugar dela, já colocada, para construírem juntos.
+Pegar {0}
+Coloca esta construção do servidor em Construções salvas.
++ Adicionar minha construção
+Operadores: adiciona a construção carregada às construções do servidor, para todos com o mod. Donos do servidor também podem colocar arquivos na pasta gallery do servidor.
 Jogadores com Build Blueprint
 Construções em que você pode entrar
+Construções do servidor
+Nenhuma ainda.
 Ninguém mais aqui tem o mod ainda.
 Nenhuma construção compartilhada ainda.
 Configurações do Build Blueprint
@@ -494,12 +501,18 @@ Nada aqui.
 Nenhum bloco combina com "{0}".
 Clique num bloco para escolher  ·  clique duplo troca na hora
 Clique duplo para trocar por este
+Baixando {0}...
 Este servidor não tem a parte de servidor do Build Blueprint.
+Só operadores podem adicionar construções ao servidor.
+Carregue uma construção primeiro (Construções salvas) e depois adicione.
+Adicionando "{0}"...
 Coloque sua construção primeiro (Delete) e depois convide.
 Ative Compartilhar minha construção (Configurações > Extras) para convidar.
 Não deu para compartilhar sua construção.
 Convidou {0}!
 uma construção
+"{0}" salva em Construções salvas.
+Não foi possível ler {0}: {1}
 {0} convidou você para construir junto! Abra o menu > Construir com amigos para entrar.
 Pesquise por nome ou criador...
 Mostra um tipo de construção: casas, torres, navios...
@@ -517,7 +530,6 @@ Ordem: mais blocos
 Ordem: A a Z
 Todos os tipos
 Não deu para carregar a lista - confira sua conexão com a internet.
-Baixando {0}...
 Pronto! "{0}" está em Construções salvas.
 O download falhou - confira sua conexão com a internet.
 {0} construções grátis da comunidade do Minecraft

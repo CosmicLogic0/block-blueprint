@@ -140,6 +140,7 @@ caja grande
 {0} bloques
 Haz la caja tan grande como tu construcción
 Co-op: {0}
+Todos juntos: {0}% hecho
 Tu construcción: a {0} bloques
 Aún no colocada
 Flechas la mueven, AvPág la gira
@@ -341,8 +342,14 @@ Invitar a {0}
 Recibe un mensaje y puede unirse a tu construcción colocada con un clic.
 Unirse a {1} de {0}
 Pone la construcción de {0} en su lugar, colocada, para construirla juntos.
+Obtener {0}
+Pone esta construcción del servidor en tus Construcciones guardadas.
++ Añadir mi construcción
+Operadores: añade la construcción que tienes cargada a las construcciones del servidor, para todos los que tienen el mod. Los dueños del servidor también pueden poner archivos en la carpeta gallery del servidor.
 Jugadores con Build Blueprint
 Construcciones a las que unirte
+Construcciones del servidor
+Ninguna todavía.
 Nadie más aquí tiene el mod todavía.
 Aún no hay construcciones compartidas.
 Ajustes de Build Blueprint
@@ -494,12 +501,18 @@ No hay nada aquí.
 Ningún bloque coincide con "{0}".
 Haz clic en un bloque para elegirlo  ·  doble clic lo cambia al momento
 Doble clic para cambiar a este
+Descargando {0}...
 Este servidor no tiene la parte de servidor de Build Blueprint.
+Solo los operadores pueden añadir construcciones al servidor.
+Primero carga una construcción (Construcciones guardadas) y luego añádela.
+Añadiendo "{0}"...
 Coloca tu construcción primero (Supr) y luego invita.
 Activa Compartir mi construcción (Ajustes > Extras) para invitar.
 No se pudo compartir tu construcción.
 ¡Invitaste a {0}!
 una construcción
+"{0}" guardada en Construcciones guardadas.
+No se pudo leer {0}: {1}
 ¡{0} te invitó a construir juntos! Abre el menú > Construir con amigos para unirte.
 Busca por nombre o creador...
 Muestra un tipo de construcción: casas, torres, barcos...
@@ -517,7 +530,6 @@ Orden: más bloques
 Orden: A a Z
 Todos los tipos
 No se pudo cargar la lista: revisa tu conexión a internet.
-Descargando {0}...
 ¡Hecho! "{0}" está en Construcciones guardadas.
 La descarga falló: revisa tu conexión a internet.
 {0} construcciones gratis de la comunidad de Minecraft

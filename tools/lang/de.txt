@@ -140,6 +140,7 @@ große Box
 {0} Blöcke
 Mach die Box so groß wie deinen Bau
 Koop: {0}
+Alle zusammen: {0}% fertig
 Dein Bau: {0} Blöcke entfernt
 Noch nicht platziert
 Pfeile bewegen, Bild ab dreht
@@ -341,8 +342,14 @@ Auf diesem Server
 Sie bekommen eine Nachricht und können deinem platzierten Bau mit einem Klick beitreten.
 {0}s {1} beitreten
 Setzt {0}s Bau an seine Stelle, platziert, damit ihr ihn zusammen baut.
+{0} holen
+Legt dieses Server-Bauwerk in deine Gespeicherten Bauwerke.
++ Mein Bauwerk hinzufügen
+Ops: fügt dein geladenes Bauwerk zu den Server-Bauwerken hinzu, für alle mit der Mod. Serverbesitzer können Dateien auch in den gallery-Ordner des Servers legen.
 Spieler mit Build Blueprint
 Bauten zum Mitmachen
+Server-Bauwerke
+Noch keine.
 Sonst hat hier noch niemand den Mod.
 Noch keine geteilten Bauten.
 Build Blueprint Einstellungen
@@ -494,12 +501,18 @@ Hier ist nichts.
 Kein Block passt zu "{0}".
 Klick einen Block an, um ihn zu wählen  ·  Doppelklick tauscht sofort
 Doppelklick, um hierzu zu tauschen
+Lade {0} herunter...
 Dieser Server hat den Build-Blueprint-Serverteil nicht.
+Nur Ops können Server-Bauwerke hinzufügen.
+Lade zuerst ein Bauwerk (Gespeicherte Bauwerke), dann füge es hinzu.
+"{0}" wird hinzugefügt...
 Platziere zuerst deinen Bau (Entf), dann lade ein.
 Schalte Meinen Bau teilen ein (Einstellungen > Extras), um einzuladen.
 Dein Bau konnte nicht geteilt werden.
 {0} eingeladen!
 einen Bau
+"{0}" in Gespeicherte Bauwerke gespeichert.
+{0} konnte nicht gelesen werden: {1}
 {0} hat dich zum gemeinsamen Bauen eingeladen! Öffne das Menü > Mit Freunden bauen, um mitzumachen.
 Nach Name oder Ersteller suchen...
 Zeigt eine Art von Bau: Häuser, Türme, Schiffe...
@@ -517,7 +530,6 @@ Sortierung: meiste Blöcke
 Sortierung: A bis Z
 Alle Arten
 Die Liste konnte nicht geladen werden - prüf deine Internetverbindung.
-Lade {0} herunter...
 Geschafft! "{0}" ist in Gespeicherte Bauten.
 Download fehlgeschlagen - prüf deine Internetverbindung.
 {0} kostenlose Bauten aus der Minecraft-Community

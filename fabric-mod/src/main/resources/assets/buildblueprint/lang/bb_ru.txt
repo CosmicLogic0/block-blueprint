@@ -141,6 +141,7 @@ big box	большая рамка
 {0} blocks	блоков: {0}
 Make the box as big as your build	Сделай рамку размером с постройку
 Co-op: {0}	Совместно: {0}
+Everyone together: {0}% done	Все вместе: готово {0}%
 Your build: {0} blocks away	Твоя постройка: {0} блоков
 Not placed yet	Ещё не закреплена
 Arrows move it, PgDn turns it	Стрелки двигают, PgDn поворачивает
@@ -342,8 +343,14 @@ Invite {0}	Пригласить {0}
 They get a message and can join your placed build in one click.	Игрок получит сообщение и сможет присоединиться к твоей постройке в один клик.
 Join {0}'s {1}	Присоединиться: {1} ({0})
 Puts {0}'s build in their spot, placed, so you can build it together.	Ставит постройку {0} на её место, чтобы строить вместе.
+Get {0}	Взять {0}
+Puts this server build in your Saved builds.	Кладёт эту постройку сервера в ваши Сохранённые постройки.
++ Add my build	+ Добавить мою постройку
+Ops: adds the build you have loaded to the server builds, for everyone with the mod. Server owners can also put build files in the server's gallery folder.	Операторы: добавляет загруженную постройку в постройки сервера для всех, у кого есть мод. Владельцы сервера могут класть файлы в папку gallery сервера.
 Players with Build Blueprint	Игроки с Build Blueprint
 Builds you can join	Постройки, к которым можно присоединиться
+Server builds	Постройки сервера
+None yet.	Пока нет.
 Nobody else here has the mod yet.	Больше ни у кого здесь нет мода.
 No shared builds yet.	Пока нет общих построек.
 Build Blueprint settings	Настройки Build Blueprint
@@ -495,12 +502,18 @@ Nothing here.	Здесь ничего нет.
 No block matches "{0}".	Нет блоков по запросу «{0}».
 Click a block to pick it  ·  double-click swaps right away	Нажми на блок, чтобы выбрать  ·  двойной клик сразу заменяет
 Double-click to swap to this	Двойной клик, чтобы заменить на этот
+Downloading {0}...	Скачивание {0}...
 This server doesn't have the Build Blueprint server part.	На этом сервере нет серверной части Build Blueprint.
+Only ops can add builds to the server builds.	Добавлять постройки сервера могут только операторы.
+Load a build first (Saved builds), then add it.	Сначала загрузите постройку (Сохранённые постройки), затем добавьте.
+Adding "{0}"...	Добавление «{0}»...
 Place your build first (Delete), then invite.	Сначала поставь постройку (Delete), потом приглашай.
 Turn on Share my build (Settings > Extras) to invite.	Включи «Делиться постройкой» (Настройки > Дополнительно), чтобы приглашать.
 Couldn't share your build.	Не удалось поделиться постройкой.
 Invited {0}!	{0} приглашён!
 a build	постройку
+Saved "{0}" in Saved builds.	«{0}» сохранена в Сохранённые постройки.
+Couldn't read {0}: {1}	Не удалось прочитать {0}: {1}
 {0} invited you to build together! Open the menu > Build with friends to join.	{0} приглашает тебя строить вместе! Открой меню > Строить с друзьями, чтобы присоединиться.
 Search by name or creator...	Поиск по названию или автору...
 Show one kind of build: houses, towers, ships...	Показывает один вид построек: дома, башни, корабли...
@@ -518,7 +531,6 @@ Sort: most blocks	Сортировка: больше блоков
 Sort: A to Z	Сортировка: А–Я
 All kinds	Все виды
 Couldn't reach the build list - check your internet connection.	Не удалось загрузить список - проверь подключение к интернету.
-Downloading {0}...	Скачивание {0}...
 Got it! "{0}" is in Saved builds.	Готово! «{0}» в Сохранённых постройках.
 Download failed - check your internet connection.	Не удалось скачать - проверь подключение к интернету.
 {0} free builds from the Minecraft community	Бесплатных построек от сообщества Minecraft: {0}

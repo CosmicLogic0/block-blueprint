@@ -314,13 +314,19 @@ public final class UiTest {
             case "world-sync" -> {   // the server part (when the test server has it): invite yourself, the invite comes back
                 String me = net.minecraft.client.Minecraft.getInstance().player.getName().getString();
                 System.out.println("BBUITEST sync: available=" + SyncClient.available() + " kind=" + SyncClient.serverKind() + " invite: " + (SyncClient.available() ? SyncClient.invite(me) : "-"));
+                SyncClient.askGallery();
             }
             case "world-sync-check" -> {
                 System.out.println("BBUITEST sync check: invites " + SyncClient.invites().size());
+                System.out.println("BBUITEST gallery list: " + SyncClient.gallery().size() + " files");
+                if (!SyncClient.gallery().isEmpty()) SyncClient.getFromGallery(SyncClient.gallery().get(0)[0]);   // the test server has one build in its gallery
                 if (SyncClient.available()) Mc.setScreen(new ServerScreen(null));
             }
             case "world-sync-demo" -> { SyncClient.demo(true); Mc.setScreen(new ServerScreen(null)); }   // pictures: a busy server
-            case "world-coop-demo" -> Mc.setScreen(new CoopScreen(null));
+            case "world-coop-demo" -> {
+                System.out.println("BBUITEST gallery got: " + (SyncClient.lastSaved.isEmpty() ? "nothing" : SyncClient.lastSaved));
+                Mc.setScreen(new CoopScreen(null));
+            }
             case "world-only" -> {   // the eye: shift-click shows only one block's ghosts
                 SyncClient.demo(false);
                 net.minecraft.client.Minecraft.getInstance().player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, net.minecraft.world.item.ItemStack.EMPTY);

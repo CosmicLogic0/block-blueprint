@@ -37,6 +37,11 @@ public final class Materials {
 
     public static List<Row> rows() { return rows; }
     public static int placed() { return placed; }
+    /** Co-op: the whole build, every builder's part (blocks placed / blocks in the build). */
+    private static int wholePlaced, wholeTotal;
+    private static boolean[] friendDone = new boolean[0];   // a friend's block seen in place (kept while it's too far to see)
+    public static int wholePlaced() { return wholePlaced; }
+    public static int wholeTotal() { return wholeTotal; }
     public static int totalBlocks() { return totalBlocks; }
     /** Materials for one layer: the layer being shown, or (when showing everything) the lowest unfinished layer. */
     public static List<Row> layerRows() { return layerRows; }
@@ -135,7 +140,7 @@ public final class Materials {
         Session s = BuildBlueprintClient.SESSION;
         Minecraft mc = Minecraft.getInstance();
         if (!s.loaded() || mc.level == null || mc.player == null) {
-            rows = layerRows = java.util.Collections.emptyList(); placed = totalBlocks = layerPlaced = layerTotal = 0;
+            rows = layerRows = java.util.Collections.emptyList(); placed = totalBlocks = layerPlaced = layerTotal = 0; wholePlaced = wholeTotal = 0;
             layerCells = new int[0]; mapLayer = -1; scaffold = java.util.Collections.emptyList(); Mistakes.update(new ArrayList<>());
             return;
         }
@@ -160,7 +165,9 @@ public final class Materials {
         int[] perLayer = new int[bp.sy], totLayer = new int[bp.sy];
         int vol = bp.sx * bp.sy * bp.sz;
         String key = keyOf(bp, s);
-        if (!key.equals(statusKey) || statusBuf.length != vol) { statusBuf = new byte[vol]; statusKey = key; }   // another build, or moved: start fresh
+        if (!key.equals(statusKey) || statusBuf.length != vol) { statusBuf = new byte[vol]; statusKey = key; friendDone = new boolean[vol]; }   // another build, or moved: start fresh
+        if (friendDone.length != vol) friendDone = new boolean[vol];
+        int fAll = 0, fDone = 0;   // co-op: the other builders' parts
         byte[] status = statusBuf;   // 0 not seen yet, 1 to place, 2 done, 3 something else in the way, 4 there but the wrong way round
         int cx0 = s.ox >> 4, cz0 = s.oz >> 4;
         boolean[][] loaded = new boolean[((s.ox + bp.sx - 1) >> 4) - cx0 + 1][((s.oz + bp.sz - 1) >> 4) - cz0 + 1];
@@ -176,6 +183,16 @@ public final class Materials {
                         pos.set(s.ox + x, s.oy + y, s.oz + z);
                         net.minecraft.world.level.block.state.BlockState hs = mc.level.getBlockState(pos);
                         if (!hs.isAir() && mistakes.size() < MAX_MISTAKES) mistakes.add(Mistakes.make(pos.asLong(), "minecraft:air", "Block{" + idOf(hs.getBlock()) + "}", null, false));
+                        continue;
+                    }
+                    if (c != 0 && palReq[c] != null && Coop.on() && !Coop.mine(bp, x, z)) {   // a friend's part: only counted for the whole build's % done
+                        fAll++;
+                        if (here) {
+                            pos.set(s.ox + x, s.oy + y, s.oz + z);
+                            friendDone[idx] = MaterialMap.sameBlock(idOf(mc.level.getBlockState(pos).getBlock()), palId[c]);
+                        }
+                        if (friendDone[idx]) fDone++;
+                        status[idx] = 0;
                         continue;
                     }
                     if (c == 0 || palReq[c] == null || !Coop.mine(bp, x, z)) { if (here) status[idx] = 0; continue; }   // co-op: only my part of the build
@@ -240,6 +257,7 @@ public final class Materials {
         sayWrong(wrong, mc);
         Mistakes.update(mistakes);
         totalBlocks = all;
+        wholePlaced = done + fDone; wholeTotal = all + fAll;
         Stats.update(bp, done, all);
         // layer map
         int[] cells = new int[bp.sx * bp.sz];

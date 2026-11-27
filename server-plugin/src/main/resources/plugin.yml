@@ -5,3 +5,7 @@ api-version: '1.13'
 author: CosmicLogic
 description: Lets players with the Build Blueprint mod share builds and invite each other in game.
 website: https://github.com/CosmicLogic0/block-blueprint
+permissions:
+  buildblueprint.gallery:
+    description: Add builds to the server builds from the game (Build with friends > Invite & join on this server).
+    default: op

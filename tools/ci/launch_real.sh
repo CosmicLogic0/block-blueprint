@@ -80,6 +80,8 @@ elif [ "$minor" -le 18 ]; then SJ="${JAVA_HOME_17_X64:-}"; lt=flat
 elif [ "$minor" -lt 20 ] || { [ "$minor" = 20 ] && [ "$patch" -le 4 ]; }; then SJ="${JAVA_HOME_17_X64:-}"; lt="minecraft\\:flat"
 else SJ="${JAVA_HOME_21_X64:-}"; lt="minecraft\\:flat"; fi
 echo "eula=true" > "$S/eula.txt"
+# one build in the server's gallery (the plugin's folder and the server mods' folder): the test gets it from the game
+for gd in "$S/plugins/BuildBlueprint/gallery" "$S/config/buildblueprint/gallery"; do mkdir -p "$gd"; cp renderer/templates/schem/bb_starter_cabin.nbt "$gd/Starter_Cabin.nbt" 2>/dev/null || true; done
 printf 'online-mode=false\nwhite-list=false\nenforce-whitelist=false\nenforce-secure-profile=false\ngamemode=creative\nlevel-type=%s\ngenerate-structures=false\ndifficulty=peaceful\nspawn-monsters=false\nspawn-animals=false\nspawn-protection=0\nview-distance=6\nmax-tick-time=-1\nmotd=Build Blueprint test\n' "$lt" > "$S/server.properties"
 if [ "$mode" = showcase ]; then
   python3 -c "import hashlib,uuid,json; h=bytearray(hashlib.md5(b'OfflinePlayer:Builder').digest()); h[6]=h[6]&0x0f|0x30; h[8]=h[8]&0x3f|0x80; print(json.dumps([{'uuid':str(uuid.UUID(bytes=bytes(h))),'name':'Builder','level':4,'bypassesPlayerLimit':False}]))" > "$S/ops.json"
@@ -142,6 +144,7 @@ grep -q "BBUITEST done" game.log || fail "the mod's screens did not all open"
 grep -E "BBUITEST.*(failed|Exception)|\[Build Blueprint\] problem" game.log | head -5 > errs.txt
 if [ -n "${SERVER_KIND:-}" ]; then   # the in-game invite must have gone to the server and back
   grep -q "BBUITEST sync: available=true" game.log || fail "the mod didn't find the Build Blueprint server part on the $SERVER_KIND server: $(grep -o 'BBUITEST sync:.*' game.log | head -1)"
+  grep -q "BBUITEST gallery got: Starter Cabin" game.log || fail "the server build didn't come from the $SERVER_KIND server: $(grep -o 'BBUITEST gallery.*' game.log | head -2 | tr '\n' ' ')"
   grep -q "BBUITEST sync check: invites 1" game.log || fail "the invite didn't come back from the $SERVER_KIND server: $(grep -o 'BBUITEST sync check:.*' game.log | head -1)"
 fi
 if [ -s errs.txt ]; then fail "the mod reported errors: $(head -1 errs.txt)"; fi

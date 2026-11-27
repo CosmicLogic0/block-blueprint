@@ -25,11 +25,15 @@ public final class BuildBlueprintPlugin extends JavaPlugin implements Listener {
             @Override public UUID id(Player p) { return p.getUniqueId(); }
             @Override public Player byName(String n) { return Bukkit.getPlayerExact(n); }
             @Override public void log(String s) { getLogger().info(s); }
+            // server builds: plugins/BuildBlueprint/gallery - drop build files in there; ops (or the buildblueprint.gallery permission) can add from the game
+            @Override public java.nio.file.Path gallery() { return getDataFolder().toPath().resolve("gallery"); }
+            @Override public boolean canEdit(Player p) { return p.isOp() || p.hasPermission("buildblueprint.gallery"); }
         }, "paper");
         getServer().getMessenger().registerOutgoingPluginChannel(this, Proto.CHANNEL);
         getServer().getMessenger().registerIncomingPluginChannel(this, Proto.CHANNEL, (channel, player, data) -> relay.receive(player, data));
         getServer().getPluginManager().registerEvents(this, this);
-        getLogger().info("Build Blueprint server part is on: players with the mod can share builds and invite each other.");
+        try { java.nio.file.Files.createDirectories(getDataFolder().toPath().resolve("gallery")); } catch (java.io.IOException ignored) {}
+        getLogger().info("Build Blueprint server part is on: players with the mod can share builds and invite each other. Server builds folder: " + getDataFolder().toPath().resolve("gallery"));
     }
 
     @Override public void onDisable() {

@@ -141,6 +141,7 @@ big box	caixa grande
 {0} blocks	{0} blocos
 Make the box as big as your build	Faça a caixa do tamanho da sua construção
 Co-op: {0}	Co-op: {0}
+Everyone together: {0}% done	Todos juntos: {0}% feito
 Your build: {0} blocks away	Sua construção: a {0} blocos
 Not placed yet	Ainda não colocada
 Arrows move it, PgDn turns it	Setas movem, PgDn gira
@@ -342,8 +343,14 @@ Invite {0}	Convidar {0}
 They get a message and can join your placed build in one click.	A pessoa recebe uma mensagem e pode entrar na sua construção colocada com um clique.
 Join {0}'s {1}	Entrar em {1} de {0}
 Puts {0}'s build in their spot, placed, so you can build it together.	Coloca a construção de {0} no lugar dela, já colocada, para construírem juntos.
+Get {0}	Pegar {0}
+Puts this server build in your Saved builds.	Coloca esta construção do servidor em Construções salvas.
++ Add my build	+ Adicionar minha construção
+Ops: adds the build you have loaded to the server builds, for everyone with the mod. Server owners can also put build files in the server's gallery folder.	Operadores: adiciona a construção carregada às construções do servidor, para todos com o mod. Donos do servidor também podem colocar arquivos na pasta gallery do servidor.
 Players with Build Blueprint	Jogadores com Build Blueprint
 Builds you can join	Construções em que você pode entrar
+Server builds	Construções do servidor
+None yet.	Nenhuma ainda.
 Nobody else here has the mod yet.	Ninguém mais aqui tem o mod ainda.
 No shared builds yet.	Nenhuma construção compartilhada ainda.
 Build Blueprint settings	Configurações do Build Blueprint
@@ -495,12 +502,18 @@ Nothing here.	Nada aqui.
 No block matches "{0}".	Nenhum bloco combina com "{0}".
 Click a block to pick it  ·  double-click swaps right away	Clique num bloco para escolher  ·  clique duplo troca na hora
 Double-click to swap to this	Clique duplo para trocar por este
+Downloading {0}...	Baixando {0}...
 This server doesn't have the Build Blueprint server part.	Este servidor não tem a parte de servidor do Build Blueprint.
+Only ops can add builds to the server builds.	Só operadores podem adicionar construções ao servidor.
+Load a build first (Saved builds), then add it.	Carregue uma construção primeiro (Construções salvas) e depois adicione.
+Adding "{0}"...	Adicionando "{0}"...
 Place your build first (Delete), then invite.	Coloque sua construção primeiro (Delete) e depois convide.
 Turn on Share my build (Settings > Extras) to invite.	Ative Compartilhar minha construção (Configurações > Extras) para convidar.
 Couldn't share your build.	Não deu para compartilhar sua construção.
 Invited {0}!	Convidou {0}!
 a build	uma construção
+Saved "{0}" in Saved builds.	"{0}" salva em Construções salvas.
+Couldn't read {0}: {1}	Não foi possível ler {0}: {1}
 {0} invited you to build together! Open the menu > Build with friends to join.	{0} convidou você para construir junto! Abra o menu > Construir com amigos para entrar.
 Search by name or creator...	Pesquise por nome ou criador...
 Show one kind of build: houses, towers, ships...	Mostra um tipo de construção: casas, torres, navios...
@@ -518,7 +531,6 @@ Sort: most blocks	Ordem: mais blocos
 Sort: A to Z	Ordem: A a Z
 All kinds	Todos os tipos
 Couldn't reach the build list - check your internet connection.	Não deu para carregar a lista - confira sua conexão com a internet.
-Downloading {0}...	Baixando {0}...
 Got it! "{0}" is in Saved builds.	Pronto! "{0}" está em Construções salvas.
 Download failed - check your internet connection.	O download falhou - confira sua conexão com a internet.
 {0} free builds from the Minecraft community	{0} construções grátis da comunidade do Minecraft

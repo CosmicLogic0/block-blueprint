@@ -39,6 +39,12 @@ public final class SyncClient {
     private static final List<String[]> INVITES = new ArrayList<>();   // {from, id}
     private static List<String> players = new ArrayList<>();
     private static String sharedKey, sharedId;   // what we share now (key = which build, where)
+    // the server's build gallery: {file, bytes}; may we add to it; files coming in; the last message for the screen
+    private static List<String[]> gallery = new ArrayList<>();
+    private static boolean galleryCanAdd;
+    private static final Map<String, Proto.Assembler> GALLERY_IN = new HashMap<>();
+    private static volatile String note = "";
+    static volatile String lastSaved = "";   // the last server build saved (for the test)
     private static int tick;
 
     public static boolean available() { return available; }
@@ -46,6 +52,10 @@ public final class SyncClient {
     public static List<Other> others() { return new ArrayList<>(OTHERS.values()); }
     public static List<String> players() { return players; }
     public static List<String[]> invites() { return INVITES; }
+    public static List<String[]> gallery() { return gallery; }
+    public static boolean canAddToGallery() { return galleryCanAdd; }
+    /** The last message about the server builds (once), or "". */
+    public static String takeNote() { String n = note; note = ""; return n; }
 
     public static void init() { net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.END_CLIENT_TICK.register(mc -> Safe.run("server builds", () -> tick(mc))); }
 
@@ -65,7 +75,7 @@ public final class SyncClient {
         if (tick % 20 == 0) shareNow();
     }
 
-    private static void reset() { conn = null; available = false; kind = ""; OTHERS.clear(); INCOMING.clear(); INVITES.clear(); players = new ArrayList<>(); sharedKey = null; sharedId = null; }
+    private static void reset() { conn = null; available = false; kind = ""; OTHERS.clear(); INCOMING.clear(); INVITES.clear(); players = new ArrayList<>(); sharedKey = null; sharedId = null; gallery = new ArrayList<>(); galleryCanAdd = false; GALLERY_IN.clear(); }
 
     private static void send(byte[] d) { try { if (sender != null) sender.accept(d); } catch (Exception e) { System.out.println("[Build Blueprint] couldn't send to the server: " + e); } }
 
@@ -85,6 +95,35 @@ public final class SyncClient {
 
     /** Asks the server who else has the mod (the answer comes a moment later). */
     public static void askPlayers() { if (available && !"demo".equals(kind)) send(Proto.playersReq()); }
+
+    /** Asks the server for its builds (the list comes a moment later; old servers don't answer). */
+    public static void askGallery() { if (available && !"demo".equals(kind)) send(Proto.galleryReq()); }
+
+    /** Downloads one of the server's builds into Saved builds. */
+    public static String getFromGallery(String file) {
+        if (!available || "demo".equals(kind)) return "";
+        send(Proto.galleryGet(file));
+        return "Downloading " + galleryName(file) + "...";
+    }
+
+    /** "Spawn_castle.schem" -> "Spawn Castle". */
+    public static String galleryName(String file) {
+        String n = file.contains(".") ? file.substring(0, file.lastIndexOf('.')) : file;
+        return SavedBuilds.pretty(n);
+    }
+
+    /** Ops: adds the build you have loaded to the server builds. Returns a message for the screen. */
+    public static String addToGallery() {
+        if (!available) return "This server doesn't have the Build Blueprint server part.";
+        if (!galleryCanAdd) return "Only ops can add builds to the server builds.";
+        var s = BuildBlueprintClient.SESSION;
+        if (!s.loaded()) return "Load a build first (Saved builds), then add it.";
+        Blueprint bp = s.blueprint();
+        String name = bp.name == null || bp.name.trim().isEmpty() ? "My build" : bp.name.trim();
+        List<byte[]> parts = Proto.split(Proto.gzip(name + "\n" + BlueprintCodec.encode(bp) + "\n"));
+        for (int i = 0; i < parts.size(); i++) send(Proto.galleryAdd(name, i, parts.size(), parts.get(i)));
+        return "Adding \"" + name + "\"...";
+    }
 
     /** Invites a player to your placed build. Returns a message for the screen. */
     public static String invite(String name) {
@@ -135,6 +174,37 @@ public final class SyncClient {
                 break;
             }
             case Proto.REMOVED: OTHERS.remove(m.a + "/" + m.b); break;
+            case Proto.GALLERY: {
+                if ("demo".equals(kind)) break;
+                galleryCanAdd = "1".equals(m.a);
+                List<String[]> g = new ArrayList<>();
+                for (String n : m.names) { int bar = n.lastIndexOf('|'); if (bar > 0) g.add(new String[]{n.substring(0, bar), n.substring(bar + 1)}); }
+                gallery = g;
+                break;
+            }
+            case Proto.GALLERY_FILE: {
+                try {
+                    if (m.part == 0) GALLERY_IN.put(m.a, new Proto.Assembler(m.total));
+                    Proto.Assembler a = GALLERY_IN.get(m.a);
+                    if (a == null) break;
+                    byte[] all = a.add(m.part, m.data);
+                    if (all == null) break;
+                    GALLERY_IN.remove(m.a);
+                    String saved;
+                    if (m.a.toLowerCase(java.util.Locale.ROOT).endsWith(".bbp")) {   // "name\nbuild data", the Saved builds format
+                        String text = new String(all, java.nio.charset.StandardCharsets.UTF_8);
+                        int nl = text.indexOf('\n');
+                        String name = nl > 0 ? text.substring(0, nl).trim() : galleryName(m.a), data = (nl > 0 ? text.substring(nl + 1) : text).trim();
+                        BlueprintCodec.decode(data);   // checks it
+                        saved = SavedBuilds.save(name, data).name();
+                    } else saved = SavedBuilds.importFile(m.a, all);
+                    note = "Saved \"" + saved + "\" in Saved builds.";
+                    lastSaved = saved;
+                    Chat.ok(note);
+                } catch (Exception e) { GALLERY_IN.remove(m.a); note = "Couldn't read " + m.a + ": " + e.getMessage(); }
+                break;
+            }
+            case Proto.NOTE: note = m.a; Chat.say(m.a); break;
             case Proto.INVITED: {
                 INVITES.removeIf(i -> i[0].equals(m.a));
                 INVITES.add(new String[]{m.a, m.b});
@@ -156,6 +226,8 @@ public final class SyncClient {
         OTHERS.put("Sam/b", new Other("Sam", "b", "", "Treehouse", -60, 70, 200, 15, 20, 15, 1));
         INVITES.clear();
         INVITES.add(new String[]{"Alex", "a"});
+        gallery = new ArrayList<>(java.util.Arrays.asList(new String[]{"Spawn_Castle.schem", "52114"}, new String[]{"Market Stall.bbp", "3120"}, new String[]{"Lighthouse.litematic", "18760"}));
+        galleryCanAdd = true;
     }
 
     /** The other players' builds you're standing in or next to (for the corner list). */

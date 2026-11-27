@@ -141,6 +141,7 @@ big box	大范围框
 {0} blocks	{0} 个方块
 Make the box as big as your build	把范围框调到和建筑一样大
 Co-op: {0}	合作：{0}
+Everyone together: {0}% done	大家一起：已完成 {0}%
 Your build: {0} blocks away	你的建筑：{0} 格远
 Not placed yet	还没放置
 Arrows move it, PgDn turns it	方向键移动，PgDn 旋转
@@ -342,8 +343,14 @@ Invite {0}	邀请 {0}
 They get a message and can join your placed build in one click.	对方会收到消息，一键就能加入你放好的建筑。
 Join {0}'s {1}	加入 {0} 的 {1}
 Puts {0}'s build in their spot, placed, so you can build it together.	把 {0} 的建筑放在原处并固定，你们就能一起建造。
+Get {0}	获取 {0}
+Puts this server build in your Saved builds.	把这个服务器建筑放进你的“已保存的建筑”。
++ Add my build	+ 添加我的建筑
+Ops: adds the build you have loaded to the server builds, for everyone with the mod. Server owners can also put build files in the server's gallery folder.	管理员：把你加载的建筑添加到服务器建筑，所有装了模组的玩家都能用。服主也可以把建筑文件放进服务器的 gallery 文件夹。
 Players with Build Blueprint	装有 Build Blueprint 的玩家
 Builds you can join	可以加入的建筑
+Server builds	服务器建筑
+None yet.	还没有。
 Nobody else here has the mod yet.	这里还没有其他人装这个模组。
 No shared builds yet.	还没有共享的建筑。
 Build Blueprint settings	Build Blueprint 设置
@@ -495,12 +502,18 @@ Nothing here.	这里什么都没有。
 No block matches "{0}".	没有方块符合“{0}”。
 Click a block to pick it  ·  double-click swaps right away	点击方块来选择  ·  双击立即替换
 Double-click to swap to this	双击替换成这个
+Downloading {0}...	正在下载 {0}...
 This server doesn't have the Build Blueprint server part.	这个服务器没有 Build Blueprint 服务器部分。
+Only ops can add builds to the server builds.	只有管理员可以添加服务器建筑。
+Load a build first (Saved builds), then add it.	请先加载一个建筑（已保存的建筑），再添加。
+Adding "{0}"...	正在添加“{0}”...
 Place your build first (Delete), then invite.	先放好你的建筑（Delete），再邀请。
 Turn on Share my build (Settings > Extras) to invite.	要邀请，请打开“共享我的建筑”（设置 > 额外）。
 Couldn't share your build.	无法共享你的建筑。
 Invited {0}!	已邀请 {0}！
 a build	一个建筑
+Saved "{0}" in Saved builds.	已将“{0}”保存到“已保存的建筑”。
+Couldn't read {0}: {1}	无法读取 {0}：{1}
 {0} invited you to build together! Open the menu > Build with friends to join.	{0} 邀请你一起建造！打开菜单 > 和朋友一起建造 即可加入。
 Search by name or creator...	按名称或作者搜索...
 Show one kind of build: houses, towers, ships...	只显示一种建筑：房子、塔、船……
@@ -518,7 +531,6 @@ Sort: most blocks	排序：方块最多
 Sort: A to Z	排序：A 到 Z
 All kinds	所有种类
 Couldn't reach the build list - check your internet connection.	无法加载建筑列表 - 请检查网络连接。
-Downloading {0}...	正在下载 {0}...
 Got it! "{0}" is in Saved builds.	完成！“{0}”已在“已保存的建筑”里。
 Download failed - check your internet connection.	下载失败 - 请检查网络连接。
 {0} free builds from the Minecraft community	来自 Minecraft 社区的 {0} 个免费建筑

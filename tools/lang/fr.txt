@@ -140,6 +140,7 @@ grande boîte
 {0} blocs
 Fais la boîte aussi grande que ta construction
 Coop : {0}
+Tous ensemble : {0}% fait
 Ta construction : à {0} blocs
 Pas encore placée
 Flèches pour bouger, Pg suiv pour tourner
@@ -341,8 +342,14 @@ Inviter {0}
 Ils reçoivent un message et peuvent rejoindre ta construction posée en un clic.
 Rejoindre {1} de {0}
 Place la construction de {0} à son endroit, posée, pour la construire ensemble.
+Prendre {0}
+Met cette construction du serveur dans vos Constructions enregistrées.
++ Ajouter ma construction
+Ops : ajoute la construction chargée aux constructions du serveur, pour tous ceux qui ont le mod. Les propriétaires du serveur peuvent aussi mettre des fichiers dans le dossier gallery du serveur.
 Joueurs avec Build Blueprint
 Constructions à rejoindre
+Constructions du serveur
+Aucune pour l'instant.
 Personne d'autre ici n'a encore le mod.
 Aucune construction partagée pour l'instant.
 Paramètres de Build Blueprint
@@ -494,12 +501,18 @@ Rien ici.
 Aucun bloc ne correspond à « {0} ».
 Clique sur un bloc pour le choisir  ·  double-clic pour échanger tout de suite
 Double-clic pour échanger contre celui-ci
+Téléchargement de {0}...
 Ce serveur n'a pas la partie serveur de Build Blueprint.
+Seuls les ops peuvent ajouter des constructions au serveur.
+Chargez d'abord une construction (Constructions enregistrées), puis ajoutez-la.
+Ajout de « {0} »...
 Pose d'abord ta construction (Suppr), puis invite.
 Active Partager ma construction (Paramètres > Extras) pour inviter.
 Impossible de partager ta construction.
 {0} invité !
 une construction
+« {0} » enregistrée dans Constructions enregistrées.
+Impossible de lire {0} : {1}
 {0} t'invite à construire ensemble ! Ouvre le menu > Construire avec des amis pour rejoindre.
 Cherche par nom ou par créateur...
 Affiche un type de construction : maisons, tours, bateaux...
@@ -517,7 +530,6 @@ Tri : plus de blocs
 Tri : A à Z
 Tous les types
 Impossible de charger la liste - vérifie ta connexion internet.
-Téléchargement de {0}...
 C'est fait ! « {0} » est dans Constructions sauvegardées.
 Échec du téléchargement - vérifie ta connexion internet.
 {0} constructions gratuites de la communauté Minecraft

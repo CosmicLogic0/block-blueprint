@@ -154,6 +154,7 @@ big box
 Make the box as big as your build
 Blueprint
 Co-op: {0}
+Everyone together: {0}% done
 Your build: {0} blocks away
 Not placed yet
 Arrows move it, PgDn turns it
@@ -372,12 +373,20 @@ Invite {0}
 They get a message and can join your placed build in one click.
 Join {0}'s {1}
 Puts {0}'s build in their spot, placed, so you can build it together.
+Get {0}
+Puts this server build in your Saved builds.
++ Add my build
+Ops: adds the build you have loaded to the server builds, for everyone with the mod. Server owners can also put build files in the server's gallery folder.
 the server screen
 Players with Build Blueprint
 Builds you can join
+Server builds
+None yet.
 Nobody else here has the mod yet.
 No shared builds yet.
 Invited
+Saved
+Added
 Build Blueprint settings
 ON
 OFF
@@ -535,7 +544,11 @@ Minecraft
 Double-click to swap to this
 server builds
 [Build Blueprint] couldn't send to the server: {0}
+Downloading {0}...
 This server doesn't have the Build Blueprint server part.
+Only ops can add builds to the server builds.
+Load a build first (Saved builds), then add it.
+Adding "{0}"...
 Place your build first (Delete), then invite.
 Turn on Share my build (Settings > Extras) to invite.
 Couldn't share your build.
@@ -543,6 +556,8 @@ Invited {0}!
 [Build Blueprint] this server has the Build Blueprint server part ({0})
 a build
 [Build Blueprint] couldn't read {0}'s build: {1}
+Saved "{0}" in Saved builds.
+Couldn't read {0}: {1}
 {0} invited you to build together! Open the menu > Build with friends to join.
 Alex
 Steve
@@ -551,6 +566,9 @@ Alex/a
 Castle Keep
 Sam/b
 Treehouse
+Spawn_Castle.schem
+Market Stall.bbp
+Lighthouse.litematic
 Search by name or creator...
 Show one kind of build: houses, towers, ships...
 Show only small, medium or big builds (by how many blocks they have).
@@ -570,7 +588,6 @@ Couldn't reach the build list - check your internet connection.
 Build Blueprint templates
 User-Agent
 HTTP {0}
-Downloading {0}...
 {0} - by {1}
 Got it! "{0}" is in Saved builds.
 Download failed - check your internet connection.

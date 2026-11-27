@@ -140,6 +140,7 @@ big box
 {0} blocks
 Make the box as big as your build
 Co-op: {0}
+Everyone together: {0}% done
 Your build: {0} blocks away
 Not placed yet
 Arrows move it, PgDn turns it
@@ -341,8 +342,14 @@ Invite {0}
 They get a message and can join your placed build in one click.
 Join {0}'s {1}
 Puts {0}'s build in their spot, placed, so you can build it together.
+Get {0}
+Puts this server build in your Saved builds.
++ Add my build
+Ops: adds the build you have loaded to the server builds, for everyone with the mod. Server owners can also put build files in the server's gallery folder.
 Players with Build Blueprint
 Builds you can join
+Server builds
+None yet.
 Nobody else here has the mod yet.
 No shared builds yet.
 Build Blueprint settings
@@ -494,12 +501,18 @@ Nothing here.
 No block matches "{0}".
 Click a block to pick it  ·  double-click swaps right away
 Double-click to swap to this
+Downloading {0}...
 This server doesn't have the Build Blueprint server part.
+Only ops can add builds to the server builds.
+Load a build first (Saved builds), then add it.
+Adding "{0}"...
 Place your build first (Delete), then invite.
 Turn on Share my build (Settings > Extras) to invite.
 Couldn't share your build.
 Invited {0}!
 a build
+Saved "{0}" in Saved builds.
+Couldn't read {0}: {1}
 {0} invited you to build together! Open the menu > Build with friends to join.
 Search by name or creator...
 Show one kind of build: houses, towers, ships...
@@ -517,7 +530,6 @@ Sort: most blocks
 Sort: A to Z
 All kinds
 Couldn't reach the build list - check your internet connection.
-Downloading {0}...
 Got it! "{0}" is in Saved builds.
 Download failed - check your internet connection.
 {0} free builds from the Minecraft community

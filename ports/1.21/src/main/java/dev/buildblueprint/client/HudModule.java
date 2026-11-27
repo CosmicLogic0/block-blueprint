@@ -118,7 +118,7 @@ public final class HudModule {
         boolean notPlaced = !s.locked;
         boolean coop = Coop.on();
         int far = Settings.buildArrow ? farAway(mc) : -1;   // arrow back to the build when you're far from it
-        int h = 14 + (coop ? 11 : 0) + (far >= 0 ? 11 : 0) + (notPlaced ? 32 : 0) + (Settings.hudBar ? 26 : 0) + (stats ? 11 : 0) + (eta ? 11 : 0) + (hint ? 22 : 0) + 12 + lines * 18 + (shown > lines ? 10 : 0) + (shown == 0 ? 10 : 0) + (Settings.hudHints ? 11 : 0);
+        int h = 14 + (coop ? 22 : 0) + (far >= 0 ? 11 : 0) + (notPlaced ? 32 : 0) + (Settings.hudBar ? 26 : 0) + (stats ? 11 : 0) + (eta ? 11 : 0) + (hint ? 22 : 0) + 12 + lines * 18 + (shown > lines ? 10 : 0) + (shown == 0 ? 10 : 0) + (Settings.hudHints ? 11 : 0);
         // panel: dark glass with a 1px light edge, like vanilla tooltips
         g.fill(x - 3, y - 3, x + W + 3, y + h, 0xD0100A18);
         g.fill(x - 3, y - 3, x + W + 3, y - 2, 0xFF5A3FA0);
@@ -131,7 +131,11 @@ public final class HudModule {
         g.drawString(font, Tr.t(name), x, y, 0xFFFFFF55, true);
         if (!tag.isEmpty()) g.drawString(font, Tr.t(tag), x + W - font.width(Tr.t(tag)), y, 0xFF55FF55, true);
         int ly = y + 12;
-        if (coop) { g.drawString(font, Tr.t("Co-op: " + Coop.where(s.blueprint())), x, ly, UiKit.CYAN, false); ly += 11; }
+        if (coop) {
+            g.drawString(font, Tr.t("Co-op: " + Coop.where(s.blueprint())), x, ly, UiKit.CYAN, false); ly += 11;
+            int wt = Materials.wholeTotal(), pct = wt == 0 ? 0 : (int) (100L * Materials.wholePlaced() / wt);   // every builder's part, from the blocks in the world
+            g.drawString(font, Tr.t("Everyone together: " + pct + "% done"), x, ly, pct >= 100 ? UiKit.GREEN : 0xFF9FD0FF, false); ly += 11;
+        }
         if (far >= 0) {
             String arrow = ARROWS[arrowAt], d = "Your build: " + far + " blocks away";
             g.drawString(font, arrow, x, ly, 0xFFFFB050, true);
