@@ -41,13 +41,14 @@ for p in sorted(names):
     var = v['']
     if isinstance(var, list): var = var[0]
     t = plain_cube(model(var['model']))
-    if not t or t.startswith('#'): continue
+    if isinstance(t, dict): t = t.get('sprite')               # newer model files: {"sprite": ...}
+    if not isinstance(t, str) or t.startswith('#'): continue
     tp = 'assets/minecraft/textures/' + t.split(':')[-1] + '.png'
     if tp not in names: continue
     im = Image.open(io.BytesIO(jar.read(tp))).convert('RGBA')
     w = im.width
     im = im.crop((0, 0, w, w))                              # animated: first frame
-    px = list(im.getdata())
+    px = list(im.get_flattened_data()) if hasattr(im, 'get_flattened_data') else list(im.getdata())
     if any(a < 250 for *_, a in px): continue               # see-through (glass, leaves...)
     r = sum(c[0] for c in px) // len(px); g = sum(c[1] for c in px) // len(px); b = sum(c[2] for c in px) // len(px)
     basic = block.endswith('_wool') or (block.endswith('_concrete')) or block.endswith('terracotta') and 'glazed' not in block
