@@ -52,6 +52,7 @@ public final class PreviewModule {
         int hide, tintI = -1, tintC = 0xFFFFFF;   // faces not drawn (one bit each), the colour worked out last
         List<BakedQuad>[] q;   // what it looks like (worked out the first time it's drawn)
         float[] box;
+        Object[] extra;   // more look-alike pieces ({quads, box}): a chest's seam and latch
         boolean ready;
         Ghost(int x, int y, int z, BlockState state, int lx, int ly, int lz) { this.x = x; this.y = y; this.z = z; this.state = state; this.lx = lx; this.ly = ly; this.lz = lz; }
     }
@@ -476,6 +477,7 @@ public final class PreviewModule {
                     Object[] sb = standin(g.state);
                     g.q = sb == null ? null : quads((BlockState) sb[0]);
                     g.box = sb == null ? null : (float[]) sb[1];
+                    g.extra = sb == null ? null : extras(g.state);
                 }
             }
             List<BakedQuad>[] q = g.q;
@@ -483,23 +485,27 @@ public final class PreviewModule {
             if (q == null) continue;
             if ((g.hide & 63) == 63 && q[6].isEmpty()) continue;   // covered by other ghosts on every side
             if (cull && (g.x + 0.5 - camX) * lookX + (g.y + 0.5 - camY) * lookY + (g.z + 0.5 - camZ) * lookZ < -2) continue;   // behind the camera
-            ps.pushPose();
-            ps.translate(g.x, g.y, g.z);
-            if (box != null) { ps.translate(box[0], box[1], box[2]); ps.scale(box[3], box[4], box[5]); }
-            PoseStack.Pose p = ps.last();
-            for (int i = 0; i < 7; i++) {
-                if (i < 6 && (g.hide >> i & 1) != 0) continue;   // skip faces pressed against another ghost
-                for (BakedQuad quad : q[i]) {
-                    int rgb = 0xFFFFFF;
-                    if (quad.isTinted()) {
-                        try { rgb = g.tintI == quad.tintIndex() ? g.tintC : (g.tintC = mc.getBlockColors().getColor(g.state, mc.level, new BlockPos(g.x, g.y, g.z), g.tintI = quad.tintIndex()) & 0xFFFFFF); }
-                        catch (Exception ignored) {}
+            for (int part = -1; part < (g.extra == null ? 0 : g.extra.length); part++) {   // the block, then any extra pieces
+            @SuppressWarnings("unchecked") List<BakedQuad>[] pq = part < 0 ? q : (List<BakedQuad>[]) ((Object[]) g.extra[part])[0];
+            float[] pb = part < 0 ? box : (float[]) ((Object[]) g.extra[part])[1];
+                ps.pushPose();
+                ps.translate(g.x, g.y, g.z);
+                if (pb != null) { ps.translate(pb[0], pb[1], pb[2]); ps.scale(pb[3], pb[4], pb[5]); }
+                PoseStack.Pose p = ps.last();
+                for (int i = 0; i < 7; i++) {
+                    if (part < 0 && i < 6 && (g.hide >> i & 1) != 0) continue;   // skip faces pressed against another ghost
+                    for (BakedQuad quad : pq[i]) {
+                        int rgb = 0xFFFFFF;
+                        if (quad.isTinted()) {
+                            try { rgb = g.tintI == quad.tintIndex() ? g.tintC : (g.tintC = mc.getBlockColors().getColor(g.state, mc.level, new BlockPos(g.x, g.y, g.z), g.tintI = quad.tintIndex()) & 0xFFFFFF); }
+                            catch (Exception ignored) {}
+                        }
+                        rgb = Colors.ghost(rgb);
+                        vc.putBulkData(p, quad, ((rgb >> 16) & 255) / 255f, ((rgb >> 8) & 255) / 255f, (rgb & 255) / 255f, alpha, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
                     }
-                    rgb = Colors.ghost(rgb);
-                    vc.putBulkData(p, quad, ((rgb >> 16) & 255) / 255f, ((rgb >> 8) & 255) / 255f, (rgb & 255) / 255f, alpha, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
                 }
+                ps.popPose();
             }
-            ps.popPose();
         }
         } finally { Perf.draw(System.nanoTime() - perfD); }
     }
@@ -525,6 +531,30 @@ public final class PreviewModule {
             break;
         }
         STANDIN.put(st, out);
+        return out;
+    }
+
+    private static final Map<BlockState, Object[]> EXTRA = new HashMap<>();
+    /** Extra look-alike pieces for a stand-in (a chest's seam and latch), each {quads, box}; null when there are none. */
+    private static Object[] extras(BlockState st) {
+        if (EXTRA.containsKey(st)) return EXTRA.get(st);
+        Object[] out = null;
+        try {
+            double[] b = {0.0625, 0, 0.0625, 0.9375, 0.875, 0.9375};
+            net.minecraft.world.phys.shapes.VoxelShape sh = st.getShape(net.minecraft.world.level.EmptyBlockGetter.INSTANCE, BlockPos.ZERO);
+            if (!sh.isEmpty()) { net.minecraft.world.phys.AABB a = sh.bounds(); b = new double[]{a.minX, a.minY, a.minZ, a.maxX, a.maxY, a.maxZ}; }
+            List<Object> parts = new ArrayList<>();
+            for (Object[] piece : dev.buildblueprint.core.Standin.extras(BuiltInRegistries.BLOCK.getKey(st.getBlock()).toString(), st.toString(), b)) {
+                for (String id : (String[]) piece[0]) {
+                    BlockState pbs = parse(id);
+                    if (pbs == null || empty(quads(pbs))) continue;
+                    parts.add(new Object[]{quads(pbs), piece[1]});
+                    break;
+                }
+            }
+            if (!parts.isEmpty()) out = parts.toArray();
+        } catch (Throwable ignored) {}
+        EXTRA.put(st, out);
         return out;
     }
 

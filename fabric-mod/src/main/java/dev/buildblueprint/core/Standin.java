@@ -44,6 +44,43 @@ public final class Standin {
         return m("white_concrete");
     }
 
+    /**
+     * Extra pieces drawn with the stand-in so the ghost looks like the real thing: for a chest, the dark seam under the
+     * lid and the latch on the front (half of it on each side of a double chest). b = the real block's shape bounds
+     * (minX, minY, minZ, maxX, maxY, maxZ, 0..1); state = the block state as text ("...[facing=north,type=single,...]").
+     * Each piece: {String[] stand-in block ids, best first; float[] {x, y, z, w, h, d} in the block}.
+     */
+    public static java.util.List<Object[]> extras(String blockId, String state, double[] b) {
+        java.util.List<Object[]> out = new java.util.ArrayList<>();
+        String p = blockId.contains(":") ? blockId.substring(blockId.indexOf(':') + 1) : blockId;
+        if (!p.contains("chest") || b == null || b.length < 6) return out;
+        String facing = state.contains("facing=south") ? "south" : state.contains("facing=west") ? "west" : state.contains("facing=east") ? "east" : "north";
+        float px = 1f / 16, e = 0.004f;
+        float y0 = (float) b[1], y1 = (float) b[4], h = y1 - y0;
+        // the seam: a thin dark band a little outside the sides, where the lid meets the body
+        float sy = y0 + h * (9.5f / 14f);
+        out.add(new Object[]{m(p.equals("ender_chest") ? "black_concrete" : "dark_oak_planks", "oak_planks"),
+                new float[]{(float) b[0] - e, sy, (float) b[2] - e, (float) (b[3] - b[0]) + 2 * e, px, (float) (b[5] - b[2]) + 2 * e}});
+        // the latch: 2 wide, 4 high, 1 deep, on the front; a double chest has half of it on each side of the middle
+        boolean alongX = facing.equals("north") || facing.equals("south");
+        double lo = alongX ? b[0] : b[2], hi = alongX ? b[3] : b[5];
+        float a0, a1;
+        if (lo <= 0.001) { a0 = 0; a1 = px; }                 // joined on the low side
+        else if (hi >= 0.999) { a0 = 1 - px; a1 = 1; }         // joined on the high side
+        else { a0 = 7 * px; a1 = 9 * px; }                      // a single chest: in the middle
+        float ly = y0 + h * (7f / 14f), lh = 4 * px;
+        String[] latch = m(p.equals("ender_chest") ? "gold_block" : "iron_block", "stone");
+        float[] box;
+        switch (facing) {
+            case "south": box = new float[]{a0, ly, (float) b[5], a1 - a0, lh, px}; break;
+            case "west": box = new float[]{(float) b[0] - px, ly, a0, px, lh, a1 - a0}; break;
+            case "east": box = new float[]{(float) b[3], ly, a0, px, lh, a1 - a0}; break;
+            default: box = new float[]{a0, ly, (float) b[2] - px, a1 - a0, lh, px};
+        }
+        out.add(new Object[]{latch, box});
+        return out;
+    }
+
     private static String[] m(String... ids) {
         String[] out = new String[ids.length];
         for (int i = 0; i < ids.length; i++) out[i] = "minecraft:" + ids[i];
