@@ -1,0 +1,78 @@
+Downloading vanilla jar...
+Patching vanilla jar...
+System Info: Java 1.8 (OpenJDK 64-Bit Server VM 25.514-b01) Host: Linux 7.0.0-1020-azure (amd64)
+Loading libraries, please wait...
+2026-11-28 10:04:08,245 main WARN Advanced terminal features are not available in this environment
+[10:04:10 ERROR]: No key layers in MapLike[{}]; No key structures in MapLike[{}]
+[10:04:10 INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[10:04:10 INFO]: Found new data pack file/bukkit, loading it automatically
+[10:04:11 INFO]: Reloading ResourceManager: Default, bukkit
+[10:04:11 INFO]: Loaded 7 recipes
+[10:04:12 INFO]: Starting minecraft server version 1.16.5
+[10:04:12 INFO]: Loading properties
+[10:04:12 INFO]: This server is running Paper version git-Paper-794 (MC: 1.16.5) (Implementing API version 1.16.5-R0.1-SNAPSHOT)
+[10:04:12 INFO]: Server Ping Player Sample Count: 12
+[10:04:12 INFO]: Using 4 threads for Netty based IO
+[10:04:12 INFO]: Debug logging is disabled
+[10:04:12 INFO]: Default game type: CREATIVE
+[10:04:12 INFO]: Generating keypair
+[10:04:12 INFO]: Starting Minecraft server on *:25565
+[10:04:12 INFO]: Using epoll channel type
+[10:04:13 INFO]: [BuildBlueprint] Loading BuildBlueprint v1.8.0
+[10:04:13 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[10:04:13 WARN]: The server will make no attempt to authenticate usernames. Beware.
+[10:04:13 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[10:04:13 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[10:04:13 INFO]: Preparing level "world"
+[10:04:13 WARN]: Unable to find spawn biome
+[10:04:14 WARN]: Unable to find spawn biome
+[10:04:14 INFO]: Preparing start region for dimension minecraft:overworld
+[10:04:15 INFO]: Preparing spawn area: 0%
+[10:04:15 INFO]: Time elapsed: 185 ms
+[10:04:15 INFO]: Preparing start region for dimension minecraft:the_nether
+[10:04:15 INFO]: Preparing spawn area: 0%
+[10:04:15 INFO]: Time elapsed: 355 ms
+[10:04:15 INFO]: Preparing start region for dimension minecraft:the_end
+[10:04:15 INFO]: Preparing spawn area: 0%
+[10:04:15 INFO]: Time elapsed: 237 ms
+[10:04:15 INFO]: [BuildBlueprint] Enabling BuildBlueprint v1.8.0
+[10:04:15 INFO]: [BuildBlueprint] Build Blueprint server part is on: players with the mod can share builds and invite each other. Server builds folder: plugins/BuildBlueprint/gallery
+[10:04:15 INFO]: Running delayed init tasks
+[10:04:15 INFO]: Done (3.277s)! For help, type "help"
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] ************************************************************
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] * WARNING - YOU ARE RUNNING AN OUTDATED VERSION OF JAVA.
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] * PAPER WILL STOP BEING COMPATIBLE WITH THIS VERSION OF
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] * JAVA WHEN MINECRAFT 1.17 IS RELEASED.
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] *
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] * Please update the version of Java you use to run Paper
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] * to at least Java 16. When Paper for Minecraft 1.17 is
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] * released support for versions of Java before 16 will
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] * be dropped.
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] *
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] * Current Java version: 1.8.0_514
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] *
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] * Check this forum post for more information: 
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] *   https://papermc.io/java16
+[10:04:15 WARN]: [io.papermc.paper.util.PaperJvmChecker] ************************************************************
+[10:04:15 INFO]: Timings Reset
+[10:04:47 INFO]: UUID of player Builder is a1b1b4de-45be-3659-b2e1-5c9a1693e63b
+[10:04:48 INFO]: Builder joined the game
+[10:04:48 INFO]: Builder[/127.0.0.1:44554] logged in with entity id 64 at ([world]217.5, 4.0, 15.5)
+[10:04:53 INFO]: [BuildBlueprint] Builder has Build Blueprint
+[10:09:15 INFO]: Stopping server
+[10:09:15 INFO]: Saving players
+[10:09:15 INFO]: Builder lost connection: Server closed
+[10:09:15 INFO]: Builder left the game
+[10:09:16 INFO]: Saving worlds
+[10:09:16 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[10:09:16 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[10:09:16 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[10:09:16 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:09:16 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[10:09:16 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10:09:16 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[10:09:16 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:09:16 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10:09:16 INFO]: Flushing Chunk IO
+[10:09:16 INFO]: Closing Thread Pool
+[10:09:16 INFO]: Closing Server

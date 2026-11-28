@@ -1,0 +1,21 @@
+PASS fabric-1.16.5
+[10:04:58] [main] [INFO] [STDOUT]: BBUITEST waiting on class_442
+[10:05:08] [main] [INFO] [STDOUT]: BBUITEST joining 127.0.0.1:25565
+[10:05:11] [main] [INFO] [STDOUT]: BBUITEST in world
+[10:05:26] [main] [INFO] [STDOUT]: BBUITEST loaded 284 blocks
+[10:05:26] [main] [INFO] [STDOUT]: BBUITEST direction check: Block{minecraft:oak_stairs}[facing=south,half=top,shape=straight,waterlogged=false] -> right way false (should face north, be the right way up (bottom half)), same way true
+[10:05:26] [main] [INFO] [STDOUT]: BBUITEST renamed blocks: chain -> minecraft:chain[axis=y], iron_chain -> minecraft:chain[axis=y], grass -> minecraft:grass
+[10:05:29] [main] [INFO] [STDOUT]: BBUITEST shot world-ghost
+[10:05:31] [main] [INFO] [STDOUT]: BBUITEST placed, layer 1
+[10:05:35] [main] [INFO] [STDOUT]: BBUITEST shot world-placed
+[10:05:37] [main] [INFO] [STDOUT]: BBUITEST held: Cobblestone
+[10:05:40] [main] [INFO] [STDOUT]: BBUITEST shot world-held
+[10:05:42] [main] [INFO] [STDOUT]: BBUITEST held spots: 81, next block box green: true
+[10:05:46] [main] [INFO] [STDOUT]: BBUITEST shot world-held-check
+[10:05:48] [main] [INFO] [STDOUT]: BBUITEST sync: available=false kind= invite: -
+[10:05:51] [main] [INFO] [STDOUT]: BBUITEST shot world-sync
+[10:05:53] [main] [INFO] [STDOUT]: BBUITEST sync check: invites 0
+[10:05:53] [main] [INFO] [STDOUT]: BBUITEST gallery list: 0 files
+[10:05:57] [main] [INFO] [STDOUT]: BBUITEST shot world-sync-check
+[10:06:02] [main] [INFO] [STDOUT]: BBUITEST shot world-sync-demo
+[10:06:04] [main] [INFO] [STDOUT]: BBUITEST gallery got: nothing

@@ -1,0 +1,21 @@
+PASS fabric-26.3-paper
+[10:05:09] [Render thread] [INFO] [STDOUT]: BBUITEST waiting on GenericMessageScreen
+[10:05:19] [Render thread] [INFO] [STDOUT]: BBUITEST joining 127.0.0.1:25565
+[10:05:22] [Render thread] [INFO] [STDOUT]: BBUITEST in world
+[10:05:37] [Render thread] [INFO] [STDOUT]: BBUITEST loaded 284 blocks
+[10:05:37] [Render thread] [INFO] [STDOUT]: BBUITEST direction check: Block{minecraft:oak_stairs}[facing=south,half=top,shape=straight,waterlogged=false] -> right way false (should face north, be the right way up (bottom half)), same way true
+[10:05:37] [Render thread] [INFO] [STDOUT]: BBUITEST renamed blocks: chain -> minecraft:iron_chain[axis=y], iron_chain -> minecraft:iron_chain[axis=y], grass -> minecraft:short_grass
+[10:05:40] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-ghost
+[10:05:42] [Render thread] [INFO] [STDOUT]: BBUITEST placed, layer 1
+[10:05:46] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-placed
+[10:05:48] [Render thread] [INFO] [STDOUT]: BBUITEST held: Cobblestone
+[10:05:51] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-held
+[10:05:53] [Render thread] [INFO] [STDOUT]: BBUITEST held spots: 81, next block box green: true
+[10:05:57] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-held-check
+[10:05:59] [Render thread] [INFO] [STDOUT]: BBUITEST sync: available=true kind=paper invite: Invited Builder!
+[10:06:02] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-sync
+[10:06:04] [Render thread] [INFO] [STDOUT]: BBUITEST sync check: invites 1
+[10:06:04] [Render thread] [INFO] [STDOUT]: BBUITEST gallery list: 1 files
+[10:06:08] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-sync-check
+[10:06:13] [Render thread] [INFO] [STDOUT]: BBUITEST shot world-sync-demo
+[10:06:15] [Render thread] [INFO] [STDOUT]: BBUITEST gallery got: Starter Cabin
