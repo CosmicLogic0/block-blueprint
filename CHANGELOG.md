@@ -1,3 +1,6 @@
+## 1.8.1
+- **Chests look like chests:** a chest you still need to place now shows as a chest in the world: the wood box with the dark line under the lid and the latch on the front, facing the right way (double chests too, with the latch in the middle). Ender chests get their gold latch. Before, it was a plain wood block that looked like planks.
+
 ## 1.8.0
 - **Picture to map art:** Saved builds > From picture > **Map art**. Any picture becomes map art for every map size: 1x1 up to 4x4 maps side by side, at every zoom level (128 to 2048 blocks a map). Carpets (cheap, 16 colors) or every map color, flat or **staircase** shading for three shades of each color. **Build here** puts it in your world lined up with the map grid, so a map made there shows the whole picture.
 

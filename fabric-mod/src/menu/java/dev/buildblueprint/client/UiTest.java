@@ -263,9 +263,10 @@ public final class UiTest {
             case "world-placed" -> { Mc.setScreen(null); BuildBlueprintClient.setLocked(true); System.out.println("BBUITEST placed, layer " + (BuildBlueprintClient.SESSION.layer + 1)); }
             case "world-special" -> {   // blocks the game draws in a special way: their ghosts use look-alike blocks
                 Mc.setScreen(null); Settings.nearLayers = false;
-                String[] pal = {"minecraft:chest[facing=north,type=single,waterlogged=false]", "minecraft:ender_chest[facing=north,waterlogged=false]",
-                        "minecraft:oak_sign[rotation=8,waterlogged=false]", "minecraft:red_bed[facing=north,occupied=false,part=foot]",
-                        "minecraft:white_banner[rotation=8]", "minecraft:skeleton_skull[rotation=8]", "minecraft:shulker_box[facing=up]", "minecraft:trapped_chest[facing=north,type=single,waterlogged=false]"};
+                String[] pal = {"minecraft:oak_sign[rotation=8,waterlogged=false]", "minecraft:red_bed[facing=north,occupied=false,part=foot]",
+                        "minecraft:skeleton_skull[rotation=8]", "minecraft:trapped_chest[facing=north,type=single,waterlogged=false]",
+                        "minecraft:chest[facing=north,type=single,waterlogged=false]", "minecraft:ender_chest[facing=north,waterlogged=false]",
+                        "minecraft:white_banner[rotation=8]", "minecraft:shulker_box[facing=up]"};   // the chests in the middle, in view
                 int[] cells = new int[pal.length * 2];
                 for (int i = 0; i < pal.length; i++) cells[i * 2] = i + 1;
                 BuildBlueprintClient.setLocked(false);
