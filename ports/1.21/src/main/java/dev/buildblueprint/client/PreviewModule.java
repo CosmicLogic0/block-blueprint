@@ -555,7 +555,7 @@ public final class PreviewModule {
             net.minecraft.world.phys.shapes.VoxelShape sh = st.getShape(net.minecraft.world.level.EmptyBlockGetter.INSTANCE, BlockPos.ZERO);
             if (!sh.isEmpty()) { net.minecraft.world.phys.AABB a = sh.bounds(); b = new double[]{a.minX, a.minY, a.minZ, a.maxX, a.maxY, a.maxZ}; }
             List<Object> parts = new ArrayList<>();
-            for (Object[] piece : dev.buildblueprint.core.Standin.extras(BuiltInRegistries.BLOCK.getKey(st.getBlock()).toString(), st.toString(), b)) {
+            for (Object[] piece : dev.buildblueprint.core.Standin.extras(V.blockId(st.getBlock()), st.toString(), b)) {
                 for (String id : (String[]) piece[0]) {
                     BlockState pbs = parse(id);
                     if (pbs == null || empty(quads(pbs))) continue;
