@@ -1,0 +1,3 @@
+Bukkit versions: 35
+upload to https://minecraft.curseforge.com: HTTP 200
+{"id":9866201}
